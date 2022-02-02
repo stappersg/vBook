@@ -60,6 +60,6 @@ kinds of contributions we're looking for.
 
 ## Licensing
 
-vBook is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to [Licence.md] file.
+vBook is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [License.md][License] file.
 
-[License.md]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
+[License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
