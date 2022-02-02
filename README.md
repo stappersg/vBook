@@ -1,58 +1,54 @@
 # vBook - The vSMTP reference book
 
 This repository contains the source of vBook, the vSMTP reference guide.
-vBook serves as vSMTP's primary documentation and tutorial resource.
+It serves as vSMTP's primary documentation and tutorial resource.
 
-You can also read the book for free online. Please see the book as shipped with
-the latest [stable] or [beta] vSMTP releases. Be aware that issues
-in those versions may have been fixed in this repository already, as those
-releases are updated less frequently.
+You can also read the book online for vSMTP [stable] and [beta] releases.
+Be aware that issues in those versions may have been fixed in this repository already, as those releases are updated less frequently.
 
 [stable]: https://doc.vsmtp.rs/stable/book/
 [beta]: https://doc.vsmtp.rs/beta/book/
 
 ## Requirements
 
-Building the book requires [mdBook]. To get it:
+Building the book requires [Rust] and [mdBook]. The Rust Language runs on many platforms, and there are many ways to install it. If you want to install Rust in the most straightforward, recommended way, then use [Rustup](https://github.com/rust-lang/rustup) and/or follow the instructions on the Rust website [installation](https://www.rust-lang.org/tools/install) page.
 
-[mdBook]: https://github.com/rust-lang-nursery/mdBook
-[rust-mdbook]: https://github.com/rust-lang/rust/blob/master/src/tools/rustbook/Cargo.toml
+Then you have to install [mdBook]. To get it:
 
-```bash
-$ cargo install mdbook --vers [version-num]
+```sh
+cargo install mdbook
 ```
 
-## Building
+[Rust]: https://github.com/rust-lang/rust
+[mdBook]: https://github.com/rust-lang-nursery/mdBook
+
+## Building the book
 
 To build the book, type:
 
-```bash
-$ mdbook build
+```sh
+mdbook build
 ```
 
 The output will be in the `book` subdirectory. To check it out, open it in
 your web browser.
 
 _Firefox:_
-```bash
-$ firefox book/index.html                       # Linux
-$ open -a "Firefox" book/index.html             # OS X
-$ Start-Process "firefox.exe" .\book\index.html # Windows (PowerShell)
-$ start firefox.exe .\book\index.html           # Windows (Cmd)
+
+```sh
+firefox book/index.html                       # Linux
+open -a "Firefox" book/index.html             # OS X
+Start-Process "firefox.exe" .\book\index.html # Windows (PowerShell)
+start firefox.exe .\book\index.html           # Windows (Cmd)
 ```
 
 _Chrome:_
-```bash
-$ google-chrome book/index.html                 # Linux
-$ open -a "Google Chrome" book/index.html       # OS X
-$ Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
-$ start chrome.exe .\book\index.html            # Windows (Cmd)
-```
-
-To run the tests:
 
 ```bash
-$ mdbook test
+google-chrome book/index.html                 # Linux
+open -a "Google Chrome" book/index.html       # OS X
+Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
+start chrome.exe .\book\index.html            # Windows (Cmd)
 ```
 
 ## Contributing
@@ -60,30 +56,10 @@ $ mdbook test
 We'd love your help! Please see [CONTRIBUTING.md][contrib] to learn about the
 kinds of contributions we're looking for.
 
-[contrib]: https://github.com/rust-lang/book/blob/main/CONTRIBUTING.md
+[contrib]: https://github.com/viridIT/vBook/blob/main/CONTRIBUTING.md
 
-So far, we've been doing a larger revision to coincide with [Rust
-Editions](https://doc.rust-lang.org/edition-guide/). Between those larger
-revisions, we will only be correcting errors. If your issue or pull request
-isn't strictly fixing an error, it might sit until the next time that we're
-working on a large revision: expect on the order of months or years. Thank you
-for your patience!
+## Licensing
 
-### Translations
+vBook is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to [Licence.md] file.
 
-We'd love help translating the book! See the [Translations] label to join in
-efforts that are currently in progress. Open a new issue to start working on
-a new language! We're waiting on [mdbook support] for multiple languages
-before we merge any in, but feel free to start!
-
-[Translations]: https://github.com/rust-lang/book/issues?q=is%3Aopen+is%3Aissue+label%3ATranslations
-[mdbook support]: https://github.com/rust-lang-nursery/mdBook/issues/5
-
-## Spellchecking
-
-To scan source files for spelling errors, you can use the `spellcheck.sh`
-script available in the `ci` directory. It needs a dictionary of valid words,
-which is provided in `ci/dictionary.txt`. If the script produces a false
-positive (say, you used word `BTreeMap` which the script considers invalid),
-you need to add this word to `ci/dictionary.txt` (keep the sorted order for
-consistency).
+[License.md]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
