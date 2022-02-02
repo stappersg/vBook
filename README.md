@@ -1,5 +1,4 @@
-# vBook
-The vSMTP reference book
+# vBook - The vSMTP reference book
 
 This repository contains the source of "The Rust Programming Language" book.
 
