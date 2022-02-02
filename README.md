@@ -1,14 +1,15 @@
 # vBook - The vSMTP reference book
 
-This repository contains the source of "The Rust Programming Language" book.
+This repository contains the source of vBook, the vSMTP reference guide.
+vBook serves as vSMTP's primary documentation and tutorial resource.
 
 You can also read the book for free online. Please see the book as shipped with
 the latest [stable] or [beta] vSMTP releases. Be aware that issues
 in those versions may have been fixed in this repository already, as those
 releases are updated less frequently.
 
-[stable]: https://doc.rust-lang.org/stable/book/
-[beta]: https://doc.rust-lang.org/beta/book/
+[stable]: https://doc.vsmtp.rs/stable/book/
+[beta]: https://doc.vsmtp.rs/beta/book/
 
 ## Requirements
 
