@@ -17,21 +17,6 @@ rule <stage> <name> #{
 
 >The symbols || after "condition", "on_success" and "on_failure" keywords must be understood as closure delimiters and not as boolean operators.
 
-### vSL stages vs SMTP states
-
-The end user can analyze and interact with SMTP traffic at several stages. To do this, vSL publishes a global context which is updated with each step change.
-
-| Stage | SMTP state | Context available
-| :--- | :--- | :---
-| connect | Before HELO/EHLO command | Connection related information.
-| helo | After HELO/EHLO command | HELO string.
-| mail | After MAIL FROM command | Sender address.
-| rcpt | After RCPT TO command | The entire SMTP envelop.
-| preq | Before queuing the mail (1) | The entire mail.
-| postq | After queuing the mail (2) | The entire mail. Not implemented in version 0.7.x.
-
-> (1) After end of data, before server answer (ex. 250 OK).
-> (2) Connection is already closed and the SMTP code sent.
 
 ### Conditions
 
@@ -117,53 +102,7 @@ the connection is accepted if it is local, and denied otherwise.
 
 To avoid undefined behavior, the implicit action in a stage is CONTINUE(). If there's no state (i.e.  ACCEPT, DENY, etc.) returned in a stage, the default behavior is to proceed to the next stage, and in the end the message is delivered.
 
-### Context variables
 
-Message related variables are available depending on the stage.
-
-#### CONNECT stage
-
-| Name | Type | Description
-| :--- | :--- | :---
-| ${connect} | ip4/ip6 | Source IP address.
-| ${port} | int | Source port.
-| ${date} | string | Current date.
-| ${time} | string | Current time.
-
-#### HELO stage
-
-| Name | Type | Description
-| :--- | :--- | :---
-| ${helo} | string | HELO/EHLO SMTP value |
-
-#### MAIL stage
-
-| Name | Type | Description
-| :--- | :--- | :---
-| ${mail.full}| addr | Sender email address. ${mail} is equivalent.
-| ${mail.local_part} | string | Sender name.
-| ${mail.domain} | fqdn | Sender fqdn.
-
-#### RCPT stage
-
-| Name | Type | Description
-| :--- | :--- | :---
-| ${rcpt.full} | addr | Current recipient address. ${rcpt} is equivalent.
-| ${rcpt.local_part} | string | Current sender name.
-| ${rcpt.domain} | fqdn | Current sender fqdn.
-| ${rcpts.full} | Array of addr| Recipients addresses. ${rcpts} is equivalent.
-| ${rcpts.local_parts} | Array of string | Senders name.
-| ${rcpts.domains} | Array of fqdn | Senders fqdn.
-
->Please note that the `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
-
-#### PREQ stage
-
-| Name | Type | Description
-| :--- | :--- | :---
-| preq | ${data} | Email body.
-
-in this stage, every built-in variables are filled. You can do complex rule matching in this stage.
 
 ### About DUMP action
 
