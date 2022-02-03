@@ -14,9 +14,11 @@ All .vSL files in the "rules" folder are scanned alphabetically and injected int
 If there is no vSL file, the server will accept all incoming and outgoing mails, as well as domain forwarding.
 For obvious security reasons, this configuration should not be deployed on a server connected directly to the Internet.
 
-Please refer to the examples in the vSMTP repository and read the [vSMTP scripting language](https://github.com/viridIT/vSMTP/wiki/vSMTP-Scripting-Language- (vSL)) for detailed information.
+Please refer to the examples in the vSMTP repository and read the [vSMTP scripting language] for detailed information.
 
->vSMTP service must be restarted to apply changes.
+[vSMTP scripting language]: https://github.com/viridIT/vSMTP/wiki/vSMTP-Scripting-Language-vSL
+
+> vSMTP service must be restarted to apply changes.
 
 
 

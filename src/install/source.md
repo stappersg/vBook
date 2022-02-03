@@ -6,8 +6,8 @@ vSMTP is currently under development. There's no stable version packaged. It mus
 
 vSMTP is written in Rust and must be compiled using Cargo, the Rust package manager. Rust runs on many platforms, and there are many ways to install it. If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and/or follow the instructions on the [Rust website installation] page.
 
-[Rustup]: (https://github.com/rust-lang/rustup)
-[Rust website installation]: (https://www.rust-lang.org/tools/install)
+[Rustup]: https://github.com/rust-lang/rustup
+[Rust website installation]: https://www.rust-lang.org/tools/install
 
 > vSMTP is compiled with the latest Rust Stable version. For stability and security raesons it is not recommended to run vSMTP with a Rust Beta or a Nightly compiler. More information about Rust release can be founded [here].
 
@@ -23,7 +23,7 @@ sudo apt install build-essential
 
 Advanced Package Tool, or [APT], is also required to handle the installation and removal of software on Debian, Ubuntu and other Linux distributions.
 
-[APT]: (https://www.freedesktop.org/wiki/Software/pkg-config/)
+[APT]: https://www.freedesktop.org/wiki/Software/pkg-config/
 
 ```shell
 sudo apt install pkg-config
@@ -32,7 +32,7 @@ sudo apt install pkg-config
 The Transport Layer Security protocol (TLS) is provided by [OpenSSL development libraries].
 The Debian package is libssl-dev package.
 
-[OpenSSL development libraries]: (https://www.openssl.org/)
+[OpenSSL development libraries]: https://www.openssl.org/
 
 ```shell
 sudo apt install libssl-dev
@@ -42,7 +42,7 @@ sudo apt install libssl-dev
 
 Source code can be found on GitHub in the viridIT [vSMTP repository]. Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
 
-[vSMTP repository]: (https://github.com/viridIT/vSMTP)
+[vSMTP repository]: https://github.com/viridIT/vSMTP
 
 ```shell
 $ cargo build --release
