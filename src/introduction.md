@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to the vBOOK, the vSMTP reference guide. 
+Welcome to the vBook, the vSMTP reference guide. 
 It serves as vSMTP's primary documentation and tutorial resource.
 
 You can also read the book online for vSMTP [stable] and [beta] releases.
@@ -9,7 +9,7 @@ Be aware that issues in those versions may have been fixed in this repository al
 ## What is vSMTP ?
 
 vSMTP is a next-gen Mail Transfer Agent (MTA) developed by viridIT teams. You
-can follow us on [viridit.com](https://www.viridit.com).
+can follow viridIT teams on [viridit.com](https://www.viridit.com).
 
 ## Why develop a new MTA ?
 
@@ -42,4 +42,4 @@ This book is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 
 The source files from which this book is generated can be found on [GitHub][book].
 
-[book]: https://github.com/viridIT/vBook/main/src
+[book]: https://github.com/viridIT/vBook

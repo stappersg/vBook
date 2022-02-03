@@ -2,9 +2,9 @@
 
 ## Summary
 
-[Introduction](./introduction.md)
+[Introduction](introduction.md)
 
-[Features](install/features.md)
+[Features](features.md)
 
 ## Installation Guide
 
