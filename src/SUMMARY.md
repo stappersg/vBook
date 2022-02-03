@@ -1,19 +1,17 @@
-# vBook
-
-## Summary
+# Summary
 
 [Introduction](introduction.md)
 
 [Features](features.md)
 
-## Installation Guide
+# Installation Guide
 
 - [Requirements](install/requirements.md)
 - [Installation from source](install/source.md)
 - [Installation from packages]()
 - [Configuration](install/configuration.md)
 
-## Reference Guide
+# Reference Guide
 
 - [Architecture overview]()
 - [Command line parameters]()
