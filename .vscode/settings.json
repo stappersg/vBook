@@ -1,6 +1,13 @@
 {
     "cSpell.words": [
+        "adduser",
         "libc",
-        "Rustup"
+        "maildir",
+        "mbox",
+        "mkdir",
+        "postq",
+        "preq",
+        "Rustup",
+        "vsmtp"
     ]
 }

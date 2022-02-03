@@ -12,14 +12,28 @@ To do this, vSL publishes a global context which is updated with each step chang
 | helo | After HELO/EHLO command | HELO string.
 | mail | After MAIL FROM command | Sender address.
 | rcpt | After RCPT TO command | The entire SMTP envelop
-| preq | Before queuing the mail (2) | The entire mail.
-| postq | After queuing the mail (3) | The entire mail.
+| preq | Before queuing the mail | The entire mail.
+| postq | After queuing the mail | The entire mail.
 
 ?????????????? DELIVER stage ???????????????
 
-> (1) After end of data, before server answer (ex. 250 OK).
+> Note about `preq` and `postq` stages:
+> - Preq stage triggers after the end of data, before the server answer (ex. 250 OK). 
+> - Postq stage triggers when Connection is already closed and the SMTP code sent.
 
-> (2) Connection is already closed and the SMTP code sent.
+### Before queueing vs. after queueing
+
+vSMTP can process mails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection.
+
+This early detection of inappropriate mails has several advantages :
+
+- the responsibility is on the remote SMTP client side,
+- it consumes less CPU and disk resources,
+- the system is more reactive.
+
+However as the SMTP transfer must end within a deadline, a system facing a heavy workload may have difficulties to respond in time.
+
+To protect against bursts and crashes, vSMTP implements several internal mechanisms like 'delay-variation' or 'temporary service unavailable messages', in accordance with the SMTP RFCs.
 
 ### Context variables
 
@@ -45,7 +59,7 @@ Message related variables are available depending on the stage.
 | postq |
 | deliver |
 
-RAW DATA variable ??
+????????????? RAW DATA variable ??
 
 >Please note that the `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
 

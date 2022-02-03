@@ -9,7 +9,7 @@ vSMTP is written in Rust and must be compiled using Cargo, the Rust package mana
 [Rustup]: https://github.com/rust-lang/rustup
 [Rust website installation]: https://www.rust-lang.org/tools/install
 
-> vSMTP is compiled with the latest Rust Stable version. For stability and security raesons it is not recommended to run vSMTP over a Rust Beta or a Nightly version. More information about Rust release can be founded [here].
+> vSMTP is compiled with the latest Rust Stable version. For stability and security reasons it is not recommended to run vSMTP over a Rust Beta or a Nightly version. More information about Rust release can be founded [here].
 
 ### Checking dependencies
 
@@ -40,7 +40,7 @@ sudo apt install libssl-dev
 
 ### vSMTP source code repository
 
-Source code can be found on GitHub in viridIT's [vSMTP repository]. 
+Source code can be found on GitHub in viridIT's [vSMTP repository].
 
 ```shell
 $ git clone https://github.com/viridIT/vSMTP.git
@@ -153,7 +153,7 @@ sudo cp ./config/vsmtp.service /etc/systemd/system
 
 Enable and activate vSMTP service.
 
-```sh
+```shell
 $ sudo systemctl enable vsmtp.service
 Created symlink /etc/systemd/system/multi-user.target.wants/vsmtp.service → /etc/systemd/system/vsmtp.service.
 
@@ -175,7 +175,7 @@ tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      
 
 Connect to the vSMTP server using a netcat or a telnet client.
 
-```sh
+```shell
 $ nc -4 localhost 25
 220 mydomain.com Service ready
 451 Timeout - closing connection.

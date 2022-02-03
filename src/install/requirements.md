@@ -1,17 +1,16 @@
 ## Requirements
 
-vSMTP is a stand-alone application with no kernel interaction, it may run on any system with slight modifications. However vSMTP primary platform is Linux running on x86 CPUs.
+vSMTP is a stand-alone application with no kernel interaction, it may run on any system with slight modifications.
 
 ### Physical requirements
 
 The current release has been tested on x86/64 environments.
 
-> Installing vSMTP on other CPU architectures should work but may require specific configurations not covered in this document.
+Installing vSMTP on other CPU architectures like ARM should work but may require specific configurations not covered in this document.
 
 ### Operating systems
 
-All recent Linux distributions should be able to run vSMTP.
-vSMTP is developed and tested on Ubuntu 20.04 server with kernel 5.4.
+Although vSMTP is developed and tested on Ubuntu Server 20.04 with kernel 5.4, all recent Linux distributions should be able to run vSMTP.
 
 > FreeBSD and NetBSD supports are planned for mid 2022.
 
