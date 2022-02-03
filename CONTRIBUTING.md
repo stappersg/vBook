@@ -2,7 +2,7 @@
 
 Thanks for considering helping this project. There are many ways you can help.
 
-There are opportunities to contribute to vSMTP at any level like translating, reviewing or making  improvements to the documentation.
+There are opportunities to contribute to vSMTP at any level like translating, reviewing or making improvements to the documentation.
 
 Even tiny pull requests (e.g., fixing a typo in API documentation) are greatly
 appreciated.\

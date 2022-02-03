@@ -1,0 +1,6 @@
+[book]
+authors = ["Team viridIT <https://viridit.com/>"]
+language = "en"
+multilingual = false
+src = "src"
+title = "vSMTP : the next-gen MTA. Secured, Faster and Greener"

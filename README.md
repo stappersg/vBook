@@ -44,7 +44,7 @@ start firefox.exe .\book\index.html           # Windows (Cmd)
 
 _Chrome:_
 
-```bash
+```sh
 google-chrome book/index.html                 # Linux
 open -a "Google Chrome" book/index.html       # OS X
 Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
@@ -60,6 +60,6 @@ kinds of contributions we're looking for.
 
 ## Licensing
 
-vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [License.md][License] file.
+vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [LICENSE.md][License] file.
 
 [License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
