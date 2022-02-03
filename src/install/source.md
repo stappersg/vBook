@@ -9,7 +9,7 @@ vSMTP is written in Rust and must be compiled using Cargo, the Rust package mana
 [Rustup]: https://github.com/rust-lang/rustup
 [Rust website installation]: https://www.rust-lang.org/tools/install
 
-> vSMTP is compiled with the latest Rust Stable version. For stability and security raesons it is not recommended to run vSMTP with a Rust Beta or a Nightly compiler. More information about Rust release can be founded [here].
+> vSMTP is compiled with the latest Rust Stable version. For stability and security raesons it is not recommended to run vSMTP over a Rust Beta or a Nightly version. More information about Rust release can be founded [here].
 
 ### Checking dependencies
 
@@ -38,9 +38,22 @@ The Debian package is libssl-dev package.
 sudo apt install libssl-dev
 ```
 
-### Installation vSMTP using Cargo
+### vSMTP source code repository
 
-Source code can be found on GitHub in the viridIT [vSMTP repository]. Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
+Source code can be found on GitHub in viridIT's [vSMTP repository]. 
+
+```shell
+$ git clone https://github.com/viridIT/vSMTP.git
+[...]
+```
+
+You can also download a specific version without using Git mechanism in the [release folder].
+
+[release folder]: https://github.com/viridIT/vSMTP/releases
+
+### vSMTP compilation
+
+Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
 
 [vSMTP repository]: https://github.com/viridIT/vSMTP
 

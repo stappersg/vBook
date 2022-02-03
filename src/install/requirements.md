@@ -1,6 +1,6 @@
 ## Requirements
 
-vSMTP is a stand-alone application with no kernel interaction, it may run on any system with slight modifications. Nevertheless vSMTP primary platform is Linux running on x86 CPUs.
+vSMTP is a stand-alone application with no kernel interaction, it may run on any system with slight modifications. However vSMTP primary platform is Linux running on x86 CPUs.
 
 ### Physical requirements
 
@@ -21,6 +21,6 @@ vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent
 
 For outgoing mail, vSMTP can directly be addressed by your email client (MUA) using the SMTP protocol. For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats. In order to retrieve emails from your preferred mail reader (MUA) it is necessary to install a MDA that can handle POP and/or IMAP protocols.
 
-For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and specify to the courier-imap MDA where are located the MailDir/ folders.
+For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and specify to the courier-imap MDA where are located the MailDir/ folders and use a MUA like Mozilla ThunderBird.
 
 [courier-imap]: https://packages.debian.org/search?keywords=courier-imap
