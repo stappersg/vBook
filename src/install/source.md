@@ -1,8 +1,8 @@
-# Installing vSMTP from source
+## Installing vSMTP from source
 
 vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
 
-## Installing RUST language
+### Installing RUST language
 
 vSMTP is written in Rust and must be compiled using Cargo, the Rust package manager. Rust runs on many platforms, and there are many ways to install it. If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and/or follow the instructions on the [Rust website installation] page.
 
@@ -11,7 +11,7 @@ vSMTP is written in Rust and must be compiled using Cargo, the Rust package mana
 
 > vSMTP is compiled with the latest Rust Stable version. For stability and security raesons it is not recommended to run vSMTP with a Rust Beta or a Nightly compiler. More information about Rust release can be founded [here].
 
-## Checking dependencies
+### Checking dependencies
 
 [here]: https://doc.rust-lang.org/book/appendix-07-nightly-rust.html
 
@@ -38,7 +38,7 @@ The Debian package is libssl-dev package.
 sudo apt install libssl-dev
 ```
 
-## Installation vSMTP using Cargo
+### Installation vSMTP using Cargo
 
 Source code can be found on GitHub in the viridIT [vSMTP repository]. Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
 
@@ -63,11 +63,11 @@ FLAGS:
 
 By default Rust/Cargo use static linking to compile - all libraries required are compiled into the executable - allowing vSMTP to be a standalone application.
 
-## Configuring OS for vSMTP
+### Configuring OS for vSMTP
 
 > This version has not been tested in chroot environments.
 
-### User and group
+#### User and group
 
 For security purpose, vSMTP should run using a dedicated account with minimal privileges.
 
@@ -80,7 +80,7 @@ Adding new user 'vsmtp' (UID 9999) with group 'vsmtp' ...
 Not creating home directory '/home/vsmtp'.
 ```
 
-### Working directories
+#### Working directories
 
 vSMTP binaries and config files should located in:
 
@@ -106,7 +106,7 @@ sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/*
 
 > vSMTP default configuration file (/etc/vsmtp/vsmtp.toml) can be changed in the vsmtp.service script.
 
-### MTA service
+#### MTA service
 
 Check if you have a mail transfer agent service running and disable it.
 The example below is related to a Postfix service running on port 25.
@@ -130,7 +130,7 @@ Executing: /lib/systemd/systemd-sysv-install disable postfix
 Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 ```
 
-### Adding vSMTP as a systemd service
+#### Adding vSMTP as a systemd service
 
 Copy the daemon configuration file to /etc/systemd/system.
 

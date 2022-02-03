@@ -1,4 +1,4 @@
-# Configuring the vSMTP service
+## Configuring the vSMTP service
 
 The vSMTP service (network, default directories, tls, etc.) can be configured by modifying /etc/vsmtp/vsmtp.toml file.
 Please refer to the documentation for further details.
@@ -21,4 +21,11 @@ Please refer to the examples in the vSMTP repository and read the [vSMTP scripti
 
 
 
-# Examples ....
+## Examples ....
+
+### Personnal MTA/MDA
+
+### Remote office
+
+### Large company MTA
+
