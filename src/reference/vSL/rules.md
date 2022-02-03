@@ -1,9 +1,9 @@
-# Rules
+## Rules
 
 Rules are the entry point to interact with the SMTP traffic at a user level.
 Nevertheless specific parameters like timeout, system logging, tls configuration, etc. are set in the configuration files.
 
-## Overall Syntax
+### Overall Syntax
 
 Rules follow a specific syntax :
 
@@ -17,7 +17,7 @@ rule <stage> <name> #{
 
 >The symbols || after "condition", "on_success" and "on_failure" keywords must be understood as closure delimiters and not as boolean operators.
 
-## vSL stages vs SMTP states
+### vSL stages vs SMTP states
 
 The end user can analyze and interact with SMTP traffic at several stages. To do this, vSL publishes a global context which is updated with each step change.
 
@@ -33,12 +33,12 @@ The end user can analyze and interact with SMTP traffic at several stages. To do
 > (1) After end of data, before server answer (ex. 250 OK).
 > (2) Connection is already closed and the SMTP code sent.
 
-## Conditions
+### Conditions
 
 The "condition: ||" primitive expects a boolean after the || symbol.
 Booleans can come directly from [RHAI](https://rhai.rs/) or vSL functions as shown hereunder (like vsl.IS_CONNECT).
 
-### Built-in vSL conditions
+#### Built-in vSL conditions
 
 Foreach stage a vSL condition that match the message context is available.
 The function syntax is : IS_*STAGE*(object).
@@ -66,7 +66,7 @@ rule mail "adv check" #{
 };
 ```
 
-### Complex conditions using [RHAI](https://rhai.rs/) functions
+#### Complex conditions using [RHAI](https://rhai.rs/) functions
 
 ```vsl
 obj fqdn "foobar" "my.foo.bar";
@@ -85,7 +85,7 @@ rule mail "adv check" #{
 > In this case my_function() function will not be evaluated if the 1st part already proves the condition wrong.
 > To counter this behavior use the boolean operators & and |.
 
-## Rule actions : on_success and on_failure
+### Rule actions : on_success and on_failure
 
 These methods interact with the SMTP engine.
 Those methods must return a state (see the Rule Engine Actions section) to influence vSMTP.
@@ -113,15 +113,15 @@ rule connect "check on connect" #{
 the connection is accepted if it is local, and denied otherwise.
 > Note the absence of the semicolon after DENY() since the rule must return a state.
 
-## Implicit rule in a stage
+### Implicit rule in a stage
 
 To avoid undefined behavior, the implicit action in a stage is CONTINUE(). If there's no state (i.e.  ACCEPT, DENY, etc.) returned in a stage, the default behavior is to proceed to the next stage, and in the end the message is delivered.
 
-## Context variables
+### Context variables
 
 Message related variables are available depending on the stage.
 
-### CONNECT stage
+#### CONNECT stage
 
 | Name | Type | Description
 | :--- | :--- | :---
@@ -130,13 +130,13 @@ Message related variables are available depending on the stage.
 | ${date} | string | Current date.
 | ${time} | string | Current time.
 
-### HELO stage
+#### HELO stage
 
 | Name | Type | Description
 | :--- | :--- | :---
 | ${helo} | string | HELO/EHLO SMTP value |
 
-### MAIL stage
+#### MAIL stage
 
 | Name | Type | Description
 | :--- | :--- | :---
@@ -144,7 +144,7 @@ Message related variables are available depending on the stage.
 | ${mail.local_part} | string | Sender name.
 | ${mail.domain} | fqdn | Sender fqdn.
 
-### RCPT stage
+#### RCPT stage
 
 | Name | Type | Description
 | :--- | :--- | :---
@@ -157,7 +157,7 @@ Message related variables are available depending on the stage.
 
 >Please note that the `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
 
-### PREQ stage
+#### PREQ stage
 
 | Name | Type | Description
 | :--- | :--- | :---
@@ -165,7 +165,7 @@ Message related variables are available depending on the stage.
 
 in this stage, every built-in variables are filled. You can do complex rule matching in this stage.
 
-## About DUMP action
+### About DUMP action
 
 The DUMP action writes the content of an email in JSON format with the content available at the specified rule stage.
 
@@ -178,7 +178,7 @@ rule mail "dump_at_mail_stage" #{
 
 This rule will dump in JSON format only the content available at the "mail" stage : `connect`, `helo` and `mail` parameters.
 
-## About BLOCK action
+### About BLOCK action
 
 The BLOCK action pushes the mail in a user defined quarantine directory.
 Unlike DUMP:

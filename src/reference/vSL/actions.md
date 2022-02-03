@@ -1,4 +1,4 @@
-# Actions
+## Actions
 
 vSL provides the user with a comprehensive list of predefined actions in order to interact with mail traffic.
 
@@ -6,7 +6,7 @@ vSL provides the user with a comprehensive list of predefined actions in order t
 vsl.LOG(`Hello world !!!`, "/tmp/my_log");
 ```
 
-## Rule engine actions
+### Rule engine actions
 
 The state of an SMTP transaction can be changed through specific actions sent by the rule engine.
 
@@ -21,7 +21,7 @@ The state of an SMTP transaction can be changed through specific actions sent by
 >(1) Except for the RCPT stage. See "advanced scripting".
 >(2) See Rules implicit behavior.
 
-## Actions over SMTP envelop
+### Actions over SMTP envelop
 
 SMTP envelop can be modified by several predefined actions.
 
@@ -36,7 +36,7 @@ SMTP envelop can be modified by several predefined actions.
 >Please note that the email body is not modified.
 >Modification of headers "To:", "From:", "Reply-to:", etc. are not implemented in version 0.7.x.
 
-## Other actions
+### Other actions
 
 These actions have no impact on the SMTP engine.
 
@@ -48,9 +48,9 @@ These actions have no impact on the SMTP engine.
 | WRITE | WRITE(file) | Write a raw copy of the mail on disk. |
 | DUMP | DUMP(file) | Write a copy of the entire mail (envelop+body) in JSON format on disk. |
 
-## Combining and interacting with actions
+### Combining and interacting with actions
 
-### Chaining actions
+#### Chaining actions
 
 ```vsl
 {
@@ -59,7 +59,7 @@ These actions have no impact on the SMTP engine.
 }
 ```
 
-### User-defined actions
+#### User-defined actions
 
 Combined actions can be declared using a [RHAI](https://rhai.rs/) function.
 

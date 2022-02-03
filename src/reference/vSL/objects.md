@@ -1,4 +1,4 @@
-# Objects
+## Objects
 
 Objects are declared through the "obj" keyword. Two syntax are available.
 The inline syntax:
@@ -33,7 +33,7 @@ obj ip4 "local_MDA" #{
 
 >Note that the last comma is not mandatory.
 
-## Type of implemented objects
+### Type of implemented objects
 
 The following type of objects are supported natively:
 
@@ -48,7 +48,7 @@ The following type of objects are supported natively:
 | grp | A group of objects | | See group section.
 | file | A file of objects | Unix file | See file section.
 
-## About files
+### About files
 
 File objects are standard Unix text files containing values delimited by CRLF.
 Only one type of object is authorized and must be declared after the keyword "file:".
@@ -64,7 +64,7 @@ obj file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
 10.3.4.240
 ```
 
-## About groups
+### About groups
 
 Groups are collections of objects.
 

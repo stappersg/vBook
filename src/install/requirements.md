@@ -1,18 +1,18 @@
-# Requirements
+## Requirements
 
-## Physical requirements
+### Physical requirements
 
 The current release has been tested on x86/64 environments.
 > Installing vSMTP on other CPU architectures should work but may require specific configurations not covered in this document.
 
-## Operating systems
+### Operating systems
 
 vSMTP is developed and tested on Ubuntu 20.04 server.
 As it is a stand-alone application with no kernel interaction, it may run on any Linux system with slight modifications.
 
 > FreeBSD and NetBSD supports are planned for mid 2022.
 
-## Software requirements
+###  Software requirements
 
 vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent (MUA) or a Mail Delivery Agent (MDA).
 

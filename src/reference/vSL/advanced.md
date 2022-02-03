@@ -1,6 +1,6 @@
-# Advanced scripting
+## Advanced scripting
 
-## Using [RHAI](https://rhai.rs/) for programming complex actions
+### Using [RHAI](https://rhai.rs/) for programming complex actions
 
 On top of vSL predefined actions, users can define complex rules using the [RHAI](https://rhai.rs/) scripting language.
 In any case the entry point to interact with the SMTP traffic must be the first vSL "rule".
@@ -45,7 +45,7 @@ rule rcpt "rcpt_log" #{
 
 > note that rhai's function do not capture their external scope. If you want to use vSL's features, you must pass the module by parameter. The vsl module is available in the global scope.
 
-## Shortcuts
+### Shortcuts
 
 If a function has no parameter, || and ( ) can be omitted.
 
