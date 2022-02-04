@@ -11,6 +11,8 @@ vSMTP is written in Rust and must be compiled using Cargo, the Rust package mana
 
 > vSMTP is compiled with the latest Rust Stable version. For stability and security reasons it is not recommended to run vSMTP over a Rust Beta or a Nightly version. More information about Rust release can be founded [here].
 
+
+
 ### Checking dependencies
 
 [here]: https://doc.rust-lang.org/book/appendix-07-nightly-rust.html
@@ -43,8 +45,7 @@ sudo apt install libssl-dev
 Source code can be found on GitHub in viridIT's [vSMTP repository].
 
 ```shell
-$ git clone https://github.com/viridIT/vSMTP.git
-[...]
+git clone https://github.com/viridIT/vSMTP.git
 ```
 
 You can also download a specific version without using Git mechanism in the [release folder].
@@ -107,17 +108,21 @@ vSMTP binaries and config files should located in:
   + /var/log/mail.log and mail.err for syslog (not implemented in current release)
 + /home/~user/Maildir for local IMAP delivery
 
+The vSMTP default configuration file (/etc/vsmtp/vsmtp.toml) can be changed in the vsmtp.service script.
+
+Create the directories and change the owner and group.
+
 ```shell
-sudo cp ./target/release/vsmtp /usr/sbin/
-sudo mkdir /etc/vsmtp
-sudo cp -p ./config/vsmtp.default.toml /etc/vsmtp/vsmtp.toml
-sudo mkdir /etc/vsmtp/rules
-sudo mkdir /etc/vsmtp/certs
-sudo mkdir /var/log/vsmtp
+sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/*
 ```
 
-> vSMTP default configuration file (/etc/vsmtp/vsmtp.toml) can be changed in the vsmtp.service script.
+Copy the vsmtp binaries and the config files.
+
+```shell
+sudo cp ./target/release/vsmtp /usr/sbin/
+sudo cp -p ./config/vsmtp.default.toml /etc/vsmtp/vsmtp.toml
+```
 
 #### MTA service
 
