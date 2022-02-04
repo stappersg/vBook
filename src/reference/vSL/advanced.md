@@ -5,14 +5,14 @@
 On top of vSL predefined actions, users can define complex rules using the [RHAI](https://rhai.rs/) scripting language.
 In any case the entry point to interact with the SMTP traffic must be the first vSL "rule".
 
-```vsl
+```rust
 let my_string = "The question is 7x6 = 42 ?";
 ...
 
 vsl.LOG(`I'm writing this string : ${my_string} into stderr`, "stderr");
 ```
 
-```vsl
+```rust
 fn my_condition(vsl) {
     let my_int = if vsl.IS_CONNECT("192.168.1.34") { 42 } else { 0 };
     if (my_int == 42) {
@@ -43,13 +43,13 @@ rule rcpt "rcpt_log" #{
 };
 ```
 
-> note that rhai's function do not capture their external scope. If you want to use vSL's features, you must pass the module by parameter. The vsl module is available in the global scope.
+> note that RHAI's function do not capture their external scope. If you want to use vSL's features, you must pass the module by parameter. The vsl module is available in the global scope.
 
 ### Shortcuts
 
 If a function has no parameter, || and ( ) can be omitted.
 
-```vsl
+```rust
 fn my_func() {
     ...
     vsl.ACCEPT()
@@ -64,7 +64,7 @@ rule connect "check on connect" #{
 
 But :
 
-```vsl
+```rust
 let boo = 42;
 fn my_func(x, y) {
     ...

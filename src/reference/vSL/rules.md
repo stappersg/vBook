@@ -7,7 +7,7 @@ Nevertheless specific parameters like timeout, system logging, tls configuration
 
 Rules follow a specific syntax :
 
-```vsl
+```rust
 rule <stage> <name> #{
     condition: || <condition>,
     on_success: || <action>,
@@ -28,7 +28,7 @@ Booleans can come directly from [RHAI](https://rhai.rs/) or vSL functions as sho
 Foreach stage a vSL condition that match the message context is available.
 The function syntax is : IS_*STAGE*(object).
 
-```vsl
+```rust
 obj ip4 "localhost" "192.168.1.34";
 
 rule connect "check on connect" #{
@@ -40,7 +40,7 @@ rule connect "check on connect" #{
 
 As explained previously, the values obtained from the previous steps are still available in the current stage.
 
-```vsl
+```rust
 obj ip4 "localhost" "192.168.1.34";
 obj addr "foo" "foo@bar.com";
 
@@ -53,7 +53,7 @@ rule mail "adv check" #{
 
 #### Complex conditions using [RHAI](https://rhai.rs/) functions
 
-```vsl
+```rust
 obj fqdn "foobar" "my.foo.bar";
 
 fn my_function(x) {
@@ -77,7 +77,7 @@ Those methods must return a state (see the Rule Engine Actions section) to influ
 
 for example:
 
-```vsl
+```rust
 obj ip4 "localhost" "192.168.1.34";
 
 fn my_action() {
@@ -108,7 +108,7 @@ To avoid undefined behavior, the implicit action in a stage is CONTINUE(). If th
 
 The DUMP action writes the content of an email in JSON format with the content available at the specified rule stage.
 
-```vsl
+```rust
 rule mail "dump_at_mail_stage" #{
     condition: true,
     on_success: vsl.DUMP(`/var/spool/mta/`),
@@ -125,7 +125,7 @@ Unlike DUMP:
 - The ENTIRE content of the email is written in JSON format regardless of the stage declared in the rule (including the envelop and body).
 - All rules are skipped, and the server delivers a 554 smtp code to the client.
 
-```vsl
+```rust
 rule helo "my_quarantine" #{
     condition: vsl.IS_HELO("blacklist"),
     on_success: || vsl.BLOCK("/var/spool/mta/blacklist/"),

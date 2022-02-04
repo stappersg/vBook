@@ -39,9 +39,11 @@ The following type of objects are supported natively:
 
 | Type | Description | Syntax | Comments
 | :--- | :--- | :--- | :---
-| val | Untyped value | string | Bind a value.
-| ip4 | IPv4 address | x.y.z.t
-| rg4 | IPv4 network | x.y.z.t/rg
+| val | Untyped value | string | Generic variable.
+| ip4 | IPv4 address | x.y.z.t | decimal values.
+| ip6 | IPv6 address | TO DO | Hexa values ?????
+| rg4 | IPv4 network | x.y.z.t/rg | decimal values.
+| rg6 | IPv6 prefix | TO DO:/TO DO | Hexa values ?????
 | addr | email address | user@fqdn
 | fqdn | Fully qualified domain name | my&#46;domain&#46;com
 | regex | Regular expression | | PERL regular expression.

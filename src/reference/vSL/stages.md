@@ -2,7 +2,7 @@
 
 vSMTP can interact with the messaging transaction at multiple levels. These are related to the states defined in the SMTP protocol.
 
-To do this, vSL publishes a global context which is updated with each step change.
+At each step vSL updates and publishes a global context containing transaction and mail data.
 
 ### vSMTP stages
 
@@ -11,15 +11,14 @@ To do this, vSL publishes a global context which is updated with each step chang
 | connect | Before HELO/EHLO command | Connection related information.
 | helo | After HELO/EHLO command | HELO string.
 | mail | After MAIL FROM command | Sender address.
-| rcpt | After RCPT TO command | The entire SMTP envelop
-| preq | Before queuing the mail | The entire mail.
-| postq | After queuing the mail | The entire mail.
+| rcpt | After RCPT TO command | The entire SMTP envelop.
+| preq | Before queuing  | The entire mail.
+| postq | After queuing  | The entire mail.
+| deliver | Before delivering | The entire mail.
 
-?????????????? DELIVER stage ???????????????
-
-> Note about `preq` and `postq` stages:
-> - Preq stage triggers after the end of data, before the server answer (ex. 250 OK). 
-> - Postq stage triggers when Connection is already closed and the SMTP code sent.
+Notes about `preq` and `postq` stages:
+- Preq stage triggers after the end of data, before the server answer (ex. 250 OK). 
+- Postq stage triggers when Connection is already closed and the SMTP code sent.
 
 ### Before queueing vs. after queueing
 
@@ -37,7 +36,7 @@ To protect against bursts and crashes, vSMTP implements several internal mechani
 
 ### Context variables
 
-Message related variables are available depending on the stage.
+As described above, depending on the stage vSL exposes variables to the end user.
 
 | Stage | Name | Type | Description
 | :--- | :--- | :--- | :--- 
@@ -45,36 +44,34 @@ Message related variables are available depending on the stage.
 | | ${port} | int | Source port.
 | | ${date} | string | Current date.
 | | ${time} | string | Current time.
-| helo | ${helo} | string | HELO/EHLO SMTP value |
-| mail | ${mail.full}| addr | Sender email address. ${mail} is equivalent.
+| helo | ${helo} | string | HELO/EHLO SMTP value.
+| mail | ${mail.full} or \${mail} | addr | Sender email address.
 | | ${mail.local_part} | string | Sender name.
 | | ${mail.domain} | fqdn | Sender fqdn.
-| rcpt | ${rcpt.full} | addr | Current recipient address. ${rcpt} is equivalent.
+| rcpt | ${rcpt.full} or \${rcpt} | addr | Current recipient address.
 | | ${rcpt.local_part} | string | Current sender name.
 | | ${rcpt.domain} | fqdn | Current sender fqdn.
-| | ${rcpts.full} | Array of addr| Recipients addresses. ${rcpts} is equivalent.
-| | ${rcpts.local_parts} | Array of string | Senders name.
-| | ${rcpts.domains} | Array of fqdn | Senders fqdn.
-| preq |  ${data} |
-| postq |
-| deliver |
+| | ${rcpts.full} or \${rcpt} | addr[]| Recipients addresses.
+| | ${rcpts.local_parts} | string[] | Senders names.
+| | ${rcpts.domains} | fqdn[] | Senders fqdn.
+| next stages |  ${data} | string | Email raw data.
+|  | ${parse} | vec(struct) | Parsed email.
 
-????????????? RAW DATA variable ??
-
->Please note that the `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
-
-??? preq ???? in this stage, every built-in variables are filled. You can do complex rule matching in this stage.
+Notes
+- The `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
+- The `${parse}` variable is available only if the user triggers a `vSL.PARSE()` action.
 
 ### Connection vs mail transaction
 
 As defined in the SMTP RFCs, a single connection can handle several mail transactions.
 
-HELO 
+```shell
+[... connection from an IP]
+HELO                                    # Start of SMTP transaction 
+    > MAIL FROM > RCPT TO > DATA        # First mail 
+    > MAIL FROM > RCPT TO > DATA        # Second mail
+    > [...]
+QUIT                                    # End of transaction
+```
 
-\> MAIL FROM > RCPT TO > DATA
-
-\> MAIL FROM > RCPT TO > DATA 
-
-\> [...]
-
-\> QUIT
+Be aware that per network connection, the "connect context" is unique while other variables like ${mail} are reset after each new message transaction.
