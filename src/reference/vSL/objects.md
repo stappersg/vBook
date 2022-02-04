@@ -31,7 +31,7 @@ obj ip4 "local_MDA" #{
 };
 ```
 
->Note that the last comma is not mandatory.
+&#9998; The last comma is not mandatory.
 
 ### Type of implemented objects
 
@@ -84,4 +84,4 @@ obj grp "deep-group" [
 ];
 ```
 
->Please note that unlike objects where fields are declared between parentheses, groups use squared brackets.
+&#9998; Unlike objects where fields are declared between parentheses, groups use squared brackets.

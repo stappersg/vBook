@@ -43,7 +43,7 @@ rule rcpt "rcpt_log" #{
 };
 ```
 
-> note that RHAI's function do not capture their external scope. If you want to use vSL's features, you must pass the module by parameter. The vsl module is available in the global scope.
+&#9998; RHAI's function do not capture their external scope. If you want to use vSL's features, you must pass the module by parameter. The vsl module is available in the global scope.
 
 ### Shortcuts
 

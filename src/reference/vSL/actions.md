@@ -18,8 +18,8 @@ The state of an SMTP transaction can be changed through specific actions sent by
 | DENY | Deny processing | DENY() | Deny the mail and send a SMTP return code.
 | QUARANTINE | Quarantine | BLOCK(dir) | Skip all rules and move the mail to a quarantine queue in the specified directory.
 
->(1) Except for the RCPT stage. See "advanced scripting".
->(2) See Rules implicit behavior.
+(1) Except for the RCPT stage. See "advanced scripting".
+(2) See Rules implicit behavior.
 
 ### Actions over SMTP envelop and body
 
@@ -34,7 +34,7 @@ SMTP envelop can be modified by several predefined actions.
 | RW_MAIL | RW_MAIL(addr) | Change MAIL FROM: current value with addr.
 | PARSE | PARSE() | Parse the mail and extract its structure including MIME parts.
 
-Please note that the email headers "To:", "From:", "Reply-to:", etc. are also updated.
+&#9998; Email headers "To:", "From:", "Reply-to:", etc. are also updated.
 This apply only to the root headers in case of nested emails.
 
 
@@ -50,7 +50,7 @@ These actions have no impact on the SMTP engine.
 | WRITE | WRITE(file) | Write a raw copy of the mail on disk.
 | DUMP | DUMP(file) | Write a copy of the entire mail (envelop+body) in JSON format on disk.
 
-Note that DUMP is equivalent to WRITE if the PARSE() function has not been triggered.
+&#9998; DUMP is equivalent to WRITE if the PARSE() function has not been triggered.
 
 ### Combining and interacting with actions
 
@@ -84,4 +84,4 @@ fn my_faccept(vsl) {
 }
 ```
 
-> Please note the implicit return syntax (no comma).
+&#9998; The implicit return syntax (no comma).
