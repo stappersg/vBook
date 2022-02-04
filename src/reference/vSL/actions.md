@@ -20,7 +20,7 @@ The state of an SMTP transaction can be changed through specific actions sent by
 
 [^rcpt]: Except for the RCPT stage. See "advanced scripting".
 
-[^implicit]: See Rules implicit behavior.
+[^implicit]: See rules implicit behavior.
 
 ### Actions over SMTP envelop and body
 

@@ -12,14 +12,12 @@ At each step vSL updates and publishes a global context containing transaction a
 | helo | After HELO/EHLO command | HELO string.
 | mail | After MAIL FROM command | Sender address.
 | rcpt | After RCPT TO command | The entire SMTP envelop.
-| preq | Before queuing  | The entire mail.
-| postq | After queuing  | The entire mail.
+| preq | Before queuing[^preq]  | The entire mail.
+| postq | After queuing[^postq]  | The entire mail.
 | deliver | Before delivering | The entire mail.
 
-About `preq` and `postq` stages:
-
-- Preq stage triggers after the end of data, before the server answer (ex. 250 OK).
-- Postq stage triggers when Connection is already closed and the SMTP code sent.
+[^preq]: Preq stage triggers after the end of data, before the server answer (ex. 250 OK).
+[^postq]: Postq stage triggers when Connection is already closed and the SMTP code sent.
 
 ### Before queueing vs. after queueing
 
@@ -52,15 +50,15 @@ As described above, depending on the stage vSL exposes variables to the end user
 | rcpt | ${rcpt.full} or \${rcpt} | addr | Current recipient address.
 | | ${rcpt.local_part} | string | Current sender name.
 | | ${rcpt.domain} | fqdn | Current sender fqdn.
-| | ${rcpts.full} or \${rcpt} | addr[]| Recipients addresses.
-| | ${rcpts.local_parts} | string[] | Senders names.
-| | ${rcpts.domains} | fqdn[] | Senders fqdn.
+| | ${rcpts.full}[^rcpt] or \${rcpt} | addr[]| Recipients addresses.
+| | ${rcpts.local_parts}[^rcpt] | string[] | Senders names.
+| | ${rcpts.domains}[^rcpt] | fqdn[] | Senders fqdn.
 | next stages |  ${data} | string | Email raw data.
-|  | ${parse} | vec(struct) | Parsed email.
+|  | ${parse}[^parse] | vec(struct) | Parsed email.
 
-&#9998; | The `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
+[^rcpt]: The `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
 
-&#9998; | The `${parse}` variable is available only if the user triggers a `vSL.PARSE()` action.
+[^parse]: The `${parse}` variable is available only if the user triggers a `vSL.PARSE()` action.
 
 ### Connection vs mail transaction
 
