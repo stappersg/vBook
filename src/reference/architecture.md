@@ -2,6 +2,6 @@
 
 Blahblah
 
-![Architecture](../assets/vSMTP-architecture-v0.8.png)
+![Architecture](../assets/images/vSMTP-architecture-v0.8.png)
 
 Blahblah
