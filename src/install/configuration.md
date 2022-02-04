@@ -3,6 +3,10 @@
 The vSMTP service (network, default directories, tls, etc.) can be configured by modifying /etc/vsmtp/vsmtp.toml file.
 Please refer to the documentation for further details.
 
+__&#9758;__ vSMTP service must be restarted to apply changes.
+
+__&#9758; vSMTP service must be restarted to apply changes.__
+ 
 &#9758; vSMTP service must be restarted to apply changes.
 
 ## Configuring SMTP filtering
