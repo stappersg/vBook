@@ -12,14 +12,15 @@ The state of an SMTP transaction can be changed through specific actions sent by
 
 | Action | Description | Syntax | Comment
 | :--- | :--- | :--- | :---
-| ACCEPT | Accept | ACCEPT() | Skip rules in the current stage. Move to the next SMTP stage (1).
+| ACCEPT | Accept | ACCEPT() | Skip rules in the current stage. Move to the next SMTP stage[^note].
 | FACCEPT | Force accept | FACCEPT() | Skip all rules and move the mail to the deliver queue.
-| CONTINUE | Continue processing | CONTINUE() | Jump to the next rule or to the 1st rule of the next stage. (2)
+| CONTINUE | Continue processing | CONTINUE() | Jump to the next rule or to the 1st rule of the next stage[^note].
 | DENY | Deny processing | DENY() | Deny the mail and send a SMTP return code.
 | QUARANTINE | Quarantine | BLOCK(dir) | Skip all rules and move the mail to a quarantine queue in the specified directory.
 
-(1) Except for the RCPT stage. See "advanced scripting".
-(2) See Rules implicit behavior.
+[^note]: Except for the RCPT stage. See "advanced scripting".
+
+[^note]: See Rules implicit behavior.
 
 ### Actions over SMTP envelop and body
 
