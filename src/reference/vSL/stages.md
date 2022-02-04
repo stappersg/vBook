@@ -16,8 +16,9 @@ At each step vSL updates and publishes a global context containing transaction a
 | postq | After queuing  | The entire mail.
 | deliver | Before delivering | The entire mail.
 
-&#9998; | About `preq` and `postq` stages:
-- Preq stage triggers after the end of data, before the server answer (ex. 250 OK). 
+About `preq` and `postq` stages:
+
+- Preq stage triggers after the end of data, before the server answer (ex. 250 OK).
 - Postq stage triggers when Connection is already closed and the SMTP code sent.
 
 ### Before queueing vs. after queueing
