@@ -18,7 +18,7 @@
 
 # Reference Guide
 
-- [Architecture overview]()
+- [Architecture overview](reference/architecture.md)
 - [Command line parameters]()
 - [TOML configuration files]()
 - [vSL: the vSMTP Scripting Language](reference/vSL/vsl.md)
