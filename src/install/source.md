@@ -79,7 +79,7 @@ By default Rust/Cargo use static linking to compile - all libraries required are
 
 ### Configuring OS for vSMTP
 
-&#9762; This version has not been tested in chroot environments.
+&#9762; | This version has not been tested in chroot environments.
 
 #### User and group
 

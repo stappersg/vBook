@@ -16,7 +16,7 @@ At each step vSL updates and publishes a global context containing transaction a
 | postq | After queuing  | The entire mail.
 | deliver | Before delivering | The entire mail.
 
-&#9998; About `preq` and `postq` stages:
+&#9998; | About `preq` and `postq` stages:
 - Preq stage triggers after the end of data, before the server answer (ex. 250 OK). 
 - Postq stage triggers when Connection is already closed and the SMTP code sent.
 
@@ -57,9 +57,9 @@ As described above, depending on the stage vSL exposes variables to the end user
 | next stages |  ${data} | string | Email raw data.
 |  | ${parse} | vec(struct) | Parsed email.
 
-&#9998; The `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
+&#9998; | The `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
 
-&#9998; The `${parse}` variable is available only if the user triggers a `vSL.PARSE()` action.
+&#9998; | The `${parse}` variable is available only if the user triggers a `vSL.PARSE()` action.
 
 ### Connection vs mail transaction
 
@@ -74,4 +74,4 @@ HELO                                    # Start of SMTP transaction
 QUIT                                    # End of transaction
 ```
 
-&#9762; Be aware that per network connection, the "connect context" is unique while other variables like ${mail} are reset after each new message transaction.
+&#9762; | Per network connection, the "connect context" is unique while other variables like ${mail} are reset after each new message transaction.

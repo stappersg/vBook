@@ -18,7 +18,7 @@ Please refer to the examples in the vSMTP repository and read the [vSMTP scripti
 
 [vSMTP scripting language]: https://github.com/viridIT/vSMTP/wiki/vSMTP-Scripting-Language-vSL
 
-&#9758; vSMTP service must be restarted to apply changes.
+&#9758; | vSMTP service must be restarted to apply changes.
 
 
 

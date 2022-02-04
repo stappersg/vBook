@@ -34,9 +34,8 @@ SMTP envelop can be modified by several predefined actions.
 | RW_MAIL | RW_MAIL(addr) | Change MAIL FROM: current value with addr.
 | PARSE | PARSE() | Parse the mail and extract its structure including MIME parts.
 
-&#9998; Email headers "To:", "From:", "Reply-to:", etc. are also updated.
+&#9998; | Email headers "To:", "From:", "Reply-to:", etc. are also updated.
 This apply only to the root headers in case of nested emails.
-
 
 ### Other actions
 
@@ -50,7 +49,7 @@ These actions have no impact on the SMTP engine.
 | WRITE | WRITE(file) | Write a raw copy of the mail on disk.
 | DUMP | DUMP(file) | Write a copy of the entire mail (envelop+body) in JSON format on disk.
 
-&#9998; DUMP is equivalent to WRITE if the PARSE() function has not been triggered.
+&#9998; | DUMP is equivalent to WRITE if the PARSE() function has not been triggered.
 
 ### Combining and interacting with actions
 
@@ -84,4 +83,4 @@ fn my_faccept(vsl) {
 }
 ```
 
-&#9998; The implicit return syntax (no comma).
+&#9998; | The implicit return syntax (no comma).

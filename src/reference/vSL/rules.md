@@ -15,7 +15,7 @@ rule <stage> <name> #{
 };
 ```
 
-&#9758; The symbols || after "condition", "on_success" and "on_failure" keywords must be understood as closure delimiters and not as boolean operators.
+&#9758; | The symbols || after "condition", "on_success" and "on_failure" keywords must be understood as closure delimiters and not as boolean operators.
 
 
 ### Conditions
@@ -66,8 +66,7 @@ rule mail "adv check" #{
 [...]
 ```
 
-&#9758; && and || operators are short-circuits. In this case my_function() function will not be evaluated if the 1st part already proves the condition wrong.
-> To counter this behavior use the boolean operators & and |.
+&#9758; | The operators && and || are short-circuits. In this case my_function() function will not be evaluated if the 1st part already proves the condition wrong. To counter this behavior use the boolean operators & and |.
 
 ### Rule actions : on_success and on_failure
 
@@ -96,7 +95,7 @@ rule connect "check on connect" #{
 
 The connection is accepted if it is local, and denied otherwise.
 
-&#9998; The absence of the semicolon after DENY() since the rule must return a state.
+&#9998; | The absence of the semicolon after DENY() since the rule must return a state.
 
 ### Implicit rule in a stage
 

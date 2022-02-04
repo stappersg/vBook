@@ -12,7 +12,7 @@ Installing vSMTP on other CPU architectures like ARM should work but may require
 
 Although vSMTP is developed and tested on Ubuntu Server 20.04 with kernel 5.4, all recent Linux distributions should be able to run vSMTP.
 
-&#9998; FreeBSD and NetBSD supports are planned for mid 2022.
+&#9998; | FreeBSD and NetBSD supports are planned for mid 2022.
 
 ### Software requirements
 
