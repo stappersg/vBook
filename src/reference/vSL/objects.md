@@ -3,18 +3,18 @@
 Objects are declared through the "obj" keyword. Two syntax are available.
 The inline syntax:
 
-```vsl
+```rust,ignore
 obj type "name" "value";
 ```
 
-```vsl
+```rust,ignore
 obj ip4 "my_host" "192.168.1.34";
 obj fqdn "local_domain" "foo.bar";
 ```
 
 The extended syntax, allowing the use of user-defined fields:
 
-```vsl
+```rust,ignore
 obj type "name" #{
     value: "value",
     <user_field1>: "value",
@@ -23,7 +23,7 @@ obj type "name" #{
 };
 ```
 
-```vsl
+```rust,ignore
 obj ip4 "local_MDA" #{
     value: "192.168.0.34",
     color: "bbf3ab",
@@ -55,11 +55,11 @@ The following type of objects are supported natively:
 File objects are standard Unix text files containing values delimited by CRLF.
 Only one type of object is authorized and must be declared after the keyword "file:".
 
-```vsl
+```rust,ignore
 obj file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
 ```
 
-```vsl
+```rust,ignore
 # cat /var/vmta/config/local_mta.txt
 192.168.1.10
 192.168.1.12
@@ -70,7 +70,7 @@ obj file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
 
 Groups are collections of objects.
 
-```vsl
+```rust,ignore
 obj file:addr "whitelist" "./config/rules/whitelist.txt";
 
 obj grp "authorizedUsers" [

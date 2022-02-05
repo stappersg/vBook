@@ -2,7 +2,7 @@
 
 vSL provides the user with a comprehensive list of predefined actions in order to interact with mail traffic.
 
-```rust
+```rust,ignore
 vsl.LOG(`Hello world !!!`, "/tmp/my_log");
 ```
 
@@ -56,7 +56,7 @@ These actions have no impact on the SMTP engine.
 
 #### Chaining actions
 
-```rust
+```rust,ignore
 {
     vsl.LOG(`Hello world !!!`, "/tmp/my_file");
     vsl.DUMP("/tmp/mail/dump/my_file");
@@ -67,7 +67,7 @@ These actions have no impact on the SMTP engine.
 
 Combined actions can be declared using a [RHAI](https://rhai.rs/) function. 
 
-```rust
+```rust,ignore
 fn my_faccept(vsl) {                              
     vsl.LOG("Hello world !!!", "/tmp/my_file");
     return vsl.FACCEPT();
@@ -77,7 +77,7 @@ fn my_faccept(vsl) {
 Executing my_faccept will log the mail and send a FACCEPT action to the SMTP engine.
 > Note that to acccess the actions defined by vSL, the vsl context must be passed as a parameter.
 
-```rust
+```rust,ignore
 fn my_faccept(vsl) {
     vsl.LOG("Hello world !!!", "/tmp/my_file");
     vsl.FACCEPT()
