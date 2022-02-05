@@ -49,7 +49,7 @@ The source files from which this book is generated can be found on [GitHub][book
 
 ## Contributing
 
-We'd love your help! Please see [CONTRIBUTING][contrib] file to learn about the
+We'd love your help! Please see the [CONTRIBUTING][contrib] file to learn about the
 kinds of contributions we're looking for.
 
 [contrib]: https://github.com/viridIT/vBook/blob/main/CONTRIBUTING.md

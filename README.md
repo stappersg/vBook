@@ -53,13 +53,13 @@ start chrome.exe .\book\index.html            # Windows (Cmd)
 
 ## Contributing
 
-We'd love your help! Please see [CONTRIBUTING.md][contrib] to learn about the
+We'd love your help! Please see the [CONTRIBUTING][contrib] file to learn about the
 kinds of contributions we're looking for.
 
 [contrib]: https://github.com/viridIT/vBook/blob/main/CONTRIBUTING.md
 
 ## Licensing
 
-vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [LICENSE.md][License] file.
+vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [LICENSE][License] file.
 
 [License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
