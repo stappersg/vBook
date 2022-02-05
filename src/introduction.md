@@ -8,7 +8,10 @@ Be aware that issues found in this documentation may have been fixed in the vSMT
 ## What is vSMTP ?
 
 vSMTP is a next-gen Mail Transfer Agent (MTA) developed by viridIT teams. You
-can follow viridIT teams on [viridit.com](https://www.viridit.com).
+can follow viridIT teams on [GitHub] and on [viridit.com]
+
+[GitHub]: (https://github.com/viridIT/vSMTP)
+[viridit.com]: (https://www.viridit.com).
 
 ## Why develop a new MTA ?
 

@@ -20,14 +20,14 @@ enhance the book in some way!
 
 ## Licensing
 
-vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [License.md][License] file.
+vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License by viridIT SAS. For further details please refer to the [License.md][License] file.
 
 [License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
 
 
 ## Conduct
 
-vSMTP project and viridIT teams adheres to the principles described in the
+vBook project and viridIT teams adheres to the principles described in the
 [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct/).
 This is the minimum behavior expected from all contributors. Instances of
 violations of the Code of Conduct can be reported by contacting the project team
