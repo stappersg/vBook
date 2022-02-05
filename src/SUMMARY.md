@@ -20,7 +20,7 @@
 
 - [Architecture overview](reference/architecture.md)
 - [Command line parameters](reference/command.md)
-- [TOML configuration files]()
+- [TOML configuration files](reference/toml.md)
 - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
   - [SMTP states and vSMTP stages](reference/vSL/stages.md)
   - [Objects](reference/vSL/objects.md)
