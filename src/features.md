@@ -1,6 +1,7 @@
 # Features
 
-vSMTP is secured, faster and greener. 
+vSMTP is a secured, faster and greener Mail Transfer Agent.
+
 It is a more efficient, more secure and more ergonomic product than the competition. It is up to 5 times faster than its competitors and significantly reduces the need for IT resources.
 
 It is developed in RUST. Compared to solutions developed in C / C ++, RUST guarantees the absence of segmentation errors and race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
@@ -9,12 +10,12 @@ Its development goes through a full cycle of testing. Static and dynamic tests a
 
 ## Networking
 
-The network code has been designed with performance and load resistance as the main objectives. 
+The network code has been designed with performance and load resistance as the main objectives.
 
 - Support for IPv4 and IPv6 format
 - Built on high performance asynchronous connections
 - Handling of multiple emails per transaction
-- Compliancy with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs 
+- Compliancy with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs
 - [TLS 1.3] support
 - Support for high workload through built-in mechanisms
 
@@ -26,8 +27,8 @@ The network code has been designed with performance and load resistance as the m
 
 vSMTP is modular and highly customizable.  Adding or modifying subsystems is facilitated by the internal design of the software. An API is available allowing easy integration into existing security elements. Several native plug-ins are already available.
 
-- Mail exports e in raw and json format
-- Third-party software called by user-defined services 
+- Mail exports in raw and json format
+- Third-party softwares called by user-defined services
 - Applications logs
 
 ## Filtering
