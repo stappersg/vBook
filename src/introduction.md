@@ -1,10 +1,9 @@
 # Introduction
 
-Welcome to the vBook, the vSMTP reference guide. 
+Welcome to the vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
 
-You can also read the book online for vSMTP [stable] and [beta] releases.
-Be aware that issues in those versions may have been fixed in this repository already, as those releases are updated less frequently.
+Be aware that issues found in this documentation may have been fixed in the vSMTP repository already, as vBook is only updated for major releases of vSMTP.
 
 ## What is vSMTP ?
 
@@ -31,8 +30,7 @@ Because it is secured, faster and greener.
 
 ## License
 
-The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [LICENSE](https://github.com/viridIT/vSMTP/blob/main/LICENSE) file for further
-information.
+The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [LICENSE](https://github.com/viridIT/vSMTP/blob/main/LICENSE) file for further information.
 
 This book is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [LICENSE.md][License] file.
 
@@ -43,3 +41,10 @@ This book is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 The source files from which this book is generated can be found on [GitHub][book].
 
 [book]: https://github.com/viridIT/vBook
+
+## Contributing
+
+We'd love your help! Please see [CONTRIBUTING.md][contrib] to learn about the
+kinds of contributions we're looking for.
+
+[contrib]: https://github.com/viridIT/vBook/blob/main/CONTRIBUTING.md

@@ -5,7 +5,7 @@ Thanks for considering helping this project. There are many ways you can help.
 There are opportunities to contribute to vSMTP at any level like translating, reviewing or making improvements to the documentation.
 
 Even tiny pull requests (e.g., fixing a typo in API documentation) are greatly
-appreciated.\
+appreciated.
 
 ## Help wanted
 
@@ -15,7 +15,7 @@ label][help-wanted]. These might be small fixes to the text, Rust code,
 frontend code, or shell scripts that would help us be more efficient or
 enhance the book in some way!
 
-[help-wanted]: https://github.com/rust-lang/book/issues?q=is%3Aopen+is%3Aissue+label%3AE-help-wanted
+[help-wanted]: https://github.com/viridit/vbook/issues?q=is%3Aopen+is%3Aissue+label%3AE-help-wanted
 
 
 ## Licensing
