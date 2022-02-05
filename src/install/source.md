@@ -59,9 +59,10 @@ Cargo (Rust package manager) will download all required dependencies and compile
 [vSMTP repository]: https://github.com/viridIT/vSMTP
 
 ```shell
-$ cargo build --release
-[...]
+cargo build --release
+```
 
+```shell
 $ cargo run -V
 vSMTP 1.0
 ViridIT https://www.viridit.com
@@ -113,8 +114,8 @@ The vSMTP default configuration file (/etc/vsmtp/vsmtp.toml) can be changed in t
 Create the directories and change the owner and group.
 
 ```shell
-sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp
-sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/*
+sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
+sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
 Copy the vsmtp binaries and the config files.
@@ -130,7 +131,7 @@ Check if you have a mail transfer agent service running and disable it.
 The example below is related to a Postfix service running on port 25.
 
 ```shell
-$ sudo netstat -ltpn | grep ":25"
+$ sudo ss -ltpn | grep ":25"
 tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      39423/master
 
 $ sudo systemctl status postfix
@@ -147,6 +148,8 @@ Synchronizing state of postfix.service with SysV service script with /lib/system
 Executing: /lib/systemd/systemd-sysv-install disable postfix
 Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 ```
+
+&#9758; | Depending on Linux distributions, instead of `ss` command you may have to use `netstat -ltpn`
 
 #### Adding vSMTP as a systemd service
 
