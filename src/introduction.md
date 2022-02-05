@@ -33,7 +33,7 @@ Because it is secured, faster and greener.
 
 ## License
 
-The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the vSMTP [licence][vSMTP LICENSE] file for further information.
+The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [vSMTP licence][vSMTP LICENSE] for further information.
 
 [vSMTP LICENSE]: https://github.com/viridIT/vSMTP/blob/main/LICENSE
 
@@ -49,7 +49,7 @@ The source files from which this book is generated can be found on [GitHub][book
 
 ## Contributing
 
-We'd love your help! Please see [CONTRIBUTING.md][contrib] to learn about the
+We'd love your help! Please see [CONTRIBUTING][contrib] file to learn about the
 kinds of contributions we're looking for.
 
 [contrib]: https://github.com/viridIT/vBook/blob/main/CONTRIBUTING.md

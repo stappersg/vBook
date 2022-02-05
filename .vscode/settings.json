@@ -10,6 +10,7 @@
         "mkdir",
         "postq",
         "preq",
+        "RHAI",
         "Rustup",
         "vsmtp"
     ]
