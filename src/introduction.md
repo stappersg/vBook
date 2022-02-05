@@ -8,10 +8,10 @@ Be aware that issues found in this documentation may have been fixed in the vSMT
 ## What is vSMTP ?
 
 vSMTP is a next-gen Mail Transfer Agent (MTA) developed by viridIT teams. You
-can follow viridIT teams on [GitHub] and on [viridit.com]
+can follow viridIT teams on [GitHub] and on [viridit.com].
 
-[GitHub]: (https://github.com/viridIT/vSMTP)
-[viridit.com]: (https://www.viridit.com).
+[GitHub]: https://github.com/viridIT/vSMTP
+[viridit.com]: https://www.viridit.com
 
 ## Why develop a new MTA ?
 
@@ -33,11 +33,13 @@ Because it is secured, faster and greener.
 
 ## License
 
-The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [LICENSE](https://github.com/viridIT/vSMTP/blob/main/LICENSE) file for further information.
+The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the vSMTP [licence][vSMTP LICENSE] file for further information.
 
-This book is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [LICENSE.md][License] file.
+[vSMTP LICENSE]: https://github.com/viridIT/vSMTP/blob/main/LICENSE
 
-[License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
+This book is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [LICENSE][License] file.
+
+[License]: https://github.com/viridIT/vBook/blob/main/LICENSE
 
 ## Source Code
 

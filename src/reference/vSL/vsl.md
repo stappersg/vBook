@@ -1,4 +1,4 @@
-# vSL: the vSMTP Scripting Language
+# vSL - the vSMTP Scripting Language
 
 vSL is a lightweight scripting language dedicated to email filtering. It is based on the [RHAI] scripting language. 
 
