@@ -18,8 +18,8 @@ These rules can be applied at any [stage] of the SMTP transaction.
 
 The [delivery] system uses the same concepts by applying rules to targeted domains and users.
 
-[delivery]: ()
+[delivery]: delivery.md
 
 Communication with third-party software is provided by user-defined [services]. Like other objects, these services can be invoked through vSL rules.
 
-[services]: ()
+[services]: services.md
