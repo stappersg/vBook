@@ -17,6 +17,7 @@ At each step vSL updates and publishes a global context containing transaction a
 | deliver | Before delivering | The entire mail.
 
 [^preq]: Preq stage triggers after the end of data, before the server answer (ex. 250 OK).
+
 [^postq]: Postq stage triggers when Connection is already closed and the SMTP code sent.
 
 ### Before queueing vs. after queueing
@@ -50,13 +51,13 @@ As described above, depending on the stage vSL exposes variables to the end user
 | rcpt | ${rcpt.full} or \${rcpt} | addr | Current recipient address.
 | | ${rcpt.local_part} | string | Current sender name.
 | | ${rcpt.domain} | fqdn | Current sender fqdn.
-| | ${rcpts.full}[^rcpt] or \${rcpt} | addr[]| Recipients addresses.
+| | ${rcpts.full}[^rcpt] or \${rcpts} | addr[]| Recipients addresses.
 | | ${rcpts.local_parts}[^rcpt] | string[] | Senders names.
 | | ${rcpts.domains}[^rcpt] | fqdn[] | Senders fqdn.
 | next stages |  ${data} | string | Email raw data.
 |  | ${parse}[^parse] | vec(struct) | Parsed email.
 
-[^rcpt]: The `rcpts` array is completely filled at PREQ stage and not in RCPT stage.
+[^rcpt]: The `${rcpts}` array is completely filled at PREQ stage and not in RCPT stage.
 
 [^parse]: The `${parse}` variable is available only if the user triggers a `vSL.PARSE()` action.
 

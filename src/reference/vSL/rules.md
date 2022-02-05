@@ -7,7 +7,7 @@ Nevertheless specific parameters like timeout, system logging, tls configuration
 
 Rules follow a specific syntax :
 
-```rust
+```rust,ignore
 rule <stage> <name> #{
     condition: || <condition>,
     on_success: || <action>,

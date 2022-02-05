@@ -3,6 +3,7 @@
         "adduser",
         "deliv",
         "libc",
+        "ltpn",
         "maildir",
         "mbox",
         "mkdir",
