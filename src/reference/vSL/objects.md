@@ -59,7 +59,7 @@ Only one type of object is authorized and must be declared after the keyword "fi
 obj file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
 ```
 
-```rust,ignore
+```shell
 # cat /var/vmta/config/local_mta.txt
 192.168.1.10
 192.168.1.12

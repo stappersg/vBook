@@ -1,6 +1,9 @@
 ## Starting vSMTP with a command line
 
-vSMTP is not intended to be started on a command line. 
+vSMTP was designed to run as a Unix service and is not intended to be run interactively from the command line. However, in case of startup problems, it can be useful to run it with a minimal configuration file to check the settings.
+
+In any case, vSMTP must be started with root privileges.
+
 
 ```shell
 $ vsmtp --help
@@ -18,9 +21,6 @@ OPTIONS:
 
 ```
 
-However in case of startup issues it may be interesting to run with a minimal configuration file to check the parameters.
-
-In any case, vSMTP must be started with root privileges.
 
 ```shell
 $ sudo vsmtp -c /etc/vsmtp/vsmtp.toml

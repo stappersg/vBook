@@ -50,7 +50,7 @@ rule rcpt "rcpt_log" #{
 If a function has no parameter, || and ( ) can be omitted.
 
 ```rust,ignore
-fn my_func() {
+fn my_func(vsl) {
     ...
     vsl.ACCEPT()
 }
@@ -66,14 +66,16 @@ But :
 
 ```rust,ignore
 let boo = 42;
-fn my_func(x, y) {
+fn my_func(vsl, x, y) {
     ...
     vsl.ACCEPT()
 }
 
 rule connect "check on connect" #{
-    condition: boo == 42,
+    condition: || boo == 42,
     on_success: || my_func(x, y),
     on_failure: vsl.DENY
 };
 ```
+
+TO BE CHECK ??? need vsl on ligne 40, 41, 42, 76 ???
