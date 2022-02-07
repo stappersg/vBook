@@ -1,7 +1,7 @@
 ## vSMTP architecture
 
-Blahblah
+TO DO
 
-![Architecture](../assets/images/vSMTP-arch-v0.8.svg)
+![Architecture](../assets/images/vSMTP-arch-v0.8.5.svg)
 
-Blahblah
+TO DO
