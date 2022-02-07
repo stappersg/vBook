@@ -52,9 +52,15 @@ These actions have no impact on the SMTP engine.
 
 &#9998; | DUMP is equivalent to WRITE if the PARSE() function has not been triggered.
 
-### Combining and interacting with actions
+### Deliver actions
 
-#### Chaining actions
+These specific actions are described in the [delivery] chapter.
+
+[delivery]: delivery.md
+
+## Complex actions
+
+### Chaining actions
 
 ```rust,ignore
 {
@@ -63,9 +69,9 @@ These actions have no impact on the SMTP engine.
 }
 ```
 
-#### User-defined actions
+### User-defined actions
 
-Combined actions can be declared using a [RHAI](https://rhai.rs/) function. 
+Combined actions can be declared using a [RHAI](https://rhai.rs/) function. To access the actions defined by vSL (ACCEPT, DENY, etc.), the vsl context must be passed as a parameter.
 
 ```rust,ignore
 fn my_faccept(vsl) {                              
@@ -75,7 +81,6 @@ fn my_faccept(vsl) {
 ```
 
 Executing my_faccept will log the mail and send a FACCEPT action to the SMTP engine.
-> Note that to acccess the actions defined by vSL, the vsl context must be passed as a parameter.
 
 ```rust,ignore
 fn my_faccept(vsl) {
