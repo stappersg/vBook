@@ -1,6 +1,6 @@
 ## vSMTP architecture
 
-vSMTP is based on a asynchronous multi-thread architecture. Threads are communicating through asynchronous channels.
+vSMTP is based on an multi-thread architecture. Threads are communicating through asynchronous channels.
 
 ![Architecture](../assets/images/vSMTP-arch-v0.8.5.svg)
 
