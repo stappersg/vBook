@@ -1,6 +1,6 @@
 ## vSMTP architecture
 
-vSMTP is based on an multi-thread architecture. Threads are communicating through asynchronous channels.
+vSMTP is based on an multi-threaded architecture. Threads are communicating through asynchronous channels.
 
 ![Architecture](../assets/images/vSMTP-arch-v0.8.5.svg)
 
@@ -26,4 +26,4 @@ New `vpost`and `vdeliver` threads are spawned by their parent when a message is 
 
 ---
 
-# TO DO : cron mechanism for the delivery subsystem
+TO DO : cron mechanism for the delivery subsystem
