@@ -1,12 +1,10 @@
 ## Delivery sub-system
 
-The delivery subsystem uses 
-
-These methods can be called at any vSMTP stages. 
+The delivery subsystem uses specific actions. They can be called at any vSMTP stages.
 
 ### Delivering local mails
 
-For incoming mail, vSMTP can locally deliver it using :
+The incoming mail traffic can locally be delivered using :
 
 - The [Mbox] format 
 - The [Maildir] format
@@ -14,7 +12,7 @@ For incoming mail, vSMTP can locally deliver it using :
 [Mbox]: https://datatracker.ietf.org/doc/html/rfc4155
 [Maildir]: https://en.wikipedia.org/wiki/Maildir
 
-&#9762; | [LMTP] (Local Mail Transfer Protocol) is currently not implemented.
+&#9762; | The Local Mail Transfer Protocol ([LMTP]) is currently not implemented.
 
 [LMTP]: https://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol
 
@@ -33,3 +31,6 @@ vSMTP uses a well known and secured third-party software, also written in Rust :
 | USE_MBOX | USE_MBOX() | Local delivery using Mbox format.
 | NO_DELIVERY | NO_DELIVERY() | Prevent the system from delivering the email.
 | FORWARD | FORWARD(addr \| fqdn) | Forward mail to an other MTA.
+| USE_DEFAULT | USE_DEFAULT() | Use the default delivery method. 
+
+The default behavior (SMTP) can be overwritten in the TOML configuration file.
