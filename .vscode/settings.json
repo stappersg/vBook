@@ -12,6 +12,7 @@
         "preq",
         "RHAI",
         "Rustup",
+        "smtps",
         "vsmtp"
     ]
 }
