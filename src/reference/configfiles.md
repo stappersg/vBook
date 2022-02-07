@@ -29,7 +29,7 @@ This file contains all the mandatory information to start the vSMTP service on L
 
 [systemd]: https://freedesktop.org/wiki/Software/systemd/
 
-```ini
+```shell
 [Unit]
 Description=vSMTP Mail Transfer Agent
 Conflicts=sendmail.service exim4.service postfix.service 
