@@ -1,34 +1,19 @@
-## Installing vSMTP from source
+## Installing RUST language
 
-vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
+If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and follow the instructions.
 
-### Installing RUST language
-
-vSMTP is written in Rust and must be compiled using Cargo, the Rust package manager. Rust runs on many platforms, and there are many ways to install it. If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and/or follow the instructions on the [Rust website installation] page.
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
 [Rustup]: https://github.com/rust-lang/rustup
-[Rust website installation]: https://www.rust-lang.org/tools/install
 
-> vSMTP is compiled with the latest Rust Stable version. For stability and security reasons it is not recommended to run vSMTP over a Rust Beta or a Nightly version. More information about Rust release can be founded [here].
-
-
-
-### Checking dependencies
-
-[here]: https://doc.rust-lang.org/book/appendix-07-nightly-rust.html
+## Checking dependencies
 
 vSMTP requires libc libraries and GCC compiler/linker. On a Debian system these can be installed through the build-essential package.
 
 ```shell
 sudo apt install build-essential
-```
-
-Advanced Package Tool, or [APT], is also required to handle the installation and removal of software on Debian, Ubuntu and other Linux distributions.
-
-[APT]: https://www.freedesktop.org/wiki/Software/pkg-config/
-
-```shell
-sudo apt install pkg-config
 ```
 
 The Transport Layer Security protocol (TLS) is provided by [OpenSSL development libraries].
@@ -40,49 +25,15 @@ The Debian package is libssl-dev package.
 sudo apt install libssl-dev
 ```
 
-### vSMTP source code repository
-
-Source code can be found on GitHub in viridIT's [vSMTP repository].
+## vSMTP compilation
 
 ```shell
 git clone https://github.com/viridIT/vSMTP.git
-```
-
-You can also download a specific version without using Git mechanism in the [release folder].
-
-[release folder]: https://github.com/viridIT/vSMTP/releases
-
-### vSMTP compilation
-
-Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
-
-[vSMTP repository]: https://github.com/viridIT/vSMTP
-
-```shell
 cargo build --release
+cargo run -V
 ```
 
-```shell
-$ cargo run -V
-vSMTP 1.0
-ViridIT https://www.viridit.com
-vSMTP : the next-gen MTA
-
-USAGE:
-    vsmtp
-
-FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
-```
-
-By default Rust/Cargo use static linking to compile - all libraries required are compiled into the executable - allowing vSMTP to be a standalone application.
-
-### Configuring OS for vSMTP
-
-&#9762; | This version has not been tested in chroot environments.
-
-#### User and group
+## Configuring the Operating System for vSMTP
 
 For security purpose, vSMTP should run using a dedicated account with minimal privileges.
 
@@ -94,22 +45,6 @@ Adding new group 'vsmtp' (GID 9999) ...
 Adding new user 'vsmtp' (UID 9999) with group 'vsmtp' ...
 Not creating home directory '/home/vsmtp'.
 ```
-
-#### Working directories
-
-vSMTP binaries and config files should located in:
-
-+ /usr/sbin/ for binaries
-+ /etc/vsmtp/
-  + /etc/vsmtp/vsmtp.toml : the default configuration file
-  + /etc/vsmtp/rules/ for rules
-+ /var/spool/vsmtp/ for internal queues
-+ /var/log/
-  + /var/log/vsmtp/ for internal logs and trace
-  + /var/log/mail.log and mail.err for syslog (not implemented in current release)
-+ /home/~user/Maildir for local IMAP delivery
-
-The vSMTP default configuration file (/etc/vsmtp/vsmtp.toml) can be changed in the vsmtp.service script.
 
 Create the directories and change the owner and group.
 
@@ -125,10 +60,11 @@ sudo cp ./target/release/vsmtp /usr/sbin/
 sudo cp -p ./config/vsmtp.default.toml /etc/vsmtp/vsmtp.toml
 ```
 
-#### MTA service
+## MTA service
 
-Check if you have a mail transfer agent service running and disable it.
-The example below is related to a Postfix service running on port 25.
+### Check and disable current MTA
+
+Check if you have a mail transfer agent service running and disable it. The example below is related to a Postfix service running on port 25.
 
 ```shell
 $ sudo ss -ltpn | grep ":25"
@@ -151,7 +87,7 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 
 &#9758; | Depending on Linux distributions, instead of `ss` command you may have to use `netstat -ltpn`
 
-#### Adding vSMTP as a systemd service
+### Adding vSMTP as a systemd service
 
 Copy the daemon configuration file to /etc/systemd/system.
 

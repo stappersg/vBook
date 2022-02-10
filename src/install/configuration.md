@@ -1,9 +1,23 @@
-## Configuring the vSMTP service
+# Configuring the vSMTP service
 
 The vSMTP service (network, default directories, tls, etc.) can be configured by modifying /etc/vsmtp/vsmtp.toml file.
 Please refer to the documentation for further details.
  
 &#9758; | vSMTP service must be restarted to apply changes.
+
+
+## ADd a key
+
+Sint eiusmod ex laborum nisi commodo. Nostrud tempor mollit veniam consectetur officia proident enim officia. Exercitation pariatur anim proident pariatur consequat in duis eiusmod ut sint sunt. Tempor amet dolore esse incididunt eiusmod eu sunt sit. Velit mollit ullamco pariatur quis. Fugiat laborum culpa mollit veniam labore ex aute tempor.
+
+## Security
+
+Une clé devrait normalement être utilisée....
+
+```shell
+openssl genrsa -out private.key 4096
+openssl req -key private.key -new -x509 -out certificate.crt
+```
 
 ## Configuring SMTP filtering
 
@@ -20,14 +34,47 @@ Please refer to the examples in the vSMTP repository and read the [vSMTP scripti
 
 &#9758; | vSMTP service must be restarted to apply changes.
 
-
-
-
 ## Examples ....
 
-### Personnal MTA/MDA
+### Personal MTA/MDA
 
-### Remote office
+ISP --- FW --- MTA
+         |
+    Internal Network
 
-### Large company MTA
+___Firewall rules___
 
+```shell
+Public IP NAT <> MTA (192.168.1.254/32) : SMTP 25
+Internal NET (192.168.0.0/24) > MTA : SMTP 25
+internal NET > MTA : IMAP 110
+
+Domain name : foo.bar
+Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
+```
+
+___rules.vsmtp___
+
+```rust,ignore
+obj ip4 "MDA_IP" "192.168.0.1";
+obj fqdn "Local_DN" "foo.bar";
+
+obj rg4 "NET_192_168_0" "192.168.0.0/24";
+
+obj val "SEC_LOG" "/var/log/mail/sec_log";
+
+// User syntax is first.last
+obj regex "User_Syntax" "^[a-z]+[.][a-z0-9]+";
+
+// let Local_DN = "foo.bar";
+
+rule rcpt "Rcpt_Antirelay" #{
+    condition: (email.rcpt.domain != Local_DN) && (email.client_addr.IN(NET_192_168_0))
+    on_success: { 
+        LOG(`${date}:${time} : Relay attempt from : email.client_addr`, SEC_LOG); 
+        DENY()
+    },
+    on_failure: CONTINUE()
+
+
+```

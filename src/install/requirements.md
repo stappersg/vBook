@@ -1,20 +1,21 @@
-## Requirements
+# Requirements
 
-vSMTP is a stand-alone application with no kernel interaction, it may run on any system with slight modifications.
+## Physical requirements
 
-### Physical requirements
+The current release has been tested on x86/64 environments. Installing vSMTP on other CPU architectures like ARM should work but may require specific configurations not covered in this document.
 
-The current release has been tested on x86/64 environments.
+## Operating systems
 
-Installing vSMTP on other CPU architectures like ARM should work but may require specific configurations not covered in this document.
-
-### Operating systems
+### Linux
 
 Although vSMTP is developed and tested on Ubuntu Server 20.04 with kernel 5.4, all recent Linux distributions should be able to run vSMTP.
 
-&#9998; | FreeBSD, OpenBSD and NetBSD supports are planned for mid 2022.
+### BSD family
 
-### Software requirements
+vSMTP supports for 
+- FreeBSD 13.0 and later.
+
+## Software requirements
 
 vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent (MUA) or a Mail Delivery Agent (MDA).
 
@@ -23,3 +24,9 @@ For outgoing mail, your email client (MUA) can directly address vSMTP using the 
 For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and specify to the courier-imap MDA where are located the MailDir/ folders and use a MUA like Mozilla ThunderBird.
 
 [courier-imap]: https://packages.debian.org/search?keywords=courier-imap
+
+## Installing vSMTP from source
+
+vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
+vSMTP is a stand-alone application with no kernel interaction, it may run on any system with slight modifications.
+
