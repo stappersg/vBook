@@ -1,6 +1,6 @@
 # Linux installation
 
-The installation described above is for a Ubuntu Server 20.04.
+The installation described above was performed on an Ubuntu Server 20.04. There may be slight changes to apply for other distributions.
 
 ## Installing RUST language
 
@@ -35,6 +35,9 @@ Cargo (Rust package manager) will download all required dependencies and compile
 
 ```shell
 git clone https://github.com/viridIT/vSMTP.git
+```
+
+```shell
 cargo build --release
 ```
 
@@ -94,7 +97,7 @@ sudo cp ./target/release/vsmtp /usr/sbin/
 sudo cp -p ./config/vsmtp.default.toml /etc/vsmtp/vsmtp.toml
 ```
 
-## MTA service
+## Configuring the MTA service
 
 ### Check and disable current MTA
 
@@ -123,7 +126,9 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 
 ### Adding vSMTP as a systemd service
 
- &#9758; | The vsmtp user must have the rights to bind to ports <1024. Version 0.10 will bring a mechanism allowing vSMTP to drop privileges at startup.
+The vsmtp user must have the rights to bind to ports <1024.
+
+&#9998; | Version 0.10 will come with a mechanism to drop privileges at vSMTP startup.
 
 Copy the daemon configuration file to /etc/systemd/system.
 
