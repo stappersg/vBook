@@ -1,19 +1,29 @@
 # Configuring the vSMTP service
 
 The vSMTP service (network, default directories, tls, etc.) can be configured by modifying /etc/vsmtp/vsmtp.toml file. Please refer to the documentation for further details.
- 
+
 &#9758; | vSMTP service must be restarted to apply changes.
+
+## Minimal configuration file
+
+Esse dolore commodo Lorem voluptate tempor irure. Aute laborum adipisicing incididunt labore. Do amet elit excepteur tempor et amet mollit est ullamco aliqua consequat Lorem consectetur. Lorem ipsum dolore proident dolore eiusmod velit ullamco incididunt id elit non esse. Elit culpa reprehenderit dolore et ad officia quis reprehenderit mollit deserunt irure laboris amet aliqua. Ad amet ullamco minim reprehenderit irure esse irure Lorem quis ea ea nostrud. Incididunt Lorem deserunt voluptate mollit excepteur deserunt in mollit sunt qui cupidatat in elit.
 
 ## Add a SSL key
 
-Irurea aute fugiat aute adipisicing. Eiusmod do proident nisi qui adipisicing in aliqua aliqua ea do fugiat velit do est. Sunt laborum voluptate exercitation occaecat excepteur ad amet incididunt consectetur cillum proident dolor. Ut aliqua labore fugiat irure amet non duis eiusmod. Est esse aliquip aliqua amet ipsum. Sit consectetur minim ex consequat commodo consectetur irure minim anim. Reprehenderit irure eu consectetur irure in anim velit mollit incididunt consectetur.
+To start vSMTP requires a private RSA key and a certificate. The mostly common and straightforward way to add a private/certificate is by using the `openssl` command.
+
+
+&#9758; | The [OpenSSL Cookbook] covers the most frequently used OpenSSL features and commands. Thanks to its author, Ivan Ristić, a free download is available on [Feisty Duck] website.
+
+[OpenSSL Cookbook]: https://www.feistyduck.com/books/openssl-cookbook/
+
 
 ```shell
 openssl genrsa -out private.key 4096
 openssl req -key private.key -new -x509 -out certificate.crt
 ```
 
-Irure amet duis reprehenderit fugiat ullamco quis magna dolore ullamco ea ut sint Lorem mollit. Labore consequat quis incididunt officia consequat. Tempor veniam aliquip consequat aute excepteur consectetur et nostrud amet do ipsum.
+Add these to the vSMTP `certs` directory defined in the vsmtp.toml.
 
 ## Configuring SMTP filtering
 
@@ -52,7 +62,3 @@ Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
 ___rules.vsmtp___
 
 Incididunt voluptate commodo aliquip do. Do ea est sint labore nulla mollit pariatur. Nostrud sunt ex laboris velit id sit adipisicing. Reprehenderit incididunt qui proident Lorem magna commodo. Dolore enim veniam aliquip consectetur irure tempor dolor proident laboris sunt qui labore excepteur. Est ad nostrud labore sunt Lorem pariatur consectetur ipsum. Incididunt mollit sint reprehenderit non ad dolore aliqua occaecat consectetur. Aliquip aute est elit reprehenderit esse reprehenderit. Consectetur ullamco eiusmod dolor irure excepteur. Esse labore elit in esse ea nostrud eiusmod. Labore amet culpa cillum incididunt consectetur eu aliqua commodo velit exercitation ut deserunt elit proident.
-
-## Minimal configuration file
-
-Culpa laboris dolore sit sit non. Laboris adipisicing aliquip ad eu cillum veniam mollit magna fugiat Lorem dolor nostrud laboris duis. Aliquip ullamco excepteur proident mollit ut ad non ea cupidatat.
