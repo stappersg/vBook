@@ -8,6 +8,8 @@
 
 - [Requirements](install/requirements.md)
 - [Installation from source](install/source/source.md)
+  - [Linux](install/source/linux.md)
+  - [FreeBSD](install/source/freebsd.md)
 - [Installation from packages]()
 - [Configuration](install/configuration.md)
   - [Basic configuration]()
