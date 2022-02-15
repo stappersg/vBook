@@ -29,6 +29,7 @@ vSMTP is modular and highly customizable.  Adding or modifying subsystems is fac
 
 - Mail exports in raw and json format
 - Third-party softwares called by user-defined services
+- Mods and addons developed by the community
 - Applications logs
 
 ## Filtering

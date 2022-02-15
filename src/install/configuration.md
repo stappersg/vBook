@@ -1,23 +1,19 @@
 # Configuring the vSMTP service
 
-The vSMTP service (network, default directories, tls, etc.) can be configured by modifying /etc/vsmtp/vsmtp.toml file.
-Please refer to the documentation for further details.
+The vSMTP service (network, default directories, tls, etc.) can be configured by modifying /etc/vsmtp/vsmtp.toml file. Please refer to the documentation for further details.
  
 &#9758; | vSMTP service must be restarted to apply changes.
 
+## Add a SSL key
 
-## ADd a key
-
-Sint eiusmod ex laborum nisi commodo. Nostrud tempor mollit veniam consectetur officia proident enim officia. Exercitation pariatur anim proident pariatur consequat in duis eiusmod ut sint sunt. Tempor amet dolore esse incididunt eiusmod eu sunt sit. Velit mollit ullamco pariatur quis. Fugiat laborum culpa mollit veniam labore ex aute tempor.
-
-## Security
-
-Une clé devrait normalement être utilisée....
+Irure aute fugiat aute adipisicing. Eiusmod do proident nisi qui adipisicing in aliqua aliqua ea do fugiat velit do est. Sunt laborum voluptate exercitation occaecat excepteur ad amet incididunt consectetur cillum proident dolor. Ut aliqua labore fugiat irure amet non duis eiusmod. Est esse aliquip aliqua amet ipsum. Sit consectetur minim ex consequat commodo consectetur irure minim anim. Reprehenderit irure eu consectetur irure in anim velit mollit incididunt consectetur.
 
 ```shell
 openssl genrsa -out private.key 4096
 openssl req -key private.key -new -x509 -out certificate.crt
 ```
+
+Irure amet duis reprehenderit fugiat ullamco quis magna dolore ullamco ea ut sint Lorem mollit. Labore consequat quis incididunt officia consequat. Tempor veniam aliquip consequat aute excepteur consectetur et nostrud amet do ipsum.
 
 ## Configuring SMTP filtering
 
@@ -55,26 +51,8 @@ Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
 
 ___rules.vsmtp___
 
-```rust,ignore
-obj ip4 "MDA_IP" "192.168.0.1";
-obj fqdn "Local_DN" "foo.bar";
+Incididunt voluptate commodo aliquip do. Do ea est sint labore nulla mollit pariatur. Nostrud sunt ex laboris velit id sit adipisicing. Reprehenderit incididunt qui proident Lorem magna commodo. Dolore enim veniam aliquip consectetur irure tempor dolor proident laboris sunt qui labore excepteur. Est ad nostrud labore sunt Lorem pariatur consectetur ipsum. Incididunt mollit sint reprehenderit non ad dolore aliqua occaecat consectetur. Aliquip aute est elit reprehenderit esse reprehenderit. Consectetur ullamco eiusmod dolor irure excepteur. Esse labore elit in esse ea nostrud eiusmod. Labore amet culpa cillum incididunt consectetur eu aliqua commodo velit exercitation ut deserunt elit proident.
 
-obj rg4 "NET_192_168_0" "192.168.0.0/24";
+## Minimal configuration file
 
-obj val "SEC_LOG" "/var/log/mail/sec_log";
-
-// User syntax is first.last
-obj regex "User_Syntax" "^[a-z]+[.][a-z0-9]+";
-
-// let Local_DN = "foo.bar";
-
-rule rcpt "Rcpt_Antirelay" #{
-    condition: (email.rcpt.domain != Local_DN) && (email.client_addr.IN(NET_192_168_0))
-    on_success: { 
-        LOG(`${date}:${time} : Relay attempt from : email.client_addr`, SEC_LOG); 
-        DENY()
-    },
-    on_failure: CONTINUE()
-
-
-```
+Culpa laboris dolore sit sit non. Laboris adipisicing aliquip ad eu cillum veniam mollit magna fugiat Lorem dolor nostrud laboris duis. Aliquip ullamco excepteur proident mollit ut ad non ea cupidatat.

@@ -6,14 +6,11 @@ The current release has been tested on x86/64 environments. Installing vSMTP on 
 
 ## Operating systems
 
-### Linux
-
 Although vSMTP is developed and tested on Ubuntu Server 20.04 with kernel 5.4, all recent Linux distributions should be able to run vSMTP.
 
-### BSD family
+FreeBSD, NetBSD and OpenBSD supports are planned for mid-2022.
 
-vSMTP supports for 
-- FreeBSD 13.0 and later.
+Microsoft Windows server is not supported.
 
 ## Software requirements
 
@@ -28,5 +25,4 @@ For Debian/Ubuntu server the most straightforward solution is to download and in
 ## Installing vSMTP from source
 
 vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
-vSMTP is a stand-alone application with no kernel interaction, it may run on any system with slight modifications.
-
+vSMTP is a stand-alone application with little kernel interaction, it may run on any system with slight modifications.

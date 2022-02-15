@@ -1,3 +1,7 @@
+# Linux installation
+
+The installation described above is for a Ubuntu Server 20.04.
+
 ## Installing RUST language
 
 If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and follow the instructions.
@@ -27,11 +31,28 @@ sudo apt install libssl-dev
 
 ## vSMTP compilation
 
+Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
+
 ```shell
 git clone https://github.com/viridIT/vSMTP.git
 cargo build --release
-cargo run -V
 ```
+
+```shell
+$ cargo run -V
+vSMTP 1.0
+ViridIT https://www.viridit.com
+vSMTP : the next-gen MTA
+
+USAGE:
+    vsmtp
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+```
+
+By default Rust/Cargo use static linking to compile - all libraries required are compiled into the executable - allowing vSMTP to be a standalone application.
 
 ## Configuring the Operating System for vSMTP
 
@@ -46,7 +67,20 @@ Adding new user 'vsmtp' (UID 9999) with group 'vsmtp' ...
 Not creating home directory '/home/vsmtp'.
 ```
 
-Create the directories and change the owner and group.
+vSMTP binaries and config files should located in:
+
+- /usr/sbin/ for binaries
+- /etc/vsmtp/
+  - /etc/vsmtp/vsmtp.toml : the default configuration file
+  - /etc/vsmtp/rules/ for rules
+  - /etc/vsmtp/certs/ for certificates
+- /var/spool/vsmtp/ for internal queues
+- /var/log/
+  - /var/log/vsmtp/ for internal logs and trace
+  - /var/log/mail.log and mail.err for syslog (not implemented in current release)
+- /home/~user/Maildir for local IMAP delivery
+
+This default behavior can be changed in the vSMTP configuration file `/etc/vsmtp/vsmtp.toml` which is called at startup by the vsmtp service script.
 
 ```shell
 sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
@@ -88,6 +122,8 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 &#9758; | Depending on Linux distributions, instead of `ss` command you may have to use `netstat -ltpn`
 
 ### Adding vSMTP as a systemd service
+
+ &#9758; | The vsmtp user must have the rights to bind to ports <1024. Version 0.10 will bring a mechanism allowing vSMTP to drop privileges at startup.
 
 Copy the daemon configuration file to /etc/systemd/system.
 
