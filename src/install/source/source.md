@@ -34,6 +34,3 @@ You can also download a specific version without using Git mechanism in the [rel
 
 [release folder]: https://github.com/viridIT/vSMTP/releases
 
-
-
-
