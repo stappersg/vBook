@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/install/source.md
-# Installing vSMTP from source
-=======
 # Linux installation
->>>>>>> 24be61429070232c6d447412f41d3737d4c79b15:src/install/source/linux.md
 
 The installation described above is for a Ubuntu Server 20.04.
 
