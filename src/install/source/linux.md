@@ -42,17 +42,23 @@ cargo build --release
 ```
 
 ```shell
-$ cargo run -V
-vSMTP 1.0
-ViridIT https://www.viridit.com
-vSMTP : the next-gen MTA
+$ ./target/release/vsmtp --help
+vsmtp 0.8.6
+Team viridIT <https://viridit.com/>
+vSMTP : the next-gen MTA. Secured, Faster and Greener
 
 USAGE:
-    vsmtp
+    vsmtp --config <CONFIG> [SUBCOMMAND]
 
-FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
+OPTIONS:
+    -c, --config <CONFIG>
+    -h, --help               Print help information
+    -V, --version            Print version information
+
+SUBCOMMANDS:
+    config-diff    Show the difference between the loaded config and the default one
+    config-show    Show the loaded config (as json)
+    help           Print this message or the help of the given subcommand(s)
 ```
 
 By default Rust/Cargo use static linking to compile - all libraries required are compiled into the executable - allowing vSMTP to be a standalone application.
