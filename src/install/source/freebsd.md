@@ -1,3 +1,7 @@
+# FreeBSD installation
+
+The installation described above was performed on an FreeBSD 13.0 server.
+
 ## Installing RUST language
 
 Rust port, packages and information can be found on [freshports] website. You can find more information about packages and port in the [FreeBSD handbook].
@@ -12,7 +16,6 @@ pkg install lang/rust
 > You may have to switch to the latest ports branch. Please refer to [freeBSD wiki]. 
 [freeBSD wiki]: https://wiki.freebsd.org/Ports/QuarterlyBranch
 
-
 ## Dependencies
 
 FreeBSD 13.x comes with all required dependencies.
@@ -25,11 +28,7 @@ cargo build --release
 cargo run -V
 ```
 
-By default Rust/Cargo use static linking to compile - all libraries required are compiled into the executable - allowing vSMTP to be a standalone application.
-
 ## Configuring the Operating System for vSMTP
-
-
 
 Create the directories and change the owner and group.
 
@@ -68,7 +67,7 @@ root     syslogd    957   7  udp4   *:514                 *:*
 
 ### Starting with a non privileged user
 
-> Version 0.10 will come with a new start mechanism allowing vSMTP to drop privileges.
+> Version 0.10 will come with a mechanism to drop privileges at vSMTP startup.
 > On current version (0.9) the vsmtp user must have the rights to bind to ports <1024.
 
 The [kernel] must be updated to support network [ACL]. Add to these options to the KERNEL file and rebuild it.
@@ -120,3 +119,9 @@ $ sysctl net.inet.ip.portrange.reservedhigh=0
 net.inet.ip.portrange.reservedhigh: 1023 -> 0
 ```
 
+vSMTP user should now be enable to bind on standard SMTP ports (25, 587, 465).
+
+## Adding a vSMTP as a system service
+
+This feature has not been tested. 
+Please note that version 0.10 will add a new startup mechanism that no longer require user ACLs.
