@@ -26,7 +26,7 @@
 - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
   - [SMTP states and vSMTP stages](reference/vSL/stages.md)
   - [Objects](reference/vSL/objects.md)
-  - [Actions](reference/vSL/actions.md)
+  - [Functions](reference/vSL/functions.md)
   - [Rules](reference/vSL/rules.md)
   - [Delivery](reference/vSL/delivery.md)
   - [Services](reference/vSL/services.md)
