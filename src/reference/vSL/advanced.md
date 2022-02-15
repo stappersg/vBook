@@ -79,3 +79,46 @@ rule connect "check on connect" #{
 ```
 
 TO BE CHECK ??? need vsl on ligne 40, 41, 42, 76 ???
+
+
+
+
+Importing community modules
+
+External modules can be imported via the main.vsl file.
+
+```rust,ignore
+import "mod/my_module" as my_module;
+```
+
+my_module::my_function();
+print(my_module::x);
+
+
+
+Creating modules
+
+RHAI functions are automatically exported. Do not forget to add the "private" keyword for internal functions.
+Unlike functions, variables are not exported. You must do it manually.
+
+Example :
+
+```rust,ignore
+// -- mod/my_module.vsl
+fn my_function() {
+    let z = add_function(0);
+    ... // do stuff.
+}
+
+private fn add_function(x) {
+    return x + 42;
+}
+
+export const x = 42;
+
+
+// -- main.vsl
+import "mod/my_module" as my_module;
+my_module::my_function();
+print(my_module::x);
+```

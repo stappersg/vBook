@@ -42,7 +42,7 @@ Copy the vsmtp binaries and the config files.
 ```shell
 cp /home/freebsd/vSMTP//target/release/vsmtp /usr/sbin/
 chmod 555 /usr/sbin/vsmtp
-cp -p ./config/vsmtp.default.toml /etc/vsmtp/vsmtp.toml
+cp -p ./src/config/template/simple.toml /etc/vsmtp/vsmtp.toml
 ```
 
 ### Disabling sendmail
@@ -124,5 +124,5 @@ vSMTP user should now be enable to bind on standard SMTP ports (25, 587, 465).
 
 ## Adding a vSMTP as a system service
 
-This feature has not been tested. 
+This feature has not been tested.
 Please note that version 0.10 will add a new startup mechanism that no longer requires user ACLs.

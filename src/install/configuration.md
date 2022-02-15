@@ -6,17 +6,15 @@ The vSMTP service (network, default directories, tls, etc.) can be configured by
 
 ## Minimal configuration file
 
-Esse dolore commodo Lorem voluptate tempor irure. Aute laborum adipisicing incididunt labore. Do amet elit excepteur tempor et amet mollit est ullamco aliqua consequat Lorem consectetur. Lorem ipsum dolore proident dolore eiusmod velit ullamco incididunt id elit non esse. Elit culpa reprehenderit dolore et ad officia quis reprehenderit mollit deserunt irure laboris amet aliqua. Ad amet ullamco minim reprehenderit irure esse irure Lorem quis ea ea nostrud. Incididunt Lorem deserunt voluptate mollit excepteur deserunt in mollit sunt qui cupidatat in elit.
+Quis excepteur et ea in aute proident tempor. Ea Lorem aliquip enim do aliqua ea enim ex et sit Lorem in sint. Do fugiat velit culpa qui mollit ullamco laboris velit veniam proident cupidatat enim amet excepteur. Elit et duis sint do exercitation velit laboris sint Lorem. Nostrud veniam et laboris deserunt officia deserunt voluptate ullamco. Exercitation velit culpa ipsum sit Lorem.
 
-## Add a SSL key
+## Adding a SSL key
 
 To start vSMTP requires a private RSA key and a certificate. The easy way to generate them is to use the `openssl` command.
-
 
 &#9758; | The [OpenSSL Cookbook] covers the most frequently used OpenSSL features and commands. Thanks to its author, Ivan Ristić, a free download is available on [Feisty Duck] website.
 
 [OpenSSL Cookbook]: https://www.feistyduck.com/books/openssl-cookbook/
-
 
 ```shell
 openssl genrsa -out private.key 4096

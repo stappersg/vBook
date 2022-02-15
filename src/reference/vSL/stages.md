@@ -1,10 +1,10 @@
-## vSL stages and SMTP states
+# vSL stages and SMTP states
 
 vSMTP can interact with the messaging transaction at multiple levels. These are related to the states defined in the SMTP protocol.
 
 At each step vSL updates and publishes a global context containing transaction and mail data.
 
-### vSMTP stages
+## vSMTP stages
 
 | Stage | SMTP state | Context available
 | :--- | :--- | :---
@@ -20,7 +20,7 @@ At each step vSL updates and publishes a global context containing transaction a
 
 [^postq]: Postq stage triggers when Connection is already closed and the SMTP code sent.
 
-### Before queueing vs. after queueing
+## Before queueing vs. after queueing
 
 vSMTP can process mails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection.
 
@@ -34,34 +34,30 @@ However as the SMTP transfer must end within a deadline, a system facing a heavy
 
 To protect against bursts and crashes, vSMTP implements several internal mechanisms like 'delay-variation' or 'temporary service unavailable messages', in accordance with the SMTP RFCs.
 
-### Context variables
+## Context variables
 
 As described above, depending on the stage vSL exposes variables to the end user.
 
 | Stage | Name | Type | Description
-| :--- | :--- | :--- | :--- 
-| Connect | ${connect} | ip4/ip6 | Source IP address.
-| | ${port} | int | Source port.
-| | ${date} | string | Current date.
-| | ${time} | string | Current time.
-| helo | ${helo} | string | HELO/EHLO SMTP value.
-| mail | ${mail.full} or \${mail} | addr | Sender email address.
-| | ${mail.local_part} | string | Sender name.
-| | ${mail.domain} | fqdn | Sender fqdn.
-| rcpt | ${rcpt.full} or \${rcpt} | addr | Current recipient address.
-| | ${rcpt.local_part} | string | Current sender name.
-| | ${rcpt.domain} | fqdn | Current sender fqdn.
-| | ${rcpts.full}[^rcpt] or \${rcpts} | addr[]| Recipients addresses.
-| | ${rcpts.local_parts}[^rcpt] | string[] | Senders names.
-| | ${rcpts.domains}[^rcpt] | fqdn[] | Senders fqdn.
-| next stages |  ${data} | string | Email raw data.
-|  | ${parse}[^parse] | vec(struct) | Parsed email.
+| :--- | :--- | :--- | :---
+| Connect | client_addr | ip4/ip6 | Source IP address.
+| | ${port} | int | Source port ?????????????
+| | timestamp | POSIX timestamp | Connection timestamp
+| Helo | helo | string | HELO/EHLO SMTP value.
+| Mail | mail_from | addr | Sender email address.
+| | mail_from.local_part | string | Sender name.
+| | mail_from.domain | fqdn | Sender fqdn.
+| Rcpt | rcpt | hash(addr) | Hash table containing all recipient addresses.
+| | rcpt.local_part | hash(string) | Recipient names.
+| | rcpt.domain | hash(fqdn) | Recipient fqdn.
+| Next stages |  data | string | Email raw data.
+|  | parse[^parse] | vec(struct) | Parsed email.
 
-[^rcpt]: The `${rcpts}` array is completely filled at PREQ stage and not in RCPT stage.
+[^parse]: The `parse` variable is available only if the user triggers a `vSL.PARSE()` action.
 
-[^parse]: The `${parse}` variable is available only if the user triggers a `vSL.PARSE()` action.
+These variables are part of the email context `ctx`. Thus must be called in a vSL file using the dot notation i.e. `ctx.timestamp`.
 
-### Connection vs mail transaction
+## Connection vs mail transaction
 
 As defined in the SMTP RFCs, a single connection can handle several mail transactions.
 

@@ -100,7 +100,7 @@ Copy the vsmtp binaries and the config files.
 
 ```shell
 sudo cp ./target/release/vsmtp /usr/sbin/
-sudo cp -p ./config/vsmtp.default.toml /etc/vsmtp/vsmtp.toml
+sudo cp -p ./src/config/template/simple.toml /etc/vsmtp/vsmtp.toml
 ```
 
 ## Configuring the MTA service

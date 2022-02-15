@@ -1,30 +1,30 @@
-## Objects
+# Objects
 
 Objects are declared through the "obj" keyword. Two syntax are available.
 The inline syntax:
 
 ```rust,ignore
-obj type "name" "value";
+object type "name" "value";
 ```
 
 ```rust,ignore
-obj ip4 "my_host" "192.168.1.34";
-obj fqdn "local_domain" "foo.bar";
+object ip4 "my_host" "192.168.1.34";
+object fqdn "local_domain" "foo.bar";
 ```
 
 The extended syntax, allowing the use of user-defined fields:
 
 ```rust,ignore
-obj type "name" #{
+object type "name" #{
     value: "value",
     <user_field1>: "value",
     ...
-    <user_fieldn>: "value",
+    <user_fieldn>: "value"
 };
 ```
 
 ```rust,ignore
-obj ip4 "local_MDA" #{
+object ip4 "local_MDA" #{
     value: "192.168.0.34",
     color: "bbf3ab",
     description: "Internal delivery agent"
@@ -33,21 +33,22 @@ obj ip4 "local_MDA" #{
 
 &#9998; | The last comma is not mandatory.
 
-### Type of implemented objects
+## Type of implemented objects
 
 The following type of objects are supported natively:
 
 | Type | Description | Syntax | Comments
 | :--- | :--- | :--- | :---
-| val | Untyped value | string | Generic variable.
-| ip4 | IPv4 address | x.y.z.t | decimal values.
+| str | Untyped value | string | Generic variable.
+| ip4 | IPv4 address | x.y.z.t | Decimal values.
 | ip6 | IPv6 address | TO DO | Hexa values ?????
-| rg4 | IPv4 network | x.y.z.t/rg | decimal values.
+| rg4 | IPv4 network | x.y.z.t/rg | Decimal values.
 | rg6 | IPv6 prefix | TO DO:/TO DO | Hexa values ?????
-| addr | email address | user@fqdn
-| fqdn | Fully qualified domain name | my&#46;domain&#46;com
+| address | Email address | ident@fqdn | String.
+| ident | User part of an email address | user | String.
+| fqdn | Fully qualified domain name | my&#46;domain&#46;com | String.
 | regex | Regular expression | | PERL regular expression.
-| grp | A group of objects | | See group section.
+| group | A group of objects | | See group section.
 | file | A file of objects | Unix file | See file section.
 
 ### About files
@@ -56,7 +57,7 @@ File objects are standard Unix text files containing values delimited by CRLF.
 Only one type of object is authorized and must be declared after the keyword "file:".
 
 ```rust,ignore
-obj file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
+object file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
 ```
 
 ```shell
@@ -68,20 +69,26 @@ obj file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
 
 ### About groups
 
-Groups are collections of objects.
+Groups are collections of objects. They can store references to other objects, store fresh objects or mix any type of object inside.
+
+Unlike objects where fields are declared between parentheses, groups use squared brackets.
 
 ```rust,ignore
-obj file:addr "whitelist" "./config/rules/whitelist.txt";
+object file:address "whitelist" "./config/rules/whitelist.txt";
 
-obj grp "authorizedUsers" [
+object group "authorizedUsers" [
   whitelist,
-  obj addr "admin" "admin@mydomain.com",
+  object address "admin" "admin@mydomain.com",
 ];
+```
 
-obj grp "deep-group" [
-  obj regex "foo-emails" "^[a-z0-9.]+@foo.com$",
+Groups can be nested into other groups.
+
+```rust,ignore
+object group "deep-group" [
+  object regex "foo-emails" "^[a-z0-9.]+@foo.com$",
   authorizedUsers,
 ];
 ```
 
-&#9998; | Unlike objects where fields are declared between parentheses, groups use squared brackets.
+&#9998; | When passed down into a check action, the whole group will be tested. The test stops when one of the groups content matches.
