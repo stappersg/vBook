@@ -23,7 +23,3 @@ New `vpost`and `vdeliver` threads are spawned by their parent when a message is 
 - The `vpost` thread takes care of the "post queuing" processing. It is responsible for sending mails to the right queue (deliver or quarantine) or deleting them, then freeing himself. If the mail is considered as deliverable, it sends a message in the deliver channel.
 
 - The `vdeliver` thread has the responsibility of the delivery.
-
----
-
-TO DO : cron mechanism for the delivery subsystem

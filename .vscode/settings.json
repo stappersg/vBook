@@ -4,16 +4,21 @@
         "deliv",
         "exim",
         "FACCEPT",
+        "freshports",
         "libc",
         "ltpn",
         "maildir",
         "mbox",
         "mkdir",
+        "mydomain",
+        "netcat",
+        "nologin",
         "postq",
         "preq",
         "RHAI",
         "Rustup",
         "smtps",
+        "sysv",
         "vsmtp"
     ]
 }
