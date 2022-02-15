@@ -3,11 +3,12 @@
 This page summarizes the main steps to install vSMTP from source code. To find detailed instructions for your operating system, please follow the related links
 
 - [Linux]
-- FreeBSD
+- [FreeBSD]
 - NetBSD
 - OpenBSD
 
-[Linux]: linux.md
+[Linux]: https://vsmtp.rs/install/source/linux.html
+[FreeBSD]: https://vsmtp.rs/install/source/freebsd.html
 
 ## Installing RUST language
 

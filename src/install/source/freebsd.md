@@ -124,4 +124,4 @@ vSMTP user should now be enable to bind on standard SMTP ports (25, 587, 465).
 ## Adding a vSMTP as a system service
 
 This feature has not been tested. 
-Please note that version 0.10 will add a new startup mechanism that no longer require user ACLs.
+Please note that version 0.10 will add a new startup mechanism that no longer requires user ACLs.
