@@ -26,9 +26,9 @@ vSMTP can process mails before the incoming SMTP mail transfer completes and thu
 
 This early detection of inappropriate mails has several advantages :
 
-- the responsibility is on the remote SMTP client side,
-- it consumes less CPU and disk resources,
-- the system is more reactive.
+- The responsibility is on the remote SMTP client side,
+- It consumes less CPU and disk resources,
+- The system is more reactive.
 
 However as the SMTP transfer must end within a deadline, a system facing a heavy workload may have difficulties to respond in time.
 
@@ -53,7 +53,7 @@ As described above, depending on the stage vSL exposes variables to the end user
 | Next stages |  data | string | Email raw data.
 |  | parse[^parse] | vec(struct) | Parsed email.
 
-[^parse]: The `parse` variable is available only if the user triggers a `vSL.PARSE()` action.
+[^parse]: The `parse` variable is available only if the user triggers a `vSL::parse()` function.
 
 These variables are part of the email context `ctx`. Thus must be called in a vSL file using the dot notation i.e. `ctx.timestamp`.
 

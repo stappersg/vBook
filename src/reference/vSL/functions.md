@@ -45,12 +45,17 @@ Syntax | Description
 | write(file) | Write a raw copy of the mail on disk.
 | dump(file) | Write a copy of the entire mail (envelop+body) in JSON format on disk[^dump].
 | log(string, file) | logs a message to stdout, stderr or a file.
-| log_\<string>(string) | Log a message to a stream.
+| log_\<stream>(string) | Log a message to a stream.
 
 Streams can be :
 
 - a Unix standard output : out (stdout) and err (stderr)
 - a filter level of the logger (error, warn, info, debug, trace)
+
+```rust,ignore
+vsl::log_warn(`Hello world !!!`);
+```
+
 
 &#9998; | Target directories for log, write and dump are specified in the TOML configuration file.
 
@@ -73,10 +78,10 @@ These specific actions are described in the [delivery] chapter.
 
 ### User-defined actions
 
-Combined actions can be declared using a [RHAI](https://rhai.rs/) function. To access the actions defined by vSL (ACCEPT, DENY, etc.), the vsl context must be passed as a parameter.
+Combined actions can be declared using a [RHAI](https://rhai.rs/) function. 
 
 ```rust,ignore
-fn my_faccept(vsl) {                              
+fn my_faccept() {                              
     vsl::log("Hello world !!!", "/tmp/my_file");
     vsl::faccept()
     // Implicit return syntax, no trailing comma
