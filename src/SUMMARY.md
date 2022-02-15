@@ -7,7 +7,7 @@
 # Installation Guide
 
 - [Requirements](install/requirements.md)
-- [Installation from source](install/source.md)
+- [Installation from source](install/sourcecode.md)
 - [Installation from packages]()
 - [Configuration](install/configuration.md)
   - [Basic configuration]()
