@@ -1,5 +1,7 @@
 # Introduction
 
+> THIS IS A DRAFT
+
 Welcome to the vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
 

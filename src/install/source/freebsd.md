@@ -13,7 +13,8 @@ Rust port, packages and information can be found on [freshports] website. You ca
 pkg install lang/rust
 ```
 
-> You may have to switch to the latest ports branch. Please refer to [freeBSD wiki]. 
+> You may have to switch to the latest ports branch. Please refer to the [freeBSD wiki].
+
 [freeBSD wiki]: https://wiki.freebsd.org/Ports/QuarterlyBranch
 
 ## Dependencies

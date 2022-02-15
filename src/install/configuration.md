@@ -10,7 +10,7 @@ Esse dolore commodo Lorem voluptate tempor irure. Aute laborum adipisicing incid
 
 ## Add a SSL key
 
-To start vSMTP requires a private RSA key and a certificate. The mostly common and straightforward way to add a private/certificate is by using the `openssl` command.
+To start vSMTP requires a private RSA key and a certificate. The easy way to generate them is to use the `openssl` command.
 
 
 &#9758; | The [OpenSSL Cookbook] covers the most frequently used OpenSSL features and commands. Thanks to its author, Ivan Ristić, a free download is available on [Feisty Duck] website.
