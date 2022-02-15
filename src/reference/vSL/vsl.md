@@ -6,11 +6,11 @@ vSL is a lightweight scripting language dedicated to email filtering. It is base
 
 vSL has no notion of a "main" program. vSL files are analyzed and executed by vSMTP through specific function calls. However, advanced users can use the RHAI scripting language on top of vSL to create and manage a wide variety of actions.
 
-To interact with the SMTP traffic vSL combines declarative [rules] with [objects] and [actions].
+To interact with the SMTP traffic vSL combines declarative [rules] with [objects] and [functions].
 
 [rules]: rules.md
 [objects]: objects.md
-[actions]: actions.md
+[functions]: functions.md
 
 These rules can be applied at any [stage] of the SMTP transaction.
 
