@@ -1,4 +1,4 @@
-## Installing vSMTP from source
+# Installing vSMTP from source
 
 vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
 
