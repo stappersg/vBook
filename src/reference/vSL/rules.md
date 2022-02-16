@@ -1,21 +1,93 @@
-## Rules
+# Rules and actions
 
 Rules are the entry point to interact with the SMTP traffic at a user level.
 Nevertheless specific parameters like timeout, system logging, tls configuration, etc. are set in the configuration files.
 
-### Overall Syntax
+## Overall Syntax
 
-Rules follow a specific syntax :
+Rules and actions are quite similar except that rules must return a vsl rule engine action.
+They follow the same syntax :
 
 ```rust,ignore
-rule <stage> <name> #{
-    condition: || <condition>,
-    on_success: || <action>,
-    on_failure: || <action>,
-};
+rule "name" || {
+    ... // do stuff
+    vsl::accept() // Rule engine action
+}
 ```
 
-&#9758; | The symbols || after "condition", "on_success" and "on_failure" keywords must be understood as closure delimiters and not as boolean operators.
+```rust,ignore
+action "name" || {
+    ... // do stuff
+}
+```
+
+There is an inline syntax :
+
+```rust,ignore
+rule/action "name" || instruction,
+```
+
+Here are some examples:
+
+
+An inline rule :
+
+```rust,ignore
+rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
+```
+
+The same rule, including a log:
+
+```rust,ignore
+rule "test_connect" || {
+      vsl::log(`Connection from : ${ctx.client_addr}`, my_connexion_log);
+      if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
+    }
+```
+
+&#9998; | String interpolation requires adding ${} to variables.
+
+An action :
+
+```rust,ignore
+action "test_rewrite" || {
+        ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+        ctx.remove_rcpt("customer@company.net");
+        ctx.add_rcpt("no-reply@company.net");
+      },
+```
+
+A trailing rule:
+
+```rust,ignore
+rule "default" || vsl::deny() 
+```
+
+
+## Structure
+
+
+obj ident "john" "johndoe";
+obj fqdn "viridit" "viridit.com";
+obj addr "customer" "customer@company.com";
+
+```rust,ignore
+
+
+
+run_rules!(     # This is the main part
+  #{
+    connect: [ ]
+    helo: [ ]
+    mail: [ ]
+    rcpt: [ ]
+    preq: [ ]
+    postq: [ ]
+  }
+)
+
+
+
 
 
 ### Conditions
