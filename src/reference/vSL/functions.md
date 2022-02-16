@@ -66,22 +66,27 @@ These actions have no impact on the SMTP engine.
 Syntax | Description
 | ---- | ---- |
 | bcc(ctx, addr) | Send a blind carbon copy of the mail.
-| write(ctx, file) | Write a raw copy of the mail on disk.
-| dump(ctx, file) | Write a copy of the entire mail (envelop+body) in JSON format on disk[^dump].
+| write(ctx, file) | Write a raw copy of the mail on disk[^dir].
+| dump(ctx, file) | Write a copy of the entire mail (envelop+body) in JSON format[^dump] on disk[^dir].
 | body_parse() | Parse the mail and extract its structure including MIME parts.
 | send_mail(from, to, path, relay) | Send an informative email.
-| log(string, file) | logs a message to stdout, stderr or a file[^stream].
+| log(string, file) | logs a message to stdout, stderr or a to file[^dir].
 | log_\<stream>(string) | Log a message to a stream[^stream].
 | user_exist(string) | Check if an user exists locally.
 
+[^dir]: Root directories for log, write and dump are specified in the TOML configuration file.
+
 [^dump]: The body still in raw mode if the parsing has not been performed.
+
 [^stream]: Streams can be a Unix standard output : out (stdout) and err (stderr) or a log level (error, warn, info, debug, trace).
+
+
 
 ```rust,ignore
 vsl::log_warn(`Hello world !!!`);
 ```
 
-&#9998; | Root directories for log, write and dump are specified in the TOML configuration file.
+
 
 
 
