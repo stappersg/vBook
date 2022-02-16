@@ -18,7 +18,7 @@ The incoming mail traffic can locally be delivered using :
 
 ### Delivering distant mails
 
-vSMTP uses a well known and secured third-party software, also written in Rust : [Lettre]
+vSMTP uses a well known and secured third-party software [Lettre] also written in Rust.
 
 [Lettre]: https://github.com/lettre/lettre
 
@@ -26,11 +26,9 @@ vSMTP uses a well known and secured third-party software, also written in Rust :
 
 | Action | Syntax | Description |
 | ---- | ---- | ---- |
-| USE_SMTP | USE_SMTP() | Remote delivery using SMTP protocol.
-| USE_MAILDIR | USE_MAILDIR() | Local delivery using Maildir format.
-| USE_MBOX | USE_MBOX() | Local delivery using Mbox format.
-| NO_DELIVERY | NO_DELIVERY() | Prevent the system from delivering the email.
-| FORWARD | FORWARD(addr \| fqdn) | Forward mail to an other MTA.
-| USE_DEFAULT | USE_DEFAULT() | Use the default delivery method. 
+| Deliver | deliver(ctx, proto) | Delivery using protocol.
+| Forward | forward(ctx, addr) | Forward mail to an other MTA.
 
-The default behavior (SMTP) can be overwritten in the TOML configuration file.
+Protocol are "smtp", "mbox" and "maildir", "default" and "none".
+
+The default behavior can be set in the TOML configuration file.
