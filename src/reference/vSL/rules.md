@@ -5,13 +5,13 @@ Nevertheless specific parameters like timeout, system logging, tls configuration
 
 ## Overall Syntax
 
-Rules and actions are quite similar except that rules must return a vsl rule engine status.
+Rules and actions are quite similar except that rules must return a vSL rule engine status.
 They follow the same syntax :
 
 ```rust,ignore
 rule "name" || {
     ... // do stuff
-    vsl::accept() // Rule engine action
+    vsl::accept() // Rule engine status
 }
 ```
 
@@ -24,8 +24,8 @@ action "name" || {
 There is an inline syntax :
 
 ```rust,ignore
-action "name" || instruction,
-rule "name" || instruction,
+action "name" || instruction
+rule "name" || instruction
 ```
 
 Here are some examples:
@@ -62,67 +62,95 @@ A trailing rule:
 rule "default" || vsl::deny() 
 ```
 
+## Rules and vSMTP Stages
 
-## Structure
-
-
-obj ident "john" "johndoe";
-obj fqdn "viridit" "viridit.com";
-obj addr "customer" "customer@company.com";
+Rules are bounded to a vSMTP stage. A stage can be omitted but must appears only once. They are declared in the `main.vsl` file.
 
 ```rust,ignore
+//-- main.vsl
 
+obj fqdn "my_company" "mycompany.net"
 
-
-run_rules!(     # This is the main part
+run_rules!(
   #{
-    connect: [ ]
-    helo: [ ]
-    mail: [ ]
-    rcpt: [ ]
-    preq: [ ]
-    postq: [ ]
+    connect: [ 
+        rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() },
+        action "log_connect" || vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log),
+    ]
+    rcpt: [
+        action "test_rewrite" || {
+            ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+            ctx.remove_rcpt("customer@company.net");
+            ctx.add_rcpt("no-reply@company.net");
+        },
+        rule "local_domain" || {
+            rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
+        }
+        
+        ... // do stuff
+
+     ]
   }
 )
+```
 
+## Implicit rules
 
+To avoid undefined behavior, the implicit action in a stage is next().
+For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit next() of the last rule will jump to the next stage.
 
+The example below may be 
 
+```rust,ignore
+//-- main.vsl
 
-### Conditions
+obj fqdn "my_company" "mycompany.net"
+
+run_rules!(
+  #{
+    connect: [ 
+        rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() },
+        action "log_connect" || vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log),
+        // Last action/rule : implicit next() to rcpt stage...
+    ]
+    rcpt: [
+        action "test_rewrite" || {
+            ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+            ctx.remove_rcpt("customer@company.net");
+            ctx.add_rcpt("no-reply@company.net");
+        },
+        rule "local_domain" || {
+            rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
+        }
+        
+        ... // do stuff
+        
+        // Trailing rule (default behavior for rcpt stage)
+        rule "default" || vsl::deny() 
+     ]
+  }
+)
+```
+
+> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known flows.
+
+## Conditions
 
 The "condition: ||" primitive expects a boolean after the || symbol.
 Booleans can come directly from [RHAI](https://rhai.rs/) or vSL functions as shown hereunder (like vsl.IS_CONNECT).
 
-#### Built-in vSL conditions
 
-Foreach stage a vSL condition that match the message context is available.
-The function syntax is : IS_*STAGE*(object).
 
-```rust,ignore
-obj ip4 "localhost" "192.168.1.34";
+### IF syntax
 
-rule connect "check on connect" #{
-    condition:  || vsl.IS_CONNECT("localhost"),
-    on_success: || vsl.ACCEPT(),
-    on_failure: || vsl.DENY()
-};
-```
 
-As explained previously, the values obtained from the previous steps are still available in the current stage.
+### Built-in vSL conditions
 
-```rust,ignore
-obj ip4 "localhost" "192.168.1.34";
-obj addr "foo" "foo@bar.com";
+IN
 
-rule mail "adv check" #{
-    condition:  || vsl.IS_CONNECT("localhost") && vsl.IS_MAIL("foo"),
-    on_success: || vsl.ACCEPT(),
-    on_failure: || vsl.DENY()
-};
-```
+IS
 
-#### Complex conditions using [RHAI](https://rhai.rs/) functions
+### Complex conditions using [RHAI](https://rhai.rs/) operators
 
 ```rust,ignore
 obj fqdn "foobar" "my.foo.bar";
@@ -139,64 +167,3 @@ rule mail "adv check" #{
 
 &#9758; | The operators && and || are short-circuits. In this case my_function() function will not be evaluated if the 1st part already proves the condition wrong. To counter this behavior use the boolean operators & and |.
 
-### Rule actions : on_success and on_failure
-
-These methods interact with the SMTP engine.
-Those methods must return a state (see the Rule Engine Actions section) to influence vSMTP.
-
-for example:
-
-```rust,ignore
-obj ip4 "localhost" "192.168.1.34";
-
-fn my_action() {
-    vsl.DUMP(`/tmp/mail/dump/${msg_id}`);
-    vsl.FACCEPT()
-}
-
-rule connect "check on connect" #{
-    condition:  || vsl.IS_CONNECT("localhost"),
-    on_success: || my_action(),
-    on_failure: || {
-        vsl.LOG(`Connection from this host is not allowed.`, "stdout");
-        vsl.DENY()
-    },
-};
-```
-
-The connection is accepted if it is local, and denied otherwise.
-
-&#9998; | The absence of the semicolon after DENY() since the rule must return a state.
-
-### Implicit rule in a stage
-
-To avoid undefined behavior, the implicit action in a stage is CONTINUE(). If there's no state (i.e.  ACCEPT, DENY, etc.) returned in a stage, the default behavior is to proceed to the next stage, and in the end the message is delivered.
-
-### About DUMP action
-
-The DUMP action writes the content of an email in JSON format with the content available at the specified rule stage.
-
-```rust,ignore
-rule mail "dump_at_mail_stage" #{
-    condition: true,
-    on_success: vsl.DUMP(`/var/spool/mta/`),
-};
-```
-
-This rule will dump in JSON format only the content available at the "mail" stage : `connect`, `helo` and `mail` parameters.
-
-### About BLOCK action
-
-The BLOCK action pushes the mail in a user defined quarantine directory.
-Unlike DUMP:
-
-- The ENTIRE content of the email is written in JSON format regardless of the stage declared in the rule (including the envelop and body).
-- All rules are skipped, and the server delivers a 554 smtp code to the client.
-
-```rust,ignore
-rule helo "my_quarantine" #{
-    condition: vsl.IS_HELO("blacklist"),
-    on_success: || vsl.BLOCK("/var/spool/mta/blacklist/"),
-    ...
-};
-```
