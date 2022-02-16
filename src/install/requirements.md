@@ -1,5 +1,9 @@
 # Requirements
 
+vSMTP is a stand-alone application with little kernel interaction, it may run on any system with slight modifications.
+
+> vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
+
 ## Physical requirements
 
 The current release has been tested on x86/64 environments. Installing vSMTP on other CPU architectures like ARM should work but may require specific configurations not covered in this document.
@@ -21,8 +25,3 @@ For outgoing mail, your email client (MUA) can directly address vSMTP using the 
 &#9758; | For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and specify to the courier-imap MDA where are located the MailDir/ folders and use a MUA like Mozilla ThunderBird.
 
 [courier-imap]: https://packages.debian.org/search?keywords=courier-imap
-
-## Installing vSMTP from source
-
-vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
-vSMTP is a stand-alone application with little kernel interaction, it may run on any system with slight modifications.
