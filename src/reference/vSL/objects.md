@@ -57,11 +57,11 @@ File objects are standard Unix text files containing values delimited by CRLF.
 Only one type of object is authorized and must be declared after the keyword "file:".
 
 ```rust,ignore
-object file:ip4 "local_MTA" "/var/vmta/config/local_mta.txt";
+object file:ip4 "local_MTA" "./config/local_mta.txt";
 ```
 
 ```shell
-# cat /var/vmta/config/local_mta.txt
+# cat ./config/local_mta.txt
 192.168.1.10
 192.168.1.12
 10.3.4.240

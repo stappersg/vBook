@@ -27,7 +27,7 @@ The state of an SMTP transaction can be changed through specific functions sent 
 | Force accept | faccept() |Skip all rules and move the mail to the deliver queue.
 | Continue processing | next() | Jump to the next rule or to the 1st rule of the next stage.
 | Deny processing | deny() | Deny the mail and send a SMTP return code.
-| Quarantine | quarantine(path/file) | Skip all rules and move the mail to a quarantine queue in the specified directory. 
+| Quarantine | quarantine(path/file) | Skip all rules and move the mail to a quarantine queue in the specified directory.
 
 ### About quarantine function
 
@@ -89,8 +89,6 @@ Syntax | Description
 ```rust,ignore
 vsl::log_warn(`Hello world !!!`);
 ```
-
-
 
 ### About the dump function
 

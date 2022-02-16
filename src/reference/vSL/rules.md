@@ -39,7 +39,7 @@ The same rule, including a log:
 
 ```rust,ignore
 rule "test_connect" || {
-      vsl::log(`Connection from : ${ctx.client_addr}`, my_connexion_log);
+      vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log);
       if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
     }
 ```
@@ -99,8 +99,6 @@ run_rules!(
 To avoid undefined behavior, the implicit action in a stage is next().
 For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit next() of the last rule will jump to the next stage.
 
-The example below may be 
-
 ```rust,ignore
 //-- main.vsl
 
@@ -133,37 +131,3 @@ run_rules!(
 ```
 
 > As with firewall rules, the best practice is to deny "everything" and only accept authorized and known flows.
-
-## Conditions
-
-The "condition: ||" primitive expects a boolean after the || symbol.
-Booleans can come directly from [RHAI](https://rhai.rs/) or vSL functions as shown hereunder (like vsl.IS_CONNECT).
-
-
-
-### IF syntax
-
-
-### Built-in vSL conditions
-
-IN
-
-IS
-
-### Complex conditions using [RHAI](https://rhai.rs/) operators
-
-```rust,ignore
-obj fqdn "foobar" "my.foo.bar";
-
-fn my_function(x) {
-    if (x == "foo") { true } else { false }
-}
-
-[...]
-rule mail "adv check" #{
-    condition: || !vsl.IS_HELO("foobar") && my_function("bar"),
-[...]
-```
-
-&#9758; | The operators && and || are short-circuits. In this case my_function() function will not be evaluated if the 1st part already proves the condition wrong. To counter this behavior use the boolean operators & and |.
-
