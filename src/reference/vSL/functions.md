@@ -27,7 +27,15 @@ The state of an SMTP transaction can be changed through specific functions sent 
 | Force accept | faccept() |Skip all rules and move the mail to the deliver queue.
 | Continue processing | next() | Jump to the next rule or to the 1st rule of the next stage.
 | Deny processing | deny() | Deny the mail and send a SMTP return code.
-| Quarantine | quarantine(path/file) | Skip all rules and move the mail to a quarantine queue in the specified directory. The (path/file) is appended to the TOML quarantine_dir.
+| Quarantine | quarantine(path/file) | Skip all rules and move the mail to a quarantine queue in the specified directory. 
+
+### About quarantine function
+
+The quarantine pushes the mail in a user defined quarantine directory.
+
+The ENTIRE content of the email is written in JSON format regardless of the stage declared in the rule (including the envelop and body). All rules are skipped, and the server delivers a 554 smtp code to the client.
+
+The root directory for quarantine() is specified in the TOML configuration file and the (path/file) is added.
 
 ```rust,ignore
 vsl::quarantine(virus_dir);   
@@ -76,11 +84,7 @@ Syntax | Description
 
 [^dir]: Root directories for log, write and dump are specified in the TOML configuration file.
 
-[^dump]: The body still in raw mode if the parsing has not been performed.
-
 [^stream]: Streams can be a Unix standard output : out (stdout) and err (stderr) or a log level (error, warn, info, debug, trace).
-
-
 
 ```rust,ignore
 vsl::log_warn(`Hello world !!!`);
@@ -88,7 +92,9 @@ vsl::log_warn(`Hello world !!!`);
 
 
 
+### About the dump function
 
+This function dumps in JSON format only the available content at a stage.  The body still in raw mode if the parsing has not been performed. The filename is `message_id`.
 
 ## Chaining actions
 
