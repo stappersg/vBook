@@ -1,34 +1,25 @@
 # vSL predefined functions
 
-vSL provides the user with a comprehensive list of predefined functions in order to interact with SMTP traffic. 
+vSL provides the user with a comprehensive list of predefined functions in order to interact with SMTP traffic.
 
 ## vSL context and namespace
 
-vSL predefined functions are bounded to a namespace named `vsl`. 
+vSL predefined functions are bounded to a namespace named `vsl`.
 
 ```rust,ignore
 vsl::accept();      
 ```
 
-If the function performs actions on the email, the vSL context `ctx` must be passed as the first argument.
+If the function performs actions on the email, the vSL context `ctx` must be passed as the first argument. However, the context can be omitted if the function has no argument or doesn't require it.
 
 ```rust,ignore
 vsl::add_rcpt(ctx, `john.doe@mycompany.com`);
-```
-
-The context can be omitted if the function has no argument or if the function doesn't require it.
-
-```rust,ignore
 vsl::log(`Hello world !!!`, "/tmp/my_log");   
 ```
 
 ## SMTP state changing functions
 
 The state of an SMTP transaction can be changed through specific functions sent by the rule engine. They do not change the email context.
-
-```rust,ignore
-vsl::quarantine(virus_dir);   
-```
 
 | Description |  syntax | Comment
 | :--- | :--- | :---
@@ -38,13 +29,13 @@ vsl::quarantine(virus_dir);
 | Deny processing | deny() | Deny the mail and send a SMTP return code.
 | Quarantine | quarantine(path/file) | Skip all rules and move the mail to a quarantine queue in the specified directory. The (path/file) is appended to the TOML quarantine_dir.
 
+```rust,ignore
+vsl::quarantine(virus_dir);   
+```
+
 ## SMTP envelop and body changing functions
 
 SMTP envelop can be modified by several predefined actions. Thus they must include `ctx`as their first argument.
-
-```rust,ignore
-vsl::remove_header(ctx, my_regex);   
-```
 
 Syntax | Comment
 | :--- | :---
@@ -58,38 +49,43 @@ Syntax | Comment
 &#9998; | Email headers "To:", "From:", "Reply-to:", etc. are also updated.
 This apply only to the root headers in case of nested emails.
 
+```rust,ignore
+vsl::remove_header(ctx, my_regex);   
+```
+
+## Deliver actions
+
+These specific functions are described in the [delivery] chapter.
+
+[delivery]: delivery.md
+
 ## Miscellaneous functions
 
 These actions have no impact on the SMTP engine.
 
 Syntax | Description
 | ---- | ---- |
-| bcc(ctx, addr) | Send a blind carbon copy of the mail
+| bcc(ctx, addr) | Send a blind carbon copy of the mail.
 | write(ctx, file) | Write a raw copy of the mail on disk.
 | dump(ctx, file) | Write a copy of the entire mail (envelop+body) in JSON format on disk[^dump].
-| parse() | Parse the mail and extract its structure including MIME parts.
-| send_mail(from, to, path, relay) | Send an informative email
-| log(string, file) | logs a message to stdout, stderr or a file.
+| body_parse() | Parse the mail and extract its structure including MIME parts.
+| send_mail(from, to, path, relay) | Send an informative email.
+| log(string, file) | logs a message to stdout, stderr or a file[^stream].
 | log_\<stream>(string) | Log a message to a stream[^stream].
+| user_exist(string) | Check if an user exists locally.
 
+[^dump]: The body still in raw mode if the parsing has not been performed.
 [^stream]: Streams can be a Unix standard output : out (stdout) and err (stderr) or a log level (error, warn, info, debug, trace).
 
 ```rust,ignore
 vsl::log_warn(`Hello world !!!`);
 ```
 
+&#9998; | Root directories for log, write and dump are specified in the TOML configuration file.
 
-&#9998; | Target directories for log, write and dump are specified in the TOML configuration file.
 
-user_exist ?????????????????????????????????????????
 
-### Deliver actions
-
-These specific actions are described in the [delivery] chapter.
-
-[delivery]: delivery.md
-
-### Chaining actions
+## Chaining actions
 
 ```rust,ignore
 {
@@ -98,9 +94,9 @@ These specific actions are described in the [delivery] chapter.
 }
 ```
 
-### User-defined actions
+## User-defined actions
 
-Combined actions can be declared using a [RHAI](https://rhai.rs/) function. 
+Combined actions can be declared using a [RHAI](https://rhai.rs/) function.
 
 ```rust,ignore
 fn my_faccept() {                              
@@ -109,6 +105,20 @@ fn my_faccept() {
     // Implicit return syntax, no trailing comma
     // equivalent to : return vsl::faccept();
 }
+
+???????????
+??????????? j'ai un doute 
+
+fn my_faccept(ctx) {
+    vsl::remove_rcpt(ctx, "john.doe@mycompany.com");
+    vsl::faccept()
+}
+
+et l'appel de la function ???
+
+
+vsl::my_faccept(ctx)  ????
+
 ```
 
-Executing my_faccept will log the mail and send a FACCEPT action to the SMTP engine.
+Executing my_faccept will log the mail and send a FACCEPT status to the SMTP engine.

@@ -41,11 +41,11 @@ The following type of objects are supported natively:
 | :--- | :--- | :--- | :---
 | str | Untyped value | string | Generic variable.
 | ip4 | IPv4 address | x.y.z.t | Decimal values.
-| ip6 | IPv6 address | TO DO | Hexa values ?????
+| ip6 | IPv6 address | a:b:c:d:e:f:g:h | Hex values.
 | rg4 | IPv4 network | x.y.z.t/rg | Decimal values.
-| rg6 | IPv6 prefix | TO DO:/TO DO | Hexa values ?????
+| rg6 | IPv6 prefix | a:b:c:d:e:f:g:h/rg | Hex values.
 | address | Email address | ident@fqdn | String.
-| ident | User part of an email address | user | String.
+| ident | Local part of an address | user | String.
 | fqdn | Fully qualified domain name | my&#46;domain&#46;com | String.
 | regex | Regular expression | | PERL regular expression.
 | group | A group of objects | | See group section.
