@@ -5,7 +5,7 @@ Nevertheless specific parameters like timeout, system logging, tls configuration
 
 ## Overall Syntax
 
-Rules and actions are quite similar except that rules must return a vsl rule engine action.
+Rules and actions are quite similar except that rules must return a vsl rule engine status.
 They follow the same syntax :
 
 ```rust,ignore
@@ -24,15 +24,14 @@ action "name" || {
 There is an inline syntax :
 
 ```rust,ignore
-rule/action "name" || instruction,
+action "name" || instruction,
+rule "name" || instruction,
 ```
 
 Here are some examples:
 
-
-An inline rule :
-
 ```rust,ignore
+// Inline rule
 rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
 ```
 

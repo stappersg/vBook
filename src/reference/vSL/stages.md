@@ -55,7 +55,7 @@ As described above, depending on the stage vSL exposes variables to the end user
 
 [^parse]: The `parse` variable is available only if the user triggers a `vSL::parse()` function.
 
-These variables are part of the email context `ctx`. Thus must be called in a vSL file using the dot notation i.e. `ctx.timestamp`.
+These variables are part of the email context `ctx`. Thus they must be called in a vSL file using the dot notation i.e. `ctx.timestamp`.
 
 ## Connection vs mail transaction
 
