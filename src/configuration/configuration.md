@@ -27,7 +27,7 @@ Add these to the vSMTP `certs` directory defined in the vsmtp.toml.
 
 SMTP filtering is performed by the rule engine. The end user can interact and modify the behavior of vSMTP by adding rules in the .vSL configuration files.
 
-All .vSL files in the "rules" folder are scanned alphabetically and injected into the rules engine.
+The main.vsl file in the "rules" folder is injected into the rules engine. It is the entry point for a custom configuration.
 
 If there is no vSL file, the server will accept all incoming and outgoing mails, as well as domain forwarding.
 For obvious security reasons, this configuration should not be deployed on a server connected directly to the Internet.
