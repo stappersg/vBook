@@ -1,6 +1,6 @@
 # Objects
 
-Objects are declared through the "obj" keyword. Two syntax are available.
+Objects are declared through the "object" keyword. Two syntax are available.
 The inline syntax:
 
 ```c
