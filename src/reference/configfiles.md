@@ -51,4 +51,4 @@ TimeoutStopSec=300
 WantedBy=multi-user.target
 ```
 
-&#9762; | Do not modify this file unless you know what you are doing.
+&#9762; | Do not modify this file unless you know what you are doing. Please note that version 0.10 comes with a new startup mechanism.
