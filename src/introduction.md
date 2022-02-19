@@ -1,8 +1,6 @@
 # Introduction
 
-> THIS IS A DRAFT
-
-> VERSION v0.9 is required.
+> THIS IS A DRAFT - vSMTP v0.9 is required.
 
 Welcome to the vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
