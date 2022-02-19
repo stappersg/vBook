@@ -64,7 +64,7 @@ rule "default" || vsl::deny()
 
 ## Rules and vSMTP Stages
 
-Rules are bounded to a vSMTP stage. A stage can be omitted but must appears only once. They are declared in the `main.vsl` file.
+Rules are bounded to a vSMTP stage. Stages can be omitted but must appear only once. They are declared in the `main.vsl` file.
 
 ```c
 //-- main.vsl
@@ -96,7 +96,7 @@ run_rules!(
 
 ## Implicit rules
 
-To avoid undefined behavior, the implicit action in a stage is next().
+To avoid undefined behavior, the implicit action in a stage is `next()`.
 For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit next() of the last rule will jump to the next stage.
 
 ```c

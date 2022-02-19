@@ -84,7 +84,7 @@ Syntax | Description
 
 [^dir]: Root directories for log, write and dump are specified in the TOML configuration file.
 
-[^stream]: Streams can be a Unix standard output : out (stdout) and err (stderr) or a log level (error, warn, info, debug, trace).
+[^stream]: Streams can be a Unix standard output stdout and stderr or a log level (error, warn, info, debug, trace).
 
 ```rust,ignore
 vsl::log_warn(`Hello world !!!`);

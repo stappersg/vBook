@@ -10,7 +10,7 @@ action "let_example" || {
     let my_string = "The question is 7x6 = 42 ?";
     ... // do stuff
 
-    vsl::log_err(`I'm writing this string : ${my_string} into stderr`);
+    vsl::log_stderr(`I'm writing this string : ${my_string} into stderr`);
 };
 ```
 
@@ -27,8 +27,8 @@ fn my_condition(vsl) {
 }
 
 fn my_action1(vsl) {
-    vsl.LOG_OUT(`Ok - coming from localhost`);
-    vsl.CONTINUE()
+    vsl::log_warn(`Ok - coming from localhost`);
+    vsl::next()
 }
 
 fn my_action2(vsl, rcpts) {
@@ -37,7 +37,7 @@ fn my_action2(vsl, rcpts) {
     for rc in rcpts {
       vsl::log(`  - ${rc}`, my_log);
     }
-    vsl.CONTINUE()
+    vsl::next()
 }
 
 
@@ -55,25 +55,11 @@ run_rules!(
 
 &#9998; | RHAI's function do not capture their external scope. If you want to use vSL's features, you must pass the module by parameter. The vsl module is available in the global scope.
 
+## Importing user defined modules
 
-## Importing community modules
+External modules can be imported via the main.vsl file. 
 
-External modules can be imported via the main.vsl file.
-
-
-___main.vsl___
-
-```c
-import "mod/my_module" as my_module;
-
-my_module::my_function();
-print(my_module::x);
-```
-
-Creating modules
-
-RHAI functions are automatically exported. Do not forget to add the "private" keyword for internal functions.
-Unlike functions, variables are not exported. You must do it manually.
+RHAI functions are automatically exported. Thus do not forget to add the "private" keyword for internal functions. Unlike functions, variables are not exported. You must do it manually.
 
 Example :
 
@@ -81,12 +67,12 @@ ___mod/my_module.vsl___
 
 ```c
 fn my_function() {
-    let z = add_function(0);
+    let z = add_function(24);
     ... // do stuff.
 }
 
-private fn add_function(x) {
-    return x + 42;
+private fn add_function(v) {
+    return v + 42;
 }
 
 export const x = 42;
@@ -95,8 +81,8 @@ export const x = 42;
 ___main.vsl___
 
 ```c
-import "mod/my_module" as my_module;
+import "mod/my_module" as my_mod;
 
-my_module::my_function();
-print(my_module::x);
+my_mod::my_function();
+print(my_mod::x);
 ```
