@@ -52,7 +52,7 @@ MX preference = 1, mail exchanger = vsmtp.foo.bar
 
 ___/etc/vsmtp/rules/object.vsl___
 
-```rust,ignore
+```c
 obj ip4 "local_mta" "192.168.1.254";
 obj rg4 "internal_net" "192.168.0.0/24";
 
@@ -70,7 +70,7 @@ obj str "user_quarantine" "doe/bad_user";
 
 ___/etc/vsmtp/rules/main.vsl___
 
-```rust,ignore
+```c
 run_rules!(
   #{
     mail: [
@@ -94,7 +94,7 @@ run_rules!(
       // Quarantine unknown users
       rule "rcpt_nouser" || if !(ctx.rcpt in doe_family) { vsl::quarantine(user_quarantine) }, 
       // Jenny is 11 years old - emails are bcc to jane
-      action "rcpt_jenny" || if ctx.rcpt is "jenny" { vsl::bcc(jane) }
+      action "rcpt_jenny" || if ctx.rcpt is "jenny" { vsl::bcc(jane) },
       // Trailing rule 
       rule "rcpt_default" || accept(),
     ]
