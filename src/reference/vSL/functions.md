@@ -6,7 +6,7 @@ vSL provides the user with a comprehensive list of predefined functions in order
 
 vSL predefined functions are bounded to a namespace named `vsl`.
 
-```cpp
+```c
 vsl::accept();      
 ```
 
