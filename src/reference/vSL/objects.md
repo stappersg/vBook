@@ -3,18 +3,18 @@
 Objects are declared through the "obj" keyword. Two syntax are available.
 The inline syntax:
 
-```rust,ignore
+```c
 object type "name" "value";
 ```
 
-```rust,ignore
+```c
 object ip4 "my_host" "192.168.1.34";
 object fqdn "local_domain" "foo.bar";
 ```
 
 The extended syntax, allowing the use of user-defined fields:
 
-```rust,ignore
+```c
 object type "name" #{
     value: "value",
     <user_field1>: "value",
@@ -23,7 +23,7 @@ object type "name" #{
 };
 ```
 
-```rust,ignore
+```c
 object ip4 "local_MDA" #{
     value: "192.168.0.34",
     color: "bbf3ab",
@@ -56,7 +56,7 @@ The following type of objects are supported natively:
 File objects are standard Unix text files containing values delimited by CRLF.
 Only one type of object is authorized and must be declared after the keyword "file:".
 
-```rust,ignore
+```c
 object file:ip4 "local_MTA" "./config/local_mta.txt";
 ```
 
@@ -73,7 +73,7 @@ Groups are collections of objects. They can store references to other objects, s
 
 Unlike objects where fields are declared between parentheses, groups use squared brackets.
 
-```rust,ignore
+```c
 object file:address "whitelist" "./config/rules/whitelist.txt";
 
 object group "authorizedUsers" [
@@ -84,7 +84,7 @@ object group "authorizedUsers" [
 
 Groups can be nested into other groups.
 
-```rust,ignore
+```c
 object group "deep-group" [
   object regex "foo-emails" "^[a-z0-9.]+@foo.com$",
   authorizedUsers,

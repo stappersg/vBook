@@ -8,14 +8,14 @@ Nevertheless specific parameters like timeout, system logging, tls configuration
 Rules and actions are quite similar except that rules must return a vSL rule engine status.
 They follow the same syntax :
 
-```rust,ignore
+```c
 rule "name" || {
     ... // do stuff
     vsl::accept() // Rule engine status
 }
 ```
 
-```rust,ignore
+```c
 action "name" || {
     ... // do stuff
 }
@@ -23,21 +23,21 @@ action "name" || {
 
 There is an inline syntax :
 
-```rust,ignore
+```c
 action "name" || instruction
 rule "name" || instruction
 ```
 
 Here are some examples:
 
-```rust,ignore
+```c
 // Inline rule
 rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
 ```
 
 The same rule, including a log:
 
-```rust,ignore
+```c
 rule "test_connect" || {
       vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log);
       if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
@@ -48,7 +48,7 @@ rule "test_connect" || {
 
 An action :
 
-```rust,ignore
+```c
 action "test_rewrite" || {
         ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
         ctx.remove_rcpt("customer@company.net");
@@ -58,7 +58,7 @@ action "test_rewrite" || {
 
 A trailing rule:
 
-```rust,ignore
+```c
 rule "default" || vsl::deny() 
 ```
 
@@ -66,7 +66,7 @@ rule "default" || vsl::deny()
 
 Rules are bounded to a vSMTP stage. A stage can be omitted but must appears only once. They are declared in the `main.vsl` file.
 
-```rust,ignore
+```c
 //-- main.vsl
 
 obj fqdn "my_company" "mycompany.net"
@@ -85,7 +85,7 @@ run_rules!(
         },
         rule "local_domain" || {
             rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
-        }
+        },
         
         ... // do stuff
 
@@ -99,7 +99,7 @@ run_rules!(
 To avoid undefined behavior, the implicit action in a stage is next().
 For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit next() of the last rule will jump to the next stage.
 
-```rust,ignore
+```c
 //-- main.vsl
 
 obj fqdn "my_company" "mycompany.net"
@@ -119,7 +119,7 @@ run_rules!(
         },
         rule "local_domain" || {
             rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
-        }
+        },
         
         ... // do stuff
         

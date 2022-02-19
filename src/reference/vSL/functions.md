@@ -6,13 +6,13 @@ vSL provides the user with a comprehensive list of predefined functions in order
 
 vSL predefined functions are bounded to a namespace named `vsl`.
 
-```rust,ignore
+```cpp
 vsl::accept();      
 ```
 
 If the function performs actions on the email, the vSL context `ctx` must be passed as the first argument. However, the context can be omitted if the function has no argument or doesn't require it.
 
-```rust,ignore
+```c
 vsl::add_rcpt(ctx, `john.doe@mycompany.com`);
 vsl::log(`Hello world !!!`, "/tmp/my_log");   
 ```
@@ -37,7 +37,7 @@ The ENTIRE content of the email is written in JSON format regardless of the stag
 
 The root directory for quarantine() is specified in the TOML configuration file and the (path/file) is added.
 
-```rust,ignore
+```c
 vsl::quarantine(virus_dir);   
 ```
 
@@ -57,7 +57,7 @@ Syntax | Comment
 &#9998; | Email headers "To:", "From:", "Reply-to:", etc. are also updated.
 This apply only to the root headers in case of nested emails.
 
-```rust,ignore
+```c
 vsl::remove_header(ctx, my_regex);   
 ```
 

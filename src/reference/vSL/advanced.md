@@ -87,7 +87,7 @@ Importing community modules
 
 External modules can be imported via the main.vsl file.
 
-```rust,ignore
+```c
 import "mod/my_module" as my_module;
 ```
 
@@ -103,7 +103,7 @@ Unlike functions, variables are not exported. You must do it manually.
 
 Example :
 
-```rust,ignore
+```c
 // -- mod/my_module.vsl
 fn my_function() {
     let z = add_function(0);
