@@ -6,9 +6,8 @@
 
 A personal MTA for Doe's family.
 
-Domain name : foo.bar
-
-Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
+- Domain name : foo.bar
+- Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
 
 ### Network configuration
 
