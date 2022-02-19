@@ -53,3 +53,10 @@ vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent
 [Mbox]: https://datatracker.ietf.org/doc/html/rfc4155
 [Maildir]: https://en.wikipedia.org/wiki/Maildir
 [Lettre]: https://github.com/lettre/lettre
+
+## External services
+
+Currently only Unix shell calls are available.
+Compliancy with [Postfix SMTP access policy delegation] and Unix/IP sockets are planned for version 0.10.
+
+[Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
