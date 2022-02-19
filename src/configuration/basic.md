@@ -58,19 +58,24 @@ obj rg4 "internal_net" "192.168.0.0/24";
 
 obj fqdn "local_fqdn" "foo.bar"
 
-obj grp "doe_family" [
-  obj addr "john" "john.doe@foo.bar";
-  obj addr "jane" "jane.doe@foo.bar";
-  obj addr "jimmy" "jimmy.doe@foo.bar";
-  obj addr "jenny" "jenny.doe@foo.bar";
-];
+obj addr "john" "john.doe@foo.bar";
+obj addr "jane" "jane.doe@foo.bar";
+obj addr "jimmy" "jimmy.doe@foo.bar";
+obj addr "jenny" "jenny.doe@foo.bar";
+
+obj grp "doe_family" [john, jane, jimmy, jenny];
 
 obj str "user_quarantine" "doe/bad_user";
+
+export local_mta, internal_net, local_fqdn, doe_family, john, jane, jimmy, jenny, user_quarantine;
+// IMHO this is not the right way 
 ```
 
 ___/etc/vsmtp/rules/main.vsl___
 
 ```c
+import "objects.vsl" as my_obj;   // Even for variables ?????? my_obj::john ????
+
 run_rules!(
   #{
     mail: [
@@ -78,7 +83,7 @@ run_rules!(
       rule "mail_norelay" || if (ctx.mail_from in doe_family) && !(ctx.client_addr in internal_net) 
         { vsl::deny() } else { vsl::accept() },
         //
-        // Comment renvoyer qq chose comme : 554 5.7.1 <local_part@fqdn>: relay access denied
+        // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
         //
       // Paranoid
       rule "mail_default" || deny(), 
@@ -89,7 +94,7 @@ run_rules!(
       // Incoming mails - anti-relaying 
       rule "rcpt_norelay" || if ctx.rcpt.domains != local_fqdn { vsl::deny() } else { vsl::next() },
         //
-        // Comment renvoyer qq chose comme : 554 5.7.1 <local_part@fqdn>: relay access denied
+        // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
         //
       // Quarantine unknown users
       rule "rcpt_nouser" || if !(ctx.rcpt in doe_family) { vsl::quarantine(user_quarantine) }, 
