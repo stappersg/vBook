@@ -68,7 +68,9 @@ obj grp "doe_family" [john, jane, jimmy, jenny];
 obj str "user_quarantine" "doe/bad_user";
 
 export local_mta, internal_net, local_fqdn, doe_family, john, jane, jimmy, jenny, user_quarantine;
+//
 // IMHO this is not the right way 
+//
 ```
 
 ___/etc/vsmtp/rules/main.vsl___
