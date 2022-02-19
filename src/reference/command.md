@@ -78,14 +78,14 @@ Loading configuration at path='/etc/vsmtp/vsmtp.toml'
      "addr_submission": "0.0.0.0:587",
      "addr_submissions": "0.0.0.0:465",
 -    "thread_count": 2                      // DEFAULT configuration
-+    "thread_count": 10                    
++    "thread_count": 10                     // CURRENT configuration
    },
    "log": {
 -    "file": "./trash/log.log",             // DEFAULT configuration            
 +    "file": "/var/log/vsmtp/vsmtp.log",    // CURRENT configuration
      "level": {
--      "default": "OFF"                     // DEFAULT configuration
-+      "resolver": "WARN",                  // CURRENT configuration
+-      "default": "OFF"                     
++      "resolver": "WARN",                  
 +      "default": "WARN",                   // etc.
 +      "rules": "WARN",
 +      "receiver": "INFO"
