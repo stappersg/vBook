@@ -105,6 +105,10 @@ run_rules!(
       // Trailing rule 
       rule "rcpt_default" || accept(),
     ]
+    deliver: [
+      // Using IMAP in local Unix directory
+      action "deliv_local" || vsl::deliver(ctx, maildir),
+    ]
   }
 )
 ```
