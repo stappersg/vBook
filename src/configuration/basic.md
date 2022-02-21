@@ -6,8 +6,8 @@
 
 A personal MTA for Doe's family.
 
-Domain name : foo.bar
-Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
+- Domain name : foo.bar
+- Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
 
 ### Network configuration
 
@@ -103,6 +103,10 @@ import "objects" as my_obj;
     action "rcpt_jenny" || if ctx.rcpt is "jenny" { vsl::bcc(jane) },
     // Trailing rule 
     rule "rcpt_default" || vsl::accept(),
+  ],
+  deliver: [
+    // Using IMAP in local Unix directory
+    action "deliv_local" || vsl::deliver(ctx, maildir),
   ]
 }
 ```
