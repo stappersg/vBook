@@ -17,7 +17,7 @@ vSMTP is written in Rust and must be compiled using Cargo, the Rust package mana
 [Rustup]: https://github.com/rust-lang/rustup
 [Rust website installation]: https://www.rust-lang.org/tools/install
 
-> vSMTP must compiled with a Rust 1.58+ stable version. For stability and security reasons it is not recommended to run vSMTP over a Rust Beta or a Nightly version. More information about Rust release can be founded [here].
+> vSMTP must compiled with a Rust 1.58+ stable version. For stability and security reasons it is not recommended to run vSMTP over a Rust Beta or a Nightly version. More information about Rust release can be found [here].
 
 [here]: https://doc.rust-lang.org/book/appendix-07-nightly-rust.html
 

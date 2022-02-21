@@ -10,7 +10,7 @@ They follow the same syntax :
 
 ```c
 rule "name" || {
-    ... // do stuff
+    ... // check stuff
     vsl::accept() // Rule engine status
 }
 ```
@@ -39,9 +39,9 @@ The same rule, including a log:
 
 ```c
 rule "test_connect" || {
-      vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log);
-      if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
-    }
+    vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log);
+    if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
+}
 ```
 
 &#9998; | String interpolation requires adding ${} to variables.
@@ -50,10 +50,10 @@ An action :
 
 ```c
 action "test_rewrite" || {
-        ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-        ctx.remove_rcpt("customer@company.net");
-        ctx.add_rcpt("no-reply@company.net");
-      },
+    ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+    ctx.remove_rcpt("customer@company.net");
+    ctx.add_rcpt("no-reply@company.net");
+},
 ```
 
 A trailing rule:
@@ -74,11 +74,11 @@ obj fqdn "my_company" "mycompany.net"
 run_rules!(
   #{
     connect: [ 
-        rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() },
         action "log_connect" || vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log),
+        rule "check_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() },
     ]
     rcpt: [
-        action "test_rewrite" || {
+        action "rewrite_recipients" || {
             ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
             ctx.remove_rcpt("customer@company.net");
             ctx.add_rcpt("no-reply@company.net");
@@ -87,7 +87,7 @@ run_rules!(
             rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
         },
         
-        ... // do stuff
+        ... // other rules / actions
 
      ]
   }
@@ -96,7 +96,7 @@ run_rules!(
 
 ## Implicit rules
 
-To avoid undefined behavior, the implicit action in a stage is `next()`.
+To avoid undefined behavior, the implicit action in a stage is `vsl::next()`.
 For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit next() of the last rule will jump to the next stage.
 
 ```c
@@ -120,8 +120,8 @@ run_rules!(
         rule "local_domain" || {
             rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
         },
-        
-        ... // do stuff
+
+        ... // other rules / actions
         
         // Trailing rule (default behavior for rcpt stage)
         rule "default" || vsl::deny() 
@@ -130,4 +130,4 @@ run_rules!(
 )
 ```
 
-> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known flows.
+> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known flows (like the example above).

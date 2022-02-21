@@ -31,7 +31,7 @@ object ip4 "local_MDA" #{
 };
 ```
 
-&#9998; | The last comma is not mandatory.
+&#9998; | The last comma is not mandatory. the "value" field is.
 
 ## Type of implemented objects
 

@@ -2,7 +2,7 @@
 
 > THIS IS A DRAFT - vSMTP v0.9 is required.
 
-Welcome to the vBook, the vSMTP reference guide.
+Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
 
 Be aware that issues found in this documentation may have been fixed in the vSMTP repository already, as vBook is only updated for major releases of vSMTP.
@@ -10,7 +10,7 @@ Be aware that issues found in this documentation may have been fixed in the vSMT
 ## What is vSMTP ?
 
 vSMTP is a next-gen Mail Transfer Agent (MTA) developed by viridIT teams. You
-can follow viridIT teams on [GitHub] and on [viridit.com].
+can follow viridIT on [GitHub] and [viridit.com].
 
 [GitHub]: https://github.com/viridIT/vSMTP
 [viridit.com]: https://www.viridit.com
