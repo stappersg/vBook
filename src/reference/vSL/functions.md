@@ -13,8 +13,8 @@ vsl::accept();
 If the function performs actions on the email, the vSL context `ctx` must be passed as the first argument. However, the context can be omitted if the function has no argument or doesn't require it.
 
 ```c
-vsl::add_rcpt(ctx, `john.doe@mycompany.com`);
-vsl::log(`Hello world !!!`, "/tmp/my_log");   
+vsl::add_rcpt(ctx, "john.doe@mycompany.com");
+vsl::log("Hello world !!!", "/tmp/my_log");   
 ```
 
 ## SMTP state changing functions
@@ -23,11 +23,11 @@ The state of an SMTP transaction can be changed through specific functions sent 
 
 | Description |  syntax | Comment
 | :--- | :--- | :---
-| Accept | accept() | Skip rules in the current stage. Move to the next SMTP stage.
+| Accept | accept() | Skip rules in the current stage. Move to the next SMTP stage. (f.e. rcpt -> preq)
 | Force accept | faccept() |Skip all rules and move the mail to the deliver queue.
 | Continue processing | next() | Jump to the next rule or to the 1st rule of the next stage.
 | Deny processing | deny() | Deny the mail and send a SMTP return code.
-| Quarantine | quarantine(path/file) | Skip all rules and move the mail to a quarantine queue in the specified directory.
+| Quarantine | quarantine(path) | Skip all rules and move the mail to a quarantine queue in the specified directory.
 
 ### About quarantine function
 
@@ -92,13 +92,13 @@ vsl::log_warn(`Hello world !!!`);
 
 ### About the dump function
 
-This function dumps in JSON format only the available content at a stage.  The body still in raw mode if the parsing has not been performed. The filename is `message_id`.
+This function dumps in JSON format only the available content at a stage.  The body still in raw mode if the parsing has not been performed. The filename is the `message id` of the email.
 
 ## Chaining actions
 
 ```rust,ignore
 {
-    vsl::log(`Hello world !!!`, "./tmp/my_file");
+    vsl::log("Hello world !!!", "./tmp/my_file");
     vsl::dump("./tmp/mail/dump/my_file");
 }
 ```
@@ -115,19 +115,18 @@ fn my_faccept() {
     // equivalent to : return vsl::faccept();
 }
 
-???????????
-??????????? j'ai un doute 
-
-fn my_faccept(ctx) {
+// functions in vsl are "pure" (black-boxes), this means that you must
+// pass necessary variables as parameters. (here, 'ctx' to remove john from
+// the recipient list)
+fn my_custom_action(ctx) {
     vsl::remove_rcpt(ctx, "john.doe@mycompany.com");
-    vsl::faccept()
+    vsl::next()
 }
 
-et l'appel de la function ???
-
-
-vsl::my_faccept(ctx)  ????
-
+// execute your functions.
+my_faccept();
+my_custom_action(ctx);
 ```
 
-Executing my_faccept will log the mail and send a FACCEPT status to the SMTP engine.
+Executing `my_faccept` will log `Hello world !!!` and send a FACCEPT status to the SMTP engine.
+Executing `my_custom_action` will log remove john from rcpt and tells the rule engine to proceed to the next rule / action.

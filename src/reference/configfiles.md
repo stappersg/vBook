@@ -2,13 +2,13 @@
 
 vSMTP and its sub-systems use [TOML] language for their configuration files. TOML files are frequently compared to INI for their similarities in syntax and use as configuration files.
 
-[TOML]: https://github.com/toml-lang/toml
+[TOML]: https://toml.io/
 
 TOML uses tables (hash tables) as collections of key/value pairs. Key/value pairs within tables are not guaranteed to be in any specific order. Tables appear in square brackets on a line by themselves. Dots are used to signify nested tables. Nested array of tables are also allowed.
 
 ### The vsmtp.toml file
 
-This is the main configuration file. It should be located in /etc/vsmtp. However it can be modified in the vSM%TP service file.
+This is the main configuration file. It should be located in /etc/vsmtp. However it can be modified in the vSMTP service file.
 
 | Table | Comment
 | :--- | :---

@@ -12,7 +12,7 @@ A personal MTA for Doe's family.
 ### Network configuration
 
 Doe's family has a router/firewall to route and secure their home network.
-There's a small server in the DMZ to manage the family website, emails, etc. 
+There's a small server in the DMZ to manage the family website, emails, etc.
 
 vSMTP is installed on an Ubuntu server 20.04 virtual instance.
 
@@ -76,41 +76,39 @@ export local_mta, internal_net, local_fqdn, doe_family, john, jane, jimmy, jenny
 ___/etc/vsmtp/rules/main.vsl___
 
 ```c
-import "objects.vsl" as my_obj;   // Even for variables ?????? my_obj::john ????
+import "objects" as my_obj;
 
-run_rules!(
-  #{
-    mail: [
-      // Anti-relaying 
-      rule "mail_norelay" || if (ctx.mail_from in doe_family) && !(ctx.client_addr in internal_net) 
-        { vsl::deny() } else { vsl::accept() },
-        //
-        // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
-        //
-      // Paranoid
-      rule "mail_default" || deny(), 
-    ],
-    rcpt: [
-      // Outgoing mails
-      rule "rcpt_outgoing" || if ctx.client_addr in internal_net { vsl::accept() } else { vsl::next() },
-      // Incoming mails - anti-relaying 
-      rule "rcpt_norelay" || if ctx.rcpt.domains != local_fqdn { vsl::deny() } else { vsl::next() },
-        //
-        // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
-        //
-      // Quarantine unknown users
-      rule "rcpt_nouser" || if !(ctx.rcpt in doe_family) { vsl::quarantine(user_quarantine) }, 
-      // Jenny is 11 years old - emails are bcc to jane
-      action "rcpt_jenny" || if ctx.rcpt is "jenny" { vsl::bcc(jane) },
-      // Trailing rule 
-      rule "rcpt_default" || accept(),
-    ]
-    deliver: [
-      // Using IMAP in local Unix directory
-      action "deliv_local" || vsl::deliver(ctx, maildir),
-    ]
-  }
-)
+#{
+  mail: [
+    // Anti-relaying 
+    rule "mail_norelay" || if (ctx.mail_from in my_obj::doe_family) && !(ctx.client_addr in my_obj::internal_net) 
+      { vsl::deny() } else { vsl::accept() },
+      //
+      // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
+      //
+    // Paranoid
+    rule "mail_default" || vsl::deny(), 
+  ],
+  rcpt: [
+    // Outgoing mails
+    rule "rcpt_outgoing" || if ctx.client_addr in my_obj::internal_net { vsl::accept() } else { vsl::next() },
+    // Incoming mails - anti-relaying 
+    rule "rcpt_norelay" || if ctx.rcpt.domains != my_obj::local_fqdn { vsl::deny() } else { vsl::next() },
+      //
+      // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
+      //
+    // Quarantine unknown users
+    rule "rcpt_nouser" || if !(ctx.rcpt in my_obj::doe_family) { vsl::quarantine(user_quarantine) }, 
+    // Jenny is 11 years old - emails are bcc to jane
+    action "rcpt_jenny" || if ctx.rcpt is "jenny" { vsl::bcc(jane) },
+    // Trailing rule 
+    rule "rcpt_default" || vsl::accept(),
+  ],
+  deliver: [
+    // Using IMAP in local Unix directory
+    action "deliv_local" || vsl::deliver(ctx, maildir),
+  ]
+}
 ```
 
 ___vsmtp.toml___
@@ -207,13 +205,11 @@ fn has_virus(services, ctx) {
     result.has_code && result.code != 0
 }
 
-run_rules!(
-    #{
-    preq: [
-        rule "clam_av" || if has_virus(services, ctx) { vsl::quarantine(virus_q) } else { vsl::accept } 
-    ]
-    }
-)
+#{
+  preq: [
+    rule "clam_av" || if has_virus(services, ctx) { vsl::quarantine(virus_q) } else { vsl::accept() } 
+  ]
+}
 ```
 
 ___clamscan.sh___
@@ -223,4 +219,3 @@ ___clamscan.sh___
 echo $1 | clamscan -
 exit $?
 ```
-

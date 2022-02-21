@@ -11,7 +11,7 @@ At each step vSL updates and publishes a global context containing transaction a
 | connect | Before HELO/EHLO command | Connection related information.
 | helo | After HELO/EHLO command | HELO string.
 | mail | After MAIL FROM command | Sender address.
-| rcpt | After RCPT TO command | The entire SMTP envelop.
+| rcpt | After DATA command | The entire SMTP envelop.
 | preq | Before queuing[^preq]  | The entire mail.
 | postq | After queuing[^postq]  | The entire mail.
 | deliver | Before delivering | The entire mail.
@@ -48,8 +48,8 @@ As described above, depending on the stage vSL exposes variables to the end user
 | | mail_from.local_part | string | Sender name.
 | | mail_from.domain | fqdn | Sender fqdn.
 | Rcpt | rcpt | hash(addr) | Hash table containing all recipient addresses.
-| | rcpt.local_part | hash(string) | Recipient names.
-| | rcpt.domain | hash(fqdn) | Recipient fqdn.
+| | rcpt.local_parts | hash(string) | Recipient names.
+| | rcpt.domains | hash(fqdn) | Recipient fqdn.
 | Next stages |  data | string | Email raw data.
 |  | parse[^parse] | vec(struct) | Parsed email.
 
