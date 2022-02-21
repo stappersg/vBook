@@ -83,9 +83,6 @@ import "objects" as my_obj;
     // Anti-relaying 
     rule "mail_norelay" || if (ctx.mail_from in my_obj::doe_family) && !(ctx.client_addr in my_obj::internal_net) 
       { vsl::deny() } else { vsl::accept() },
-      //
-      // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
-      //
     // Paranoid
     rule "mail_default" || vsl::deny(), 
   ],
@@ -94,9 +91,6 @@ import "objects" as my_obj;
     rule "rcpt_outgoing" || if ctx.client_addr in my_obj::internal_net { vsl::accept() } else { vsl::next() },
     // Incoming mails - anti-relaying 
     rule "rcpt_norelay" || if ctx.rcpt.domains != my_obj::local_fqdn { vsl::deny() } else { vsl::next() },
-      //
-      // We must reply sthing like : 554 5.7.1 <local_part@fqdn>: relay access denied
-      //
     // Quarantine unknown users
     rule "rcpt_nouser" || if !(ctx.rcpt in my_obj::doe_family) { vsl::quarantine(user_quarantine) }, 
     // Jenny is 11 years old - emails are bcc to jane

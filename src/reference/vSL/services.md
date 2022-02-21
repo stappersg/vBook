@@ -13,11 +13,12 @@ type = "shell"
 timeout = "15s"
 command = "/usr/local/sbin/my_srv.sh"
 args = "{mail}"
+user = my_user
+group = my_group
 ```
 
-// 
-// Args ?! which ones ?
-// 
+//
+// args = ? {mail} ???
 //
 
 ### Unix socket services
