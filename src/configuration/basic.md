@@ -53,19 +53,19 @@ MX preference = 1, mail exchanger = vsmtp.foo.bar
 ___/etc/vsmtp/rules/object.vsl___
 
 ```c
-obj ip4 "local_mta" "192.168.1.254";
-obj rg4 "internal_net" "192.168.0.0/24";
+object ip4 "local_mta" "192.168.1.254";
+object rg4 "internal_net" "192.168.0.0/24";
 
-obj fqdn "local_fqdn" "foo.bar"
+object fqdn "local_fqdn" "foo.bar"
 
-obj addr "john" "john.doe@foo.bar";
-obj addr "jane" "jane.doe@foo.bar";
-obj addr "jimmy" "jimmy.doe@foo.bar";
-obj addr "jenny" "jenny.doe@foo.bar";
+object addr "john" "john.doe@foo.bar";
+object addr "jane" "jane.doe@foo.bar";
+object addr "jimmy" "jimmy.doe@foo.bar";
+object addr "jenny" "jenny.doe@foo.bar";
 
-obj grp "doe_family" [john, jane, jimmy, jenny];
+object group "doe_family" [john, jane, jimmy, jenny];
 
-obj str "user_quarantine" "doe/bad_user";
+object str "user_quarantine" "doe/bad_user";
 
 export local_mta, internal_net, local_fqdn, doe_family, john, jane, jimmy, jenny, user_quarantine;
 //

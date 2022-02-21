@@ -69,7 +69,7 @@ Rules are bounded to a vSMTP stage. Stages can be omitted but must appear only o
 ```c
 //-- main.vsl
 
-obj fqdn "my_company" "mycompany.net"
+object fqdn "my_company" "mycompany.net"
 
 #{
     connect: [ 
@@ -100,7 +100,7 @@ For security purpose end-users should always add a trailing rule at the end of a
 ```c
 //-- main.vsl
 
-obj fqdn "my_company" "mycompany.net"
+object fqdn "my_company" "mycompany.net"
 
 #{
     connect: [ 
