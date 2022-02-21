@@ -41,15 +41,13 @@ fn my_action2(vsl, rcpts) {
 }
 
 
-run_rules!(
-    #{
-        ... // do stuff
+#{
+    ... // do stuff.
 
-        rcpt: [    
-            rule "rcpt_log" || { if my_condition(vsl) { my_action1(vsl) } else { my_action2(vsl, ctx.rcpt) } },
-        ]
-    }
-)
+    rcpt: [
+        rule "rcpt_log" || { if my_condition(vsl) { my_action1(vsl) } else { my_action2(vsl, ctx.rcpt) } },
+    ]
+}
 
 ```
 
