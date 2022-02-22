@@ -58,14 +58,14 @@ object rg4 "internal_net" "192.168.0.0/24";
 
 object fqdn "local_fqdn" "foo.bar"
 
-object addr "john" "john.doe@foo.bar";
-object addr "jane" "jane.doe@foo.bar";
-object addr "jimmy" "jimmy.doe@foo.bar";
-object addr "jenny" "jenny.doe@foo.bar";
+object address "john" "john.doe@foo.bar";
+object address "jane" "jane.doe@foo.bar";
+object address "jimmy" "jimmy.doe@foo.bar";
+object address "jenny" "jenny.doe@foo.bar";
 
 object group "doe_family" [john, jane, jimmy, jenny];
 
-object str "user_quarantine" "doe/bad_user";
+object string "user_quarantine" "doe/bad_user";
 
 export local_mta, internal_net, local_fqdn, doe_family, john, jane, jimmy, jenny, user_quarantine;
 //

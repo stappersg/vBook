@@ -39,7 +39,7 @@ The following type of objects are supported natively:
 
 | Type | Description | Syntax | Comments
 | :--- | :--- | :--- | :---
-| str | Untyped value | string | Generic variable.
+| string | Untyped value | string | Generic variable.
 | ip4 | IPv4 address | x.y.z.t | Decimal values.
 | ip6 | IPv6 address | a:b:c:d:e:f:g:h | Hex values.
 | rg4 | IPv4 network | x.y.z.t/rg | Decimal values.
