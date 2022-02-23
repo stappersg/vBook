@@ -65,23 +65,68 @@ root     sshd       1053  4  tcp4   *:22                  *:*
 root     syslogd    957   7  udp4   *:514                 *:*
 ```
 
+#### Add vSMTP user:group
+
+```shell
+pw groupadd vsmtp -g 999
+pw useradd vsmtp -u 999 -d /noexistent -g vsmtp -s /sbin/nologin
+chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
+```
+
+## Adding a vSMTP as a system service
+
+This feature has not been tested.
+Please note that version 0.10 will add a new startup mechanism that no longer requires user ACLs.
+
+Please add:
+
+- the flag `vsmtp_enable="YES" in /etc/rc.conf.
+- the vsmtp script in /usr/local/etc/rc.d
+
+```shell
+#! /bin/sh
+
+# PROVIDE: vsmtp
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+
+#
+# Add the following lines to /etc/rc.conf to enable vsmtp:
+#
+# vsmtp_enable="YES"
+
+. /etc/rc.subr
+
+name="vsmtp"
+rcvar="${name}_enable"
+
+load_rc_config $name
+
+: ${vsmtp_enable:=NO}
+: ${vsmtp_config:=/etc/vsmtp/vsmtp.toml}
+: ${vsmtp_flags:=--config}
+
+command="/usr/sbin/vsmtp"
+command_args="${vsmtp_config}"
+
+run_rc_command "$1"
+```
 
 ### Starting with a non privileged user
 
-> Version 0.10 will come with a mechanism to drop privileges at vSMTP startup.
-> On current version (0.9) the vsmtp user must have the rights to bind to ports <1024.
+vSMTP comes with a mechanism to drop privileges at vSMTP startup. If you want to start with an other mechanism please follow these instructions.
 
-The [kernel] must be updated to support network [ACL]. Add to these options to the KERNEL file and rebuild it.
+You must grant the rights to the user to bind on ports <1024. The [kernel] must be updated to support network [ACL]. Add to these options to the KERNEL file and rebuild it.
 
 [kernel]: https://docs.freebsd.org/en/books/handbook/kernelconfig/
 [ACL]: https://docs.freebsd.org/en/books/handbook/mac/
 
-``` 
+```console
 options MAC
 options MAC_PORTACL
 ```
 
-```
+```shell
 cd /usr/src
 make buildkernel KERNCONF=MYKERNEL
 make installkernel KERNCONF=MYKERNEL
@@ -101,14 +146,6 @@ security.mac.max_slots: 4
 security.mac.version: 4
 ```
 
-#### Add vSMTP user:group
-
-```shell
-pw groupadd vsmtp -g 999
-pw useradd vsmtp -u 999 -d /noexistent -g vsmtp -s /sbin/nologin
-chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
-```
-
 ```shell
 $ sysctl security.mac.portacl.rules=uid:999:tcp:25,uid:999:tcp:587,uid:999:tcp:465
 security.mac.portacl.rules: uid:999:tcp:25, -> uid:999:tcp:25,uid:999:tcp:587,uid:999:tcp:465
@@ -120,9 +157,4 @@ $ sysctl net.inet.ip.portrange.reservedhigh=0
 net.inet.ip.portrange.reservedhigh: 1023 -> 0
 ```
 
-vSMTP user should now be enable to bind on standard SMTP ports (25, 587, 465).
-
-## Adding a vSMTP as a system service
-
-This feature has not been tested.
-Please note that version 0.10 will add a new startup mechanism that no longer requires user ACLs.
+The user with uid:should now be enable to bind on standard SMTP ports (25, 587, 465).
