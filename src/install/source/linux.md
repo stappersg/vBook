@@ -80,7 +80,7 @@ Adding new user 'vsmtp' (UID 9999) with group 'vsmtp' ...
 Not creating home directory '/home/vsmtp'.
 ```
 
-vSMTP binaries and config files should located in:
+vSMTP binaries and config files should be located in:
 
 - /usr/sbin/ for binaries
 - /etc/vsmtp/

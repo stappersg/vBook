@@ -12,7 +12,8 @@ The current release has been tested on x86/64 environments. Installing vSMTP on 
 
 Although vSMTP is developed and tested on Ubuntu Server 20.04 with kernel 5.4, all recent Linux distributions should be able to run vSMTP.
 
-FreeBSD, NetBSD and OpenBSD supports are planned for mid-2022.
+FreeBSD 13.x is supported since version 0.9, using the latest port branch which includes Rust 1.58.
+NetBSD and OpenBSD supports are planned for mid-2022.
 
 Microsoft Windows Server is not supported.
 
