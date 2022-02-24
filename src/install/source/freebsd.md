@@ -157,4 +157,4 @@ $ sysctl net.inet.ip.portrange.reservedhigh=0
 net.inet.ip.portrange.reservedhigh: 1023 -> 0
 ```
 
-The user with uid:should now be enable to bind on standard SMTP ports (25, 587, 465).
+The user with uid 999 should now be enable to bind on standard SMTP ports (25, 587, 465).
