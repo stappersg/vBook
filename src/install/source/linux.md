@@ -142,7 +142,7 @@ Copy the daemon configuration file to /etc/systemd/system.
 sudo cp ./example/os-dep/linux/vsmtp.service /etc/systemd/system
 ```
 
-Please note that vSMTP comes with a mechanism to drop privileges at startup and thus the service type must be set to `forking`. Do not modify this file unless you know what you are doing.
+Please note that vSMTP comes with a mechanism that drop privileges at startup. The service type must be set to `forking`.
 
 ```ini
 [Unit]
@@ -162,6 +162,8 @@ TimeoutStopSec=300
 [Install]
 WantedBy=multi-user.target
 ```
+
+> Do not modify this file unless you know what you are doing.
 
 ### Enable and activate vSMTP service
 
@@ -186,14 +188,11 @@ $ sudo systemctl status vsmtp
 ### Check that vSMTP is working properly
 
 ```shell
-$ ss -ltpn
+$ ss -ltpn | grep vsmtp
 State    Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Process
-LISTEN   0        128        192.168.1.102:587           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=5))
-LISTEN   0        128        192.168.1.102:465           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=6))
-LISTEN   0        4096       127.0.0.53%lo:53            0.0.0.0:*       users:(("systemd-resolve",pid=906,fd=13))
-LISTEN   0        128              0.0.0.0:22            0.0.0.0:*       users:(("sshd",pid=990,fd=3))
-LISTEN   0        128        192.168.1.102:25            0.0.0.0:*       users:(("vsmtp",pid=2127,fd=4))
-LISTEN   0        128                 [::]:22               [::]:*       users:(("sshd",pid=990,fd=4))
+LISTEN   0        128        0.0.0.0:587           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=5))
+LISTEN   0        128        0.0.0.0:465           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=6))
+LISTEN   0        128        0.0.0.0:25            0.0.0.0:*       users:(("vsmtp",pid=2127,fd=4))
 
 $ nc -4 localhost 25
 220 mydomain.com Service ready

@@ -13,7 +13,7 @@ Rust port, packages and information can be found on [freshports] website. You ca
 pkg install lang/rust
 ```
 
-> You may have to switch to the latest ports branch. Please refer to the [freeBSD wiki].
+> Rust 1.58+ package is required. You may have to switch to the latest ports branch. Please refer to the [freeBSD wiki].
 
 [freeBSD wiki]: https://wiki.freebsd.org/Ports/QuarterlyBranch
 
@@ -75,8 +75,7 @@ chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 
 ## Adding a vSMTP as a system service
 
-This feature has not been tested.
-Please note that version 0.10 will add a new startup mechanism that no longer requires user ACLs.
+vSMTP  v0.9 comes with a mechanism that drop privileges at startup. User ACLs are no longer needed.
 
 Please add:
 
@@ -114,9 +113,10 @@ run_rc_command "$1"
 
 ### Starting with a non privileged user
 
-vSMTP comes with a mechanism to drop privileges at vSMTP startup. If you want to start with an other mechanism please follow these instructions.
-
-You must grant the rights to the user to bind on ports <1024. The [kernel] must be updated to support network [ACL]. Add to these options to the KERNEL file and rebuild it.
+If you want to start with an other mechanism please follow these instructions.
+You must grant the rights to the user to bind on ports <1024.
+The [kernel] must be updated to support network [ACL].
+Add to these options to the KERNEL file and rebuild it.
 
 [kernel]: https://docs.freebsd.org/en/books/handbook/kernelconfig/
 [ACL]: https://docs.freebsd.org/en/books/handbook/mac/
