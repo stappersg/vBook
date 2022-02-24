@@ -2,7 +2,7 @@
 
 The installation described above was performed on an Ubuntu Server 20.04. There may be slight changes to apply for other distributions.
 
-## Installing RUST language
+## Install RUST language
 
 If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and follow the instructions.
 
@@ -12,7 +12,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 [Rustup]: https://github.com/rust-lang/rustup
 
-## Checking dependencies
+## Check dependencies
 
 vSMTP requires libc libraries and GCC compiler/linker. On a Debian system these can be installed through the build-essential package.
 
@@ -25,9 +25,13 @@ The Debian package is libssl-dev package.
 
 [OpenSSL development libraries]: https://www.openssl.org/
 
+The `pkg-config` package is also required.
+
 ```shell
 sudo apt install libssl-dev
+sudo apt install pkg-config
 ```
+
 
 ## vSMTP compilation
 
@@ -63,7 +67,7 @@ SUBCOMMANDS:
 
 By default Rust/Cargo use static linking to compile - all libraries required are compiled into the executable - allowing vSMTP to be a standalone application.
 
-## Configuring the Operating System for vSMTP
+## Configure the Operating System for vSMTP
 
 For security purpose, vSMTP should run using a dedicated account with minimal privileges.
 
@@ -130,19 +134,36 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 
 &#9758; | Depending on Linux distributions, instead of `ss` command you may have to use `netstat -ltpn`
 
-### Adding vSMTP as a systemd service
-
-The vsmtp user must have the rights to bind to ports <1024.
-
-&#9998; | Version 0.10 will come with a mechanism to drop privileges at vSMTP startup.
+### Add vSMTP as a systemd service
 
 Copy the daemon configuration file to /etc/systemd/system.
 
 ```shell
-sudo cp ./config/vsmtp.service /etc/systemd/system
+sudo cp ./example/os-dep/linux/vsmtp.service /etc/systemd/system
 ```
 
-Enable and activate vSMTP service.
+Please note that vSMTP comes with a mechanism to drop privileges at startup and thus the service type must be set to `forking`. Do not modify this file unless you know what you are doing.
+
+```ini
+[Unit]
+Description=vSMTP Mail Transfer Agent
+Conflicts=sendmail.service exim4.service postfix.service
+ConditionPathExists=/etc/vsmtp/vsmtp.toml
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+UMask=007
+ExecStart=/usr/sbin/vsmtp -c /etc/vsmtp/vsmtp.toml
+Restart=on-failure
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### Enable and activate vSMTP service
 
 ```shell
 $ sudo systemctl enable vsmtp.service
@@ -160,13 +181,20 @@ $ sudo systemctl status vsmtp
      CGroup: /system.slice/vsmtp.service
              └─2164 /usr/sbin/vsmtp -c /etc/vsmtp/vsmtp.toml
 
-$ sudo netstat -ltpn | grep ":25"
-tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      39739/vsmtp
 ```
 
-Connect to the vSMTP server using a netcat or a telnet client.
+### Check that vSMTP is working properly
 
 ```shell
+$ ss -ltpn
+State    Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Process
+LISTEN   0        128        192.168.1.102:587           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=5))
+LISTEN   0        128        192.168.1.102:465           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=6))
+LISTEN   0        4096       127.0.0.53%lo:53            0.0.0.0:*       users:(("systemd-resolve",pid=906,fd=13))
+LISTEN   0        128              0.0.0.0:22            0.0.0.0:*       users:(("sshd",pid=990,fd=3))
+LISTEN   0        128        192.168.1.102:25            0.0.0.0:*       users:(("vsmtp",pid=2127,fd=4))
+LISTEN   0        128                 [::]:22               [::]:*       users:(("sshd",pid=990,fd=4))
+
 $ nc -4 localhost 25
 220 mydomain.com Service ready
 451 Timeout - closing connection.
