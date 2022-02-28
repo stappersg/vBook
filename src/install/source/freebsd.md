@@ -35,14 +35,11 @@ Create the directories and change the owner and group.
 
 ```shell
 mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
-```
-
-Copy the vsmtp binaries and the config files.
-
-```shell
-cp /home/freebsd/vSMTP//target/release/vsmtp /usr/sbin/
+cp ./target/release/vsmtp /usr/sbin/
+cp ./examples/install/vsmtp.toml /etc/vsmtp/vsmtp.toml
+cp ./examples/install/main.vsl /etc/vsmtp/rules/main.vsl
 chmod 555 /usr/sbin/vsmtp
-cp -p ./src/config/template/simple.toml /etc/vsmtp/vsmtp.toml
+chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
 ### Disabling sendmail
@@ -57,13 +54,6 @@ sendmail_msp_queue_enable="NO"
 ```
 
 Use sockstat command to check that sendmail is disabled.
-
-```shell
-# sockstat -4l
-USER     COMMAND    PID   FD PROTO  LOCAL ADDRESS         FOREIGN ADDRESS
-root     sshd       1053  4  tcp4   *:22                  *:*
-root     syslogd    957   7  udp4   *:514                 *:*
-```
 
 #### Add vSMTP user:group
 
@@ -81,6 +71,10 @@ Please add:
 
 - the flag `vsmtp_enable="YES" in /etc/rc.conf.
 - the vsmtp script in /usr/local/etc/rc.d
+
+```shell
+cp ./examples/install/os-dep/freebsd-vsmtp.service /usr/local/etc/rc.d/vsmtp
+```
 
 ```shell
 #! /bin/sh
