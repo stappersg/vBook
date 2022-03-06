@@ -103,6 +103,8 @@ sudo cp ./examples/install/main.vsl /etc/vsmtp/rules/main.vsl
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
+Do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
+
 ## Configuring the MTA service
 
 ### Check and disable current MTA
