@@ -42,6 +42,8 @@ chmod 555 /usr/sbin/vsmtp
 chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
+Do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
+
 ### Disabling sendmail
 
 Sendmail may have been disabled during FreeBSD install. If not, add the following in the /etc/rc.conf file and reboot the system.
