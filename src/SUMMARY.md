@@ -16,6 +16,10 @@
   - [Content inspection]()
   - [SMTP relay]()
   - [Policy delegation]()
+  - [Email authentication mechanisms](configuration/eam.md)
+    - [Sender Policy Framework](configuration/eam/spf.md)
+    - [DomainKeys Identified Mail](configuration/eam/dkim.md)
+    - [Domain-based Message Authentication, Reporting and Conformance]()
   - [Problem solving]()
 
 # Reference Guide
