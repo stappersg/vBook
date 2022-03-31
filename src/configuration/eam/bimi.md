@@ -1,4 +1,4 @@
-# Brand Indicators for Message Identification 
+# Brand Indicators for Message Identification
 
 > ___This is a DRAFT for v0.12 features___
 
