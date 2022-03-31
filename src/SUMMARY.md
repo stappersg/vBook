@@ -21,7 +21,8 @@
     - [DKIM](configuration/eam/dkim.md)
     - [DMARC](configuration/eam/dmarc.md)
     - [BIMI](configuration/eam/bimi.md)
-  - [Problem solving]()
+  - [Secured transfort between MTAs](configuration/dane.md)
+- [Problem solving]()
 
 # Reference Guide
 
@@ -36,3 +37,4 @@
   - [Delivery](reference/vSL/delivery.md)
   - [Services](reference/vSL/services.md)
   - [Advanced Usage](reference/vSL/advanced.md)
+ 
