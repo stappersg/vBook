@@ -95,15 +95,14 @@ The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Aut
 
 | Code | X.7.23 |
 | :--- | :--- |
-| Sample Text | SPF validation failed |
-| Associated basic status code | 550 |
+| Text | SPF validation failed |
+| Basic status code | 550 |
 | Description | A message completed an SPF check that produced a "fail" result |
 | Used in place of| 5.7.1, as described in Section 8.4 of RFC 7208.|
-
+| | |
 | Code | X.7.24 |
-| :--- | :--- |
-| Sample Text | SPF validation error |
-| Associated basic status code | 451/550 |
+| Text | SPF validation error |
+| Basic status code | 451/550 |
 | Description | Evaluation of SPF relative to an arriving message resulted in an error. |
 | Used in place of | 4.4.3 or 5.5.2, as described in Sections 8.6 and 8.7 of RFC 7208. |
 
@@ -111,15 +110,14 @@ The following error codes can also be sent by the SPF framework.
 
 | Code | X.7.25 |
 | :--- | :--- |
-| Sample Text | Reverse DNS validation failed |
-| Associated basic status code | 550 |
+| Text | Reverse DNS validation failed |
+| Basic status code | 550 |
 | Description | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
 | Used in place of | n/a |
-
+| | |
 | Code | X.7.26 |
-| :--- | :--- |
-| Sample Text | Multiple authentication checks failed |
-| Associated basic status code | 500
+| Text | Multiple authentication checks failed |
+| Basic status code | 500 |
 | Description | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of | n/a |
 

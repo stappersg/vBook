@@ -79,20 +79,20 @@ The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Aut
 | Code | X.7.20 |
 | :--- | :--- |
 | Text| No passing DKIM signature found |
-| Basic status code | 550
-| Description | A message did not contain any passing DKIM signatures.
+| Basic status code | 550 |
+| Description | A message did not contain any passing DKIM signatures. |
 
 | Code | X.7.21 |
 | :--- | :--- |
-| Text | No acceptable DKIM signature found
-| Basic status code | 550
-| Description | A message contains one or more passing DKIM signatures, but none are acceptable.
+| Text | No acceptable DKIM signature found |
+| Basic status code | 550 |
+| Description | A message contains one or more passing DKIM signatures, but none are acceptable. |
 
 | Code | X.7.22 |
 | :--- | :--- |
 | Text | No valid author-matched DKIM signature found. |
 | Basic status code | 550 |
-| Description | A message contains one or more passing DKIM signatures, but none are acceptable because none have an identifier(s) that matches the author address(es) found in the From header field.
+| Description | A message contains one or more passing DKIM signatures, but none are acceptable because none have an identifier(s) that matches the author address(es) found in the From header field. |
 
 The following error codes can also be sent by the DKIM framework.
 
@@ -106,7 +106,7 @@ The following error codes can also be sent by the DKIM framework.
 | Code | X.7.26 |
 | :--- | :--- |
 | Text | Multiple authentication checks failed |
-| Basic status code | 500
+| Basic status code | 500 |
 | Description | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of | n/a |
 
