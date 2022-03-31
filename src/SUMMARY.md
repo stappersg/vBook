@@ -19,7 +19,8 @@
   - [Email authentication mechanisms](configuration/eam.md)
     - [Sender Policy Framework](configuration/eam/spf.md)
     - [DomainKeys Identified Mail](configuration/eam/dkim.md)
-    - [Domain-based Message Authentication, Reporting and Conformance]()
+    - [Domain-based Message Authentication, Reporting and Conformance](configuration/eam/dmarc.md)
+    - [Brand Indicators for Message Identification](configuration/eam/bimi.md)
   - [Problem solving]()
 
 # Reference Guide
