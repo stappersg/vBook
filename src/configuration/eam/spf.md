@@ -4,7 +4,7 @@
 
 This document specifies the vSMTP implementation of the Sender Policy Framework (SPF) protocol described in [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html).
 
-The Sender Policy Framework, or SPF, is an authentication standard for linking a domain name and an email address. it allows email clients to verify that incoming email from a domain comes from a host authorized by the administrator of this domain.
+SPF is an authentication standard for linking a domain name and an email address. it allows email clients to verify that incoming email from a domain comes from a host authorized by the administrator of this domain.
 
 The SPF framework allows the ADministrative Management Domains (ADMDs) to explicitly authorize hosts to send email. The authorization list is published in the DNS records of the sender's domain.
 
