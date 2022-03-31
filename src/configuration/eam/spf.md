@@ -77,8 +77,10 @@ Results should be recorded in the message header. According to RFCs, two options
 1. The "Received-SPF" header
 
 ```shell
-Received-SPF: pass (mybox.example.org: domain of myname@example.com designates 192.0.2.1 as permitted sender)
-receiver=mybox.example.org; client-ip=192.0.2.1; envelope-from="myname@example.com"; helo=foo.example.com;
+Received-SPF: pass (mybox.example.org: domain of myname@example.com 
+                            designates 192.0.2.1 as permitted sender)
+receiver=mybox.example.org; client-ip=192.0.2.1; 
+                envelope-from="myname@example.com"; helo=foo.example.com;
 ```
 
 2. The "Authentication-Results" header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) : Message Header Field for Indicating Message Authentication Status.
@@ -128,7 +130,7 @@ The following error codes can also be sent by the SPF framework.
 TO DO
 ```
 
-```rust
+```c
 /// main.vsl
 
 TO DO

@@ -121,7 +121,7 @@ TO DO
 TO DO
 ```
 
-```rust
+```c
 /// main.vsl
 TO DO
 ```
