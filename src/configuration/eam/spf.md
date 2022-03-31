@@ -1,6 +1,6 @@
 # Sender Policy Framework (SPF)
 
-> ___This is DRAFT for v0.11 features___
+> ___This is a DRAFT for v0.11 features___
 
 This document specifies the vSMTP implementation of the Sender Policy Framework (SPF) protocol described in [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html).
 
@@ -76,22 +76,22 @@ Results should be recorded in the message header. According to RFCs, two options
 
 1. The "Received-SPF" header
 
-```shell
-Received-SPF: pass (mybox.example.org: domain of myname@example.com 
-                            designates 192.0.2.1 as permitted sender)
-receiver=mybox.example.org; client-ip=192.0.2.1; 
-                envelope-from="myname@example.com"; helo=foo.example.com;
-```
+    ```shell
+    Received-SPF: pass (mybox.example.org: domain of myname@example.com 
+                                designates 192.0.2.1 as permitted sender)
+    receiver=mybox.example.org; client-ip=192.0.2.1; 
+                    envelope-from="myname@example.com"; helo=foo.example.com;
+    ```
 
 2. The "Authentication-Results" header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) : Message Header Field for Indicating Message Authentication Status.
 
-```shell
-Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
-```
+    ```shell
+    Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
+    ```
 
 ### SPF failure codes
 
-The [RFC 7372]() "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
+The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
 | Code | X.7.23 |
 | :--- | :--- |

@@ -1,10 +1,10 @@
 # DomainKeys Identified Message
 
-> ___This is DRAFT for v0.11 features___
+> ___This is a DRAFT for v0.11 features___
 
 This document specifies the vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
 
-The DomainKeys Identified Mail (DKIM) is an open standard for email authentication that verifies the message of an email. DKIM gives emails a signature header which is added to the email. This signature is secured by a key pair (private/public) and a certificate. 
+The DomainKeys Identified Mail (DKIM) is an open standard for email authentication that verifies the message of an email. DKIM gives emails a signature header which is added to the email. This signature is secured by a key pair (private/public) and a certificate.
 
 > DKIM signatures work like a watermark. Therefore, they survive forwarding, which is not the case for SPF.
 
@@ -20,7 +20,7 @@ Unlike SPF authentication, your domain can have multiple DNS DKIM records withou
 
 A domain can have multiple public keys if it has multiple mail servers (each mail server has its own private key that matches only one public key). A selector is an attribute within a DKIM signature that helps the recipient's server find the correct public key in the sender's DNS.
 
-A DKIM record must be placed in at address : `[selector]._domainkey.[domain].` and the query on may only result in one TXT type record maximum. 
+A DKIM record must be placed in at address : `[selector]._domainkey.[domain].` and the query on may only result in one TXT type record maximum.
 
 > DKIM keys are not meant to be changed frequently. A high time-to-live (TTL) value of 86400 seconds or more is not uncommon.
 
@@ -35,7 +35,6 @@ For detailed information about fields in a DKIM record please check the [RFC 637
 ## vSMTP implementation
 
 vSMTP can act as `signer` or `verifier` as described in the RFC.
-
 
 ### Results of Evaluation
 
@@ -75,7 +74,7 @@ DKIM-Signature:  v=1; a=rsa-sha256; s=gatsby; d=example.com;
 
 ### DKIM failure codes
 
-The [RFC 7372]() "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
+The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
 | Code | X.7.20 |
 | :--- | :--- |
@@ -93,7 +92,7 @@ The [RFC 7372]() "Email Auth Status Codes" introduces new status codes for repor
 | :--- | :--- |
 | Text | No valid author-matched DKIM signature found. |
 | Basic status code | 550 |
-| Description | A message contains one or more passing DKIM signatures, but none are acceptable because none have an identifier(s) that matches the author address(es) found in the From header field. 
+| Description | A message contains one or more passing DKIM signatures, but none are acceptable because none have an identifier(s) that matches the author address(es) found in the From header field.
 
 The following error codes can also be sent by the DKIM framework.
 
