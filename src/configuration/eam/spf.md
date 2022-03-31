@@ -59,15 +59,16 @@ vSMTP allows utilization of the SPF framework only at the "MAIL FROM" stage.
 
 The vSMTP SPF verifier implements results semantically equivalent to the RFC.
 
-| Result | Statement | Description |
-| :--- | :--- | :--- |
-| None | Explicit | (a) no syntactically valid DNS domain name was extracted from the SMTP session that could be used as the one to be or (b) no SPF records were retrieved from the DNS.|
-| Neutral | Explicit | The ADMD has explicitly stated that it is not asserting whether the IP address is authorized. |
-| Pass | Explicit | The client is authorized to inject mail with the given identity. |
-| Fail | Explicit | The client is not authorized to use the domain in the given identity. |
-| Softfail | Weak | The host is probably not authorized but the ADMD has not published a stronger policy. |
-| Temperror | Weak | A transient (generally DNS) error while performing the check. |
-| Permerror | Explicit | The domain's published records (DNS) could not be correctly interpreted. |
+| Result | Description |
+| :--- | :--- |
+| none | (a) no syntactically valid DNS domain name was extracted from the SMTP session that could be used as the one to be or (b) no SPF records were retrieved from the DNS.|
+| neutral | The ADMD has explicitly stated that it is not asserting whether the IP address is authorized. |
+| pass | The client is authorized to inject mail with the given identity. |
+| fail | The client is not authorized to use the domain in the given identity. |
+| softfail | The host is probably not authorized but the ADMD has not published a stronger policy. |
+| temperror | A transient (generally DNS) error while performing the check. |
+| permerror | The domain's published records (DNS) could not be correctly interpreted. |
+| policy | Added by [RFC 8601, Section 2.4](https://www.rfc-editor.org/rfc/rfc8601#section-2.4) - indicate that some local policy mechanism was applied that augments or even replaces (i.e., overrides) the result returned by the authentication mechanism.  The property and value in this case identify the local policy that was applied and the result it returned. |
 
 ### Results headers
 
@@ -124,17 +125,11 @@ The following error codes can also be sent by the SPF framework.
 
 ```toml
 [app.spf]
-spf_enable = "yes | no"
-check_helo = "yes | no"
-allow_helo_ip = "yes | no"
-check_mailfrom = "yes | no"
-spf_policy = "helo | mail | mail OR helo | mail AND helo"
-header_result = "no | received-spf | authentication-results | both"
+TO DO
 ```
 
 ```rust
-rule mail "psf" blahblah {
-    mslk  mlkm lk mlk mlk 
-    mlsdmflk mlk mlsdk mlsdk
-}
+/// main.vsl
+
+TO DO
 ```

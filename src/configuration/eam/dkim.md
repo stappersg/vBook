@@ -6,10 +6,9 @@ This document specifies the vSMTP implementation of the DomainKeys Identified Ma
 
 The DomainKeys Identified Mail (DKIM) is an open standard for email authentication that verifies the message of an email. DKIM gives emails a signature header which is added to the email. This signature is secured by a key pair (private/public) and a certificate. 
 
-> DKIM signatures work like a watermark. Therefore, they survive forwarding, which is not the case for SPF, another standard for email authentication.
+> DKIM signatures work like a watermark. Therefore, they survive forwarding, which is not the case for SPF.
 
 Assertion of responsibility is validated through a cryptographic signature and by querying the Signer's domain directly to retrieve the appropriate public key.
-
 
 ## DNS records
 
@@ -17,129 +16,112 @@ Like the SPF protocol, DKIM is a DNS TXT record inserted into the sender domain'
 
 DKIM selectors are used to connect and decrypt encrypted signatures.
 
-Here is a basic SPF record example. Please refer to RFC 7208 for further details.
+Unlike SPF authentication, your domain can have multiple DNS DKIM records without causing a problem.
+
+A domain can have multiple public keys if it has multiple mail servers (each mail server has its own private key that matches only one public key). A selector is an attribute within a DKIM signature that helps the recipient's server find the correct public key in the sender's DNS.
+
+A DKIM record must be placed in at address : `[selector]._domainkey.[domain].` and the query on may only result in one TXT type record maximum. 
+
+> DKIM keys are not meant to be changed frequently. A high time-to-live (TTL) value of 86400 seconds or more is not uncommon.
+
+Here is an example of a DKIM record:
 
 ```shell
-example.com.          TXT "v=spf1 +mx ip4:123.123.123.0/24 -all"
+mail._domainkey.example.com. 86400 IN TXT "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG...
 ```
 
-It means "only servers in the range 123.123.123.0/24 and MTA (MX) are authorized to send emails from my domain example.com. All senders not listed here are considered unauthorized. "
-
-Besides the aforementioned "-all" there is also a tilde version: ~all. It indicates that other senders are not allowed, but must still be accepted. This “Soft Fail” statement was first introduced for testing purposes, but is now used by various hosting providers.
-
-> Use of wildcard records for publishing is discouraged.
+For detailed information about fields in a DKIM record please check the [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html#section-3.5).
 
 ## vSMTP implementation
 
-### HELO/EHLO Identity
+vSMTP can act as `signer` or `verifier` as described in the RFC.
 
-The RFC 7208 does not enforce a HELO/EHLO verification.
-
-> "It is RECOMMENDED that SPF verifiers not only check the "MAIL FROM" identity but also separately check the "HELO" identity
-[...] Additionally, since SPF records published for "HELO" identities refer to a single host, when available, they are a very reliable source of host authorization status.  Checking "HELO" before "MAIL FROM" is the RECOMMENDED sequence if both are checked."
-
-Even if the RFC 5321 tends to normalize the HELO/EHLO arguments as the fully qualified domain name of the SMTP client, the vSMTP SPF verifier is prepared for the identity to be an IP address literal or simply be malformed.  
-
-> "SPF check can only be performed when the "HELO" string is a valid, multi-label domain name."
-
-Despite what RFC 7208 explains, the vSMTP SPF checker can also work with IP addresses.
-
-### MAIL FROM identity
-
-According to RFC, "MAIL FROM" check occurs when :
-
-> "SPF verifiers MUST check the "MAIL FROM" identity if a "HELO" check either has not been performed or has not reached a definitive policy result."
-
-Please notes that [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html#section-4.5.5) allows the reverse-path to be null. In this case, the RFC 7208 defines the "MAIL FROM" identity to be the mailbox composed of the local-part "postmaster" and the "HELO" identity.
-
-### Location of checks
-
-As defined by the RFC :
-
-> "The authorization check SHOULD be performed during the processing of the SMTP transaction that receives the mail. This reduces the complexity of determining the correct IP address to use as an input to check_host() and allows errors to be returned directly to the sending MTA by way of SMTP replies."
-
-vSMTP allows utilization of the SPF framework only at the "MAIL FROM" stage.
 
 ### Results of Evaluation
 
-The vSMTP SPF verifier implements results semantically equivalent to the RFC.
+The vSMTP DKIM verifier implements results semantically equivalent to the RFC.
 
-| Result | Statement | Description |
-| :--- | :--- | :--- |
-| None | Explicit | (a) no syntactically valid DNS domain name was extracted from the SMTP session that could be used as the one to be or (b) no SPF records were retrieved from the DNS.|
-| Neutral | Explicit | The ADMD has explicitly stated that it is not asserting whether the IP address is authorized. |
-| Pass | Explicit | The client is authorized to inject mail with the given identity. |
-| Fail | Explicit | The client is not authorized to use the domain in the given identity. |
-| Softfail | Weak | The host is probably not authorized but the ADMD has not published a stronger policy. |
-| Temperror | Weak | A transient (generally DNS) error while performing the check. |
-| Permerror | Explicit | The domain's published records (DNS) could not be correctly interpreted. |
+| Result | Description |
+| :--- | :--- |
+| none | The message was not signed.
+| pass | The message was signed, the signature or signatures were acceptable to the ADMD, and the signature(s) passed verification tests.
+| fail | The message was signed and the signature or signatures were acceptable to the ADMD, but they failed the verification test(s).
+| policy | The message was signed, but some aspect of the signature or signatures was not acceptable to the ADMD.
+| neutral | The message was signed, but the signature or signatures contained syntax errors or were not otherwise able to be processed.  This result is also used for other failures not covered elsewhere in this list.
+| temperror | The message could not be verified due to some error that is likely transient in nature, such as a temporary inability to retrieve a public key.  A later attempt may produce a final result.
+| permerror | The message could not be verified due to some error that is unrecoverable, such as a required header field being absent. A later attempt is unlikely to produce a final result.
 
 ### Results headers
 
-Results should be recorded in the message header. According to RFCs, two options are available :
+Results should be recorded in the message header before any existing DKIM-Signature or preexisting
+authentication status header fields in the header field block.
 
-1. The "Received-SPF" header
-
-```shell
-Received-SPF: pass (mybox.example.org: domain of myname@example.com designates 192.0.2.1 as permitted sender)
-receiver=mybox.example.org; client-ip=192.0.2.1; envelope-from="myname@example.com"; helo=foo.example.com;
-```
-
-2. The "Authentication-Results" header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) : Message Header Field for Indicating Message Authentication Status.
+Unlike SPF there's no specific DKIM header thus the `Authentication-Results` header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) should be used.
 
 ```shell
-Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
+Authentication-Results: example.com;
+            dkim=pass (good signature) header.d=example.com
+Received: from mail-router.example.com
+                (mail-router.example.com [192.0.2.1])
+            by auth-checker.example.com (8.11.6/8.11.6)
+                with ESMTP id i7PK0sH7021929;
+            Fri, Feb 15 2002 17:19:22 -0800
+DKIM-Signature:  v=1; a=rsa-sha256; s=gatsby; d=example.com;
+            t=1188964191; c=simple/simple; h=From:Date:To:Subject:
+            Message-Id:Authentication-Results;
+            bh=sEuZGD/pSr7ANysbY3jtdaQ3Xv9xPQtS0m70;
+            b=EToRSuvUfQVP3Bkz ... rTB0t0gYnBVCM=
 ```
 
-### SPF failure codes
+### DKIM failure codes
 
 The [RFC 7372]() "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
-| Code | X.7.23 |
+| Code | X.7.20 |
 | :--- | :--- |
-| Sample Text | SPF validation failed |
-| Associated basic status code | 550 |
-| Description | A message completed an SPF check that produced a "fail" result |
-| Used in place of| 5.7.1, as described in Section 8.4 of RFC 7208.|
+| Text| No passing DKIM signature found |
+| Basic status code | 550
+| Description | A message did not contain any passing DKIM signatures.
 
-| Code | X.7.24 |
+| Code | X.7.21 |
 | :--- | :--- |
-| Sample Text | SPF validation error |
-| Associated basic status code | 451/550 |
-| Description | Evaluation of SPF relative to an arriving message resulted in an error. |
-| Used in place of | 4.4.3 or 5.5.2, as described in Sections 8.6 and 8.7 of RFC 7208. |
+| Text | No acceptable DKIM signature found
+| Basic status code | 550
+| Description | A message contains one or more passing DKIM signatures, but none are acceptable.
 
-The following error codes can also be sent by the SPF framework.
+| Code | X.7.22 |
+| :--- | :--- |
+| Text | No valid author-matched DKIM signature found. |
+| Basic status code | 550 |
+| Description | A message contains one or more passing DKIM signatures, but none are acceptable because none have an identifier(s) that matches the author address(es) found in the From header field. 
+
+The following error codes can also be sent by the DKIM framework.
 
 | Code | X.7.25 |
 | :--- | :--- |
-| Sample Text | Reverse DNS validation failed |
-| Associated basic status code | 550 |
+| Text | Reverse DNS validation failed |
+| Basic status code | 550 |
 | Description | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
 | Used in place of | n/a |
 
 | Code | X.7.26 |
 | :--- | :--- |
-| Sample Text | Multiple authentication checks failed |
-| Associated basic status code | 500
+| Text | Multiple authentication checks failed |
+| Basic status code | 500
 | Description | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of | n/a |
 
 ## vSMTP example
 
 ```toml
-[app.spf]
-spf_enable = "yes | no"
-check_helo = "yes | no"
-allow_helo_ip = "yes | no"
-check_mailfrom = "yes | no"
-spf_policy = "helo | mail | mail OR helo | mail AND helo"
-header_result = "no | received-spf | authentication-results | both"
+[app.dkim.signer]
+TO DO
+
+[app.dkim.verifier]
+TO DO
 ```
 
 ```rust
-rule mail "psf" blahblah {
-    mslk  mlkm lk mlk mlk 
-    mlsdmflk mlk mlsdk mlsdk
-}
+/// main.vsl
+TO DO
 ```
