@@ -39,6 +39,9 @@ Even if the RFC 5321 tends to normalize the HELO/EHLO arguments as the fully qua
 
 Despite what RFC 7208 explains, the vSMTP SPF checker can also work with IP addresses.
 
+These behavior are set with the `key = value`and `key = value` in the TOML configuration file.
+
+
 ### MAIL FROM identity
 
 According to RFC, "MAIL FROM" check occurs when :
@@ -46,6 +49,8 @@ According to RFC, "MAIL FROM" check occurs when :
 > "SPF verifiers MUST check the "MAIL FROM" identity if a "HELO" check either has not been performed or has not reached a definitive policy result."
 
 Please notes that [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html#section-4.5.5) allows the reverse-path to be null. In this case, the RFC 7208 defines the "MAIL FROM" identity to be the mailbox composed of the local-part "postmaster" and the "HELO" identity.
+
+These behavior are set with the `key = value`and `key = value` in the TOML configuration file.
 
 ### Location of checks
 
@@ -88,6 +93,8 @@ Results should be recorded in the message header. According to RFCs, two options
     ```shell
     Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
     ```
+
+These behavior are set with the `key = value`and `key = value` in the TOML configuration file.
 
 ### SPF failure codes
 
