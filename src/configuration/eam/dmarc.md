@@ -1,4 +1,4 @@
-# DomainKeys Identified Message
+# Domain-based Message Authentication, Reporting and Conformance 
 
 > ___This is a DRAFT for v0.12 features___
 
