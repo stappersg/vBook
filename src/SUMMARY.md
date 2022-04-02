@@ -20,8 +20,9 @@
     - [SPF](configuration/eam/spf.md)
     - [DKIM](configuration/eam/dkim.md)
     - [DMARC](configuration/eam/dmarc.md)
+    - [ARC](configuration/eam/arc.md)
     - [BIMI](configuration/eam/bimi.md)
-  - [Secured transfort between MTAs](configuration/dane.md)
+  - [SMTP security between MTAs](configuration/dane.md)
 - [Problem solving]()
 
 # Reference Guide
@@ -37,4 +38,3 @@
   - [Delivery](reference/vSL/delivery.md)
   - [Services](reference/vSL/services.md)
   - [Advanced Usage](reference/vSL/advanced.md)
- 

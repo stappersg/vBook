@@ -11,6 +11,8 @@ There are two aspects of BIMI coordination:
 1. A scalable mechanism for Domain Owners to publish their desired Indicators
 2. A mechanism for Mail Transfer Agents (MTAs) to verify the authenticity of the Indicator.
 
-> BIMI status is "Internet-Draft". It is inappropriate to use Internet-Drafts as reference material. It should be considered as a "work in progress" document.
+> The current BIMI RFC is not an Internet Standards Track specification. It is "Internet-Draft". Please remember that it is inappropriate to use Internet-Drafts as reference material.
 
-The implementation of this feature in the vSMTP framework is planned for version 0.12.
+Until BIMI RFC is not released as an "Internet Standard" the vSMTP implementation should be considered as a "work in progress".
+
+The implementation of this feature in the vSMTP framework is planned for v0.12.
