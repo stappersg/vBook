@@ -40,16 +40,16 @@ As described above, depending on the stage vSL exposes variables to the end user
 
 | Stage | Name | Type | Description
 | :--- | :--- | :--- | :---
-| Connect | client_addr | ip4/ip6 | Source IP address.
-| | ${port} | int | Source port ?????????????
-| | timestamp | POSIX timestamp | Connection timestamp
+| Connect | client_ip | ip4/ip6 | Source IP address.
+| | client_port | int | Source port.
+| | connect_timestamp | POSIX timestamp | Connection timestamp.
 | Helo | helo | string | HELO/EHLO SMTP value.
 | Mail | mail_from | addr | Sender email address.
-| | mail_from.local_part | string | Sender name.
+| | mail_from.local_part | string | Sender identifier.
 | | mail_from.domain | fqdn | Sender fqdn.
-| Rcpt | rcpt | hash(addr) | Hash table containing all recipient addresses.
-| | rcpt.local_parts | hash(string) | Recipient names.
-| | rcpt.domains | hash(fqdn) | Recipient fqdn.
+| Rcpt | rcpt | array[addr] | Array of recipient addresses.
+| | rcpt.local_parts | array[string] | Array of recipient identifier.
+| | rcpt.domains | array[fqdn] | Array of recipient fqdn.
 | Next stages |  data | string | Email raw data.
 |  | parse[^parse] | vec(struct) | Parsed email.
 

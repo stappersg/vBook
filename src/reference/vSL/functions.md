@@ -12,9 +12,12 @@ vsl::accept();
 
 If the function performs actions on the email, the vSL context `ctx` must be passed as the first argument. However, the context can be omitted if the function has no argument or doesn't require it.
 
+!!!!!!!!!!!! PARLER DU CONTEXTE SRV
+
+
 ```c
 vsl::add_rcpt(ctx, "john.doe@mycompany.com");
-vsl::log("Hello world !!!", "/tmp/my_log");   
+vsl::log("warn", "Hello world !!!");   
 ```
 
 ## SMTP state changing functions
@@ -27,7 +30,7 @@ The state of an SMTP transaction can be changed through specific functions sent 
 | Force accept | faccept() |Skip all rules and move the mail to the deliver queue.
 | Continue processing | next() | Jump to the next rule or to the 1st rule of the next stage.
 | Deny processing | deny() | Deny the mail and send a SMTP return code.
-| Quarantine | quarantine(path) | Skip all rules and move the mail to a quarantine queue in the specified directory.
+| Quarantine | quarantine(srv, ctx, path) | See hereunder.
 
 ### About quarantine function
 
@@ -38,8 +41,10 @@ The ENTIRE content of the email is written in JSON format regardless of the stag
 The root directory for quarantine() is specified in the TOML configuration file and the (path/file) is added.
 
 ```c
-vsl::quarantine(virus_dir);   
+vsl::quarantine(srv, ctx, virus_dir);   
 ```
+
+!!!!!!!! TO DO EXEMPLE QUARANTAINE avec un ACCEPT()
 
 ## SMTP envelop and body changing functions
 
@@ -48,7 +53,7 @@ SMTP envelop can be modified by several predefined actions. Thus they must inclu
 Syntax | Comment
 | :--- | :---
 | add_header(ctx, string) | Add a new header
-| remove_header(ctx, regex) | Remove all occurrences of headers matching the regex.
+| remove_header(ctx, string) | Remove all occurrences of headers matching the string.
 | add_rcpt(ctx, addr) | Add addr to recipient list.
 | remove_rcpt(ctx, addr) | Remove addr from recipient list.
 | rewrite_rcpt(ctx, old, new) | Rewrite recipient "old" with "new".
@@ -78,16 +83,14 @@ Syntax | Description
 | dump(ctx, file) | Write a copy of the entire mail (envelop+body) in JSON format[^dump] on disk[^dir].
 | body_parse() | Parse the mail and extract its structure including MIME parts.
 | send_mail(from, to, path, relay) | Send an informative email.
-| log(string, file) | logs a message to stdout, stderr or a to file[^dir].
-| log_\<stream>(string) | Log a message to a stream[^stream].
+| log(loglevel, msg) | logs a message[^log].
 | user_exist(string) | Check if an user exists locally.
 
-[^dir]: Root directories for log, write and dump are specified in the TOML configuration file.
-
-[^stream]: Streams can be a Unix standard output stdout and stderr or a log level (error, warn, info, debug, trace).
+[^dir]: Root directories for write and dump are specified in the TOML configuration file.
+[^log]: Log files and log levels are described in the TOML configuration file.
 
 ```rust,ignore
-vsl::log_warn(`Hello world !!!`);
+vsl::log("warn", `Hello world !!!`);
 ```
 
 ### About the dump function
@@ -98,7 +101,7 @@ This function dumps in JSON format only the available content at a stage.  The b
 
 ```rust,ignore
 {
-    vsl::log("Hello world !!!", "./tmp/my_file");
+    vsl::log("info", "Hello world !!!");
     vsl::dump("./tmp/mail/dump/my_file");
 }
 ```
@@ -109,7 +112,7 @@ Combined actions can be declared using a [RHAI](https://rhai.rs/) function.
 
 ```rust,ignore
 fn my_faccept() {                              
-    vsl::log("Hello world !!!", "/tmp/my_file");
+    vsl::log("info", "Hello world !!!");
     vsl::faccept()
     // Implicit return syntax, no trailing comma
     // equivalent to : return vsl::faccept();

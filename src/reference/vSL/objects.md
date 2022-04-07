@@ -4,18 +4,18 @@ Objects are declared through the "object" keyword. Two syntax are available.
 The inline syntax:
 
 ```c
-object type "name" "value";
+object <name> <type> = "<value>";
 ```
 
 ```c
-object ip4 "my_host" "192.168.1.34";
-object fqdn "local_domain" "foo.bar";
+object my_host ip4 = "192.168.1.34";
+object local_domain fqdn = "foo.bar";
 ```
 
 The extended syntax, allowing the use of user-defined fields:
 
 ```c
-object type "name" #{
+object <name> <type> = #{
     value: "value",
     <user_field1>: "value",
     ...
@@ -24,14 +24,14 @@ object type "name" #{
 ```
 
 ```c
-object ip4 "local_MDA" #{
+object local_mda ip4 = #{
     value: "192.168.0.34",
     color: "bbf3ab",
     description: "Internal delivery agent"
 };
 ```
 
-&#9998; | The last comma is not mandatory. the "value" field is.
+&#9998; | Only the "value:" field is mandatory.The last comma is not. 
 
 ## Type of implemented objects
 
@@ -57,7 +57,7 @@ File objects are standard Unix text files containing values delimited by CRLF.
 Only one type of object is authorized and must be declared after the keyword "file:".
 
 ```c
-object file:ip4 "local_MTA" "./config/local_mta.txt";
+object local_MTA file:ip4 = "./config/local_mta.txt";
 ```
 
 ```shell
@@ -74,19 +74,19 @@ Groups are collections of objects. They can store references to other objects, s
 Unlike objects where fields are declared between parentheses, groups use squared brackets.
 
 ```c
-object file:address "whitelist" "./config/rules/whitelist.txt";
+object whitelist file:address = "./config/rules/whitelist.txt";
 
-object group "authorizedUsers" [
+object authorized_users group = [
   whitelist,
-  object address "admin" "admin@mydomain.com",
+  object admin address = "admin@mydomain.com",
 ];
 ```
 
 Groups can be nested into other groups.
 
 ```c
-object group "deep-group" [
-  object regex "foo-emails" "^[a-z0-9.]+@foo.com$",
+object deep-group group = [
+  object foo-emails regex = "^[a-z0-9.]+@foo.com$",
   authorizedUsers,
 ];
 ```
