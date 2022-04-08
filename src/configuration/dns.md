@@ -56,4 +56,3 @@ Advanced parameters are available. Please check vSMTP reference guide and [Trust
 information.
 
 [Trust-DNS]: (https://github.com/bluejekyll)
-
