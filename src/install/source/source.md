@@ -4,8 +4,8 @@ This page summarizes the main steps to install vSMTP from source code. To find d
 
 - [Linux]
 - [FreeBSD]
-- NetBSD
-- OpenBSD
+- NetBSD `help wanted`
+- OpenBSD `help wanted`
 
 [Linux]: https://vsmtp.rs/install/source/linux.html
 [FreeBSD]: https://vsmtp.rs/install/source/freebsd.html

@@ -33,3 +33,15 @@ Moreover, SPF and DKIM do not specify the action to apply in case of verificatio
 Domain-based Message Authentication, Reporting and Conformance, or DMARC, is an authentication standard complementary to SPF and DKIM intended to fight more effectively against phishing and other spamming practices.
 
 > DMARC allows domain holders to tell ISPs and email clients what to do when a signed message from their domain is not formally identified by an SPF or DKIM standard.
+
+## ARC (extension to DMARC)
+
+Parts of legitimate messages (subject tags, footers, etc.) can be altered due to forwarding (mailing list, virus scanner, etc.) and thus no longer pass commonly accepted authentication checks. This can happen when an Internet domain publishes a strict DMARC policy.
+
+>ARC captures and conveys authentication results and allows the final recipient to check the authentication status of the message when it arrived at the first ARC-aware MTA.
+
+## BIMI
+
+Brand Indicators for Message Identification, or BIMI is a future standard that makes it easier to identify the sender of an email. BIMI coordinates e-mail publishers and domain name owners to allow the latter to display their logos directly at the level of their customers' e-mail boxes, i.e. next to the name of the issuer. BIMI requires DMARC.
+
+> For brands, BIMI is an opportunity to protect their identities by e-mail (fight against "phishing") and to increase the reach and visibility of their logos. Because these logos are only included in DMARC-authenticated emails, consumers' trust in their brands is also enhanced.
