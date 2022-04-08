@@ -44,7 +44,7 @@ Example :
 
 ```toml
 [server.dns]
-type = cloudflare
+type = "cloudflare"
 
 [server.dns.options]
 timeout = 5s
