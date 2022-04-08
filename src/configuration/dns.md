@@ -18,7 +18,7 @@ The default behavior is to use the operating system (/Etc/resolv.conf) as the up
 
 ```toml
 [server.dns]
-type = "system" | "custom" | "google" | "cloudflare"
+type = "system" | "google" | "cloudflare"
 ```
 
 Please see Google and CloudFlare privacy statement for important information about what they track.
@@ -26,7 +26,6 @@ Please see Google and CloudFlare privacy statement for important information abo
 ## Available options
 
 DNS Options can be set in the TOML `[server.dns.options]` and `[server.virtual.dns.options]` tables.
-
 
 | Parameter | value | Description |
 | :--- | :--- | :--- |
