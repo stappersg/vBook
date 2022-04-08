@@ -10,10 +10,10 @@ Please refer to vSMTP reference guide and [Trust-DNS] repository for detailed in
 
 ## DNS resolver
 
-The default behavior is to use Google Public DNS as the upstream resolvers. However using the `type` keyword this can be easily changed to:
+The default behavior is to use the operating system (/Etc/resolv.conf) as the upstream resolvers. However using the `type` keyword this can be easily changed to:
 
+- Google Public DNS
 - The CloudFlare Public DNS
-- The host configuration (/etc/resolv.conf)
 - A fully customized resolver
 
 ```toml
@@ -30,15 +30,16 @@ DNS Options can be set in the TOML `[server.dns.options]` and `[server.virtual.d
 
 | Parameter | value | Description |
 | :--- | :--- | :--- |
-| timeout | integer | Specify the timeout for a request. Defaults to 5 seconds
-| attempts | integer | usize Number of retries after lookup failure before giving up. Defaults to 2
-| rotate | true/false | Rotate through the resource records in the response (if there is more than one for a given name)
-| validate | true/false | Use DNSSec to validate the request
+| timeout | integer | Specify the timeout for a request. Defaults to 5 seconds.
+| attempts | integer | usize Number of retries after lookup failure before giving up. Defaults to 2.
+| rotate | true/false | Rotate through the resource records in the response. Defaults to `XXXXX`
+| validate | true/false | Use DNSSec to validate the request. Defaults to `XXXXX`
 | ip_strategy | enum[^ip] | The ip_strategy for the Resolver to use when lookup Ipv4 or Ipv6 addresses
-| cache_size | usize | Cache size is in number of records (some records can be large)
-| Use_hosts_file | true/false | check /ect/hosts file before dns requery (only works for unix like OS)
+| cache_size | integer | Cache size is in number of records.
+| num_concurrent_reqs | integer | Number of concurrent requests per query. Defaults to 2.
+| preserve_intermediates | true/false | Preserve all intermediate records in the lookup response, suchas CNAME records. Defaults to `XXXXX`
 
-[^îp]: Ipv4Only, Ipv6Only, Ipv4AndIpv6, Ipv6thenIpv4, Ipv4thenIpv6,
+[^ip]: Ipv4Only, Ipv6Only, Ipv4AndIpv6, Ipv6thenIpv4, Ipv4thenIpv6
 
 Example :
 
@@ -57,11 +58,3 @@ information.
 
 [Trust-DNS]: (https://github.com/bluejekyll)
 
-## User-defined resolver
-
-```toml
-[server.dns.config]
-domain = "example.dns.com"
-search = ["example.dns.com"]
-name_servers = []
-```
