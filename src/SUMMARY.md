@@ -17,7 +17,7 @@
   - [SMTP relay]()
   - [Policy delegation]()
   - [Virtual domains]()
-  - [DNS configuration]() 
+  - [DNS configuration](configuration/dns.md) 
   - [Email authentication mechanisms](configuration/eam.md)
     - [SPF](configuration/eam/spf.md)
     - [DKIM](configuration/eam/dkim.md)
