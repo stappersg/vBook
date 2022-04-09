@@ -118,14 +118,11 @@ The RFC 7505 defines two specific return codes.
 
 [Null MX]: https://www.rfc-editor.org/rfc/rfc7505.html
 
-One for recipient error :
 | Code | X.1.10 |
 | :--- | :--- |
 | Text | Recipient address has null MX |
 | Basic status code | 556 |
 | Description | The associated address is marked as invalid using a null MX.
-
-The other one for senders using a null MX records.
 | Code | X.7.27 |
 | :--- | :--- |
 | Text | Sender address has null MX |
