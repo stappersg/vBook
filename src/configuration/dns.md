@@ -66,9 +66,7 @@ In case of a DNS failure, the [RFC 3463], Enhanced Mail System Status Codes, reg
 | Text | Directory server failure |
 | Basic status code | 451, 550 |
 | Description | The network system was unable to forward the message, because a directory server was unavailable. This is useful only as a persistent transient error. The inability to connect to an Internet DNS server is one example of the directory server failure error.
-
 | Code | X.4.4 |
-| :--- | :--- |
 | Text | Unable to route |
 | Basic status code | not given |
 | Description | The mail system was unable to determine the next hop for the message because the necessary routing information was unavailable from the directory server. This is useful for both permanent and persistent transient errors. A DNS lookup returning only an SOA (Start of Administration) record for a domain name is one example of the unable to route error.
@@ -124,7 +122,6 @@ The RFC 7505 defines two specific return codes.
 | Basic status code | 556 |
 | Description | The associated address is marked as invalid using a null MX.
 | Code | X.7.27 |
-| :--- | :--- |
 | Text | Sender address has null MX |
 | basic status code | 550
 | Description | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN).
