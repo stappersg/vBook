@@ -96,20 +96,36 @@ Basically the "null MX" protocol is a simple mechanism by which a domain can ind
 
 [RFC 7505]: https://www.rfc-editor.org/rfc/rfc7505.html
 
-This protocol defines a null MX that will cause all mail delivery attempts to a domain to fail immediately. This behavior is configured by the `enable_null_MX` directive.
+This protocol defines a null MX that will cause all mail delivery attempts to a domain to fail immediately.
 
-As Null MX is primarily intended for domains that do not send or receive any mail, vSMTP default behavior is to reject mail that has an invalid return address. It can be changed with the `allow_null_MX_sender` directive. However mail systems should not publish a null MX record for domains that they use in RFC5321.MailFrom or RFC5322.From addresses. If a system nonetheless does so, it risks having its mail rejected.
+A "Null NX" DNS record looks like :
 
-The "[Null MX]" RFC 7505 defines two specific return codes.
+```dns
+nomail.example.com. 86400 IN MX 0 "."
+```
+
+vSMTP `enable_null_MX` directive allows to enable or disable this protocol.
+
+#### Sender with "Null MX" records
+
+As Null MX is primarily intended for domains that do not send or receive any mail, vSMTP default behavior is to reject mail that has an invalid return address. It can be changed with the `allow_null_MX_sender` directive.
+
+However mail systems should not publish a null MX record for domains that they use in RFC5321.MailFrom or RFC5322.From addresses. If a system nonetheless does so, it risks having its mail rejected.
+
+#### Null MX return codes
+
+The RFC 7505 defines two specific return codes.
 
 [Null MX]: https://www.rfc-editor.org/rfc/rfc7505.html
 
+One for recipient error :
 | Code | X.1.10 |
 | :--- | :--- |
 | Text | Recipient address has null MX |
 | Basic status code | 556 |
 | Description | The associated address is marked as invalid using a null MX.
 
+The other one for senders using a null MX records.
 | Code | X.7.27 |
 | :--- | :--- |
 | Text | Sender address has null MX |
