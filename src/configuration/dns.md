@@ -10,11 +10,7 @@ DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` table
 
 ## DNS resolver
 
-The default behavior is to use the operating system (/etc/resolv.conf) as the upstream resolvers. However other configuration are available and can be easily changed to:
-
-- Google Public DNS
-- The CloudFlare Public DNS
-- A fully customized resolver
+The default behavior is to use the operating system (/etc/resolv.conf) as the upstream resolver. However other configuration are available and can be easily changed to the Google or the CloudFlare Public DNS using the `type` directive.
 
 ```toml
 [server.dns]
