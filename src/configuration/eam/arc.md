@@ -1,6 +1,6 @@
 # Authenticated Received Chain
 
-> ___This is a DRAFT for v0.12 features___
+> ___This is a DRAFT for v0.13 features___
 
 The Authenticated Received Chain (ARC) protocol provides an authenticated "chain of custody" for a message, allowing each entity that handles the message to see what entities handled it before and what the message's authentication assessment was at each step in the handling.
 

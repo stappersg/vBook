@@ -1,5 +1,7 @@
 # SMTP Security via Opportunistic DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS)
 
+> ___This is a DRAFT for v0.12 features___
+
 DNS-based Authentication of Named Entities (DANE) is designed to prevent snooping of email traffic by requiring the use of TLS encryption whenever possible during transport.
 
 A client using DANE requests the public key of a server through the Domain Name System SECurity Extensions (DNSSEC) protocol. 
