@@ -106,7 +106,7 @@ vSMTP `enable_null_MX` directive allows to enable or disable this protocol.
 
 As Null MX is primarily intended for domains that do not send or receive any mail, vSMTP default behavior is to reject mail that has an invalid return address. It can be changed with the `allow_null_MX_sender` directive.
 
-However mail systems should not publish a null MX record for domains that they use in RFC5321.MailFrom or RFC5322.From addresses. If a system nonetheless does so, it risks having its mail rejected.
+However mail systems should not publish a null MX record for domains that they use in MAIL FROM (RFC5321) or From (RFC5322) directives. If a system nonetheless does so, it risks having its mail rejected.
 
 #### Null MX return codes
 
