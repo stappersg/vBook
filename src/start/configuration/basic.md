@@ -2,13 +2,36 @@
 
 ## The configuration file
 
-Nulla amet cupidatat exercitation sit adipisicing deserunt culpa ex elit. Deserunt labore mollit labore commodo. Ex sunt excepteur amet eiusmod proident amet veniam reprehenderit eu ut sunt nisi elit elit. Excepteur eu minim minim non.
+`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Examples can be found in vSMTP repository in the [example/config](https://github.com/viridIT/vSMTP/tree/main/examples/config) folder.
 
+Backup the `vmstp.toml` file. Open with your favorite editor. Remove everything.
+We will build it step-by-step.
 
+```toml
+version_requirement = ">=0.10.0, <1.0.0"  
+// Version requirement. Do not remove or modify it 
 
-Examples can be found in repo....
+[server]
+domain = "doe-family.com"         
 
+[server.interfaces]
+addr = ["192.168.1.254:25"]
+addr_submission = ["192.168.1.254:587"]
+addr_submissions = ["192.168.1.254:465"]
 
+[smtps]
+security_level = "May"
+protocol_version = ["TLSv1.3"]
+fullchain = "/etc/vsmtp/certs/certificate.crt"
+private_key = "/etc/vsmtp/certs/private.key"
+
+[reply_codes]
+Code220 = "220 Doe family ESMTP Service ready\r\n"
+```
+
+Quite simple, isn't it ? 
+
+Next we have to define the rules to apply to a message. This is the role of vSL.
 
 ## vSL : the vSMTP Scripting Language
 
@@ -92,113 +115,4 @@ import "objects" as obj;
     action "deliv_local" || vsl::deliver(ctx, maildir),
   ]
 }
-```
-
-___vsmtp.toml___
-
-```toml
-[server]
-domain = "doe-family.com"
-addr = "192.168.1.254:25"
-addr_submission = "192.168.1.254:587"
-addr_submissions = "192.168.1.254:465"
-
-[logs]
-file = "/var/log/vsmtp/vsmtp.log"
-
-[logs.level]
-default = "warn"
-
-[rules]
-dir = "/etc/vsmtp/rules"
-
-[smtps]
-security_level = "May"
-capath = "/etc/vsmtp/certs"
-preempt_cipherlist = true
-handshake_timeout = "100ms"
-protocol_version = ["TLSv1.3"]
-
-fullchain = "{capath}/certificate.crt"
-private_key = "{capath}/private.key"
-
-[smtp]
-rcpt_count_max = 25
-disable_ehlo = false
-
-[smtp.error]
-soft_count = 5
-hard_count = 10
-delay = "5000ms"
-
-[reply_codes]
-Code214 = "214 my custom help message\r\n"
-Code220 = "220 {domain} ESMTP Service ready\r\n"
-
-[delivery]
-spool_dir = "/var/spool/vsmtp"
-
-[delivery.queues]
-working = { capacity = 32 }
-deliver = { capacity = 32 }
-deferred = { retry_max = 10, cron_period = "10s" }
-```
-
-### Adding an antivirus
-
-John is aware of security issues. Malware remains a scourge on the internet.
-So he decided to add a second layer of antivirus, directly on the vSMTP MTA.
-
-He therefore installs ClamAV which comes with an online shell command, easily callable from vSMTP.
-
-___vsmtp.toml___
-
-```toml
-... //config 
-
-[rules]
-dir = "/etc/vsmtp/rules"
-
-[[rules.services]]
-name = "antivirus"
-type = "shell"
-timeout = "15s"
-command = "./service/clamscan.sh"
-args = "{mail}"
-
-//
-// quarantine_folder is missing
-//
-
-... //config 
-```
-
-Since there is no heavy network traffic, John decided to do a pre-queue filtering.
-Spool emails are quarantine in the virus_q folder.
-
-___main.vsl___
-
-```c
-fn has_virus(services, ctx) {
-    let result = services.run("antivirus", ctx);
-    if result.has_signal {
-        // timed out
-        return false;
-    }
-    result.has_code && result.code != 0
-}
-
-#{
-  preq: [
-    rule "clam_av" || if has_virus(services, ctx) { vsl::quarantine(virus_q) } else { vsl::accept() } 
-  ]
-}
-```
-
-___clamscan.sh___
-
-```bash
-#!/bin/bash
-echo $1 | clamscan -
-exit $?
 ```
