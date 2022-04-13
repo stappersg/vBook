@@ -1,82 +1,71 @@
-# Step-by-step tutorial
+# Basic configuration
 
-In this tutorial we will 
+## The configuration file
 
-## Context
+Nulla amet cupidatat exercitation sit adipisicing deserunt culpa ex elit. Deserunt labore mollit labore commodo. Ex sunt excepteur amet eiusmod proident amet veniam reprehenderit eu ut sunt nisi elit elit. Excepteur eu minim minim non.
 
-A personal MTA for Doe's family.
 
-- Domain name : foo.bar
-- Users : john.doe@foo.bar, jane.doe@foo.bar, jimmy.doe@foo.bar, jenny.doe@foo.bar
 
-### Network configuration
+Examples can be found in repo....
 
-Doe's family has a router/firewall to route and secure their home network.
-There's a small server in the DMZ to manage the family website, emails, etc.
 
-vSMTP is installed on an Ubuntu server 20.04 virtual instance.
 
-```console
-{ Internet ISP } --- Firewall --- { DMZ : MTA }
-                        |
-              { Internal Network }
-```
+## vSL : the vSMTP Scripting Language
 
-- Public IP : 80.80.80.80
-- DMZ MTA IP : 192.168.1.254/32
-- Internal Network : 192.168.0.0/24
+End users can easily define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL).
 
-___Firewall rules___
+vSL is based on three main concepts : objects, actions and rules.
 
-```shell
-# Pseudo code - depends on your FW
-#
-# Allow SMTP and IMAP from Internet to MTA
-Public IP > MTA : TCP/SMTP 25, TCP/SMTP 465, TCP/SMTP 587
-# Allow viewing family emails using IMAP/ssl from the Internet 
-Public IP > MTA : IMAP/ssl 993 
-# Outgoing SMTP traffic
-Internal NET > MTA : TCP/SMTP 25, TCP/SMTP 465, TCP/SMTP 587
-MTA > {Internet} : TCP/SMTP 25, TCP/SMTP 465, TCP/SMTP 587
-# DNS traffic from MTA
-MTA > {Internet} : UDP/DNS 53, TCP/DNS 53
-```
+Objects are virtual crates dedicated to manipulating mailboxes, ip addresses etc.
+Actions basically used to accept, deny or quarantine a message.
+Rules manipulate objects and actions at different stages of a SMTP transaction.
 
-___DNS___
+The `main.vsl` file is the entry point for vSL. By default it is located in the `/etc/vsmtp/rules` directory.
 
-```shell
-MX preference = 1, mail exchanger = vsmtp.foo.bar
-```
+## Defining objects
 
-### vSMTP configuration
-
-___/etc/vsmtp/rules/object.vsl___
+Objects are declared through the "object" keyword. The basic syntax is:
 
 ```c
-object ip4 "local_mta" "192.168.1.254";
-object rg4 "internal_net" "192.168.0.0/24";
-
-object fqdn "local_fqdn" "foo.bar"
-
-object address "john" "john.doe@foo.bar";
-object address "jane" "jane.doe@foo.bar";
-object address "jimmy" "jimmy.doe@foo.bar";
-object address "jenny" "jenny.doe@foo.bar";
-
-object group "doe_family" [john, jane, jimmy, jenny];
-
-object string "user_quarantine" "doe/bad_user";
-
-export local_mta, internal_net, local_fqdn, doe_family, john, jane, jimmy, jenny, user_quarantine;
-//
-// IMHO this is not the right way 
-//
+object <name> <type> = "<value>";
 ```
+
+Many types are available. Let's define together all the required objects for Doe's MTA.
+Open your favorite editor and create a file `objects.vsl` in the rule directory.
+
+___/etc/vsmtp/rules/objects.vsl___
+
+```c
+// IP addresses of the MTA and the internal IP range
+object local_mta ip4 "192.168.1.254";
+object internal_net rg4 "192.168.0.0/24";
+
+// Doe's family domain name
+object local_fqdn fqdn "doe-family.com"
+
+// The mailboxes
+object john address "john.doe@doe-family.com";
+object jane address "jane.doe@doe-family.com";
+object jimmy address "jimmy.doe@doe-family.com";
+object jenny address "jenny.doe@doe-family.com";
+
+// A group to manipulate the mailboxes
+object doe_family group [john, jane, jimmy, jenny];
+
+// A quarantine for unknown mailboxes
+object unknown_quarantine string "doe/bad_user";
+
+// A user blacklist file
+object user_blacklist file "user_blacklist.txt";
+```
+
+## Defining rules
 
 ___/etc/vsmtp/rules/main.vsl___
 
 ```c
-import "objects" as my_obj;
+// Import the object file
+import "objects" as obj;
 
 #{
   mail: [
@@ -109,7 +98,7 @@ ___vsmtp.toml___
 
 ```toml
 [server]
-domain = "foo.bar"
+domain = "doe-family.com"
 addr = "192.168.1.254:25"
 addr_submission = "192.168.1.254:587"
 addr_submissions = "192.168.1.254:465"

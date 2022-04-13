@@ -15,7 +15,7 @@
     - [Content inspection]()
     - [Policy delegation]()
 
-- [Advanced settingd]()
+- [Advanced settings]()
   - [SMTP relay]()
   - [Virtual domains]()
   - [DNS configuration](advanced/dns.md)
