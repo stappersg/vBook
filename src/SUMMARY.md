@@ -6,7 +6,7 @@
 
 - [Features](features.md)
 - [Getting Started](started.md)
-- [Requirements](start/requirements.md)
+- [Requirements](requirements.md)
 - [Installation from packages]()
 - [Installation from source](start/install/source.md)
   - [Linux](start/install/source/linux.md)
