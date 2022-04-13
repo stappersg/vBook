@@ -5,8 +5,8 @@
 # Blahblah
 
 - [Features](features.md)
-- [Getting Started](started.md)
-- [Requirements](requirements.md)
+  - [Getting Started](started.md)
+  - [Requirements](requirements.md)
 - [Installation from packages]()
 - [Installation from source](start/install/source.md)
   - [Linux](start/install/source/linux.md)
