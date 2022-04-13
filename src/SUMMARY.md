@@ -17,7 +17,7 @@
   - [Content inspection]()
   - [Policy delegation]()
 
-# [Advanced usages]()
+# Advanced usages
 
 - [SMTP relay]()
 - [Virtual domains]()
