@@ -4,7 +4,7 @@
 
 [Features](features.md)
 
-[Getting Started](started.md )
+[Getting Started](started.md)
 
 - [Requirements](start/requirements.md)
 - [Installation from packages]()
