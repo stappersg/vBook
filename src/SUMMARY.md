@@ -1,8 +1,7 @@
 # Summary
 
-[Introduction](introduction.md)
-
-  [Features](features.md)
+- [Introduction](introduction.md)
+- [Features](features.md)
   - [Getting Started](started.md)
   - [Requirements](requirements.md)
   - [Installation from packages]()
@@ -14,7 +13,6 @@
   - [Hardening vSMTP](start/configuration/hardening.md)
   - [Content inspection]()
   - [Policy delegation]()
-
   - [SMTP relay]()
   - [Virtual domains]()
   - [DNS configuration](advanced/dns.md)
@@ -30,7 +28,7 @@
 
 # Reference Guide
 
-[Architecture overview](reference/architecture.md)
+- [Architecture overview](reference/architecture.md)
 - [Command line parameters](reference/command.md)
 - [vSMTP configuration files](reference/configfiles.md)
 - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
