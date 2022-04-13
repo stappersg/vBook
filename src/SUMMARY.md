@@ -3,8 +3,8 @@
 [Introduction](introduction.md)
 [Features](features.md)
 
-- [Getting Started](started.md)
-  - [Requirements](requirements.md)
+- [Getting Started](start/started.md)
+  - [Requirements](start/requirements.md)
   - [Installation from packages]()
   - [Installation from source](start/install/source.md)
     - [Linux](start/install/source/linux.md)
