@@ -4,11 +4,11 @@
 
 [Features](features.md)
 
-# [Getting Started](start/started.md)
+# [Getting Started](started.md)
 
 - [Requirements](start/requirements.md)
 - [Installation from packages]()
-- [Installation from source](start/install/source/source.md)
+- [Installation from source](start/install/source.md)
   - [Linux](start/install/source/linux.md)
   - [FreeBSD](start/install/source/freebsd.md)
 - [Step-by-step Configuration](start/configuration/configuration.md)
@@ -21,7 +21,7 @@
 
 - [SMTP relay]()
 - [Virtual domains]()
-- [DNS configuration](advanced/dns.md) 
+- [DNS configuration](advanced/dns.md)
 - [Email authentication mechanisms](advanced/eam.md)
   - [SPF](advanced/eam/spf.md)
   - [DKIM](advanced/eam/dkim.md)
