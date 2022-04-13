@@ -1,10 +1,12 @@
 # Summary
 
-[Introduction](./introduction.md)
+[Introduction](introduction.md)
 
-[Features](./features.md)
+[Features](features.md)
 
-# [Getting Started](./started.md)
+# Blahblah
+
+- [Getting Started](started.md)
 
 - [Requirements](start/requirements.md)
 - [Installation from packages]()
