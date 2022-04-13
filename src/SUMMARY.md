@@ -3,18 +3,18 @@
 [Introduction](introduction.md)
 [Features](features.md)
 
-- [Getting Started](started.md)
-  - [Requirements](requirements.md)
-  - [Installation from packages]
-  - [Installation from source](start/install/source.md)
+[Getting Started](started.md)
+- [Requirements](requirements.md)
+- [Installation from packages]
+- [Installation from source](start/install/source.md)
   - [Linux](start/install/source/linux.md)
   - [FreeBSD](start/install/source/freebsd.md)
-  - [Step-by-step Configuration](start/configuration/configuration.md)
+- [Step-by-step Configuration](start/configuration/configuration.md)
   - [Basic configuration](start/configuration/basic.md)
   - [Hardening vSMTP](start/configuration/hardening.md)
-  - [Content inspection]
-  - [Policy delegation]
-  - [SMTP relay
+  - [Content inspection]()
+  - [Policy delegation]()
+  - [SMTP relay]()
   - [Virtual domains]()
   - [DNS configuration](advanced/dns.md)
   - [Email authentication mechanisms](advanced/eam.md)
@@ -24,8 +24,8 @@
     - [ARC](advanced/eam/arc.md)
     - [BIMI](advanced/eam/bimi.md)
   - [SMTP security between MTAs](advanced/dane.md)
-  - [Logging system]
-  - [Problem solving]
+  - [Logging system]()
+  - [Problem solving]()
 
 # Reference Guide
 
