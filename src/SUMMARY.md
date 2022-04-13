@@ -5,6 +5,7 @@
 [Features](features.md)
 
 [Getting Started](started.md )
+
 - [Requirements](start/requirements.md)
 - [Installation from packages]()
 - [Installation from source](start/install/source/source.md)
@@ -17,6 +18,7 @@
   - [Policy delegation]()
 
 [Advanced usages]()
+
 - [SMTP relay]()
 - [Virtual domains]()
 - [DNS configuration](advanced/dns.md) 
