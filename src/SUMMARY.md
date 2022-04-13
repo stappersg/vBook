@@ -1,5 +1,42 @@
 # Summary
 
 [Introduction](introduction.md)
-- [Features](features.md)
-- [Requirements](requirements.md)
+[Features](features.md)
+
+- [Getting Started](started.md)
+  - [Requirements](requirements.md)
+  - [Installation from packages]
+  - [Installation from source](start/install/source.md)
+  - [Linux](start/install/source/linux.md)
+  - [FreeBSD](start/install/source/freebsd.md)
+  - [Step-by-step Configuration](start/configuration/configuration.md)
+  - [Basic configuration](start/configuration/basic.md)
+  - [Hardening vSMTP](start/configuration/hardening.md)
+  - [Content inspection]
+  - [Policy delegation]
+  - [SMTP relay
+  - [Virtual domains]()
+  - [DNS configuration](advanced/dns.md)
+  - [Email authentication mechanisms](advanced/eam.md)
+    - [SPF](advanced/eam/spf.md)
+    - [DKIM](advanced/eam/dkim.md)
+    - [DMARC](advanced/eam/dmarc.md)
+    - [ARC](advanced/eam/arc.md)
+    - [BIMI](advanced/eam/bimi.md)
+  - [SMTP security between MTAs](advanced/dane.md)
+  - [Logging system]
+  - [Problem solving]
+
+# Reference Guide
+
+- [Architecture overview](reference/architecture.md)
+- [Command line parameters](reference/command.md)
+- [vSMTP configuration files](reference/configfiles.md)
+- [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
+  - [SMTP states and vSMTP stages](reference/vSL/stages.md)
+  - [Objects](reference/vSL/objects.md)
+  - [Functions](reference/vSL/functions.md)
+  - [Rules](reference/vSL/rules.md)
+  - [Delivery](reference/vSL/delivery.md)
+  - [Services](reference/vSL/services.md)
+  - [Advanced Usage](reference/vSL/advanced.md)
