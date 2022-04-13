@@ -2,12 +2,10 @@
 
 [Introduction](introduction.md)
 
-[Features](features.md)
-
 # Blahblah
 
+- [Features](features.md)
 - [Getting Started](started.md)
-
 - [Requirements](start/requirements.md)
 - [Installation from packages]()
 - [Installation from source](start/install/source.md)
