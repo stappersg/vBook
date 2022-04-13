@@ -2,8 +2,6 @@
 
 [Introduction](introduction.md)
 
-# Blahblah
-
 - [Features](features.md)
   - [Getting Started](started.md)
   - [Requirements](requirements.md)
@@ -16,8 +14,6 @@
   - [Hardening vSMTP](start/configuration/hardening.md)
   - [Content inspection]()
   - [Policy delegation]()
-
-# Advanced usages
 
 - [SMTP relay]()
 - [Virtual domains]()
