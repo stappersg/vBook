@@ -1,6 +1,6 @@
 # Introduction
 
-> THIS IS A DRAFT - vSMTP v0.10 is required.
+> This is a working document. It is designed for vSMTP v0.10.
 
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
