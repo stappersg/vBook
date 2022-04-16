@@ -1,10 +1,12 @@
 # Hardening vSMTP
 
-## Adding an anti-relaing rule
+## Adding an anti-relaying rule
+
+TO DO
 
 ## Using the SPF protocol
 
-> this is a v0.11 draft
+> This is a v0.11 draft
 
 To allow other MTAs to verify that outgoing email from Doe's family domain comes from its server, we need to enable the SPF protocol. This is done by adding a new DNS text record that only allows only the MX record to send a mail for doe-family.com.
 
@@ -25,10 +27,7 @@ Edit your main.vsl code and just add the "check_spf" rule.
 import "/addons-std/api" as api;
 
 mail: [
-  // ...
-  
   rule "check_spf" || api::check_spf(ctx);
-
 ]
 ```
 
