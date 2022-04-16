@@ -17,13 +17,14 @@ The network code has been designed with performance and load resistance as the m
 - Handling of multiple emails per transaction.
 - Compliancy with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs.
 - [TLS 1.3] support.
-- Complex DNS configurations
+- Complex DNS configurations - thanks to Benjamin Fry's [Trust-DNS] crate.
 - Support for high workload through built-in mechanisms.
 
 
 [Internet Message Format]: https://datatracker.ietf.org/doc/html/rfc5322
 [Simple Mail Transfer Protocol]: https://datatracker.ietf.org/doc/html/rfc5321
 [TLS 1.3]: https://datatracker.ietf.org/doc/html/rfc8446
+[Trust-DNS]: (https://github.com/bluejekyll)
 
 ## API
 
@@ -31,6 +32,7 @@ vSMTP is modular and highly customizable.  Adding or modifying subsystems is fac
 
 - Mail exports in raw and json format.
 - Third-party softwares called by user-defined services.
+- SQL and NoSQL databses (v0.11+)
 - Mods and addons support.
 - Applications logs.
 
@@ -48,7 +50,7 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 
 vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent (MUA) or a Mail Delivery Agent (MDA). For outgoing mail, vSMTP can directly be addressed by your email client (MUA) using the SMTP protocol. For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats.
 
-- SMTP remote devilivery - using a third-party software, [Lettre].
+- SMTP remote delivery - using a third-party software, [Lettre].
 - [Mbox] and [Maildir] format for local delivering.
 - SMTP relaying and forwarding.
 
@@ -66,9 +68,14 @@ Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls
 
 ## Email authentication mechanisms
 
-- Message submission RFCs and DANE protocol (RFC 7671) 
-- [DANE] protocol 
+- Message submission RFCs.
+- [DANE] protocol (v0.12).
+- [SPF], [DKIM] and [DMARC] mechanisms support (v0.11+).
+- [ARC] and [BIMI] experimental and future Internet standards (v0.13+).
 
 [DANE]: https://www.rfc-editor.org/rfc/rfc7671.html 
-
-SPF, DKIM and DMARC mechanisms support is planned for 0.11.
+[SPF]: https://www.rfc-editor.org/rfc/rfc7208.html
+[DKIM]: https://www.rfc-editor.org/rfc/rfc6376.html
+[DMARC]: https://www.rfc-editor.org/rfc/rfc7489.html
+[ARC]: https://www.rfc-editor.org/rfc/rfc8617.html
+[BIMI]: https://tools.ietf.org/id/draft-blank-ietf-bimi-00.html

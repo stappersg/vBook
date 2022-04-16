@@ -1,16 +1,17 @@
 # Basic configuration
 
+Several examples can be found in the [example/config](https://github.com/viridIT/vSMTP/tree/main/examples/config) folder.
+
 ## The configuration file
 
-`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Examples can be found in vSMTP repository in the [example/config](https://github.com/viridIT/vSMTP/tree/main/examples/config) folder.
-
-Backup the `vmstp.toml` file. Open with your favorite editor. Remove everything.
+`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Backup the `vmstp.toml` file. Open it with your favorite editor. Remove everything.
 We will build it step-by-step.
 
 ```toml
+# Version requirement. Do not remove or modify it 
 version_requirement = ">=0.10.0, <1.0.0"  
-// Version requirement. Do not remove or modify it 
 
+# Global configuration
 [server]
 domain = "doe-family.com"         
 
@@ -19,33 +20,28 @@ addr = ["192.168.1.254:25"]
 addr_submission = ["192.168.1.254:587"]
 addr_submissions = ["192.168.1.254:465"]
 
-[smtps]
+[server.tls]
 security_level = "May"
-protocol_version = ["TLSv1.3"]
-fullchain = "/etc/vsmtp/certs/certificate.crt"
+protocol_version = ["TLSv1.2", "TLSv1.3"]
+certificate = "/etc/vsmtp/certs/certificate.crt"
 private_key = "/etc/vsmtp/certs/private.key"
-
-[reply_codes]
-Code220 = "220 Doe family ESMTP Service ready\r\n"
 ```
 
 Quite simple, isn't it ? 
 
-Next we have to define the rules to apply to a message. This is the role of vSL.
+Now that the server is configured we need to define the rules to apply to a message. This is the role of vSL.
 
 ## vSL : the vSMTP Scripting Language
 
-End users can easily define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL).
+End users can easily define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL). vSL is based on three main concepts : `objects`, `actions` and `rules`.
 
-vSL is based on three main concepts : objects, actions and rules.
-
-Objects are virtual crates dedicated to manipulating mailboxes, ip addresses etc.
-Actions basically used to accept, deny or quarantine a message.
-Rules manipulate objects and actions at different stages of a SMTP transaction.
+`Objects` are virtual crates dedicated to manipulating mailboxes, ip addresses etc.
+`Actions` are basically used to call a function.
+`Rules` manipulate objects and actions at different stages of a SMTP transaction and then return a status code to the engine.
 
 The `main.vsl` file is the entry point for vSL. By default it is located in the `/etc/vsmtp/rules` directory.
 
-## Defining objects
+### Defining objects
 
 Objects are declared through the "object" keyword. The basic syntax is:
 
@@ -54,7 +50,7 @@ object <name> <type> = "<value>";
 ```
 
 Many types are available. Let's define together all the required objects for Doe's MTA.
-Open your favorite editor and create a file `objects.vsl` in the rule directory.
+Open your favorite editor and create a `objects.vsl` file in the rule directory.
 
 ___/etc/vsmtp/rules/objects.vsl___
 
@@ -64,7 +60,7 @@ object local_mta ip4 "192.168.1.254";
 object internal_net rg4 "192.168.0.0/24";
 
 // Doe's family domain name
-object local_fqdn fqdn "doe-family.com"
+object family_domain fqdn "doe-family.com"
 
 // The mailboxes
 object john address "john.doe@doe-family.com";
@@ -73,7 +69,7 @@ object jimmy address "jimmy.doe@doe-family.com";
 object jenny address "jenny.doe@doe-family.com";
 
 // A group to manipulate the mailboxes
-object doe_family group [john, jane, jimmy, jenny];
+object family_addr group [john, jane, jimmy, jenny];
 
 // A quarantine for unknown mailboxes
 object unknown_quarantine string "doe/bad_user";
@@ -82,37 +78,57 @@ object unknown_quarantine string "doe/bad_user";
 object user_blacklist file "user_blacklist.txt";
 ```
 
-## Defining rules
+Done. Easy right ? now we need to apply some rules on these objects. It's a bit more complicated but we're still working on making it more human readable.
+
+## Defining rules and actions
+
+Rules are the entry point to interact with the SMTP traffic at a user level. They are defined in the `/etc/vsmtp/rules/main.vsl` file.
+
+Rules and action have the same syntax, except the first keyword.
+
+```c
+rule "name" || {              |       action "name" || {
+    ... rule body.            |           ... action body.
+}                             |       }
+```
+
+Let's add some rules in the main.vsl file for Doe's family MTA. There are two main constraints:
+
+- Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
+- They use IMAP and Maildir format
 
 ___/etc/vsmtp/rules/main.vsl___
 
 ```c
-// Import the object file
-import "objects" as obj;
+// Import the object file. The 'doe' prefix permits to distinguish Doe's family objects from others.
+import "objects" as doe;
 
 #{
+
+  // Actions and rules triggered in the RCPT TO: stage.
+
   mail: [
-    // Anti-relaying 
-    rule "mail_norelay" || if (ctx.mail_from in my_obj::doe_family) && !(ctx.client_addr in my_obj::internal_net) 
-      { vsl::deny() } else { vsl::accept() },
-    // Paranoid
-    rule "mail_default" || vsl::deny(), 
+   rule "anti-relay" || if (ctx.mail_domain in my_domain) && ((ctx.client_ip in local_network) || (ctx.client.auth))
+          { vsl::accept() }
+        else
+          { vsl::deny() }
   ],
+
   rcpt: [
-    // Outgoing mails
-    rule "rcpt_outgoing" || if ctx.client_addr in my_obj::internal_net { vsl::accept() } else { vsl::next() },
-    // Incoming mails - anti-relaying 
-    rule "rcpt_norelay" || if ctx.rcpt.domains != my_obj::local_fqdn { vsl::deny() } else { vsl::next() },
-    // Quarantine unknown users
-    rule "rcpt_nouser" || if !(ctx.rcpt in my_obj::doe_family) { vsl::quarantine(user_quarantine) }, 
-    // Jenny is 11 years old - emails are bcc to jane
-    action "rcpt_jenny" || if ctx.rcpt is "jenny" { vsl::bcc(jane) },
-    // Trailing rule 
-    rule "rcpt_default" || vsl::accept(),
+    action "rcpt_jenny" || if doe::jenny in ctx.rcpt { vsl::bcc(doe::jane) },
   ],
+
+
   deliver: [
     // Using IMAP in local Unix directory
-    action "deliv_local" || vsl::deliver(ctx, maildir),
+
+    action "delivery" || 
+      for rcpt in ctx.rcpt {
+        if rcpt in family_addr { vsl::maildir(ctx, rcpt) } else { vsl::deliver(ctx, rcpt) }
+      }
   ]
 }
+
+
+
 ```
