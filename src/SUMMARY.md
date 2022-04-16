@@ -16,6 +16,7 @@
     - [Policy delegation]()
 
 - [Advanced settings]()
+  - [The vSL magic garden explained](advanced/magic.md)
   - [SMTP relay]()
   - [Virtual domains]()
   - [DNS configuration](advanced/dns.md)

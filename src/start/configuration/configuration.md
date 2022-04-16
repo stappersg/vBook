@@ -1,4 +1,4 @@
- # Step-by-step tutorial
+# Step-by-step tutorial
 
 In this tutorial we will follow Doe's family. John, Jane and their child Jimmy and Jenny want to self-host their mailboxes.
 
@@ -12,7 +12,7 @@ The network looks like that :
 { Internet ISP } --- Firewall --- { DMZ }
                         |
               { Internal Network }
-```
+```  
 
 They also bought a domain name `doe-family.com`. They decided to prefixe their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
 
