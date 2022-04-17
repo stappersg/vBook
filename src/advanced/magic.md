@@ -130,7 +130,7 @@ _Now the build the header using the objects (result, explanation and cause) retu
     switch toml::server.auth.spf.header {
 ```
 
-_Again we have to consult a TOML server variable to decide which kind of header will be added to the message.__
+_Again we have to check a TOML server variable to decide which kind of header will be added to the message._
 
 ```javascript
         "spf" => add_header(ctx, "Received-SPF", spf_header),  
