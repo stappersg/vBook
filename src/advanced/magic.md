@@ -6,13 +6,13 @@ vSL comes with many predefined functions allowing the user to use them directly 
 
 Remember the SPF rule we added in the [step-by-step] tutorial. In the addons folder, there's a file `auth.vsl` that comes with functions dedicated to authentication methods. One is called `check_spf()`.
 
-[step-by-step]: start/configuration/hardening.md
+[step-by-step]: ../start/configuration/hardening.md
 
 
 
 > Please refer to the [SPF chapter] for detailed information about SPF protocol.
 
-[SPF chapter]: advanced/eam/spf.md
+[SPF chapter]: ./eam/spf.md
 
 Let's browse the code together.
 
