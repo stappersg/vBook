@@ -41,6 +41,10 @@ End users can easily define the behavior of vSMTP thanks to a simple but powerfu
 
 The `main.vsl` file is the entry point for vSL. By default it is located in the `/etc/vsmtp/rules` directory.
 
+### RHAI and vSL
+
+Commodo consequat aute ipsum excepteur sit exercitation cupidatat non elit non. Nisi dolor nostrud ex ut ex ullamco quis officia nulla aliqua. Sunt dolore ut mollit consectetur eiusmod dolor do enim aute duis magna aliqua ad.
+
 ### Defining objects
 
 Objects are declared through the "object" keyword. The basic syntax is:
