@@ -32,7 +32,7 @@ To allow other MTAs to verify that outgoing email from Doe's family domain comes
 
 You can find more information about SPF protocol in the [advanced section].
 
-[advanced section]: advanced/eam/spf.md
+[advanced section]: ../../advanced/eam/spf.md
 
 ```shell
 doe-family.com.          TXT "v=spf1 +mx -all"
@@ -55,7 +55,7 @@ Couldn't be simpler, right ?
 
 > To discover what is behind the api::check_spf function, go to the advanced section, [the vSL magic garden explained].
 
-[the vSL magic garden explained]: advanced/magic.md
+[the vSL magic garden explained]: ../../advanced/magic.md
 
 ### Adding an antivirus
 
