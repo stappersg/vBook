@@ -1,8 +1,31 @@
 # Hardening vSMTP
 
-## Adding an anti-relaying rule
+## Disabling open relay
 
-TO DO
+Doe's family server is connected to the Internet. It must not be configured to accept mail from any sender and deliver it to any recipient. This is an undesirable setup as it can be exploited by spammers and other malicious users.
+
+Here are the strict minimum rules for a properly configured server. It will only accept messages from outside:
+
+- If the recipient is a Doe's family account, whatever the sender.
+- If the sender is authenticated as a Doe's family account, whatever the recipient.
+
+All IPs from the internal network are allowed to send messages.
+
+Don't be afraid. vSMTP will do it for you.
+
+Edit your main.vsl code and just add the the rule below.
+
+```javascript
+/// main.vsl
+import "/addons-std/api" as api;
+
+rcpt: [
+  rule "check relay" || vsl::check_relay(ctx, srv);
+]
+
+
+
+```
 
 ## Using the SPF protocol
 
@@ -27,7 +50,7 @@ Edit your main.vsl code and just add the "check_spf" rule.
 import "/addons-std/api" as api;
 
 mail: [
-  rule "check_spf" || api::check_spf(ctx);
+  rule "check spf" || api::check_spf(ctx, srv);
 ]
 ```
 
@@ -42,7 +65,7 @@ Couldn't be simpler, right ?
 John is aware of security issues. Malware remains a scourge on the internet.
 So he decided to add a second layer of antivirus, directly on the vSMTP MTA.
 
-He therefore installs ClamAV which comes with an online shell command, easily callable from vSMTP.
+He therefore installed ClamAV which comes with an online shell command, easily callable from vSMTP.
 
 ___vsmtp.toml___
 

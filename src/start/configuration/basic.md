@@ -43,7 +43,9 @@ The `main.vsl` file is the entry point for vSL. By default it is located in the 
 
 ### RHAI and vSL
 
-Commodo consequat aute ipsum excepteur sit exercitation cupidatat non elit non. Nisi dolor nostrud ex ut ex ullamco quis officia nulla aliqua. Sunt dolore ut mollit consectetur eiusmod dolor do enim aute duis magna aliqua ad.
+vSMTP scripting is based on RHAI language. Please consult [The RHAI book] for detailed information about variables, functions, etc.
+
+[The RHAI book]: https://rhai.rs/book/
 
 ### Defining objects
 
@@ -71,6 +73,7 @@ object john address "john.doe@doe-family.com";
 object jane address "jane.doe@doe-family.com";
 object jimmy address "jimmy.doe@doe-family.com";
 object jenny address "jenny.doe@doe-family.com";
+object fridge address "IOT-fridge@doe-family.com";
 
 // A group to manipulate the mailboxes
 object family_addr group [john, jane, jimmy, jenny];
@@ -79,7 +82,15 @@ object family_addr group [john, jane, jimmy, jenny];
 object unknown_quarantine string "doe/bad_user";
 
 // A user blacklist file
-object user_blacklist file "user_blacklist.txt";
+object blacklist file "blacklist.txt";
+```
+
+```shell
+# blacklist.txt
+domain-spam.com
+spam-domain.org
+domain-spammers.com
+...
 ```
 
 Done. Easy right ? now we need to apply some rules on these objects. It's a bit more complicated but we're still working on making it more human readable.
@@ -87,6 +98,8 @@ Done. Easy right ? now we need to apply some rules on these objects. It's a bit 
 ## Defining rules and actions
 
 Rules are the entry point to interact with the SMTP traffic at a user level. They are defined in the `/etc/vsmtp/rules/main.vsl` file.
+
+Action don't interact with the transaction. They just trigger functions.
 
 Rules and action have the same syntax, except the first keyword.
 
@@ -103,36 +116,28 @@ Let's add some rules in the main.vsl file for Doe's family MTA. There are two ma
 
 ___/etc/vsmtp/rules/main.vsl___
 
-```c
+```javascript
 // Import the object file. The 'doe' prefix permits to distinguish Doe's family objects from others.
 import "objects" as doe;
 
 #{
-
-  // Actions and rules triggered in the RCPT TO: stage.
-
   mail: [
-   rule "anti-relay" || if (ctx.mail_domain in my_domain) && ((ctx.client_ip in local_network) || (ctx.client.auth))
-          { vsl::accept() }
-        else
-          { vsl::deny() }
-  ],
-
+    rule "blacklist" || if ctx.mail_from.domain in doe::blacklist { vsl::deny() } { vsl::next() }
+   
   rcpt: [
-    action "rcpt_jenny" || if doe::jenny in ctx.rcpt { vsl::bcc(doe::jane) },
+    action "rcpt jenny" || if doe::jenny in ctx.rcpt { vsl::bcc(doe::jane) },
+    // There is no SMTP interaction - use an action.
+  
   ],
-
 
   deliver: [
     // Using IMAP in local Unix directory
 
+    // In the deliver stage, the SMTP transaction is closed. You can also use an action.
     action "delivery" || 
       for rcpt in ctx.rcpt {
         if rcpt in family_addr { vsl::maildir(ctx, rcpt) } else { vsl::deliver(ctx, rcpt) }
       }
   ]
 }
-
-
-
 ```

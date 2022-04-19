@@ -32,11 +32,10 @@ _The SPF framework required specific return codes described in RFC 7372. vSL com
 //
 // Function check_spf(ctx) : SPF evaluation (RFC 7208)
 // - return : deny() or next()
-// - args : the message context
+// - args : the message and the server contexts
 //
 //
 // vsmtp.toml variables required : 
-// - server.hostname (string)
 // - server.auth.spf.strict (boolean)
 // - server.auth.spf.header (spf | auth | both | none)
 //
@@ -114,12 +113,12 @@ _Now the build the header using the objects (result, explanation and cause) retu
     // Record the result in a header (RFC 7208-9)
     let spf_header = query.result
         + if query.result == "fail" { ` ( ${query.explanation} )` } 
-        + `\n receiver=${toml::server.hostname}; client-ip=${ctx.client_ip};`
+        + `\n receiver=${srv.hostname}; client-ip=${ctx.client_ip};`
         + `\n identity=mailfrom; envelope_from=${ctx.mail_from};`
         + if query.result == "pass" { `\n mechanism=${query.cause};` }
         + if (query.result == "temperror" || query.result == "permerror") { `\n problem=${query.cause};` };
         
-    let auth_header = `${toml::server.hostname}; spf=${query.result}`
+    let auth_header = `${srv.hostname}; spf=${query.result}`
         + `\n reason=\" ${spf_header} \" smtp.mailfrom=${ctx.mail_from}`;
 ```
 
