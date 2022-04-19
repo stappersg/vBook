@@ -20,7 +20,7 @@ Edit your main.vsl code and just add the the rule below.
 import "/addons-std/api" as api;
 
 rcpt: [
-  rule "check relay" || vsl::check_relay(ctx, srv);
+  rule "check relay" || api::check_relay(ctx, srv);
 ]
 ```
 
