@@ -15,4 +15,4 @@ There are two aspects of BIMI coordination:
 
 Until BIMI RFC is not released as an "Internet Standard" the vSMTP implementation should be considered as a "work in progress".
 
-The implementation of this feature in the vSMTP framework is planned for v0.12.
+The implementation of this feature in the vSMTP framework is planned for v0.13.

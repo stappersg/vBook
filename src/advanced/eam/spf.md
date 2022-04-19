@@ -37,11 +37,6 @@ Even if the RFC 5321 tends to normalize the HELO/EHLO arguments as the fully qua
 
 > "SPF check can only be performed when the "HELO" string is a valid, multi-label domain name."
 
-Despite what RFC 7208 explains, the vSMTP SPF checker can also work with IP addresses.
-
-These behavior are set with the `key = value`and `key = value` in the TOML configuration file.
-
-
 ### MAIL FROM identity
 
 According to RFC, "MAIL FROM" check occurs when :
@@ -49,8 +44,6 @@ According to RFC, "MAIL FROM" check occurs when :
 > "SPF verifiers MUST check the "MAIL FROM" identity if a "HELO" check either has not been performed or has not reached a definitive policy result."
 
 Please notes that [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html#section-4.5.5) allows the reverse-path to be null. In this case, the RFC 7208 defines the "MAIL FROM" identity to be the mailbox composed of the local-part "postmaster" and the "HELO" identity.
-
-These behavior are set with the `key = value`and `key = value` in the TOML configuration file.
 
 ### Location of checks
 
@@ -93,9 +86,7 @@ Results should be recorded in the message header. According to RFCs, two options
     ```shell
     Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
     ```
-
-These behavior are set with the `key = value`and `key = value` in the TOML configuration file.
-
+    
 ### SPF failure codes
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
@@ -130,15 +121,21 @@ The following error codes can also be sent by the SPF framework.
 | Description | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of | n/a |
 
-## vSMTP example
+### TOML configuration file
 
 ```toml
-[app.spf]
-TO DO
+[server.auth.spf]
+helo = false | true (default)     # Open issue - only "mail_from" check is available.
+strict = false (default) | true
+header = "spf" | "auth" | "both" (default) | "none"
 ```
 
-```c
-/// main.vsl
+### vSL function
 
-TO DO
-```
+```javascript
+// main.vsl
+import "/addons-std/api" as api;
+
+mail: [
+  rule "check spf" || api::check_spf(ctx, srv);
+]

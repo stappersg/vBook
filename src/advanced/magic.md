@@ -40,7 +40,7 @@ _The SPF framework required specific return codes described in RFC 7372. vSL com
 // - server.auth.spf.header (spf | auth | both | none)
 //
 // 
-fn check_spf(ctx) {
+fn check_spf(ctx, srv) {
 ```
 
 _To access to the message structure (i.e. the HELO/EHLO string) we must pass the message context (ctx) in argument._
@@ -154,7 +154,7 @@ Now you can edit your main.vsl code and add the check_spf function.
 import "/addons/std/api" as api;
 
 mail: [
-  rule "check_spf" || api::check_spf(ctx);
+  rule "check_spf" || api::check_spf(ctx, srv);
 ]
 
 // ...

@@ -60,7 +60,7 @@ Open your favorite editor and create a `objects.vsl` file in the rule directory.
 
 ___/etc/vsmtp/rules/objects.vsl___
 
-```c
+```javascript
 // IP addresses of the MTA and the internal IP range
 object local_mta ip4 "192.168.1.254";
 object internal_net rg4 "192.168.0.0/24";
@@ -103,7 +103,7 @@ Action don't interact with the transaction. They just trigger functions.
 
 Rules and action have the same syntax, except the first keyword.
 
-```c
+```javascript
 rule "name" || {              |       action "name" || {
     ... rule body.            |           ... action body.
 }                             |       }
@@ -126,7 +126,7 @@ import "objects" as doe;
    
   rcpt: [
     action "rcpt jenny" || if doe::jenny in ctx.rcpt { vsl::bcc(doe::jane) },
-    // There is no SMTP interaction - use an action.
+    // There is no SMTP interaction - we can use an action.
   
   ],
 

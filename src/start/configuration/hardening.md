@@ -16,15 +16,12 @@ Don't be afraid. vSMTP will do it for you.
 Edit your main.vsl code and just add the the rule below.
 
 ```javascript
-/// main.vsl
+// main.vsl
 import "/addons-std/api" as api;
 
 rcpt: [
   rule "check relay" || vsl::check_relay(ctx, srv);
 ]
-
-
-
 ```
 
 ## Using the SPF protocol
@@ -43,10 +40,10 @@ doe-family.com.          TXT "v=spf1 +mx -all"
 
 That's all for outgoing messages. What about incoming messages ? Easier.
 
-Edit your main.vsl code and just add the "check_spf" rule.
+Edit your main.vsl code and just add the "check spf" rule.
 
 ```javascript
-/// main.vsl
+// main.vsl
 import "/addons-std/api" as api;
 
 mail: [

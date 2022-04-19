@@ -9,4 +9,3 @@ DMARC allows email administrators to prevent hackers from impersonating their or
 > In order to counter spoofing attacks, DMARC uses SPF and DKIM protocols.
 
 When a message appears to come from an organization, but does not pass authentication checks or does not meet the authentication criteria, DMARC policy tells mail servers what action to take.
-

@@ -4,7 +4,7 @@
 
 DNS-based Authentication of Named Entities (DANE) is designed to prevent snooping of email traffic by requiring the use of TLS encryption whenever possible during transport.
 
-A client using DANE requests the public key of a server through the Domain Name System SECurity Extensions (DNSSEC) protocol. 
+A client using DANE requests the public key of a server through the Domain Name System SECurity Extensions (DNSSEC) protocol.
 
 DANE introduces the DNS "TLSA" resource record (RR) type. This record associate a certificate or a public key of an end-entity or a trusted issuing authority with the corresponding Transport Layer Security (TLS) endpoint.
 
