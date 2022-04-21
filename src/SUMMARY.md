@@ -9,6 +9,8 @@
   - [Installation from source](start/install/source.md)
     - [Linux](start/install/source/linux.md)
     - [FreeBSD](start/install/source/freebsd.md)
+    - [OpenBSD]()
+    - [NetBSD]()
   - [Step-by-step Configuration](start/configuration/configuration.md)
     - [Basic configuration](start/configuration/basic.md)
     - [Hardening vSMTP](start/configuration/hardening.md)
