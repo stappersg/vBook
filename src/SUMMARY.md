@@ -16,6 +16,7 @@
     - [Policy delegation]()
 
 - [Advanced settings]()
+  - [Server global and virtual domains parameters](advanced/toml.md)
   - [The vSL magic garden explained](advanced/magic.md)
   - [DNS configuration](advanced/dns.md)
   - [Email authentication mechanisms](advanced/eam.md)
@@ -26,14 +27,13 @@
     - [BIMI](advanced/eam/bimi.md)
   - [SMTP security using DANE](advanced/dane.md)
   - [SMTP relay]()
-  - [Virtual domains]()
   - [Logging system]()
   - [Problem solving]()
 
 - [Reference Guide]()
   - [Architecture overview](reference/architecture.md)
   - [Command line parameters](reference/command.md)
-  - [vSMTP configuration files](reference/configfiles.md)
+  - [Complete vSMTP TOML key/value list]()
   - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
     - [SMTP states and vSMTP stages](reference/vSL/stages.md)
     - [Objects](reference/vSL/objects.md)
