@@ -98,6 +98,7 @@ This default behavior can be changed in the vSMTP configuration file `/etc/vsmtp
 ```shell
 sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
 sudo cp ./target/release/vsmtp /usr/sbin/
+sudo cp ./target/release/vqueue /usr/sbin/
 sudo cp ./examples/install/vsmtp.toml /etc/vsmtp/vsmtp.toml
 sudo cp ./examples/install/main.vsl /etc/vsmtp/rules/main.vsl
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp

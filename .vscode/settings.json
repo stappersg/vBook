@@ -18,6 +18,7 @@
         "nologin",
         "postq",
         "preq",
+        "qshape",
         "rcpts",
         "RHAI",
         "Rustup",

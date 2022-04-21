@@ -36,6 +36,7 @@ Create the directories and change the owner and group.
 ```shell
 mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
 cp ./target/release/vsmtp /usr/sbin/
+cp ./target/release/vqueue /usr/sbin/
 cp ./examples/install/vsmtp.toml /etc/vsmtp/vsmtp.toml
 cp ./examples/install/main.vsl /etc/vsmtp/rules/main.vsl
 chmod 555 /usr/sbin/vsmtp

@@ -8,6 +8,8 @@ DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` table
 
 [Trust-DNS]: (https://github.com/bluejekyll)
 
+> Some options will be implemented in v0.11.
+
 ## DNS resolver
 
 The default behavior is to use the operating system (/etc/resolv.conf) as the upstream resolver. However other configuration are available and can be easily changed to the Google or the CloudFlare Public DNS using the `type` directive.
@@ -69,15 +71,13 @@ In case of a DNS failure, the [RFC 3463], Enhanced Mail System Status Codes, reg
 | Basic status code | not given |
 | Description | The mail system was unable to determine the next hop for the message because the necessary routing information was unavailable from the directory server. This is useful for both permanent and persistent transient errors. A DNS lookup returning only an SOA (Start of Administration) record for a domain name is one example of the unable to route error.
 
-> Available ? how ? TOML ?
-
 ## Locating the target host
 
 [Section 5 of RFC5321] covers the sequence for identifying a server that accepts email for a domain. In essence, the SMTP client first looks up a DNS MX RR, and, if that is not found, it falls back to looking up a DNS A or AAAA RR.
 
 [Section 5 of RFC5321]: https://www.rfc-editor.org/rfc/rfc5321#section-5
 
-This mechanims has two major defects.
+This mechanim has two major defects.
 
 - It overloads a DNS record with an email service semantic.
 - If there are no SMTP listeners at the A/AAAA addresses, message delivery will be attempted repeatedly many times before the sending Mail Transfer Agent (MTA) gives up and:
@@ -126,8 +126,6 @@ The RFC 7505 defines two specific return codes.
 | basic status code | 550
 | Description | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN).
 
-> Null MX record feature and its status codes will be implemented in v0.11.
-
 ### CNAME record
 
 As described in [Section 5 of RFC5321] if a CNAME record is found, the resulting name is processed as if it were the initial name. This behavior can be changed with the vSMTP directive `follow_CNAME`.
@@ -162,10 +160,4 @@ However, for specific  DNS reverse queries can also be directly using the vSL re
 | Basic status code | 550 |
 | Description | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
 
-> Available ? how ? TOML ?
-
 Protocol-specific return codes are described in the corresponding chapters.
-
-## vSL integration
-
-> DNS queries and directives will be integrated to vSL in release 0.12.

@@ -1,8 +1,6 @@
-# Command line 
+# Managing vSMTP from the command line
 
-
-
-## Starting vSMTP from the command line
+## Starting vSMTP
 
 vSMTP was designed to run as a Unix service and is not intended to be run interactively from the command line. However, in case of startup problems, it can be useful to run it with a minimal configuration file to check the settings. In any case, vSMTP must be started with root privileges.
 
@@ -13,30 +11,30 @@ Loading with configuration: '/etc/vsmtp/vsmtp-minimal.toml'
 Listening on: [0.0.0.0:25, 0.0.0.0:587, 0.0.0.0:465]
 ```
 
-## Managing configuration from the command line
+## Managing configuration
 
 ```shell
 $ sudo vsmtp --help
-vsmtp 0.8.6
+vsmtp 0.10.1
 Team viridIT <https://viridit.com/>
 vSMTP : the next-gen MTA. Secured, Faster and Greener
 
 USAGE:
-    vsmtp --config <CONFIG> [SUBCOMMAND]
+    vsmtp [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -c, --config <CONFIG>
+    -c, --config <CONFIG>    Path of the vSMTP configuration file (toml format)
     -h, --help               Print help information
+    -n, --no-daemon          Do not run the program as a daemon
     -V, --version            Print version information
 
 SUBCOMMANDS:
     config-diff    Show the difference between the loaded config and the default one
-    config-show    Show the loaded config (as json)
+    config-show    Show the loaded config (as serialized json format)
     help           Print this message or the help of the given subcommand(s)
 ```
 
 Loaded config can be checked using `config-diff` and `config-show` subcommands.
-
 
 ```json
 $ sudo vsmtp -c /etc/vsmtp/vsmtp.toml config-show
@@ -103,6 +101,39 @@ Loading configuration at path='/etc/vsmtp/vsmtp.toml'
  }
 ```
 
-## Managing queues from the command line
+## Managing queues
 
-Theses features will be available from releases 0.10.x.
+Internal and user defined queues can be managed using the `vqueue` command with root privileges.
+
+The `vqueue show` subcommand displays a summary of vSMTP queues in a Postfix qshape fashion. The `-c` option allows vqueue to parse queues and quarantines defined in the TOML configuration file.
+
+```shell
+WORKING    is at '/var/spool/vsmtp/working' : <EMPTY>
+
+DELIVER    is at '/var/spool/vsmtp/deliver' :
+                T    5   10   20   40   80  160  320  640 1280 1280+
+       TOTAL    4    0    0    0    0    0    0    0    0    4    0
+example1.com    1    0    0    0    0    0    0    0    0    1    0
+example2.com    1    0    0    0    0    0    0    0    0    1    0
+example3.com    1    0    0    0    0    0    0    0    0    1    0
+example4.com    1    0    0    0    0    0    0    0    0    1    0
+
+DEFERRED   is at '/var/spool/vsmtp/deferred' : <EMPTY>
+
+DEAD       is at '/var/spool/vsmtp/dead' : <EMPTY>
+```
+
+## Managing messages
+
+Like queues, messages are also managed with the `vqueue` command.
+
+Features available in v0.10:
+
+- vqueue msg \<msg-id\> show [json | eml] : Print the content of one message.
+- vqueue msg \<msg-id\> move \<queue\> : Change the queue of the message.
+- vqueue msg \<msg-id\> remove : Remove the message from disk.
+
+Feature planned for v0.11:
+
+- vqueue msg \<msg-id\> re-run : Reintroduce the message in the delivery system (and reevaluate the status).
+- User defined quarantine queues inspection.

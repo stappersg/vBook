@@ -7,5 +7,5 @@ There are four main parts:
 
 - Installing vSMTP on Linux or FreeBSD.
 - Configuring vSMTP for a personal usage.
-- Hardening our new configuration.
+- Hardening your new configuration.
 - Using a third party software like clamAV.

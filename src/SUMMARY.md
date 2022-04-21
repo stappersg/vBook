@@ -17,8 +17,6 @@
 
 - [Advanced settings]()
   - [The vSL magic garden explained](advanced/magic.md)
-  - [SMTP relay]()
-  - [Virtual domains]()
   - [DNS configuration](advanced/dns.md)
   - [Email authentication mechanisms](advanced/eam.md)
     - [SPF](advanced/eam/spf.md)
@@ -26,7 +24,9 @@
     - [DMARC](advanced/eam/dmarc.md)
     - [ARC](advanced/eam/arc.md)
     - [BIMI](advanced/eam/bimi.md)
-  - [SMTP security between MTAs](advanced/dane.md)
+  - [SMTP security using DANE](advanced/dane.md)
+  - [SMTP relay]()
+  - [Virtual domains]()
   - [Logging system]()
   - [Problem solving]()
 
