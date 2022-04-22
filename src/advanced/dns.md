@@ -126,7 +126,7 @@ The RFC 7505 defines two specific return codes.
 | basic status code | 550
 | Description | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN).
 
-#### Server configuration
+### Server configuration
 
 The example below shows how the default policy for locating the target host is implemented.
 
@@ -136,7 +136,7 @@ allow_0MX_delivery = false (default) | true
 allow_0MX_sender = false (default) | true
 ```
 
-#### vSL predefined functions
+### vSL predefined functions
 
 DNS query can be handled by vSL through the generic vSL::dns_query() function. However the standard API as a dedicated abstract to check the Null MX record.
 
