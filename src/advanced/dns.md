@@ -73,7 +73,7 @@ In case of a DNS failure, the [RFC 3463], Enhanced Mail System Status Codes, reg
 
 ## Locating the target host
 
-[Section 5 of RFC5321] covers the sequence for identifying a server that accepts email for a domain. In essence, the SMTP client first looks up a DNS MX RR, and, if that is not found, it falls back to looking up a DNS A or AAAA RR.
+[Section 5 of RFC5321] covers the sequence for identifying a server that accepts email for a domain. In essence, the SMTP client first looks up a DNS MX RR, and, if that is not found, it falls back to looking up a DNS A or AAAA RR. If a CNAME record is found, the resulting name is processed as if it were the initial name.
 
 [Section 5 of RFC5321]: https://www.rfc-editor.org/rfc/rfc5321#section-5
 
@@ -126,11 +126,7 @@ The RFC 7505 defines two specific return codes.
 | basic status code | 550
 | Description | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN).
 
-### CNAME record
-
-As described in [Section 5 of RFC5321] if a CNAME record is found, the resulting name is processed as if it were the initial name.
-
-### Standard configuration
+#### Server configuration
 
 The example below shows how the default policy for locating the target host is implemented.
 
@@ -140,8 +136,7 @@ allow_0MX_delivery = false (default) | true
 allow_0MX_sender = false (default) | true
 ```
 
-
-### vSL predefined functions
+#### vSL predefined functions
 
 DNS query can be handled by vSL through the generic vSL::dns_query() function. However the standard API as a dedicated abstract to check the Null MX record.
 
