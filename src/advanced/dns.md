@@ -77,14 +77,14 @@ In case of a DNS failure, the [RFC 3463], Enhanced Mail System Status Codes, reg
 
 [Section 5 of RFC5321]: https://www.rfc-editor.org/rfc/rfc5321#section-5
 
-This mechanim has two major defects.
+This mechanism has two major defects.
 
 - It overloads a DNS record with an email service semantic.
 - If there are no SMTP listeners at the A/AAAA addresses, message delivery will be attempted repeatedly many times before the sending Mail Transfer Agent (MTA) gives up and:
   - It delay notification to the sender in the case of misdirected mail.
   - It consumes resources at the sender.
 
-vSMTP allows not to fall back to A and AAAA records with the `follow_A_AAAA` directive. However the "Null MX" protocol solves these issues.
+The "Null MX" protocol solves these issues.
 
 ### Null MX record
 
@@ -100,11 +100,11 @@ A "Null NX" DNS record looks like :
 nomail.example.com. 86400 IN MX 0 "."
 ```
 
-vSMTP `enable_null_MX` directive allows to enable or disable this protocol.
+vSMTP `allow_0MX_delivery` directive allows to enable or disable this protocol.
 
 #### Sender with "Null MX" records
 
-As Null MX is primarily intended for domains that do not send or receive any mail, vSMTP default behavior is to reject mail that has an invalid return address. It can be changed with the `allow_null_MX_sender` directive.
+As Null MX is primarily intended for domains that do not send or receive any mail, vSMTP default behavior is to reject mail that has an invalid return address. It can be changed with the `allow_0MX_sender` directive.
 
 However mail systems should not publish a null MX record for domains that they use in MAIL FROM (RFC5321) or From (RFC5322) directives. If a system nonetheless does so, it risks having its mail rejected.
 
@@ -128,21 +128,26 @@ The RFC 7505 defines two specific return codes.
 
 ### CNAME record
 
-As described in [Section 5 of RFC5321] if a CNAME record is found, the resulting name is processed as if it were the initial name. This behavior can be changed with the vSMTP directive `follow_CNAME`.
+As described in [Section 5 of RFC5321] if a CNAME record is found, the resulting name is processed as if it were the initial name.
 
 ### Standard configuration
 
 The example below shows how the default policy for locating the target host is implemented.
 
 ```toml
-[server.dns.target]  ???????
-follow_CNAME = false
-follow_A_AAAA = false
-enable_null_MX = true
-allow_null_MX_sender = false
+[server.dns]  
+allow_0MX_delivery = false (default) | true
+allow_0MX_sender = false (default) | true
 ```
 
-Note that is `enable_null_MX` policy is set to true, `follow_A_AAAA` is automatically set to false.
+
+### vSL predefined functions
+
+DNS query can be handled by vSL through the generic vSL::dns_query() function. However the standard API as a dedicated abstract to check the Null MX record.
+
+```javascript
+// this is a VSL example
+```
 
 ## Reverse DNS queries
 
