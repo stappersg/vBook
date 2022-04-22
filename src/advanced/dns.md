@@ -120,6 +120,8 @@ The RFC 7505 defines two specific return codes.
 | Basic status code | 556
 | Description | The associated address is marked as invalid using a null MX.
 
+The second one:
+
 | Code | X.7.27
 | :--- | :---
 | Text | Sender address has null MX
