@@ -22,6 +22,7 @@
   - [The vSL magic garden explained](advanced/magic.md)
   - [DNS configuration](advanced/dns.md)
   - [Email authentication mechanisms](advanced/eam.md)
+    - [Null MX](advanced/eam/nullmx.md)
     - [SPF](advanced/eam/spf.md)
     - [DKIM](advanced/eam/dkim.md)
     - [DMARC](advanced/eam/dmarc.md)
