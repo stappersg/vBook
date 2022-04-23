@@ -8,7 +8,7 @@ DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` table
 
 [Trust-DNS]: (https://github.com/bluejekyll)
 
-> Some options will be implemented in v0.11.
+DNS configuration can be applied on root or on virtual domains.
 
 ## DNS resolver
 
@@ -21,9 +21,24 @@ type = "system" | "google" | "cloudflare"
 
 Please see Google and CloudFlare privacy statement for important information about what they track.
 
+### Locating the target host
+
+[Section 5 of RFC5321] covers the sequence for identifying a server that accepts email for a domain. In essence, the SMTP client first looks up a DNS MX RR, and, if that is not found, it falls back to looking up a DNS A or AAAA RR. If a CNAME record is found, the resulting name is processed as if it were the initial name.
+
+[Section 5 of RFC5321]: https://www.rfc-editor.org/rfc/rfc5321#section-5
+
+This mechanism has two major defects.
+
+- It overloads a DNS record with an email service semantic.
+- If there are no SMTP listeners at the A/AAAA addresses, message delivery will be attempted repeatedly many times before the sending Mail Transfer Agent (MTA) gives up and:
+  - It delay notification to the sender in the case of misdirected mail.
+  - It consumes resources at the sender.
+
+The "Null MX" protocol solves these issues.
+
 ### Resolver options
 
-DNS Options can be set in the TOML `[server.dns.options]` and `[server.virtual.dns.options]` tables.
+DNS Options can be set in the TOML `[server.dns.options]` table.
 
 | Parameter | value | Description | Default value
 | :--- | :--- | :--- | :--- |
@@ -53,7 +68,7 @@ validate = true
 
 Advanced parameters are available. Please check vSMTP reference guide and [Trust-DNS] repository.
 
-### DNS and SMTP return codes
+## DNS and SMTP return codes
 
 In case of a DNS failure, the [RFC 3463], Enhanced Mail System Status Codes, registers two specific SMTP return codes.
 
@@ -70,79 +85,6 @@ In case of a DNS failure, the [RFC 3463], Enhanced Mail System Status Codes, reg
 | Text | Unable to route
 | Basic status code | not given
 | Description | The mail system was unable to determine the next hop for the message because the necessary routing information was unavailable from the directory server. This is useful for both permanent and persistent transient errors. A DNS lookup returning only an SOA (Start of Administration) record for a domain name is one example of the unable to route error.
-
-## Locating the target host
-
-[Section 5 of RFC5321] covers the sequence for identifying a server that accepts email for a domain. In essence, the SMTP client first looks up a DNS MX RR, and, if that is not found, it falls back to looking up a DNS A or AAAA RR. If a CNAME record is found, the resulting name is processed as if it were the initial name.
-
-[Section 5 of RFC5321]: https://www.rfc-editor.org/rfc/rfc5321#section-5
-
-This mechanism has two major defects.
-
-- It overloads a DNS record with an email service semantic.
-- If there are no SMTP listeners at the A/AAAA addresses, message delivery will be attempted repeatedly many times before the sending Mail Transfer Agent (MTA) gives up and:
-  - It delay notification to the sender in the case of misdirected mail.
-  - It consumes resources at the sender.
-
-The "Null MX" protocol solves these issues.
-
-### Null MX record
-
-Basically the "null MX" protocol is a simple mechanism by which a domain can indicate that it does not accept email. It is described in [RFC 7505].
-
-[RFC 7505]: https://www.rfc-editor.org/rfc/rfc7505.html
-
-This protocol defines a null MX that will cause all mail delivery attempts to a domain to fail immediately.
-
-A "Null NX" DNS record looks like :
-
-```dns
-nomail.example.com. 86400 IN MX 0 "."
-```
-
-vSMTP `allow_0MX_delivery` directive allows to enable or disable this protocol.
-
-#### Sender with "Null MX" records
-
-As Null MX is primarily intended for domains that do not send or receive any mail, vSMTP default behavior is to reject mail that has an invalid return address. It can be changed with the `allow_0MX_sender` directive.
-
-However mail systems should not publish a null MX record for domains that they use in MAIL FROM (RFC5321) or From (RFC5322) directives. If a system nonetheless does so, it risks having its mail rejected.
-
-#### Null MX return codes
-
-The RFC 7505 defines two specific return codes.
-
-[Null MX]: https://www.rfc-editor.org/rfc/rfc7505.html
-
-| Code | X.1.10
-| :--- | :---
-| Text | Recipient address has null MX
-| Basic status code | 556
-| Description | The associated address is marked as invalid using a null MX.
-
-| Code | X.7.27
-| :--- | :---
-| Text | Sender address has null MX
-| basic status code | 550
-| Description | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN).
-
-### Server configuration
-
-The example below shows how the default policy for locating the target host is implemented.
-
-```toml
-[server.dns]  
-allow_0MX_delivery = false (default) | true
-allow_0MX_sender = false (default) | true
-```
-
-### vSL predefined functions
-
-DNS query can be handled by vSL through the generic vSL::dns_query() function. However the standard API as a dedicated abstract to check the Null MX record.
-
-```javascript
-// this is a VSL example
-```
 
 ## Reverse DNS queries
 

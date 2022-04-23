@@ -125,17 +125,20 @@ The following error codes can also be sent by the SPF framework.
 
 ```toml
 [server.auth.spf]
-helo = false | true (default)     # Open issue - only "mail_from" check is available.
-strict = false (default) | true
+trigger = "sys" (default) | "vsl"  
+policy = "strict" | "soft" (default) | "none"
+helo = "false" | "true" (default)     # Open issue - only "mail_from" check is available.
 header = "spf" | "auth" | "both" (default) | "none"
 ```
 
-### vSL function
+### vSL predefined function
+
+The standard API as a dedicated abstract to check the SPF policy.
 
 ```javascript
 // main.vsl
-import "/addons-std/api" as api;
+import "/api-std/api" as vsl;
 
 mail: [
-  rule "check spf" || api::check_spf(ctx, srv);
+  rule "check spf" || vsl::check_spf!();
 ]
