@@ -2,7 +2,7 @@
 
 vSMTP is a stand-alone application with little kernel interaction, it may run on any system with slight modifications.
 
-> vSMTP is currently under development. There's no stable version packaged. It must be compiled from source code.
+> vSMTP is currently under development. There's only a DEBIAN package. Anyway vSMTP can be easily compiled from source code.
 
 ## Physical requirements
 

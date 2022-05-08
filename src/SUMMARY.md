@@ -5,7 +5,7 @@
 
 - [Getting Started](start/started.md)
   - [Requirements](start/requirements.md)
-  - [Installation from packages]()
+  - [Installation from packages](start/install/packages.md)
   - [Installation from source](start/install/source.md)
     - [Linux](start/install/source/linux.md)
     - [FreeBSD](start/install/source/freebsd.md)

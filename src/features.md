@@ -60,18 +60,17 @@ vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent
 
 ## External services
 
-Currently only Unix shell calls are available.
-Complex files, databases, in-memory caches, etc. support is planned for version 0.11.
-Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for version 0.12.
+Currently only Unix shell calls and file databases are available.
+Next version will bring SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q2/2022.
 
 [Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
 
 ## Email authentication mechanisms
 
 - Message submission RFCs.
-- [DANE] protocol (v0.12).
-- [SPF], [DKIM] and [DMARC] mechanisms support (v0.11+).
-- [ARC] and [BIMI] experimental and future Internet standards (v0.13+).
+- [SPF] support
+- [DANE] protocol, [DKIM] and [DMARC] mechanisms supports are planned for version 1.2.
+- [ARC] and [BIMI] experimental and future Internet standards are currently not supported.
 
 [DANE]: https://www.rfc-editor.org/rfc/rfc7671.html 
 [SPF]: https://www.rfc-editor.org/rfc/rfc7208.html

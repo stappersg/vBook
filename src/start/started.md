@@ -9,3 +9,5 @@ There are four main parts:
 - Configuring vSMTP for a personal usage.
 - Hardening your new configuration.
 - Using a third party software like clamAV.
+
+Let's start our journey in the wonderful world of Mail Transfer Agent.

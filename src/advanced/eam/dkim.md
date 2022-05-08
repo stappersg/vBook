@@ -1,6 +1,6 @@
 # DomainKeys Identified Message
 
-> ___This is a DRAFT for v0.12 features___
+> ___This is a DRAFT for v1.2 features___
 
 This document specifies the vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
 

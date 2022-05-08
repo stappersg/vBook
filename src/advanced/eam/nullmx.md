@@ -1,5 +1,7 @@
 # Null MX record
 
+> ___This is a DRAFT for v1.1 features___
+
 Basically the "null MX" protocol is a simple mechanism by which a domain can indicate that it does not accept email. It is described in [RFC 7505].
 
 [RFC 7505]: https://www.rfc-editor.org/rfc/rfc7505.html
