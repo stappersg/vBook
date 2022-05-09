@@ -38,11 +38,23 @@ mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsm
 cp ./target/release/vsmtp /usr/sbin/
 cp ./target/release/vqueue /usr/sbin/
 cp ./examples/config/minimal.toml /etc/vsmtp/vsmtp.toml
-chmod 555 /usr/sbin/vsmtp
 chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
-Do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
+Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
+
+```shell
+echo "version_requirement = \"1.0.0\"" > /etc/vsmtp/vsmtp.toml
+```
+
+Grant rights to files and folders.
+
+```shell
+chmod 555 /usr/sbin/vsmtp
+sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
+```
+
+If required, do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
 
 ### Disabling sendmail
 
@@ -67,7 +79,7 @@ chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 
 ## Adding a vSMTP as a system service
 
-vSMTP  v0.9 comes with a mechanism that drop privileges at startup. User ACLs are no longer needed.
+vSMTP comes with a mechanism that drop privileges at startup. User ACLs are no longer needed.
 
 Please add:
 
@@ -75,7 +87,7 @@ Please add:
 - the vsmtp script in /usr/local/etc/rc.d
 
 ```shell
-cp ./examples/install/os-dep/freebsd-vsmtp.service /usr/local/etc/rc.d/vsmtp
+cp ./tools/install/freebsd/freebsd-vsmtp.service /usr/local/etc/rc.d/vsmtp
 ```
 
 ```shell

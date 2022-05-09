@@ -99,11 +99,21 @@ This default behavior can be changed in the vSMTP configuration file `/etc/vsmtp
 sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
 sudo cp ./target/release/vsmtp /usr/sbin/
 sudo cp ./target/release/vqueue /usr/sbin/
-sudo cp ./examples/config/minimal.toml /etc/vsmtp/vsmtp.toml
+```
+
+Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
+
+```shell
+sudo bash -c 'echo "version_requirement = \"1.0.0\"" > /etc/vsmtp/vsmtp.toml'
+```
+
+Grant rights to files and folders.
+
+```shell
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
-Do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
+If required, do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
 
 ## Configuring the MTA service
 
@@ -137,7 +147,7 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 Copy the daemon configuration file to /etc/systemd/system.
 
 ```shell
-sudo cp ./examples/install/os-dep/linux-vsmtp.service /etc/systemd/system/vsmtp.service
+sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
 ```
 
 Please note that vSMTP comes with a mechanism that drop privileges at startup. The service type must be set to `forking`.
