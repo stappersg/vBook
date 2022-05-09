@@ -8,6 +8,8 @@ You can find the vsmtp.deb package in the [release] section of the vSMTP github.
 
 [release]: https://github.com/viridIT/vSMTP/releases
 
+vSMTP package will be added to Debian Repository as soon as possible.
+
 ## Linux/RedHat distros
 
 RPM package will come soon.
