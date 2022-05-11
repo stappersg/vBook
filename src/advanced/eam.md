@@ -16,7 +16,7 @@ The DomainKeys Identified Mail (DKIM) protocol allows you to sign your email wit
 
 These are the main protocols for verifying the identity of senders. This is one of the most effective ways to prevent phishers and other fraudsters from impersonating a legitimate sender whose identity they are impersonating using the same domain name.
 
-There is another advantage, and not the least. Indeed, the implementation of these protocols improves the deliverability of emails sent, since you will be better identified by the ISPs (Internet Service Providers) and email clients of your recipients. You then optimize your chances that your emails will arrive in the inbox of your recipients and not in the “spam” or “junk mail” folder.
+The implementation of these protocols improves the deliverability of emails sent, since you will be better identified by the ISPs (Internet Service Providers) and email clients of your recipients. You then optimize your chances that your emails will arrive in the inbox of your recipients and not in the “spam” or “junk mail” folder.
 
 These protocols have become standards for sending email. A message sent without an SPF and/or DKIM signature is viewed with suspicion by the various email analysis tools.
 

@@ -6,8 +6,8 @@ The delivery subsystem uses specific actions. They can be called at any vSMTP st
 
 The incoming mail traffic can locally be delivered using :
 
-- The [Mbox] format 
-- The [Maildir] format
+- The [Mbox] format.
+- The [Maildir] format.
 
 [Mbox]: https://datatracker.ietf.org/doc/html/rfc4155
 [Maildir]: https://en.wikipedia.org/wiki/Maildir
@@ -24,11 +24,15 @@ vSMTP uses a well known and secured third-party software [Lettre] also written i
 
 ### Specific actions for the deliver stage
 
-| Action | Syntax | Description |
-| ---- | ---- | ---- |
-| Deliver | deliver(ctx, proto) | Delivery using protocol.
-| Forward | forward(ctx, addr) | Forward mail to an other MTA.
-
-Protocol are "smtp", "mbox" and "maildir", "default" and "none".
-
-The default behavior can be set in the TOML configuration file.
+| Action      | Syntax                 | Description                                                   |
+| ----------- | ---------------------- | ------------------------------------------------------------- |
+| Deliver     | deliver(rcpt)          | simple delivery for a single recipient.                       |
+| Deliver All | deliver_all()          | simple delivery for all recipients.                           |
+| Forward     | forward(rcpt, addr)    | Forward mail to an other MTA for a single recipient.          |
+| Forward     | forward_all(addr)      | Forward mail to an other MTA for all recipients.              |
+| Maildir     | maildir(rcpt)          | deliver the email locally via maildir for a single recipient. |
+| Maildir     | maildir_all()          | deliver the email locally via maildir for all recipients.     |
+| Mailbox     | mbox(rcpt)             | deliver the email locally via mbox for a single recipient.    |
+| Mailbox     | mbox_all()             | deliver the email locally via mbox for all recipients.        |
+| No delivery | disable_delivery(rcpt) | disable the delivery for a single recipient.                  |
+| No delivery | disable_delivery_all() | disable the delivery for all recipients.                      |

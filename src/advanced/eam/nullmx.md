@@ -30,37 +30,25 @@ The RFC 7505 defines two specific return codes.
 
 [Null MX]: https://www.rfc-editor.org/rfc/rfc7505.html
 
-| Code | X.1.10
-| :--- | :---
-| Text | Recipient address has null MX
-| Basic status code | 556
-| Description | The associated address is marked as invalid using a null MX.
+| Code              | X.1.10                                                       |
+| :---------------- | :----------------------------------------------------------- |
+| Text              | Recipient address has null MX                                |
+| Basic status code | 556                                                          |
+| Description       | The associated address is marked as invalid using a null MX. |
 
-| Code | X.7.27
-| :--- | :---
-| Text | Sender address has null MX
-| basic status code | 550
-| Description | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN).
+| Code              | X.7.27                                                                                                                                                      |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | Sender address has null MX                                                                                                                                  |
+| basic status code | 550                                                                                                                                                         |
+| Description       | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN). |
 
-### TOML configuration file
-
-```toml
-[server.auth.null_mx]
-trigger = "sys" (default) | "vsl"  
-policy = "strict" (default) | "soft" | "none"
-header = "X-nullMX" | "none" (default)
-```
-
-Changing policy to "soft" will automatically switch header to "x-header".
 
 ### vSL predefined functions
 
 The standard API as a dedicated abstract to check the Null MX record.
 
+__main.vsl__
 ```javascript
-// main.vsl
-import "/api-std/api" as vsl;
-
 mail: [
-  rule "check null MX" || vsl::check_null_mx!();
+  rule "check null MX" || check_null_mx();
 ]

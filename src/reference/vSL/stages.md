@@ -6,15 +6,15 @@ At each step vSL updates and publishes a global context containing transaction a
 
 ## vSMTP stages
 
-| Stage | SMTP state | Context available
-| :--- | :--- | :---
-| connect | Before HELO/EHLO command | Connection related information.
-| helo | After HELO/EHLO command | HELO string.
-| mail | After MAIL FROM command | Sender address.
-| rcpt | After DATA command | The entire SMTP envelop.
-| preq | Before queuing[^preq]  | The entire mail.
-| postq | After queuing[^postq]  | The entire mail.
-| deliver | Before delivering | The entire mail.
+| Stage   | SMTP state               | Context available               |
+| :------ | :----------------------- | :------------------------------ |
+| connect | Before HELO/EHLO command | Connection related information. |
+| helo    | After HELO/EHLO command  | HELO string.                    |
+| mail    | After MAIL FROM command  | Sender address.                 |
+| rcpt    | After DATA command       | The entire SMTP envelop.        |
+| preq    | Before queuing[^preq]    | The entire mail.                |
+| postq   | After queuing[^postq]    | The entire mail.                |
+| deliver | Before delivering        | The entire mail.                |
 
 [^preq]: Preq stage triggers after the end of data, before the server answer (ex. 250 OK).
 
@@ -38,22 +38,19 @@ To protect against bursts and crashes, vSMTP implements several internal mechani
 
 As described above, depending on the stage vSL exposes variables to the end user.
 
-| Stage | Name | Type | Description
-| :--- | :--- | :--- | :---
-| Connect | client_ip | ip4/ip6 | Source IP address.
-| | client_port | int | Source port.
-| | connect_timestamp | POSIX timestamp | Connection timestamp.
-| Helo | helo | string | HELO/EHLO SMTP value.
-| Mail | mail_from | addr | Sender email address.
-| | mail_from.local_part | string | Sender identifier.
-| | mail_from.domain | fqdn | Sender fqdn.
-| Rcpt | rcpt | array[addr] | Array of recipient addresses.
-| | rcpt.local_parts | array[string] | Array of recipient identifier.
-| | rcpt.domains | array[fqdn] | Array of recipient fqdn.
-| Next stages |  data | string | Email raw data.
-|  | parse[^parse] | vec(struct) | Parsed email.
-
-[^parse]: The `parse` variable is available only if the user triggers a `vSL::parse()` function.
+| Stage       | Name                 | Type            | Description                    |
+| :---------- | :------------------- | :-------------- | :----------------------------- |
+| Connect     | client_ip            | ip4/ip6         | Source IP address.             |
+|             | client_port          | int             | Source port.                   |
+|             | connect_timestamp    | POSIX timestamp | Connection timestamp.          |
+| Helo        | helo                 | string          | HELO/EHLO SMTP value.          |
+| Mail        | mail_from            | addr            | Sender email address.          |
+|             | mail_from.local_part | string          | Sender identifier.             |
+|             | mail_from.domain     | fqdn            | Sender fqdn.                   |
+| Rcpt        | rcpt                 | array[addr]     | Array of recipient addresses.  |
+|             | rcpt.local_parts     | array[string]   | Array of recipient identifier. |
+|             | rcpt.domains         | array[fqdn]     | Array of recipient fqdn.       |
+| Next stages | mail                 | string          | Email raw data.                |
 
 These variables are part of the email context `ctx`. Thus they must be called in a vSL file using the dot notation i.e. `ctx.timestamp`.
 
@@ -70,4 +67,4 @@ HELO                                    # Start of SMTP transaction
 QUIT                                    # End of transaction
 ```
 
-&#9762; | Per network connection, the "connect context" is unique while other variables like ${mail} are reset after each new message transaction.
+&#9762; | the "mail context" (obtained with the function `ctx()`) is unique for each incoming connexion.

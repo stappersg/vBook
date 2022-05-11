@@ -14,7 +14,7 @@ The network looks like that :
               { Internal Network }
 ```  
 
-They also bought a domain name `doe-family.com`. They decided to prefixe their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
+They also bought a domain name `doe-family.com`. They decided to prefix their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
 
 ### Network configuration
 

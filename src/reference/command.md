@@ -6,27 +6,27 @@ vSMTP was designed to run as a Unix service and is not intended to be run intera
 
 ```shell
 $ sudo vsmtp -c /etc/vsmtp/vsmtp-minimal.toml
-Loading with configuration: '/etc/vsmtp/vsmtp-minimal.toml'
-2022-02-05 15:05:09 WARN  140000927181184 (line:51 ) 
-Listening on: [0.0.0.0:25, 0.0.0.0:587, 0.0.0.0:465]
+2022-05-11 17:16:40.609916181 WARN  [139916115511680] server::rule_engine            $ No 'main.vsl' provided in the config, the server will deny any incoming transaction by default.
+2022-05-11 17:16:40.622996178 WARN  [139915467675200] vsmtp_server::server           $ No TLS configuration provided, listening on submissions protocol (port 465) will cause issue
 ```
 
 ## Managing configuration
 
 ```shell
-$ sudo vsmtp --help
-vsmtp 0.10.1
+$ vsmtp --help
+vsmtp 1.0.0
 Team viridIT <https://viridit.com/>
-vSMTP : the next-gen MTA. Secured, Faster and Greener
+Next-gen MTA. Secured, Faster and Greener
 
 USAGE:
     vsmtp [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -c, --config <CONFIG>    Path of the vSMTP configuration file (toml format)
-    -h, --help               Print help information
-    -n, --no-daemon          Do not run the program as a daemon
-    -V, --version            Print version information
+    -c, --config <CONFIG>      Path of the vSMTP configuration file (toml format)
+    -h, --help                 Print help information
+    -n, --no-daemon            Do not run the program as a daemon
+    -t, --timeout <TIMEOUT>    Make the server stop after a delay (human readable format)
+    -V, --version              Print version information
 
 SUBCOMMANDS:
     config-diff    Show the difference between the loaded config and the default one

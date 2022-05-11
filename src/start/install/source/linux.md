@@ -17,6 +17,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 vSMTP requires libc libraries and GCC compiler/linker. On a Debian system these can be installed through the build-essential package.
 
 ```shell
+sudo apt install pkg-config
 sudo apt install build-essential
 ```
 
@@ -25,11 +26,10 @@ The Debian package is libssl-dev package.
 
 [OpenSSL development libraries]: https://www.openssl.org/
 
-The `pkg-config` package is also required.
-
 ```shell
 sudo apt install libssl-dev
-sudo apt install pkg-config
+sudo apt install libgsasl7-dev
+sudo apt install libsasl2-2
 ```
 
 
@@ -47,21 +47,23 @@ cargo build --release
 
 ```shell
 $ ./target/release/vsmtp --help
-vsmtp 0.8.6
+vsmtp 1.0.0
 Team viridIT <https://viridit.com/>
-vSMTP : the next-gen MTA. Secured, Faster and Greener
+Next-gen MTA. Secured, Faster and Greener
 
 USAGE:
-    vsmtp --config <CONFIG> [SUBCOMMAND]
+    vsmtp [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -c, --config <CONFIG>
-    -h, --help               Print help information
-    -V, --version            Print version information
+    -c, --config <CONFIG>      Path of the vSMTP configuration file (toml format)
+    -h, --help                 Print help information
+    -n, --no-daemon            Do not run the program as a daemon
+    -t, --timeout <TIMEOUT>    Make the server stop after a delay (human readable format)
+    -V, --version              Print version information
 
 SUBCOMMANDS:
     config-diff    Show the difference between the loaded config and the default one
-    config-show    Show the loaded config (as json)
+    config-show    Show the loaded config (as serialized json format)
     help           Print this message or the help of the given subcommand(s)
 ```
 
@@ -104,7 +106,7 @@ sudo cp ./target/release/vqueue /usr/sbin/
 Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
 
 ```shell
-sudo bash -c 'echo "version_requirement = \"1.0.0\"" > /etc/vsmtp/vsmtp.toml'
+sudo bash -c 'echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml'
 ```
 
 Grant rights to files and folders.
@@ -123,7 +125,7 @@ Check if you have a mail transfer agent service running and disable it. The exam
 
 ```shell
 $ sudo ss -ltpn | grep ":25"
-tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      39423/master
+tcp        0      0 127.0.0.1:25              127.0.0.1:*               LISTEN      39423/master
 
 $ sudo systemctl status postfix
 ● postfix.service - Postfix Mail Transport Agent
@@ -152,25 +154,6 @@ sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
 
 Please note that vSMTP comes with a mechanism that drop privileges at startup. The service type must be set to `forking`.
 
-```ini
-[Unit]
-Description=vSMTP Mail Transfer Agent
-Conflicts=sendmail.service exim4.service postfix.service
-ConditionPathExists=/etc/vsmtp/vsmtp.toml
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=forking
-UMask=007
-ExecStart=/usr/sbin/vsmtp -c /etc/vsmtp/vsmtp.toml
-Restart=on-failure
-TimeoutStopSec=300
-
-[Install]
-WantedBy=multi-user.target
-```
-
 > Do not modify this file unless you know what you are doing.
 
 ### Enable and activate vSMTP service
@@ -198,9 +181,9 @@ $ sudo systemctl status vsmtp
 ```shell
 $ ss -ltpn | grep vsmtp
 State    Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Process
-LISTEN   0        128        0.0.0.0:587           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=5))
-LISTEN   0        128        0.0.0.0:465           0.0.0.0:*       users:(("vsmtp",pid=2127,fd=6))
-LISTEN   0        128        0.0.0.0:25            0.0.0.0:*       users:(("vsmtp",pid=2127,fd=4))
+LISTEN   0        128        127.0.0.1:587           127.0.0.1:*       users:(("vsmtp",pid=2127,fd=5))
+LISTEN   0        128        127.0.0.1:465           127.0.0.1:*       users:(("vsmtp",pid=2127,fd=6))
+LISTEN   0        128        127.0.0.1:25            127.0.0.1:*       users:(("vsmtp",pid=2127,fd=4))
 
 $ nc -4 localhost 25
 220 mydomain.com Service ready

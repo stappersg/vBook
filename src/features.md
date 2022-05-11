@@ -24,7 +24,7 @@ The network code has been designed with performance and load resistance as the m
 [Internet Message Format]: https://datatracker.ietf.org/doc/html/rfc5322
 [Simple Mail Transfer Protocol]: https://datatracker.ietf.org/doc/html/rfc5321
 [TLS 1.3]: https://datatracker.ietf.org/doc/html/rfc8446
-[Trust-DNS]: (https://github.com/bluejekyll)
+[Trust-DNS]: https://github.com/bluejekyll/trust-dns
 
 ## API
 
@@ -32,7 +32,7 @@ vSMTP is modular and highly customizable.  Adding or modifying subsystems is fac
 
 - Mail exports in raw and json format.
 - Third-party softwares called by user-defined services.
-- SQL and NoSQL databses (v0.11+)
+- SQL and NoSQL databases (v1.2+)
 - Mods and addons support.
 - Applications logs.
 
@@ -61,7 +61,7 @@ vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent
 ## External services
 
 Currently only Unix shell calls and file databases are available.
-Next version will bring SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q2/2022.
+Next versions will bring SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q2/2022.
 
 [Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
 

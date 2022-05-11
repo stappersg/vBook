@@ -1,13 +1,13 @@
 # The vSL magic garden explained
 
-> This is a v0.11 draft
+> This is a v1.1 draft
 
-vSL comes with many predefined functions allowing the user to use them directly or to adapt them to his needs. These functions can be found in the the standard addons folder `rules/addons/std/`.
+vSL comes with many predefined functions allowing the user to use them directly or to adapt them to his needs. These functions can be found in the [api folder](https://github.com/viridIT/vSMTP/tree/main/src/vsmtp/vsmtp-rule-engine/src/api).
 
-Remember the SPF rule we added in the [step-by-step] tutorial. In the addons folder, there's a file `auth.vsl` that comes with functions dedicated to authentication methods. One is called `check_spf()`.
+Remember the SPF rule we added in the [step-by-step] tutorial. In the api folder, there's a file `auth.vsl` that comes with functions dedicated to authentication methods. One is called `check_spf()`.
 
 [step-by-step]: ../start/configuration/hardening.md
-
+****
 
 
 > Please refer to the [SPF chapter] for detailed information about SPF protocol.
@@ -46,15 +46,15 @@ fn check_spf(ctx, srv) {
 _To access to the message structure (i.e. the HELO/EHLO string) we must pass the message context (ctx) in argument._
 
 ```javascript
-    let query = vsl::check_spf(ctx.client_ip, ctx.mail_from, "");
+    let query = check_spf(ctx.client_ip, ctx.mail_from, "");
 ```
 _Wait... there are two functions check_spf ? Yes !_
 
-_The predefined function `api::check_spf()` calls an internal vSL function `vsl::check_spf()`.
-That means that you can either utilize the predefined function `api::check_spf()` or modify/create a new one that calls `vsl::check_spf()`._
+_The predefined function `api::check_spf()` calls an internal vSL function `check_spf()`.
+That means that you can either utilize the predefined function `api::check_spf()` or modify/create a new one that calls `check_spf()`._
 
 ```javascript
-    // vsl::check_spf() : a wrapper for viaspf::evaluate_sender (viaspf crate)
+    // check_spf() : a wrapper for viaspf::evaluate_sender (viaspf crate)
     //
     // - return :
     //    * result : the result of an SPF evaluation.
@@ -89,9 +89,9 @@ _This is the second big improvement of vSL: the vSMTP server configuration is di
 
 ```javascript
         switch query.result {
-            "fail" => return vsl::deny(code::code550_7_23),
-            "temperror" => return vsl::deny(code::code451_7_24),
-            "permerror" => return vsl::deny(code::code550_7_24),
+            "fail" => return deny(code::code550_7_23),
+            "temperror" => return deny(code::code451_7_24),
+            "permerror" => return deny(code::code550_7_24),
             _ => {},
         } 
 ```
@@ -102,12 +102,12 @@ _Here are the SMTP predefined codes we imported in line 1. With a strict SPF we 
     } else { 
         // Add "JUNK:" in the subject
         if query.result != "pass" { 
-            vsl::set_header(ctx, "Subject", "JUNK:" + get_header(ctx, "Subject"));
+            set_header(ctx, "Subject", "JUNK:" + get_header(ctx, "Subject"));
         }
     }
 ```
 
-_Now the build the header using the objects (result, explanation and cause) returned by the vsl::check_spf() function._
+_Now the build the header using the objects (result, explanation and cause) returned by the check_spf() function._
 
 ```javascript
     // Record the result in a header (RFC 7208-9)
@@ -142,7 +142,7 @@ _Again we have to check a TOML server variable to decide which kind of header wi
         _ => throw `From SPF Check : TOML field ${toml::server.auth.spf.header} unknown`,
     }
 
-    return vsl::next();
+    return next();
 
 }
 ```

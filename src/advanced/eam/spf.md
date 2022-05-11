@@ -57,16 +57,16 @@ vSMTP allows utilization of the SPF framework only at the "MAIL FROM" stage.
 
 The vSMTP SPF verifier implements results semantically equivalent to the RFC.
 
-| Result | Description |
-| :--- | :--- |
-| none | (a) no syntactically valid DNS domain name was extracted from the SMTP session that could be used as the one to be or (b) no SPF records were retrieved from the DNS.|
-| neutral | The ADMD has explicitly stated that it is not asserting whether the IP address is authorized. |
-| pass | The client is authorized to inject mail with the given identity. |
-| fail | The client is not authorized to use the domain in the given identity. |
-| softfail | The host is probably not authorized but the ADMD has not published a stronger policy. |
-| temperror | A transient (generally DNS) error while performing the check. |
-| permerror | The domain's published records (DNS) could not be correctly interpreted. |
-| policy | Added by [RFC 8601, Section 2.4](https://www.rfc-editor.org/rfc/rfc8601#section-2.4) - indicate that some local policy mechanism was applied that augments or even replaces (i.e., overrides) the result returned by the authentication mechanism.  The property and value in this case identify the local policy that was applied and the result it returned. |
+| Result    | Description                                                                                                                                                                                                                                                                                                                                                    |
+| :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| none      | (a) no syntactically valid DNS domain name was extracted from the SMTP session that could be used as the one to be or (b) no SPF records were retrieved from the DNS.                                                                                                                                                                                          |
+| neutral   | The ADMD has explicitly stated that it is not asserting whether the IP address is authorized.                                                                                                                                                                                                                                                                  |
+| pass      | The client is authorized to inject mail with the given identity.                                                                                                                                                                                                                                                                                               |
+| fail      | The client is not authorized to use the domain in the given identity.                                                                                                                                                                                                                                                                                          |
+| softfail  | The host is probably not authorized but the ADMD has not published a stronger policy.                                                                                                                                                                                                                                                                          |
+| temperror | A transient (generally DNS) error while performing the check.                                                                                                                                                                                                                                                                                                  |
+| permerror | The domain's published records (DNS) could not be correctly interpreted.                                                                                                                                                                                                                                                                                       |
+| policy    | Added by [RFC 8601, Section 2.4](https://www.rfc-editor.org/rfc/rfc8601#section-2.4) - indicate that some local policy mechanism was applied that augments or even replaces (i.e., overrides) the result returned by the authentication mechanism.  The property and value in this case identify the local policy that was applied and the result it returned. |
 
 ### Results headers
 
@@ -91,35 +91,35 @@ Results should be recorded in the message header. According to RFCs, two options
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
-| Code | X.7.23 |
-| :--- | :--- |
-| Text | SPF validation failed |
-| Basic status code | 550 |
-| Description | A message completed an SPF check that produced a "fail" result |
-| Used in place of| 5.7.1, as described in Section 8.4 of RFC 7208.|
+| Code              | X.7.23                                                         |
+| :---------------- | :------------------------------------------------------------- |
+| Text              | SPF validation failed                                          |
+| Basic status code | 550                                                            |
+| Description       | A message completed an SPF check that produced a "fail" result |
+| Used in place of  | 5.7.1, as described in Section 8.4 of RFC 7208.                |
 
-| Code | X.7.24 |
-| :--- | :--- |
-| Text | SPF validation error |
-| Basic status code | 451/550 |
-| Description | Evaluation of SPF relative to an arriving message resulted in an error. |
-| Used in place of | 4.4.3 or 5.5.2, as described in Sections 8.6 and 8.7 of RFC 7208. |
+| Code              | X.7.24                                                                  |
+| :---------------- | :---------------------------------------------------------------------- |
+| Text              | SPF validation error                                                    |
+| Basic status code | 451/550                                                                 |
+| Description       | Evaluation of SPF relative to an arriving message resulted in an error. |
+| Used in place of  | 4.4.3 or 5.5.2, as described in Sections 8.6 and 8.7 of RFC 7208.       |
 
 The following error codes can also be sent by the SPF framework.
 
-| Code | X.7.25 |
-| :--- | :--- |
-| Text | Reverse DNS validation failed |
-| Basic status code | 550 |
-| Description | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
-| Used in place of | n/a |
+| Code              | X.7.25                                                                                                    |
+| :---------------- | :-------------------------------------------------------------------------------------------------------- |
+| Text              | Reverse DNS validation failed                                                                             |
+| Basic status code | 550                                                                                                       |
+| Description       | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
+| Used in place of  | n/a                                                                                                       |
 
-| Code | X.7.26 |
-| :--- | :--- |
-| Text | Multiple authentication checks failed |
-| Basic status code | 500 |
-| Description | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
-| Used in place of | n/a |
+| Code              | X.7.26                                                                                                                                                       |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | Multiple authentication checks failed                                                                                                                        |
+| Basic status code | 500                                                                                                                                                          |
+| Description       | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
+| Used in place of  | n/a                                                                                                                                                          |
 
 ### TOML configuration file
 
@@ -135,10 +135,12 @@ header = "spf" | "auth" | "both" (default) | "none"
 
 The standard API as a dedicated abstract to check the SPF policy.
 
+__main.vsl__
 ```javascript
-// main.vsl
-import "/api-std/api" as vsl;
-
 mail: [
-  rule "check spf" || vsl::check_spf!();
+  // check spf parameters are, respectively:
+  // - the policy: "strict" | "soft" (default) | "none"
+  // - check helo: false | true (default)
+  // - injected header: "spf" | "auth" | "both" (default) | "none"
+  rule "check spf" || check_spf("strict", false, "spf");
 ]

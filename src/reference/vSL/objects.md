@@ -3,27 +3,27 @@
 Objects are declared through the "object" keyword. Two syntax are available.
 The inline syntax:
 
-```c
+```js
 object <name> <type> = "<value>";
 ```
 
-```c
+```js
 object my_host ip4 = "192.168.1.34";
 object local_domain fqdn = "foo.bar";
 ```
 
 The extended syntax, allowing the use of user-defined fields:
 
-```c
+```js
 object <name> <type> = #{
     value: "value",
-    <user_field1>: "value",
+    <field1>: "value",
     ...
-    <user_fieldn>: "value"
+    <fieldn>: "value"
 };
 ```
 
-```c
+```js
 object local_mda ip4 = #{
     value: "192.168.0.34",
     color: "bbf3ab",
@@ -31,25 +31,26 @@ object local_mda ip4 = #{
 };
 ```
 
-&#9998; | Only the "value:" field is mandatory.The last comma is not.
+&#9998; | Only the "value:" field is mandatory. The other fields are not.
 
 ## Type of implemented objects
 
 The following type of objects are supported natively:
 
-| Type | Description | Syntax | Comments
-| :--- | :--- | :--- | :---
-| string | Untyped value | string | Generic variable.
-| ip4 | IPv4 address | x.y.z.t | Decimal values.
-| ip6 | IPv6 address | a:b:c:d:e:f:g:h | Hex values.
-| rg4 | IPv4 network | x.y.z.t/rg | Decimal values.
-| rg6 | IPv6 prefix | a:b:c:d:e:f:g:h/rg | Hex values.
-| address | Email address | ident@fqdn | String.
-| ident | Local part of an address | user | String.
-| fqdn | Fully qualified domain name | my&#46;domain&#46;com | String.
-| regex | Regular expression | | PERL regular expression.
-| group | A group of objects | | See group section.
-| file | A file of objects | Unix file | See file section.
+| Type    | Description                 | Syntax                | Comments                 |
+| :------ | :-------------------------- | :-------------------- | :----------------------- |
+| string  | Untyped value               | string                | Generic variable.        |
+| ip4     | IPv4 address                | x.y.z.t               | Decimal values.          |
+| ip6     | IPv6 address                | a:b:c:d:e:f:g:h       | Hex values.              |
+| rg4     | IPv4 network                | x.y.z.t/rg            | Decimal values.          |
+| rg6     | IPv6 prefix                 | a:b:c:d:e:f:g:h/rg    | Hex values.              |
+| address | Email address               | ident@fqdn            | String.                  |
+| ident   | Local part of an address    | user                  | String.                  |
+| fqdn    | Fully qualified domain name | my&#46;domain&#46;com | String.                  |
+| regex   | Regular expression          |                       | PERL regular expression. |
+| group   | A group of objects          |                       | See group section.       |
+| file    | A file of objects           | Unix file             | See file section.        |
+| code    | a custom smtp code          |                       | See code section.        |
 
 ### About files
 
@@ -73,7 +74,7 @@ Groups are collections of objects. They can store references to other objects, s
 
 Unlike objects where fields are declared between parentheses, groups use squared brackets.
 
-```c
+```js
 object whitelist file:address = "./config/rules/whitelist.txt";
 
 object authorized_users group = [
@@ -84,7 +85,7 @@ object authorized_users group = [
 
 Groups can be nested into other groups.
 
-```c
+```js
 object deep-group group = [
   object foo-emails regex = "^[a-z0-9.]+@foo.com$",
   authorizedUsers,
@@ -92,3 +93,19 @@ object deep-group group = [
 ```
 
 &#9998; | When passed down into a check action, the whole group will be tested. The test stops when one of the groups content matches.
+
+### About codes
+
+custom codes can be declared with the following syntax.
+
+```js
+object code554_7_1 code = #{
+  base: 554,
+  enhanced: "5.7.1",
+  text: "Relay access denied"
+};
+
+// use the code in your rules. deny or send a informational message.
+deny(code554_7_1);
+info(code554_7_1);
+```

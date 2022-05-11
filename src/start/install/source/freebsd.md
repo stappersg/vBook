@@ -44,7 +44,7 @@ chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
 
 ```shell
-echo "version_requirement = \"1.0.0\"" > /etc/vsmtp/vsmtp.toml
+echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml
 ```
 
 Grant rights to files and folders.

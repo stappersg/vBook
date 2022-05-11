@@ -55,16 +55,3 @@ This is implement by vSMTP using `key = value`and `key = value` in the TOML conf
 > Algorithm agility is to be applied after first discarding any unusable or malformed records (unsupported digest algorithm, or incorrect digest length).  For each usage and selector, the client SHOULD process only any usable records with a matching type of Full(0) and the usable records whose digest algorithm is considered by the client to be the strongest among usable records with the given usage and selector.
 
 This is implement by vSMTP using `key = value`and `key = value` in the TOML configuration file.
-
-
-## vSMTP example
-
-```toml
-/// toml
-TO DO
-```
-
-```c
-/// main.vsl
-TO DO
-```

@@ -4,12 +4,12 @@ Several examples can be found in the [example/config](https://github.com/viridIT
 
 ## The configuration file
 
-`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Backup the `vmstp.toml` file. Open it with your favorite editor. Remove everything.
+`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Backup the `vsmtp.toml` file. Open it with your favorite editor. Remove everything.
 We will build it step-by-step.
 
 ```toml
 # Version requirement. Do not remove or modify it 
-version_requirement = ">=0.10.0, <1.0.0"  
+version_requirement = ">=1.0.0"
 
 # Global configuration
 [server]
@@ -33,7 +33,7 @@ Now that the server is configured we need to define the rules to apply to a mess
 
 ## vSL : the vSMTP Scripting Language
 
-End users can easily define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL). vSL is based on three main concepts : `objects`, `actions` and `rules`.
+End users can easily define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL). vSL is based on four main concepts : `objects`, `services`, `actions` and `rules`.
 
 `Objects` are virtual crates dedicated to manipulating mailboxes, ip addresses etc.
 `Actions` are basically used to call a function.
@@ -62,27 +62,28 @@ ___/etc/vsmtp/rules/objects.vsl___
 
 ```javascript
 // IP addresses of the MTA and the internal IP range
-object local_mta ip4 "192.168.1.254";
-object internal_net rg4 "192.168.0.0/24";
+object local_mta ip4 = "192.168.1.254";
+object internal_net rg4 = "192.168.0.0/24";
 
 // Doe's family domain name
-object family_domain fqdn "doe-family.com"
+object family_domain fqdn = "doe-family.com";
 
 // The mailboxes
-object john address "john.doe@doe-family.com";
-object jane address "jane.doe@doe-family.com";
-object jimmy address "jimmy.doe@doe-family.com";
-object jenny address "jenny.doe@doe-family.com";
-object fridge address "IOT-fridge@doe-family.com";
+object john address = "john.doe@doe-family.com";
+object jane address = "jane.doe@doe-family.com";
+object jimmy address = "jimmy.doe@doe-family.com";
+object jenny address = "jenny.doe@doe-family.com";
+object fridge address = "IOT-fridge@doe-family.com";
 
 // A group to manipulate the mailboxes
-object family_addr group [john, jane, jimmy, jenny];
+object family_addr group = [john, jane, jimmy, jenny];
 
 // A quarantine for unknown mailboxes
-object unknown_quarantine string "doe/bad_user";
+object unknown_quarantine string = "doe/bad_user";
+object virus_queue string = "doe/virus";
 
 // A user blacklist file
-object blacklist file "blacklist.txt";
+object blacklist file:fqdn = "blacklist.txt";
 ```
 
 ```shell
@@ -93,7 +94,7 @@ domain-spammers.com
 ...
 ```
 
-Done. Easy right ? now we need to apply some rules on these objects. It's a bit more complicated but we're still working on making it more human readable.
+Done. Easy right ? now we need to apply some rules on these objects.
 
 ## Defining rules and actions
 
@@ -122,21 +123,22 @@ import "objects" as doe;
 
 #{
   mail: [
-    rule "blacklist" || if ctx.mail_from.domain in doe::blacklist { vsl::deny() } { vsl::next() }
+    rule "blacklist" || if ctx().mail_from.domain in doe::blacklist { deny() } { next() }
    
   rcpt: [
-    action "rcpt jenny" || if doe::jenny in ctx.rcpt { vsl::bcc(doe::jane) },
+    action "bcc jenny" || if doe::jenny in ctx().rcpt { bcc(doe::jane) },
     // There is no SMTP interaction - we can use an action.
-  
+  ****
   ],
 
   deliver: [
     // Using IMAP in local Unix directory
 
     // In the deliver stage, the SMTP transaction is closed. You can also use an action.
-    action "delivery" || 
-      for rcpt in ctx.rcpt {
-        if rcpt in family_addr { vsl::maildir(ctx, rcpt) } else { vsl::deliver(ctx, rcpt) }
+    action "delivery" ||
+      // we loop over all recipients.
+      for rcpt in ctx().rcpt {
+        if rcpt in doe::family_addr { maildir(rcpt) } else { deliver(rcpt) }
       }
   ]
 }

@@ -13,20 +13,20 @@ All IPs from the internal network are allowed to send messages.
 
 Don't be afraid. vSMTP will do it for you.
 
-Edit your main.vsl code and just add the the rule below.
+Edit your main.vsl code and just add the rule below.
 
+___main.vsl___
 ```javascript
-// main.vsl
-import "/addons-std/api" as api;
-
-rcpt: [
-  rule "check relay" || api::check_relay(ctx, srv);
-]
+#{
+  rcpt: [
+    rule "check relay" || check_relay();
+  ]
+}
 ```
 
 ## Using the SPF protocol
 
-> This is a v0.11 draft
+> This is a v1.1 draft
 
 To allow other MTAs to verify that outgoing email from Doe's family domain comes from its server, we need to enable the SPF protocol. This is done by adding a new DNS text record that only allows only the MX record to send a mail for doe-family.com.
 
@@ -42,18 +42,20 @@ That's all for outgoing messages. What about incoming messages ? Easier.
 
 Edit your main.vsl code and just add the "check spf" rule.
 
-```javascript
-// main.vsl
-import "/addons-std/api" as api;
+___main.vsl___
 
-mail: [
-  rule "check spf" || api::check_spf(ctx, srv);
-]
+```javascript
+#{
+  ...
+  mail: [
+    rule "check spf" || check_spf();
+  ]
+}
 ```
 
 Couldn't be simpler, right ?
 
-> To discover what is behind the api::check_spf function, go to the advanced section, [the vSL magic garden explained].
+> To discover what is behind the `check_spf` function, go to the advanced section, [the vSL magic garden explained].
 
 [the vSL magic garden explained]: ../../advanced/magic.md
 
@@ -64,26 +66,13 @@ So he decided to add a second layer of antivirus, directly on the vSMTP MTA.
 
 He therefore installed ClamAV which comes with an online shell command, easily callable from vSMTP.
 
-___vsmtp.toml___
+___services.vsl___
 
-```toml
-... //config 
-
-[rules]
-dir = "/etc/vsmtp/rules"
-
-[[rules.services]]
-name = "antivirus"
-type = "shell"
-timeout = "15s"
-command = "./service/clamscan.sh"
-args = "{mail}"
-
-//
-// quarantine_folder is missing
-//
-
-... //config 
+```javascript
+services antivirus shell = #{
+  timeout = "15s",
+  command = "./service/clamscan.sh",
+}
 ```
 
 Since there is no heavy network traffic, John decided to do a pre-queue filtering.
@@ -91,9 +80,15 @@ Spool emails are quarantine in the virus_q folder.
 
 ___main.vsl___
 
-```c
-fn has_virus(services, ctx) {
-    let result = services.run("antivirus", ctx);
+```js
+
+import "services" as s;
+import "object" as obj;
+
+fn has_virus(antivirus) {
+    // we run clamscan with the email content.
+    let result = antivirus.run_shell([ ctx().mail ]);
+    // we check the result of clamscan.
     if result.has_signal {
         // timed out
         return false;
@@ -103,7 +98,7 @@ fn has_virus(services, ctx) {
 
 #{
   preq: [
-    rule "clam_av" || if has_virus(services, ctx) { vsl::quarantine(virus_q) } else { vsl::accept() } 
+    rule "clam_av" || if has_virus(s::antivirus) { quarantine(obj::virus_queue) } else { accept() } 
   ]
 }
 ```

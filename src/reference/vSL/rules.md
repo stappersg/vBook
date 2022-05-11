@@ -8,39 +8,39 @@ Nevertheless specific parameters like timeout, system logging, tls configuration
 Rules and actions are quite similar except that rules must return a vSL rule engine status.
 They follow the same syntax :
 
-```c
-rule "name" || {
-    ... // rule body.
-    vsl::accept() // a rule returns a rule engine status
+```js
+rule "rule name" || {
+    // ... rule body.
+    accept() // a rule returns a rule engine status
 }
 ```
 
-```c
-action "name" || {
-    ... // action body.
+```js
+action "action name" || {
+    // ... action body.
 }
 ```
 
-There is an inline syntax :
+You can also use the inline syntax below:
 
-```c
-action "name" || instruction
-rule "name" || instruction
+```js
+action "name" || instruction,
+rule "name" || instruction,
 ```
 
 Here are some examples:
 
-```c
-// Inline rule
-rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
+```js
+// Inline rule that only accepts a client at 192.168.1.254
+rule "check connect" || if ctx().client_ip == "192.168.1.254" { next() } else { deny() }
 ```
 
 The same rule, including a log:
 
-```c
-rule "test_connect" || {
-    vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log);
-    if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() }
+```js
+rule "check connect" || {
+    log(`Connection from : ${ctx().client_ip}`);
+    if ctx().client_ip == "192.168.1.254" { next() } else { deny() }
 }
 ```
 
@@ -48,81 +48,92 @@ rule "test_connect" || {
 
 An action :
 
-```c
-action "test_rewrite" || {
-    ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-    ctx.remove_rcpt("customer@company.net");
-    ctx.add_rcpt("no-reply@company.net");
+```js
+action "rewrite envelop" || {
+    ctx().rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+    ctx().remove_rcpt("customer@company.net");
+    ctx().add_rcpt("no-reply@company.net");
 },
 ```
 
 A trailing rule:
 
-```c
-rule "default" || vsl::deny() 
+```js
+rule "default" || deny() 
 ```
+
+&#9998; | This rule is used by default when you do not specify any vsl file in the toml configuration.
 
 ## Rules and vSMTP Stages
 
 Rules are bounded to a vSMTP stage. Stages can be omitted but must appear only once. They are declared in the `main.vsl` file.
 
-```c
+```js
+// -- objects.vsl
+
+object my_company fqdn = "mycompany.net";
+
 //-- main.vsl
 
-object fqdn "my_company" "mycompany.net"
+import "objects" as obj;
 
 #{
     connect: [ 
-        action "log_connect" || vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log),
-        rule "check_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() },
+        action "log connect" || log(`Connection from : ${ctx().client_ip),
+        rule "check connect" || if ctx().client_ip == "192.168.1.254" { next() } else { deny() },
     ],
     rcpt: [
-        action "rewrite_recipients" || {
-            ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-            ctx.remove_rcpt("customer@company.net");
-            ctx.add_rcpt("no-reply@company.net");
+        action "rewrite recipients" || {
+            ctx().rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+            ctx().remove_rcpt("customer@company.net");
+            ctx().add_rcpt("no-reply@company.net");
         },
 
         rule "local_domain" || {
-            rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
+            rule "test_fqdn" || if obj::my_company in ctx().rcpt.domains { next() } else { deny() }
         },
 
-        ... // other rules / actions
+        // ... other rules & actions
     ],
 }
 ```
 
 ## Implicit rules
 
-To avoid undefined behavior, the implicit status in a stage is `vsl::next()`.
+To avoid undefined behavior, the implicit status in a stage is `next()`.
 For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit next() of the last rule will jump to the next stage.
 
-```c
+```js
+//-- objects.vsl
+
+object my_company fqdn = "mycompany.net";
+
 //-- main.vsl
 
-object fqdn "my_company" "mycompany.net"
+import "objects" as obj;
+
 
 #{
     connect: [ 
-        rule "test_connect" || if ctx.client_addr == "192.168.1.254" { vsl::next() } else { vsl::deny() },
-        action "log_connect" || vsl::log(`Connection from : ${ctx.client_addr}`, my_connection_log),
+        rule "test connect" || if ctx().client_ip== "192.168.1.254" { next() } else { deny() },
+        action "log connect" || log(`Connection from : ${ctx().client_ip}`),
     ],
     rcpt: [
 
-        action "test_rewrite" || {
-            ctx.rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-            ctx.remove_rcpt("customer@company.net");
-            ctx.add_rcpt("no-reply@company.net");
+        action "rewrite rcpt" || {
+            ctx().rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+            ctx().remove_rcpt("customer@company.net");
+            ctx().add_rcpt("no-reply@company.net");
         },
 
-        rule "local_domain" || {
-            rule "test_fqdn" || if my_company in ctx.rcpt.domains { vsl::next() } else { vsl::deny() }
+        rule "local domain" || {
+            rule "check fqdn" || if obj::my_company in ctx().rcpt.domains { accept() } else { next() }
         },
 
-        ... // other rules / actions
-        
+        // ... other rules / actions
+
         // Trailing rule (default behavior for rcpt stage)
-        rule "default" || vsl::deny() ,
+        rule "default" || deny(),
     ]
 }
 ```

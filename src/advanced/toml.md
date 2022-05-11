@@ -8,12 +8,12 @@ TOML uses tables (hash tables) as collections of key/value pairs. Key/value pair
 
 ### The vsmtp.toml file
 
-This is the main configuration file. It should be located in /etc/vsmtp. However it can be modified in the vSMTP service file.
+This is the main configuration file. It should be located in `/etc/vsmtp`. However it can be modified in the vSMTP service file.
 
-| Table | Comment
-| :--- | :---
-| [server] | vSMTP overall configuration.
-| [app] | Rule engine configuration.
+| Table    | Comment                      |
+| :------- | :--------------------------- |
+| [server] | vSMTP overall configuration. |
+| [app]    | Rule engine configuration.   |
 
 The `[server]` table contains all the required information to start the vSMTP server and the root domain parameters.
 
@@ -23,7 +23,6 @@ Virtual domains can be configured under the root domain:
 [server]
 # system configuration
 # 
-...
 
 #
 # Root domain 
@@ -58,7 +57,7 @@ private_key = "./certs/private-example2.key"
 [server.virtual."example2.com".dns]
 type = "system"
 
-[server.virtual."example2.com"..tls]
+[server.virtual."example2.com".tls]
 protocol_version = "TLSv1.3"
 certificate = "./certs/certificate-example2.crt"
 private_key = "./certs/private-example2.key"
@@ -78,26 +77,4 @@ This file contains all the mandatory information to start the vSMTP service on L
 
 [systemd]: https://freedesktop.org/wiki/Software/systemd/
 
-```shell
-[Unit]
-Description=vSMTP Mail Transfer Agent
-Conflicts=sendmail.service exim4.service postfix.service 
-ConditionPathExists=/etc/vsmtp/vsmtp.toml
-After=network-online.target 
-Wants=network-online.target
-
-[Service]
-Type=simple
-User=vsmtp
-Group=vsmtp
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-UMask=007
-ExecStart=/usr/sbin/vsmtp -c /etc/vsmtp/vsmtp.toml
-Restart=on-failure
-TimeoutStopSec=300
-
-[Install]
-WantedBy=multi-user.target
-```
-
-&#9762; | Do not modify this file unless you know what you are doing. Please note that version 0.10 comes with a new startup mechanism.
+&#9762; | Do not modify this file unless you know what you are doing.

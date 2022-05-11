@@ -14,7 +14,7 @@ You can also create your own package using the [cargo-deb] crate. Scripts and fi
 
 [cargo-deb]: https://github.com/kornelski/cargo-deb
 
-[tools/install]: https://github.com/viridIT/vSMTP/tree/develop/tools/install
+[tools/install]: https://github.com/viridIT/vSMTP/tree/main/tools/install
 
 ## Linux/RedHat distros
 

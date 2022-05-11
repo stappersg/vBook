@@ -40,15 +40,15 @@ vSMTP can act as `signer` or `verifier` as described in the RFC.
 
 The vSMTP DKIM verifier implements results semantically equivalent to the RFC.
 
-| Result | Description |
-| :--- | :--- |
-| none | The message was not signed.
-| pass | The message was signed, the signature or signatures were acceptable to the ADMD, and the signature(s) passed verification tests.
-| fail | The message was signed and the signature or signatures were acceptable to the ADMD, but they failed the verification test(s).
-| policy | The message was signed, but some aspect of the signature or signatures was not acceptable to the ADMD.
-| neutral | The message was signed, but the signature or signatures contained syntax errors or were not otherwise able to be processed.  This result is also used for other failures not covered elsewhere in this list.
-| temperror | The message could not be verified due to some error that is likely transient in nature, such as a temporary inability to retrieve a public key.  A later attempt may produce a final result.
-| permerror | The message could not be verified due to some error that is unrecoverable, such as a required header field being absent. A later attempt is unlikely to produce a final result.
+| Result    | Description                                                                                                                                                                                                  |
+| :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| none      | The message was not signed.                                                                                                                                                                                  |
+| pass      | The message was signed, the signature or signatures were acceptable to the ADMD, and the signature(s) passed verification tests.                                                                             |
+| fail      | The message was signed and the signature or signatures were acceptable to the ADMD, but they failed the verification test(s).                                                                                |
+| policy    | The message was signed, but some aspect of the signature or signatures was not acceptable to the ADMD.                                                                                                       |
+| neutral   | The message was signed, but the signature or signatures contained syntax errors or were not otherwise able to be processed.  This result is also used for other failures not covered elsewhere in this list. |
+| temperror | The message could not be verified due to some error that is likely transient in nature, such as a temporary inability to retrieve a public key.  A later attempt may produce a final result.                 |
+| permerror | The message could not be verified due to some error that is unrecoverable, such as a required header field being absent. A later attempt is unlikely to produce a final result.                              |
 
 ### Results headers
 
@@ -76,51 +76,36 @@ DKIM-Signature:  v=1; a=rsa-sha256; s=gatsby; d=example.com;
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
-| Code | X.7.20 |
-| :--- | :--- |
-| Text| No passing DKIM signature found |
-| Basic status code | 550 |
-| Description | A message did not contain any passing DKIM signatures. |
+| Code              | X.7.20                                                 |
+| :---------------- | :----------------------------------------------------- |
+| Text              | No passing DKIM signature found                        |
+| Basic status code | 550                                                    |
+| Description       | A message did not contain any passing DKIM signatures. |
 
-| Code | X.7.21 |
-| :--- | :--- |
-| Text | No acceptable DKIM signature found |
-| Basic status code | 550 |
-| Description | A message contains one or more passing DKIM signatures, but none are acceptable. |
+| Code              | X.7.21                                                                           |
+| :---------------- | :------------------------------------------------------------------------------- |
+| Text              | No acceptable DKIM signature found                                               |
+| Basic status code | 550                                                                              |
+| Description       | A message contains one or more passing DKIM signatures, but none are acceptable. |
 
-| Code | X.7.22 |
-| :--- | :--- |
-| Text | No valid author-matched DKIM signature found. |
-| Basic status code | 550 |
-| Description | A message contains one or more passing DKIM signatures, but none are acceptable because none have an identifier(s) that matches the author address(es) found in the From header field. |
+| Code              | X.7.22                                                                                                                                                                                 |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | No valid author-matched DKIM signature found.                                                                                                                                          |
+| Basic status code | 550                                                                                                                                                                                    |
+| Description       | A message contains one or more passing DKIM signatures, but none are acceptable because none have an identifier(s) that matches the author address(es) found in the From header field. |
 
 The following error codes can also be sent by the DKIM framework.
 
-| Code | X.7.25 |
-| :--- | :--- |
-| Text | Reverse DNS validation failed |
-| Basic status code | 550 |
-| Description | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
-| Used in place of | n/a |
+| Code              | X.7.25                                                                                                    |
+| :---------------- | :-------------------------------------------------------------------------------------------------------- |
+| Text              | Reverse DNS validation failed                                                                             |
+| Basic status code | 550                                                                                                       |
+| Description       | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
+| Used in place of  | n/a                                                                                                       |
 
-| Code | X.7.26 |
-| :--- | :--- |
-| Text | Multiple authentication checks failed |
-| Basic status code | 500 |
-| Description | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
-| Used in place of | n/a |
-
-## vSMTP example
-
-```toml
-[app.dkim.signer]
-TO DO
-
-[app.dkim.verifier]
-TO DO
-```
-
-```c
-/// main.vsl
-TO DO
-```
+| Code              | X.7.26                                                                                                                                                       |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | Multiple authentication checks failed                                                                                                                        |
+| Basic status code | 500                                                                                                                                                          |
+| Description       | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
+| Used in place of  | n/a                                                                                                                                                          |

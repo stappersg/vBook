@@ -17,13 +17,31 @@ enhance the book in some way!
 
 [help-wanted]: https://github.com/viridit/vbook/issues?q=is%3Aopen+is%3Aissue+label%3AE-help-wanted
 
+## VSCode
+
+To use the debugger, download the [codelldb](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) extension.
+
+Run the task "Launch & configure vSMTP", then attach the debugger to the new process using the task "Debug vSMTP".
+If the task is not permitted, that probably means that you cannot debug the process with ptrace. To solve this, use:
+
+```sh
+cat /proc/sys/kernel/yama/ptrace_scope
+```
+
+to check the scope of ptrace. If it is >= 1, this is why you cannot debug the process. Use:
+
+```sh
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
+
+To debug the process. Don't forget to set the ptrace_scope back to it's original value after you finish
+you debug session. checkout [linux audit](https://linux-audit.com/protect-ptrace-processes-kernel-yama-ptrace_scope/) for more information.
 
 ## Licensing
 
 vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License by viridIT SAS. For further details please refer to the [License.md][License] file.
 
 [License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
-
 
 ## Conduct
 
