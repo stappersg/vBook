@@ -17,9 +17,25 @@ Edit your main.vsl code and just add the rule below.
 
 ___main.vsl___
 ```javascript
+
+fn check_relay(internal_net) {
+
+    let srv_domain = in_domain();
+
+    if !(ctx().is_authenticated || (ctx().client_ip in internal_net)) 
+        && (ctx().rcpt.domain != srv_domain) {
+            delete_rcpt(ctx().rcpt);
+            info(code::code554_7_1)
+    } else {
+      sys::next()
+    }
+}
+
 #{
   rcpt: [
-    rule "check relay" || check_relay();
+    // the `check_relay` function will be available
+    // in the standard vsl api in vsmtp 1.1
+    rule "check relay" || check_relay(internal_net);
   ]
 }
 ```
