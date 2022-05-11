@@ -1,6 +1,6 @@
 # Brand Indicators for Message Identification
 
-> ___This is a DRAFT for v1.3 features___
+> ___This is a DRAFT for future releases___
 
 Brand Indicators for Message Identification (BIMI) permits Domain Owners to coordinate with Mail User Agents (MUAs) to display brand-specific Indicators next to properly authenticated messages.  
 

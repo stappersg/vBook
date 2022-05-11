@@ -1,6 +1,6 @@
 # Sender Policy Framework (SPF)
 
-> ___This is a DRAFT for v0.11 features___
+> ___This is a DRAFT for v1.1 features___
 
 This document specifies the vSMTP implementation of the Sender Policy Framework (SPF) protocol described in [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html).
 

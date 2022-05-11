@@ -8,7 +8,13 @@ You can find the vsmtp.deb package in the [release] section of the vSMTP github.
 
 [release]: https://github.com/viridIT/vSMTP/releases
 
-vSMTP package will be added to Debian Repository as soon as possible.
+vSMTP package will be added to the Debian Repository as soon as possible.
+
+You can also create your own package using the [cargo-deb] crate. Scripts and files used to generated the current package are available in the [tools/install] folder in vSMTP repository.
+
+[cargo-deb]: https://github.com/kornelski/cargo-deb
+
+[tools/install]: https://github.com/viridIT/vSMTP/tree/develop/tools/install
 
 ## Linux/RedHat distros
 
