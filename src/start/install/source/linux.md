@@ -2,7 +2,7 @@
 
 The installation described above was performed on an Ubuntu Server 20.04. There may be slight changes to apply for other distributions.
 
-## Install RUST language
+## Install Rust language
 
 If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and follow the instructions.
 

@@ -10,7 +10,7 @@ This page summarizes the main steps to install vSMTP from source code. To find d
 [Linux]: https://vsmtp.rs/install/source/linux.html
 [FreeBSD]: https://vsmtp.rs/install/source/freebsd.html
 
-## Installing RUST language
+## Installing Rust language
 
 vSMTP is written in Rust and must be compiled using Cargo, the Rust package manager. Rust runs on many platforms, and there are many ways to install it. If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and/or follow the instructions on the [Rust website installation] page.
 

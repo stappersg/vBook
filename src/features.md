@@ -4,7 +4,7 @@ vSMTP is a secured, faster and greener Mail Transfer Agent.
 
 It is a more efficient, more secure and more ergonomic product than the competition. It is up to 5 times faster than its competitors and significantly reduces the need for IT resources.
 
-It is developed in RUST. Compared to solutions developed in C / C ++, RUST guarantees the absence of segmentation errors and race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
+It is developed in Rust. Compared to solutions developed in C / C ++, Rust guarantees the absence of segmentation errors and race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
 
 Its development goes through a full cycle of testing. Static and dynamic tests allow more comprehensive coverage of safety tests, one covering faults of the other and vice versa (static view and runtime view).
 

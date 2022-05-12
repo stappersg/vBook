@@ -2,7 +2,7 @@
 
 The installation described above was performed on an FreeBSD 13.0 server.
 
-## Installing RUST language
+## Installing Rust language
 
 Rust port, packages and information can be found on [freshports] website. You can find more information about packages and port in the [FreeBSD handbook].
 
