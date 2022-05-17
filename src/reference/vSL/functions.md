@@ -18,29 +18,31 @@ The state of an SMTP transaction can be changed through specific functions sent 
 
 The quarantine pushes the mail in a user defined quarantine directory.
 
-The ENTIRE content of the email is written in JSON format regardless of the stage declared in the rule (including the envelop and body). All rules are skipped, and the server delivers a 554 smtp code to the client.
+The ENTIRE content of the email is written in JSON format regardless of the stage declared in the rule (including the envelop and body). All rules are skipped, and the server delivers a 250 smtp code to the client.
 
-The root directory for quarantine() is specified in the TOML configuration file and the (path/file) is added.
+The root directory for `quarantine()` is specified in the TOML configuration file under `[app.dirpath]`.
 
 ```js
-quarantine(virus_dir);   
+quarantine(virus_dir);
 ```
 
 ## SMTP envelop and body changing functions
 
 SMTP envelop can be modified by several predefined actions.
 
-| Syntax                  | Comment                                                |
-| :---------------------- | :----------------------------------------------------- |
-| add_header(string)      | Add a new header                                       |
-| remove_header(string)   | Remove all occurrences of headers matching the string. |
-| add_rcpt(addr)          | Add addr to recipient list.                            |
-| remove_rcpt(addr)       | Remove addr from recipient list.                       |
-| rewrite_rcpt(old, new)  | Rewrite recipient "old" with "new".                    |
-| rewrite_mail_from(addr) | Change MAIL FROM: current value with addr.             |
+| Syntax                  | Comment                                                                    |
+| :---------------------- | :------------------------------------------------------------------------- |
+| add_header(string)      | Add a new header in the email's body                                       |
+| remove_header(string)   | Remove all occurrences of headers matching the string in the email's body. |
+| rewrite_mail_from(addr) | Change `MAIL FROM:` current value with addr.                               |
+| add_rcpt(addr)          | Add rcpt to the envelop.                                                   |
+| remove_rcpt(addr)       | Remove rcpt from the envelop.                                              |
+| rewrite_rcpt(old, new)  | Rewrite rcpt "old" with "new" in the envelop.                              |
+| add_to(addr)            | Add rcpt to the `To` header in the email's body.                           |
+| remove_to(addr)         | Remove rcpt from the `To` header in the email's body.                      |
+| rewrite_to(old, new)    | Rewrite rcpt "old" with "new" from the `To` header in the email's body     |
 
-&#9998; | Email headers "To:", "From:", "Reply-to:", etc. are also updated.
-This apply only to the root headers in case of nested emails.
+&#9998; | `add_to`, `remove_to` & `rewrite_to` only update the root headers (nested emails headers are not changed).
 
 ```js
 remove_header(my_regex);   
