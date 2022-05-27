@@ -44,15 +44,15 @@ rule "check connect" || {
 }
 ```
 
-&#9998; | String interpolation requires adding ${} to variables.
+&#9998; | You can use [String Interpolation](https://rhai.rs/book/language/strings-chars.html#string-interpolation) to inject variables in strings.
 
 An action :
 
 ```js
 action "rewrite envelop" || {
-    ctx().rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-    ctx().remove_rcpt("customer@company.net");
-    ctx().add_rcpt("no-reply@company.net");
+    rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+    remove_rcpt("customer@company.net");
+    add_rcpt("no-reply@company.net");
 },
 ```
 
@@ -66,7 +66,7 @@ rule "default" || deny()
 
 ## Rules and vSMTP Stages
 
-Rules are bounded to a vSMTP stage. Stages can be omitted but must appear only once. They are declared in the `main.vsl` file.
+Rules are bound to a vSMTP stage. Stages can be omitted but must appear only once. They are declared in the `main.vsl` file.
 
 ```js
 // -- objects.vsl
@@ -79,18 +79,18 @@ import "objects" as obj;
 
 #{
     connect: [ 
-        action "log connect" || log(`Connection from : ${ctx().client_ip),
+        action "log connect" || log(`Connection from : ${ctx().client_ip}`),
         rule "check connect" || if ctx().client_ip == "192.168.1.254" { next() } else { deny() },
     ],
     rcpt: [
         action "rewrite recipients" || {
-            ctx().rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-            ctx().remove_rcpt("customer@company.net");
-            ctx().add_rcpt("no-reply@company.net");
+            rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+            remove_rcpt("customer@company.net");
+            add_rcpt("no-reply@company.net");
         },
 
         rule "local_domain" || {
-            rule "test_fqdn" || if obj::my_company in ctx().rcpt.domains { next() } else { deny() }
+            if obj::my_company in ctx().rcpt.domains { next() } else { deny() }
         },
 
         // ... other rules & actions
@@ -101,7 +101,7 @@ import "objects" as obj;
 ## Implicit rules
 
 To avoid undefined behavior, the implicit status in a stage is `next()`.
-For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit next() of the last rule will jump to the next stage.
+For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit `next()` of the last rule will jump to the next stage.
 
 ```js
 //-- objects.vsl
@@ -109,25 +109,23 @@ For security purpose end-users should always add a trailing rule at the end of a
 object my_company fqdn = "mycompany.net";
 
 //-- main.vsl
-
 import "objects" as obj;
-
 
 #{
     connect: [ 
-        rule "test connect" || if ctx().client_ip== "192.168.1.254" { next() } else { deny() },
+        rule "test connect" || if ctx().client_ip == "192.168.1.254" { next() } else { deny() },
         action "log connect" || log(`Connection from : ${ctx().client_ip}`),
     ],
     rcpt: [
 
         action "rewrite rcpt" || {
-            ctx().rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-            ctx().remove_rcpt("customer@company.net");
-            ctx().add_rcpt("no-reply@company.net");
+            rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+            remove_rcpt("customer@company.net");
+            add_rcpt("no-reply@company.net");
         },
 
         rule "local domain" || {
-            rule "check fqdn" || if obj::my_company in ctx().rcpt.domains { accept() } else { next() }
+            if obj::my_company in ctx().rcpt.domains { accept() } else { next() }
         },
 
         // ... other rules / actions
