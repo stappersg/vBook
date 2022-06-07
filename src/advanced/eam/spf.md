@@ -1,7 +1,5 @@
 # Sender Policy Framework (SPF)
 
-> ___This is a DRAFT for v1.1 features___
-
 This document specifies the vSMTP implementation of the Sender Policy Framework (SPF) protocol described in [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html).
 
 SPF is an authentication standard for linking a domain name and an email address. it allows email clients to verify that incoming email from a domain comes from a host authorized by the administrator of this domain.
@@ -121,26 +119,50 @@ The following error codes can also be sent by the SPF framework.
 | Description       | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of  | n/a                                                                                                                                                          |
 
-### TOML configuration file
-
-```toml
-[server.auth.spf]
-trigger = "sys" (default) | "vsl"  
-policy = "strict" | "soft" (default) | "none"
-helo = "false" | "true" (default)     # Open issue - only "mail_from" check is available.
-header = "spf" | "auth" | "both" (default) | "none"
-```
-
 ### vSL predefined function
 
-The standard API as a dedicated abstract to check the SPF policy.
+The standard API has a dedicated function to check the SPF policy.
+`check_spf` return a status, containing custom codes to send to the client.
 
 __main.vsl__
 ```javascript
 mail: [
   // check spf parameters are, respectively:
-  // - the policy: "strict" | "soft" (default) | "none"
-  // - check helo: false | true (default)
-  // - injected header: "spf" | "auth" | "both" (default) | "none"
-  rule "check spf" || check_spf("strict", false, "spf");
+  // - check helo; mail from, or both: "helo" | "mail_from" | "both"
+  // - injected header: "spf" | "auth" | "both" | "none"
+  // - the policy: "strict" | "soft"
+
+  // if this check succeed, it wil return `next`.
+  // if it fails, it might return `deny` with a custom code
+  // (X.7.24 or X.7.25 for exemple)
+  //
+  // if you want to use the return status, just put the check_spf
+  // function on the last line of your rule.
+  rule "check spf 1" || {
+    log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
+    check_spf("mail_from", "spf", "soft")
+  }
+
+  // policy is set to "soft" by default.
+  rule "check spf 2" || check_spf("both", "spf");
+
+  // you can also use the low level system api.
+  rule "check spf 3" || {
+    let query = sys::check_spf(ctx(), srv(), "mail_from");
+
+    log("debug", `result: ${query.result}`);
+
+    // the 'result' parameter gives you the result of evaluation.
+    // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
+    //
+    // the 'cause' parameter gives you the cause of the result if there
+    // was an error, and the mechanism of the result if it succeeded.
+    switch query.result {
+      "pass" => ...
+      "fail" => log("error", `check spf error: ${query.cause}`),
+      _ => ...
+    };
+
+
+  };
 ]
