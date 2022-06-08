@@ -1,7 +1,5 @@
 # Null MX record
 
-> ___This is a DRAFT for v1.1 features___
-
 Basically the "null MX" protocol is a simple mechanism by which a domain can indicate that it does not accept email. It is described in [RFC 7505].
 
 [RFC 7505]: https://www.rfc-editor.org/rfc/rfc7505.html
@@ -45,6 +43,8 @@ The RFC 7505 defines two specific return codes.
 
 ### vSL predefined functions
 
+> ___This is a DRAFT for v1.1 features___
+
 The standard API as a dedicated abstract to check the Null MX record.
 
 __main.vsl__
@@ -52,3 +52,7 @@ __main.vsl__
 mail: [
   rule "check null MX" || check_null_mx();
 ]
+
+### Current behavior
+
+Currently, MX records are automatically checked on delivery. If the destination server provide a NULL MX record, the email is immediately placed into the dead queue.
