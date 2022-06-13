@@ -8,4 +8,4 @@ The Authenticated Received Chain (ARC) protocol provides an authenticated "chain
 
 Until ARC RFC is not released as an "Internet Standard" the vSMTP implementation should be considered as a "work in progress". However it represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG).
 
-The implementation of this feature in the vSMTP framework is planned for v0.13.
+The implementation of this feature in the vSMTP framework is planned for a future release.

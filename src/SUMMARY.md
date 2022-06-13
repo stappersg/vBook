@@ -14,8 +14,8 @@
   - [Step-by-step Configuration](start/configuration/configuration.md)
     - [Basic configuration](start/configuration/basic.md)
     - [Hardening vSMTP](start/configuration/hardening.md)
+    - [Policy delegation](start/configuration/delegation.md)
     - [Content inspection]()
-    - [Policy delegation]()
 
 - [Advanced settings](advanced/advanced.md)
   - [Server global and virtual domains parameters](advanced/toml.md)
@@ -34,9 +34,8 @@
   - [Problem solving]()
 
 - [Reference Guide]()
-  - [Architecture overview](reference/architecture.md)
   - [Command line parameters](reference/command.md)
-  - [Complete vSMTP TOML key/value list]()
+  - [Complete vSMTP TOML key/value list](reference/toml.md)
   - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
     - [SMTP states and vSMTP stages](reference/vSL/stages.md)
     - [Objects](reference/vSL/objects.md)
