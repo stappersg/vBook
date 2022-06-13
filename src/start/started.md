@@ -10,4 +10,4 @@ There are four main parts:
 - Hardening your new configuration.
 - Using a third party software like clamAV.
 
-Let's start our journey in the wonderful world of Mail Transfer Agent.
+Let's start our journey in the wonderful world of Mail Transfer Agents.

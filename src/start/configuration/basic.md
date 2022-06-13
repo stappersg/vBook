@@ -27,6 +27,8 @@ certificate = "/etc/vsmtp/certs/certificate.crt"
 private_key = "/etc/vsmtp/certs/private.key"
 ```
 
+TODO: Check app folder 
+
 Quite simple, isn't it ?
 
 Now that the server is configured we need to define the rules to apply to a message. This is the role of vSL.
@@ -73,12 +75,11 @@ object john address = "john.doe@doe-family.com";
 object jane address = "jane.doe@doe-family.com";
 object jimmy address = "jimmy.doe@doe-family.com";
 object jenny address = "jenny.doe@doe-family.com";
-object fridge address = "IOT-fridge@doe-family.com";
 
 // A group to manipulate the mailboxes
 object family_addr group = [john, jane, jimmy, jenny];
 
-// A quarantine for unknown mailboxes
+// Quarantine 
 object unknown_quarantine string = "doe/bad_user";
 object virus_queue string = "doe/virus";
 
@@ -87,11 +88,11 @@ object blacklist file:fqdn = "blacklist.txt";
 ```
 
 ```shell
-# blacklist.txt
+# cat blacklist.txt
 domain-spam.com
 spam-domain.org
 domain-spammers.com
-...
+foobar-spam-pro.org
 ```
 
 Done. Easy right ? now we need to apply some rules on these objects.
@@ -110,10 +111,10 @@ rule "name" || {              |       action "name" || {
 }                             |       }
 ```
 
-Let's add some rules in the main.vsl file for Doe's family MTA. There are two main constraints:
+Let's add some rules in the main.vsl file for Doe's family MTA. 
 
 - Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
-- They use IMAP and Maildir format
+- IMAP and Maildir format.
 
 ___/etc/vsmtp/rules/main.vsl___
 
@@ -126,14 +127,10 @@ import "objects" as doe;
     rule "blacklist" || if ctx().mail_from.domain in doe::blacklist { deny() } { next() }
    
   rcpt: [
-    action "bcc jenny" || if doe::jenny in ctx().rcpt { bcc(doe::jane) },
-    // There is no SMTP interaction - we can use an action.
-  ****
+      action "bcc jenny" || if doe::jenny in ctx().rcpt { bcc(doe::jane) },
   ],
 
   deliver: [
-    // Using IMAP in local Unix directory
-
     // In the deliver stage, the SMTP transaction is closed. You can also use an action.
     action "delivery" ||
       // we loop over all recipients.

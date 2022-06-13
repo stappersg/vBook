@@ -1,6 +1,6 @@
 # Domain-based Message Authentication, Reporting and Conformance 
 
-> ___This is a DRAFT for v1.2 features___
+> ___This is a DRAFT for future releases___
 
 This document specifies the vSMTP implementation of the Domain-based Message Authentication, Reporting and Conformance (DMARC) protocol described in [RFC 7489](https://www.rfc-editor.org/rfc/rfc7489.html).
 

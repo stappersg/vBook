@@ -42,13 +42,11 @@ fn check_relay(internal_net) {
 
 ## Using the SPF protocol
 
-> This is a v1.1 draft
-
-To allow other MTAs to verify that outgoing email from Doe's family domain comes from its server, we need to enable the SPF protocol. This is done by adding a new DNS text record that only allows only the MX record to send a mail for doe-family.com.
-
-You can find more information about SPF protocol in the [advanced section].
+> You can find more information about SPF protocol in the [advanced section].
 
 [advanced section]: ../../advanced/eam/spf.md
+
+To allow other MTAs to verify that outgoing email from Doe's family domain comes from its server, we need to enable the SPF protocol. This is done by adding a new DNS text record that only allows only the MX record to send a mail for doe-family.com.
 
 ```shell
 doe-family.com.          TXT "v=spf1 +mx -all"
