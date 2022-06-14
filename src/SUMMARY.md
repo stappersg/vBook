@@ -15,7 +15,6 @@
     - [Basic configuration](start/configuration/basic.md)
     - [Hardening vSMTP](start/configuration/hardening.md)
     - [Policy delegation](start/configuration/delegation.md)
-    - [Content inspection]()
 
 - [Advanced settings](advanced/advanced.md)
   - [Server global and virtual domains parameters](advanced/toml.md)
@@ -28,7 +27,6 @@
     - [ARC](advanced/eam/arc.md)
     - [BIMI](advanced/eam/bimi.md)
   - [SMTP security using DANE](advanced/dane.md)
-  - [SMTP relay]()
   - [Logging system]()
   - [Problem solving]()
 
