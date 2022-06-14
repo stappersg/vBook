@@ -59,7 +59,7 @@ vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent
 
 ## External services
 
-vSMTP supports SMTP delegation, Unix shell calls and file databases.
+vSMTP supports SMTP delegation, command calls and file databases.
 Next versions will bring SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q2/2022.
 
 [Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html

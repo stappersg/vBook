@@ -83,7 +83,7 @@ He therefore installed ClamAV which comes with an online shell command, easily c
 ___services.vsl___
 
 ```javascript
-services antivirus shell = #{
+services antivirus cmd = #{
   timeout = "15s",
   command = "./service/clamscan.sh",
 }
