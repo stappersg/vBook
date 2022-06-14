@@ -49,10 +49,6 @@ Edit your `main.vsl` code and just add the "check spf" rule.
 }
 ```
 
-> To discover what is behind the `check_spf` function, go to the advanced section, [the vSL magic garden explained].
-
-[the vSL magic garden explained]: ../../advanced/magic.md
-
 ### Adding an antivirus
 
 John is aware of security issues. Malware remains a scourge on the internet.

@@ -19,7 +19,6 @@
 
 - [Advanced settings](advanced/advanced.md)
   - [Server global and virtual domains parameters](advanced/toml.md)
-  - [The vSL magic garden explained](advanced/magic.md)
   - [DNS configuration](advanced/dns.md)
   - [Email authentication mechanisms](advanced/eam.md)
     - [Null MX](advanced/eam/nullmx.md)
