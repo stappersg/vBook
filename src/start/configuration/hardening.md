@@ -11,32 +11,16 @@ Here are the strict minimum rules for a properly configured server. It will only
 
 All IPs from the internal network are allowed to send messages.
 
-Don't be afraid. vSMTP will do it for you.
+Edit your `main.vsl` code and just add the rule below.
 
-Edit your main.vsl code and just add the rule below.
-
-___main.vsl___
 ```javascript
-
-fn check_relay(internal_net) {
-
-    let srv_domain = in_domain();
-
-    if !(ctx().is_authenticated || (ctx().client_ip in internal_net)) 
-        && (ctx().rcpt.domain != srv_domain) {
-            delete_rcpt(ctx().rcpt);
-            info(code::code554_7_1)
-    } else {
-      sys::next()
-    }
-}
+// -- main.vsl
+import "objects" as obj;
 
 #{
   rcpt: [
-    // the `check_relay` function will be available
-    // in the standard vsl api in vsmtp 1.1
-    rule "check relay" || check_relay(internal_net);
-  ]
+    rule "check relay" || check_relay(obj::internal_net),
+  ],
 }
 ```
 
@@ -54,20 +38,16 @@ doe-family.com.          TXT "v=spf1 +mx -all"
 
 That's all for outgoing messages. What about incoming messages ? Easier.
 
-Edit your main.vsl code and just add the "check spf" rule.
-
-___main.vsl___
+Edit your `main.vsl` code and just add the "check spf" rule.
 
 ```javascript
+// -- main.vsl
 #{
-  ...
   mail: [
-    rule "check spf" || check_spf();
+    rule "check spf" || check_spf("mail_from", "spf");
   ]
 }
 ```
-
-Couldn't be simpler, right ?
 
 > To discover what is behind the `check_spf` function, go to the advanced section, [the vSL magic garden explained].
 
@@ -76,51 +56,51 @@ Couldn't be simpler, right ?
 ### Adding an antivirus
 
 John is aware of security issues. Malware remains a scourge on the internet.
-So he decided to add a second layer of antivirus, directly on the vSMTP MTA.
+So he decides to add a second layer of antivirus.
 
-He therefore installed ClamAV which comes with an online shell command, easily callable from vSMTP.
-
-___services.vsl___
+Therefore, he installed [ClamAV](https://www.clamav.net/) which comes with the `clamsmtpd` daemon. We can use
+smtp delegation to bridge the MTA and the antivirus.
 
 ```javascript
-services antivirus cmd = #{
-  timeout = "15s",
-  command = "./service/clamscan.sh",
-}
+// -- service.vsl
+service clamsmtpd smtp = #{
+    delegator: #{
+        address: "127.0.0.1:10026",
+        timeout: "60s",
+    },
+    receiver: "127.0.0.1:10024",
+};
+```
+
+```toml
+# -- vsmtp.toml
+version_requirement = ">=1.0.0"
+
+[server.interfaces]
+#      clients             delegation results
+addr = ["127.0.0.1:10025", "127.0.0.1:10024"]
 ```
 
 Since there is no heavy network traffic, John decided to do a pre-queue filtering.
-Spool emails are quarantine in the virus_q folder.
-
-___main.vsl___
+Compromised emails are quarantined in the `virus_q` folder.
 
 ```js
-
-import "services" as s;
-import "object" as obj;
-
-fn has_virus(antivirus) {
-    // we run clamscan with the email content.
-    let result = antivirus.run_shell([ ctx().mail ]);
-    // we check the result of clamscan.
-    if result.has_signal {
-        // timed out
-        return false;
-    }
-    result.has_code && result.code != 0
-}
+// -- main.vsl
+import "service" as s;
 
 #{
-  preq: [
-    rule "clam_av" || if has_virus(s::antivirus) { quarantine(obj::virus_queue) } else { accept() } 
-  ]
+    preq: [
+        delegate s::clamsmtpd "check email for virus" || {
+          // clamav inserts the 'X-Virus-Infected' header
+          // once a virus is detected. 
+          if has_header('X-Virus-Infected') {
+            quarantine("virus_q")
+          } else {
+            next()
+          }
+        }
+    ],
 }
 ```
 
-___clamscan.sh___
-
-```bash
-#!/bin/bash
-echo $1 | clamscan -
-exit $?
-```
+Checkout the [Delegation section](start/configuration/delegation.md) to read more about the delegation mechanism.

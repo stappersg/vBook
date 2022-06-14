@@ -124,45 +124,47 @@ The following error codes can also be sent by the SPF framework.
 The standard API has a dedicated function to check the SPF policy.
 `check_spf` return a status, containing custom codes to send to the client.
 
-__main.vsl__
+
 ```javascript
-mail: [
-  // check spf parameters are, respectively:
-  // - check helo; mail from, or both: "helo" | "mail_from" | "both"
-  // - injected header: "spf" | "auth" | "both" | "none"
-  // - the policy: "strict" | "soft"
+// -- main.vsl
+#{
+  mail: [
+    // check spf parameters are, respectively:
+    // - check helo; mail from, or both: "helo" | "mail_from" | "both"
+    // - injected header: "spf" | "auth" | "both" | "none"
+    // - the policy: "strict" | "soft"
 
-  // if this check succeed, it wil return `next`.
-  // if it fails, it might return `deny` with a custom code
-  // (X.7.24 or X.7.25 for exemple)
-  //
-  // if you want to use the return status, just put the check_spf
-  // function on the last line of your rule.
-  rule "check spf 1" || {
-    log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
-    check_spf("mail_from", "spf", "soft")
-  }
-
-  // policy is set to "soft" by default.
-  rule "check spf 2" || check_spf("both", "spf");
-
-  // you can also use the low level system api.
-  rule "check spf 3" || {
-    let query = sys::check_spf(ctx(), srv(), "mail_from");
-
-    log("debug", `result: ${query.result}`);
-
-    // the 'result' parameter gives you the result of evaluation.
-    // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
+    // if this check succeed, it wil return `next`.
+    // if it fails, it might return `deny` with a custom code
+    // (X.7.24 or X.7.25 for exemple)
     //
-    // the 'cause' parameter gives you the cause of the result if there
-    // was an error, and the mechanism of the result if it succeeded.
-    switch query.result {
-      "pass" => ...
-      "fail" => log("error", `check spf error: ${query.cause}`),
-      _ => ...
+    // if you want to use the return status, just put the check_spf
+    // function on the last line of your rule.
+    rule "check spf 1" || {
+      log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
+      check_spf("mail_from", "spf", "soft")
+    }
+
+    // policy is set to "soft" by default.
+    rule "check spf 2" || check_spf("both", "spf");
+
+    // you can also use the low level system api.
+    rule "check spf 3" || {
+      let query = sys::check_spf(ctx(), srv(), "mail_from");
+
+      log("debug", `result: ${query.result}`);
+
+      // the 'result' parameter gives you the result of evaluation.
+      // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
+      //
+      // the 'cause' parameter gives you the cause of the result if there
+      // was an error, and the mechanism of the result if it succeeded.
+      switch query.result {
+        "pass" => ...
+        "fail" => log("error", `check spf error: ${query.cause}`),
+        _ => ...
+      };
     };
-
-
-  };
-]
+  ]
+}
+```

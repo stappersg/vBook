@@ -8,7 +8,7 @@ In the next example, we are going to configure vsmtp to delegate emails to the
 
 First off, create a smtp service in vsl like so:
 
-```rust
+```javascript
 // -- antivirus.vsl
 service clamsmtpd smtp = #{
     // the service will send messages to "127.0.0.1:10026".
@@ -38,7 +38,7 @@ addr_submissions = ["127.0.0.1:10465"]
 
 You service is configured. Now, to use it, create the following rule using the `delegate` keyword.
 
-```rust
+```javascript
 // -- main.vsl
 import "antivirus" as antivirus;
 

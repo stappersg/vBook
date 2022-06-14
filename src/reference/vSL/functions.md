@@ -70,7 +70,7 @@ These actions have no impact on the SMTP engine.
 [^dir]: Root directories for write and dump are specified in the TOML configuration file.
 [^log]: Log files and log levels are described in the TOML configuration file.
 
-```rust,ignore
+```javascript,ignore
 log("warn", "Hello world!");
 ```
 
@@ -80,7 +80,7 @@ This function dumps in JSON format only the available content at a stage.  The b
 
 ## Chaining actions
 
-```rust,ignore
+```javascript,ignore
 {
     log("info", "Hello world !!!");
     dump("./tmp/mail/dump/my_file");
@@ -91,7 +91,7 @@ This function dumps in JSON format only the available content at a stage.  The b
 
 Combined actions can be declared using a [RHAI](https://rhai.rs/) function.
 
-```rust
+```javascript
 fn my_faccept() {                              
     log("info", "Hello world !!!");
     faccept()
