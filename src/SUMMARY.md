@@ -36,7 +36,7 @@
 - [Reference Guide]()
   - [Architecture overview](reference/architecture.md)
   - [Command line parameters](reference/command.md)
-  - [Complete vSMTP TOML key/value list]()
+  - [Complete vSMTP TOML key/value list](reference/config-file.md)
   - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
     - [SMTP states and vSMTP stages](reference/vSL/stages.md)
     - [Objects](reference/vSL/objects.md)
