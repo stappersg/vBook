@@ -126,7 +126,7 @@ import "objects" as doe;
    
   rcpt: [
     // automatically set Jane as a BCC if Jenny is part of the recipients.
-    action "bcc jenny" || if doe::jenny in ctx().rcpt { bcc(doe::jane) },
+    action "bcc jenny" || if ctx().rcpt is doe::jenny { bcc(doe::jane) },
   ],
 
   deliver: [
@@ -134,7 +134,7 @@ import "objects" as doe;
       // if a recipient is part of the family, we deliver
       // the email locally. Otherwise, we just deliver the email
       // to another server.
-      for rcpt in ctx().rcpt {
+      for rcpt in ctx().rcpt_list {
         if rcpt in doe::family_addr { maildir(rcpt) } else { deliver(rcpt) }
       }
   ]

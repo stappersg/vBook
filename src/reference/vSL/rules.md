@@ -90,7 +90,7 @@ import "objects" as obj;
         },
 
         rule "local_domain" || {
-            if obj::my_company in ctx().rcpt.domains { next() } else { deny() }
+            if obj::my_company in ctx().rcpt_list.domains { next() } else { deny() }
         },
 
         // ... other rules & actions
@@ -125,7 +125,7 @@ import "objects" as obj;
         },
 
         rule "local domain" || {
-            if obj::my_company in ctx().rcpt.domains { accept() } else { next() }
+            if obj::my_company in ctx().rcpt_list.domains { accept() } else { next() }
         },
 
         // ... other rules / actions

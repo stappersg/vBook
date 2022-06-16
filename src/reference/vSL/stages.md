@@ -6,18 +6,17 @@ At each step vSL updates and publishes a global context containing transaction a
 
 ## vSMTP stages
 
-| Stage   | SMTP state               | Context available               |
-| :------ | :----------------------- | :------------------------------ |
-| connect | Before HELO/EHLO command | Connection related information. |
-| helo    | After HELO/EHLO command  | HELO string.                    |
-| mail    | After MAIL FROM command  | Sender address.                 |
-| rcpt    | After DATA command       | The entire SMTP envelop.        |
-| preq    | Before queuing[^preq]    | The entire mail.                |
-| postq   | After queuing[^postq]    | The entire mail.                |
-| deliver | Before delivering        | The entire mail.                |
+| Stage   | SMTP state                 | Context available               |
+| :------ | :------------------------- | :------------------------------ |
+| connect | Before HELO/EHLO command   | Connection related information. |
+| helo    | After HELO/EHLO command    | HELO string.                    |
+| mail    | After MAIL FROM command    | Sender address.                 |
+| rcpt    | After each RCPT TO command | The entire SMTP envelop.        |
+| preq    | Before queuing[^preq]      | The entire mail.                |
+| postq   | After queuing[^postq]      | The entire mail.                |
+| deliver | Before delivering          | The entire mail.                |
 
 [^preq]: Preq stage triggers after the end of data, before the server answer (ex. 250 OK).
-
 [^postq]: Postq stage triggers when Connection is already closed and the SMTP code sent.
 
 ## Before queueing vs. after queueing
@@ -38,19 +37,22 @@ To protect against bursts and crashes, vSMTP implements several internal mechani
 
 As described above, depending on the stage vSL exposes variables to the end user.
 
-| Stage       | Name                 | Type            | Description                    |
-| :---------- | :------------------- | :-------------- | :----------------------------- |
-| Connect     | client_ip            | ip4/ip6         | Source IP address.             |
-|             | client_port          | int             | Source port.                   |
-|             | connect_timestamp    | POSIX timestamp | Connection timestamp.          |
-| Helo        | helo                 | string          | HELO/EHLO SMTP value.          |
-| Mail        | mail_from            | addr            | Sender email address.          |
-|             | mail_from.local_part | string          | Sender identifier.             |
-|             | mail_from.domain     | fqdn            | Sender fqdn.                   |
-| Rcpt        | rcpt                 | array[addr]     | Array of recipient addresses.  |
-|             | rcpt.local_parts     | array[string]   | Array of recipient identifier. |
-|             | rcpt.domains         | array[fqdn]     | Array of recipient fqdn.       |
-| Next stages | mail                 | string          | Email raw data.                |
+| Stage       | Name                  | Type            | Description                      |
+| :---------- | :-------------------- | :-------------- | :------------------------------- |
+| Connect     | client_ip             | ip4/ip6         | Source IP address.               |
+|             | client_port           | int             | Source port.                     |
+|             | connect_timestamp     | POSIX timestamp | Connection timestamp.            |
+| Helo        | helo                  | string          | HELO/EHLO SMTP value.            |
+| Mail        | mail_from             | addr            | Sender email address.            |
+|             | mail_from.local_part  | string          | Sender identifier.               |
+|             | mail_from.domain      | fqdn            | Sender fqdn.                     |
+| Rcpt        | rcpt                  | addr            | the current recipient addresses. |
+|             | rcpt.local_part       | string          | current recipient identifier.    |
+|             | rcpt.domain           | fqdn            | current recipient fqdn.          |
+| Rcpt        | rcpt_list             | array[addr]     | Array of recipient addresses.    |
+|             | rcpt_list.local_parts | array[string]   | Array of recipient identifier.   |
+|             | rcpt_list.domains     | array[fqdn]     | Array of recipient fqdn.         |
+| Next stages | mail                  | string          | Email raw data.                  |
 
 These variables are part of the email context `ctx`. Thus they must be called in a vSL file using the dot notation i.e. `ctx.timestamp`.
 
