@@ -185,7 +185,7 @@ LISTEN   0        128        127.0.0.1:587           127.0.0.1:*       users:(("
 LISTEN   0        128        127.0.0.1:465           127.0.0.1:*       users:(("vsmtp",pid=2127,fd=6))
 LISTEN   0        128        127.0.0.1:25            127.0.0.1:*       users:(("vsmtp",pid=2127,fd=4))
 
-$ nc -4 localhost 25
+$ nc -C localhost 25
 220 mydomain.com Service ready
 451 Timeout - closing connection.
 ```
