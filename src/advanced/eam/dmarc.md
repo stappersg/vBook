@@ -1,6 +1,6 @@
 # Domain-based Message Authentication, Reporting and Conformance 
 
-> ___This is a DRAFT for future releases. Support is planned for Q3/2022.___
+> ___This is a DRAFT for the 1.2 release. Support is planned for Q3/2022.___
 
 This document specifies the vSMTP implementation of the Domain-based Message Authentication, Reporting and Conformance (DMARC) protocol described in [RFC 7489](https://www.rfc-editor.org/rfc/rfc7489.html).
 

@@ -99,4 +99,4 @@ import "service" as s;
 }
 ```
 
-Checkout the [Delegation section](start/configuration/delegation.md) to read more about the delegation mechanism.
+Checkout the [Delegation section](delegation.md) to read more about the delegation mechanism.

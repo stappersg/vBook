@@ -1,4 +1,4 @@
-# Rules and actions
+# Rules, actions & delegate
 
 Rules are the entry point to interact with the SMTP traffic at a user level.
 Nevertheless specific parameters like timeout, system logging, tls configuration, etc. are set in the configuration files.
@@ -28,7 +28,7 @@ action "name" || instruction,
 rule "name" || instruction,
 ```
 
-Here are some examples:
+Here are some rule examples:
 
 ```js
 // Inline rule that only accepts a client at 192.168.1.254
@@ -63,6 +63,22 @@ rule "default" || deny()
 ```
 
 &#9998; | This rule is used by default when you do not specify any vsl file in the toml configuration.
+
+The `delegate` directive is different: it also use a smtp service to delegate the email to a third party software:
+
+```js
+service third_party smtp = #{
+    delegator: #{
+        address: "127.0.0.1:10026",
+        timeout: "60s",
+    },
+    receiver: "127.0.0.1:10024",
+};
+
+delegate third_party "delegate email processing" || { ... }
+```
+
+Check out [The delegation guide](../../start/configuration/delegation.md) for an in-depth description of the delegation mechanism.
 
 ## Rules and vSMTP Stages
 
@@ -130,10 +146,10 @@ import "objects" as obj;
 
         // ... other rules / actions
 
-        // Trailing rule (default behavior for rcpt stage)
+        // Trailing rule (denying is the default behavior for rcpt stage)
         rule "default" || deny(),
     ]
 }
 ```
 
-> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known flows (like the example above).
+> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).

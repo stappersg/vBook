@@ -49,3 +49,34 @@ print(john);
 // "john.doe@example.com"
 print(john[2]);
 ```
+
+## Smtp
+
+```js
+// -- service.vsl
+// A smtp service, enables you to use the `delegate` directive
+// to delegate the email to another service via smtp.
+// Here we send the email to the `clamsmtpd` antivirus.
+service clamsmtpd smtp = #{
+    delegator: #{
+        address: "127.0.0.1:10026",
+        timeout: "60s",
+    },
+    receiver: "127.0.0.1:10024",
+};
+
+// -- main.vsl
+
+import "service" as service;
+
+#{
+    postq: [
+        // this will delegate the email using the `clamsmtpd` service.
+        delegate service::clamsmtpd "delegate antivirus processing" || {
+            // this is executed after the delegation results have been
+            // received on port 10024.
+            ...
+        }
+    ]
+}
+```
