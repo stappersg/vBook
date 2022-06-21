@@ -28,7 +28,7 @@
     - [BIMI](advanced/eam/bimi.md)
   - [SMTP security using DANE](advanced/dane.md)
   - [Logging system](advanced/logging.md)
-  - [Problem solving]()
+  - [Trouble shooting](advanced/troubleshooting.md)
 
 - [Reference Guide]()
   - [Command line parameters](reference/command.md)
