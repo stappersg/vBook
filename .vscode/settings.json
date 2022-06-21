@@ -3,6 +3,8 @@
         "adduser",
         "ADMD",
         "BIMI",
+        "CLAMAV",
+        "clamsmtpd",
         "cloudflare",
         "CNAME",
         "deliv",

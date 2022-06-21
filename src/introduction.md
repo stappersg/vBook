@@ -1,6 +1,6 @@
 # Introduction
 
-> This is a working document. vSMTP v1.0.x is required.
+> This is a working document. vSMTP v1.1.x is required.
 
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.

@@ -4,7 +4,7 @@
 
 On top of vSL predefined actions, users can define complex rules using the [RHAI](https://rhai.rs/) scripting language.
 
-```js
+```javascript
 action "let example" || {
     let my_string = "The question is 7x6 = 42 ?";
     // ... do stuff
@@ -15,7 +15,7 @@ action "let example" || {
 
 RHAI functions can be declared and used in vSL.
 
-```js
+```javascript
 fn my_condition() {
     let my_int = if ctx().client_ip == "192.168.1.34" { 42 } else { 0 };
     if (my_int == 42) {
@@ -43,7 +43,7 @@ fn my_action2(rcpts) {
 #{
     // ... other rules.
     rcpt: [
-        rule "rcpt log" || { if my_condition() { my_action1() } else { my_action2(ctx().rcpt) } },
+        rule "rcpt log" || { if my_condition() { my_action1() } else { my_action2(ctx().rcpt_list) } },
     ]
 }
 ```
@@ -58,9 +58,8 @@ RHAI functions are automatically exported. Thus do not forget to add the "privat
 
 Example :
 
-___mod/my_module.vsl___
-
-```c
+```javascript
+// -- mod/my_module.vsl
 fn my_function() {
     let z = add_function(24);
     ... // do stuff.
@@ -73,9 +72,8 @@ private fn add_function(v) {
 export const x = 42;
 ```
 
-___main.vsl___
-
-```c
+```javascript
+// -- main.vsl
 import "mod/my_module" as my_mod;
 
 my_mod::my_function();

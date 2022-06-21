@@ -5,8 +5,8 @@ Services are declared using the `service` keyword.
 ## Commands
 
 ```js
-// shell service, enable vsmtp to run a command via a shell.
-service clamscan shell = #{
+// command service, enable vsmtp to run a command.
+service clamscan cmd = #{
     timeout: "10s",
     command: "clamscan",
     args: ["--infected", "--remove", "--recursive", "/home/jdoe"],
@@ -15,10 +15,10 @@ service clamscan shell = #{
 // run the service.
 // the command executed will be:
 // clamscan --infected --remove --recursive /home/jdoe
-clamscan.run_shell();
+clamscan.run_cmd();
 // run the service with custom arguments (based one are replaced).
 // clamscan --infected /home/another
-clamscan.run_shell([ "--infected", "/home/another" ]);
+clamscan.run_cmd([ "--infected", "/home/another" ]);
 ```
 
 ## Databases
