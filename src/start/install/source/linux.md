@@ -38,7 +38,7 @@ sudo apt install libsasl2-2
 Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
 
 ```shell
-git clone https://github.com/viridIT/vSMTP.git
+git clone -b main https://github.com/viridIT/vSMTP.git
 ```
 
 ```shell
