@@ -27,8 +27,6 @@ certificate = "/etc/vsmtp/certs/certificate.crt"
 private_key = "/etc/vsmtp/certs/private.key"
 ```
 
-TODO: Check app folder 
-
 Quite simple, isn't it ?
 
 Now that the server is configured we need to define the rules to apply to a message. This is the role of vSL.
