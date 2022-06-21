@@ -87,9 +87,9 @@ import "service" as s;
 #{
     preq: [
         delegate s::clamsmtpd "check email for virus" || {
-          // clamav inserts the 'X-Virus-Infected' header
+          // clamav inserts the "X-Virus-Infected" header
           // once a virus is detected. 
-          if has_header('X-Virus-Infected') {
+          if has_header("X-Virus-Infected") {
             quarantine("virus_q")
           } else {
             next()
