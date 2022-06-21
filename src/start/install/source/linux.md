@@ -32,7 +32,6 @@ sudo apt install libgsasl7-dev
 sudo apt install libsasl2-2
 ```
 
-
 ## vSMTP compilation
 
 Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
