@@ -9,6 +9,8 @@ Therefore, he installed [ClamAV](https://www.clamav.net/) which comes with the [
 
 vSMTP support security delegation via the SMTP protocol and vsl's configuration. In the next example, we are going to configure vsmtp to delegate emails to `clamsmtpd`.
 
+## Clamav setup
+
 The following example assumes that you started the `clamsmtpd` service with the following config:
 
 ```
@@ -18,6 +20,12 @@ OutAddress: 10025
 
 # Address to listen on (defaults to all local addresses on port 10025)
 Listen: 127.0.0.1:10026
+```
+
+To start clamav, use the following commands:
+```shell
+$ sudo systemctl start clamsmtp
+$ sudo systemctl start clamav-daemon
 ```
 
 ## The service
