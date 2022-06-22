@@ -50,7 +50,7 @@ You service is configured. Now, to use it, create the following rule using the `
 
 ```javascript
 // -- main.vsl
-import "antivirus" as antivirus;
+import "service" as service;
 
 #{
     postq: [
@@ -58,7 +58,7 @@ import "antivirus" as antivirus;
         /// clamsmtpd service and rule evaluation will be on hold.
         /// once all results are received on the 10024 port, evaluation
         /// will resume, and the body of this rule will be evaluated.
-        delegate antivirus::clamsmtpd "check email for virus" || {
+        delegate service::clamsmtpd "check email for virus" || {
             // this is executed once the delegation result are received.
             log("debug", "email analyzed.");
 
