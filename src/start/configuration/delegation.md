@@ -14,7 +14,7 @@ The following example assumes that you started the `clamsmtpd` service with the 
 ```
 # The address to send scanned mail to.
 # This option is required unless TransparentProxy is enabled
-OutAddress: 10024
+OutAddress: 10025
 
 # Address to listen on (defaults to all local addresses on port 10025)
 Listen: 127.0.0.1:10026
@@ -31,7 +31,7 @@ service clamsmtpd smtp = #{
         address: "127.0.0.1:10026",
         timeout: "60s",
     },
-    receiver: "127.0.0.1:10024",
+    receiver: "127.0.0.1:10025",
 };
 ```
 
@@ -41,7 +41,7 @@ In the toml configuration, you need to enable the receiver's socket.
 # -- vsmtp.toml
 [server.interfaces]
 #      clients             delegation results
-addr = ["192.168.1.254:25", "127.0.0.1:10024"]
+addr = ["192.168.1.254:25", "127.0.0.1:10025"]
 ```
 
 ## Rules
