@@ -37,15 +37,14 @@ sudo apt install libsasl2-2
 Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
 
 ```shell
-git clone -b main https://github.com/viridIT/vSMTP.git
+$ git clone -b main https://github.com/viridIT/vSMTP.git
 ```
 
 ```shell
-cargo build --release
-```
-
-```shell
+$ cargo build --release
 $ ./target/release/vsmtp --help
+```
+```shell
 vsmtp 1.0.0
 Team viridIT <https://viridit.com/>
 Next-gen MTA. Secured, Faster and Greener
@@ -75,6 +74,8 @@ For security purpose, vSMTP should run using a dedicated account with minimal pr
 ```shell
 $ sudo adduser --system --shell /usr/sbin/nologin --no-create-home \
     --uid 9999 --group --disabled-password --disabled-login vsmtp
+```
+```shell
 Adding system user 'vsmtp' (UID 9999) ...
 Adding new group 'vsmtp' (GID 9999) ...
 Adding new user 'vsmtp' (UID 9999) with group 'vsmtp' ...
@@ -97,21 +98,21 @@ vSMTP binaries and config files should be located in:
 This default behavior can be changed in the vSMTP configuration file `/etc/vsmtp/vsmtp.toml` which is called at startup by the vsmtp service script.
 
 ```shell
-sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
-sudo cp ./target/release/vsmtp /usr/sbin/
-sudo cp ./target/release/vqueue /usr/sbin/
+$ sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
+$ sudo cp ./target/release/vsmtp /usr/sbin/
+$ sudo cp ./target/release/vqueue /usr/sbin/
 ```
 
 Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
 
 ```shell
-sudo bash -c 'echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml'
+$ sudo bash -c 'echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml'
 ```
 
 Grant rights to files and folders.
 
 ```shell
-sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
+$ sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
 If required, do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
@@ -124,18 +125,25 @@ Check if you have a mail transfer agent service running and disable it. The exam
 
 ```shell
 $ sudo ss -ltpn | grep ":25"
+```
+```shell
 tcp        0      0 127.0.0.1:25              127.0.0.1:*               LISTEN      39423/master
-
+```
+```shell
 $ sudo systemctl status postfix
+```
+```shell
 ● postfix.service - Postfix Mail Transport Agent
      Loaded: loaded (/lib/systemd/system/postfix.service; enabled; vendor preset: enabled)
      Active: active (exited) since Fri 2021-12-10 11:10:58 CET; 5min ago
     Process: 39426 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
    Main PID: 39426 (code=exited, status=0/SUCCESS)
-
+```
+```shell
 $ sudo systemctl stop postfix
-
 $ sudo systemctl disable postfix
+```
+```shell
 Synchronizing state of postfix.service with SysV service script with /lib/systemd/systemd-sysv-install.
 Executing: /lib/systemd/systemd-sysv-install disable postfix
 Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
@@ -148,7 +156,7 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 Copy the daemon configuration file to /etc/systemd/system.
 
 ```shell
-sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
+$ sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
 ```
 
 Please note that vSMTP comes with a mechanism that drop privileges at startup. The service type must be set to `forking`.
