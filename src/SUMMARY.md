@@ -27,8 +27,8 @@
     - [ARC](advanced/eam/arc.md)
     - [BIMI](advanced/eam/bimi.md)
   - [SMTP security using DANE](advanced/dane.md)
-  - [Logging system]()
-  - [Problem solving]()
+  - [Logging system](advanced/logging.md)
+  - [Trouble shooting](advanced/troubleshooting.md)
 
 - [Reference Guide]()
   - [Command line parameters](reference/command.md)

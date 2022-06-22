@@ -43,16 +43,18 @@ The RFC 7505 defines two specific return codes.
 
 ### vSL predefined functions
 
-> ___This is a DRAFT for v1.1 features___
+> ___This is a DRAFT for v1.2 features___
 
 The standard API as a dedicated abstract to check the Null MX record.
 
-__main.vsl__
 ```javascript
+// -- main.vsl
+
 mail: [
   rule "check null MX" || check_null_mx();
 ]
+```
 
-### Current behavior
+> ___Current Behavior___
 
 Currently, MX records are automatically checked on delivery. If the destination server provide a NULL MX record, the email is immediately placed into the dead queue.

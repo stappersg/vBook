@@ -22,9 +22,17 @@ addr_submissions = ["192.168.1.254:465"]
 
 [server.tls]
 security_level = "May"
+preempt_cipherlist = false
+handshake_timeout = "200ms"
 protocol_version = ["TLSv1.2", "TLSv1.3"]
 certificate = "/etc/vsmtp/certs/certificate.crt"
 private_key = "/etc/vsmtp/certs/private.key"
+
+[server.logs.level]
+server = "warn"
+
+[app.vsl]
+filepath = "/etc/vsmtp/rules/main.vsl"
 ```
 
 Quite simple, isn't it ?
@@ -133,7 +141,7 @@ import "objects" as doe;
       // the email locally. Otherwise, we just deliver the email
       // to another server.
       for rcpt in ctx().rcpt_list {
-        if rcpt in doe::family_addr { maildir(rcpt) } else { deliver(rcpt) }
+        if rcpt in doe::family_addr { maildir(rcpt.to_string()) } else { deliver(rcpt.to_string()) }
       }
   ]
 }

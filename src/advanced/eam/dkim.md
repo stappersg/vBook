@@ -1,6 +1,6 @@
 # DomainKeys Identified Message
 
-> ___This is a DRAFT for future releases. Support is planned for Q3/2022.___
+> ___This is a DRAFT for the 1.2 release. Support is planned for Q3/2022.___
 
 This document specifies the vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
 
@@ -76,11 +76,11 @@ DKIM-Signature:  v=1; a=rsa-sha256; s=gatsby; d=example.com;
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
-| Code              | X.7.20                                                 |
-| :---------------- | :----------------------------------------------------- |
-| Text              | No passing DKIM signature found                        |
-| Basic status code | 550                                                    |
-| Description       | A message did not contain any passing DKIM signatures. |
+| Code              | X.7.20                                                                                                                                 |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | No passing DKIM signature found                                                                                                        |
+| Basic status code | 550                                                                                                                                    |
+| Description       | A message did not contain any passing DKIM signatures.                                                                                 |
 
 | Code              | X.7.21                                                                           |
 | :---------------- | :------------------------------------------------------------------------------- |
@@ -97,11 +97,11 @@ The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Aut
 The following error codes can also be sent by the DKIM framework.
 
 | Code              | X.7.25                                                                                                    |
-| :---------------- | :-------------------------------------------------------------------------------------------------------- |
-| Text              | Reverse DNS validation failed                                                                             |
-| Basic status code | 550                                                                                                       |
-| Description       | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
-| Used in place of  | n/a                                                                                                       |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | Reverse DNS validation failed                                                                                                          |
+| Basic status code | 550                                                                                                                                    |
+| Description       | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements.                              |
+| Used in place of  | n/a                                                                                                                                    |
 
 | Code              | X.7.26                                                                                                                                                       |
 | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |

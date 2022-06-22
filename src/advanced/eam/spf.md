@@ -89,28 +89,28 @@ Results should be recorded in the message header. According to RFCs, two options
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
-| Code              | X.7.23                                                         |
-| :---------------- | :------------------------------------------------------------- |
-| Text              | SPF validation failed                                          |
-| Basic status code | 550                                                            |
-| Description       | A message completed an SPF check that produced a "fail" result |
-| Used in place of  | 5.7.1, as described in Section 8.4 of RFC 7208.                |
+| Code              | X.7.23                                                                                                                                 |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | SPF validation failed                                                                                                                  |
+| Basic status code | 550                                                                                                                                    |
+| Description       | A message completed an SPF check that produced a "fail" result                                                                         |
+| Used in place of  | 5.7.1, as described in Section 8.4 of RFC 7208.                                                                                        |
 
-| Code              | X.7.24                                                                  |
-| :---------------- | :---------------------------------------------------------------------- |
-| Text              | SPF validation error                                                    |
-| Basic status code | 451/550                                                                 |
-| Description       | Evaluation of SPF relative to an arriving message resulted in an error. |
-| Used in place of  | 4.4.3 or 5.5.2, as described in Sections 8.6 and 8.7 of RFC 7208.       |
+| Code              | X.7.24                                                                                                                                 |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | SPF validation error                                                                                                                   |
+| Basic status code | 451/550                                                                                                                                |
+| Description       | Evaluation of SPF relative to an arriving message resulted in an error.                                                                |
+| Used in place of  | 4.4.3 or 5.5.2, as described in Sections 8.6 and 8.7 of RFC 7208.                                                                      |
 
 The following error codes can also be sent by the SPF framework.
 
-| Code              | X.7.25                                                                                                    |
-| :---------------- | :-------------------------------------------------------------------------------------------------------- |
-| Text              | Reverse DNS validation failed                                                                             |
-| Basic status code | 550                                                                                                       |
-| Description       | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements. |
-| Used in place of  | n/a                                                                                                       |
+| Code              | X.7.25                                                                                                                                 |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Text              | Reverse DNS validation failed                                                                                                          |
+| Basic status code | 550                                                                                                                                    |
+| Description       | An SMTP client's IP address failed a reverse DNS validation check, contrary to local policy requirements.                              |
+| Used in place of  | n/a                                                                                                                                    |
 
 | Code              | X.7.26                                                                                                                                                       |
 | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
