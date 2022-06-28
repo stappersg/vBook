@@ -32,7 +32,7 @@ SMTP envelop can be modified by several predefined actions.
 
 | Syntax                                        | Comment                                                                    |
 | :-------------------------------------------- | :------------------------------------------------------------------------- |
-| add_header(name:string, body:string)          | Add a new header to the email's header section.                            |
+| append_header(name:string, body:string)       | Append a new header to the email's header section.                         |
 | prepend_header(name:string, body:string)      | Prepend a new header to the email's header section.                        |
 | remove_header(name:string)                    | Remove all occurrences of headers matching the string in the email's body. |
 | rewrite_mail_from(address:string)             | Change `MAIL FROM:` current value with addr.                               |
