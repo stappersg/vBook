@@ -72,18 +72,18 @@ Results should be recorded in the message header. According to RFCs, two options
 
 1. The "Received-SPF" header
 
-    ```shell
-    Received-SPF: pass (mybox.example.org: domain of myname@example.com
-      designates 192.0.2.1 as permitted sender)
-      receiver=mybox.example.org; client-ip=192.0.2.1;
-      envelope-from="myname@example.com"; helo=foo.example.com;
-    ```
+```shell
+Received-SPF: pass (mybox.example.org: domain of myname@example.com
+  designates 192.0.2.1 as permitted sender)
+  receiver=mybox.example.org; client-ip=192.0.2.1;
+  envelope-from="myname@example.com"; helo=foo.example.com;
+```
 
 2. The "Authentication-Results" header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) : Message Header Field for Indicating Message Authentication Status.
 
-    ```shell
-    Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
-    ```
+```shell
+Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
+```
     
 ### SPF failure codes
 
