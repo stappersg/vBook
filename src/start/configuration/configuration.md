@@ -27,7 +27,7 @@ vSMTP is installed on an Ubuntu server 20.04 virtual instance hosted by the DMZ 
 
 
 - Public IP : 80.80.80.80
-- MTA IP : 192.168.1.254/32
+- MTA IP : 192.168.1.254/32 - fqdn : mta.doe-family.com
 - Internal Network : 192.168.0.0/24
 ```
 
@@ -51,4 +51,12 @@ ___DNS___
 
 ```shell
 MX preference = 1, mail exchanger = vsmtp.doe-family.com
+```
+
+___Certificate___
+
+John generated a certificate through the [Let's Encrypt Certificate Authority](https://letsencrypt.org/) for vSMTP server.
+
+```shell
+sudo certbot certonly --manual --preferred-challenges=dns --agree-tos -d mta.doe-family.com
 ```

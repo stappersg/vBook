@@ -19,7 +19,7 @@ pkg install lang/rust
 
 ## Dependencies
 
-FreeBSD 13.x comes with all required dependencies.
+FreeBSD 13.x comes with all required dependencies. Please check that sasl is included in your release (see Linux dependencies).
 
 ## vSMTP compilation
 

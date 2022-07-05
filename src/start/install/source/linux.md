@@ -30,6 +30,7 @@ The Debian package is libssl-dev package.
 sudo apt install libssl-dev
 sudo apt install libgsasl7-dev
 sudo apt install libsasl2-2
+sudo apt install sasl2-bin
 ```
 
 ## vSMTP compilation

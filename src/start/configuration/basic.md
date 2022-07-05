@@ -25,8 +25,12 @@ security_level = "May"
 preempt_cipherlist = false
 handshake_timeout = "200ms"
 protocol_version = ["TLSv1.2", "TLSv1.3"]
-certificate = "/etc/vsmtp/certs/certificate.crt"
-private_key = "/etc/vsmtp/certs/private.key"
+certificate = "/etc/letsencrypt/live/mta.doe-family.com/cert.pem"
+private_key = "/etc/letsencrypt/live/mta.doe-family.com/privkey.pem"
+
+[server.smtp.auth]
+must_be_authenticated = true
+enable_dangerous_mechanism_in_clair = false
 
 [server.logs.level]
 server = "warn"
