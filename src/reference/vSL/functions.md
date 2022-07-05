@@ -30,17 +30,18 @@ quarantine(virus_dir);
 
 SMTP envelop can be modified by several predefined actions.
 
-| Syntax                  | Comment                                                                    |
-| :---------------------- | :------------------------------------------------------------------------- |
-| add_header(string)      | Add a new header in the email's body                                       |
-| remove_header(string)   | Remove all occurrences of headers matching the string in the email's body. |
-| rewrite_mail_from(addr) | Change `MAIL FROM:` current value with addr.                               |
-| add_rcpt(addr)          | Add rcpt to the envelop.                                                   |
-| remove_rcpt(addr)       | Remove rcpt from the envelop.                                              |
-| rewrite_rcpt(old, new)  | Rewrite rcpt "old" with "new" in the envelop.                              |
-| add_to(addr)            | Add rcpt to the `To` header in the email's body.                           |
-| remove_to(addr)         | Remove rcpt from the `To` header in the email's body.                      |
-| rewrite_to(old, new)    | Rewrite rcpt "old" with "new" from the `To` header in the email's body     |
+| Syntax                                        | Comment                                                                    |
+| :-------------------------------------------- | :------------------------------------------------------------------------- |
+| append_header(name:string, body:string)       | Append a new header to the email's header section.                         |
+| prepend_header(name:string, body:string)      | Prepend a new header to the email's header section.                        |
+| remove_header(name:string)                    | Remove all occurrences of headers matching the string in the email's body. |
+| rewrite_mail_from(address:string)             | Change `MAIL FROM:` current value with addr.                               |
+| add_rcpt(address:string)                      | Add rcpt to the envelop.                                                   |
+| remove_rcpt(address:string)                   | Remove rcpt from the envelop.                                              |
+| rewrite_rcpt(old:string, new::string)         | Rewrite rcpt "old" with "new" in the envelop.                              |
+| add_to(address:string)                        | Add rcpt to the `To` header in the email's body.                           |
+| remove_to(address:string)                     | Remove rcpt from the `To` header in the email's body.                      |
+| rewrite_to(old:string, new:string)            | Rewrite rcpt "old" with "new" from the `To` header in the email's body     |
 
 &#9998; | `add_to`, `remove_to` & `rewrite_to` only update the root headers (nested emails headers are not changed).
 
