@@ -29,7 +29,7 @@ certificate = "/etc/letsencrypt/live/mta.doe-family.com/cert.pem"
 private_key = "/etc/letsencrypt/live/mta.doe-family.com/privkey.pem"
 
 [server.smtp.auth]
-must_be_authenticated = true
+must_be_authenticated = false
 enable_dangerous_mechanism_in_clair = false
 
 [server.logs.level]
