@@ -53,7 +53,7 @@ Before the mail stage, please copy/paste the authenticate stage.
     ],
 ```
 
-> This is a temporary vSL code required by v1.1. Future releases will bring an out-of-the box vSL function.
+> This is a temporary vSL code required by v1.1. Future releases will bring an out-of-the box vSL function. Do not forget to start saslauthd daemon with MECHANISM="shadow" in /etc/default/saslauthd.
 
 Now Doe's family server is protected against open-relaying attacks.
 
