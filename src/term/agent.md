@@ -6,9 +6,13 @@ Client application that allows receiving and sending emails. It can be a desktop
 
 ## MSA (Mail Submission Agent)
 
-A server program that receives mail from an MUA, checks for any errors, and transfers it (with SMTP) to the MTA hosted on the same server.
+The MSA is responsible for the incoming traffic in the mail system.
+
+A server program that receives mail from an MUA, checks for any errors, and transfers it (with SMTP) to a MTA.
 
 ## MTA (Mail Transfer Agent)
+
+The MTA is responsible to deliver the mails to the recipients's mail exchange, using the DNS logics.
 
 A server application that receives mail from the MSA, or from another MTA. It will find (through name servers and the DNS) the MX record from the recipient domain's DNS zone in order to know how to transfer the mail. It then transfers the mail (with SMTP) to another MTA (which is known as SMTP relaying) or, if the recipient’s server has been reached, to the MDA.
 

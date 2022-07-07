@@ -95,26 +95,28 @@ processing = 6
 delivery = 6
 ```
 
-### `server.interfaces.addr`
+### `server.interfaces`
+
+vSMTP can be used as a [MTA](../term/agent.md#mta-mail-transfer-agent) and/or a [MSA](../term/agent.md#msa-mail-submission-agent).
+
+A MTA listen on port 25, and using server side authentication (SPF / DKIM / DMARC ...) to be protected from spam and identity substitution.
+
+A MSA listen on port 587 and 465 (with TLS tunnel), in the same fashion than HTTP over port 80 and HTTPS over 443.
+On these ports, stronger policies apply and client side authentication (SASL) is required.
+
+Expose your public addresses here, (support both ipv4 and ipv6) :
 
 ```toml
 [server.interfaces]
-addr = ["127.0.0.1:25"]
+addr = ["192.168.1.254:25"]                  # <---- MTA's addresses
+addr_submission = ["192.168.1.254:587"]      # <---- MSA's addresses
+addr_submissions = ["192.168.1.254:465"]     # <---- MSA's addresses for SMTPS
 ```
 
-### `server.interfaces.addr_submission`
+These field are arrays, and you can leave any of them empty.
+Make sure to provide at least **one address**, otherwise an error will be produced on startup.
 
-```toml
-[server.interfaces]
-addr_submission = ["127.0.0.1:587"]
-```
-
-### `server.interfaces.addr_submissions`
-
-```toml
-[server.interfaces]
-addr_submissions = ["127.0.0.1:465"]
-```
+You might want to add local address (`127.0.0.1:25` for example) when using delegation services.
 
 ### `server.logs.filepath`
 

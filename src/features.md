@@ -19,12 +19,13 @@ And you can follow our development planning on the official [Discord Server](htt
 
 ## Networking
 
+- Listen and serve on multiple addresses (defined in your [config](./reference/config-file.md#serverinterfaces))
 - Support for IPv4 and IPv6 format.
 - Built on high performance asynchronous connections.
-- Handling of multiple emails per transaction.
+- Handle one or multiple emails per connections.
 - Compliancy with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs.
 - [TLS 1.3] support.
-- Complex DNS configurations - thanks to Benjamin Fry's [Trust-DNS] crate.
+- Complete DNS configurations - thanks to Benjamin Fry's [Trust-DNS] crate.
 - Support for high workload through built-in mechanisms.
 
 [Internet Message Format]: https://datatracker.ietf.org/doc/html/rfc5322
