@@ -6,6 +6,12 @@ vSMTP is a [MTA]/[MSA] and is not intended to be a [MUA] nor a [MDA].
 
 For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP protocol. For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats.
 
+For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats. To retrieve emails from your [MUA] it is necessary to install a [MDA] that can handle POP and/or IMAP protocols.
+
+&#9758; | For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and specify to the courier-imap MDA where are located the MailDir/ folders and use a MUA like Mozilla ThunderBird.
+
+[courier-imap]: https://packages.debian.org/search?keywords=courier-imap
+
 [MUA]: ./term/agent.html#mua-mail-user-agent
 [MTA]: ./term/agent.html#mta-mail-transfer-agent
 [MSA]: ./term/agent.html#msa-mail-submission-agent
@@ -15,7 +21,7 @@ For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP 
 
 Take a look at our [ROADMAP.md](https://github.com/viridIT/vSMTP/blob/develop/ROADMAP.md).
 
-And you can follow our development planning on the official [Discord Server](https://discord.gg/N8JGBRBshf). Where we post **poll** and **announcement** for our incoming features !
+And you can follow our development planning on the [official discord server](https://discord.gg/N8JGBRBshf). Where we post **poll** and **announcement** for our incoming features !
 
 ## Networking
 

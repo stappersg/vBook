@@ -11,7 +11,7 @@ vSMTP is a secured, faster and greener [MTA](./term/agent.md#mta-mail-transfer-a
 
 It is a more efficient, more secure and more ergonomic product than the competition. It is up to 10 times faster than its competitors and significantly reduces the need for IT resources.
 
-It is developed in Rust. Compared to solutions developed in other programming languages (usually C or C++), Rust provide a memory safety model, guaranteeing the absence of segmentation errors and race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
+It is developed in Rust. Compared to solutions developed in other programming languages (usually C or C++), Rust provide a memory safety model, guaranteeing no segmentation fault or race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
 
 Its development goes through a full cycle of testing. Static and dynamic tests allow more comprehensive coverage of safety tests, one covering faults of the other and vice versa (static view and runtime view).
 
