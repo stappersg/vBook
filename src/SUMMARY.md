@@ -1,6 +1,10 @@
-# Summary
+The vSMTP reference guide
+==========================
 
-[Introduction](introduction.md)
+[The vSMTP Book](index.md)
+
+----------------------
+
 [Features](features.md)
 
 - [Getting Started](start/started.md)
@@ -41,3 +45,8 @@
     - [Delivery](reference/vSL/delivery.md)
     - [Services](reference/vSL/services.md)
     - [Advanced Usage](reference/vSL/advanced.md)
+
+Terminology
+==========================
+
+- [Mail Agent](term/agent.md)
