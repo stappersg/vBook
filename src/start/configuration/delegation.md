@@ -1,6 +1,6 @@
 # SMTP security delegation
 
-> __This feature is experimental and will be available for production when v1.1.2 is out.__
+> __This feature is experimental and will be available for production when v1.1.3 is out.__
 
 ## Adding an antivirus
 
@@ -73,7 +73,7 @@ import "service" as service;
             log("debug", "email analyzed.");
 
             // clamav inserts the "X-Virus-Infected" header
-            // once a virus is detected. 
+            // once a virus is detected.
             if has_header("X-Virus-Infected") {
                 quarantine("virus_q")
             } else {

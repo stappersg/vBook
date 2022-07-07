@@ -1,25 +1,38 @@
 # Features
 
-vSMTP is a secured, faster and greener Mail Transfer Agent.
+## Non-Features
 
-It is a more efficient, more secure and more ergonomic product than the competition. It is up to 10 times faster than its competitors and significantly reduces the need for IT resources.
+vSMTP is a [MTA]/[MSA] and is not intended to be a [MUA] nor a [MDA].
 
-It is developed in Rust. Compared to solutions developed in C / C ++, Rust guarantees the absence of segmentation errors and race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
+For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP protocol. For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats.
 
-Its development goes through a full cycle of testing. Static and dynamic tests allow more comprehensive coverage of safety tests, one covering faults of the other and vice versa (static view and runtime view).
+For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats. To retrieve emails from your [MUA] it is necessary to install a [MDA] that can handle POP and/or IMAP protocols.
+
+&#9758; | For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and specify to the courier-imap MDA where are located the MailDir/ folders and use a MUA like Mozilla ThunderBird.
+
+[courier-imap]: https://packages.debian.org/search?keywords=courier-imap
+
+[MUA]: ./term/agent.html#mua-mail-user-agent
+[MTA]: ./term/agent.html#mta-mail-transfer-agent
+[MSA]: ./term/agent.html#msa-mail-submission-agent
+[MDA]: ./term/agent.html#mda-mail-delivery-agent
+
+## Incoming Features
+
+Take a look at our [ROADMAP.md](https://github.com/viridIT/vSMTP/blob/develop/ROADMAP.md).
+
+And you can follow our development planning on the [official discord server](https://discord.gg/N8JGBRBshf). Where we post **poll** and **announcement** for our incoming features !
 
 ## Networking
 
-The network code has been designed with performance and load resistance as the main objectives.
-
+- Listen and serve on multiple addresses (defined in your [config](./reference/config-file.md#serverinterfaces))
 - Support for IPv4 and IPv6 format.
 - Built on high performance asynchronous connections.
-- Handling of multiple emails per transaction.
+- Handle one or multiple emails per connections.
 - Compliancy with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs.
 - [TLS 1.3] support.
-- Complex DNS configurations - thanks to Benjamin Fry's [Trust-DNS] crate.
+- Complete DNS configurations - thanks to Benjamin Fry's [Trust-DNS] crate.
 - Support for high workload through built-in mechanisms.
-
 
 [Internet Message Format]: https://datatracker.ietf.org/doc/html/rfc5322
 [Simple Mail Transfer Protocol]: https://datatracker.ietf.org/doc/html/rfc5321
@@ -47,8 +60,6 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 
 ## Delivery
 
-vSMTP is a Mail Transfer Agent (MTA) and is not intended to be a Mail User Agent (MUA) or a Mail Delivery Agent (MDA). For outgoing mail, vSMTP can directly be addressed by your email client (MUA) using the SMTP protocol. For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats.
-
 - SMTP remote delivery - using a third-party software, [Lettre].
 - [Mbox] and [Maildir] format for local delivering.
 - SMTP relaying and forwarding.
@@ -71,7 +82,7 @@ Next versions will bring SQL and NoSQL databases and in-memory caches supports. 
 - [DANE] protocol, [DKIM] and [DMARC] mechanisms supports are planned for future release.
 - [ARC] and [BIMI] experimental and future Internet standards are currently not supported.
 
-[DANE]: https://www.rfc-editor.org/rfc/rfc7671.html 
+[DANE]: https://www.rfc-editor.org/rfc/rfc7671.html
 [SPF]: https://www.rfc-editor.org/rfc/rfc7208.html
 [DKIM]: https://www.rfc-editor.org/rfc/rfc6376.html
 [DMARC]: https://www.rfc-editor.org/rfc/rfc7489.html
