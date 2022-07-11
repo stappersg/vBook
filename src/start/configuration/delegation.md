@@ -84,7 +84,7 @@ import "service" as service;
 }
 ```
 
-Since there is no heavy network traffic, John decided to do a pre-queue filtering.
+Since there is no heavy network traffic, John decided to do a post-queue filtering.
 Compromised emails are quarantined in the `virus_q` folder.
 
 ## That's it
