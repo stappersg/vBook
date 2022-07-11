@@ -25,6 +25,7 @@ import "objects" as obj;
   rcpt: [
         rule "relay rcpt" || check_rcpt_relay(obj::internal_net),
   ],
+}
 ```
 
 Doe's family users must be authenticated if they send message from an external network (i.e. from a cellular net). As John decided to create Unix users, the shadow mechanism is required.
@@ -70,7 +71,7 @@ To allow other MTAs to verify that outgoing email from Doe's family domain comes
 doe-family.com.          TXT "v=spf1 +mx -all"
 ```
 
-That's all for outgoing messages. What about incoming messages ? Easier.
+That's all for outgoing messages. What about incoming messages ?
 
 Edit your `main.vsl` code and just add the "check spf" rule.
 

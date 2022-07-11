@@ -31,7 +31,7 @@ The RFC 7208 does not enforce a HELO/EHLO verification.
 > "It is RECOMMENDED that SPF verifiers not only check the "MAIL FROM" identity but also separately check the "HELO" identity
 [...] Additionally, since SPF records published for "HELO" identities refer to a single host, when available, they are a very reliable source of host authorization status.  Checking "HELO" before "MAIL FROM" is the RECOMMENDED sequence if both are checked."
 
-Even if the RFC 5321 tends to normalize the HELO/EHLO arguments as the fully qualified domain name of the SMTP client, the vSMTP SPF verifier is prepared for the identity to be an IP address literal or simply be malformed.  
+Even if the RFC 5321 tends to normalize the HELO/EHLO arguments as the fully qualified domain name of the SMTP client, the vSMTP SPF verifier is prepared for the identity to be an IP address literal or simply be malformed.
 
 > "SPF check can only be performed when the "HELO" string is a valid, multi-label domain name."
 
@@ -84,7 +84,7 @@ Received-SPF: pass (mybox.example.org: domain of myname@example.com
 ```shell
 Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
 ```
-    
+
 ### SPF failure codes
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
@@ -129,42 +129,45 @@ The standard API has a dedicated function to check the SPF policy.
 ```javascript
 // -- main.vsl
 #{
-  mail: [
-    // check spf parameters are, respectively:
-    // - injected header: "spf" | "auth" | "both" | "none"
-    // - the policy: "strict" | "soft"
+    mail: [
+        // check spf parameters are, respectively:
+        // - injected header: "spf" | "auth" | "both" | "none"
+        // - the policy: "strict" | "soft"
 
-    // if this check succeed, it wil return `next`.
-    // if it fails, it might return `deny` with a custom code
-    // (X.7.24 or X.7.25 for exemple)
-    //
-    // if you want to use the return status, just put the check_spf
-    // function on the last line of your rule.
-    rule "check spf 1" || {
-      log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
-      check_spf("spf", "soft")
-    }
+        // if this check succeed, it wil return `next`.
+        // if it fails, it might return `deny` with a custom code
+        // (X.7.24 or X.7.25 for exemple)
+        //
+        // if you want to use the return status, just put the check_spf
+        // function on the last line of your rule.
+        rule "check spf 1" || {
+            log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
+            check_spf("spf", "soft")
+        },
 
-    // policy is set to "strict" by default.
-    rule "check spf 2" || check_spf("both");
+        // policy is set to "strict" by default.
+        rule "check spf 2" || check_spf("both"),
 
-    // you can also use the low level system api.
-    rule "check spf 3" || {
-      let query = sys::check_spf(ctx(), srv());
+        // you can also use the low level system api.
+        rule "check spf 3" || {
+            let query = sys::check_spf(ctx(), srv());
 
-      log("debug", `result: ${query.result}`);
+            log("debug", `result: ${query.result}`);
 
-      // the 'result' parameter gives you the result of evaluation.
-      // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
-      //
-      // the 'cause' parameter gives you the cause of the result if there
-      // was an error, and the mechanism of the result if it succeeded.
-      switch query.result {
-        "pass" => ...
-        "fail" => log("error", `check spf error: ${query.cause}`),
-        _ => ...
-      };
-    };
-  ]
+            // the 'result' parameter gives you the result of evaluation.
+            // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
+            //
+            // the 'cause' parameter gives you the cause of the result if there
+            // was an error, and the mechanism of the result if it succeeded.
+            switch query.result {
+                "pass" => next(),
+                "fail" => {
+                    log("error", `check spf error: ${query.cause}`);
+                    deny()
+                },
+                _ => next(),
+            };
+        },
+    ],
 }
 ```
