@@ -66,7 +66,9 @@ You service is configured. Now, to use it, create the following rule using the `
 
 ```javascript
 // -- main.vsl
-import "service" as service;
+// you cannot use `import "service" as service;` here because `service` is
+// a reserved keyword.
+import "service" as svc;
 
 #{
     postq: [
@@ -74,7 +76,7 @@ import "service" as service;
         /// clamsmtpd service and rule evaluation will be on hold.
         /// once all results are received on the 10025 port, evaluation
         /// will resume, and the body of this rule will be evaluated.
-        delegate service::clamsmtpd "check email for virus" || {
+        delegate svc::clamsmtpd "check email for virus" || {
             // this is executed once the delegation result are received.
             log("debug", "email analyzed.");
 

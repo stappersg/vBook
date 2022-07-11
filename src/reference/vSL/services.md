@@ -67,12 +67,14 @@ service clamsmtpd smtp = #{
 
 // -- main.vsl
 
-import "service" as service;
+// you cannot use `import "service" as service;` here because `service` is
+// a reserved keyword.
+import "service" as svc;
 
 #{
     postq: [
         // this will delegate the email using the `clamsmtpd` service.
-        delegate service::clamsmtpd "delegate antivirus processing" || {
+        delegate svc::clamsmtpd "delegate antivirus processing" || {
             // this is executed after the delegation results have been
             // received on port 10024.
             ...
