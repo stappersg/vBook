@@ -38,6 +38,12 @@ sudo apt install libsasl2-2
 sudo apt install sasl2-bin
 ```
 
+Libclang frontend is also required.
+
+```shell
+sudo apt install libclang-dev
+```
+
 ## vSMTP compilation
 
 Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
@@ -47,7 +53,7 @@ $ git clone -b main https://github.com/viridIT/vSMTP.git
 ```
 
 ```shell
-$ cargo build --release
+$ cargo build --release --workspace
 $ ./target/release/vsmtp --help
 ```
 ```shell
