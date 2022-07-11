@@ -1,12 +1,16 @@
-# Summary
+The vSMTP reference guide
+==========================
 
-[Introduction](introduction.md)
+[The vSMTP Book](index.md)
+
+----------------------
+
 [Features](features.md)
 
 - [Getting Started](start/started.md)
   - [Requirements](start/requirements.md)
   - [Installation from packages](start/install/packages.md)
-  - [Installation from source](start/install/source.md)
+  - [Building from source](start/install/source.md)
     - [Linux](start/install/source/linux.md)
     - [FreeBSD](start/install/source/freebsd.md)
     - [OpenBSD]()
@@ -41,3 +45,8 @@
     - [Delivery](reference/vSL/delivery.md)
     - [Services](reference/vSL/services.md)
     - [Advanced Usage](reference/vSL/advanced.md)
+
+Terminology
+==========================
+
+- [Mail Agent](term/agent.md)
