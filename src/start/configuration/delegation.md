@@ -16,12 +16,18 @@ vSMTP support security delegation via the SMTP protocol and vsl's configuration.
 The following example assumes that you started the `clamsmtpd` service with the following config:
 
 ```
+## -- /etc/clamsmtpd.conf
+
 # The address to send scanned mail to.
 # This option is required unless TransparentProxy is enabled
 OutAddress: 10025
 
 # Address to listen on (defaults to all local addresses on port 10025)
 Listen: 127.0.0.1:10026
+
+# Tells clamav to forward the email to vsmtp
+# event thought it found a virus. (it drops the email by default)
+Action: pass
 ```
 
 To start clamav, use the following commands:
