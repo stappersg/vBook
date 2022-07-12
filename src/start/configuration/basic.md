@@ -25,8 +25,12 @@ security_level = "May"
 preempt_cipherlist = false
 handshake_timeout = "200ms"
 protocol_version = ["TLSv1.2", "TLSv1.3"]
-certificate = "/etc/vsmtp/certs/certificate.crt"
-private_key = "/etc/vsmtp/certs/private.key"
+certificate = "/etc/letsencrypt/live/mta.doe-family.com/cert.pem"
+private_key = "/etc/letsencrypt/live/mta.doe-family.com/privkey.pem"
+
+[server.smtp.auth]
+must_be_authenticated = false
+enable_dangerous_mechanism_in_clair = false
 
 [server.logs.level]
 server = "warn"
@@ -136,13 +140,14 @@ import "objects" as doe;
   ],
 
   deliver: [
-    action "setup delivery" ||
+    action "setup delivery" || {
       // if a recipient is part of the family, we deliver
       // the email locally. Otherwise, we just deliver the email
       // to another server.
       for rcpt in ctx().rcpt_list {
         if rcpt in doe::family_addr { maildir(rcpt.to_string()) } else { deliver(rcpt.to_string()) }
       }
+    }
   ]
 }
 ```

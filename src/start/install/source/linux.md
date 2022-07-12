@@ -28,8 +28,20 @@ The Debian package is libssl-dev package.
 
 ```shell
 sudo apt install libssl-dev
+```
+
+The authentication is provided by the [GNU gsasl](https://www.gnu.org/software/gsasl/) and [Cyrus sasl](https://www.cyrusimap.org/sasl/) libraries.
+
+```shell
 sudo apt install libgsasl7-dev
 sudo apt install libsasl2-2
+sudo apt install sasl2-bin
+```
+
+Libclang frontend is also required.
+
+```shell
+sudo apt install libclang-dev
 ```
 
 ## vSMTP compilation
@@ -41,7 +53,7 @@ $ git clone -b main https://github.com/viridIT/vSMTP.git
 ```
 
 ```shell
-$ cargo build --release
+$ cargo build --release --workspace
 $ ./target/release/vsmtp --help
 ```
 ```shell

@@ -1,6 +1,6 @@
 # SMTP security delegation
 
-> __This feature is experimental and will be available for production when v1.1.2 is out.__
+> __This feature is experimental and will be available for production when v1.1.3 is out.__
 
 ## Adding an antivirus
 
@@ -16,12 +16,18 @@ vSMTP support security delegation via the SMTP protocol and vsl's configuration.
 The following example assumes that you started the `clamsmtpd` service with the following config:
 
 ```
+## -- /etc/clamsmtpd.conf
+
 # The address to send scanned mail to.
 # This option is required unless TransparentProxy is enabled
 OutAddress: 10025
 
 # Address to listen on (defaults to all local addresses on port 10025)
 Listen: 127.0.0.1:10026
+
+# Tells clamav to forward the email to vsmtp
+# event thought it found a virus. (it drops the email by default)
+Action: pass
 ```
 
 To start clamav, use the following commands:
@@ -60,20 +66,22 @@ You service is configured. Now, to use it, create the following rule using the `
 
 ```javascript
 // -- main.vsl
-import "service" as service;
+// you cannot use `import "service" as service;` here because `service` is
+// a reserved keyword.
+import "service" as svc;
 
 #{
     postq: [
         /// once this rule is run, vsmtp will send the email to the
         /// clamsmtpd service and rule evaluation will be on hold.
-        /// once all results are received on the 10024 port, evaluation
+        /// once all results are received on the 10025 port, evaluation
         /// will resume, and the body of this rule will be evaluated.
-        delegate service::clamsmtpd "check email for virus" || {
+        delegate svc::clamsmtpd "check email for virus" || {
             // this is executed once the delegation result are received.
             log("debug", "email analyzed.");
 
             // clamav inserts the "X-Virus-Infected" header
-            // once a virus is detected. 
+            // once a virus is detected.
             if has_header("X-Virus-Infected") {
                 quarantine("virus_q")
             } else {
@@ -84,7 +92,7 @@ import "service" as service;
 }
 ```
 
-Since there is no heavy network traffic, John decided to do a pre-queue filtering.
+Since there is no heavy network traffic, John decided to do a post-queue filtering.
 Compromised emails are quarantined in the `virus_q` folder.
 
 ## That's it

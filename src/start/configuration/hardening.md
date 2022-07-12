@@ -11,18 +11,53 @@ Here are the strict minimum rules for a properly configured server. It will only
 
 All IPs from the internal network are allowed to send messages.
 
-Edit your `main.vsl` code and just add the rule below.
+Edit your `main.vsl` code and just add the rules below.
 
 ```javascript
 // -- main.vsl
 import "objects" as obj;
 
 #{
+  mail: [
+        rule "relay mail from" || check_mail_relay(obj::internal_net),
+  ],
+
   rcpt: [
-    rule "check relay" || check_relay(obj::internal_net),
+        rule "relay rcpt" || check_rcpt_relay(obj::internal_net),
   ],
 }
 ```
+
+Doe's family users must be authenticated if they send message from an external network (i.e. from a cellular net). As John decided to create Unix users, the shadow mechanism is required.
+
+Before the mail stage, please copy/paste the authenticate stage.
+
+```javascript
+  authenticate: [
+        rule "auth /etc/shadow" || {
+
+                service authd cmd = #{
+                  timeout: "1s",
+                  command: "testsaslauthd",
+                  args: ["-u", ctx().auth.authid, "-p", ctx().auth.authpass]
+                };
+
+            switch ctx().auth.type {
+                "Verify" => {
+                    let result = authd.cmd_run();
+                    if result.has_signal { return false; }
+                    if result.has_code && result.code == 0 { accept() } else { deny() }
+                },
+                "Query" => { deny() }
+            }
+        }
+    ],
+```
+
+> This is a temporary vSL code required by v1.1. Future releases will bring an out-of-the box vSL function. Do not forget to start saslauthd daemon with MECHANISM="shadow" in /etc/default/saslauthd.
+
+Now Doe's family server is protected against open-relaying attacks.
+
 
 ## Using the SPF protocol
 
@@ -36,7 +71,7 @@ To allow other MTAs to verify that outgoing email from Doe's family domain comes
 doe-family.com.          TXT "v=spf1 +mx -all"
 ```
 
-That's all for outgoing messages. What about incoming messages ? Easier.
+That's all for outgoing messages. What about incoming messages ?
 
 Edit your `main.vsl` code and just add the "check spf" rule.
 
@@ -44,7 +79,7 @@ Edit your `main.vsl` code and just add the "check spf" rule.
 // -- main.vsl
 #{
   mail: [
-    rule "check spf" || check_spf("mail_from", "spf");
+    rule "check spf" || check_spf("both", "soft");
   ]
 }
 ```
