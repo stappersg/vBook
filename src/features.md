@@ -4,7 +4,7 @@
 
 vSMTP is a [MTA]/[MSA] and is not intended to be a [MUA] nor a [MDA].
 
-For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP protocol. For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats.
+For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP protocol.
 
 For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats. To retrieve emails from your [MUA] it is necessary to install a [MDA] that can handle POP and/or IMAP protocols.
 
