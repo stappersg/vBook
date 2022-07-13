@@ -1,7 +1,5 @@
 # SMTP security delegation
 
-> __This feature is experimental and will be available for production when v1.1.3 is out.__
-
 ## Adding an antivirus
 
 John is aware of security issues. Malware remains a scourge on the internet.
