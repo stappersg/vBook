@@ -13,7 +13,7 @@ Rust port, packages and information can be found on [freshports] website. You ca
 pkg install lang/rust
 ```
 
-> Rust 1.58+ package is required. You may have to switch to the latest ports branch. Please refer to the [freeBSD wiki].
+> Rust 1.60+ package is required. You may have to switch to the latest ports branch. Please refer to the [freeBSD wiki].
 
 [freeBSD wiki]: https://wiki.freebsd.org/Ports/QuarterlyBranch
 
