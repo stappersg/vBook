@@ -1,4 +1,5 @@
 # Services
+## Services are external programs that can be used via the functions available in this module.
 <details><summary>get(key)</summary><br/> Get the value of a key in a database.
 
  # Args
@@ -32,7 +33,7 @@
  }
  ```
 
- # Module:Services
+ 
 </details>
 <details><summary>rm(key)</summary><br/> Remove a record from a database.
 
@@ -57,7 +58,7 @@
  }
  ```
 
- # Module:Services
+ 
 </details>
 <details><summary>set(record)</summary><br/> Set a record into a database.
 
@@ -82,5 +83,5 @@
  }
  ```
 
- # Module:Services
+ 
 </details>

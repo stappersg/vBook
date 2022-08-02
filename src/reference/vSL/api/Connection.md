@@ -1,4 +1,5 @@
-# Context
+# Connection
+## Metadata is available for each client, this module lets you query those metadatas.
 <details><summary>client_address()</summary><br/> Get the address of the client.
 
  # Effective smtp stage
@@ -18,7 +19,7 @@
  }
  ```
 
- # Module:Context
+ 
 </details>
 <details><summary>client_ip()</summary><br/> Get the ip address of the client.
 
@@ -39,7 +40,7 @@
  }
  ```
 
- # Module:Context
+ 
 </details>
 <details><summary>client_port()</summary><br/> Get the ip port of the client.
 
@@ -60,7 +61,7 @@
  }
  ```
 
- # Module:Context
+ 
 </details>
 <details><summary>connection_timestamp()</summary><br/> Get a the timestamp of the client's connection time.
 
@@ -81,7 +82,7 @@
  }
  ```
 
- # Module:Context
+ 
 </details>
 <details><summary>server_address()</summary><br/> Get the full server address.
 
@@ -102,7 +103,7 @@
  }
  ```
 
- # Module:Context
+ 
 </details>
 <details><summary>server_ip()</summary><br/> Get the server's ip.
 
@@ -123,7 +124,7 @@
  }
  ```
 
- # Module:Context
+ 
 </details>
 <details><summary>server_name()</summary><br/> Get the name of the server.
 
@@ -144,7 +145,7 @@
  }
  ```
 
- # Module:Context
+ 
 </details>
 <details><summary>server_port()</summary><br/> Get the server's port.
 
@@ -165,5 +166,5 @@
  }
  ```
 
- # Module:Context
+ 
 </details>

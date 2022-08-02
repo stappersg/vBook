@@ -1,6 +1,7 @@
 # Envelop
-<details><summary>add_rcpt_context(rcpt)</summary><br/> Add a new recipient to the envelop. Note that this does not add
- the recipient to the `To` header. Use `add_to_message` for that.
+## The SMTP envelop can be mutated by several function from this module.
+<details><summary>add_rcpt_envelop(rcpt)</summary><br/> Add a new recipient to the envelop. Note that this does not add
+ the recipient to the `To` header. Use `add_rcpt_message` for that.
 
  # Args
 
@@ -15,15 +16,15 @@
  #{
      connect: [
         // always deliver a copy of the message to "john.doe@example.com".
-        action "rewrite envelop" || add_rcpt_context("john.doe@example.com"),
+        action "rewrite envelop" || add_rcpt_envelop("john.doe@example.com"),
      ]
  }
  ```
 
- # Module:Envelop
+ 
 </details>
-<details><summary>remove_rcpt_context(rcpt)</summary><br/> Remove a recipient from the envelop. Note that this does not remove
- the recipient from the `To` header. Use `remove_to_message` for that.
+<details><summary>remove_rcpt_envelop(rcpt)</summary><br/> Remove a recipient from the envelop. Note that this does not remove
+ the recipient from the `To` header. Use `remove_rcpt_message` for that.
 
  # Args
 
@@ -38,12 +39,12 @@
  #{
      preq: [
         // never deliver to "john.doe@example.com".
-        action "rewrite envelop" || remove_rcpt_context("john.doe@example.com"),
+        action "rewrite envelop" || remove_rcpt_envelop("john.doe@example.com"),
      ]
  }
  ```
 
- # Module:Envelop
+ 
 </details>
 <details><summary>rewrite_mail_from(new_addr)</summary><br/> Rewrite the value of the `MAIL FROM` command has well has
  the `From` header.
@@ -65,9 +66,9 @@
  }
  ```
 
- # Module:Envelop
+ 
 </details>
-<details><summary>rewrite_mail_from_context(new_addr)</summary><br/> Rewrite the sender received from the `MAIL FROM` command.
+<details><summary>rewrite_mail_from_envelop(new_addr)</summary><br/> Rewrite the sender received from the `MAIL FROM` command.
 
  # Args
 
@@ -81,14 +82,14 @@
  ```js
  #{
      preq: [
-        action "rewrite envelop" || rewrite_mail_from_context("unknown@example.com"),
+        action "rewrite envelop" || rewrite_mail_from_envelop("unknown@example.com"),
      ]
  }
  ```
 
- # Module:Envelop
+ 
 </details>
-<details><summary>rewrite_rcpt_context(old_addr, new_addr)</summary><br/> Replace a recipient received by a `RCPT TO` command.
+<details><summary>rewrite_rcpt_envelop(old_addr, new_addr)</summary><br/> Replace a recipient received by a `RCPT TO` command.
 
  # Args
 
@@ -103,10 +104,10 @@
  ```js
  #{
      preq: [
-        action "rewrite envelop" || rewrite_rcpt_context("john.doe@example.com", "john.main@example.com"),
+        action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", "john.main@example.com"),
      ]
  }
  ```
 
- # Module:Envelop
+ 
 </details>

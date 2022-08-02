@@ -1,4 +1,5 @@
 # Delivery
+## Those methods are used to setup the method of delivery for one / every recipient.
 <details><summary>deliver(rcpt)</summary><br/> Set the delivery method to deliver for a single recipient.
  After all rules are evaluated, the email will be sent
  to the recipient using the domain of its address.
@@ -20,7 +21,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>deliver_all()</summary><br/> Set the delivery method to deliver for all recipients.
  After all rules are evaluated, the email will be sent
@@ -39,7 +40,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>disable_delivery(rcpt)</summary><br/> Disable the delivery for a single recipient.
 
@@ -60,7 +61,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>disable_delivery_all()</summary><br/> Disable delivery for all single recipients.
 
@@ -77,7 +78,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>forward(rcpt, target)</summary><br/> Set the delivery method to forwarding for a single recipient.
  After all rules are evaluated, forwarding will be used to deliver
@@ -101,7 +102,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>forward_all(target)</summary><br/> Set the delivery method to forwarding for all recipients.
  After all rules are evaluated, forwarding will be used to deliver
@@ -124,7 +125,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>maildir(rcpt)</summary><br/> Set the delivery method to maildir for a recipient.
  After all rules are evaluated, the email will be stored
@@ -147,7 +148,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>maildir_all()</summary><br/> Set the delivery method to maildir for all recipients.
  After all rules are evaluated, the email will be stored
@@ -167,7 +168,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>mbox(rcpt)</summary><br/> Set the delivery method to mbox for a recipient.
  After all rules are evaluated, the email will be stored
@@ -190,7 +191,7 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>
 <details><summary>mbox_all()</summary><br/> Set the delivery method to mbox for all recipients.
  After all rules are evaluated, the email will be stored
@@ -209,5 +210,5 @@
  }
  ```
 
- # Module:Delivery
+ 
 </details>

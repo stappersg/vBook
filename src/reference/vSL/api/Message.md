@@ -1,5 +1,6 @@
 # Message
-<details><summary>add_to_message(addr)</summary><br/> Add a recipient to the `To` header of the message.
+## Those methods are used to query data from the email and/or mutate it.
+<details><summary>add_rcpt_message(addr)</summary><br/> Add a recipient to the `To` header of the message.
 
  # Args
 
@@ -13,12 +14,12 @@
  ```js
  #{
      preq: [
-        action "update recipients" || add_to_message("john.doe@example.com"),
+        action "update recipients" || add_rcpt_message("john.doe@example.com"),
      ]
  }
  ```
 
- # Module:Message
+ 
 </details>
 <details><summary>append_header(header, value)</summary><br/> Append a new header to the message.
 
@@ -44,9 +45,9 @@
  }
  ```
 
- # Module:Message
+ 
 </details>
-<details><summary>bcc(rcpt)</summary><br/> Add a recipient as a blind carbon copy. The equivalent of `add_rcpt`.
+<details><summary>bcc(rcpt)</summary><br/> Add a recipient as a blind carbon copy. The equivalent of `add_rcpt_envelop`.
 
  # Args
 
@@ -66,7 +67,7 @@
  }
  ```
 
- # Module:Message
+ 
 </details>
 <details><summary>get_header(header)</summary><br/> Get a specific header from the incoming message.
 
@@ -93,7 +94,7 @@
  }
  ```
 
- # Module:Message
+ 
 </details>
 <details><summary>has_header(header)</summary><br/> Checks if the message contains a specific header.
 
@@ -118,7 +119,7 @@
  }
  ```
 
- # Module:Message
+ 
 </details>
 <details><summary>prepend_header(header, value)</summary><br/> Prepend a new header to the message.
 
@@ -144,9 +145,9 @@
  }
  ```
 
- # Module:Message
+ 
 </details>
-<details><summary>remove_to_message(addr)</summary><br/> Remove a recipient from the `To` header of the message.
+<details><summary>remove_rcpt_message(addr)</summary><br/> Remove a recipient from the `To` header of the message.
 
  # Args
 
@@ -160,12 +161,12 @@
  ```js
  #{
      preq: [
-        action "update recipients" || remove_to_message("john.doe@example.com"),
+        action "update recipients" || remove_rcpt_message("john.doe@example.com"),
      ]
  }
  ```
 
- # Module:Message
+ 
 </details>
 <details><summary>rewrite_mail_from_message(new_addr)</summary><br/> Change the sender's address in the `From` header of the message.
 
@@ -186,9 +187,9 @@
  }
  ```
 
- # Module:Message
+ 
 </details>
-<details><summary>rewrite_to_message(old_addr, new_addr)</summary><br/> Replace a recipient by an other in the `To` header of the message.
+<details><summary>rewrite_rcpt_message(old_addr, new_addr)</summary><br/> Replace a recipient by an other in the `To` header of the message.
 
  # Args
 
@@ -203,12 +204,12 @@
  ```js
  #{
      preq: [
-        action "rewrite recipient" || rewrite_to_message("john.doe@example.com", "john-mta@example.com"),
+        action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", "john-mta@example.com"),
      ]
  }
  ```
 
- # Module:Message
+ 
 </details>
 <details><summary>set_header(header, value)</summary><br/> Replace an existing header value by a new value, or append a new header
  to the message.
@@ -239,5 +240,5 @@
  }
  ```
 
- # Module:Message
+ 
 </details>

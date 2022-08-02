@@ -1,4 +1,5 @@
 # Security
+## This module contains multiple security functions that you can use to protect your server.
 <details><summary>check_mail_relay(allowed_hosts)</summary><br/> Do not accept a message from a known internal domain if the client is unknown.
 
  # Args
@@ -23,7 +24,7 @@
     }
  ]
 
- # Module:Security
+ 
  ```
 </details>
 <details><summary>check_rcpt_relay(allowed_hosts)</summary><br/> Do not accept open relaying.
@@ -51,7 +52,7 @@
     }
  ]
 
- # Module:Security
+ 
  ```
 </details>
 <details><summary>check_spf(header)</summary><br/> Check spf record following the Sender Policy Framework (RFC 7208).
@@ -81,7 +82,7 @@
      ]
  }
 
- # Module:Security
+ 
  ```
 </details>
 <details><summary>check_spf(header, policy)</summary><br/> Check spf record following the Sender Policy Framework (RFC 7208).
@@ -111,15 +112,15 @@
      ]
  }
 
- # Module:Security
+ 
  ```
 </details>
-<details><summary>dkim_verify()</summary><br/> Verify DKIM signatures.
+<details><summary>dkim_verify()</summary><br/> Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
  see https://datatracker.ietf.org/doc/html/rfc6376
 
  # Return
  * `accept()` - a signature was successfuly verified.
  * `deny()` - no signature could be verified.
 
- # Module:Security
+ 
 </details>

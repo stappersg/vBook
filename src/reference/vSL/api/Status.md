@@ -1,4 +1,5 @@
 # Status
+## The state of an SMTP transaction can be changed through specific functions from this module.
 <details><summary>accept()</summary><br/> Tell the rule engine to accept the incomming transaction for the current stage.
  This means that all rules following the one `accept` is called in the current stage
  will be ignored.
@@ -23,7 +24,7 @@
  }
  ```
 
- # Module:Status
+ 
 </details>
 <details><summary>deny()</summary><br/> Stop rules evaluation and/or send an error code to the client.
  The code sent is `554 - permanent problems with the remote server`.
@@ -49,7 +50,7 @@
  }
  ```
 
- # Module:Status
+ 
 </details>
 <details><summary>deny(code)</summary><br/> Stop rules evaluation and/or send a custom code to the client.
 
@@ -77,7 +78,7 @@
  }
  ```
 
- # Module:Status
+ 
 </details>
 <details><summary>faccept()</summary><br/> Tell the rule engine to force accept the incomming transaction.
  This means that all rules following the one `faccept` is called
@@ -100,7 +101,7 @@
      ],
  }
 
- # Module:Status
+ 
  ```
 </details>
 <details><summary>info(code)</summary><br/> Ask the client to retry to send the current comment by sending an information code.
@@ -121,7 +122,7 @@
  }
  ```
 
- # Module:Status
+ 
 </details>
 <details><summary>next()</summary><br/> Tell the rule engine that a rule succeeded.
 
@@ -140,7 +141,7 @@
  }
  ```
 
- # Module:Status
+ 
 </details>
 <details><summary>quarantine(queue)</summary><br/> Skip all rules until the email is received and place the email in a
  quarantine queue.
@@ -170,5 +171,5 @@
  }
  ```
 
- # Module:Status
+ 
 </details>

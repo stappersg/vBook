@@ -1,4 +1,5 @@
 # Utils
+## Those miscellaneous functions lets you query data from your system, log stuff, perform dns lookups etc ...
 <details><summary>date()</summary><br/> Get the current date.
 
  # Return
@@ -20,7 +21,7 @@
  }
  ```
 
- # Module:Utils
+ 
 </details>
 <details><summary>dump(dir)</summary><br/> Export the current message and the envelop to a file as a `json` file.
  The message id of the email is used to name the file.
@@ -43,7 +44,7 @@
  }
  ```
 
- # Module:Utils
+ 
 </details>
 <details><summary>hostname()</summary><br/> Get the hostname of this machine.
 
@@ -66,7 +67,7 @@
  }
  ```
 
- # Module:Utils
+ 
 </details>
 <details><summary>in_domain(rcpt)</summary><br/> check if the recipient passed as argument is part of the
  domains (root & sni) of the server.
@@ -90,7 +91,7 @@
      ]
  }
 
- # Module:Utils
+ 
  ```
 </details>
 <details><summary>log(level, message)</summary><br/> Log information to stdout in `nodaemon` mode or to a file.
@@ -113,7 +114,72 @@
  }
  ```
 
- # Module:Utils
+ 
+</details>
+<details><summary>lookup(host)</summary><br/> Performs a dual-stack DNS lookup for the given hostname.
+
+ # Args
+
+ * `host` - A valid hostname to search.
+
+ # Return
+
+ * `array` - an array of IPs. The array is empty if no IPs were found for the host.
+
+ # Effective smtp stage
+
+ All of them.
+
+ # Example
+ ```js
+ #{
+     rcpt: [
+        action "perform lookup" || {
+             let domain = rcpt().domain;
+             let ips = lookup(domain);
+
+             print(`ips found for ${domain}`);
+             for ip in ips {
+                 print(`- ${ip}`);
+             }
+        }
+     ]
+ }
+ ```
+
+ 
+</details>
+<details><summary>rlookup(ip)</summary><br/> Performs a reverse lookup for the given IP.
+
+ # Args
+
+ * `ip` - The IP to query.
+
+ # Return
+
+ * `array` - an array of FQDNs. The array is empty if nothing was found.
+
+ # Effective smtp stage
+
+ All of them.
+
+ # Example
+ ```js
+ #{
+     connect: [
+        action "perform reverse lookup" || {
+             let domains = rlookup(client_ip());
+
+             print(`domains found for ip ${client_ip()}`);
+             for domain in domains {
+                 print(`- ${domain}`);
+             }
+        }
+     ]
+ }
+ ```
+
+ 
 </details>
 <details><summary>time()</summary><br/> Get the current time.
 
@@ -136,7 +202,7 @@
  }
  ```
 
- # Module:Utils
+ 
 </details>
 <details><summary>user_exist(name)</summary><br/> Check if a user exists on this server.
 
@@ -165,7 +231,7 @@
  }
  ```
 
- # Module:Utils
+ 
 </details>
 <details><summary>write(dir)</summary><br/> Export the current raw message to a file as an `eml` file.
  The message id of the email is used to name the file.
@@ -188,5 +254,5 @@
  }
  ```
 
- # Module:Utils
+ 
 </details>

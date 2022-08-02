@@ -1,4 +1,5 @@
 # Transaction
+## At each SMTP stage, data from the client is received via 'SMTP commands'. This module lets you query the content of the commands.
 <details><summary>helo()</summary><br/> Get the value of the `HELO/EHLO` command sent by the client.
 
  # Effective smtp stage
@@ -18,7 +19,7 @@
  }
  ```
 
- # Module:Transaction
+ 
 </details>
 <details><summary>mail_from()</summary><br/> Get the value of the `MAIL FROM` command sent by the client.
 
@@ -39,7 +40,7 @@
  }
  ```
 
- # Module:Transaction
+ 
 </details>
 <details><summary>mail_timestamp()</summary><br/> Get the time of reception of the email.
 
@@ -60,7 +61,7 @@
  }
  ```
 
- # Module:Transaction
+ 
 </details>
 <details><summary>message_id()</summary><br/> Get the unique id of the received message.
 
@@ -81,14 +82,15 @@
  }
  ```
 
- # Module:Transaction
+ 
 </details>
 <details><summary>rcpt()</summary><br/> Get the value of the current `RCPT TO` command sent by the client.
 
  # Effective smtp stage
 
  `rcpt` and onwards. Please note that `rcpt()` will always return
- the last recipient received in stages after the `rcpt` stage
+ the last recipient received in stages after the `rcpt` stage. Therefore,
+ this functions is best used in the `rcpt` stage.
 
  # Return
 
@@ -103,7 +105,7 @@
  }
  ```
 
- # Module:Transaction
+ 
 </details>
 <details><summary>rcpt_list()</summary><br/> Get the list of recipients received by the client.
 
@@ -126,5 +128,5 @@
  }
  ```
 
- # Module:Transaction
+ 
 </details>

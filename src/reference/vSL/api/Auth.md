@@ -1,4 +1,5 @@
 # Auth
+## This module contains authentication mechanisms to secure your server.
 <details><summary>auth()</summary><br/> Get authentication credentials from the client.
 
  # Effective smtp stage
@@ -18,7 +19,7 @@
  }
  ```
 
- # Module:Auth
+ 
 </details>
 <details><summary>is_authenticated()</summary><br/> Check if the client is authenticated.
 
@@ -39,7 +40,7 @@
  }
  ```
 
- # Module:Auth
+ 
 </details>
 <details><summary>is_secured()</summary><br/> Check if the client's connexion was secure.
 
@@ -60,5 +61,5 @@
  }
  ```
 
- # Module:Auth
+ 
 </details>
