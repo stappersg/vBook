@@ -24,9 +24,27 @@ FreeBSD 13.x comes with all required dependencies. Please check that sasl is inc
 ## vSMTP compilation
 
 ```shell
-git clone https://github.com/viridIT/vSMTP.git
-cargo build --release
-cargo run -V
+$> cargo build
+[...]
+$> cargo run -- --help
+vsmtp 1.1.3
+Team viridIT <https://viridit.com/>
+Next-gen MTA. Secured, Faster and Greener
+
+USAGE:
+    vsmtp [OPTIONS] [SUBCOMMAND]
+
+OPTIONS:
+    -c, --config <CONFIG>      Path of the vSMTP configuration file (toml format)
+    -h, --help                 Print help information
+    -n, --no-daemon            Do not run the program as a daemon
+    -t, --timeout <TIMEOUT>    Make the server stop after a delay (human readable format)
+    -V, --version              Print version information
+
+SUBCOMMANDS:
+    config-diff    Show the difference between the loaded config and the default one
+    config-show    Show the loaded config (as serialized json format)
+    help           Print this message or the help of the given subcommand(s)
 ```
 
 ## Configuring the Operating System for vSMTP

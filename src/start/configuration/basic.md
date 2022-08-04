@@ -8,12 +8,12 @@ Several examples can be found in the [example/config](https://github.com/viridIT
 We will build it step-by-step.
 
 ```toml
-# Version requirement. Do not remove or modify it 
+# Version requirement. Do not remove or modify it
 version_requirement = ">=1.0.0"
 
 # Global configuration
 [server]
-domain = "doe-family.com"         
+domain = "doe-family.com"
 
 [server.interfaces]
 addr = ["192.168.1.254:25"]
@@ -118,7 +118,7 @@ rule "name" || {              |       action "name" || {
 }                             |       }
 ```
 
-Let's add some rules in `the main.vsl` file for Doe's family MTA. 
+Let's add some rules in `the main.vsl` file for Doe's family MTA.
 
 - Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
 - IMAP and Maildir format.
@@ -133,7 +133,7 @@ import "objects" as doe;
     // Deny any sender with a domain listed in the `blacklist` group.
     rule "blacklist" || if ctx().mail_from.domain in doe::blacklist { deny() } else { next() }
   ],
-   
+
   rcpt: [
     // automatically set Jane as a BCC if Jenny is part of the recipients.
     action "bcc jenny" || if ctx().rcpt is doe::jenny { bcc(doe::jane) },

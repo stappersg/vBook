@@ -7,18 +7,15 @@ The vSMTP reference guide
 
 [Features](features.md)
 
-- [Getting Started](start/started.md)
-  - [Requirements](start/requirements.md)
-  - [Installation from packages](start/install/packages.md)
-  - [Building from source](start/install/source.md)
-    - [Linux](start/install/source/linux.md)
-    - [FreeBSD](start/install/source/freebsd.md)
-    - [OpenBSD]()
-    - [NetBSD]()
-  - [Step-by-step Configuration](start/configuration/configuration.md)
-    - [Basic configuration](start/configuration/basic.md)
-    - [Hardening vSMTP](start/configuration/hardening.md)
-    - [Policy delegation](start/configuration/delegation.md)
+# Getting Started
+
+- [Installation](start/installation.md)
+- [Step-by-step Configuration](start/configuration/configuration.md)
+  - [Basic configuration](start/configuration/basic.md)
+  - [Hardening vSMTP](start/configuration/hardening.md)
+  - [Policy delegation](start/configuration/delegation.md)
+
+# Advanced Settings
 
 - [Advanced settings](advanced/advanced.md)
   - [Server global and virtual domains parameters](advanced/toml.md)
@@ -46,10 +43,13 @@ The vSMTP reference guide
     - [Services](reference/vSL/services.md)
     - [Advanced Usage](reference/vSL/advanced.md)
 
-- [Contribute]()
-  - [The Queue System](development/queues.md)
-
-Terminology
-==========================
+# Terminology
 
 - [Mail Agent](term/agent.md)
+
+# Development
+
+- [Building from source](dev/build/source.md)
+  - [Linux](dev/build/source/linux.md)
+  - [FreeBSD](dev/build/source/freebsd.md)
+- [The Queue System](dev/queues.md)
