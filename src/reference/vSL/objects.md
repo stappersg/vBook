@@ -44,8 +44,8 @@ The following type of objects are supported natively:
 | ip6     | IPv6 address                | a:b:c:d:e:f:g:h       | Hex values.              |
 | rg4     | IPv4 network                | x.y.z.t/rg            | Decimal values.          |
 | rg6     | IPv6 prefix                 | a:b:c:d:e:f:g:h/rg    | Hex values.              |
-| address | Email address               | ident@fqdn            | String.                  |
-| ident   | Local part of an address    | user                  | String.                  |
+| address | Email address               | identifier@fqdn            | String.                  |
+| identifier   | Local part of an address    | user                  | String.                  |
 | fqdn    | Fully qualified domain name | my&#46;domain&#46;com | String.                  |
 | regex   | Regular expression          |                       | PERL regular expression. |
 | group   | A group of objects          |                       | See group section.       |
