@@ -34,30 +34,15 @@ Before the mail stage, please copy/paste the authenticate stage.
 
 ```javascript
   authenticate: [
-        rule "auth /etc/shadow" || {
-
-                service authd cmd = #{
-                  timeout: "1s",
-                  command: "testsaslauthd",
-                  args: ["-u", ctx().auth.authid, "-p", ctx().auth.authpass]
-                };
-
-            switch ctx().auth.type {
-                "Verify" => {
-                    let result = authd.cmd_run();
-                    if result.has_signal { return false; }
-                    if result.has_code && result.code == 0 { accept() } else { deny() }
-                },
-                "Query" => { deny() }
-            }
-        }
+    rule "auth /etc/shadow" || {
+        authenticate()
+      }
     ],
 ```
 
 > This is a temporary vSL code required by v1.1. Future releases will bring an out-of-the box vSL function. Do not forget to start saslauthd daemon with MECHANISM="shadow" in /etc/default/saslauthd.
 
 Now Doe's family server is protected against open-relaying attacks.
-
 
 ## Using the SPF protocol
 

@@ -4,60 +4,41 @@ The installation described above was performed on an Ubuntu Server 20.04. There 
 
 ## Install Rust language
 
-If you want to install Rust in the most straightforward, recommended way, then use [Rustup] and follow the instructions.
-
-```shell
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-[Rustup]: https://github.com/rust-lang/rustup
+Follow the instruction from the official website <https://www.rust-lang.org/tools/install>
 
 ## Check dependencies
 
-vSMTP requires libc libraries and GCC compiler/linker. On a Debian system these can be installed through the build-essential package.
+vSMTP requires `libc` libraries and GCC compiler/linker.
+On a Debian system these can be installed through the `build-essential` package.
 
-```shell
-sudo apt install pkg-config
-sudo apt install build-essential
-```
-
-The Transport Layer Security protocol (TLS) is provided by [OpenSSL development libraries].
+The Transport Layer Security protocol (TLS) is provided by [OpenSSL development libraries](https://www.openssl.org).
 The Debian package is libssl-dev package.
 
-[OpenSSL development libraries]: https://www.openssl.org/
+The authentication is provided by the [GNU `gsasl`](https://www.gnu.org/software/gsasl) and [Cyrus `sasl`](https://www.cyrusimap.org/sasl) libraries.
+
+`libclang` frontend is also required.
 
 ```shell
-sudo apt install libssl-dev
-```
-
-The authentication is provided by the [GNU gsasl](https://www.gnu.org/software/gsasl/) and [Cyrus sasl](https://www.cyrusimap.org/sasl/) libraries.
-
-```shell
-sudo apt install libgsasl7-dev
-sudo apt install libsasl2-2
-sudo apt install sasl2-bin
-```
-
-Libclang frontend is also required.
-
-```shell
-sudo apt install libclang-dev
+sudo apt update
+sudo apt install
+  pkg-config
+  build-essential
+  libssl-dev
+  libgsasl7-dev
+  libsasl2-2
+  sasl2-bin
+  libclang-dev
 ```
 
 ## vSMTP compilation
 
-Cargo (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
+`cargo` (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
 
 ```shell
-$ git clone -b main https://github.com/viridIT/vSMTP.git
-```
-
-```shell
-$ cargo build --release --workspace
-$ ./target/release/vsmtp --help
-```
-```shell
-vsmtp 1.0.0
+$> cargo build
+[...]
+$> cargo run -- --help
+vsmtp 1.1.3
 Team viridIT <https://viridit.com/>
 Next-gen MTA. Secured, Faster and Greener
 
@@ -87,6 +68,7 @@ For security purpose, vSMTP should run using a dedicated account with minimal pr
 $ sudo adduser --system --shell /usr/sbin/nologin --no-create-home \
     --uid 9999 --group --disabled-password --disabled-login vsmtp
 ```
+
 ```shell
 Adding system user 'vsmtp' (UID 9999) ...
 Adding new group 'vsmtp' (GID 9999) ...
@@ -110,21 +92,21 @@ vSMTP binaries and config files should be located in:
 This default behavior can be changed in the vSMTP configuration file `/etc/vsmtp/vsmtp.toml` which is called at startup by the vsmtp service script.
 
 ```shell
-$ sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
-$ sudo cp ./target/release/vsmtp /usr/sbin/
-$ sudo cp ./target/release/vqueue /usr/sbin/
+sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
+sudo cp ./target/release/vsmtp /usr/sbin/
+sudo cp ./target/release/vqueue /usr/sbin/
 ```
 
 Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
 
 ```shell
-$ sudo bash -c 'echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml'
+sudo bash -c 'echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml'
 ```
 
 Grant rights to files and folders.
 
 ```shell
-$ sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
+sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
 If required, do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
@@ -136,14 +118,17 @@ If required, do not forget to add your private key and certificate to /etc/vsmtp
 Check if you have a mail transfer agent service running and disable it. The example below is related to a Postfix service running on port 25.
 
 ```shell
-$ sudo ss -ltpn | grep ":25"
+sudo ss -ltpn | grep ":25"
 ```
+
 ```shell
 tcp        0      0 127.0.0.1:25              127.0.0.1:*               LISTEN      39423/master
 ```
+
 ```shell
-$ sudo systemctl status postfix
+sudo systemctl status postfix
 ```
+
 ```shell
 ● postfix.service - Postfix Mail Transport Agent
      Loaded: loaded (/lib/systemd/system/postfix.service; enabled; vendor preset: enabled)
@@ -151,10 +136,12 @@ $ sudo systemctl status postfix
     Process: 39426 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
    Main PID: 39426 (code=exited, status=0/SUCCESS)
 ```
+
 ```shell
-$ sudo systemctl stop postfix
-$ sudo systemctl disable postfix
+sudo systemctl stop postfix
+sudo systemctl disable postfix
 ```
+
 ```shell
 Synchronizing state of postfix.service with SysV service script with /lib/systemd/systemd-sysv-install.
 Executing: /lib/systemd/systemd-sysv-install disable postfix
@@ -168,7 +155,7 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 Copy the daemon configuration file to /etc/systemd/system.
 
 ```shell
-$ sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
+sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
 ```
 
 Please note that vSMTP comes with a mechanism that drop privileges at startup. The service type must be set to `forking`.

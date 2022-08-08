@@ -51,7 +51,7 @@ domain = "mydomain.com"
 client_count_max = 16
 ```
 
-### `server.system.user`
+### `server.system`
 
 ```toml
 [server.system]
@@ -60,38 +60,12 @@ group = "vsmtp"
 group_local = "vsmtp"
 ```
 
-### `server.system.group`
-
-```toml
-[server.system]
-group = "vsmtp"
-```
-
-### `server.system.group_local`
-
-```toml
-[server.system]
-group_local = "vsmtp"
-```
-
-### `server.system.thread_pool.receiver`
+### `server.system.thread_pool`
 
 ```toml
 [server.system.thread_pool]
 receiver = 6
-```
-
-### `server.system.thread_pool.processing`
-
-```toml
-[server.system.thread_pool]
 processing = 6
-```
-
-### `server.system.thread_pool.delivery`
-
-```toml
-[server.system.thread_pool]
 delivery = 6
 ```
 
@@ -118,39 +92,15 @@ Make sure to provide at least **one address**, otherwise an error will be produc
 
 You might want to add local address (`127.0.0.1:25` for example) when using delegation services.
 
-### `server.logs.filepath`
+### `server.logs`
 
 ```toml
 [server.logs]
 filepath = "/var/log/vsmtp/vsmtp.log"
-```
-
-### `server.logs.format`
-
-```toml
-[server.logs]
 format = "{d(%Y-%m-%d %H:%M:%S%.f)} {h({l:<5})} {t:<30} $ {m}{n}"
-```
-
-### `server.logs.size_limit`
-
-```toml
-[server.logs]
 size_limit = 10485760
-```
-
-### `server.logs.archive_count`
-
-```toml
-[server.logs]
 archive_count = 10
-```
-
-### `server.logs.level`
-
-```toml
-[server.logs.level]
-default = "WARN"
+level = ["trace"]
 ```
 
 ### `server.queues.dirpath`
@@ -237,40 +187,6 @@ helo = "5m"
 mail_from = "5m"
 rcpt_to = "5m"
 data = "5m"
-```
-
-### `server.smtp.codes`
-
-```toml
-[server.smtp.codes]
-Greetings = "220 lala-Nitro-AN515-54 Service ready\r\n"
-Help = "214 joining us https://viridit.com/support\r\n"
-Closing = "221 Service closing transmission channel\r\n"
-Helo = "250 Ok\r\n"
-DataStart = "354 Start mail input; end with <CRLF>.<CRLF>\r\n"
-Ok = "250 Ok\r\n"
-Denied = "554 permanent problems with the remote server\r\n"
-Failure = "451 Requested action aborted: local error in processing\r\n"
-UnrecognizedCommand = "500 Syntax error command unrecognized\r\n"
-SyntaxErrorParams = "501 Syntax error in parameters or arguments\r\n"
-ParameterUnimplemented = "504 Command parameter not implemented\r\n"
-Unimplemented = "502 Command not implemented\r\n"
-BadSequence = "503 Bad sequence of commands\r\n"
-TlsNotAvailable = "454 TLS not available due to temporary reason\r\n"
-AlreadyUnderTls = "554 5.5.1 Error: TLS already active\r\n"
-TlsRequired = "530 Must issue a STARTTLS command first\r\n"
-AuthSucceeded = "235 2.7.0 Authentication succeeded\r\n"
-AuthMechNotSupported = "504 5.5.4 Mechanism is not supported\r\n"
-AuthClientMustNotStart = "501 5.7.0 Client must not start with this mechanism\r\n"
-AuthMechanismMustBeEncrypted = "538 5.7.11 Encryption required for requested authentication mechanism\r\n"
-AuthInvalidCredentials = "535 5.7.8 Authentication credentials invalid\r\n"
-AuthRequired = "530 5.7.0 Authentication required\r\n"
-AuthClientCanceled = "501 Authentication canceled by client\r\n"
-AuthErrorDecode64 = "501 5.5.2 Invalid, not base64\r\n"
-ConnectionMaxReached = "554 Cannot process connection, closing\r\n"
-TooManyError = "451 Too many errors from the client\r\n"
-Timeout = "451 Timeout - closing connection\r\n"
-TooManyRecipients = "452 Requested action not taken: too many recipients\r\n"
 ```
 
 ### `server.smtp.auth`

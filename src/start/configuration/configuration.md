@@ -12,7 +12,7 @@ The network looks like that :
 { Internet ISP } --- Firewall --- { DMZ }
                         |
               { Internal Network }
-```  
+```
 
 They also bought a domain name `doe-family.com`. They decided to prefix their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
 
@@ -38,8 +38,8 @@ ___Firewall rules___
 #
 # Allow SMTP and IMAP from Internet to MTA
 Public IP > MTA : TCP/SMTP 25, TCP/SMTP 465, TCP/SMTP 587
-# Allow viewing family emails using IMAP/ssl from the Internet 
-Public IP > MTA : IMAP/ssl 993 
+# Allow viewing family emails using IMAP/ssl from the Internet
+Public IP > MTA : IMAP/ssl 993
 # Outgoing SMTP traffic
 Internal NET > MTA : TCP/SMTP 25, TCP/SMTP 465, TCP/SMTP 587
 MTA > {Internet} : TCP/SMTP 25, TCP/SMTP 465
