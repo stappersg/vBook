@@ -11,26 +11,24 @@ Here are the strict minimum rules for a properly configured server. It will only
 
 All IPs from the internal network are allowed to send messages.
 
-Edit your `main.vsl` code and just add the rules below.
+Edit your `main.vsl` code and add the rules below.
 
 ```javascript
 // -- main.vsl
-import "objects" as obj;
+import "objects" as doe;
 
 #{
   mail: [
-        rule "relay mail from" || check_mail_relay(obj::internal_net),
+    rule "relay mail from" || check_mail_relay(doe::internal_net),
   ],
 
   rcpt: [
-        rule "relay rcpt" || check_rcpt_relay(obj::internal_net),
+    rule "relay rcpt" || check_rcpt_relay(doe::internal_net),
   ],
 }
 ```
 
-Doe's family users must be authenticated if they send message from an external network (i.e. from a cellular net). As John decided to create Unix users, the shadow mechanism is required.
-
-Before the mail stage, please copy/paste the authenticate stage.
+Doe's family users must be authenticated if they send messages from an external network (i.e. from a cellular net). As John decided to create Unix users, the shadow mechanism is required.
 
 ```javascript
   authenticate: [
@@ -64,7 +62,7 @@ Edit your `main.vsl` code and just add the "check spf" rule.
 // -- main.vsl
 #{
   mail: [
-    rule "check spf" || check_spf("both", "soft");
+    rule "check spf" || check_spf("both", "soft"),
   ]
 }
 ```

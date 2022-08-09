@@ -13,7 +13,7 @@ vSMTP support security delegation via the SMTP protocol and vsl's configuration.
 
 The following example assumes that you started the `clamsmtpd` service with the following config:
 
-```
+```toml
 ## -- /etc/clamsmtpd.conf
 
 # The address to send scanned mail to.
@@ -62,24 +62,30 @@ addr = ["192.168.1.254:25", "127.0.0.1:10025"]
 
 You service is configured. Now, to use it, create the following rule using the `delegate` keyword.
 
+once the "check email for virus" rule is run, vsmtp will send the email to the
+clamsmtpd service and rule evaluation will be on hold.
+Once all results are received on port 10025, evaluation
+will resume, and the body of this rule will be evaluated.
+
 ```javascript
 // -- main.vsl
-// you cannot use `import "service" as service;` here because `service` is
+// You cannot use `import "service" as service;` here because `service` is
 // a reserved keyword.
 import "service" as svc;
 
 #{
     postq: [
-        /// once this rule is run, vsmtp will send the email to the
-        /// clamsmtpd service and rule evaluation will be on hold.
-        /// once all results are received on the 10025 port, evaluation
-        /// will resume, and the body of this rule will be evaluated.
+        // a `delegate` directive is like a `rule`, it needs
+        // to return a status code. The difference is that it
+        // first sends the content of the mail to the service
+        // via the smtp protocol and then execute its body.
         delegate svc::clamsmtpd "check email for virus" || {
             // this is executed once the delegation result are received.
             log("debug", "email analyzed.");
 
             // clamav inserts the "X-Virus-Infected" header
-            // once a virus is detected.
+            // once a virus is detected, we juste have to
+            // check on that.
             if has_header("X-Virus-Infected") {
                 quarantine("virus_q")
             } else {
