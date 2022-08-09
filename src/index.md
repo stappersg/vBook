@@ -1,13 +1,13 @@
 # Introduction
 
-> This is a working document. vSMTP v1.1.x is required.
+> This is a working document. vSMTP v1.2.x is required. Remember that these versions are not intended for production use.
 
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
 
 ## vSMTP
 
-vSMTP is a secured, faster and greener [MTA](./term/agent.md#mta-mail-transfer-agent).
+vSMTP is a secured, faster and greener Mail Transfer Agent ([MTA](./term/agent.md#mta-mail-transfer-agent)).
 
 It is a more efficient, more secure and more ergonomic product than the competition. It is up to 10 times faster than its competitors and significantly reduces the need for IT resources.
 
