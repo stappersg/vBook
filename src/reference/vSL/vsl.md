@@ -2,8 +2,6 @@
 
 vSL is a lightweight scripting language dedicated to email filtering. It is based on the [Rhai] scripting language, and simply adds helper syntax and functions on top of it.
 
-vSL has no notion of a "main" program. vSL files are analyzed and executed by vSMTP through a specific syntax.
-
 Advanced users can use the [Rhai] scripting language on top of vSL to create and manage a wide variety of actions. You can check out the [Rhai reference](https://rhai.rs/book/ref) book to learn everything you can do with this language, but for now, if you just want to learn the gist of how the rule system works, follow this section.
 
 Code highlighting is available for the [vscode ide](https://code.visualstudio.com/), using the [Rhai extension](https://marketplace.visualstudio.com/items?itemName=rhaiscript.vscode-rhai).

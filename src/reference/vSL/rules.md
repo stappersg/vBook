@@ -1,7 +1,6 @@
 # Rules, actions & delegate
 
 Rules are the entry point to interact with the SMTP traffic at a user level.
-Nevertheless specific parameters like timeout, system logging, tls configuration, etc. are set in the configuration files.
 
 ## Overall Syntax
 
@@ -14,6 +13,8 @@ rule "rule name" || {
     accept() // a rule returns a rule engine status
 }
 ```
+
+Check out the [Status](api/Status.md) file to see which status you can use and what their effects are.
 
 ```js
 action "action name" || {
@@ -32,37 +33,19 @@ Here are some rule examples:
 
 ```js
 // Inline rule that only accepts a client at 192.168.1.254
-rule "check connect" || if ctx().client_ip == "192.168.1.254" { next() } else { deny() }
+rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() }
 ```
 
 The same rule, including a log:
 
 ```js
 rule "check connect" || {
-    log(`Connection from : ${ctx().client_ip}`);
-    if ctx().client_ip == "192.168.1.254" { next() } else { deny() }
+    log(`Connection from : ${client_ip()}`);
+    if client_ip() == "192.168.1.254" { next() } else { deny() }
 }
 ```
 
 &#9998; | You can use [String Interpolation](https://rhai.rs/book/language/strings-chars.html#string-interpolation) to inject variables in strings.
-
-An action :
-
-```js
-action "rewrite envelop" || {
-    rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-    remove_rcpt("customer@company.net");
-    add_rcpt("no-reply@company.net");
-},
-```
-
-A trailing rule:
-
-```js
-rule "default" || deny() 
-```
-
-&#9998; | This rule is used by default when you do not specify any vsl file in the toml configuration.
 
 The `delegate` directive is different: it also use a smtp service to delegate the email to a third party software:
 
@@ -82,7 +65,7 @@ Check out [The delegation guide](../../start/configuration/delegation.md) for an
 
 ## Rules and vSMTP Stages
 
-Rules are bound to a vSMTP stage. Stages can be omitted but must appear only once. They are declared in the `main.vsl` file.
+Rules are bound to a vSMTP stage. Stages that are not used can be omitted, but must appear only once if used. They are declared in the `main.vsl` file.
 
 ```js
 // -- objects.vsl
@@ -95,22 +78,25 @@ import "objects" as obj;
 
 #{
     connect: [ 
-        action "log connect" || log(`Connection from : ${ctx().client_ip}`),
-        rule "check connect" || if ctx().client_ip == "192.168.1.254" { next() } else { deny() },
+        action "log connect" || log(`Connection from : ${client_ip()}`),
+        rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() },
     ],
+
     rcpt: [
+        rule "local_domain" || {
+            if obj::my_company == rcpt().domain { next() } else { deny() }
+        },
+    ],
+
+    preq: [
         action "rewrite recipients" || {
             rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
             remove_rcpt("customer@company.net");
             add_rcpt("no-reply@company.net");
         },
-
-        rule "local_domain" || {
-            if obj::my_company in ctx().rcpt_list.domains { next() } else { deny() }
-        },
-
-        // ... other rules & actions
     ],
+
+    // ... other rules & actions
 }
 ```
 
@@ -128,20 +114,9 @@ object my_company fqdn = "mycompany.net";
 import "objects" as obj;
 
 #{
-    connect: [ 
-        rule "test connect" || if ctx().client_ip == "192.168.1.254" { next() } else { deny() },
-        action "log connect" || log(`Connection from : ${ctx().client_ip}`),
-    ],
     rcpt: [
-
-        action "rewrite rcpt" || {
-            rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
-            remove_rcpt("customer@company.net");
-            add_rcpt("no-reply@company.net");
-        },
-
         rule "local domain" || {
-            if obj::my_company in ctx().rcpt_list.domains { accept() } else { next() }
+            if obj::my_company == rcpt().domain { accept() } else { next() }
         },
 
         // ... other rules / actions

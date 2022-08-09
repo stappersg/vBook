@@ -2,7 +2,7 @@
 
 vSMTP can interact with the messaging transaction at multiple levels. These are related to the states defined in the SMTP protocol.
 
-At each step vSL updates and publishes a global context containing transaction and mail data.
+At each step vSL updates a global context containing transaction and mail data.
 
 ## vSMTP stages
 
@@ -16,8 +16,8 @@ At each step vSL updates and publishes a global context containing transaction a
 | postq   | After queuing[^postq]      | The entire mail.                |
 | deliver | Before delivering          | The entire mail.                |
 
-[^preq]: Preq stage triggers after the end of data, before the server answer (ex. 250 OK).
-[^postq]: Postq stage triggers when Connection is already closed and the SMTP code sent.
+[^preq]: Preq stage triggers after the end of receiving data from the client, just before the server answer back with a 250 code.
+[^postq]: Postq stage triggers when the connection is already closed and the SMTP code was sent to the client.
 
 ## Before queueing vs. after queueing
 
@@ -35,26 +35,8 @@ To protect against bursts and crashes, vSMTP implements several internal mechani
 
 ## Context variables
 
-As described above, depending on the stage vSL exposes variables to the end user.
-
-| Stage       | Name                  | Type            | Description                      |
-| :---------- | :-------------------- | :-------------- | :------------------------------- |
-| Connect     | client_ip             | ip4/ip6         | Source IP address.               |
-|             | client_port           | int             | Source port.                     |
-|             | connect_timestamp     | POSIX timestamp | Connection timestamp.            |
-| Helo        | helo                  | string          | HELO/EHLO SMTP value.            |
-| Mail        | mail_from             | addr            | Sender email address.            |
-|             | mail_from.local_part  | string          | Sender identifier.               |
-|             | mail_from.domain      | fqdn            | Sender fqdn.                     |
-| Rcpt        | rcpt                  | addr            | the current recipient addresses. |
-|             | rcpt.local_part       | string          | current recipient identifier.    |
-|             | rcpt.domain           | fqdn            | current recipient fqdn.          |
-| Rcpt        | rcpt_list             | array[addr]     | Array of recipient addresses.    |
-|             | rcpt_list.local_parts | array[string]   | Array of recipient identifier.   |
-|             | rcpt_list.domains     | array[fqdn]     | Array of recipient fqdn.         |
-| Next stages | mail                  | string          | Email raw data.                  |
-
-These variables are part of the email context `ctx`. Thus they must be called in a vSL file using the dot notation i.e. `ctx.timestamp`.
+As described above, depending on the stage, vSL exposes data to the end user.
+Check out both [Connection](api/Connection.md) and [Transaction](api/Transaction.md) modules.
 
 ## Connection vs mail transaction
 
@@ -69,4 +51,4 @@ HELO                                    # Start of SMTP transaction
 QUIT                                    # End of transaction
 ```
 
-&#9762; | the "mail context" (obtained with the function `ctx()`) is unique for each incoming connexion.
+&#9762; | the "mail context" (data obtained through the `Connection` and `Transaction` modules) is unique for each incoming connexion.

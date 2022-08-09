@@ -58,14 +58,14 @@ File objects are standard Unix text files containing values delimited by CRLF.
 Only one type of object is authorized and must be declared after the keyword "file:".
 
 ```c
-object local_MTA file:ip4 = "./config/local_mta.txt";
+object local_MTA file:ip4 = "/etc/vsmtp/config/local_mta.txt";
 ```
 
 ```shell
-# cat ./config/local_mta.txt
-192.168.1.10
-192.168.1.12
-10.3.4.240
+cat /etc/vsmtp/config/local_mta.txt
+# 192.168.1.10
+# 192.168.1.12
+# 10.3.4.240
 ```
 
 ### About groups
@@ -75,7 +75,7 @@ Groups are collections of objects. They can store references to other objects, s
 Unlike objects where fields are declared between parentheses, groups use squared brackets.
 
 ```js
-object whitelist file:address = "./config/rules/whitelist.txt";
+object whitelist file:address = "/etc/vsmtp/config/whitelist.txt";
 
 object authorized_users group = [
   whitelist,
@@ -86,13 +86,13 @@ object authorized_users group = [
 Groups can be nested into other groups.
 
 ```js
-object deep-group group = [
-  object foo-emails regex = "^[a-z0-9.]+@foo.com$",
+object deep_group group = [
+  object foo_emails regex = "^[a-z0-9.]+@foo.com$",
   authorizedUsers,
 ];
 ```
 
-&#9998; | When passed down into a check action, the whole group will be tested. The test stops when one of the groups content matches.
+&#9998; | When used with check operators (`==`, `!=`, `in` etc ...), the whole group will be tested. The test stops when one of the groups content matches.
 
 ### About codes
 
@@ -109,3 +109,7 @@ object code554_7_1 code = #{
 deny(code554_7_1);
 info(code554_7_1);
 ```
+
+### Pre-defined objects
+
+vSL already exposes some objects for you to use. You can check out the [Variable](api/Variables.md) file to get documentation on those objects and their use.
