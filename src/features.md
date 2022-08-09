@@ -2,7 +2,7 @@
 
 vSMTP is a Mail Transfer Agent ([MTA]) and a Mail Submission Agent ([MSA]).
 
-It is not intended to be a [MUA] nor a [MDA].
+It is not intended to be a Mail User Agent ([MUA]) nor a Mail Delivery Agent ([MDA]).
 
 For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP protocol.
 
