@@ -22,17 +22,6 @@ vSMTP uses a well known and secured third-party software [Lettre] also written i
 
 [Lettre]: https://github.com/lettre/lettre
 
-### Specific actions for the deliver stage
+### Documentation
 
-| Action      | Syntax                 | Description                                                   |
-| ----------- | ---------------------- | ------------------------------------------------------------- |
-| Deliver     | deliver(rcpt)          | simple delivery for a single recipient.                       |
-| Deliver All | deliver_all()          | simple delivery for all recipients.                           |
-| Forward     | forward(rcpt, addr)    | Forward mail to an other MTA for a single recipient.          |
-| Forward     | forward_all(addr)      | Forward mail to an other MTA for all recipients.              |
-| Maildir     | maildir(rcpt)          | deliver the email locally via maildir for a single recipient. |
-| Maildir     | maildir_all()          | deliver the email locally via maildir for all recipients.     |
-| Mailbox     | mbox(rcpt)             | deliver the email locally via mbox for a single recipient.    |
-| Mailbox     | mbox_all()             | deliver the email locally via mbox for all recipients.        |
-| No delivery | disable_delivery(rcpt) | disable the delivery for a single recipient.                  |
-| No delivery | disable_delivery_all() | disable the delivery for all recipients.                      |
+Check out the [Delivery](api/Delivery.md) module documentation.

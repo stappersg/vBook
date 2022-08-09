@@ -4,8 +4,9 @@ Services are declared using the `service` keyword.
 
 ## Commands
 
+A command service lets you run commands using vsl.
+
 ```js
-// command service, enable vsmtp to run a command.
 service clamscan cmd = #{
     timeout: "10s",
     command: "clamscan",
@@ -23,9 +24,10 @@ clamscan.run_cmd([ "--infected", "/home/another" ]);
 
 ## Databases
 
+The db service, enables you to communicate with a database.
+Here we open a csv database with the 'connector' field.
+
 ```js
-// the db service, enables you to communicate with a database.
-// here we open a csv database with the 'connector' field.
 service greylist db:csv = #{
     connector: "/db/user_accounts.csv",
     access: "O_RDONLY",
@@ -52,11 +54,12 @@ print(john[2]);
 
 ## Smtp
 
+The `smtp` service enables you to use the `delegate` directive
+to delegate the email to another service via the smtp protocol.
+Here we send the email to the `clamsmtpd` antivirus.
+
 ```js
 // -- service.vsl
-// A smtp service, enables you to use the `delegate` directive
-// to delegate the email to another service via smtp.
-// Here we send the email to the `clamsmtpd` antivirus.
 service clamsmtpd smtp = #{
     delegator: #{
         address: "127.0.0.1:10026",
@@ -82,3 +85,5 @@ import "service" as svc;
     ]
 }
 ```
+
+Check out the [Services](./api/Services.md) file to get access to the full list of functions for services.
