@@ -1,8 +1,8 @@
 # Features
 
-## Non-Features
+vSMTP is a Mail Transfer Agent ([MTA]) and a Mail Submission Agent ([MSA]).
 
-vSMTP is a [MTA]/[MSA] and is not intended to be a [MUA] nor a [MDA].
+It is not intended to be a [MUA] nor a [MDA].
 
 For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP protocol.
 
@@ -17,15 +17,17 @@ For incoming mails, vSMTP can deliver local mail to a client storage using mbox 
 [MSA]: ./term/agent.html#msa-mail-submission-agent
 [MDA]: ./term/agent.html#mda-mail-delivery-agent
 
-## Incoming Features
+## Stay tuned
 
-Take a look at our [ROADMAP.md](https://github.com/viridIT/vSMTP/blob/develop/ROADMAP.md).
+Take a look at the [ROADMAP](https://github.com/viridIT/vSMTP/blob/develop/ROADMAP.md) in vSMTP repository.
 
-And you can follow our development planning on the [official discord server](https://discord.gg/N8JGBRBshf). Where we post **poll** and **announcement** for our incoming features !
+Follow the development planning and the announcement of incoming features on the [official discord server](https://discord.gg/N8JGBRBshf).
 
-## Networking
+## Available features
 
-- Listen and serve on multiple addresses (defined in your [config](./reference/config-file.md#serverinterfaces))
+### Networking
+
+- Listen and serve on multiple addresses.
 - Support for IPv4 and IPv6 format.
 - Built on high performance asynchronous connections.
 - Handle one or multiple emails per connections.
@@ -39,7 +41,7 @@ And you can follow our development planning on the [official discord server](htt
 [TLS 1.3]: https://datatracker.ietf.org/doc/html/rfc8446
 [Trust-DNS]: https://github.com/bluejekyll/trust-dns
 
-## API
+### API
 
 vSMTP is modular and highly customizable.  Adding or modifying subsystems is facilitated by the internal design of the software. An API is available allowing easy integration into existing security elements. Several native plug-ins are already available.
 
@@ -48,7 +50,7 @@ vSMTP is modular and highly customizable.  Adding or modifying subsystems is fac
 - Mods and addons support.
 - Applications logs.
 
-## Filtering
+### Filtering
 
 vSMTP has a complete filtering system. In addition to the standard analysis of the SMTP envelope, the product adds the possibility of interacting on the fly on the content of messages (MIME). It is possible to filter, modify, encrypt, etc. any part of an email. Users can generate complex routing and filtering scenarios through a simple and intuitive advanced scripting language.
 
@@ -58,7 +60,7 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 
 [vSMTP Scripting Language]: reference/vSL/vsl.md
 
-## Delivery
+### Delivery
 
 - SMTP remote delivery - using a third-party software, [Lettre].
 - [Mbox] and [Maildir] format for local delivering.
@@ -68,14 +70,14 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 [Maildir]: https://en.wikipedia.org/wiki/Maildir
 [Lettre]: https://github.com/lettre/lettre
 
-## External services
+### External services
 
 vSMTP supports SMTP delegation, command calls and file databases.
 Next versions will bring SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q3/2022.
 
 [Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
 
-## Email authentication mechanisms
+### Email authentication mechanisms
 
 - Message submission RFCs.
 - [SPF] support
