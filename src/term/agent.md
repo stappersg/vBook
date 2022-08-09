@@ -36,7 +36,7 @@ Client application that allows receiving and sending emails. It can be a desktop
 
 The MSA is responsible for the incoming traffic in the mail system.
 
-A server program that receives mail from an MUA, checks for any errors, and transfers it (with SMTP) to a MTA.
+A server program that receives mail from an MUA, checks for any errors, and transfers it (via SMTP) to a MTA.
 
 ## MTA (Mail Transfer Agent)
 
