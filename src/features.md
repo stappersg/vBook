@@ -80,10 +80,14 @@ Next versions will bring SQL and NoSQL databases and in-memory caches supports. 
 ### Email authentication mechanisms
 
 - Message submission RFCs.
-- [SPF] support
-- [DANE] protocol, [DKIM] and [DMARC] mechanisms supports are planned for future release.
+- [Null MX] RFC.
+- [SPF] support.
+- [DKIM] signer and verifier.  
+- [DMARC] is planned for the next minor release.
+- [DANE] protocol is planned for future release.
 - [ARC] and [BIMI] experimental and future Internet standards are currently not supported.
 
+[Null MX]: https://www.rfc-editor.org/rfc/rfc7505.html
 [DANE]: https://www.rfc-editor.org/rfc/rfc7671.html
 [SPF]: https://www.rfc-editor.org/rfc/rfc7208.html
 [DKIM]: https://www.rfc-editor.org/rfc/rfc6376.html
