@@ -17,11 +17,11 @@ For incoming mails, vSMTP can deliver local mail to a client storage using mbox 
 [MSA]: ./term/agent.html#msa-mail-submission-agent
 [MDA]: ./term/agent.html#mda-mail-delivery-agent
 
-## Stay tuned
+## Roadmap
 
 Take a look at the [ROADMAP](https://github.com/viridIT/vSMTP/blob/develop/ROADMAP.md) in vSMTP repository.
 
-Follow the development planning and the announcement of incoming features on the [official discord server](https://discord.gg/N8JGBRBshf).
+Follow the development of vsmtp, plannings and announcements for incoming features on the [official discord server](https://discord.gg/N8JGBRBshf).
 
 ## Available features
 
@@ -52,7 +52,7 @@ vSMTP is modular and highly customizable.  Adding or modifying subsystems is fac
 
 ### Filtering
 
-vSMTP has a complete filtering system. In addition to the standard analysis of the SMTP envelope, the product adds the possibility of interacting on the fly on the content of messages (MIME). It is possible to filter, modify, encrypt, etc. any part of an email. Users can generate complex routing and filtering scenarios through a simple and intuitive advanced scripting language.
+vSMTP has a complete filtering system. In addition to the standard analysis of the SMTP envelope, vsmtp adds the possibility of interacting on the fly on the content of messages (MIME). It is possible to filter, modify, encrypt, etc. any part of an email. Users can generate complex routing and filtering scenarios through a simple and intuitive advanced scripting language.
 
 - Before and after queueing filtering.
 - [vSMTP scripting language] allowing administrators to define complex rules.

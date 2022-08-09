@@ -4,9 +4,9 @@ In this tutorial we will follow Doe's family. John, Jane and their child Jimmy a
 
 ## Context
 
-They have has a router/firewall to route and secure their home network and there is a small server in the DMZ to manage the family website, emails, etc.
+They use a router/firewall to route and secure their home network. They also setup a small server in the DMZ to manage the family website, emails, etc.
 
-The network looks like that :
+The network looks like the following :
 
 ```console
 { Internet ISP } --- Firewall --- { DMZ }

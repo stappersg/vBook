@@ -1,6 +1,6 @@
 # Introduction
 
-> This is a working document. vSMTP v1.2.x is required. Remember that these versions are not intended for production use.
+> This is a WIP document for vSMTP v1.2.x. Remember that these versions are not intended for production use.
 
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
@@ -13,7 +13,7 @@ It is a more efficient, more secure and more ergonomic product than the competit
 
 It is developed in Rust. Compared to solutions developed in other programming languages (usually C or C++), Rust provide a memory safety model, guaranteeing no segmentation fault or race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
 
-Its development goes through a full cycle of testing. Static and dynamic tests allow more comprehensive coverage of safety tests, one covering faults of the other and vice versa (static view and runtime view).
+Its development goes through a full cycle of testing. Unit and integration tests allow more comprehensive coverage of safety tests, one covering faults of the other and vice versa (static view and runtime view).
 
 ## License
 

@@ -4,22 +4,22 @@ Several examples can be found in the [example/config](https://github.com/viridIT
 
 ## The configuration file
 
-`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Backup the `vsmtp.toml` file. Open it with your favorite editor. Remove everything.
-We will build it step-by-step.
-
+`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Backup the `vsmtp.toml` file. Open it with your favorite editor. Remove everything, and copy the configuration bellow.
 ```toml
 # Version requirement. Do not remove or modify it
 version_requirement = ">=1.0.0"
 
-# Global configuration
+# root domain of the server.
 [server]
 domain = "doe-family.com"
 
+# addresses that the server will listen to.
 [server.interfaces]
 addr = ["192.168.1.254:25"]
 addr_submission = ["192.168.1.254:587"]
 addr_submissions = ["192.168.1.254:465"]
 
+# Tls settings.
 [server.tls]
 security_level = "May"
 preempt_cipherlist = false
@@ -32,42 +32,104 @@ private_key = "/etc/letsencrypt/live/mta.doe-family.com/privkey.pem"
 must_be_authenticated = false
 enable_dangerous_mechanism_in_clair = false
 
+# The log level that will be written in syslogs.
 [server.logs.level]
 server = "warn"
 
+# Entry point for our rules.
 [app.vsl]
 filepath = "/etc/vsmtp/rules/main.vsl"
 ```
 
-Quite simple, isn't it ?
-
-Now that the server is configured we need to define the rules to apply to a message. This is the role of vSL.
+Now that the server is configured, we need to define rules used to filter messages. This is the role of vSL.
 
 ## vSL : the vSMTP Scripting Language
 
-You are able to define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL). vSL is based on four main concepts : `objects`, `services`, `actions` and `rules`.
+You are able to define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL). vSL is based on four main concepts : `rules`, `actions`, `objects` and `services`.
 
-`Rules` execute code at different stages of a SMTP transaction and then return a status code to vSMTP, telling the server what to do next (deny or force accept a transaction for example).
-`Actions` execute code without influencing the server. Compared to a rule, an action does not return anything.
-`Objects` contain variables like mailboxes, ip addresses, domain names etc ...
+`Rules` execute code at different stages of a SMTP transaction and then return a status code to vSMTP, telling the server what to do next. Using `rules`, you can deny, accept and quarantine incoming messages.
 
-The `main.vsl` file is the entry point for vSL. By default it is located in the `/etc/vsmtp/rules` directory.
+```js
+// rule "<name>" || {
+//     // <rule body>
+//     return <status-code>;
+// }
+
+rule "my blacklist" || {
+  if client_ip() == "222.11.16.196" {
+    // Spam address detected ! We deny the transaction.
+    deny()
+  } else {
+    // the client ip is valid, we can proceed.
+    next()
+  }
+}
+```
+
+`Actions` simply execute code. Compared to a `rule`, an `action` does not return anything, and thus do not influence the state of a transaction.
+
+```js
+// action "<name>" || {
+//     // <action body>
+// }
+
+action "log incoming transaction" || {
+  // We use actions to execute code that does not
+  // need to change the state of the transaction.
+  log("debug", `new transaction by ${client_ip()}`);
+}
+```
+
+`Objects` contain re-usable fields like mailboxes, ip addresses, domain names, file content etc ...
+
+```js
+// object <name> <type> = "<value>";
+
+object example fqdn = "example.com";
+object my_address address = "john.doe@example.com";
+object whitelist file:address = "/etc/vsmtp/whitelist.txt";
+
+print(`the example domain: ${example}`);
+print(`my personal address: ${my_address}`);
+print(`content of whitelist: ${whitelist}`);
+```
+
+`Services` are interfaces with third party software.
+
+```js
+// service <name> <type>[:<content-type>] = "<value>";
+
+// vsmtp will send messages using the smtp protocol
+// to the software listening on 127.0.0.1:10026.
+service clamsmtpd smtp = #{
+    delegator: #{
+        address: "127.0.0.1:10026",
+        timeout: "60s",
+    },
+    receiver: "127.0.0.1:10024",
+};
+
+// vsmtp will connect to a csv database with
+// this service.
+service greylist db:csv = #{
+    connector: "/db/user_accounts.csv",
+    access: "O_RDONLY",
+    refresh: "always",
+    delimiter: ",",
+};
+```
+
+The `main.vsl` file is the entry point for vSL, located in the `/etc/vsmtp/rules` directory by default.
 
 ### RHAI and vSL
 
-vSMTP scripting is based on RHAI language. Please consult [The RHAI book] for detailed information about variables, functions, etc.
+vSMTP scripting is based on the RHAI language. Please consult [The RHAI book] for detailed information about variables, functions, etc.
 
 [The RHAI book]: https://rhai.rs/book/
 
 ### Defining objects
 
-Objects are declared through the "object" keyword. The basic syntax is:
-
-```c
-object <name> <type> = "<value>";
-```
-
-Many types are available. Let's define together all the required objects for John Doe's MTA.
+Let's define together all the required objects for John Doe's MTA.
 Open your favorite editor and create a `objects.vsl` file in the rule directory.
 
 ```javascript
@@ -97,31 +159,22 @@ object blacklist file:fqdn = "blacklist.txt";
 ```
 
 ```shell
-# cat blacklist.txt
-domain-spam.com
-spam-domain.org
-domain-spammers.com
-foobar-spam-pro.org
+cat blacklist.txt
+# domain-spam.com
+# spam-domain.org
+# domain-spammers.com
+# foobar-spam-pro.org
 ```
 
-Done. Now we need to apply some rules on these objects.
+Now we need to apply some rules on these objects.
 
 ## Defining directives (rules and actions)
 
-Rules are the entry point to interact with the SMTP traffic at a user level. They are defined in the `/etc/vsmtp/rules/main.vsl` file. Action don't interact with the transaction. They just trigger functions.
-
-Rules and actions have the same syntax, except the first keyword.
-
-```javascript
-rule "name" || {              |       action "name" || {
-    ... rule body.            |           ... action body.
-}                             |       }
-```
-
-Let's add some rules in `the main.vsl` file for Doe's family MTA.
+Let's add some rules in the `main.vsl` file for Doe's family MTA.
+Here is what we want to configure:
 
 - Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
-- IMAP and Maildir format.
+- We want to deliver emails using the Maildir format if a recipient is from the family.
 
 ```javascript
 // -- main.vsl
@@ -129,16 +182,20 @@ Let's add some rules in `the main.vsl` file for Doe's family MTA.
 import "objects" as doe;
 
 #{
+  // the "blacklist" will run once the client sends a "MAIL FROM" command.
+  // this is the stage when the sender is known. the sender can be accessed using the `mail_from()` function.
   mail: [
     // Deny any sender with a domain listed in the `blacklist` group.
-    rule "blacklist" || if ctx().mail_from.domain in doe::blacklist { deny() } else { next() }
+    rule "blacklist" || if mail_from().domain in doe::blacklist { deny() } else { next() }
   ],
 
+  // This stage is executed every time a "RCPT TO" command is sent by the client. The current recipient can be inspected using the `rcpt()` function.
   rcpt: [
     // automatically set Jane as a BCC if Jenny is part of the recipients.
-    action "bcc jenny" || if ctx().rcpt is doe::jenny { bcc(doe::jane) },
+    action "bcc jenny" || if rcpt() is doe::jenny { bcc(doe::jane) },
   ],
 
+  // The deliver stage is executed just before vsmtp delivers the message. It can be used to setup how vsmtp will deliver the message.
   deliver: [
     action "setup delivery" || {
       // if a recipient is part of the family, we deliver
