@@ -63,7 +63,7 @@ The vSMTP reference guide
 
 # Trouble shooting
 
-- [Trouble shooting](troubles/nolog.md)
+- [Logging](troubles/nolog.md)
 
 # Terminology
 
