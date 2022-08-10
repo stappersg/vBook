@@ -109,3 +109,9 @@ The following error codes can also be sent by the DKIM framework.
 | Basic status code | 500                                                                                                                                                          |
 | Description       | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of  | n/a                                                                                                                                                          |
+
+### vSL predefined function
+
+The standard API has a dedicated function to use DKIM.
+
+Check the [Security](api/../../../reference/vSL/api/Security.md) file to get the full documentation for `verify_dkim`.
