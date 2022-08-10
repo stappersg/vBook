@@ -1,4 +1,4 @@
-## vSMTP configuration files
+# vSMTP configuration files
 
 vSMTP and its sub-systems use [TOML] language for their configuration files. TOML files are frequently compared to INI for their similarities in syntax and use as configuration files.
 
@@ -6,18 +6,21 @@ vSMTP and its sub-systems use [TOML] language for their configuration files. TOM
 
 TOML uses tables (hash tables) as collections of key/value pairs. Key/value pairs within tables are not guaranteed to be in any specific order. Tables appear in square brackets on a line by themselves. Dots are used to signify nested tables. Nested array of tables are also allowed.
 
-### The vsmtp.toml file
+## The vsmtp.toml file
 
-This is the main configuration file. It should be located in `/etc/vsmtp`. However it can be modified in the vSMTP service file.
+This is the main configuration file. It should be located in `/etc/vsmtp`. However it can be modified in the systemd's service file `/etc/systemd/system/vsmtp.service` or using the `--config` option in interactive mode.
+
+The vSMTP toml file is currently split into two main tables:
 
 | Table    | Comment                      |
 | :------- | :--------------------------- |
-| [server] | vSMTP overall configuration. |
-| [app]    | Rule engine configuration.   |
+| [server] | The vSMTP overall configuration and its system interactions.|
+| [app]    | The application configuration and the rule engine behavior.|
+
+> Future releases may bring new tables.
 
 The `[server]` table contains all the required information to start the vSMTP server and the root domain parameters.
-
-Virtual domains can be configured under the root domain:
+As shown in the example below, virtual domains can be configured under the root domain.
 
 ```toml 
 [server]
@@ -69,9 +72,11 @@ Parameters can be:
 - Specified in primary domain: All virtual domains use these settings.
 - Specific to a virtual domain.
 
-Please refer to the reference guide for a fully description of the key/value pairs.
+Please refer to the [reference guide] for a fully description of the key/value pairs.
 
-### The vsmtp.service file
+[reference guide]: ../reference/config-file.md
+
+## The vsmtp.service file
 
 This file contains all the mandatory information to start the vSMTP service on Linux using [systemd] as the system and service manager.
 

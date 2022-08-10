@@ -29,7 +29,6 @@ The vSMTP reference guide
     - [BIMI](advanced/eam/bimi.md)
   - [SMTP security using DANE](advanced/dane.md)
   - [Logging system](advanced/logging.md)
-  - [Trouble shooting](advanced/troubleshooting.md)
 
 # Reference
 
@@ -55,13 +54,17 @@ The vSMTP reference guide
     - [Utils](reference/vSL/api/Utils.md)
     - [Variables](reference/vSL/api/Variables.md)
 
-# Terminology
-
-- [Mail Agent](term/agent.md)
-
 # Development
 
 - [Building from source](dev/build/source.md)
   - [Linux](dev/build/source/linux.md)
   - [FreeBSD](dev/build/source/freebsd.md)
 - [The Queue System](dev/queues.md)
+
+# Trouble shooting
+
+- [Trouble shooting](troubles/nolog.md)
+
+# Terminology
+
+- [Mail Agent](term/agent.md)

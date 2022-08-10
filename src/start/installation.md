@@ -1,9 +1,10 @@
 # Installation
 
-* [Requirement](#requirements)
-* [Packages](#installing-vsmtp-from-packages)
-* [Using cargo](#using-cargo)
-* [Docker](#docker)
+vSMTP is a stand-alone application with few kernel interactions, it may run on any system with slight modifications. Many installation methods are available:
+
+* [By extracting a packages](#installing-vsmtp-from-packages)
+* [By using Rust's cargo tool](#using-cargo)
+* [By deploying a Docker container](#docker)
 
 If your system is not supported or if these installation method are not suited for your usage, you can contact us by [opening an issue on github](https://github.com/viridIT/vSMTP/issues/new/choose) or by [joining the official discord server](https://discord.gg/N8JGBRBshf).
 
@@ -21,22 +22,9 @@ The current release has been tested and deployed on x86/64 environments.
 
 vSMTP is tested and deployed on Ubuntu Server 20.04 with kernel 5.4, but vSMTP **should be compatible** with any recent Linux distributions.
 
+FreeBSD 13.x is supported using the latest port branch which includes Rust 1.60. NetBSD and OpenBSD supports are planned for Q1-2023.
+
 Microsoft Windows Server is not supported.
-
-## Using [cargo]
-
-<a href="https://crates.io/crates/vsmtp">
-  <img src="https://img.shields.io/crates/v/vsmtp.svg"
-    alt="crates.io" />
-</a>
-
-vSMTP is published on <https://crates.io>, meaning it can be install through `cargo`
-
-```sh
-cargo install vsmtp
-```
-
-[cargo]: https://doc.rust-lang.org/cargo
 
 ## Using packages
 
@@ -52,11 +40,23 @@ Packages `.deb` can be downloaded from the [release] section of the vSMTP github
 
 ### BSD ports
 
-FreeBSD 13.x is supported using the latest port branch which includes Rust 1.60.
-
-NetBSD and OpenBSD supports are planned for Q3-2022.
-
 `help wanted` ( [Issue 484](https://github.com/viridIT/vSMTP/issues/484) )
+
+
+## Using [cargo]
+
+<a href="https://crates.io/crates/vsmtp">
+  <img src="https://img.shields.io/crates/v/vsmtp.svg"
+    alt="crates.io" />
+</a>
+
+vSMTP is published on <https://crates.io>, meaning it can be install through `cargo`
+
+```sh
+cargo install vsmtp
+```
+
+[cargo]: https://doc.rust-lang.org/cargo
 
 ## Docker
 

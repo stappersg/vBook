@@ -1,6 +1,6 @@
 # Trouble shooting
 
-Here is a section for eventual problems that can happen during your vSMTP setup.
+This section is `Under construction`.
 
 ## No logs available (daemon mode)
 

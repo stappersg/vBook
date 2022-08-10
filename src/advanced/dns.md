@@ -4,7 +4,9 @@ vSMTP can manage complex DNS situations. The default configuration can be update
 
 > vSMTP relies on Benjamin Fry's [Trust-DNS] crate to handle DNS queries.
 
-DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` tables and sub-tables. Please refer to vSMTP reference guide and [Trust-DNS] repository for detailed information.
+DNS parameters are stored in the [server.dns] and `[server.virtual.dns]` tables and sub-tables. Please refer to [vSMTP reference guide] and [Trust-DNS] repository for detailed information.
+
+[vSMTP reference guide]: ../reference/config-file.md
 
 [Trust-DNS]: https://github.com/bluejekyll/trust-dns
 
@@ -12,7 +14,7 @@ DNS configuration can be applied on root or on virtual domains.
 
 ## DNS resolver
 
-The default behavior is to use the operating system (/etc/resolv.conf) as the upstream resolver. However other configurations are available and can be easily changed to the Google or the CloudFlare Public DNS using the `type` field.
+The default behavior is to use the operating system `/etc/resolv.conf` as the upstream resolver. However other configurations are available and can be easily changed to the Google or the CloudFlare Public DNS using the `type` field.
 
 ```toml
 [server.dns]
