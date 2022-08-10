@@ -16,7 +16,7 @@ To interact with the SMTP traffic, vSL combines:
 
 [rules]: rules.md
 [objects]: objects.md
-[functions]: functions.md
+[functions]: api.md
 [services]: services.md
 
 Rules can be applied at any [stage] of the SMTP transaction.
