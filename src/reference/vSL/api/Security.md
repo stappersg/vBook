@@ -1,5 +1,16 @@
 # Security
 ## This module contains multiple security functions that you can use to protect your server.
+<details><summary>authenticate()</summary><br/> Process the SASL authentication mechanism.
+
+ The current implementation support "PLAIN" mechanism, and will call the
+ `testsaslauthd` program to check the credentials.
+
+ The credentials will be verified depending on the mode of `saslauthd`.
+
+ A native implementation will be provided in the future.
+
+ 
+</details>
 <details><summary>check_mail_relay(allowed_hosts)</summary><br/> Do not accept a message from a known internal domain if the client is unknown.
 
  # Args
@@ -64,8 +75,8 @@
  * `header` - "spf" | "auth" | "both" | "none"
 
  # Return
- * `deny(code550_7_23 | code451_7_24 | code550_7_24)` - an error occured during lookup. (returned even when a softfail is received using the "strict" policy)
- * `next()` - the operation succeded.
+ * `deny(code550_7_23 | code451_7_24 | code550_7_24)` - an error occurred during lookup. (returned even when a softfail is received using the "strict" policy)
+ * `next()` - the operation succeeded.
 
  # Effective smtp stage
  `rcpt` and onwards.
@@ -74,16 +85,57 @@
  * The `header` argument is not valid.
  * The `policy` argument is not valid.
 
+ # Note
+ `check_spf` only checks for the sender's identity, not the `helo` value.
+
  # Example
  ```js
  #{
-     rcpt: [
+     mail: [
         rule "check spf relay" || check_spf(allowed_hosts),
      ]
  }
 
- 
+ #{
+     mail: [
+         // if this check succeed, it wil return `next`.
+         // if it fails, it might return `deny` with a custom code
+         // (X.7.24 or X.7.25 for exemple)
+         //
+         // if you want to use the return status, just put the check_spf
+         // function on the last line of your rule.
+         rule "check spf 1" || {
+             log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
+             check_spf("spf", "soft")
+         },
+
+         // policy is set to "strict" by default.
+         rule "check spf 2" || check_spf("both"),
+
+         // you can also use the low level system api.
+         rule "check spf 3" || {
+             let query = sys::check_spf(ctx(), srv());
+
+             log("debug", `result: ${query.result}`);
+
+             // the 'result' parameter gives you the result of evaluation.
+             // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
+             //
+             // the 'cause' parameter gives you the cause of the result if there
+             // was an error, and the mechanism of the result if it succeeded.
+             switch query.result {
+                 "pass" => next(),
+                 "fail" => {
+                     log("error", `check spf error: ${query.cause}`);
+                     deny()
+                 },
+                 _ => next(),
+             };
+         },
+     ],
+ }
  ```
+ 
 </details>
 <details><summary>check_spf(header, policy)</summary><br/> Check spf record following the Sender Policy Framework (RFC 7208).
  see https://datatracker.ietf.org/doc/html/rfc7208
@@ -94,32 +146,74 @@
  * `policy` - "strict" | "soft"
 
  # Return
- * `deny(code550_7_23 | code451_7_24 | code550_7_24)` - an error occured during lookup. (returned even when a softfail is received using the "strict" policy)
- * `next()` - the operation succeded.
+ * `deny(code550_7_23 | code451_7_24 | code550_7_24)` - an error occurred during lookup. (returned even when a softfail is received using the "strict" policy)
+ * `next()` - the operation succeeded.
+
+ # Effective smtp stage
+ `rcpt` and onwards.
 
  # Errors
  * The `header` argument is not valid.
  * The `policy` argument is not valid.
 
- # Effective smtp stage
- `rcpt` and onwards.
+ # Note
+ `check_spf` only checks for the sender's identity, not the `helo` value.
 
  # Example
  ```js
  #{
-     rcpt: [
+     mail: [
         rule "check spf" || check_spf("spf", "soft")
      ]
  }
 
- 
+ #{
+     mail: [
+         // if this check succeed, it wil return `next`.
+         // if it fails, it might return `deny` with a custom code
+         // (X.7.24 or X.7.25 for exemple)
+         //
+         // if you want to use the return status, just put the check_spf
+         // function on the last line of your rule.
+         rule "check spf 1" || {
+             log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
+             check_spf("spf", "soft")
+         },
+
+         // policy is set to "strict" by default.
+         rule "check spf 2" || check_spf("both"),
+
+         // you can also use the low level system api.
+         rule "check spf 3" || {
+             let query = sys::check_spf(ctx(), srv());
+
+             log("debug", `result: ${query.result}`);
+
+             // the 'result' parameter gives you the result of evaluation.
+             // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
+             //
+             // the 'cause' parameter gives you the cause of the result if there
+             // was an error, and the mechanism of the result if it succeeded.
+             switch query.result {
+                 "pass" => next(),
+                 "fail" => {
+                     log("error", `check spf error: ${query.cause}`);
+                     deny()
+                 },
+                 _ => next(),
+             };
+         },
+     ],
+ }
  ```
+
+ 
 </details>
-<details><summary>dkim_verify()</summary><br/> Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
+<details><summary>verify_dkim()</summary><br/> Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
  see https://datatracker.ietf.org/doc/html/rfc6376
 
  # Return
- * `accept()` - a signature was successfuly verified.
+ * `accept()` - a signature was successfully verified.
  * `deny()` - no signature could be verified.
 
  
