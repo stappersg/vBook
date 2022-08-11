@@ -1,6 +1,14 @@
 # Delivery
 ## Those methods are used to setup the method of delivery for one / every recipient.
-<details><summary>deliver(rcpt)</summary><br/> Set the delivery method to deliver for a single recipient.
+<details>
+<summary>
+<code>
+deliver(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to deliver for a single recipient.
  After all rules are evaluated, the email will be sent
  to the recipient using the domain of its address.
 
@@ -22,8 +30,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>deliver_all()</summary><br/> Set the delivery method to deliver for all recipients.
+<details>
+<summary>
+<code>
+deliver_all()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to deliver for all recipients.
  After all rules are evaluated, the email will be sent
  to all recipients using the domain of their respective address.
 
@@ -41,8 +60,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>disable_delivery(rcpt)</summary><br/> Disable the delivery for a single recipient.
+<details>
+<summary>
+<code>
+disable_delivery(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Disable the delivery for a single recipient.
 
  # Args
 
@@ -62,8 +92,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>disable_delivery_all()</summary><br/> Disable delivery for all single recipients.
+<details>
+<summary>
+<code>
+disable_delivery_all()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Disable delivery for all single recipients.
 
  # Effective smtp stage
 
@@ -79,8 +120,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>forward(rcpt, target)</summary><br/> Set the delivery method to forwarding for a single recipient.
+<details>
+<summary>
+<code>
+forward(rcpt, target)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to forwarding for a single recipient.
  After all rules are evaluated, forwarding will be used to deliver
  the email to the recipient.
 
@@ -103,8 +155,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>forward_all(target)</summary><br/> Set the delivery method to forwarding for all recipients.
+<details>
+<summary>
+<code>
+forward_all(target)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to forwarding for all recipients.
  After all rules are evaluated, forwarding will be used to deliver
  the email.
 
@@ -126,8 +189,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>maildir(rcpt)</summary><br/> Set the delivery method to maildir for a recipient.
+<details>
+<summary>
+<code>
+maildir(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to maildir for a recipient.
  After all rules are evaluated, the email will be stored
  localy in the `~/Maildir/new/` folder of the recipient's user if it exists on the server.
 
@@ -149,8 +223,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>maildir_all()</summary><br/> Set the delivery method to maildir for all recipients.
+<details>
+<summary>
+<code>
+maildir_all()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to maildir for all recipients.
  After all rules are evaluated, the email will be stored
  localy in each `~/Maildir/new` folder of they respective recipient
  if they exists on the server.
@@ -169,8 +254,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>mbox(rcpt)</summary><br/> Set the delivery method to mbox for a recipient.
+<details>
+<summary>
+<code>
+mbox(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to mbox for a recipient.
  After all rules are evaluated, the email will be stored
  localy in the mail box of the recipient if it exists on the server.
 
@@ -192,8 +288,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>mbox_all()</summary><br/> Set the delivery method to mbox for all recipients.
+<details>
+<summary>
+<code>
+mbox_all()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Set the delivery method to mbox for all recipients.
  After all rules are evaluated, the email will be stored
  localy in the mail box of all recipients if they exists on the server.
 
@@ -211,4 +318,7 @@
  ```
 
  
+
+</div>
+<br/>
 </details>

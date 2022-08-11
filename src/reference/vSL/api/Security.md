@@ -1,6 +1,14 @@
 # Security
 ## This module contains multiple security functions that you can use to protect your server.
-<details><summary>authenticate()</summary><br/> Process the SASL authentication mechanism.
+<details>
+<summary>
+<code>
+authenticate()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Process the SASL authentication mechanism.
 
  The current implementation support "PLAIN" mechanism, and will call the
  `testsaslauthd` program to check the credentials.
@@ -10,8 +18,19 @@
  A native implementation will be provided in the future.
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>check_mail_relay(allowed_hosts)</summary><br/> Do not accept a message from a known internal domain if the client is unknown.
+<details>
+<summary>
+<code>
+check_mail_relay(allowed_hosts)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Do not accept a message from a known internal domain if the client is unknown.
 
  # Args
  * `allowed_hosts` - group of IPv4 | IPv6 | IPv4 range | IPv6 range | fqdn
@@ -37,8 +56,19 @@
 
  
  ```
+
+</div>
+<br/>
 </details>
-<details><summary>check_rcpt_relay(allowed_hosts)</summary><br/> Do not accept open relaying.
+<details>
+<summary>
+<code>
+check_rcpt_relay(allowed_hosts)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Do not accept open relaying.
 
  # Args
 
@@ -65,8 +95,19 @@
 
  
  ```
+
+</div>
+<br/>
 </details>
-<details><summary>check_spf(header)</summary><br/> Check spf record following the Sender Policy Framework (RFC 7208).
+<details>
+<summary>
+<code>
+check_spf(header)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Check spf record following the Sender Policy Framework (RFC 7208).
  A wrapper with the policy set to "strict" by default.
  see https://datatracker.ietf.org/doc/html/rfc7208
 
@@ -136,8 +177,19 @@
  }
  ```
  
+
+</div>
+<br/>
 </details>
-<details><summary>check_spf(header, policy)</summary><br/> Check spf record following the Sender Policy Framework (RFC 7208).
+<details>
+<summary>
+<code>
+check_spf(header, policy)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Check spf record following the Sender Policy Framework (RFC 7208).
  see https://datatracker.ietf.org/doc/html/rfc7208
 
  # Args
@@ -208,8 +260,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>verify_dkim()</summary><br/> Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
+<details>
+<summary>
+<code>
+verify_dkim()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
  see https://datatracker.ietf.org/doc/html/rfc6376
 
  # Return
@@ -217,4 +280,7 @@
  * `deny()` - no signature could be verified.
 
  
+
+</div>
+<br/>
 </details>

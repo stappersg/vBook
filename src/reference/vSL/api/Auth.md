@@ -1,6 +1,14 @@
 # Auth
 ## This module contains authentication mechanisms to secure your server.
-<details><summary>auth()</summary><br/> Get authentication credentials from the client.
+<details>
+<summary>
+<code>
+auth()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get authentication credentials from the client.
 
  # Effective smtp stage
 
@@ -20,8 +28,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>is_authenticated()</summary><br/> Check if the client is authenticated.
+<details>
+<summary>
+<code>
+is_authenticated()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Check if the client is authenticated.
 
  # Effective smtp stage
 
@@ -41,8 +60,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>is_secured()</summary><br/> Check if the client's connexion was secure.
+<details>
+<summary>
+<code>
+is_secured()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Check if the client's connexion was secure.
 
  # Effective smtp stage
 
@@ -62,4 +92,7 @@
  ```
 
  
+
+</div>
+<br/>
 </details>

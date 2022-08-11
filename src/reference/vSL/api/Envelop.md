@@ -1,6 +1,14 @@
 # Envelop
 ## The SMTP envelop can be mutated by several function from this module.
-<details><summary>add_rcpt_envelop(rcpt)</summary><br/> Add a new recipient to the envelop. Note that this does not add
+<details>
+<summary>
+<code>
+add_rcpt_envelop(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Add a new recipient to the envelop. Note that this does not add
  the recipient to the `To` header. Use `add_rcpt_message` for that.
 
  # Args
@@ -22,8 +30,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>remove_rcpt_envelop(rcpt)</summary><br/> Remove a recipient from the envelop. Note that this does not remove
+<details>
+<summary>
+<code>
+remove_rcpt_envelop(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Remove a recipient from the envelop. Note that this does not remove
  the recipient from the `To` header. Use `remove_rcpt_message` for that.
 
  # Args
@@ -45,8 +64,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>rewrite_mail_from(new_addr)</summary><br/> Rewrite the value of the `MAIL FROM` command has well has
+<details>
+<summary>
+<code>
+rewrite_mail_from(new_addr)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Rewrite the value of the `MAIL FROM` command has well has
  the `From` header.
 
  # Args
@@ -67,8 +97,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>rewrite_mail_from_envelop(new_addr)</summary><br/> Rewrite the sender received from the `MAIL FROM` command.
+<details>
+<summary>
+<code>
+rewrite_mail_from_envelop(new_addr)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Rewrite the sender received from the `MAIL FROM` command.
 
  # Args
 
@@ -88,8 +129,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>rewrite_rcpt_envelop(old_addr, new_addr)</summary><br/> Replace a recipient received by a `RCPT TO` command.
+<details>
+<summary>
+<code>
+rewrite_rcpt_envelop(old_addr, new_addr)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Replace a recipient received by a `RCPT TO` command.
 
  # Args
 
@@ -110,4 +162,7 @@
  ```
 
  
+
+</div>
+<br/>
 </details>

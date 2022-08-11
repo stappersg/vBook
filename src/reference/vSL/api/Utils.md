@@ -1,6 +1,14 @@
 # Utils
 ## Those miscellaneous functions lets you query data from your system, log stuff, perform dns lookups etc ...
-<details><summary>date()</summary><br/> Get the current date.
+<details>
+<summary>
+<code>
+date()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the current date.
 
  # Return
 
@@ -22,8 +30,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>dump(dir)</summary><br/> Export the current message and the envelop to a file as a `json` file.
+<details>
+<summary>
+<code>
+dump(dir)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Export the current message and the envelop to a file as a `json` file.
  The message id of the email is used to name the file.
 
  # Args
@@ -45,8 +64,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>hostname()</summary><br/> Get the hostname of this machine.
+<details>
+<summary>
+<code>
+hostname()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the hostname of this machine.
 
  # Return
 
@@ -68,8 +98,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>in_domain(rcpt)</summary><br/> check if the recipient passed as argument is part of the
+<details>
+<summary>
+<code>
+in_domain(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ check if the recipient passed as argument is part of the
  domains (root & sni) of the server.
 
  # Args
@@ -93,8 +134,19 @@
 
  
  ```
+
+</div>
+<br/>
 </details>
-<details><summary>log(level, message)</summary><br/> Log information to stdout in `nodaemon` mode or to a file.
+<details>
+<summary>
+<code>
+log(level, message)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Log information to stdout in `nodaemon` mode or to a file.
 
  # Args
 
@@ -115,8 +167,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>lookup(host)</summary><br/> Performs a dual-stack DNS lookup for the given hostname.
+<details>
+<summary>
+<code>
+lookup(host)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Performs a dual-stack DNS lookup for the given hostname.
 
  # Args
 
@@ -148,8 +211,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>rlookup(ip)</summary><br/> Performs a reverse lookup for the given IP.
+<details>
+<summary>
+<code>
+rlookup(ip)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Performs a reverse lookup for the given IP.
 
  # Args
 
@@ -180,8 +254,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>time()</summary><br/> Get the current time.
+<details>
+<summary>
+<code>
+time()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the current time.
 
  # Return
 
@@ -203,8 +288,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>user_exist(name)</summary><br/> Check if a user exists on this server.
+<details>
+<summary>
+<code>
+user_exist(name)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Check if a user exists on this server.
 
  # Args
 
@@ -232,8 +328,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>write(dir)</summary><br/> Export the current raw message to a file as an `eml` file.
+<details>
+<summary>
+<code>
+write(dir)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Export the current raw message to a file as an `eml` file.
  The message id of the email is used to name the file.
 
  # Args
@@ -255,4 +362,7 @@
  ```
 
  
+
+</div>
+<br/>
 </details>

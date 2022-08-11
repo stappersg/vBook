@@ -1,6 +1,14 @@
 # Status
 ## The state of an SMTP transaction can be changed through specific functions from this module.
-<details><summary>accept()</summary><br/> Tell the rule engine to accept the incomming transaction for the current stage.
+<details>
+<summary>
+<code>
+accept()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Tell the rule engine to accept the incomming transaction for the current stage.
  This means that all rules following the one `accept` is called in the current stage
  will be ignored.
 
@@ -25,8 +33,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>deny()</summary><br/> Stop rules evaluation and/or send an error code to the client.
+<details>
+<summary>
+<code>
+deny()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Stop rules evaluation and/or send an error code to the client.
  The code sent is `554 - permanent problems with the remote server`.
 
  # Effective smtp stage
@@ -51,8 +70,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>deny(code)</summary><br/> Stop rules evaluation and/or send a custom code to the client.
+<details>
+<summary>
+<code>
+deny(code)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Stop rules evaluation and/or send a custom code to the client.
 
  # Effective smtp stage
 
@@ -79,8 +109,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>faccept()</summary><br/> Tell the rule engine to force accept the incomming transaction.
+<details>
+<summary>
+<code>
+faccept()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Tell the rule engine to force accept the incomming transaction.
  This means that all rules following the one `faccept` is called
  will be ignored.
 
@@ -103,8 +144,19 @@
 
  
  ```
+
+</div>
+<br/>
 </details>
-<details><summary>info(code)</summary><br/> Ask the client to retry to send the current comment by sending an information code.
+<details>
+<summary>
+<code>
+info(code)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Ask the client to retry to send the current comment by sending an information code.
 
  # Effective smtp stage
 
@@ -123,8 +175,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>next()</summary><br/> Tell the rule engine that a rule succeeded.
+<details>
+<summary>
+<code>
+next()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Tell the rule engine that a rule succeeded.
 
  # Effective smtp stage
 
@@ -142,8 +205,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>quarantine(queue)</summary><br/> Skip all rules until the email is received and place the email in a
+<details>
+<summary>
+<code>
+quarantine(queue)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Skip all rules until the email is received and place the email in a
  quarantine queue.
 
  # Args
@@ -172,4 +246,7 @@
  ```
 
  
+
+</div>
+<br/>
 </details>

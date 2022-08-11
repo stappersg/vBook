@@ -1,6 +1,14 @@
 # Connection
 ## Metadata is available for each client, this module lets you query those metadatas.
-<details><summary>client_address()</summary><br/> Get the address of the client.
+<details>
+<summary>
+<code>
+client_address()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the address of the client.
 
  # Effective smtp stage
 
@@ -20,8 +28,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>client_ip()</summary><br/> Get the ip address of the client.
+<details>
+<summary>
+<code>
+client_ip()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the ip address of the client.
 
  # Effective smtp stage
 
@@ -41,8 +60,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>client_port()</summary><br/> Get the ip port of the client.
+<details>
+<summary>
+<code>
+client_port()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the ip port of the client.
 
  # Effective smtp stage
 
@@ -62,8 +92,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>connection_timestamp()</summary><br/> Get a the timestamp of the client's connection time.
+<details>
+<summary>
+<code>
+connection_timestamp()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get a the timestamp of the client's connection time.
 
  # Effective smtp stage
 
@@ -83,8 +124,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>server_address()</summary><br/> Get the full server address.
+<details>
+<summary>
+<code>
+server_address()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the full server address.
 
  # Effective smtp stage
 
@@ -104,8 +156,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>server_ip()</summary><br/> Get the server's ip.
+<details>
+<summary>
+<code>
+server_ip()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the server's ip.
 
  # Effective smtp stage
 
@@ -125,8 +188,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>server_name()</summary><br/> Get the name of the server.
+<details>
+<summary>
+<code>
+server_name()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the name of the server.
 
  # Effective smtp stage
 
@@ -146,8 +220,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>server_port()</summary><br/> Get the server's port.
+<details>
+<summary>
+<code>
+server_port()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the server's port.
 
  # Effective smtp stage
 
@@ -167,4 +252,7 @@
  ```
 
  
+
+</div>
+<br/>
 </details>

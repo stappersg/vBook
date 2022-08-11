@@ -1,6 +1,14 @@
 # Message
 ## Those methods are used to query data from the email and/or mutate it.
-<details><summary>add_rcpt_message(addr)</summary><br/> Add a recipient to the `To` header of the message.
+<details>
+<summary>
+<code>
+add_rcpt_message(addr)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Add a recipient to the `To` header of the message.
 
  # Args
 
@@ -20,8 +28,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>append_header(header, value)</summary><br/> Append a new header to the message.
+<details>
+<summary>
+<code>
+append_header(header, value)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Append a new header to the message.
 
  # Args
 
@@ -46,8 +65,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>bcc(rcpt)</summary><br/> Add a recipient as a blind carbon copy. The equivalent of `add_rcpt_envelop`.
+<details>
+<summary>
+<code>
+bcc(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Add a recipient as a blind carbon copy. The equivalent of `add_rcpt_envelop`.
 
  # Args
 
@@ -68,8 +98,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>get_header(header)</summary><br/> Get a specific header from the incoming message.
+<details>
+<summary>
+<code>
+get_header(header)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get a specific header from the incoming message.
 
  # Args
 
@@ -95,8 +136,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>has_header(header)</summary><br/> Checks if the message contains a specific header.
+<details>
+<summary>
+<code>
+has_header(header)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Checks if the message contains a specific header.
 
  # Args
 
@@ -120,8 +172,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>prepend_header(header, value)</summary><br/> Prepend a new header to the message.
+<details>
+<summary>
+<code>
+prepend_header(header, value)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Prepend a new header to the message.
 
  # Args
 
@@ -146,8 +209,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>remove_rcpt_message(addr)</summary><br/> Remove a recipient from the `To` header of the message.
+<details>
+<summary>
+<code>
+remove_rcpt_message(addr)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Remove a recipient from the `To` header of the message.
 
  # Args
 
@@ -167,8 +241,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>rewrite_mail_from_message(new_addr)</summary><br/> Change the sender's address in the `From` header of the message.
+<details>
+<summary>
+<code>
+rewrite_mail_from_message(new_addr)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Change the sender's address in the `From` header of the message.
 
  # Args
 
@@ -188,8 +273,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>rewrite_rcpt_message(old_addr, new_addr)</summary><br/> Replace a recipient by an other in the `To` header of the message.
+<details>
+<summary>
+<code>
+rewrite_rcpt_message(old_addr, new_addr)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Replace a recipient by an other in the `To` header of the message.
 
  # Args
 
@@ -210,8 +306,19 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
-<details><summary>set_header(header, value)</summary><br/> Replace an existing header value by a new value, or append a new header
+<details>
+<summary>
+<code>
+set_header(header, value)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Replace an existing header value by a new value, or append a new header
  to the message.
 
  # Args
@@ -241,4 +348,7 @@
  ```
 
  
+
+</div>
+<br/>
 </details>
