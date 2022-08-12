@@ -1,7 +1,5 @@
 # DomainKeys Identified Message
 
-> ___This is a DRAFT for the 1.2 release. Support is planned for Q3/2022.___
-
 This document specifies the vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
 
 DKIM is an open standard for email authentication that verifies the message of an email. DKIM gives emails a signature header which is added to the email. This signature is secured by a key pair (private/public) and a certificate.
