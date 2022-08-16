@@ -1,6 +1,6 @@
 # Step-by-step tutorial
 
-In this tutorial we will follow Doe's family. John, Jane and their child Jimmy and Jenny want to self-host their mailboxes.
+In this tutorial we suppose that Doe's family (John, Jane and their children Jimmy and Jenny) wants to self-host their mailboxes.
 
 ## Context
 
@@ -14,7 +14,7 @@ The network looks like the following :
               { Internal Network }
 ```
 
-They also bought a domain name `doe-family.com`. They decided to prefix their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
+They also rented a domain name `doe-family.com`. They decided to prefix their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
 
 ### Network configuration
 

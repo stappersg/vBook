@@ -2,16 +2,26 @@
 
 ## Adding an antivirus
 
-John is aware of security issues. Malware remains a scourge on the internet.
-So he decides to add a second layer of antivirus.
+Malware remains a scourge. As John is aware of security issues, he decides to add a layer of antivirus directly on the MTA. He installed [ClamAV](https://www.clamav.net/) which comes with the [clamsmtpd antivirus daemon](https://linux.die.net/man/8/clamsmtpd).
 
-Therefore, he installed [ClamAV](https://www.clamav.net/) which comes with the [clamsmtpd antivirus daemon](https://linux.die.net/man/8/clamsmtpd).
+```console
+{ Incomming msg } ---> vSMTP server ---> { Delivered msg }
+                        |       ^
+                        |       |
+         clamAV socket  |       | vSMTP socket
+         (delegator)    |       | (receiver)
+       127.0.0.1:10026  |       | 127.0.0.1:10025
+                        |       |
+                        v       |
+                  { clamsmtpd daemon } <-> { clamAV }
+```
 
-vSMTP support security delegation via the SMTP protocol and vsl's configuration. In the next example, we are going to configure vsmtp to delegate emails to `clamsmtpd`.
+vSMTP support security delegation via the SMTP protocol. Configuration is done for the system part in the vsmtp.toml file, and for the application part in the main.vsl file.
 
 ## Clamav setup
 
-The following example assumes that you started the `clamsmtpd` service with the following config:
+The following example assumes that the `clamsmtpd` service is loaded and started with the following configuration:
+
 
 ```toml
 ## -- /etc/clamsmtpd.conf
@@ -28,15 +38,16 @@ Listen: 127.0.0.1:10026
 Action: pass
 ```
 
-To start clamav, use the following commands:
+Use the following commands to start clamav:
+
 ```shell
-$ sudo systemctl start clamsmtp
-$ sudo systemctl start clamav-daemon
+sudo systemctl start clamsmtp
+sudo systemctl start clamav-daemon
 ```
 
 ## The service
 
-First off, create a smtp service in vsl like so:
+Create a smtp service in vsl:
 
 ```javascript
 // -- service.vsl
@@ -49,7 +60,7 @@ service clamsmtpd smtp = #{
 };
 ```
 
-In the toml configuration, you need to enable the receiver's socket.
+The the receiver's socket must be enabled in the toml configuration file.
 
 ```toml
 # -- vsmtp.toml
@@ -60,12 +71,7 @@ addr = ["192.168.1.254:25", "127.0.0.1:10025"]
 
 ## Rules
 
-You service is configured. Now, to use it, create the following rule using the `delegate` keyword.
-
-once the "check email for virus" rule is run, vsmtp will send the email to the
-clamsmtpd service and rule evaluation will be on hold.
-Once all results are received on port 10025, evaluation
-will resume, and the body of this rule will be evaluated.
+Create the antivirus passthrough using the `delegate` keyword. Any service that supports the SMTP protocol can be used.
 
 ```javascript
 // -- main.vsl
@@ -96,10 +102,9 @@ import "service" as svc;
 }
 ```
 
-Since there is no heavy network traffic, John decided to do a post-queue filtering.
-Compromised emails are quarantined in the `virus_q` folder.
+> Since there is no heavy network traffic, John decided to do a post-queue filtering. Compromised emails are quarantined in the `virus_q` folder.
 
-## That's it
+Once the "check email for virus" rule is run, vsmtp will send the email to the clamsmtpd service and rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation
+resumes, and the body of this rule is evaluated.
 
-Any service that supports the SMTP protocol can be used to delegate the email
-processing / security with the `delegate` directive.
+___That's all folks !___

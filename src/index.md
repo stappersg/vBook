@@ -11,9 +11,9 @@ vSMTP is a secured, faster and greener Mail Transfer Agent ([MTA](./term/agent.m
 
 It is a more efficient, more secure and more ergonomic product than the competition. It is up to 10 times faster than its competitors and significantly reduces the need for IT resources.
 
-It is developed in Rust. Compared to solutions developed in other programming languages (usually C or C++), Rust provide a memory safety model, guaranteeing no segmentation fault or race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
+It is written in Rust. Compared to solutions developed in other programming languages (usually C or C++), Rust provides a memory safety model, guaranteeing no segmentation fault or race conditions. It is the latest generation language best suited to system programming, network services and embedded systems.
 
-Its development goes through a full cycle of testing. Unit and integration tests allow more comprehensive coverage of safety tests, one covering faults of the other and vice versa (static view and runtime view).
+Its development goes through a full cycle of testing. Unit and integration tests allow more comprehensive coverage of safety tests, one covering faults of the other, and vice versa (static view and runtime view).
 
 ## License
 
@@ -27,13 +27,12 @@ This book is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 
 ## Source Code
 
-The source files from which this book is generated can be found on [GitHub][book].
+The source files for this book can be found on [GitHub][book].
 
 [book]: https://github.com/viridIT/vBook
 
 ## Contributing
 
-We'd love your help! Please see the [CONTRIBUTING.md][contrib] file to learn about the
-kinds of contributions we're looking for.
+The vSMTP and vBook projects need you. Parts requiring your help are labeled as `help wanted`. Please see the [CONTRIBUTING.md][contrib] file for more information.
 
 [contrib]: https://github.com/viridIT/vBook/blob/main/CONTRIBUTING.md
