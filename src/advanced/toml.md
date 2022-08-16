@@ -1,23 +1,23 @@
 # vSMTP configuration files
 
-vSMTP and its sub-systems use [TOML] language for their configuration files. TOML files are frequently compared to INI for their similarities in syntax and use as configuration files.
+The configuration files of vSMTP and its sub-systems are defined using the [TOML] language. 
 
 [TOML]: https://toml.io/
 
-TOML uses tables (hash tables) as collections of key/value pairs. Key/value pairs within tables are not guaranteed to be in any specific order. Tables appear in square brackets on a line by themselves. Dots are used to signify nested tables. Nested array of tables are also allowed.
+TOML uses hash tables as collections of key/value pairs. Key/value pairs within tables are not supposed to be in any specific order. Tables appear in square brackets. Dots are used to signify nested tables. Nested array of tables are also allowed.
 
 ## The vsmtp.toml file
 
-This is the main configuration file. It should be located in `/etc/vsmtp`. However it can be modified in the systemd's service file `/etc/systemd/system/vsmtp.service` or using the `--config` option in interactive mode.
+The `vsmtp.toml` is the main configuration file. It should be located in `/etc/vsmtp` directory. An alternative filename or location can be specified in the systemd's service file `/etc/systemd/system/vsmtp.service` or, in interactive mode, using the `--config` option.
 
-The vSMTP toml file is currently split into two main tables:
+The vSMTP TOML file is currently split into two main tables:
 
 | Table    | Comment                      |
 | :------- | :--------------------------- |
 | [server] | The vSMTP overall configuration and its system interactions.|
 | [app]    | The application configuration and the rule engine behavior.|
 
-> Future releases may bring new tables.
+> Future releases may provide new tables.
 
 The `[server]` table contains all the required information to start the vSMTP server and the root domain parameters.
 As shown in the example below, virtual domains can be configured under the root domain.
@@ -68,7 +68,7 @@ private_key = "./certs/private-example2.key"
 
 Parameters can be:
 
-- Omitted: In this case, the default settings are applied. They can be retrieved with the `vsmtp config-show` command.
+- Omitted: In this case, the default settings apply. They can be retrieved with the `vsmtp config-show` command.
 - Specified in primary domain: All virtual domains use these settings.
 - Specific to a virtual domain.
 
@@ -78,8 +78,8 @@ Please refer to the [reference guide] for a fully description of the key/value p
 
 ## The vsmtp.service file
 
-This file contains all the mandatory information to start the vSMTP service on Linux using [systemd] as the system and service manager.
+This file contains all the mandatory information to start the vSMTP service on Linux server using [systemd] as the system and service manager.
 
 [systemd]: https://freedesktop.org/wiki/Software/systemd/
 
-&#9762; | Do not modify this file unless you know what you are doing.
+&#9762; | Do not modify this file unless being highly aware of the impacts of your changes.
