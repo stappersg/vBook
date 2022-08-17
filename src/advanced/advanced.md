@@ -2,20 +2,20 @@
 
 ## vSMTP configuration file
 
-The vSMTP service (network, default directories, tls, etc.) can be configured by modifying the `vsmtp.toml` file. Its default location is `/etc/vsmtp`.
+The vSMTP service (network, default directories, tls, etc.) can be configured by editing the `vsmtp.toml` file. Its default location is `/etc/vsmtp`.
 
-When starting vSMTP, the configuration file is read and entirely parsed, producing an error if the format is invalid or a field value is incorrect. The server never crashes if the configuration is loaded successfully.
+When starting vSMTP, the configuration file is read and entirely parsed. An error occurs when a key or a value is incorrect. The server never crashes if the configuration is successfully loaded.
 
-The folder [examples/config](https://github.com/viridIT/vSMTP/tree/develop/examples/config) contains example of vSMTP configuration. All fields are optional and set to default if missing.
+The [examples/config](https://github.com/viridIT/vSMTP/tree/develop/examples/config) folder contains examples of vSMTP configuration. All fields are optional and set to default if missing.
 
-&#9758; | vSMTP service must be restarted to apply changes.
+&#9758; | The vSMTP service must be restarted to apply changes.
 
 ## Configuring SMTP filtering
 
-SMTP filtering is performed by the rule engine. The end user can interact and modify the behavior of vSMTP by adding objects and rules in `.vsl` configuration files. The `main.vsl` file in the "rules" folder is injected into the rules engine. It is the entry point for your filtering.
+SMTP filtering is performed by the rule engine. The end user can interact and modify the behavior of vSMTP by adding objects and rules in `.vsl` configuration files. The `main.vsl` file in the `/etc/vsmtp/rules` folder is injected into the rules engine. It is the entry point for the filtering.
 
-If there is no `.vsl` file, the server will refuse all incoming and outgoing mails, as well as domain forwarding. The `.vSL` files are commonly stored in the `/etc/vsmtp/rules` directory.
+If there is no `.vsl` file declared, the server denies all incoming and outgoing mails, as well as domain forwarding. The `.vSL` files are commonly stored in the `/etc/vsmtp/rules` directory.
 
 Please refer to the examples in the vSMTP repository and read the [reference guide on vSL](../reference/vSL/vsl.md) for detailed information.
 
-&#9758; | vSMTP service must be restarted to apply changes.
+&#9758; | The vSMTP service must be restarted to apply changes.

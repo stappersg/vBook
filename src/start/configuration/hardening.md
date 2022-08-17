@@ -2,16 +2,18 @@
 
 ## Disabling open relay
 
-Doe's family server is connected to the Internet. It must not be configured to accept mail from any sender and deliver it to any recipient. This is an undesirable setup as it can be exploited by spammers and other malicious users.
+Doe's family server is connected to the Internet and must not be configured as an [open mail relay] that could be used by spammers and other malicious users.
 
-Here are the strict minimum rules for a properly configured server. It will only accept messages from outside:
+[open mail relay]: https://en.wikipedia.org/wiki/Open_mail_relay
 
-- If the recipient is a Doe's family account, whatever the sender.
-- If the sender is authenticated as a Doe's family account, whatever the recipient.
+Here are the minimum set of rules for a properly configured server. It will only accept messages from the Internet:
+
+- If the recipient is a Doe's family account, whatever the sender is.
+- If the sender is authenticated as a Doe's family account, whatever the recipient is.
 
 All IPs from the internal network are allowed to send messages.
 
-Edit your `main.vsl` code and add the rules below.
+Edit your `main.vsl` file and add the rules below.
 
 ```javascript
 // -- main.vsl
@@ -44,19 +46,17 @@ Now Doe's family server is protected against open-relaying attacks.
 
 ## Using the SPF protocol
 
-> You can find more information about SPF protocol in the [advanced section].
+> You can find more information about the SPF protocol in the [advanced section].
 
 [advanced section]: ../../advanced/eam/spf.md
 
-To allow other MTAs to verify that outgoing email from Doe's family domain comes from its server, we need to enable the SPF protocol. This is done by adding a new DNS text record that only allows only the MX record to send a mail for doe-family.com.
+The SPF protocol allows other MTAs to check that outgoing messages from Doe's family domain are valid. A new DNS record is added into the `doe-family.com` DNS zone. It declares that only the server declared in the MX record is allowed to send messages on behalf of Doe's family.
 
 ```shell
 doe-family.com.          TXT "v=spf1 +mx -all"
 ```
 
-That's all for outgoing messages. What about incoming messages ?
-
-Edit your `main.vsl` code and just add the "check spf" rule.
+For incoming messages, the SPF protocol is configured to check the sender credentials at the `mail` stage. Edit your `main.vsl` code and just add the "check spf" rule.
 
 ```javascript
 // -- main.vsl
@@ -66,3 +66,7 @@ Edit your `main.vsl` code and just add the "check spf" rule.
   ]
 }
 ```
+
+## Using DKIM
+
+`Under construction`

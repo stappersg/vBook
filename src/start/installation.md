@@ -2,9 +2,9 @@
 
 vSMTP is a stand-alone application with few kernel interactions, it may run on any system with slight modifications. Many installation methods are available:
 
-* [By extracting a packages](#installing-vsmtp-from-packages)
-* [By using Rust's cargo tool](#using-cargo)
-* [By deploying a Docker container](#docker)
+* by extracting a [binary package](#installing-vsmtp-from-packages) suitable for your distribution,
+* by using Rust's [Cargo](#using-cargo) tool,
+* by deploying a [Docker](#docker) container.
 
 If your system is not supported or if these installation method are not suited for your usage, you can contact us by [opening an issue on github](https://github.com/viridIT/vSMTP/issues/new/choose) or by [joining the official discord server](https://discord.gg/N8JGBRBshf).
 
@@ -26,31 +26,32 @@ FreeBSD 13.x is supported using the latest port branch which includes Rust 1.60.
 
 Microsoft Windows Server is not supported.
 
-## Using packages
+## Installation methods
 
-### Linux/Debian distros
+### Linux distros
 
-Packages `.deb` can be downloaded from the [release] section of the vSMTP github.
+Debian binary packages `.deb` can be downloaded from the [release] section of the vSMTP github.
 
 [release]: https://github.com/viridIT/vSMTP/releases/latest
 
-### Linux/RedHat distros
+```sh
+sudo apt install vsmtp
+```
 
-`help wanted`
+Fedora and RedHat packages are planned for future releases. `help wanted`
 
 ### BSD ports
 
 `help wanted` ( [Issue 484](https://github.com/viridIT/vSMTP/issues/484) )
 
-
-## Using [cargo]
+### Rust Cargo
 
 <a href="https://crates.io/crates/vsmtp">
   <img src="https://img.shields.io/crates/v/vsmtp.svg"
     alt="crates.io" />
 </a>
 
-vSMTP is published on <https://crates.io>, meaning it can be install through `cargo`
+vSMTP is published on <https://crates.io>. It can be install using [cargo] tool if the Rust language is installed on your server.
 
 ```sh
 cargo install vsmtp
@@ -58,6 +59,6 @@ cargo install vsmtp
 
 [cargo]: https://doc.rust-lang.org/cargo
 
-## Docker
+### Docker
 
 `help wanted` ( [Issue #340](https://github.com/viridIT/vSMTP/issues/340) )

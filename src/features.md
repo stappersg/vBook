@@ -8,7 +8,7 @@ For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP 
 
 For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats. To retrieve emails from your [MUA] it is necessary to install a [MDA] that can handle POP and/or IMAP protocols.
 
-&#9758; | For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and specify to the courier-imap MDA where are located the MailDir/ folders and use a MUA like Mozilla ThunderBird.
+&#9758; | About MDA: For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and to specify where the `MailDir` folders are located.
 
 [courier-imap]: https://packages.debian.org/search?keywords=courier-imap
 
@@ -33,7 +33,7 @@ Follow the development of vsmtp, plannings and announcements for incoming featur
 - Handle one or multiple emails per connections.
 - Compliancy with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs.
 - [TLS 1.3] support.
-- Complete DNS configurations - thanks to Benjamin Fry's [Trust-DNS] crate.
+- Complete DNS configurations (thanks to Benjamin Fry's [Trust-DNS] crate).
 - Support for high workload through built-in mechanisms.
 
 [Internet Message Format]: https://datatracker.ietf.org/doc/html/rfc5322
@@ -43,16 +43,16 @@ Follow the development of vsmtp, plannings and announcements for incoming featur
 
 ### API
 
-vSMTP is modular and highly customizable.  Adding or modifying subsystems is facilitated by the internal design of the software. An API is available allowing easy integration into existing security elements. Several native plug-ins are already available.
+vSMTP is a modular and highly customizable product.  Adding or modifying subsystems is made easier by the internal design of the software. An API is available and allows easy integration into existing security elements. Several native plug-ins are already available.
 
-- Mail exports in raw and json format.
-- Third-party softwares called by user-defined services.
+- Mail exports in RAW and JSON format.
+- Third-party software called by user-defined services.
 - Mods and addons support.
 - Applications logs.
 
 ### Filtering
 
-vSMTP has a complete filtering system. In addition to the standard analysis of the SMTP envelope, vsmtp adds the possibility of interacting on the fly on the content of messages (MIME). It is possible to filter, modify, encrypt, etc. any part of an email. Users can generate complex routing and filtering scenarios through a simple and intuitive advanced scripting language.
+vSMTP has a complete filtering system. In addition to the standard analysis of the SMTP envelope, vSMTP provides on the fly interactions on the content of messages (MIME). Users can generate complex routing and filtering scenarios through a simple and intuitive advanced scripting language.
 
 - Before and after queueing filtering.
 - [vSMTP scripting language] allowing administrators to define complex rules.
@@ -72,8 +72,8 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 
 ### External services
 
-vSMTP supports SMTP delegation, command calls and file databases.
-Next versions will bring SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q3/2022.
+vSMTP supports SMTP delegation, command calls, and file databases.
+Next versions will provide SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q3/2022.
 
 [Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
 

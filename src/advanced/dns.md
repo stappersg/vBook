@@ -1,6 +1,6 @@
 # Domain Name System configuration
 
-vSMTP can manage complex DNS situations. The default configuration can be updated for each virtual domain.
+vSMTP can handle complex DNS situations. A default configuration is applied on the root domain and virtual domains inherit from it. Specific values can be updated on root domain or on a per virtual domain basis. 
 
 > vSMTP relies on Benjamin Fry's [Trust-DNS] crate to handle DNS queries.
 
@@ -10,11 +10,11 @@ DNS parameters are stored in the [server.dns] and `[server.virtual.dns]` tables 
 
 [Trust-DNS]: https://github.com/bluejekyll/trust-dns
 
-DNS configuration can be applied on root or on virtual domains.
+
 
 ## DNS resolver
 
-The default behavior is to use the operating system `/etc/resolv.conf` as the upstream resolver. However other configurations are available and can be easily changed to the Google or the CloudFlare Public DNS using the `type` field.
+The default behavior of the upstream resolver is defined by the operating system `/etc/resolv.conf` file. Alternative configurations such as Google or CloudFlare Public DNS may be applied using the `type` field in the `server.dns` table.
 
 ```toml
 [server.dns]
@@ -25,16 +25,16 @@ Please see Google and CloudFlare privacy statement for important information abo
 
 ### Locating the target host
 
-[Section 5 of RFC5321] covers the sequence for identifying a server that accepts email for a domain. In essence, the SMTP client first looks up a DNS MX RR, and, if that is not found, it falls back to looking up a DNS A or AAAA RR. If a CNAME record is found, the resulting name is processed as if it were the initial name.
+[Section 5 of RFC5321] covers the sequence to identify a server that accepts email for a domain. The SMTP client first looks up a DNS MX RR, and if is not found, falls back to a DNS A or AAAA request. If a CNAME record is found, the resulting name is processed as if it were the initial name.
 
 [Section 5 of RFC5321]: https://www.rfc-editor.org/rfc/rfc5321#section-5
 
-This mechanism has two major defects.
+This mechanism suffers from two major drawbacks.
 
-- It overloads a DNS record with an email service semantic.
-- If there are no SMTP listeners at the A/AAAA addresses, message delivery will be attempted repeatedly many times before the sending Mail Transfer Agent (MTA) gives up and:
-  - It delay notification to the sender in the case of misdirected mail.
-  - It consumes resources at the sender.
+- A DNS overload because of an email service semantic.
+- If there are no SMTP listeners at the A/AAAA addresses, message delivery will be attempted repeatedly many times before the sending Mail Transfer Agent (MTA) gives up, implying:
+  - a delay notification to the sender in the case of misdirected mail,
+  - a waste of IT resources at the sender.
 
 The "Null MX" protocol solves these issues.
 

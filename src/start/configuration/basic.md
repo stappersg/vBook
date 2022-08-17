@@ -4,7 +4,8 @@ Several examples can be found in the [example/config](https://github.com/viridIT
 
 ## The configuration file
 
-`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Backup the `vsmtp.toml` file. Open it with your favorite editor. Remove everything, and copy the configuration bellow.
+`vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Do a backup and open the file with your favorite editor. Remove everything, and copy the configuration bellow.
+
 ```toml
 # Version requirement. Do not remove or modify it
 version_requirement = ">=1.0.0"
@@ -41,13 +42,13 @@ server = "warn"
 filepath = "/etc/vsmtp/rules/main.vsl"
 ```
 
-Now that the server is configured, we need to define rules used to filter messages. This is the role of vSL.
+Update the IP addresses, the filenames and the paths. The server is now configured. We have to define rules to filter messages. 
 
 ## vSL : the vSMTP Scripting Language
 
-You are able to define the behavior of vSMTP thanks to a simple but powerful programming language, the vSMTP Scripting Language (vSL). vSL is based on four main concepts : `rules`, `actions`, `objects` and `services`.
+The behavior of vSMTP can be defined using a simple but powerful programming language, the vSMTP Scripting Language (vSL). It is based on four main concepts : `rules`, `actions`, `objects` and `services`.
 
-`Rules` execute code at different stages of a SMTP transaction and then return a status code to vSMTP, telling the server what to do next. Using `rules`, you can deny, accept and quarantine incoming messages.
+`Rules` may be defined at each step of a SMTP transaction. They return a status code requesting the vSMTP server to deny, accept or quarantine a message.
 
 ```js
 // rule "<name>" || {
@@ -66,7 +67,7 @@ rule "my blacklist" || {
 }
 ```
 
-`Actions` simply execute code. Compared to a `rule`, an `action` does not return anything, and thus do not influence the state of a transaction.
+`Actions` are similar to `rules` but do not return any status code and thus cannot modify the state of a transaction.
 
 ```js
 // action "<name>" || {
@@ -80,7 +81,7 @@ action "log incoming transaction" || {
 }
 ```
 
-`Objects` contain re-usable fields like mailboxes, ip addresses, domain names, file content etc ...
+`Objects` are typed containers like mailboxes, ip addresses, domain names, file content, etc.
 
 ```js
 // object <name> <type> = "<value>";
@@ -94,7 +95,7 @@ print(`my personal address: ${my_address}`);
 print(`content of whitelist: ${whitelist}`);
 ```
 
-`Services` are interfaces with third party software.
+`Services` define interfaces with third party software.
 
 ```js
 // service <name> <type>[:<content-type>] = "<value>";
@@ -123,14 +124,14 @@ The `main.vsl` file is the entry point for vSL, located in the `/etc/vsmtp/rules
 
 ### RHAI and vSL
 
-vSMTP scripting is based on the RHAI language. Please consult [The RHAI book] for detailed information about variables, functions, etc.
+vSMTP scripting is based on the RHAI language. Please consult [The RHAI book] for detailed information.
 
 [The RHAI book]: https://rhai.rs/book/
 
 ### Defining objects
 
-Let's define together all the required objects for John Doe's MTA.
-Open your favorite editor and create a `objects.vsl` file in the rule directory.
+Let's define all the required objects for John Doe's MTA.
+Open your favorite editor and create a `objects.vsl` file in the `/etc/vsmtp/rules` directory. Do not forget to update the IP addresses, the domain, etc.
 
 ```javascript
 // -- objects.vsl
@@ -166,15 +167,12 @@ cat blacklist.txt
 # foobar-spam-pro.org
 ```
 
-Now we need to apply some rules on these objects.
-
 ## Defining directives (rules and actions)
 
 Let's add some rules in the `main.vsl` file for Doe's family MTA.
-Here is what we want to configure:
 
-- Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
-- We want to deliver emails using the Maildir format if a recipient is from the family.
+- As Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
+- Messages sent to the family must be delivered in MailBox format.
 
 ```javascript
 // -- main.vsl
