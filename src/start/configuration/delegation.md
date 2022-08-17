@@ -106,5 +106,3 @@ import "service" as svc;
 
 Once the "check email for virus" rule is run, vsmtp will send the email to the clamsmtpd service and rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation
 resumes, and the body of this rule is evaluated.
-
-___That's all folks !___

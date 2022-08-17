@@ -50,7 +50,7 @@ Now Doe's family server is protected against open-relaying attacks.
 
 [advanced section]: ../../advanced/eam/spf.md
 
-The SPF protocol allows other MTAs to check that outgoing messages from Doe's family domain are valid. A new DNS record is added into the `doe-family.com` DNS zone. It announces that only the server declared in the MX record is allowed to send messages on behalf of Doe's family.
+The SPF protocol allows other MTAs to check that outgoing messages from Doe's family domain are valid. A new DNS record is added into the `doe-family.com` DNS zone. It declares that only the server declared in the MX record is allowed to send messages on behalf of Doe's family.
 
 ```shell
 doe-family.com.          TXT "v=spf1 +mx -all"

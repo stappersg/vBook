@@ -4,11 +4,11 @@ The configuration files of vSMTP and its sub-systems are defined using the [TOML
 
 [TOML]: https://toml.io/
 
-TOML uses hash tables as collections of key/value pairs. Key/value pairs within tables are not supposed to be in any specific order. Tables appear in square brackets. Dots are used to signify nested tables. Nested array of tables are also allowed.
+TOML uses hash tables as collections of key/value pairs. Key/value pairs within tables do not need to be in any specific order. Tables appear in square brackets. Dots are used to signify nested tables. Nested array of tables are also allowed.
 
 ## The vsmtp.toml file
 
-The `vsmtp.toml` is the main configuration file. It should be located in `/etc/vsmtp` directory. An alternative filename or location can be specified in the systemd's service file `/etc/systemd/system/vsmtp.service` or, in interactive mode, using the `--config` option.
+The `vsmtp.toml` is the main configuration file. It should be located in the `/etc/vsmtp` directory. An alternative filename or location can be specified in the systemd's service file `/etc/systemd/system/vsmtp.service` or, in interactive mode, using the `--config` option.
 
 The vSMTP TOML file is currently split into two main tables:
 

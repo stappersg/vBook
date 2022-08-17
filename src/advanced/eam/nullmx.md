@@ -1,6 +1,6 @@
 # Null MX record
 
-The "null MX" protocol is used to state that mail services are disable in a given domain. The protocol is described in [RFC 7505].
+The "null MX" protocol is used to state that mail services are disabled in a given domain. The protocol is described in [RFC 7505].
 
 [RFC 7505]: https://www.rfc-editor.org/rfc/rfc7505.html
 
