@@ -30,7 +30,7 @@ The RFC 7505 defines two specific return codes.
 
 | Code | X.1.10 |
 | - | - |
-| Text | Recipient address has null MX | 
+| Text | Recipient address has null MX |
 | Basic status code | 556 |
 | Description | The associated address is marked as invalid using a null MX. |
 
@@ -39,7 +39,6 @@ The RFC 7505 defines two specific return codes.
 | Text | Sender address has null MX |
 | Basic status code | 550 |
 | Description | The associated sender address has a null MX, and the SMTP receiver is configured to reject mail from such sender (e.g., because it could not return a DSN). |
-
 
 ### vSL predefined functions
 
