@@ -1,26 +1,26 @@
 # Sender Policy Framework (SPF)
 
-This document specifies the vSMTP implementation of the Sender Policy Framework (SPF) protocol described in [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html).
+This document describes the vSMTP implementation of the Sender Policy Framework (SPF) protocol described in [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html).
 
-SPF is an authentication standard for linking a domain name and an email address. it allows email clients to verify that incoming email from a domain comes from a host authorized by the administrator of this domain.
+SPF is an authentication standard to link a domain name and an email address. it allows email clients to verify that incoming email from a domain comes from a host authorized by the administrator of this domain.
 
 The SPF framework allows the ADministrative Management Domains (ADMDs) to explicitly authorize hosts to send email. The authorization list is published in the DNS records of the sender's domain.
 
 ## DNS records
 
-A SPF record is a TXT record type. There should be only one SPF record per domain. If you have multiple DNS SPF records, email carriers won't know which one to use, which could cause authentication issues.
+The type of a SPF record is TXT. There should be only one SPF record per domain. In case of multiple SPF records, an error may be raised.
 
-Here is a basic SPF record example. Please refer to RFC 7208 for further details.
+Here is a basic SPF record example: "only servers in the range 123.123.123.0/24 and MTA (MX) are authorized to send emails from my domain example.com. All other senders are considered unauthorized."
 
 ```shell
 example.com.          TXT "v=spf1 +mx ip4:123.123.123.0/24 -all"
 ```
 
-It means "only servers in the range 123.123.123.0/24 and MTA (MX) are authorized to send emails from my domain example.com. All senders not listed here are considered unauthorized. "
-
-Besides the aforementioned "-all" there is also a tilde version: ~all. It indicates that other senders are not allowed, but must still be accepted. This “Soft Fail” statement was first introduced for testing purposes, but is now used by various hosting providers.
+There is also a tilde version: ~all. It warns that other senders are not allowed, but must still be accepted. This “Soft Fail” statement was first introduced for testing purposes, but is now used by various hosting providers.
 
 > Use of wildcard records for publishing is discouraged.
+
+Please refer to RFC 7208 for further details.
 
 ## vSMTP implementation
 
@@ -31,17 +31,17 @@ The RFC 7208 does not enforce a HELO/EHLO verification.
 > "It is RECOMMENDED that SPF verifiers not only check the "MAIL FROM" identity but also separately check the "HELO" identity
 [...] Additionally, since SPF records published for "HELO" identities refer to a single host, when available, they are a very reliable source of host authorization status.  Checking "HELO" before "MAIL FROM" is the RECOMMENDED sequence if both are checked."
 
-Even if the RFC 5321 tends to normalize the HELO/EHLO arguments as the fully qualified domain name of the SMTP client, the vSMTP SPF verifier is prepared for the identity to be an IP address literal or simply be malformed.
+The RFC 5321 tends to normalize the HELO/EHLO arguments to represent the fully qualified domain name of the SMTP client. However the vSMTP SPF verifier is prepared for the identity to be an IP address literal or simply be malformed.
 
 > "SPF check can only be performed when the "HELO" string is a valid, multi-label domain name."
 
 ### MAIL FROM identity
 
-According to RFC, "MAIL FROM" check occurs when :
+According to the RFC, "MAIL FROM" check occurs when :
 
 > "SPF verifiers MUST check the "MAIL FROM" identity if a "HELO" check either has not been performed or has not reached a definitive policy result."
 
-Please notes that [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html#section-4.5.5) allows the reverse-path to be null. In this case, the RFC 7208 defines the "MAIL FROM" identity to be the mailbox composed of the local-part "postmaster" and the "HELO" identity.
+Note that [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html#section-4.5.5) allows the reverse-path to be null. In this case, the RFC 7208 defines the "MAIL FROM" identity as the local-part "postmaster" and the "HELO" identity.
 
 ### Location of checks
 
@@ -49,7 +49,7 @@ As defined by the RFC :
 
 > "The authorization check SHOULD be performed during the processing of the SMTP transaction that receives the mail. This reduces the complexity of determining the correct IP address to use as an input to check_host() and allows errors to be returned directly to the sending MTA by way of SMTP replies."
 
-vSMTP allows utilization of the SPF framework only at the "MAIL FROM" stage.
+vSMTP allows the use of the SPF framework only at the "MAIL FROM" stage.
 
 ### Results of Evaluation
 
@@ -68,7 +68,7 @@ The vSMTP SPF verifier implements results semantically equivalent to the RFC.
 
 ### Results headers
 
-Results should be recorded in the message header. According to RFCs, two options are available :
+Results should be recorded in the message header. Two options are available according to the RFC:
 
 1. The "Received-SPF" header
 
@@ -121,7 +121,7 @@ The following error codes can also be sent by the SPF framework.
 
 ### vSL predefined function
 
-The standard API has a dedicated function to check the SPF policy.
-`check_spf` return a status, containing custom codes to send to the client.
+The vSL standard API has a dedicated function to check the SPF policy.
+`check_spf` returns a status, containing custom codes to be sent to the client.
 
-Check the [Security](api/../../../reference/vSL/api/Security.md) file to get the full documentation for `check_spf`.
+Check the [Security](api/../../../reference/vSL/api/Security.md) file to get the full documentation about `check_spf`.
