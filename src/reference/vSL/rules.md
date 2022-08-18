@@ -45,7 +45,7 @@ rule "check connect" || {
 }
 ```
 
-&#9998; | You can use [String Interpolation](https://rhai.rs/book/language/strings-chars.html#string-interpolation) to inject variables in strings.
+&#9998; | You can use [String Interpolation](https://rhai.rs/book/ref/strings-chars.html#string-interpolation) to inject variables in strings.
 
 The `delegate` directive is different: it also use a smtp service to delegate the email to a third party software:
 
