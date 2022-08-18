@@ -1,19 +1,18 @@
 # Logging
 
-In vSMTP, logs are separated in two categories: server logs & app logs.
-
-* server logs are relative to vsmtp, they regroup information about the client, internal state & errors.
-* app logs are written using the `log(level, message)` function in your `vsl` rules.
+The vSMTP logging subsystem include syslog, server logs, and application logs.
 
 ## Server logs
 
-By default, server logs are located at `/var/log/vsmtp/vsmtp.log`.
+Server logs concerns the vSMTP server and include information about the client, the internal state, etc.
+
+The default output directory is `/var/log/vsmtp/vsmtp.log`.
 
 Logs are configured by "modules", that represent a specific part of the server.
-The `rule_engine` module will enable logs for the rule engine, `parser` for the
-mime parser, etc ...
+The `rule_engine` module enables logs for the rule engine, the `parser` module for the
+mime parser, etc.
 
-To configure server logs, use the syntax down below in your `vsmtp.toml`:
+The `vsmtp.toml` file is used to configure server logs, such as below:
 
 ```toml
 [server.logs]
@@ -42,7 +41,9 @@ level = [
 
 ## Application logs
 
-To configure applicative logs (log output of your vsl files, using the `log(level, message)` function), write the following in your `vsmtp.toml`:
+Application logs are defined using the `log(level, message)` function in the vSL rules.
+
+The default output location can be modified in the `vsmtp.toml` file, using this directive:
 
 ```toml
 [app.logs]
@@ -50,7 +51,6 @@ To configure applicative logs (log output of your vsl files, using the `log(leve
 filepath = "./tmp/system/app.log"
 ```
 
-## Syslogs
+## Syslog
 
-vSMTP automatically write to syslogs with the `info` level by default. It is not yet configurable.
-Files are written at `/dev/log` or `/var/run/syslog`.
+vSMTP automatically send logs to the syslog daemon using the `mail` category and the `info` level. It is not yet configurable.

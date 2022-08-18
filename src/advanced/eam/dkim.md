@@ -1,26 +1,20 @@
 # DomainKeys Identified Message
 
-This document specifies the vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
+The vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol is described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
 
-DKIM is an open standard for email authentication that verifies the message of an email. DKIM gives emails a signature header which is added to the email. This signature is secured by a key pair (private/public) and a certificate.
+DKIM is an open standard for email authentication used to check the integrity of the content. A signature header is added to the messages. This signature is secured by a key pair (private/public) and a certificate.
 
 > DKIM signatures work like a watermark. Therefore, they survive forwarding, which is not the case for SPF.
 
-Assertion of responsibility is validated through a cryptographic signature and by querying the Signer's domain directly to retrieve the appropriate public key.
+Assertion of responsibility is validated through a cryptographic signature and by querying the Signer's domain to retrieve the appropriate public key.
 
 ## DNS records
 
-Like the SPF protocol, DKIM is a DNS TXT record inserted into the sender domain's DNS. It contains the public key for the DKIM settings. The private key held by the sending email server can be verified against the public key by the receiving email server.
+DKIM relies on a DNS TXT record inserted into the sender domain's DNS zone. The record contains the public key for the DKIM settings. The private key held by the sending mail server can be verified against the public key by the receiving mail server.
 
-DKIM selectors are used to connect and decrypt encrypted signatures.
+Unlike SPF record, several DKIM records can be linked to a domain. A domain can have several public keys if it has several mail servers (each mail server has its own private key that matches only one public key). The recipient's mail server uses an attribute called selector of the DKIM signature to find the correct public key in the sender's DNS zone.
 
-Unlike SPF authentication, your domain can have multiple DNS DKIM records without causing a problem.
-
-A domain can have multiple public keys if it has multiple mail servers (each mail server has its own private key that matches only one public key). A selector is an attribute within a DKIM signature that helps the recipient's server find the correct public key in the sender's DNS.
-
-A DKIM record must be placed in at address : `[selector]._domainkey.[domain].` and the query on may only result in one TXT type record maximum.
-
-> DKIM keys are not meant to be changed frequently. A high time-to-live (TTL) value of 86400 seconds or more is not uncommon.
+A DKIM record must follow the syuntax : `[selector]._domainkey.[domain].` and the query on may only result in one TXT type record maximum.
 
 Here is an example of a DKIM record:
 
@@ -28,32 +22,34 @@ Here is an example of a DKIM record:
 mail._domainkey.example.com. 86400 IN TXT "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG...
 ```
 
+> DKIM keys are not meant to be changed frequently. A high time-to-live (TTL) value of 86400 seconds or more is not uncommon.
+
 For detailed information about fields in a DKIM record please check the [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html#section-3.5).
 
 ## vSMTP implementation
 
-vSMTP can act as `signer` or `verifier` as described in the RFC.
+vSMTP can act as DKIM `signer` or `verifier`.
 
 ### Results of Evaluation
 
 The vSMTP DKIM verifier implements results semantically equivalent to the RFC.
 
-| Result    | Description                                                                                                                                                                                                  |
-| :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| none      | The message was not signed.                                                                                                                                                                                  |
-| pass      | The message was signed, the signature or signatures were acceptable to the ADMD, and the signature(s) passed verification tests.                                                                             |
-| fail      | The message was signed and the signature or signatures were acceptable to the ADMD, but they failed the verification test(s).                                                                                |
-| policy    | The message was signed, but some aspect of the signature or signatures was not acceptable to the ADMD.                                                                                                       |
+| Result    | Description |
+| :-------- | :---------- |
+| none      | The message was not signed. |
+| pass      | The message was signed, the signature or signatures were acceptable to the ADMD, and the signature(s) passed verification tests. |
+| fail      | The message was signed and the signature or signatures were acceptable to the ADMD, but they failed the verification test(s). |
+| policy    | The message was signed, but some aspect of the signature or signatures was not acceptable to the ADMD. |
 | neutral   | The message was signed, but the signature or signatures contained syntax errors or were not otherwise able to be processed.  This result is also used for other failures not covered elsewhere in this list. |
-| temperror | The message could not be verified due to some error that is likely transient in nature, such as a temporary inability to retrieve a public key.  A later attempt may produce a final result.                 |
-| permerror | The message could not be verified due to some error that is unrecoverable, such as a required header field being absent. A later attempt is unlikely to produce a final result.                              |
+| temperror | The message could not be verified due to some error that is likely transient in nature, such as a temporary inability to retrieve a public key.  A later attempt may produce a final result. |
+| permerror | The message could not be verified due to some error that is unrecoverable, such as a required header field being absent. A later attempt is unlikely to produce a final result. |
 
 ### Results headers
 
 Results should be recorded in the message header before any existing DKIM-Signature or preexisting
 authentication status header fields in the header field block.
 
-Unlike SPF there's no specific DKIM header thus the `Authentication-Results` header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) should be used.
+There's no specific DKIM header. The `Authentication-Results` header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) should be used.
 
 ```shell
 Authentication-Results: example.com;
@@ -72,7 +68,7 @@ DKIM-Signature:  v=1; a=rsa-sha256; s=gatsby; d=example.com;
 
 ### DKIM failure codes
 
-The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
+The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes to report the DKIM and SPF mechanisms results.
 
 | Code              | X.7.20                                                                                                                                 |
 | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -110,6 +106,6 @@ The following error codes can also be sent by the DKIM framework.
 
 ### vSL predefined function
 
-The standard API has a dedicated function to use DKIM.
+The standard vSL API has dedicated functions to handle the DKIM protocol.
 
-Check the [Security](api/../../../reference/vSL/api/Security.md) file to get the full documentation for `verify_dkim`.
+Check the [Security](api/../../../reference/vSL/api/Security.md) file to get the full documentation about `verify_dkim`.
