@@ -1,8 +1,8 @@
-## Delivery sub-system
+# Delivery sub-system
 
 The delivery subsystem uses specific actions. They can be called at any vSMTP stages.
 
-### Delivering local mails
+## Delivering local mails
 
 The incoming mail traffic can locally be delivered using :
 
@@ -16,12 +16,12 @@ The incoming mail traffic can locally be delivered using :
 
 [LMTP]: https://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol
 
-### Delivering distant mails
+## Delivering distant mails
 
-vSMTP uses a well known and secured third-party software [Lettre] also written in Rust.
+vSMTP uses a well known and secured third-party software [Lettre] written in Rust.
 
 [Lettre]: https://github.com/lettre/lettre
 
-### Documentation
+## Documentation
 
 Check out the [Delivery](api/Delivery.md) module documentation.
