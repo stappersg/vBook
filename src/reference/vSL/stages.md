@@ -1,12 +1,12 @@
 # vSL stages and SMTP states
 
-vSMTP can interact with the messaging transaction at multiple levels. These are related to the states defined in the SMTP protocol.
+vSMTP interacts with the messaging transaction at all states defined in the SMTP protocol.
 
-At each step vSL updates a global context containing transaction and mail data.
+At each step, vSL updates a global context containing transaction and mail data.
 
 ## vSMTP stages
 
-Here is a list of available stages in order of evaluation.
+Available stages in order of evaluation:
 
 | Stage   | SMTP state                 | Context available               |
 | :------ | :------------------------- | :------------------------------ |
@@ -18,10 +18,11 @@ Here is a list of available stages in order of evaluation.
 | postq   | After queuing[^postq]      | The entire mail.                |
 | deliver | Before delivering          | The entire mail.                |
 
-[^preq]: Preq stage triggers after the end of receiving data from the client, just before the server answer back with a 250 code.
-[^postq]: Postq stage triggers after the preq stage, when the connection closes and the SMTP code was sent to the client.
+[^preq]: Preq stage triggers after the end of receiving data from the client, just before the server answers back with a 250 code.
 
-Stages are declared in a `main.vsl` file like this:
+[^postq]: Postq stage triggers after the preq stage, when the connection closes and the SMTP code is sent to the client.
+
+Stages are declared in a `main.vsl` file like below:
 
 ```js
 #{
@@ -41,21 +42,21 @@ Stages are declared in a `main.vsl` file like this:
 }
 ```
 
-Stages do not need to be declared in order, but it is a good practice to do so.
+Stages do not need to be declared in the previous given order, but it is a good practice.
 
 ## Before queueing vs. after queueing
 
 vSMTP can process mails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection.
 
-This early detection of inappropriate mails has several advantages :
+The advantages of an early detection of unwanted mails are:
 
-- The responsibility is on the remote SMTP client side,
-- It consumes less CPU and disk resources,
+- The responsibility is on the remote SMTP client side.
+- It consumes less CPU and disk resources.
 - The system is more reactive.
 
-However as the SMTP transfer must end within a deadline, a system facing a heavy workload may have difficulties to respond in time.
+However, as the SMTP transfer must to be completed within a deadline, heavy workload may cause a system to fail to respond in time.
 
-To protect against bursts and crashes, vSMTP implements several internal mechanisms like 'delay-variation' or 'temporary service unavailable messages', in accordance with the SMTP RFCs.
+To protect against bursts and crashes, vSMTP implements several internal mechanisms like 'delay-variation' or 'temporary service unavailable messages', in conformance with the SMTP RFCs.
 
 ## Context variables
 
@@ -75,4 +76,4 @@ HELO                                    # Start of SMTP transaction
 QUIT                                    # End of transaction
 ```
 
-&#9762; | the "mail context" (data obtained through the `Connection` and `Transaction` modules) is unique for each incoming connexion.
+&#9762; | The "mail context" (data obtained from the `Connection` and `Transaction` modules) is unique for each incoming connection.
