@@ -90,7 +90,7 @@ This function dumps in JSON format only the available content at a stage.  The b
 
 ## User-defined actions
 
-Combined actions can be declared using a [RHAI](https://rhai.rs/) function.
+Combined actions can be declared using a [RHAI function](https://rhai.rs/book/ref/functions.html).
 
 ```javascript
 fn my_faccept() {                              
