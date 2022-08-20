@@ -22,6 +22,7 @@
     "libc",
     "libgsasl",
     "libsasl",
+    "LMTP",
     "ltpn",
     "maildir",
     "mbox",

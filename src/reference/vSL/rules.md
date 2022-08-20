@@ -4,17 +4,7 @@ Rules are the entry point to interact with the SMTP traffic at a user level.
 
 ## Overall Syntax
 
-Rules and actions are quite similar except that rules must return a vSL rule engine status.
-They follow the same syntax :
-
-```js
-rule "rule name" || {
-    // ... rule body.
-    accept() // a rule returns a rule engine status
-}
-```
-
-Check out the [Status](api/Status.md) file to see which status you can use and what their effects are.
+Rules and actions are quite similar but rules must return a vSL rule engine status. They are defined in the same way:
 
 ```js
 action "action name" || {
@@ -22,32 +12,40 @@ action "action name" || {
 }
 ```
 
-You can also use the inline syntax below:
+```js
+rule "rule name" || {
+    // ... rule body.
+    accept() // a rule returns a rule engine status
+
+}
+```
+
+> Rule engine status and effects are listed in the API, chapter [status](api/Status.md).
+
+An inline syntax is also available, like below:
 
 ```js
 action "name" || instruction,
 rule "name" || instruction,
 ```
 
-Here are some rule examples:
+An example of a rule:
 
 ```js
 // Inline rule that only accepts a client at 192.168.1.254
 rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() }
 ```
 
-The same rule, including a log:
+The same rule, including a [string interpolation](https://rhai.rs/book/language/strings-chars.html#string-interpolation) in a log:
 
 ```js
 rule "check connect" || {
-    log(`Connection from : ${client_ip()}`);
+    log("warn", `Connection from : ${client_ip()}`);
     if client_ip() == "192.168.1.254" { next() } else { deny() }
 }
 ```
 
-&#9998; | You can use [String Interpolation](https://rhai.rs/book/ref/strings-chars.html#string-interpolation) to inject variables in strings.
-
-The `delegate` directive is different: it also use a smtp service to delegate the email to a third party software:
+The `delegate` directive is different: it uses a smtp service to delegate the email to a third party software:
 
 ```js
 service third_party smtp = #{
@@ -61,7 +59,7 @@ service third_party smtp = #{
 delegate third_party "delegate email processing" || { ... }
 ```
 
-Check out [The delegation guide](../../start/configuration/delegation.md) for an in-depth description of the delegation mechanism.
+Check out the [Policy delegation](../../start/configuration/delegation.md) chapter for an in-depth description of the delegation mechanism.
 
 ## Rules and vSMTP Stages
 
@@ -78,7 +76,7 @@ import "objects" as obj;
 
 #{
     connect: [ 
-        action "log connect" || log(`Connection from : ${client_ip()}`),
+        action "log connect" || log("warn", `Connection from : ${client_ip()}`),
         rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() },
     ],
 
@@ -102,8 +100,7 @@ import "objects" as obj;
 
 ## Implicit rules
 
-To avoid undefined behavior, the implicit status in a stage is `next()`.
-For security purpose end-users should always add a trailing rule at the end of a stage. if not, the implicit `next()` of the last rule will jump to the next stage.
+For security purpose, end-users should always add a trailing rule at the end of a stage. However, to avoid undefined behavior, an implicit trailing rule is set to `next()`, moving the rule engine to the next stage.
 
 ```js
 //-- objects.vsl

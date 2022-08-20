@@ -2,7 +2,7 @@
 
 ## Starting vSMTP
 
-vSMTP was designed to run as a Unix service and is not intended to be run interactively from the command line. However, in case of startup problems, it can be useful to run it with a minimal configuration file to check the settings. In any case, vSMTP must be started with root privileges.
+vSMTP is designed to run as a Unix service and is not intended to be run interactively using the command lines. However, in case of startup problems, it can be useful to run it with a minimal configuration file to check the settings. In any case, vSMTP must be started with root privileges.
 
 ```shell
 $ sudo vsmtp -c /etc/vsmtp/vsmtp-minimal.toml
@@ -34,9 +34,9 @@ SUBCOMMANDS:
     help           Print this message or the help of the given subcommand(s)
 ```
 
-Loaded config can be checked using `config-diff` and `config-show` subcommands.
+Loaded configurations can be checked using `config-diff` and `config-show` subcommands.
 
-```json
+```shell
 $ sudo vsmtp -c /etc/vsmtp/vsmtp.toml config-show
 Loading configuration at path='/etc/vsmtp/vsmtp.toml'
 Loaded configuration: {
@@ -66,7 +66,7 @@ Loaded configuration: {
 }
 ```
 
-```json
+```shell
 $ sudo vsmtp -c /etc/vsmtp/vsmtp.toml config-diff
 Loading configuration at path='/etc/vsmtp/vsmtp.toml'
  {
@@ -105,7 +105,7 @@ Loading configuration at path='/etc/vsmtp/vsmtp.toml'
 
 Internal and user defined queues can be managed using the `vqueue` command with root privileges.
 
-The `vqueue show` subcommand displays a summary of vSMTP queues in a Postfix qshape fashion. The `-c` option allows vqueue to parse queues and quarantines defined in the TOML configuration file.
+The `vqueue show` subcommand displays a summary of vSMTP queues in a Postfix qshape way. The `-c` option allows vqueue to parse queues and quarantines defined in the TOML configuration file.
 
 ```shell
 WORKING    is at '/var/spool/vsmtp/working' : <EMPTY>
@@ -125,15 +125,15 @@ DEAD       is at '/var/spool/vsmtp/dead' : <EMPTY>
 
 ## Managing messages
 
-Like queues, messages are also managed with the `vqueue` command.
+Like queues, messages are also managed using the `vqueue` command.
 
 Features available in v0.10:
 
-- vqueue msg \<msg-id\> show [json | eml] : Print the content of one message.
-- vqueue msg \<msg-id\> move \<queue\> : Change the queue of the message.
-- vqueue msg \<msg-id\> remove : Remove the message from disk.
+- vqueue msg \<msg-id\> show [json | eml] : Print the content of a message.
+- vqueue msg \<msg-id\> move \<queue\> : Move a message to a queue.
+- vqueue msg \<msg-id\> remove : Remove a message from disk.
 
-Feature planned for v0.11:
+Feature planned:
 
-- vqueue msg \<msg-id\> re-run : Reintroduce the message in the delivery system (and reevaluate the status).
+- vqueue msg \<msg-id\> re-run : Reintroduce a message in the delivery system (and reevaluate its status).
 - User defined quarantine queues inspection.

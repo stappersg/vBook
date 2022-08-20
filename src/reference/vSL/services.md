@@ -1,10 +1,22 @@
-## Services
+# Services
 
-Services are declared using the `service` keyword.
+`DRAFT - to be reviewed`
 
-## Commands
+Services are mainly used to interact with third party software.
+Services are declared using the `service` keyword, followed by its name, and its type.
 
-A command service lets you run commands using vsl.
+```js
+service <name> <type> = #{
+    <field1>: "value",
+    <field2>: "value",
+    ...
+    <fieldn>: "value"
+};
+```
+
+## The command type
+
+This type lets you execute Unix shell commands.
 
 ```js
 service clamscan cmd = #{
@@ -22,10 +34,17 @@ clamscan.run_cmd();
 clamscan.run_cmd([ "--infected", "/home/another" ]);
 ```
 
-## Databases
+## The database type
 
-The db service, enables you to communicate with a database.
-Here we open a csv database with the 'connector' field.
+The db service allows connection and operations on databases. Several subtypes are available.
+
+```js
+service <name> <db::subtype> = #{
+    ...
+};
+```
+
+This is a csv database with the 'connector' field.
 
 ```js
 service greylist db:csv = #{
@@ -52,11 +71,9 @@ print(john);
 print(john[2]);
 ```
 
-## Smtp
+## The smtp type
 
-The `smtp` service enables you to use the `delegate` directive
-to delegate the email to another service via the smtp protocol.
-Here we send the email to the `clamsmtpd` antivirus.
+The smtp type enables you to use the delegate directive to delegate the email to another service via the smtp protocol. The example hereunder explains how to delegate to ClamAV antivirus through its SMTP proxy (clamsmtpd).
 
 ```js
 // -- service.vsl
@@ -86,4 +103,4 @@ import "service" as svc;
 }
 ```
 
-Check out the [Services](./api/Services.md) file to get access to the full list of functions for services.
+Check out the [Services](./api/Services.md) chapter for the full list of functions for services.
