@@ -45,7 +45,7 @@ rule "check connect" || {
 }
 ```
 
-The `delegate` directive is different: it use a smtp service to delegate the email to a third party software:
+The `delegate` directive is different: it uses a smtp service to delegate the email to a third party software:
 
 ```js
 service third_party smtp = #{

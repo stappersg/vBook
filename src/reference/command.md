@@ -36,7 +36,7 @@ SUBCOMMANDS:
 
 Loaded configurations can be checked using `config-diff` and `config-show` subcommands.
 
-```json
+```shell
 $ sudo vsmtp -c /etc/vsmtp/vsmtp.toml config-show
 Loading configuration at path='/etc/vsmtp/vsmtp.toml'
 Loaded configuration: {
@@ -66,7 +66,7 @@ Loaded configuration: {
 }
 ```
 
-```json
+```shell
 $ sudo vsmtp -c /etc/vsmtp/vsmtp.toml config-diff
 Loading configuration at path='/etc/vsmtp/vsmtp.toml'
  {
