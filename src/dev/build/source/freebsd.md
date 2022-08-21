@@ -4,7 +4,7 @@ The installation described above was performed on an FreeBSD 13.0 server.
 
 ## Installing Rust language
 
-Rust port, packages and information can be found on [freshports] website. You can find more information about packages and port in the [FreeBSD handbook].
+Rust port, packages and information can be found on the [freshports] website. Find more information about packages and port in the [FreeBSD handbook].
 
 [freshports]: https://www.freshports.org/lang/rust/
 [FreeBSD handbook]: https://docs.freebsd.org/en/books/handbook/
@@ -19,7 +19,7 @@ pkg install lang/rust
 
 ## Dependencies
 
-FreeBSD 13.x comes with all required dependencies. Please check that sasl is included in your release (see Linux dependencies).
+FreeBSD 13.x includes all required dependencies. Check that sasl is included in your release (see Linux dependencies).
 
 ## vSMTP compilation
 
@@ -72,11 +72,11 @@ chmod 555 /usr/sbin/vsmtp
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
-If required, do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
+If required, add private key and certificate to `/etc/vsmtp/certs` and grant reading rights to the vsmtp user.
 
 ### Disabling sendmail
 
-Sendmail may have been disabled during FreeBSD install. If not, add the following in the /etc/rc.conf file and reboot the system.
+Sendmail may have been disabled during FreeBSD installation. If not, add the following lines in the `/etc/rc.conf` file and reboot the system.
 
 ```shell
 sendmail_enable="NO"
@@ -97,7 +97,7 @@ chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 
 ## Adding a vSMTP as a system service
 
-vSMTP comes with a mechanism that drop privileges at startup. User ACLs are no longer needed.
+vSMTP drops privileges at startup. User ACLs are no longer needed.
 
 Please add:
 
@@ -139,10 +139,10 @@ run_rc_command "$1"
 
 ### Starting with a non privileged user
 
-If you want to start with an other mechanism please follow these instructions.
-You must grant the rights to the user to bind on ports <1024.
-The [kernel] must be updated to support network [ACL].
-Add to these options to the KERNEL file and rebuild it.
+To start with an other mechanism please follow these instructions: 
+- Grant the rights to the user to bind on ports <1024.
+- [kernel] must be updated to support network [ACL].
+- Add to these options to the KERNEL file and rebuild it.
 
 [kernel]: https://docs.freebsd.org/en/books/handbook/kernelconfig/
 [ACL]: https://docs.freebsd.org/en/books/handbook/mac/
@@ -183,4 +183,4 @@ $ sysctl net.inet.ip.portrange.reservedhigh=0
 net.inet.ip.portrange.reservedhigh: 1023 -> 0
 ```
 
-The user with uid 999 should now be enable to bind on standard SMTP ports (25, 587, 465).
+The user with uid 999 should now be authorized to bind on standard SMTP ports (25, 587, 465).

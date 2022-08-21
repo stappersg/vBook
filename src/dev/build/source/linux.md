@@ -1,15 +1,15 @@
 # Linux installation
 
-The installation described above was performed on an Ubuntu Server 20.04. There may be slight changes to apply for other distributions.
+The installation described below was performed on an Ubuntu Server 20.04. Slight changes may be needed for other distributions.
 
 ## Install Rust language
 
-Follow the instruction from the official website <https://www.rust-lang.org/tools/install>
+See the official website <https://www.rust-lang.org/tools/install>
 
 ## Check dependencies
 
-vSMTP requires `libc` libraries and GCC compiler/linker.
-On a Debian system these can be installed through the `build-essential` package.
+vSMTP requires the `libc` libraries and the GCC compiler/linker.
+On a Debian system, they are contained in the `build-essential` package.
 
 The Transport Layer Security protocol (TLS) is provided by [OpenSSL development libraries](https://www.openssl.org).
 The Debian package is libssl-dev package.
@@ -32,7 +32,7 @@ sudo apt install
 
 ## vSMTP compilation
 
-`cargo` (Rust package manager) will download all required dependencies and compile the source code in accordance with your environment.
+`cargo` (Rust package manager) downloads all required dependencies and compile the source code in conformance to the current environment.
 
 ```shell
 $> cargo build
@@ -58,11 +58,11 @@ SUBCOMMANDS:
     help           Print this message or the help of the given subcommand(s)
 ```
 
-By default Rust/Cargo use static linking to compile - all libraries required are compiled into the executable - allowing vSMTP to be a standalone application.
+By default Rust/Cargo use static linking to compile. All libraries required are compiled into the executable, allowing vSMTP to be a standalone application.
 
 ## Configure the Operating System for vSMTP
 
-For security purpose, vSMTP should run using a dedicated account with minimal privileges.
+For security purpose, vSMTP should run using a dedicated account with minimum privileges.
 
 ```shell
 $ sudo adduser --system --shell /usr/sbin/nologin --no-create-home \
@@ -78,18 +78,18 @@ Not creating home directory '/home/vsmtp'.
 
 vSMTP binaries and config files should be located in:
 
-- /usr/sbin/ for binaries
+- /usr/sbin/ : binaries
 - /etc/vsmtp/
-  - /etc/vsmtp/vsmtp.toml : the default configuration file
-  - /etc/vsmtp/rules/ for rules
-  - /etc/vsmtp/certs/ for certificates
-- /var/spool/vsmtp/ for internal queues
+  - /etc/vsmtp/vsmtp.toml : default configuration file
+  - /etc/vsmtp/rules/ : rules
+  - /etc/vsmtp/certs/ : certificates
+- /var/spool/vsmtp/ : internal queues
 - /var/log/
-  - /var/log/vsmtp/ for internal logs and trace
-  - /var/log/mail.log and mail.err for syslog (not implemented in current release)
-- /home/~user/Maildir for local IMAP delivery
+  - /var/log/vsmtp.log/ : internal logs and trace
+  - /var/log/mail.log and mail.err : syslog
+- /home/~user/Maildir : local IMAP delivery
 
-This default behavior can be changed in the vSMTP configuration file `/etc/vsmtp/vsmtp.toml` which is called at startup by the vsmtp service script.
+These default locations may be changed in the `/etc/vsmtp/vsmtp.toml` configuration file which is called by the service startup `/etc/systemd/system/vsmtp.service` file.
 
 ```shell
 sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
@@ -97,7 +97,7 @@ sudo cp ./target/release/vsmtp /usr/sbin/
 sudo cp ./target/release/vqueue /usr/sbin/
 ```
 
-Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
+A minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0) must be created.
 
 ```shell
 sudo bash -c 'echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml'
@@ -109,7 +109,7 @@ Grant rights to files and folders.
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
-If required, do not forget to add your private key and certificate to /etc/vsmtp/certs and allow vsmtp user to read them.
+If required, add private key and certificate to `/etc/vsmtp/certs` and grant reading rights to the vsmtp user.
 
 ## Configuring the MTA service
 
@@ -152,13 +152,13 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 
 ### Add vSMTP as a systemd service
 
-Copy the daemon configuration file to /etc/systemd/system.
+Copy the daemon configuration file in `/etc/systemd/system`.
 
 ```shell
 sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
 ```
 
-Please note that vSMTP comes with a mechanism that drop privileges at startup. The service type must be set to `forking`.
+Please note that vSMTP drops privileges at startup. The service type must be set to `forking`. 
 
 > Do not modify this file unless you know what you are doing.
 
