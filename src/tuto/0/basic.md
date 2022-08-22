@@ -1,7 +1,5 @@
 # Basic configuration
 
-Several examples can be found in the [example/config](https://github.com/viridIT/vSMTP/tree/main/examples/) folder.
-
 ## The configuration file
 
 `vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Do a backup and open the file with your favorite editor. Remove everything, and copy the configuration bellow.
@@ -42,7 +40,7 @@ server = "warn"
 filepath = "/etc/vsmtp/rules/main.vsl"
 ```
 
-Update the IP addresses, the filenames and the paths. The server is now configured. We have to define rules to filter messages. 
+Update the IP addresses, the filenames and the paths. The server is now configured. We have to define rules to filter messages.
 
 ## vSL : the vSMTP Scripting Language
 
