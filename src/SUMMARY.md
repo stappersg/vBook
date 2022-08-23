@@ -44,6 +44,7 @@ The vSMTP reference guide
   - [Objects](reference/vSL/objects.md)
   - [Delivery](reference/vSL/delivery.md)
   - [Services](reference/vSL/services.md)
+  - [Time](reference/vSL/time.md)
   - [Advanced Usage](reference/vSL/advanced.md)
   - [vSL's API](reference/vSL/api.md)
     - [Status](reference/vSL/api/Status.md)
