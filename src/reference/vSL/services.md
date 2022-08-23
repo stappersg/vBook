@@ -20,8 +20,31 @@ This type lets you execute Unix shell commands.
 
 ```js
 service clamscan cmd = #{
+    // Time allowed to execute the command.
+    // Command is aborted if the timeout value is reached
+    timeout: "60s",
+    // The user to execute the command with. (optional)
+    user: "user",
+    // The group to execute the command with. (optional)
+    group: "group",
+    // Name of the command to execute.
+    command: "command-to-execute",
+    // Array of arguments to execute the command with.
+    args: ["--arg1", "--arg2", "--arg3"],
+};
+```
+
+See the [Time](../../start/configuration/time.md) chapter for more information on available time scale formats for the `timeout` field.
+
+### Example
+
+```js
+service clamscan cmd = #{
+    // Time allowed to execute the command. Command is aborted if reached.
     timeout: "10s",
+    // Name of the command to execute.
     command: "clamscan",
+    // Array of arguments to execute the command with.
     args: ["--infected", "--remove", "--recursive", "/home/jdoe"],
 };
 
@@ -39,18 +62,27 @@ clamscan.run_cmd([ "--infected", "/home/another" ]);
 The db service allows connection and operations on databases. Several subtypes are available.
 
 ```js
-service <name> <db::subtype> = #{
+service <name> <db:subtype> = #{
     ...
 };
 ```
 
-This is a csv database with the 'connector' field.
+### CSV database
+
+CSV databases are declared this way:
 
 ```js
 service greylist db:csv = #{
+    // The path to the csv database.
     connector: "/db/user_accounts.csv",
+    // The access mode of the database. Can be:
+    // `O_RDONLY`, `O_WRONLY` or `O_RDWR`.
     access: "O_RDONLY",
+    // The refresh mode of the database.
+    // Can be "always" (database is always refreshed once queried)
+    // or "no" (database is readonly and never refreshed).
     refresh: "always",
+    // The delimiter character used in the csv file.
     delimiter: ",",
 };
 
@@ -79,9 +111,12 @@ The smtp type enables you to use the delegate directive to delegate the email to
 // -- service.vsl
 service clamsmtpd smtp = #{
     delegator: #{
+        // The service address to delegate to.
         address: "127.0.0.1:10026",
+        // The time allowed between each message.
         timeout: "60s",
     },
+    // The address where vsmtp will gather the results of the delegation.
     receiver: "127.0.0.1:10024",
 };
 
