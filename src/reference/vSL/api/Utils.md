@@ -58,7 +58,7 @@ dump(dir)
  ```js
  #{
      preq: [
-        action "dump email" || dump("metadatas"),
+        action "dump email" || dump("metadata"),
      ]
  }
  ```
@@ -110,6 +110,7 @@ in_domain(rcpt)
 </summary>
 <br/>
 <div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ get the domain used to identify a recipient.
  check if the recipient passed as argument is part of the
  domains (root & sni) of the server.
 
@@ -128,7 +129,7 @@ in_domain(rcpt)
  ```js
  #{
      rcpt: [
-        rule "check rcpt domain" || if in_domain(ctx().rcpt) { next() } else { deny() },
+        rule "check rcpt domain" || if in_domain(rcpt()) { next() } else { deny() },
      ]
  }
 

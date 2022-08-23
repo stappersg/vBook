@@ -72,16 +72,16 @@ append_header(header, value)
 <details>
 <summary>
 <code>
-bcc(rcpt)
+get_domain()
 </code>
 </summary>
 <br/>
 <div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Add a recipient as a blind carbon copy. The equivalent of `add_rcpt_envelop`.
+ Get the domain of an email address.
 
  # Args
 
- * `rcpt` - the recipient to add as a blind carbon copy.
+ * `address` - the address to extract the domain from.
 
  # Effective smtp stage
 
@@ -90,10 +90,51 @@ bcc(rcpt)
  # Example
  ```js
  #{
-     connect: [
-        // set "john.doe@example.com" as a blind carbon copy.
-        action "bcc" || bcc("john.doe@example.com"),
-     ]
+     mail: [
+         // You can also use the `get_domain(mail_from())` syntax.
+         action "display sender's domain" || {
+             log("info", `received a message from domain ${mail_from().domain}.`);
+         }
+     ],
+ }
+ ```
+
+ 
+
+</div>
+<br/>
+</details>
+<details>
+<summary>
+<code>
+get_domains()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get all domains of the recipient list.
+
+ # Args
+
+ * `rcpt_list` - the recipient list.
+
+ # Effective smtp stage
+
+ `mail` and onwards.
+
+ # Example
+ ```js
+ #{
+     mail: [
+         action "display recipients domains" || {
+             print("list of recipients domains:");
+
+             // You can also use the `get_domains(rcpt_list())` syntax.
+             for domain in rcpt_list().domains {
+                 print(`- ${domain}`);
+             }
+         }
+     ],
  }
  ```
 
@@ -143,6 +184,80 @@ get_header(header)
 <details>
 <summary>
 <code>
+get_local_part()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get the local part of an email address.
+
+ # Args
+
+ * `address` - the address to extract the local part from.
+
+ # Effective smtp stage
+
+ All of them.
+
+ # Example
+ ```js
+ #{
+     mail: [
+         // You can also use the `get_local_part(mail_from())` syntax.
+         action "display mail from identity" || {
+             log("info", `received a message from ${mail_from().local_part}.`);
+         }
+     ],
+ }
+ ```
+
+ 
+
+</div>
+<br/>
+</details>
+<details>
+<summary>
+<code>
+get_local_parts()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get all local parts of the recipient list.
+
+ # Args
+
+ * `rcpt_list` - the recipient list.
+
+ # Effective smtp stage
+
+ `mail` and onwards.
+
+ # Example
+ ```js
+ #{
+     mail: [
+         action "display recipients usernames" || {
+             print("list of recipients user names:");
+
+             // You can also use the `get_local_parts(rcpt_list())` syntax.
+             for user in rcpt_list().local_parts {
+                 print(`- ${user}`);
+             }
+         }
+     ],
+ }
+ ```
+
+ 
+
+</div>
+<br/>
+</details>
+<details>
+<summary>
+<code>
 has_header(header)
 </code>
 </summary>
@@ -168,6 +283,34 @@ has_header(header)
              }
          }
      ],
+ }
+ ```
+
+ 
+
+</div>
+<br/>
+</details>
+<details>
+<summary>
+<code>
+mail()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Get a copy of the whole email as a string.
+
+ # Effective smtp stage
+
+ `preq` and onwards.
+
+ # Example
+ ```js
+ #{
+     postq: [
+        action "display email content" || log("trace", `email content: ${mail()}`),
+     ]
  }
  ```
 
