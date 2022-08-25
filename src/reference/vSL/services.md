@@ -81,6 +81,11 @@ service greylist db:csv = #{
     // The refresh mode of the database.
     // Can be "always" (database is always refreshed once queried)
     // or "no" (database is readonly and never refreshed).
+    //
+    // WARNING: using the "always" option can make vsmtp really slow,
+    //          because it has to pull the whole database in memory every
+    //          time it is queried. Use it only if you have a small database
+    //          or if the database is read only.
     refresh: "always",
     // The delimiter character used in the csv file.
     delimiter: ",",
