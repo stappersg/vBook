@@ -1,18 +1,22 @@
 # Logging
 
-The vSMTP logging subsystem include syslog, server logs, and application logs.
+The logging system is backed by [tokio tracing](https://crates.io/crates/tracing) and piped to multiple 'subscriber' :
 
-## Server logs
+- [Logging](#logging)
+  - [Backend logs](#backend-logs)
+  - [Application logs](#application-logs)
+  - [Syslog](#syslog)
 
-Server logs concerns the vSMTP server and include information about the client, the internal state, etc.
+## Backend logs
+
+Backend logs concerns the vSMTP internals output.
 
 The default output directory is `/var/log/vsmtp/vsmtp.log`.
 
-Logs are configured by "modules", that represent a specific part of the server.
-The `rule_engine` module enables logs for the rule engine, the `parser` module for the
-mime parser, etc.
+Log levels can be configured by "modules", representing part of the server, using the `env_logger` syntax (see [docs.rs](https://docs.rs/tracing-subscriber/0.3.15/tracing_subscriber/struct.EnvFilter.html)).
+The `vsmtp_rule_engine` module enables logs for the rule engine, the `vsmtp_mail_parser` module for the mime parser, etc.
 
-The `vsmtp.toml` file is used to configure server logs, such as below:
+The `vsmtp.toml` file is used to configure server logs:
 
 ```toml
 [server.logs]
@@ -20,22 +24,13 @@ The `vsmtp.toml` file is used to configure server logs, such as below:
 filepath = "./tmp/system/vsmtp.log"
 
 level = [
-    # set global logging to "info", set the same log level for all modules.
-    "default=info",
+    # set global logging level to "info" for all the modules.
+    "info",
 
-    # set specific vSMTP module logs (override "server" log level for specific module)
-    # possible modules are:
-    #   - queue
-    #   - receiver
-    #   - rule_engine
-    #   - delivery
-    #   - parser
-    #   - runtime
-    #   - processes
-    "receiver=info",
-    "rule_engine=warn",
-    "delivery=error",
-    "parser=trace",
+    # set the logging level per module.
+    "vsmtp_server::receiver=info",
+    "vsmtp_rule_engine=warn",
+    "vsmtp_delivery=error",
 ]
 ```
 
@@ -43,7 +38,7 @@ level = [
 
 Application logs are defined using the `log(level, message)` function in the vSL rules.
 
-The default output location can be modified in the `vsmtp.toml` file, using this directive:
+The default output location (`/var/log/vsmtp/app.log`) can be modified in the `vsmtp.toml` file :
 
 ```toml
 [app.logs]
@@ -53,4 +48,20 @@ filepath = "./tmp/system/app.log"
 
 ## Syslog
 
-vSMTP automatically send logs to the syslog daemon using the `mail` category and the `info` level. It is not yet configurable.
+vSMTP send logs to the syslog daemon using the `mail` facility :
+
+```toml
+# if the table is missing, syslog writing will be skipped
+[server.syslog]
+# write only the message of level `min_level` and more
+min_level = "info"
+# format used by the logger see https://www.rfc-editor.org/rfc/rfc3164 and https://www.rfc-editor.org/rfc/rfc5424
+format = "3164"
+
+socket = { type = "unix", path = "/dev/log" }
+# or
+socket = { type = "tcp", server = "127.0.0.1:601" }
+# or
+socket = { type = "udp", server = "127.0.0.1:514", local = "127.0.0.1:0" }
+# note: address can be ipv4 / ipv6
+```

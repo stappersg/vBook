@@ -9,26 +9,30 @@ The vSMTP reference guide
 
 # Getting Started
 
-- [Installation](start/installation.md)
-- [Step-by-step Configuration](start/configuration/configuration.md)
-  - [Basic configuration](start/configuration/basic.md)
-  - [Hardening vSMTP](start/configuration/hardening.md)
-  - [Policy delegation](start/configuration/delegation.md)
+- [Installation](get-started/installation.md)
+- [Concepts](get-started/concepts.md)
+
+# Tutorials
+
+- [Doe's family](tuto/0/doe.md)
+  - [Context](tuto/0/context.md)
+  - [Basic configuration](tuto/0/basic.md)
+  - [Hardening vSMTP](tuto/0/hardening.md)
+  - [Policy delegation](tuto/0/delegation.md)
 
 # Advanced Settings
 
-- [Advanced settings](advanced/advanced.md)
-  - [Server global and virtual domains parameters](advanced/toml.md)
-  - [DNS configuration](advanced/dns.md)
-  - [Email authentication mechanisms](advanced/eam.md)
-    - [Null MX](advanced/eam/nullmx.md)
-    - [SPF](advanced/eam/spf.md)
-    - [DKIM](advanced/eam/dkim.md)
-    - [DMARC](advanced/eam/dmarc.md)
-    - [ARC](advanced/eam/arc.md)
-    - [BIMI](advanced/eam/bimi.md)
-  - [SMTP security using DANE](advanced/dane.md)
-  - [Logging system](advanced/logging.md)
+- [Logging system](advanced/logging.md)
+- [DNS configuration](advanced/dns.md)
+- [Virtual domains](advanced/virtual-domain.md)
+- [Email authentication mechanisms](advanced/eam.md)
+  - [Null MX](advanced/eam/nullmx.md)
+  - [SPF](advanced/eam/spf.md)
+  - [DKIM](advanced/eam/dkim.md)
+  - [DMARC](advanced/eam/dmarc.md)
+  - [ARC](advanced/eam/arc.md)
+  - [BIMI](advanced/eam/bimi.md)
+- [SMTP security using DANE](advanced/dane.md)
 
 # Reference
 
@@ -40,6 +44,7 @@ The vSMTP reference guide
   - [Objects](reference/vSL/objects.md)
   - [Delivery](reference/vSL/delivery.md)
   - [Services](reference/vSL/services.md)
+  - [Time](reference/vSL/time.md)
   - [Advanced Usage](reference/vSL/advanced.md)
   - [vSL's API](reference/vSL/api.md)
     - [Status](reference/vSL/api/Status.md)

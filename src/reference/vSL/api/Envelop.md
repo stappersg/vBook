@@ -37,6 +37,39 @@ add_rcpt_envelop(rcpt)
 <details>
 <summary>
 <code>
+bcc(rcpt)
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Add a recipient as a blind carbon copy. The equivalent of `add_rcpt_envelop`.
+
+ # Args
+
+ * `rcpt` - the recipient to add as a blind carbon copy.
+
+ # Effective smtp stage
+
+ All of them.
+
+ # Example
+ ```js
+ #{
+     connect: [
+        // set "john.doe@example.com" as a blind carbon copy.
+        action "bcc" || bcc("john.doe@example.com"),
+     ]
+ }
+ ```
+
+ 
+
+</div>
+<br/>
+</details>
+<details>
+<summary>
+<code>
 remove_rcpt_envelop(rcpt)
 </code>
 </summary>

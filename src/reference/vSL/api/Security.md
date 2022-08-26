@@ -3,28 +3,6 @@
 <details>
 <summary>
 <code>
-authenticate()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Process the SASL authentication mechanism.
-
- The current implementation support "PLAIN" mechanism, and will call the
- `testsaslauthd` program to check the credentials.
-
- The credentials will be verified depending on the mode of `saslauthd`.
-
- A native implementation will be provided in the future.
-
- 
-
-</div>
-<br/>
-</details>
-<details>
-<summary>
-<code>
 check_mail_relay(allowed_hosts)
 </code>
 </summary>
@@ -152,27 +130,6 @@ check_spf(header)
 
          // policy is set to "strict" by default.
          rule "check spf 2" || check_spf("both"),
-
-         // you can also use the low level system api.
-         rule "check spf 3" || {
-             let query = sys::check_spf(ctx(), srv());
-
-             log("debug", `result: ${query.result}`);
-
-             // the 'result' parameter gives you the result of evaluation.
-             // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
-             //
-             // the 'cause' parameter gives you the cause of the result if there
-             // was an error, and the mechanism of the result if it succeeded.
-             switch query.result {
-                 "pass" => next(),
-                 "fail" => {
-                     log("error", `check spf error: ${query.cause}`);
-                     deny()
-                 },
-                 _ => next(),
-             };
-         },
      ],
  }
  ```
@@ -234,21 +191,55 @@ check_spf(header, policy)
 
          // policy is set to "strict" by default.
          rule "check spf 2" || check_spf("both"),
+     ],
+ }
+ ```
 
-         // you can also use the low level system api.
-         rule "check spf 3" || {
-             let query = sys::check_spf(ctx(), srv());
+ 
+
+</div>
+<br/>
+</details>
+<details>
+<summary>
+<code>
+sys_check_spf()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ WARNING: This is a low level api.
+
+ Get spf record following the Sender Policy Framework (RFC 7208).
+ see https://datatracker.ietf.org/doc/html/rfc7208
+
+ # Return
+ * a rhai `Map`
+     * result (String) : the result of an SPF evaluation.
+     * cause  (String) : the "mechanism" that matched or the "problem" error (RFC 7208-9.1).
+
+ # Effective smtp stage
+ `rcpt` and onwards.
+
+ # Note
+ `check_spf` only checks for the sender's identity, not the `helo` value.
+
+ # Example
+ ```js
+ #{
+     mail: [
+         rule "raw check spf" || {
+             let query = sys_check_spf();
 
              log("debug", `result: ${query.result}`);
 
              // the 'result' parameter gives you the result of evaluation.
              // (see https://datatracker.ietf.org/doc/html/rfc7208#section-2.6)
-             //
-             // the 'cause' parameter gives you the cause of the result if there
-             // was an error, and the mechanism of the result if it succeeded.
              switch query.result {
                  "pass" => next(),
                  "fail" => {
+                     // the 'cause' parameter gives you the cause of the result if there
+                     // was an error, and the mechanism of the result if it succeeded.
                      log("error", `check spf error: ${query.cause}`);
                      deny()
                  },

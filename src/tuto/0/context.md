@@ -1,8 +1,4 @@
-# Step-by-step tutorial
-
-In this tutorial we suppose that Doe's family (John, Jane and their children Jimmy and Jenny) wants to self-host their mailboxes.
-
-## Context
+# Context
 
 They use a router/firewall to route and secure their home network. They also setup a small server in the DMZ to manage the family website, emails, etc.
 

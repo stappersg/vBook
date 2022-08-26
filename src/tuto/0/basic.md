@@ -1,14 +1,12 @@
 # Basic configuration
 
-Several examples can be found in the [example/config](https://github.com/viridIT/vSMTP/tree/main/examples/) folder.
-
 ## The configuration file
 
 `vsmtp.toml` is the main configuration file. It is located in `/etc/vsmtp` directory. Do a backup and open the file with your favorite editor. Remove everything, and copy the configuration bellow.
 
 ```toml
 # Version requirement. Do not remove or modify it
-version_requirement = ">=1.0.0"
+version_requirement = ">=1.2.1"
 
 # root domain of the server.
 [server]
@@ -34,15 +32,15 @@ must_be_authenticated = false
 enable_dangerous_mechanism_in_clair = false
 
 # The log level that will be written in syslogs.
-[server.logs.level]
-server = "warn"
+[server.logs]
+level = [ "warn" ]
 
 # Entry point for our rules.
 [app.vsl]
 filepath = "/etc/vsmtp/rules/main.vsl"
 ```
 
-Update the IP addresses, the filenames and the paths. The server is now configured. We have to define rules to filter messages. 
+Update the IP addresses, the filenames and the paths. The server is now configured. We have to define rules to filter messages.
 
 ## vSL : the vSMTP Scripting Language
 
@@ -199,8 +197,8 @@ import "objects" as doe;
       // if a recipient is part of the family, we deliver
       // the email locally. Otherwise, we just deliver the email
       // to another server.
-      for rcpt in ctx().rcpt_list {
-        if rcpt in doe::family_addr { maildir(rcpt.to_string()) } else { deliver(rcpt.to_string()) }
+      for rcpt in rcpt_list() {
+        if rcpt in doe::family_addr { maildir(rcpt) } else { deliver(rcpt) }
       }
     }
   ]

@@ -97,10 +97,12 @@ You might want to add local address (`127.0.0.1:25` for example) when using dele
 ```toml
 [server.logs]
 filepath = "/var/log/vsmtp/vsmtp.log"
-format = "{d(%Y-%m-%d %H:%M:%S%.f)} {h({l:<5})} {t:<30} $ {m}{n}"
-size_limit = 10485760
-archive_count = 10
-level = ["trace"]
+level = [
+    "info",
+    "vsmtp_server::receiver=info",
+    "vsmtp_rule_engine=warn",
+    "vsmtp_delivery=error",
+]
 ```
 
 ### `server.queues.dirpath`

@@ -8,7 +8,7 @@ accept()
 </summary>
 <br/>
 <div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Tell the rule engine to accept the incomming transaction for the current stage.
+ Tell the rule engine to accept the incoming transaction for the current stage.
  This means that all rules following the one `accept` is called in the current stage
  will be ignored.
 
@@ -22,12 +22,12 @@ accept()
      connect: [
          // "ignored checks" will be ignored because the previous rule returned accept.
          rule "accept" || accept(),
-         rule "ignored checks" || print("this will be ignored.")
+         action "ignore checks" || print("this will be ignored because the previous rule used accept()."),
      ],
 
      mail: [
          // rule evaluation is resumed in the next stage.
-         rule "resuming rules" || print("we resume rule evaluation here.");
+         rule "resume rules" || print("evaluation resumed!");
      ]
  }
  ```
@@ -56,7 +56,7 @@ deny()
  ```js
  #{
      rcpt: [
-         rule "" || {
+         rule "check for satan" || {
             // The client is denied if a recipient's domain matches satan.org,
             // this is a blacklist, sort-of.
             if ctx().rcpt.domain == "satan.org" {
@@ -92,7 +92,7 @@ deny(code)
  ```js
  #{
      rcpt: [
-         rule "" || {
+         rule "check for satan" || {
             // a custom error code can be used with `deny`.
             object error_code code = #{ code: 550, enhanced: "", text: "satan.org is not welcome here." };
 
@@ -121,7 +121,7 @@ faccept()
 </summary>
 <br/>
 <div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Tell the rule engine to force accept the incomming transaction.
+ Tell the rule engine to force accept the incoming transaction.
  This means that all rules following the one `faccept` is called
  will be ignored.
 
@@ -140,6 +140,13 @@ faccept()
          // any other rules that don't need to be run.
          rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept() } else { next() },
      ],
+
+     // The following rules will not be evaluated if `client_ip() == "192.168.1.10"` is true.
+     mail: [
+         rule "another rule" || {
+             // ... doing stuff
+         }
+     ],
  }
 
  
@@ -156,7 +163,7 @@ info(code)
 </summary>
 <br/>
 <div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Ask the client to retry to send the current comment by sending an information code.
+ Ask the client to retry to send the current command by sending an information code.
 
  # Effective smtp stage
 
@@ -166,7 +173,7 @@ info(code)
  ```js
  #{
      connect: [
-         rule "" || {
+         rule "please retry" || {
             object info_code code = #{ code: 451, enhanced: "", text: "failed to understand you request, please retry." };
             info(info_code)
         },
@@ -197,9 +204,9 @@ next()
  ```js
  #{
      connect: [
-         // once "go next" is evaluated, the rule engine execute "another rule".
-         rule "go next" || next(),
-         rule "another rule" || print("checking stuff ..."),
+         // once "go to the next rule" is evaluated, the rule engine execute "another rule".
+         rule "go to the next rule" || next(),
+         action "another rule" || print("checking stuff ..."),
      ],
  }
  ```
@@ -222,7 +229,7 @@ quarantine(queue)
 
  # Args
 
- * `queue` - the relative path to the queue where the email will be quarantined.
+ * `queue` - the relative path to the queue where the email will be quarantined. This path will be concatenated to the [app.dirpath] field in your `vsmtp.toml`.
 
  # Effective smtp stage
 
@@ -230,6 +237,8 @@ quarantine(queue)
 
  # Example
  ```js
+ import "services" as svc;
+
  #{
      postq: [
            delegate svc::clamsmtpd "check email for virus" || {

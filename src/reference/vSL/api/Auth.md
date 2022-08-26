@@ -35,6 +35,28 @@ auth()
 <details>
 <summary>
 <code>
+authenticate()
+</code>
+</summary>
+<br/>
+<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+ Process the SASL authentication mechanism.
+
+ The current implementation support "PLAIN" mechanism, and will call the
+ `testsaslauthd` program to check the credentials.
+
+ The credentials will be verified depending on the mode of `saslauthd`.
+
+ A native implementation will be provided in the future.
+
+ 
+
+</div>
+<br/>
+</details>
+<details>
+<summary>
+<code>
 is_authenticated()
 </code>
 </summary>
@@ -48,7 +70,7 @@ is_authenticated()
 
  # Return
 
- * `bool` - true if the client succedded to authenticate itself, false otherwise.
+ * `bool` - true if the client succeeded to authenticate itself, false otherwise.
 
  # Example
  ```js
@@ -80,7 +102,7 @@ is_secured()
 
  # Return
 
- * `bool` - true if the client securly connected with the auth protocol, false otherwise.
+ * `bool` - true if the client securely connected with the auth protocol, false otherwise.
 
  # Example
  ```js
