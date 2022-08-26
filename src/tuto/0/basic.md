@@ -32,8 +32,8 @@ must_be_authenticated = false
 enable_dangerous_mechanism_in_clair = false
 
 # The log level that will be written in syslogs.
-[server.logs.level]
-server = "warn"
+[server.logs]
+level = [ "warn" ]
 
 # Entry point for our rules.
 [app.vsl]
@@ -197,8 +197,8 @@ import "objects" as doe;
       // if a recipient is part of the family, we deliver
       // the email locally. Otherwise, we just deliver the email
       // to another server.
-      for rcpt in ctx().rcpt_list {
-        if rcpt in doe::family_addr { maildir(rcpt.to_string()) } else { deliver(rcpt.to_string()) }
+      for rcpt in rcpt_list() {
+        if rcpt in doe::family_addr { maildir(rcpt) } else { deliver(rcpt) }
       }
     }
   ]
