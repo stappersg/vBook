@@ -6,7 +6,7 @@
 
 ```toml
 # Version requirement. Do not remove or modify it
-version_requirement = ">=1.0.0"
+version_requirement = ">=1.2.1"
 
 # root domain of the server.
 [server]
