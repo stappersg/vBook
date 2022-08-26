@@ -1,7 +1,5 @@
 # Services
 
-`DRAFT - to be reviewed`
-
 Services are mainly used to interact with third party software.
 Services are declared using the `service` keyword, followed by its name, and its type.
 

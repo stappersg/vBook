@@ -2,9 +2,10 @@
 
 The logging system is backed by [tokio tracing](https://crates.io/crates/tracing) and piped to multiple 'subscriber' :
 
-* [backend logs](#backend-logs)
-* [vsl application logs](#application-logs)
-* [syslog](#syslog)
+- [Logging](#logging)
+  - [Backend logs](#backend-logs)
+  - [Application logs](#application-logs)
+  - [Syslog](#syslog)
 
 ## Backend logs
 
@@ -47,7 +48,7 @@ filepath = "./tmp/system/app.log"
 
 ## Syslog
 
-vSMTP send logs to the syslog daemon using the `mail` category :
+vSMTP send logs to the syslog daemon using the `mail` facility :
 
 ```toml
 # if the table is missing, syslog writing will be skipped

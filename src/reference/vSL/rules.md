@@ -20,7 +20,7 @@ rule "rule name" || {
 }
 ```
 
-> Rule engine status and effects are listed in the API, chapter [status](api/Status.md).
+> Rule engine status and effects are listed in the API, in the [status module](api/Status.md).
 
 An inline syntax is also available, like below:
 
