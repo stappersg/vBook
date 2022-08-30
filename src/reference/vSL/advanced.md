@@ -1,8 +1,8 @@
 # Advanced scripting
 
-## Using [RHAI](https://rhai.rs/) language for programming complex actions
+## Using [Rhai](https://rhai.rs/) language for programming complex actions
 
-On top of vSL predefined actions, users can define complex rules using the [RHAI](https://rhai.rs/) scripting language.
+On top of vSL predefined actions, users can define complex rules using the [Rhai](https://rhai.rs/) scripting language.
 
 ```javascript
 action "let example" || {
@@ -13,7 +13,7 @@ action "let example" || {
 };
 ```
 
-RHAI functions can be declared and used in vSL.
+Rhai functions can be declared and used in vSL.
 
 ```javascript
 fn my_condition() {
@@ -51,13 +51,13 @@ fn my_action2(rcpts) {
 }
 ```
 
-&#9998; | RHAI's function do not capture their external scope except for  functions [(they are "pure")](https://rhai.rs/book/ref/functions.html#no-access-to-external-scope). you must pass necessary variables via parameters.
+&#9998; | Rhai's function do not capture their external scope except for  functions [(they are "pure")](https://rhai.rs/book/ref/functions.html#no-access-to-external-scope). you must pass necessary variables via parameters.
 
 ## Importing user defined modules
 
 External modules can be imported in the `main.vsl` file.
 
-RHAI functions are automatically exported. Therefore do not forget to add the `private` keyword for internal functions. Unlike functions, variables are not exported. You must do it manually using the `export` keyword. Check out the [Rhai Book](https://rhai.rs/book/ref/modules/export.html) for more information.
+Rhai functions are automatically exported. Therefore do not forget to add the `private` keyword for internal functions. Unlike functions, variables are not exported. You must do it manually using the `export` keyword. Check out the [Rhai Book](https://rhai.rs/book/ref/modules/export.html) for more information.
 
 Example :
 

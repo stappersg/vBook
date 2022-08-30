@@ -75,7 +75,7 @@ object my_company fqdn = "mycompany.net";
 import "objects" as obj;
 
 #{
-    connect: [ 
+    connect: [
         action "log connect" || log("warn", `Connection from : ${client_ip()}`),
         rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() },
     ],
@@ -125,3 +125,19 @@ import "objects" as obj;
 ```
 
 > As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).
+
+## Action
+
+`Actions` are similar to `rules` but do not return any status code and thus cannot modify the state of a transaction.
+
+```js
+// action "<name>" || {
+//     // <action body>
+// }
+
+action "log incoming transaction" || {
+  // We use actions to execute code that does not
+  // need to change the state of the transaction.
+  log("debug", `new transaction by ${client_ip()}`);
+}
+```

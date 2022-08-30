@@ -68,7 +68,7 @@ The the receiver's socket must be enabled in the `/etc/vsmtp/vsmtp.toml`.
 addr = ["192.168.1.254:25", "127.0.0.1:10025"]
 ```
 
-## Rules
+## The delegate keyword
 
 Create the antivirus passthrough using the `delegate` keyword.
 

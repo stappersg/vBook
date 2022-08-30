@@ -8,15 +8,15 @@ At each step, vSL updates a global context containing transaction and mail data.
 
 Available stages in order of evaluation:
 
-| Stage   | SMTP state                 | Context available               |
-| :------ | :------------------------- | :------------------------------ |
-| connect | Before HELO/EHLO command   | Connection related information. |
-| helo    | After HELO/EHLO command    | HELO string.                    |
-| mail    | After MAIL FROM command    | Sender address.                 |
-| rcpt    | After each RCPT TO command | The entire SMTP envelop.        |
-| preq    | Before queuing[^preq]      | The entire mail.                |
-| postq   | After queuing[^postq]      | The entire mail.                |
-| deliver | Before delivering          | The entire mail.                |
+| Stage    | SMTP state                 | Context available               |
+| :------  | :------------------------- | :------------------------------ |
+| connect  | Before HELO/EHLO command   | Connection related information. |
+| helo     | After HELO/EHLO command    | HELO string.                    |
+| mail     | After MAIL FROM command    | Sender address.                 |
+| rcpt     | After each RCPT TO command | The entire SMTP envelop.        |
+| preq     | Before queuing[^preq]      | The entire mail.                |
+| postq    | After queuing[^postq]      | The entire mail.                |
+| delivery | Before delivering          | The entire mail.                |
 
 [^preq]: Preq stage triggers after the end of receiving data from the client, just before the server answers back with a 250 code.
 
@@ -69,8 +69,8 @@ As defined in the SMTP RFCs, a single connection can handle several mail transac
 
 ```shell
 [... connection from an IP]
-HELO                                    # Start of SMTP transaction 
-    > MAIL FROM > RCPT TO > DATA        # First mail 
+HELO                                    # Start of SMTP transaction
+    > MAIL FROM > RCPT TO > DATA        # First mail
     > MAIL FROM > RCPT TO > DATA        # Second mail
     > [...]
 QUIT                                    # End of transaction
