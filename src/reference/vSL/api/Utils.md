@@ -1,13 +1,8 @@
 # Utils
 ## Those miscellaneous functions lets you query data from your system, log stuff, perform dns lookups etc ...
-<details>
-<summary>
-<code>
-date()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>date</em>() </h1>
  Get the current date.
 
  # Return
@@ -33,15 +28,10 @@ date()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-dump(dir)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>dump</em>(<em style='color: var(--inline-code-color)'>dir</em>) </h1>
  Export the current message and the envelop to a file as a `json` file.
  The message id of the email is used to name the file.
 
@@ -67,15 +57,10 @@ dump(dir)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-hostname()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>hostname</em>() </h1>
  Get the hostname of this machine.
 
  # Return
@@ -101,15 +86,10 @@ hostname()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-in_domain(rcpt)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>in_domain</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  get the domain used to identify a recipient.
  check if the recipient passed as argument is part of the
  domains (root & sni) of the server.
@@ -138,15 +118,10 @@ in_domain(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-log(level, message)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>log</em>(<em style='color: var(--inline-code-color)'>level</em>, <em style='color: var(--inline-code-color)'>message</em>) </h1>
  Log information to stdout in `nodaemon` mode or to a file.
 
  # Args
@@ -171,15 +146,10 @@ log(level, message)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-lookup(host)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>lookup</em>(<em style='color: var(--inline-code-color)'>host</em>) </h1>
  Performs a dual-stack DNS lookup for the given hostname.
 
  # Args
@@ -215,15 +185,10 @@ lookup(host)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rlookup(ip)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>rlookup</em>(<em style='color: var(--inline-code-color)'>ip</em>) </h1>
  Performs a reverse lookup for the given IP.
 
  # Args
@@ -258,15 +223,10 @@ rlookup(ip)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-time()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>time</em>() </h1>
  Get the current time.
 
  # Return
@@ -292,15 +252,10 @@ time()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-user_exist(name)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>user_exist</em>(<em style='color: var(--inline-code-color)'>name</em>) </h1>
  Check if a user exists on this server.
 
  # Args
@@ -332,15 +287,10 @@ user_exist(name)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-write(dir)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>write</em>(<em style='color: var(--inline-code-color)'>dir</em>) </h1>
  Export the current raw message to a file as an `eml` file.
  The message id of the email is used to name the file.
 
@@ -366,4 +316,4 @@ write(dir)
 
 </div>
 <br/>
-</details>
+<br/>

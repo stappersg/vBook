@@ -1,13 +1,8 @@
 # Connection
 ## Metadata is available for each client, this module lets you query those metadatas.
-<details>
-<summary>
-<code>
-client_address()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>client_address</em>() </h1>
  Get the address of the client.
 
  # Effective smtp stage
@@ -31,15 +26,10 @@ client_address()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-client_ip()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>client_ip</em>() </h1>
  Get the ip address of the client.
 
  # Effective smtp stage
@@ -63,15 +53,10 @@ client_ip()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-client_port()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>client_port</em>() </h1>
  Get the ip port of the client.
 
  # Effective smtp stage
@@ -95,15 +80,10 @@ client_port()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-connection_timestamp()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>connection_timestamp</em>() </h1>
  Get a the timestamp of the client's connection time.
 
  # Effective smtp stage
@@ -127,15 +107,10 @@ connection_timestamp()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_address()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>server_address</em>() </h1>
  Get the full server address.
 
  # Effective smtp stage
@@ -159,15 +134,10 @@ server_address()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_ip()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>server_ip</em>() </h1>
  Get the server's ip.
 
  # Effective smtp stage
@@ -191,15 +161,10 @@ server_ip()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_name()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>server_name</em>() </h1>
  Get the name of the server.
 
  # Effective smtp stage
@@ -223,15 +188,10 @@ server_name()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_port()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>server_port</em>() </h1>
  Get the server's port.
 
  # Effective smtp stage
@@ -255,4 +215,4 @@ server_port()
 
 </div>
 <br/>
-</details>
+<br/>

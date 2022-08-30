@@ -1,13 +1,8 @@
 # Delivery
 ## Those methods are used to setup the method of delivery for one / every recipient.
-<details>
-<summary>
-<code>
-deliver(rcpt)
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>deliver</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  Set the delivery method to deliver for a single recipient.
  After all rules are evaluated, the email will be sent
  to the recipient using the domain of its address.
@@ -33,15 +28,10 @@ deliver(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-deliver_all()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>deliver_all</em>() </h1>
  Set the delivery method to deliver for all recipients.
  After all rules are evaluated, the email will be sent
  to all recipients using the domain of their respective address.
@@ -63,15 +53,10 @@ deliver_all()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-disable_delivery(rcpt)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>disable_delivery</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  Disable the delivery for a single recipient.
 
  # Args
@@ -95,15 +80,10 @@ disable_delivery(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-disable_delivery_all()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>disable_delivery_all</em>() </h1>
  Disable delivery for all single recipients.
 
  # Effective smtp stage
@@ -123,15 +103,10 @@ disable_delivery_all()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-forward(rcpt, target)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>forward</em>(<em style='color: var(--inline-code-color)'>rcpt</em>, <em style='color: var(--inline-code-color)'>target</em>) </h1>
  Set the delivery method to forwarding for a single recipient.
  After all rules are evaluated, forwarding will be used to deliver
  the email to the recipient.
@@ -158,15 +133,10 @@ forward(rcpt, target)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-forward_all(target)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>forward_all</em>(<em style='color: var(--inline-code-color)'>target</em>) </h1>
  Set the delivery method to forwarding for all recipients.
  After all rules are evaluated, forwarding will be used to deliver
  the email.
@@ -192,18 +162,13 @@ forward_all(target)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-maildir(rcpt)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>maildir</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  Set the delivery method to maildir for a recipient.
  After all rules are evaluated, the email will be stored
- localy in the `~/Maildir/new/` folder of the recipient's user if it exists on the server.
+ locally in the `~/Maildir/new/` folder of the recipient's user if it exists on the server.
 
  # Args
 
@@ -226,18 +191,13 @@ maildir(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-maildir_all()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>maildir_all</em>() </h1>
  Set the delivery method to maildir for all recipients.
  After all rules are evaluated, the email will be stored
- localy in each `~/Maildir/new` folder of they respective recipient
+ locally in each `~/Maildir/new` folder of they respective recipient
  if they exists on the server.
 
  # Effective smtp stage
@@ -257,18 +217,13 @@ maildir_all()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-mbox(rcpt)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>mbox</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  Set the delivery method to mbox for a recipient.
  After all rules are evaluated, the email will be stored
- localy in the mail box of the recipient if it exists on the server.
+ locally in the mail box of the recipient if it exists on the server.
 
  # Args
 
@@ -291,18 +246,13 @@ mbox(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-mbox_all()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>mbox_all</em>() </h1>
  Set the delivery method to mbox for all recipients.
  After all rules are evaluated, the email will be stored
- localy in the mail box of all recipients if they exists on the server.
+ locally in the mail box of all recipients if they exists on the server.
 
  # Effective smtp stage
 
@@ -321,4 +271,4 @@ mbox_all()
 
 </div>
 <br/>
-</details>
+<br/>

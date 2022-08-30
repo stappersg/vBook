@@ -1,13 +1,8 @@
 # Services
 ## Services are external programs that can be used via the functions available in this module.
-<details>
-<summary>
-<code>
-get(key)
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>get</em>(<em style='color: var(--inline-code-color)'>key</em>) </h1>
  Get the value of a key in a database.
 
  # Args
@@ -16,7 +11,8 @@ get(key)
 
  # Return
 
- * `Array of records` - an array containing the results.
+ * `Array of records` - an array containing the results. If no record is found,
+                        an empty array is returned.
 
  # Effective smtp stage
 
@@ -31,10 +27,10 @@ get(key)
         action "fetch database" || {
              let records = svc::my_database.get(mail_from());
 
-             if records.len() == 0 {
+             if records == [] {
                  log("debug", `${mail_from()} is not in my database`);
              } else {
-                 log("debug", `${mail_from()} found in my database`);
+                 log("debug", `${mail_from()} found in my database: ${records}`);
              }
         }
      ]
@@ -45,15 +41,10 @@ get(key)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rm(key)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>rm</em>(<em style='color: var(--inline-code-color)'>key</em>) </h1>
  Remove a record from a database.
 
  # Args
@@ -81,15 +72,10 @@ rm(key)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-run()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>run</em>() </h1>
  Run a command from a `cmd` service.
 
  # Effective smtp stage
@@ -125,15 +111,10 @@ run()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-run(args)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>run</em>(<em style='color: var(--inline-code-color)'>args</em>) </h1>
  Run a command from a `cmd` service with arguments.
  This allows you to run a command with dynamic arguments.
 
@@ -175,15 +156,10 @@ run(args)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-set(record)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>set</em>(<em style='color: var(--inline-code-color)'>record</em>) </h1>
  Set a record into a database.
 
  # Args
@@ -201,7 +177,7 @@ set(record)
  #{
      mail: [
         action "set sender in database" || {
-             svc::my_database.set(mail_from());
+             svc::my_database.set([ mail_from() ]);
         }
      ]
  }
@@ -211,4 +187,4 @@ set(record)
 
 </div>
 <br/>
-</details>
+<br/>

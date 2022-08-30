@@ -1,13 +1,8 @@
 # Auth
 ## This module contains authentication mechanisms to secure your server.
-<details>
-<summary>
-<code>
-auth()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>auth</em>() </h1>
  Get authentication credentials from the client.
 
  # Effective smtp stage
@@ -31,15 +26,10 @@ auth()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-authenticate()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>authenticate</em>() </h1>
  Process the SASL authentication mechanism.
 
  The current implementation support "PLAIN" mechanism, and will call the
@@ -53,15 +43,10 @@ authenticate()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-is_authenticated()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>is_authenticated</em>() </h1>
  Check if the client is authenticated.
 
  # Effective smtp stage
@@ -85,31 +70,28 @@ is_authenticated()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-is_secured()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Check if the client's connexion was secure.
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>is_secured</em>() </h1>
+ Has the connection been secured under the encryption protocol SSL/TLS
 
  # Effective smtp stage
 
- `authenticate` only.
+ all
 
  # Return
 
- * `bool` - true if the client securely connected with the auth protocol, false otherwise.
+ * boolean value (`true` if the connection is secured, `false` otherwise)
 
  # Example
  ```js
  #{
-     authenticate: [
-        action "log info" || log("info", `${is_secured()}`),
-     ]
+   mail: [
+     action "log ssl/tls" || {
+       log("info", `My client is ${if is_secured() { "secured" } else { "unsecured!!!" }}`)
+     }
+   ]
  }
  ```
 
@@ -117,4 +99,4 @@ is_secured()
 
 </div>
 <br/>
-</details>
+<br/>

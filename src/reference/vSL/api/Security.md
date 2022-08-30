@@ -1,13 +1,8 @@
 # Security
 ## This module contains multiple security functions that you can use to protect your server.
-<details>
-<summary>
-<code>
-check_mail_relay(allowed_hosts)
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>check_mail_relay</em>(<em style='color: var(--inline-code-color)'>allowed_hosts</em>) </h1>
  Do not accept a message from a known internal domain if the client is unknown.
 
  # Args
@@ -37,15 +32,10 @@ check_mail_relay(allowed_hosts)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-check_rcpt_relay(allowed_hosts)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>check_rcpt_relay</em>(<em style='color: var(--inline-code-color)'>allowed_hosts</em>) </h1>
  Do not accept open relaying.
 
  # Args
@@ -76,15 +66,10 @@ check_rcpt_relay(allowed_hosts)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-check_spf(header)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>check_spf</em>(<em style='color: var(--inline-code-color)'>header</em>) </h1>
  Check spf record following the Sender Policy Framework (RFC 7208).
  A wrapper with the policy set to "strict" by default.
  see https://datatracker.ietf.org/doc/html/rfc7208
@@ -119,7 +104,7 @@ check_spf(header)
      mail: [
          // if this check succeed, it wil return `next`.
          // if it fails, it might return `deny` with a custom code
-         // (X.7.24 or X.7.25 for exemple)
+         // (X.7.24 or X.7.25 for example)
          //
          // if you want to use the return status, just put the check_spf
          // function on the last line of your rule.
@@ -137,15 +122,10 @@ check_spf(header)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-check_spf(header, policy)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>check_spf</em>(<em style='color: var(--inline-code-color)'>header</em>, <em style='color: var(--inline-code-color)'>policy</em>) </h1>
  Check spf record following the Sender Policy Framework (RFC 7208).
  see https://datatracker.ietf.org/doc/html/rfc7208
 
@@ -180,7 +160,7 @@ check_spf(header, policy)
      mail: [
          // if this check succeed, it wil return `next`.
          // if it fails, it might return `deny` with a custom code
-         // (X.7.24 or X.7.25 for exemple)
+         // (X.7.24 or X.7.25 for example)
          //
          // if you want to use the return status, just put the check_spf
          // function on the last line of your rule.
@@ -199,15 +179,10 @@ check_spf(header, policy)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-sys_check_spf()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>sys_check_spf</em>() </h1>
  WARNING: This is a low level api.
 
  Get spf record following the Sender Policy Framework (RFC 7208).
@@ -254,15 +229,10 @@ sys_check_spf()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-verify_dkim()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>verify_dkim</em>() </h1>
  Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
  see https://datatracker.ietf.org/doc/html/rfc6376
 
@@ -274,4 +244,4 @@ verify_dkim()
 
 </div>
 <br/>
-</details>
+<br/>

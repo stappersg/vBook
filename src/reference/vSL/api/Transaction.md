@@ -1,13 +1,8 @@
 # Transaction
 ## At each SMTP stage, data from the client is received via 'SMTP commands'. This module lets you query the content of the commands.
-<details>
-<summary>
-<code>
-helo()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>helo</em>() </h1>
  Get the value of the `HELO/EHLO` command sent by the client.
 
  # Effective smtp stage
@@ -31,15 +26,10 @@ helo()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-mail_from()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>mail_from</em>() </h1>
  Get the value of the `MAIL FROM` command sent by the client.
 
  # Effective smtp stage
@@ -63,15 +53,10 @@ mail_from()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-mail_timestamp()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>mail_timestamp</em>() </h1>
  Get the time of reception of the email.
 
  # Effective smtp stage
@@ -95,15 +80,10 @@ mail_timestamp()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-message_id()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>message_id</em>() </h1>
  Get the unique id of the received message.
 
  # Effective smtp stage
@@ -127,15 +107,10 @@ message_id()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rcpt()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>rcpt</em>() </h1>
  Get the value of the current `RCPT TO` command sent by the client.
 
  # Effective smtp stage
@@ -161,15 +136,10 @@ rcpt()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rcpt_list()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>rcpt_list</em>() </h1>
  Get the list of recipients received by the client.
 
  # Effective smtp stage
@@ -195,4 +165,4 @@ rcpt_list()
 
 </div>
 <br/>
-</details>
+<br/>

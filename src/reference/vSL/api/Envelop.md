@@ -1,13 +1,8 @@
 # Envelop
 ## The SMTP envelop can be mutated by several function from this module.
-<details>
-<summary>
-<code>
-add_rcpt_envelop(rcpt)
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>add_rcpt_envelop</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  Add a new recipient to the envelop. Note that this does not add
  the recipient to the `To` header. Use `add_rcpt_message` for that.
 
@@ -33,15 +28,10 @@ add_rcpt_envelop(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-bcc(rcpt)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>bcc</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  Add a recipient as a blind carbon copy. The equivalent of `add_rcpt_envelop`.
 
  # Args
@@ -66,15 +56,10 @@ bcc(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-remove_rcpt_envelop(rcpt)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>remove_rcpt_envelop</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
  Remove a recipient from the envelop. Note that this does not remove
  the recipient from the `To` header. Use `remove_rcpt_message` for that.
 
@@ -100,15 +85,10 @@ remove_rcpt_envelop(rcpt)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rewrite_mail_from(new_addr)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>rewrite_mail_from</em>(<em style='color: var(--inline-code-color)'>new_addr</em>) </h1>
  Rewrite the value of the `MAIL FROM` command has well has
  the `From` header.
 
@@ -133,15 +113,10 @@ rewrite_mail_from(new_addr)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rewrite_mail_from_envelop(new_addr)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>rewrite_mail_from_envelop</em>(<em style='color: var(--inline-code-color)'>new_addr</em>) </h1>
  Rewrite the sender received from the `MAIL FROM` command.
 
  # Args
@@ -165,15 +140,10 @@ rewrite_mail_from_envelop(new_addr)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rewrite_rcpt_envelop(old_addr, new_addr)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h1> fn <em style='color: var(--inline-code-color);'>rewrite_rcpt_envelop</em>(<em style='color: var(--inline-code-color)'>old_addr</em>, <em style='color: var(--inline-code-color)'>new_addr</em>) </h1>
  Replace a recipient received by a `RCPT TO` command.
 
  # Args
@@ -198,4 +168,4 @@ rewrite_rcpt_envelop(old_addr, new_addr)
 
 </div>
 <br/>
-</details>
+<br/>
