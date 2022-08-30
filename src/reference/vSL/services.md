@@ -131,10 +131,10 @@ let mysql_version = greylist.query("SELECT Version();");
 // mysql version: ["8.0.30-0ubuntu0.22.04.1"]
 print(`mysql version: ${mysql_version}`);
 
-// Lets imagine that we use a database with a "greylist" table with a user & domain field.
+// Lets imagine that we use a database "greylist" with a "sender" table with a user & domain field.
 // We can update the database this way:
 let sender = mail_from();
-greylist.query(`INSERT INTO greylist (user, domain) values (${sender.local_part}, ${sender.domain})`);
+greylist.query(`INSERT INTO greylist.sender (user, domain) values (${sender.local_part}, ${sender.domain})`);
 ```
 
 ## The smtp type
