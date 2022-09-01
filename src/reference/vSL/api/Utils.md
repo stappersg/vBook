@@ -1,19 +1,19 @@
 # Utils
-## Those miscellaneous functions lets you query data from your system, log stuff, perform dns lookups etc ...
+Those miscellaneous functions lets you query data from your system, log stuff, perform dns lookups etc ...
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>date</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>date</em>() </h2>
  Get the current date.
 
- # Return
+ ### Return
 
  * `string` - the current date.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -31,20 +31,20 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>dump</em>(<em style='color: var(--inline-code-color)'>dir</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>dump</em>(<em style='color: var(--inline-code-color)'>dir</em>) </h2>
  Export the current message and the envelop to a file as a `json` file.
  The message id of the email is used to name the file.
 
- # Args
+ ### Args
 
  * `dir` - the directory where to store the data. Relative to the
  application path.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -60,18 +60,18 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>hostname</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>hostname</em>() </h2>
  Get the hostname of this machine.
 
- # Return
+ ### Return
 
  * `string` - the host name of the machine.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -89,23 +89,23 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>in_domain</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>in_domain</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h2>
  get the domain used to identify a recipient.
  check if the recipient passed as argument is part of the
  domains (root & sni) of the server.
 
- # Args
+ ### Args
 
  * `rcpt` - the recipient to check, of type string | `object address` | rcpt.
 
- # Return
+ ### Return
 
  * `bool` - true of the recipient's domain is part of the server's root or sni domains, false otherwise.
 
- # Effective smtp stage
+ ### Effective smtp stage
  all of them, but should be use in the rcpt stage.
 
- # Example
+ ### Example
  ```js
  #{
      rcpt: [
@@ -121,19 +121,19 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>log</em>(<em style='color: var(--inline-code-color)'>level</em>, <em style='color: var(--inline-code-color)'>message</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>log</em>(<em style='color: var(--inline-code-color)'>level</em>, <em style='color: var(--inline-code-color)'>message</em>) </h2>
  Log information to stdout in `nodaemon` mode or to a file.
 
- # Args
+ ### Args
 
  * `level` - the level of the message, can be "trace", "debug", "info", "warn" or "error".
  * `message` - the message to log.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -149,22 +149,22 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>lookup</em>(<em style='color: var(--inline-code-color)'>host</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>lookup</em>(<em style='color: var(--inline-code-color)'>host</em>) </h2>
  Performs a dual-stack DNS lookup for the given hostname.
 
- # Args
+ ### Args
 
  * `host` - A valid hostname to search.
 
- # Return
+ ### Return
 
  * `array` - an array of IPs. The array is empty if no IPs were found for the host.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      rcpt: [
@@ -188,22 +188,22 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>rlookup</em>(<em style='color: var(--inline-code-color)'>ip</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>rlookup</em>(<em style='color: var(--inline-code-color)'>ip</em>) </h2>
  Performs a reverse lookup for the given IP.
 
- # Args
+ ### Args
 
  * `ip` - The IP to query.
 
- # Return
+ ### Return
 
  * `array` - an array of FQDNs. The array is empty if nothing was found.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -226,18 +226,18 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>time</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>time</em>() </h2>
  Get the current time.
 
- # Return
+ ### Return
 
  * `string` - the current time.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -255,22 +255,22 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>user_exist</em>(<em style='color: var(--inline-code-color)'>name</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>user_exist</em>(<em style='color: var(--inline-code-color)'>name</em>) </h2>
  Check if a user exists on this server.
 
- # Args
+ ### Args
 
  * `name` - the name of the user.
 
- # Return
+ ### Return
 
  * `bool` - true if the user exists, false otherwise.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      rcpt: [
@@ -290,20 +290,20 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>write</em>(<em style='color: var(--inline-code-color)'>dir</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>write</em>(<em style='color: var(--inline-code-color)'>dir</em>) </h2>
  Export the current raw message to a file as an `eml` file.
  The message id of the email is used to name the file.
 
- # Args
+ ### Args
 
  * `dir` - the directory where to store the email. Relative to the
  application path.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [

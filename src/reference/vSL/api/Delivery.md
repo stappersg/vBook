@@ -1,21 +1,21 @@
 # Delivery
-## Those methods are used to setup the method of delivery for one / every recipient.
+Those methods are used to setup the method of delivery for one / every recipient.
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>deliver</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>deliver</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h2>
  Set the delivery method to deliver for a single recipient.
  After all rules are evaluated, the email will be sent
  to the recipient using the domain of its address.
 
- # Args
+ ### Args
 
  * `rcpt` - the recipient to apply the method to.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -31,16 +31,16 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>deliver_all</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>deliver_all</em>() </h2>
  Set the delivery method to deliver for all recipients.
  After all rules are evaluated, the email will be sent
  to all recipients using the domain of their respective address.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -56,18 +56,18 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>disable_delivery</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>disable_delivery</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h2>
  Disable the delivery for a single recipient.
 
- # Args
+ ### Args
 
  * `rcpt` - the recipient to apply the method to.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -83,14 +83,14 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>disable_delivery_all</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>disable_delivery_all</em>() </h2>
  Disable delivery for all single recipients.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -106,21 +106,21 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>forward</em>(<em style='color: var(--inline-code-color)'>rcpt</em>, <em style='color: var(--inline-code-color)'>target</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>forward</em>(<em style='color: var(--inline-code-color)'>rcpt</em>, <em style='color: var(--inline-code-color)'>target</em>) </h2>
  Set the delivery method to forwarding for a single recipient.
  After all rules are evaluated, forwarding will be used to deliver
  the email to the recipient.
 
- # Args
+ ### Args
 
  * `rcpt` - the recipient to apply the method to.
  * `target` - the target to forward the email to.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -136,20 +136,20 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>forward_all</em>(<em style='color: var(--inline-code-color)'>target</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>forward_all</em>(<em style='color: var(--inline-code-color)'>target</em>) </h2>
  Set the delivery method to forwarding for all recipients.
  After all rules are evaluated, forwarding will be used to deliver
  the email.
 
- # Args
+ ### Args
 
  * `target` - the target to forward the email to.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -165,20 +165,20 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>maildir</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>maildir</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h2>
  Set the delivery method to maildir for a recipient.
  After all rules are evaluated, the email will be stored
  locally in the `~/Maildir/new/` folder of the recipient's user if it exists on the server.
 
- # Args
+ ### Args
 
  * `rcpt` - the recipient to apply the method to.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -194,17 +194,17 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>maildir_all</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>maildir_all</em>() </h2>
  Set the delivery method to maildir for all recipients.
  After all rules are evaluated, the email will be stored
  locally in each `~/Maildir/new` folder of they respective recipient
  if they exists on the server.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -220,20 +220,20 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>mbox</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>mbox</em>(<em style='color: var(--inline-code-color)'>rcpt</em>) </h2>
  Set the delivery method to mbox for a recipient.
  After all rules are evaluated, the email will be stored
  locally in the mail box of the recipient if it exists on the server.
 
- # Args
+ ### Args
 
  * `rcpt` - the recipient to apply the method to.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [
@@ -249,16 +249,16 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>mbox_all</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>mbox_all</em>() </h2>
  Set the delivery method to mbox for all recipients.
  After all rules are evaluated, the email will be stored
  locally in the mail box of all recipients if they exists on the server.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      delivery: [

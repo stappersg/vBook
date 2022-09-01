@@ -1,21 +1,21 @@
 # Security
-## This module contains multiple security functions that you can use to protect your server.
+This module contains multiple security functions that you can use to protect your server.
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>check_mail_relay</em>(<em style='color: var(--inline-code-color)'>allowed_hosts</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>check_mail_relay</em>(<em style='color: var(--inline-code-color)'>allowed_hosts</em>) </h2>
  Do not accept a message from a known internal domain if the client is unknown.
 
- # Args
+ ### Args
  * `allowed_hosts` - group of IPv4 | IPv6 | IPv4 range | IPv6 range | fqdn
 
- # Return
+ ### Return
  * `deny()`
  * `next()`
 
- # Effective smtp stage
+ ### Effective smtp stage
  `mail` and onwards.
 
- # Example
+ ### Example
  ```js
  mail: [
     rule "check mail relay" || {
@@ -35,21 +35,21 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>check_rcpt_relay</em>(<em style='color: var(--inline-code-color)'>allowed_hosts</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>check_rcpt_relay</em>(<em style='color: var(--inline-code-color)'>allowed_hosts</em>) </h2>
  Do not accept open relaying.
 
- # Args
+ ### Args
 
  * `allowed_hosts` - group of IPv4 | IPv6 | IPv4 range | IPv6 range | fqdn
 
- # Return
+ ### Return
  * `deny()`
  * `next()`
 
- # Effective smtp stage
+ ### Effective smtp stage
  `rcpt` only.
 
- # Example
+ ### Example
  ```js
  rcpt: [
     rule "check rcpt relay" || {
@@ -69,30 +69,30 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>check_spf</em>(<em style='color: var(--inline-code-color)'>header</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>check_spf</em>(<em style='color: var(--inline-code-color)'>header</em>) </h2>
  Check spf record following the Sender Policy Framework (RFC 7208).
  A wrapper with the policy set to "strict" by default.
  see https://datatracker.ietf.org/doc/html/rfc7208
 
- # Args
+ ### Args
 
  * `header` - "spf" | "auth" | "both" | "none"
 
- # Return
+ ### Return
  * `deny(code550_7_23 | code451_7_24 | code550_7_24)` - an error occurred during lookup. (returned even when a softfail is received using the "strict" policy)
  * `next()` - the operation succeeded.
 
- # Effective smtp stage
+ ### Effective smtp stage
  `rcpt` and onwards.
 
- # Errors
+ ### Errors
  * The `header` argument is not valid.
  * The `policy` argument is not valid.
 
- # Note
+ ### Note
  `check_spf` only checks for the sender's identity, not the `helo` value.
 
- # Example
+ ### Example
  ```js
  #{
      mail: [
@@ -109,7 +109,7 @@
          // if you want to use the return status, just put the check_spf
          // function on the last line of your rule.
          rule "check spf 1" || {
-             log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
+             log("debug", `running sender policy framework on ${mail_from()} identity ...`);
              check_spf("spf", "soft")
          },
 
@@ -125,30 +125,30 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>check_spf</em>(<em style='color: var(--inline-code-color)'>header</em>, <em style='color: var(--inline-code-color)'>policy</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>check_spf</em>(<em style='color: var(--inline-code-color)'>header</em>, <em style='color: var(--inline-code-color)'>policy</em>) </h2>
  Check spf record following the Sender Policy Framework (RFC 7208).
  see https://datatracker.ietf.org/doc/html/rfc7208
 
- # Args
+ ### Args
 
  * `header` - "spf" | "auth" | "both" | "none"
  * `policy` - "strict" | "soft"
 
- # Return
+ ### Return
  * `deny(code550_7_23 | code451_7_24 | code550_7_24)` - an error occurred during lookup. (returned even when a softfail is received using the "strict" policy)
  * `next()` - the operation succeeded.
 
- # Effective smtp stage
+ ### Effective smtp stage
  `rcpt` and onwards.
 
- # Errors
+ ### Errors
  * The `header` argument is not valid.
  * The `policy` argument is not valid.
 
- # Note
+ ### Note
  `check_spf` only checks for the sender's identity, not the `helo` value.
 
- # Example
+ ### Example
  ```js
  #{
      mail: [
@@ -165,7 +165,7 @@
          // if you want to use the return status, just put the check_spf
          // function on the last line of your rule.
          rule "check spf 1" || {
-             log("debug", `running sender policy framework on ${ctx().mail_from} identity ...`);
+             log("debug", `running sender policy framework on ${mail_from()} identity ...`);
              check_spf("spf", "soft")
          },
 
@@ -182,24 +182,24 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>sys_check_spf</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>sys_check_spf</em>() </h2>
  WARNING: This is a low level api.
 
  Get spf record following the Sender Policy Framework (RFC 7208).
  see https://datatracker.ietf.org/doc/html/rfc7208
 
- # Return
+ ### Return
  * a rhai `Map`
      * result (String) : the result of an SPF evaluation.
      * cause  (String) : the "mechanism" that matched or the "problem" error (RFC 7208-9.1).
 
- # Effective smtp stage
+ ### Effective smtp stage
  `rcpt` and onwards.
 
- # Note
+ ### Note
  `check_spf` only checks for the sender's identity, not the `helo` value.
 
- # Example
+ ### Example
  ```js
  #{
      mail: [
@@ -232,11 +232,11 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>verify_dkim</em>() </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>verify_dkim</em>() </h2>
  Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
  see https://datatracker.ietf.org/doc/html/rfc6376
 
- # Return
+ ### Return
  * `accept()` - a signature was successfully verified.
  * `deny()` - no signature could be verified.
 

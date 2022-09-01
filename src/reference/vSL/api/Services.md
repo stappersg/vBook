@@ -1,24 +1,24 @@
 # Services
-## Services are external programs that can be used via the functions available in this module.
+Services are external programs that can be used via the functions available in this module.
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>get</em>(<em style='color: var(--inline-code-color)'>key</em>) </h1>
- Get the value of a key in a database.
+<h2> fn <em style='color: var(--inline-code-color);'>get</em>(<em style='color: var(--inline-code-color)'>key</em>) </h2>
+ Get the value of a key in a csv database.
 
- # Args
+ ### Args
 
  * `key` - the key to query.
 
- # Return
+ ### Return
 
  * `Array of records` - an array containing the results. If no record is found,
                         an empty array is returned.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  import "services" as svc;
 
@@ -44,18 +44,18 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>rm</em>(<em style='color: var(--inline-code-color)'>key</em>) </h1>
- Remove a record from a database.
+<h2> fn <em style='color: var(--inline-code-color);'>rm</em>(<em style='color: var(--inline-code-color)'>key</em>) </h2>
+ Remove a record from a csv database.
 
- # Args
+ ### Args
 
  * `key` - the key to remove.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  import "services" as svc;
 
@@ -75,59 +75,20 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>run</em>() </h1>
- Run a command from a `cmd` service.
-
- # Effective smtp stage
-
- All of them.
-
- # Example
-
- ```js
- // services.vsl
- service echo cmd = #{
-     timeout: "2s",
-     command: "echo",
-     args: ["-e", "using cmd to print to stdout\r\n"],
- };
- ```
-
- ```js
- // main.vsl
- import "services" as svc;
-
- #{
-     connect: [
-        action "execute command" || {
-             // prints 'using cmd to print to stdout\r\n' on the screen.
-             svc::echo.cmd_run();
-        }
-     ]
- }
- ```
-
- 
-
-</div>
-<br/>
-<br/>
-
-<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>run</em>(<em style='color: var(--inline-code-color)'>args</em>) </h1>
+<h2> fn <em style='color: var(--inline-code-color);'>run</em>(<em style='color: var(--inline-code-color)'>args</em>) </h2>
  Run a command from a `cmd` service with arguments.
  This allows you to run a command with dynamic arguments.
 
- # Args
+ ### Args
 
  * `args` - an array of strings that will replace current command
             arguments defined in the `args` field of a `cmd` service.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
 
  ```js
  // services.vsl
@@ -159,18 +120,18 @@
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
-<h1> fn <em style='color: var(--inline-code-color);'>set</em>(<em style='color: var(--inline-code-color)'>record</em>) </h1>
- Set a record into a database.
+<h2> fn <em style='color: var(--inline-code-color);'>set</em>(<em style='color: var(--inline-code-color)'>record</em>) </h2>
+ Set a record into a csv database.
 
- # Args
+ ### Args
 
  * `record` - the record to set.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  import "services" as svc;
 
