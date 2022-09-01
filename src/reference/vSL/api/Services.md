@@ -44,6 +44,59 @@ Services are external programs that can be used via the functions available in t
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>query</em>(<em style='color: var(--inline-code-color)'>q</em>) </h2>
+ Query a database.
+
+ ### Args
+
+ * `q` - the query to execute.
+
+ ### Effective smtp stage
+
+ All of them.
+
+ ### Example
+
+ ```js
+ service my_db db:mysql = #{
+     url: "mysql://localhost/",
+     user: "guest",
+ };
+ ```
+
+ ```js
+ import "services" as svc;
+
+ #{
+     connect: [
+        action "log database" || {
+             let version_record = svc::my_db.query("SELECT version();");
+             // Result is a array of maps: [ #{"version()": "'version-of-mysql'"} ]
+             log("trace", `Database version is ${version_record[0]["version()"]}`);
+
+             // Fetching a 'greylist' database with a 'sender' table containing the (user, domain, address) fields.
+             let senders = svc::my_db.query("SELECT * FROM greylist.sender");
+
+             // Iterate over rows.
+             for sender in senders {
+                 // You can access the columns values using Rhai's Map syntax:
+                 print(`name: ${sender.user}, domain: ${sender.domain}, address: ${sender.address}`);
+             }
+
+             // Populate the database with a new record.
+             svc::my_db.query(`INSERT INTO greylist.sender (user, domain, address) values ("john.doe", "example.com", "john.doe@example.com");`);
+        }
+     ]
+ }
+ ```
+
+ 
+
+</div>
+<br/>
+<br/>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
 <h2> fn <em style='color: var(--inline-code-color);'>rm</em>(<em style='color: var(--inline-code-color)'>key</em>) </h2>
  Remove a record from a csv database.
 

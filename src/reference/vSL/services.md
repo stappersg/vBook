@@ -108,6 +108,22 @@ print(john[2]);
 
 ### MySQL Database
 
+Using [Rhai arrays](https://rhai.rs/book/language/arrays.html) and [maps](https://rhai.rs/book/language/object-maps.html#object-maps), vSL can easily fetch and update data from a mysql database.
+
+For the sake of the example below, lets imagine that we are connecting to a database named "greylist", with a table "sender" described as follows:
+
+```
++---------+--------------+------+-----+---------+
+| Field   | Type         | Null | Key | Default |
++---------+--------------+------+-----+---------+
+| address | varchar(500) | NO   | PRI | NULL    |
+| user    | varchar(500) | NO   |     | NULL    |
+| domain  | varchar(500) | NO   |     | NULL    |
++---------+--------------+------+-----+---------+
+```
+
+To connect to the database, we create a "mysql_greylist" service of type `db:mysql`.
+
 ```js
 service mysql_greylist db:mysql = #{
     // the url to connect to your database.
@@ -122,19 +138,41 @@ service mysql_greylist db:mysql = #{
     // response to your query. (optional, 30s by default)
     timeout: "3s",
 };
+```
 
-// Query & update the database.
-let mysql_version = greylist.query("SELECT Version();");
+We can then use this service to query and update the database using the query language of mysql.
+
+```js
+// Query the database.
+let senders = mysql_greylist.query("SELECT * FROM greylist.sender;");
+
 // Like the csv database, the `query` function of the mysql database return
-// an array of records.
+// an array of records, except that each record is a Rhai Map, meaning that
+// you can access the record fields using their names.
 //
-// mysql version: ["8.0.30-0ubuntu0.22.04.1"]
-print(`mysql version: ${mysql_version}`);
+// vSL will then return fetched records using this form:
+// Array [
+//     Map #{
+//         "user": "john.doe",
+//         "domain": "example.com",
+//         "address": "john.doe@example.com",
+//     },
+//     Map #{
+//         "user": "green",
+//         "domain": "test.com",
+//         "address": "green@test.com",
+//     },
+// ]
+//
+// (We assume that the "sender" table is populated with two records in the above example)
+//
+// To extract records and fields, use the syntax below.
+print(`first sender address : ${senders[0].address}`); // will print "john.doe@example.com";
+print(`second sender domain : ${senders[1].domain}`); // will print "test.com";
 
-// Lets imagine that we use a database "greylist" with a "sender" table with a user & domain field.
-// We can update the database this way:
+// We can also update the database this way:
 let sender = mail_from();
-greylist.query(`INSERT INTO greylist.sender (user, domain) values (${sender.local_part}, ${sender.domain})`);
+mysql_greylist.query(`INSERT INTO greylist.sender (user, domain, address) values (${sender.local_part}, ${sender.domain}, ${sender.address});`);
 ```
 
 ## The smtp type
