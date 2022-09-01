@@ -17,7 +17,7 @@ Its development goes through a full cycle of testing. Unit and integration tests
 
 ## License
 
-The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [vSMTP license][vSMTP LICENSE] for further information.
+The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [vSMTP LICENSE][vSMTP LICENSE] for further information.
 
 [vSMTP LICENSE]: https://github.com/viridIT/vSMTP/blob/main/LICENSE
 
