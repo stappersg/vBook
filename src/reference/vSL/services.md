@@ -106,6 +106,37 @@ print(john);
 print(john[2]);
 ```
 
+### MySQL Database
+
+```js
+service mysql_greylist db:mysql = #{
+    // the url to connect to your database.
+    url: "mysql://localhost/",
+    // the user to use when connecting. (optional)
+    user: "guest",
+    // the password for the user. (optional)
+    password: "1234",
+    // the number of connections to open on your database. (optional, 4 by default)
+    connections: 4,
+    // the time allowed to the database to send a
+    // response to your query. (optional, 30s by default)
+    timeout: "3s",
+};
+
+// Query & update the database.
+let mysql_version = greylist.query("SELECT Version();");
+// Like the csv database, the `query` function of the mysql database return
+// an array of records.
+//
+// mysql version: ["8.0.30-0ubuntu0.22.04.1"]
+print(`mysql version: ${mysql_version}`);
+
+// Lets imagine that we use a database "greylist" with a "sender" table with a user & domain field.
+// We can update the database this way:
+let sender = mail_from();
+greylist.query(`INSERT INTO greylist.sender (user, domain) values (${sender.local_part}, ${sender.domain})`);
+```
+
 ## The smtp type
 
 The smtp type enables you to use the delegate directive to delegate the email to another service via the smtp protocol. The example hereunder explains how to delegate to ClamAV antivirus through its SMTP proxy (clamsmtpd).
