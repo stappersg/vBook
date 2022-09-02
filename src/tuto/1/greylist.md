@@ -1,0 +1,127 @@
+# Greylist
+
+Greylisting is one method to defend your server against spam.
+
+The goal is to temporarily reject emails from a sender that is not yet in registered in a database, then accepting it back if the sender retries.
+
+To build a greylist, you need to create a database and a vSMTP service. For this tutorial, we will use the `[mysql](https://www.mysql.com/)` database, which is one of the most common.
+
+## The database
+
+### Install MySQL
+
+following this great tutorial: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
+
+This setup has been tested on Ubuntu 22.04, check out https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/ for other systems.
+
+TL;DR
+
+```sh
+# Install mysql.
+$ sudo apt update
+$ sudo apt install mysql-server
+$ sudo systemctl start mysql.service
+
+# Login as root.
+$ sudo mysql
+
+# Replace auth_socket authentication by a simple password.
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your-password';
+mysql> exit
+
+# Update root password & remove unnecessary stuff.
+$ sudo mysql_secure_installation
+
+# Connect as root with the password.
+mysql -u root -p
+
+# Reset auth to auth_socket, this way you can connect with `sudo mysql`
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+```
+
+### Setup a user
+
+To manage your database, you should create a new user with restricted privileges instead of relying on root.
+
+```sh
+# Here we use localhost as our host but you could also setup your database on another server.
+mysql> CREATE USER 'greylist-manager'@'localhost' IDENTIFIED BY 'your-password';
+```
+
+### Setup the database and a table
+
+To create the database, simply put the content of this sql code into a `greylist.sql` file.
+
+```sql
+CREATE DATABASE greylist;
+
+CREATE TABLE greylist.sender(
+    address varchar(500) NOT null primary key,
+    user varchar(500) NOT null,
+    domain varchar(500) NOT null
+);
+```
+
+And then run the `mysql` command as root to generate the database.
+
+```sh
+sudo mysql < greylist.sql
+```
+
+Grant necessary privileges to your user on the newly create table.
+
+```sh
+mysql> GRANT SELECT, INSERT ON greylist.sender TO 'greylist-manager'@'localhost';
+```
+
+The greylist database is now operational.
+
+## Setup vSMTP
+
+To setup vSMTP, you first need to create a mysql service. You can, for example, write it in a `services.vsl` file where your `main.vsl` is located.
+
+```js
+// -- services.vsl
+service greylist db:mysql = #{
+    // Change this url to the url of your database.
+    url: "mysql://localhost/",
+
+    // Select the user that you created when setting up your database.
+    user: "greylist-manager",
+    password: "your-password",
+};
+```
+
+Then, create a greylist rule in your `main.vsl` file.
+
+```js
+// -- main.vsl
+import "services" as svc;
+
+#{
+    // The greylist is effective in the "mail" stage, because the sender
+    // of the email is received at this stage.
+    mail: [
+        rule "greylist" || {
+            let sender = mail_from();
+
+            // if the sender is not recognized in our database,
+            // we deny the transaction and write the sender into
+            // the database.
+            if svc::greylist.query(`SELECT * FROM greylist.sender WHERE address = '${sender}';`) == [] {
+                // Writing the sender into the database.
+                svc::greylist.query(`
+                    INSERT INTO greylist.sender (user, domain, address)
+                    values ("${sender.local_part}", "${sender.domain}", "${sender}");
+                `);
+
+                deny()
+            } else {
+                // the user is known by the server, the transaction
+                // can proceed.
+                accept()
+            }
+        }
+    ]
+}
+```
