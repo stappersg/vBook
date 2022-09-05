@@ -10,9 +10,9 @@ To build a greylist, you need to create a database and a vSMTP service. For this
 
 ### Install MySQL
 
-following this great tutorial: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
+following this great tutorial: <https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04>
 
-This setup has been tested on Ubuntu 22.04, check out https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/ for other systems.
+This setup has been tested on Ubuntu 22.04, check out <https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en> for other systems.
 
 TL;DR
 

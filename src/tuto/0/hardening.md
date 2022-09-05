@@ -1,10 +1,6 @@
 # Hardening vSMTP
 
-## Disabling open relay
-
-Doe's family server is connected to the Internet and must not be configured as an [open mail relay] that could be used by spammers and other malicious users.
-
-[open mail relay]: https://en.wikipedia.org/wiki/Open_mail_relay
+## Disabling [open mail relay](https://en.wikipedia.org/wiki/Open_mail_relay)
 
 From the Internet, the server will only accept messages where:
 
@@ -13,7 +9,7 @@ From the Internet, the server will only accept messages where:
 
 From the internal network, all IPs are allowed to send messages.
 
-Edit your `/etc/vsmtp/rules/main.vsl` file and add the rules:
+Edit the `/etc/vsmtp/rules/main.vsl` file and add the rules:
 
 ```js
 // -- main.vsl
@@ -44,7 +40,7 @@ doe-family.com.          TXT "v=spf1 +mx -all"
 
 For incoming messages, the SPF protocol is configured to check the sender credentials at the `mail` stage.
 
-Edit your `/etc/vsmtp/rules/main.vsl` file and add the rule:
+Edit the `/etc/vsmtp/rules/main.vsl` file and add the rule:
 
 ```js
 // -- main.vsl
@@ -59,4 +55,36 @@ Edit your `/etc/vsmtp/rules/main.vsl` file and add the rule:
 
 ## Using [DKIM](/advanced/eam/dkim.html)
 
-`Under construction 🚧`
+The DKIM protocol is natively implemented in vSMTP.
+
+This protocol ensure that the content of the message has not been modified during the transport. A new DNS record is added into the `doe-family.com` DNS zone. It declares the public key usable to verify the messages (see [how to had the DKIM record](/advanced/eam/dkim.html#dns-records)).
+
+We will configure these rule:
+
+- The sender is a Doe's family account : a DKIM signature is added to the message.
+- The recipient is a Doe's family account : the DKIM signatures are verified.
+
+Add the following to the `/etc/vsmtp/vsmtp.toml` file:
+
+```toml
+[server.dkim]
+private_key = "/path/to/private-key"
+```
+
+Edit the `/etc/vsmtp/rules/main.vsl` file and add the rules:
+
+```js
+#{
+  // ... previous code ...
+
+  postq: [
+    action "sign dkim" || {
+      if in_domain(mail_from()) {
+        dkim_sign("2022-09" /* selector of the DNS record */);
+      } else {
+        dkim_verify();
+      }
+    }
+  ],
+}
+```
