@@ -1,14 +1,10 @@
 # Features
 
-vSMTP is a Mail Transfer Agent ([MTA]) and a Mail Submission Agent ([MSA]).
+vSMTP is a Mail Transfer Agent ([MTA]) and a Mail Submission Agent ([MSA]). It is not intended to be a Mail User Agent ([MUA]) nor a Mail Delivery Agent ([MDA]).
 
-It is not intended to be a Mail User Agent ([MUA]) nor a Mail Delivery Agent ([MDA]).
+For outgoing mail, vSMTP can directly be addressed by your MUA using the SMTP protocol.
 
-For outgoing mail, vSMTP can directly be addressed by your [MUA] using the SMTP protocol.
-
-For incoming mails, vSMTP can deliver local mail to a client storage using mbox or maildir formats. To retrieve emails from your [MUA] it is necessary to install a [MDA] that can handle POP and/or IMAP protocols.
-
-&#9758; | About MDA: For Debian/Ubuntu server the most straightforward solution is to download and install [courier-imap] package and to specify where the `MailDir` folders are located.
+For incoming mails, vSMTP can store messages on a server file-system using [Mbox] or [Maildir] formats. To retrieve emails from a remote client (MUA) it is necessary to install a MDA that can handle [POP] and/or [IMAP] protocols.
 
 [courier-imap]: https://packages.debian.org/search?keywords=courier-imap
 
@@ -16,6 +12,12 @@ For incoming mails, vSMTP can deliver local mail to a client storage using mbox 
 [MTA]: ./term/agent.html#mta-mail-transfer-agent
 [MSA]: ./term/agent.html#msa-mail-submission-agent
 [MDA]: ./term/agent.html#mda-mail-delivery-agent
+
+[mbox]: https://en.wikipedia.org/wiki/Mbox
+[maildir]: https://en.wikipedia.org/wiki/Maildir
+
+[POP]: https://en.wikipedia.org/wiki/Post_Office_Protocol
+[IMAP]: https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol
 
 ## Roadmap
 
@@ -48,7 +50,7 @@ vSMTP is a modular and highly customizable product.  Adding or modifying subsyst
 - Mail exports in RAW and JSON format.
 - Third-party software called by user-defined services.
 - Mods and addons support.
-- Applications logs.
+- System and applications logs.
 
 ### Filtering
 
@@ -63,17 +65,17 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 ### Delivery
 
 - SMTP remote delivery - using a third-party software, [Lettre].
-- [Mbox] and [Maildir] format for local delivering.
+- Mbox and Maildir format for local delivery.
 - SMTP relaying and forwarding.
 
-[Mbox]: https://datatracker.ietf.org/doc/html/rfc4155
-[Maildir]: https://en.wikipedia.org/wiki/Maildir
 [Lettre]: https://github.com/lettre/lettre
 
 ### External services
 
 vSMTP supports SMTP delegation, command calls, and file databases.
-Next versions will provide SQL and NoSQL databases and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q3/2022.
+CCSV files and MySQL databases are supported.
+
+Next versions will provide LDAP, NoSQL databases, and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q4/2022.
 
 [Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
 
@@ -83,8 +85,8 @@ Next versions will provide SQL and NoSQL databases and in-memory caches supports
 - [Null MX] RFC.
 - [SPF] support.
 - [DKIM] signer and verifier.  
-- [DMARC] is planned for the next minor release.
-- [DANE] protocol is planned for future release.
+- [DMARC] verifier, reporting is not natively supported.
+- [DANE] protocol is planned for a future release.
 - [ARC] and [BIMI] experimental and future Internet standards are currently not supported.
 
 [Null MX]: https://www.rfc-editor.org/rfc/rfc7505.html

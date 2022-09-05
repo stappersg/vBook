@@ -59,4 +59,6 @@ cargo install vsmtp
 
 ### Docker
 
-`help wanted` ( [Issue #340](https://github.com/viridIT/vSMTP/issues/340) )
+The official repository for vSMTP on Docker Hub is [viridit/vsmtp].
+
+[viridit/vsmtp]: https://hub.docker.com/search?q=vsmtp

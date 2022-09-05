@@ -21,7 +21,7 @@ The vSMTP reference guide
   - [Authentication](tuto/0/auth-sasl.md)
   - [Hardening vSMTP](tuto/0/hardening.md)
   - [Antivirus](tuto/0/antivirus.md)
-- [Geylist](tuto/1/greylist.md)
+- [Greylist](tuto/1/greylist.md)
 
 # Advanced Settings
 
