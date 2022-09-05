@@ -78,12 +78,12 @@ The greylist database is now operational.
 
 ## Setup vSMTP
 
-To setup vSMTP, you first need to create a mysql service. You can, for example, write it in a `services.vsl` file where your `main.vsl` is located.
+To setup vSMTP, you first need to create a mysql service, that will enable you to query your database. You can, for example, write it in a `services.vsl` file where your `main.vsl` is located.
 
 ```js
 // -- services.vsl
 service greylist db:mysql = #{
-    // Change this url to the url of your database.
+    // Change this url to the url of your database, or keep it like this if the 'greylist-manager' user is setup on localhost.
     url: "mysql://localhost/",
 
     // Select the user that you created when setting up your database.
@@ -92,7 +92,11 @@ service greylist db:mysql = #{
 };
 ```
 
-Then, create a greylist rule in your `main.vsl` file.
+The `query` function from the `db:mysql` service can be used to query a mysql database. String interpolation can be used to insert variables into the query.
+
+> ⚠️ String interpolation can lead to SQL injection if not used properly. Make sure to sanitize your inputs, set only required privileges to the mysql user, and check what kind of data you are injecting.
+
+Create a greylist rule in your `main.vsl` file.
 
 ```js
 // -- main.vsl
