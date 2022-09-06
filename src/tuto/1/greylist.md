@@ -119,7 +119,8 @@ import "services" as svc;
                     values ("${sender.local_part}", "${sender.domain}", "${sender}");
                 `);
 
-                deny()
+                // vsl exposes a `code_greylist` code which is a "451 4.7.1" enhanced code.
+                deny(code_greylist)
             } else {
                 // the user is known by the server, the transaction
                 // can proceed.
