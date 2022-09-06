@@ -2,10 +2,11 @@
 
 The logging system is backed by [tokio tracing](https://crates.io/crates/tracing) and piped to multiple 'subscriber' :
 
-- [Backend logs](#backend-logs)
-- [Application logs](#application-logs)
-- [Syslogd](#syslogd)
-- [Journald](#journald)
+- [Logging](#logging)
+  - [Backend logs](#backend-logs)
+  - [Application logs](#application-logs)
+  - [Syslogd](#syslogd)
+  - [Journald](#journald)
 
 ## Backend logs
 
@@ -53,8 +54,8 @@ vSMTP send logs to the syslog daemon using the `mail` facility :
 ```toml
 # if the table is missing, system's log are skipped
 [server.logs.system]
-# write only the message of level `min_level` and more
-min_level = "info"
+# write only the message of a specific level and more
+level = "info"
 backend = "syslogd"
 # format used by the logger see https://www.rfc-editor.org/rfc/rfc3164 and https://www.rfc-editor.org/rfc/rfc5424
 format = "3164"
@@ -74,7 +75,7 @@ vSMTP send logs to the journald daemon :
 ```toml
 # if the table is missing, system's log are skipped
 [server.logs.system]
-# write only the message of level `min_level` and more
-min_level = "info"
+# write only the message of a specific level and more
+level = "info"
 backend = "journald"
 ```
