@@ -5,7 +5,7 @@
 First of all, create the file [`/etc/vsmtp/vsmtp.toml`](/get-started/concepts.html#configuration-file) with this content:
 
 ```toml
-version_requirement = ">=1.2.1"
+version_requirement = ">=1.3.0"
 
 # root domain of the server.
 [server]

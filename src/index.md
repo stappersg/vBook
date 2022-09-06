@@ -1,6 +1,6 @@
 # Introduction
 
-> This is a WIP document for vSMTP v1.2.x. Remember that these versions are not intended for production use.
+> This is a WIP document for vSMTP v1.3.x. Remember that these versions are not intended for production use.
 
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
