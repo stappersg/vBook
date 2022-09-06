@@ -59,7 +59,7 @@ service clamsmtpd smtp = #{
 };
 ```
 
-The the receiver's socket must be enabled in the `/etc/vsmtp/vsmtp.toml`.
+The receiver's socket must be enabled in the `/etc/vsmtp/vsmtp.toml`.
 
 ```toml
 # -- /etc/vsmtp/vsmtp.toml
@@ -98,7 +98,7 @@ import "service" as svc;
 }
 ```
 
-> Since there is no heavy network traffic, John decided to do a post-queue filtering.
+> Since there is no heavy network traffic, John decided to do a "post-queue" filtering.
 
 Compromised emails are quarantined in the `virus_q` folder.
 

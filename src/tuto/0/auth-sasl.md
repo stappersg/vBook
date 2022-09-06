@@ -25,5 +25,5 @@ And this rule to your `/etc/vsmtp/rules/main.vsl` file:
 ```
 
 > ⚠️ `authenticate()` function call the program `testsaslauthd` itself calling the `saslauthd` daemon.
-> Make sure to configure `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
+> Make sure to install and configure `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
 > Future releases will bring improved vSL API.

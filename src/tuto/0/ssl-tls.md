@@ -1,10 +1,10 @@
 # SSL/TLS
 
-Except under closed network, you want your connection to be encrypted using SSL/TLS.
+Connections should be encrypted using the SSL/TLS protocol, even on a private network.
 
 The vSMTP implementation is based on the state-of-the-art [rustls](https://docs.rs/rustls/latest/rustls) library.
 
-Add the following to your `/etc/vsmtp/vsmtp.toml` file:
+Add the following to the `/etc/vsmtp/vsmtp.toml` file:
 
 ```toml
 # ...
