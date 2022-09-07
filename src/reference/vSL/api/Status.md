@@ -1,22 +1,17 @@
 # Status
-## The state of an SMTP transaction can be changed through specific functions from this module.
-<details>
-<summary>
-<code>
-accept()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+The state of an SMTP transaction can be changed through specific functions from this module.
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>accept</em>() </h2>
  Tell the rule engine to accept the incoming transaction for the current stage.
  This means that all rules following the one `accept` is called in the current stage
  will be ignored.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  all of them.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -36,30 +31,25 @@ accept()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-deny()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>deny</em>() </h2>
  Stop rules evaluation and/or send an error code to the client.
  The code sent is `554 - permanent problems with the remote server`.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  all of them.
 
- # Example
+ ### Example
  ```js
  #{
      rcpt: [
          rule "check for satan" || {
             // The client is denied if a recipient's domain matches satan.org,
             // this is a blacklist, sort-of.
-            if ctx().rcpt.domain == "satan.org" {
+            if rcpt().domain == "satan.org" {
                 deny()
             } else {
                 next()
@@ -73,22 +63,17 @@ deny()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-deny(code)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>deny</em>(<em style='color: var(--inline-code-color)'>code</em>) </h2>
  Stop rules evaluation and/or send a custom code to the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  all of them.
 
- # Example
+ ### Example
  ```js
  #{
      rcpt: [
@@ -98,7 +83,7 @@ deny(code)
 
             // The client is denied if a recipient's domain matches satan.org,
             // this is a blacklist, sort-of.
-            if ctx().rcpt.domain == "satan.org" {
+            if rcpt().domain == "satan.org" {
                 deny(error_code)
             } else {
                 next()
@@ -112,15 +97,10 @@ deny(code)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-faccept()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>faccept</em>() </h2>
  Tell the rule engine to force accept the incoming transaction.
  This means that all rules following the one `faccept` is called
  will be ignored.
@@ -128,11 +108,11 @@ faccept()
  Use this return status when you are sure that
  the incoming client can be trusted.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  all of them.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -154,22 +134,17 @@ faccept()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-info(code)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>info</em>(<em style='color: var(--inline-code-color)'>code</em>) </h2>
  Ask the client to retry to send the current command by sending an information code.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  all of them.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -185,22 +160,17 @@ info(code)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-next()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>next</em>() </h2>
  Tell the rule engine that a rule succeeded.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  all of them.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -215,27 +185,22 @@ next()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-quarantine(queue)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>quarantine</em>(<em style='color: var(--inline-code-color)'>queue</em>) </h2>
  Skip all rules until the email is received and place the email in a
  quarantine queue.
 
- # Args
+ ### Args
 
  * `queue` - the relative path to the queue where the email will be quarantined. This path will be concatenated to the [app.dirpath] field in your `vsmtp.toml`.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  all of them.
 
- # Example
+ ### Example
  ```js
  import "services" as svc;
 
@@ -258,4 +223,4 @@ quarantine(queue)
 
 </div>
 <br/>
-</details>
+<br/>

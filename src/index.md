@@ -1,6 +1,6 @@
 # Introduction
 
-> This is a WIP document for vSMTP v1.2.x. Remember that these versions are not intended for production use.
+> This is a WIP document for vSMTP v1.3.x. Remember that these versions are not intended for production use.
 
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
@@ -17,7 +17,7 @@ Its development goes through a full cycle of testing. Unit and integration tests
 
 ## License
 
-The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [vSMTP license][vSMTP LICENSE] for further information.
+The standard version of vSMTP is free and under an Open Source license. It is provided as usual without any warranty. Please refer to the [vSMTP LICENSE][vSMTP LICENSE] for further information.
 
 [vSMTP LICENSE]: https://github.com/viridIT/vSMTP/blob/main/LICENSE
 

@@ -1,24 +1,19 @@
 # Transaction
-## At each SMTP stage, data from the client is received via 'SMTP commands'. This module lets you query the content of the commands.
-<details>
-<summary>
-<code>
-helo()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+At each SMTP stage, data from the client is received via 'SMTP commands'. This module lets you query the content of the commands.
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>helo</em>() </h2>
  Get the value of the `HELO/EHLO` command sent by the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `helo` and onwards.
 
- # Return
+ ### Return
 
  * `string` - the value of the `HELO/EHLO` command.
 
- # Example
+ ### Example
  ```js
  #{
      helo: [
@@ -31,26 +26,21 @@ helo()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-mail_from()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>mail_from</em>() </h2>
  Get the value of the `MAIL FROM` command sent by the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `mail` and onwards.
 
- # Return
+ ### Return
 
  * `address` - the sender address.
 
- # Example
+ ### Example
  ```js
  #{
      helo: [
@@ -63,26 +53,21 @@ mail_from()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-mail_timestamp()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>mail_timestamp</em>() </h2>
  Get the time of reception of the email.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Return
+ ### Return
 
  * `string` - the timestamp.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -95,26 +80,21 @@ mail_timestamp()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-message_id()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>message_id</em>() </h2>
  Get the unique id of the received message.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Return
+ ### Return
 
  * `string` - the message id.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -127,28 +107,23 @@ message_id()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rcpt()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>rcpt</em>() </h2>
  Get the value of the current `RCPT TO` command sent by the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `rcpt` and onwards. Please note that `rcpt()` will always return
  the last recipient received in stages after the `rcpt` stage. Therefore,
  this functions is best used in the `rcpt` stage.
 
- # Return
+ ### Return
 
  * `address` - the address of the received recipient.
 
- # Example
+ ### Example
  ```js
  #{
      rcpt: [
@@ -161,28 +136,23 @@ rcpt()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rcpt_list()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>rcpt_list</em>() </h2>
  Get the list of recipients received by the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `rcpt` and onwards. Note that you will not have all recipients received
  all at once in the `rcpt` stage. It is better to use this function
  in the later stages.
 
- # Return
+ ### Return
 
  * `Array of addresses` - the list containing all recipients.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -195,4 +165,4 @@ rcpt_list()
 
 </div>
 <br/>
-</details>
+<br/>

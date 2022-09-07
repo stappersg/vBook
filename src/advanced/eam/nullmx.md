@@ -42,7 +42,7 @@ The RFC 7505 defines two specific return codes.
 
 ### vSL predefined functions
 
-> ___This is a DRAFT for v1.2 features___
+> ___This is a DRAFT for future releases___
 
 The standard API includes a dedicated abstract to check the Null MX record.
 

@@ -1,24 +1,19 @@
 # Message
-## Those methods are used to query data from the email and/or mutate it.
-<details>
-<summary>
-<code>
-add_rcpt_message(addr)
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+Those methods are used to query data from the email and/or mutate it.
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>add_rcpt_message</em>(<em style='color: var(--inline-code-color)'>addr</em>) </h2>
  Add a recipient to the `To` header of the message.
 
- # Args
+ ### Args
 
  * `addr` - the recipient address to add to the `To` header.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -31,29 +26,24 @@ add_rcpt_message(addr)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-append_header(header, value)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Append a new header to the message.
 
- # Args
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>append_header</em>(<em style='color: var(--inline-code-color)'>header</em>, <em style='color: var(--inline-code-color)'>value</em>) </h2>
+ Add a new header at the end of the header list in the message.
+
+ ### Args
 
  * `header` - the name of the header to append.
  * `value` - the value of the header to append.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
- All of them. Even tought the email is not received at the current stage,
- vsmtp stores new headers and will prepend them to the ones received once
+ All of them. Even though the email is not received at the current stage,
+ vsmtp stores new headers and will add them on top of the ones received once
  the `preq` stage is reached.
 
- # Example
+ ### Example
  ```js
  #{
      postq: [
@@ -68,26 +58,21 @@ append_header(header, value)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-get_domain()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>get_domain</em>() </h2>
  Get the domain of an email address.
 
- # Args
+ ### Args
 
  * `address` - the address to extract the domain from.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      mail: [
@@ -103,26 +88,21 @@ get_domain()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-get_domains()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>get_domains</em>() </h2>
  Get all domains of the recipient list.
 
- # Args
+ ### Args
 
  * `rcpt_list` - the recipient list.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `mail` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      mail: [
@@ -142,30 +122,26 @@ get_domains()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-get_header(header)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>get_header</em>(<em style='color: var(--inline-code-color)'>header</em>) </h2>
  Get a specific header from the incoming message.
 
- # Args
+ ### Args
 
  * `header` - the name of the header to get.
 
- # Return
+ ### Return
 
  * `string` - the header value, or an empty string if the header was not found.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
- `preq` and onwards.
+ All of them, although it is most useful in the `preq` stage because this
+ is when the email body is received.
 
- # Example
+ ### Example
  ```js
  #{
      postq: [
@@ -180,26 +156,21 @@ get_header(header)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-get_local_part()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>get_local_part</em>() </h2>
  Get the local part of an email address.
 
- # Args
+ ### Args
 
  * `address` - the address to extract the local part from.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Example
+ ### Example
  ```js
  #{
      mail: [
@@ -215,26 +186,21 @@ get_local_part()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-get_local_parts()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>get_local_parts</em>() </h2>
  Get all local parts of the recipient list.
 
- # Args
+ ### Args
 
  * `rcpt_list` - the recipient list.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `mail` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      mail: [
@@ -254,26 +220,22 @@ get_local_parts()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-has_header(header)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>has_header</em>(<em style='color: var(--inline-code-color)'>header</em>) </h2>
  Checks if the message contains a specific header.
 
- # Args
+ ### Args
 
  * `header` - the name of the header to search.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
- `preq` and onwards.
+ All of them, although it is most useful in the `preq` stage because this
+ is when the email body is received.
 
- # Example
+ ### Example
  ```js
  #{
      postq: [
@@ -290,22 +252,17 @@ has_header(header)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-mail()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>mail</em>() </h2>
  Get a copy of the whole email as a string.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      postq: [
@@ -318,29 +275,24 @@ mail()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-prepend_header(header, value)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Prepend a new header to the message.
 
- # Args
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>prepend_header</em>(<em style='color: var(--inline-code-color)'>header</em>, <em style='color: var(--inline-code-color)'>value</em>) </h2>
+ Add a new header on top all other headers in the message.
+
+ ### Args
 
  * `header` - the name of the header to prepend.
  * `value` - the value of the header to prepend.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
- All of them. Even tought the email is not received at the current stage,
- vsmtp stores new headers and will prepend them to the ones received once
+ All of them. Even though the email is not received at the current stage,
+ vsmtp stores new headers and will add them on top of the ones received once
  the `preq` stage is reached.
 
- # Example
+ ### Example
  ```js
  #{
      postq: [
@@ -355,26 +307,21 @@ prepend_header(header, value)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-remove_rcpt_message(addr)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>remove_rcpt_message</em>(<em style='color: var(--inline-code-color)'>addr</em>) </h2>
  Remove a recipient from the `To` header of the message.
 
- # Args
+ ### Args
 
  * `addr` - the recipient to remove to the `To` header.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -387,26 +334,21 @@ remove_rcpt_message(addr)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rewrite_mail_from_message(new_addr)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>rewrite_mail_from_message</em>(<em style='color: var(--inline-code-color)'>new_addr</em>) </h2>
  Change the sender's address in the `From` header of the message.
 
- # Args
+ ### Args
 
  * `new_addr` - the new sender address to set.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -419,27 +361,22 @@ rewrite_mail_from_message(new_addr)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-rewrite_rcpt_message(old_addr, new_addr)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>rewrite_rcpt_message</em>(<em style='color: var(--inline-code-color)'>old_addr</em>, <em style='color: var(--inline-code-color)'>new_addr</em>) </h2>
  Replace a recipient by an other in the `To` header of the message.
 
- # Args
+ ### Args
 
  * `old_addr` - the recipient to replace.
  * `new_addr` - the new address to use when replacing `old_addr`.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `preq` and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      preq: [
@@ -452,39 +389,34 @@ rewrite_rcpt_message(old_addr, new_addr)
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-set_header(header, value)
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>set_header</em>(<em style='color: var(--inline-code-color)'>header</em>, <em style='color: var(--inline-code-color)'>value</em>) </h2>
  Replace an existing header value by a new value, or append a new header
  to the message.
 
- # Args
+ ### Args
 
  * `header` - the name of the header to set or add.
  * `value` - the value of the header to set or add.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
- All of them. Even tought the email is not received at the current stage,
- vsmtp stores new headers and will prepend them to the ones received once
+ All of them. Even though the email is not received at the current stage,
+ vsmtp stores new headers and will add them on top to the ones received once
  the `preq` stage is reached.
 
  Be aware that if you want to set a header value from the original message,
  you must use `set_header` in the `preq` stage and onwards.
 
- # Example
+ ### Example
  ```js
  #{
      postq: [
          action "update subject" || {
              let subject = get_header("Subject");
-             set_header("Subject", `${subject} (analysed by vsmtp)`);
+             set_header("Subject", `${subject} (analyzed by vsmtp)`);
          }
      ],
  }
@@ -494,4 +426,4 @@ set_header(header, value)
 
 </div>
 <br/>
-</details>
+<br/>

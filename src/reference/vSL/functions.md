@@ -46,7 +46,7 @@ SMTP envelop can be modified by several predefined actions.
 &#9998; | `add_to`, `remove_to` & `rewrite_to` only update the root headers (nested emails headers are not changed).
 
 ```js
-remove_header(my_regex);   
+remove_header(my_regex);
 ```
 
 ## Deliver actions
@@ -90,10 +90,10 @@ This function dumps in JSON format only the available content at a stage.  The b
 
 ## User-defined actions
 
-Combined actions can be declared using a [RHAI function](https://rhai.rs/book/ref/functions.html).
+Combined actions can be declared using a [Rhai function](https://rhai.rs/book/ref/functions.html).
 
 ```javascript
-fn my_faccept() {                              
+fn my_faccept() {
     log("info", "Hello world !!!");
     faccept()
     // Implicit return syntax.

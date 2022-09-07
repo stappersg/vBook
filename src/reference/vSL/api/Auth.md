@@ -1,24 +1,19 @@
 # Auth
-## This module contains authentication mechanisms to secure your server.
-<details>
-<summary>
-<code>
-auth()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+This module contains authentication mechanisms to secure your server.
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>auth</em>() </h2>
  Get authentication credentials from the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `authenticate` only.
 
- # Return
+ ### Return
 
  * `Credentials` - the credentials of the client.
 
- # Example
+ ### Example
  ```js
  #{
      authenticate: [
@@ -31,15 +26,10 @@ auth()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-authenticate()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>authenticate</em>() </h2>
  Process the SASL authentication mechanism.
 
  The current implementation support "PLAIN" mechanism, and will call the
@@ -53,26 +43,21 @@ authenticate()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-is_authenticated()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>is_authenticated</em>() </h2>
  Check if the client is authenticated.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  `authenticate` only.
 
- # Return
+ ### Return
 
  * `bool` - true if the client succeeded to authenticate itself, false otherwise.
 
- # Example
+ ### Example
  ```js
  #{
      authenticate: [
@@ -85,31 +70,28 @@ is_authenticated()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-is_secured()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
- Check if the client's connexion was secure.
 
- # Effective smtp stage
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>is_secured</em>() </h2>
+ Has the connection been secured under the encryption protocol SSL/TLS
 
- `authenticate` only.
+ ### Effective smtp stage
 
- # Return
+ all
 
- * `bool` - true if the client securely connected with the auth protocol, false otherwise.
+ ### Return
 
- # Example
+ * boolean value (`true` if the connection is secured, `false` otherwise)
+
+ ### Example
  ```js
  #{
-     authenticate: [
-        action "log info" || log("info", `${is_secured()}`),
-     ]
+   mail: [
+     action "log ssl/tls" || {
+       log("info", `My client is ${if is_secured() { "secured" } else { "unsecured!!!" }}`)
+     }
+   ]
  }
  ```
 
@@ -117,4 +99,4 @@ is_secured()
 
 </div>
 <br/>
-</details>
+<br/>

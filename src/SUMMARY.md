@@ -17,8 +17,11 @@ The vSMTP reference guide
 - [Doe's family](tuto/0/doe.md)
   - [Context](tuto/0/context.md)
   - [Basic configuration](tuto/0/basic.md)
+  - [SSL/TLS](tuto/0/ssl-tls.md)
+  - [Authentication](tuto/0/auth-sasl.md)
   - [Hardening vSMTP](tuto/0/hardening.md)
-  - [Policy delegation](tuto/0/delegation.md)
+  - [Antivirus](tuto/0/antivirus.md)
+- [Geylist](tuto/1/greylist.md)
 
 # Advanced Settings
 
@@ -30,8 +33,8 @@ The vSMTP reference guide
   - [SPF](advanced/eam/spf.md)
   - [DKIM](advanced/eam/dkim.md)
   - [DMARC](advanced/eam/dmarc.md)
-  - [ARC](advanced/eam/arc.md)
-  - [BIMI](advanced/eam/bimi.md)
+  - [ARC 🚧]()
+  - [BIMI 🚧]()
 - [SMTP security using DANE](advanced/dane.md)
 
 # Reference

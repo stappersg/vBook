@@ -2,7 +2,7 @@
 
 The vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol is described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
 
-DKIM is an open standard for email authentication used to check the integrity of the content. A signature header is added to the messages. This signature is secured by a key pair (private/public) and a certificate.
+DKIM is an open standard for email authentication used to check the integrity of the content. A signature header is added to the messages. This signature is secured by a key pair (private/public).
 
 > DKIM signatures work like a watermark. Therefore, they survive forwarding, which is not the case for SPF.
 

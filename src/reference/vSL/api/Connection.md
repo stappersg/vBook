@@ -1,24 +1,19 @@
 # Connection
-## Metadata is available for each client, this module lets you query those metadatas.
-<details>
-<summary>
-<code>
-client_address()
-</code>
-</summary>
-<br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+Metadata is available for each client, this module lets you query those metadatas.
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>client_address</em>() </h2>
  Get the address of the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `string` - the client's address with the `ip:port` format.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -31,26 +26,21 @@ client_address()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-client_ip()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>client_ip</em>() </h2>
  Get the ip address of the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `string` - the client's ip address.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -63,26 +53,21 @@ client_ip()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-client_port()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>client_port</em>() </h2>
  Get the ip port of the client.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `int` - the client's port.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -95,26 +80,21 @@ client_port()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-connection_timestamp()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>connection_timestamp</em>() </h2>
  Get a the timestamp of the client's connection time.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `timestamp` - the connexion timestamp of the client.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -127,26 +107,21 @@ connection_timestamp()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_address()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>server_address</em>() </h2>
  Get the full server address.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `string` - the server's address with the `ip:port` format.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -159,26 +134,21 @@ server_address()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_ip()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>server_ip</em>() </h2>
  Get the server's ip.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `string` - the server's ip.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -191,26 +161,21 @@ server_ip()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_name()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>server_name</em>() </h2>
  Get the name of the server.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `string` - the name of the server.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -223,26 +188,21 @@ server_name()
 
 </div>
 <br/>
-</details>
-<details>
-<summary>
-<code>
-server_port()
-</code>
-</summary>
 <br/>
-<div style='padding: 10px; border-radius: 5px; border-style: solid; border-color: white'>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>server_port</em>() </h2>
  Get the server's port.
 
- # Effective smtp stage
+ ### Effective smtp stage
 
  All of them.
 
- # Return
+ ### Return
 
  * `string` - the server's port.
 
- # Example
+ ### Example
  ```js
  #{
      connect: [
@@ -255,4 +215,4 @@ server_port()
 
 </div>
 <br/>
-</details>
+<br/>

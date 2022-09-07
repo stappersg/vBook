@@ -106,6 +106,75 @@ print(john);
 print(john[2]);
 ```
 
+### MySQL Database
+
+Using [Rhai arrays](https://rhai.rs/book/language/arrays.html) and [maps](https://rhai.rs/book/language/object-maps.html#object-maps), vSL can easily fetch and update data from a mysql database.
+
+For the sake of the example below, lets imagine that we are connecting to a database named "greylist", with a table "sender" described as follows:
+
+```
++---------+--------------+------+-----+---------+
+| Field   | Type         | Null | Key | Default |
++---------+--------------+------+-----+---------+
+| address | varchar(500) | NO   | PRI | NULL    |
+| user    | varchar(500) | NO   |     | NULL    |
+| domain  | varchar(500) | NO   |     | NULL    |
++---------+--------------+------+-----+---------+
+```
+
+To connect to the database, we create a "mysql_greylist" service of type `db:mysql`.
+
+```js
+service mysql_greylist db:mysql = #{
+    // the url to connect to your database.
+    url: "mysql://localhost/",
+    // the user to use when connecting. (optional)
+    user: "guest",
+    // the password for the user. (optional)
+    password: "1234",
+    // the number of connections to open on your database. (optional, 4 by default)
+    connections: 4,
+    // the time allowed to the database to send a
+    // response to your query. (optional, 30s by default)
+    timeout: "3s",
+};
+```
+
+We can then use this service to query and update the database using the query language of mysql.
+
+```js
+// Query the database.
+let senders = mysql_greylist.query("SELECT * FROM greylist.sender;");
+
+// Like the csv database, the `query` function of the mysql database return
+// an array of records, except that each record is a Rhai Map, meaning that
+// you can access the record fields using their names.
+//
+// vSL will then return fetched records using this form:
+// Array [
+//     Map #{
+//         "user": "john.doe",
+//         "domain": "example.com",
+//         "address": "john.doe@example.com",
+//     },
+//     Map #{
+//         "user": "green",
+//         "domain": "test.com",
+//         "address": "green@test.com",
+//     },
+// ]
+//
+// (We assume that the "sender" table is populated with two records in the above example)
+//
+// To extract records and fields, use the syntax below.
+print(`first sender address : ${senders[0].address}`); // will print "john.doe@example.com";
+print(`second sender domain : ${senders[1].domain}`); // will print "test.com";
+
+// We can also update the database this way:
+let sender = mail_from();
+mysql_greylist.query(`INSERT INTO greylist.sender (user, domain, address) values (${sender.local_part}, ${sender.domain}, ${sender.address});`);
+```
+
 ## The smtp type
 
 The smtp type enables you to use the delegate directive to delegate the email to another service via the smtp protocol. The example hereunder explains how to delegate to ClamAV antivirus through its SMTP proxy (clamsmtpd).

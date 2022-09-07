@@ -12,9 +12,9 @@ Please refer to the [dedicated chapter guide on the configuration](../reference/
 
 ## Configuring SMTP filtering rules
 
-SMTP filtering is performed by the rule engine. The end user can interact and modify the behavior of vSMTP by adding objects and rules in `.vsl` configuration files. The `main.vsl` file in the `/etc/vsmtp/rules` folder is the entry point for the rules engine.
+SMTP filtering is performed by the rule engine. You can modify the behavior of vSMTP using the simple but powerful programming language vSMTP Scripting Language (vSL).
 
-If there is no `.vsl` file declared, the server denies all incoming and outgoing mails, as well as domain forwarding. The `.vsl` files are commonly stored in the `/etc/vsmtp/rules` directory.
+Its syntax is similar to a configuration format, but with programmatic capabilities. It is based on four main concepts : `rules`, `actions`, `objects` and `services`.
 
 Please refer to the [dedicated chapter guide on the `vSL`](../reference/vSL/vsl.md) for further details.
 
