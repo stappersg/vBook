@@ -21,7 +21,7 @@ addr_submissions = ["192.168.1.254:465"]
 
 The server can now listen and serve SMTP connections.
 
-> If no interface is specified, the server starts but does not listen. Connections are therefore refused.
+> If no interface is specified, the server listens on localhost on port 25, 465 and 587. Remote connections are therefore refused.
 
 ```sh
 $> sudo systemd restart vsmtp
