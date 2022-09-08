@@ -1,20 +1,18 @@
 # Greylist
 
-Greylisting is one method to defend a SMTP server against spam.
+[Greylisting] is one method to defend a SMTP server against spam.
+
+[Greylisting]: https://en.wikipedia.org/wiki/Greylisting_(email)
 
 The goal is to temporarily reject emails from a sender that is not yet in registered in a database, then accepting it back if the sender retries.
 
-To build a greylist, you need to create a database and a vSMTP service. For this tutorial, we will use the `[mysql](https://www.mysql.com/)` database, which is one of the most common.
+To build a greylist, you need to create a database and a vSMTP service. For this tutorial, we will use the [mysql](https://www.mysql.com/) database.
 
 ## The database
 
 ### Install MySQL
 
-following this great tutorial: <https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04>
-
-This setup has been tested on Ubuntu 22.04, check out <https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en> for other systems.
-
-TL;DR
+Please follow this great [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04) to install MySQL. This setup has been tested on Ubuntu 22.04, check out [MySQL website](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en) for other systems.
 
 ```sh
 # Install mysql.
@@ -92,7 +90,7 @@ service greylist db:mysql = #{
 };
 ```
 
-The `query` function from the `db:mysql` service can be used to query a mysql database. String interpolation can be used to insert variables into the query.
+The `query` function from the `db:mysql` service is used to query a mysql database. Variables are passed to the query using string interpolation.
 
 > ⚠️ String interpolation can lead to SQL injection if not used properly. Make sure to sanitize your inputs, set only required privileges to the mysql user, and check what kind of data you are injecting.
 
