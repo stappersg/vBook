@@ -21,6 +21,8 @@ addr_submissions = ["192.168.1.254:465"]
 
 The server can now listen and serve SMTP connections.
 
+> If no interface is specified, the server starts but does not listen. Connections are therefore refused.
+
 ```sh
 $> sudo systemd restart vsmtp
 $> telnet 192.168.1.254:25
@@ -28,7 +30,7 @@ $> telnet 192.168.1.254:25
 554 permanent problems with the remote server
 ```
 
-By default, the server will deny any connection. We have to define rules to accept connections and filter messages.
+> By default, the server will deny any SMTP transaction. We have to define rules to accept connections and filter messages.
 
 ## Define filtering logics
 
