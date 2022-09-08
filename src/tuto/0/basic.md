@@ -40,7 +40,7 @@ We will configure these rules:
 
 First, let's define all the required objects for John Doe's MTA.
 
-Create the file `/etc/vsmtp/rules/objects.vsl` with the content:
+Create the `/etc/vsmtp/rules/objects.vsl` file with the content:
 
 ```js
 // -- /etc/vsmtp/rules/objects.vsl
@@ -77,7 +77,7 @@ The content of the `blacklist.txt` file is:
 # foobar-spam-pro.org
 ```
 
-And create the file `/etc/vsmtp/rules/main.vsl` with the content:
+And create the  `/etc/vsmtp/rules/main.vsl` file with the content:
 
 ```js
 // -- /etc/vsmtp/rules/main.vsl
@@ -124,4 +124,4 @@ Add these lines to your `/etc/vsmtp/vsmtp.toml`:
 filepath = "/etc/vsmtp/rules/main.vsl"
 ```
 
-Fantastic ! restart the server to apply the new rules. Anyway, the vSMTP server needs security policies.
+Restart the server to apply the rules.

@@ -2,7 +2,7 @@
 
 ## Disabling [open mail relay](https://en.wikipedia.org/wiki/Open_mail_relay)
 
-From the Internet, the server must only accept messages that comply with :
+The server must only accept messages from the Internet that comply with :
 
 - The recipient is a Doe's family account, whatever the sender is (incoming messages).
 - The sender is authenticated as a Doe's family account, whatever the recipient is (outgoing messages).
