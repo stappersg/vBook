@@ -51,7 +51,7 @@ fn my_action2(rcpts) {
 }
 ```
 
-&#9998; | Rhai's function do not capture their external scope except for  functions [(they are "pure")](https://rhai.rs/book/ref/functions.html#no-access-to-external-scope). you must pass necessary variables via parameters.
+&#9998; | Rhai's function are ["pure"](https://rhai.rs/book/ref/functions.html#no-access-to-external-scope), they do not capture their external scope. Variables must be passed as arguments.
 
 ## Importing user defined modules
 

@@ -110,9 +110,9 @@ print(john[2]);
 
 Using [Rhai arrays](https://rhai.rs/book/language/arrays.html) and [maps](https://rhai.rs/book/language/object-maps.html#object-maps), vSL can easily fetch and update data from a mysql database.
 
-For the sake of the example below, lets imagine that we are connecting to a database named "greylist", with a table "sender" described as follows:
+Again taking previous "greylisting" as an example, a database named "greylist", with a table "sender" described as follows is created:
 
-```
+```console
 +---------+--------------+------+-----+---------+
 | Field   | Type         | Null | Key | Default |
 +---------+--------------+------+-----+---------+
@@ -122,7 +122,7 @@ For the sake of the example below, lets imagine that we are connecting to a data
 +---------+--------------+------+-----+---------+
 ```
 
-To connect to the database, we create a "mysql_greylist" service of type `db:mysql`.
+To connect to the database, create a "mysql_greylist" service of type `db:mysql`.
 
 ```js
 service mysql_greylist db:mysql = #{
@@ -140,7 +140,7 @@ service mysql_greylist db:mysql = #{
 };
 ```
 
-We can then use this service to query and update the database using the query language of mysql.
+This service is used to query and update the database using SQL commands.
 
 ```js
 // Query the database.
@@ -177,7 +177,7 @@ mysql_greylist.query(`INSERT INTO greylist.sender (user, domain, address) values
 
 ## The smtp type
 
-The smtp type enables you to use the delegate directive to delegate the email to another service via the smtp protocol. The example hereunder explains how to delegate to ClamAV antivirus through its SMTP proxy (clamsmtpd).
+The smtp type allows the vSL `delegate` directive to delegate the email to another service via the smtp protocol. The example hereunder explains how to delegate to ClamAV antivirus through its SMTP proxy (clamsmtpd).
 
 ```js
 // -- service.vsl

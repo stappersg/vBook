@@ -24,6 +24,10 @@ And this rule to your `/etc/vsmtp/rules/main.vsl` file:
 }
 ```
 
-> ⚠️ `authenticate()` function call the program `testsaslauthd` itself calling the `saslauthd` daemon.
-> Make sure to install and configure `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
+> ⚠️ `authenticate()` function call the program `testsaslauthd` itself calling the `saslauthd` daemon. 
+> Make sure to install the [Cyrus sasl binary package] for your distribution and configure the `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
 > Future releases will bring improved vSL API.
+
+[Cyrus sasl binary package]: https://www.cyrusimap.org/sasl/
+
+

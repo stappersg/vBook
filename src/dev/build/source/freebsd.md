@@ -24,7 +24,7 @@ FreeBSD 13.x includes all required dependencies. Check that sasl is included in 
 ## vSMTP compilation
 
 ```shell
-$> cargo build
+$> cargo build --workspace --release
 [...]
 $> cargo run -- --help
 vsmtp 1.1.3

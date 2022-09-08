@@ -73,7 +73,7 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 ### External services
 
 vSMTP supports SMTP delegation, command calls, and file databases.
-CCSV files and MySQL databases are supported.
+CSV files and MySQL databases are supported.
 
 Next versions will provide LDAP, NoSQL databases, and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q4/2022.
 

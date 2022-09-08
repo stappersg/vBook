@@ -108,4 +108,4 @@ The following error codes can also be sent by the DKIM framework.
 
 The standard vSL API has dedicated functions to handle the DKIM protocol.
 
-Check the [Security](api/../../../reference/vSL/api/Security.md) file to get the full documentation about `verify_dkim`.
+Check the [Security](api/../../../reference/vSL/api/Security.md) chapter to get the full documentation about `verify_dkim`.
