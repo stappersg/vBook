@@ -11,23 +11,14 @@ See the official website <https://www.rust-lang.org/tools/install>
 vSMTP requires the `libc` libraries and the GCC compiler/linker.
 On a Debian system, they are contained in the `build-essential` package.
 
-The Transport Layer Security protocol (TLS) is provided by [OpenSSL development libraries](https://www.openssl.org).
-The Debian package is libssl-dev package.
-
-The authentication is provided by the [GNU `gsasl`](https://www.gnu.org/software/gsasl) and [Cyrus `sasl`](https://www.cyrusimap.org/sasl) libraries.
-
-`libclang` frontend is also required.
+The authentication is provided by the [Cyrus sasl](https://www.cyrusimap.org/sasl) binary package.
 
 ```shell
 sudo apt update
 sudo apt install
-  pkg-config
+  pkg-config 
   build-essential
-  libssl-dev
-  libgsasl7-dev
-  libsasl2-2
   sasl2-bin
-  libclang-dev
 ```
 
 ## vSMTP compilation
@@ -35,7 +26,7 @@ sudo apt install
 `cargo` (Rust package manager) downloads all required dependencies and compile the source code in conformance to the current environment.
 
 ```shell
-$> cargo build
+$> cargo build --workspace --release
 [...]
 $> cargo run -- --help
 vsmtp 1.1.3
@@ -118,18 +109,12 @@ If required, add private key and certificate to `/etc/vsmtp/certs` and grant rea
 Check if you have a mail transfer agent service running and disable it. The example below is related to a Postfix service running on port 25.
 
 ```shell
-sudo ss -ltpn | grep ":25"
-```
-
-```shell
+$ sudo ss -ltpn | grep ":25"
 tcp        0      0 127.0.0.1:25              127.0.0.1:*               LISTEN      39423/master
 ```
 
 ```shell
-sudo systemctl status postfix
-```
-
-```shell
+$ sudo systemctl status postfix
 ● postfix.service - Postfix Mail Transport Agent
      Loaded: loaded (/lib/systemd/system/postfix.service; enabled; vendor preset: enabled)
      Active: active (exited) since Fri 2021-12-10 11:10:58 CET; 5min ago
@@ -138,11 +123,8 @@ sudo systemctl status postfix
 ```
 
 ```shell
-sudo systemctl stop postfix
-sudo systemctl disable postfix
-```
-
-```shell
+$ sudo systemctl stop postfix
+$ sudo systemctl disable postfix
 Synchronizing state of postfix.service with SysV service script with /lib/systemd/systemd-sysv-install.
 Executing: /lib/systemd/systemd-sysv-install disable postfix
 Removed /etc/systemd/system/multi-user.target.wants/postfix.service.

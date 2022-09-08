@@ -1,6 +1,6 @@
 # Greylist
 
-Greylisting is one method to defend your server against spam.
+Greylisting is one method to defend a SMTP server against spam.
 
 The goal is to temporarily reject emails from a sender that is not yet in registered in a database, then accepting it back if the sender retries.
 

@@ -19,7 +19,7 @@ addr_submission = ["192.168.1.254:587"]
 addr_submissions = ["192.168.1.254:465"]
 ```
 
-Your server can now listen and serve.
+The server can now listen and serve SMTP connections.
 
 ```sh
 $> sudo systemd restart vsmtp
@@ -28,11 +28,11 @@ $> telnet 192.168.1.254:25
 554 permanent problems with the remote server
 ```
 
-By default, the server will deny any connection. We have to define rules to process the connection and filter messages.
+By default, the server will deny any connection. We have to define rules to accept connections and filter messages.
 
 ## Define filtering logics
 
-We will configure these rule:
+We will configure these rules:
 
 - Messages from blacklisted domain will be rejected.
 - As Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
@@ -40,7 +40,7 @@ We will configure these rule:
 
 First, let's define all the required objects for John Doe's MTA.
 
-Create the file `/etc/vsmtp/rules/objects.vsl` with the content:
+Create the `/etc/vsmtp/rules/objects.vsl` file with the content:
 
 ```js
 // -- /etc/vsmtp/rules/objects.vsl
@@ -77,7 +77,7 @@ The content of the `blacklist.txt` file is:
 # foobar-spam-pro.org
 ```
 
-And create the file `/etc/vsmtp/rules/main.vsl` with the content:
+And create the  `/etc/vsmtp/rules/main.vsl` file with the content:
 
 ```js
 // -- /etc/vsmtp/rules/main.vsl
@@ -124,4 +124,4 @@ Add these lines to your `/etc/vsmtp/vsmtp.toml`:
 filepath = "/etc/vsmtp/rules/main.vsl"
 ```
 
-Fantastic ! You can restart your server to apply the new rules, but our server need security policies.
+Restart the server to apply the rules.

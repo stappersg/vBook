@@ -44,6 +44,7 @@
     "RHAI",
     "Rustup",
     "sasl",
+    "saslauthd",
     "sendmail",
     "smtps",
     "sockstat",
