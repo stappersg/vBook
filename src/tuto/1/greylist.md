@@ -84,11 +84,7 @@ To setup vSMTP, you first need to create a mysql service, that will enable you t
 // -- services.vsl
 service greylist db:mysql = #{
     // Change this url to the url of your database, or keep it like this if the 'greylist-manager' user is setup on localhost.
-    url: "mysql://localhost/",
-
-    // Select the user that you created when setting up your database.
-    user: "greylist-manager",
-    password: "your-password",
+    url: "mysql://localhost/?user=greylist-manager&password=your-password",
 };
 ```
 
