@@ -59,8 +59,7 @@ Services are external programs that can be used via the functions available in t
 
  ```js
  service my_db db:mysql = #{
-     url: "mysql://localhost/",
-     user: "guest",
+     url: "mysql://localhost/?user=guest",
  };
  ```
 
@@ -128,6 +127,41 @@ Services are external programs that can be used via the functions available in t
 <br/>
 
 <div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
+<h2> fn <em style='color: var(--inline-code-color);'>run</em>() </h2>
+ Run a command from a `cmd` service with the default arguments provided in the service.
+
+ ### Effective smtp stage
+
+ All of them.
+
+ ### Example
+
+ ```js
+ // services.vsl
+ service echo cmd = #{
+     command: "echo",
+     args: ["-e", "new connection received\n"],
+ };
+ ```
+
+ ```js
+ // main.vsl
+ import "services" as svc;
+
+ #{
+     connect: [
+        action "echo incoming" || svc::echo.run(),
+     ]
+ }
+ ```
+
+ 
+
+</div>
+<br/>
+<br/>
+
+<div style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; border-radius: 5px;'>
 <h2> fn <em style='color: var(--inline-code-color);'>run</em>(<em style='color: var(--inline-code-color)'>args</em>) </h2>
  Run a command from a `cmd` service with arguments.
  This allows you to run a command with dynamic arguments.
@@ -160,7 +194,7 @@ Services are external programs that can be used via the functions available in t
      rcpt: [
         action "print recipient using command" || {
              // prints all recipients using the `echo` command.
-             svc::echo.cmd_run(["-E", "-n", `new recipient: ${rcpt()}`]);
+             svc::echo.run(["-E", "-n", `new recipient: ${rcpt()}`]);
         }
      ]
  }
