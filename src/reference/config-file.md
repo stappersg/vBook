@@ -88,7 +88,8 @@ addr_submissions = ["192.168.1.254:465"]     # <---- MSA's addresses for SMTPS
 ```
 
 These field are arrays, and you can leave any of them empty.
-Make sure to provide at least **one address**, otherwise an error will be produced on startup.
+
+> If no interface is specified, the server listens on localhost on port 25, 465 and 587. Remote connections are therefore refused.
 
 You might want to add local address (`127.0.0.1:25` for example) when using delegation services.
 
