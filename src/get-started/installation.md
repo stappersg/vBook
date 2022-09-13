@@ -57,8 +57,8 @@ cargo install vsmtp
 
 [cargo]: https://doc.rust-lang.org/cargo
 
-### Docker
+### [Docker](https://hub.docker.com/repository/docker/viridit/vsmtp)
 
-The official repository for vSMTP on Docker Hub is [viridit/vsmtp].
-
-[viridit/vsmtp]: https://hub.docker.com/repository/docker/viridit/vsmtp
+```sh
+docker pull viridit/vsmtp
+```

@@ -2,11 +2,10 @@
 
 The logging system is backed by [tokio tracing](https://crates.io/crates/tracing) and piped to multiple 'subscriber' :
 
-- [Logging](#logging)
-  - [Backend logs](#backend-logs)
-  - [Application logs](#application-logs)
-  - [Syslogd](#syslogd)
-  - [Journald](#journald)
+- [Backend logs](#backend-logs)
+- [Application logs](#application-logs)
+- [Journald](#journald)
+- [Syslogd](#syslogd)
 
 ## Backend logs
 
@@ -47,6 +46,18 @@ The default output location (`/var/log/vsmtp/app.log`) can be modified in the `v
 filepath = "./tmp/system/app.log"
 ```
 
+## Journald
+
+vSMTP send logs to the journald daemon :
+
+```toml
+# if the table is missing, system's log are skipped
+[server.logs.system]
+# write only the message of a specific level and more
+level = "info"
+backend = "journald"
+```
+
 ## Syslogd
 
 vSMTP send logs to the syslog daemon using the `mail` facility :
@@ -66,16 +77,4 @@ socket = { type = "tcp", server = "127.0.0.1:601" }
 # or
 socket = { type = "udp", server = "127.0.0.1:514", local = "127.0.0.1:0" }
 # note: address can be ipv4 / ipv6
-```
-
-## Journald
-
-vSMTP send logs to the journald daemon :
-
-```toml
-# if the table is missing, system's log are skipped
-[server.logs.system]
-# write only the message of a specific level and more
-level = "info"
-backend = "journald"
 ```

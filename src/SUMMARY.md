@@ -76,3 +76,7 @@ The vSMTP reference guide
 # Terminology
 
 - [Mail Agent](term/agent.md)
+
+# Appendix
+
+- [Acknowledgements](appendix/acknowledgements.md)
