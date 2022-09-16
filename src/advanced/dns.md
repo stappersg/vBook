@@ -2,8 +2,6 @@
 
 vSMTP can handle complex DNS situations. A default configuration is applied on the root domain and virtual domains inherit from it. Specific values can be updated on root domain or on a per virtual domain basis.
 
-> vSMTP relies on Benjamin Fry's [Trust-DNS] crate to handle DNS queries.
-
 DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` tables and sub-tables. Please refer to [vSMTP reference guide] and [Trust-DNS] repository for detailed information.
 
 [vSMTP reference guide]: ../reference/config-file.md
