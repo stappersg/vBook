@@ -6,8 +6,6 @@ For outgoing mail, vSMTP can directly be addressed by your MUA using the SMTP pr
 
 For incoming mails, vSMTP can store messages on a server file-system using [Mbox] or [Maildir] formats. To retrieve emails from a remote client (MUA) it is necessary to install a MDA that can handle [POP] and/or [IMAP] protocols.
 
-[courier-imap]: https://packages.debian.org/search?keywords=courier-imap
-
 [MUA]: ./term/agent.html#mua-mail-user-agent
 [MTA]: ./term/agent.html#mta-mail-transfer-agent
 [MSA]: ./term/agent.html#msa-mail-submission-agent
@@ -21,9 +19,9 @@ For incoming mails, vSMTP can store messages on a server file-system using [Mbox
 
 ## Roadmap
 
-Take a look at the [ROADMAP](https://github.com/viridIT/vSMTP/blob/develop/ROADMAP.md) in vSMTP repository.
+Take a look at our [milestones](https://github.com/viridIT/vSMTP/milestones) in vSMTP repository.
 
-Follow the development of vsmtp, plannings and announcements for incoming features on the [official discord server](https://discord.gg/N8JGBRBshf).
+Follow the development of vsmtp,vSMTPplannings and announcements for incoming features on the [official discord server](https://discord.gg/N8JGBRBshf).
 
 ## Available features
 
@@ -84,7 +82,7 @@ Next versions will provide LDAP, NoSQL databases, and in-memory caches supports.
 - Message submission RFCs.
 - [Null MX] RFC.
 - [SPF] support.
-- [DKIM] signer and verifier.  
+- [DKIM] signer and verifier.
 - [DMARC] verifier, reporting is not natively supported.
 - [DANE] protocol is planned for a future release.
 - [ARC] and [BIMI] experimental and future Internet standards are currently not supported.
