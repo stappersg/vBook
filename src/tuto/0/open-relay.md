@@ -2,8 +2,8 @@
 
 The server must only accept messages from the Internet that comply with :
 
-- The recipient is a Doe's family account, whatever the sender is (incoming messages).
-- The sender is authenticated as a Doe's family account, whatever the recipient is (outgoing messages).
+- The recipient is an account from Doe's family, whatever the sender is (incoming messages).
+- The sender is authenticated as an account from Doe's family, whatever the recipient is (outgoing messages).
 
 From the internal network, all IPs are allowed to send messages.
 

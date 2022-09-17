@@ -4,10 +4,10 @@ The DKIM protocol is natively implemented in vSMTP.
 
 This protocol ensure that the content of the message has not been modified during the transport. A new DNS record is added into the `doe-family.com` DNS zone. It declares the public key usable to verify the messages.
 
-We will configure these rule:
+We will configure these rules:
 
-- The sender is a Doe's family account : a DKIM signature is added to the message.
-- The recipient is a Doe's family account : the DKIM signatures are verified.
+- The sender is an account from Doe's family : a DKIM signature is added to the message.
+- The recipient is an account from Doe's family : the DKIM signatures are verified.
 
 Add the following to the `/etc/vsmtp/vsmtp.toml` file:
 
