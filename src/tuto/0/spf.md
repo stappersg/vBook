@@ -1,4 +1,29 @@
-# Sender Policy Framework (SPF)
+# Using the Sender Policy Framework protocol
+
+The SPF protocol allows other MTAs to check that outgoing messages from Doe's family domain are valid. A new DNS record is added into the `doe-family.com` DNS zone. It declares that only the server declared in the MX record is allowed to send messages on behalf of Doe's family.
+
+```shell
+doe-family.com.          TXT "v=spf1 +mx -all"
+```
+
+For incoming messages, the SPF protocol is configured to check the sender credentials at the `mail` stage.
+
+Edit the `/etc/vsmtp/rules/main.vsl` file and add the rule:
+
+```js
+// -- main.vsl
+#{
+  // ... previous code ...
+
+  mail: [
+    rule "check spf" || check_spf("both", "soft"),
+  ]
+}
+```
+
+See [check_spf](/reference/vSL/api/Security.html#fn-check_spfheader) & [check_spf](/reference/vSL/api/Security.html#fn-check_spfheader-policy)
+
+## Further details
 
 This document describes the vSMTP implementation of the Sender Policy Framework (SPF) protocol described in [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html).
 
@@ -6,7 +31,7 @@ SPF is an authentication standard used to link a domain name and an email addres
 
 The SPF framework allows the ADministrative Management Domains (ADMDs) to explicitly authorize hosts to send email. The authorization list is published in the DNS records of the sender's domain.
 
-## DNS records
+### DNS records
 
 The type of a SPF record is TXT. There should be only one SPF record per domain. In case of multiple SPF records, an error may be raised.
 
@@ -22,9 +47,9 @@ There is also a tilde version: ~all. It warns that other senders are not allowed
 
 Please refer to RFC 7208 for further details.
 
-## vSMTP implementation
+### vSMTP implementation
 
-### HELO/EHLO Identity
+#### HELO/EHLO Identity
 
 The RFC 7208 does not enforce a HELO/EHLO verification.
 
@@ -35,7 +60,7 @@ The RFC 5321 tends to normalize the HELO/EHLO arguments to represent the fully q
 
 > "SPF check can only be performed when the "HELO" string is a valid, multi-label domain name."
 
-### MAIL FROM identity
+#### MAIL FROM identity
 
 According to the RFC, "MAIL FROM" check occurs when :
 
@@ -43,7 +68,7 @@ According to the RFC, "MAIL FROM" check occurs when :
 
 Note that [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html#section-4.5.5) allows the reverse-path to be null. In this case, the RFC 7208 defines the "MAIL FROM" identity as the local-part "postmaster" and the "HELO" identity.
 
-### Location of checks
+#### Location of checks
 
 As defined by the RFC :
 
@@ -51,7 +76,7 @@ As defined by the RFC :
 
 vSMTP allows the use of the SPF framework only at the "MAIL FROM" stage.
 
-### Results of Evaluation
+#### Results of Evaluation
 
 The vSMTP SPF verifier implements results semantically equivalent to the RFC.
 
@@ -66,7 +91,7 @@ The vSMTP SPF verifier implements results semantically equivalent to the RFC.
 | permerror | The domain's published records (DNS) could not be correctly interpreted.                                                                                                                                                                                                                                                                                       |
 | policy    | Added by [RFC 8601, Section 2.4](https://www.rfc-editor.org/rfc/rfc8601#section-2.4) - indicate that some local policy mechanism was applied that augments or even replaces (i.e., overrides) the result returned by the authentication mechanism.  The property and value in this case identify the local policy that was applied and the result it returned. |
 
-### Results headers
+#### Results headers
 
 Results should be recorded in the message header. Two options are available according to the RFC:
 
@@ -79,13 +104,13 @@ Received-SPF: pass (mybox.example.org: domain of myname@example.com
   envelope-from="myname@example.com"; helo=foo.example.com;
 ```
 
-2. The "Authentication-Results" header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) : Message Header Field for Indicating Message Authentication Status.
+1. The "Authentication-Results" header described in [RFC 8601](https://www.rfc-editor.org/rfc/rfc8601#appendix-B) : Message Header Field for Indicating Message Authentication Status.
 
 ```shell
 Authentication-Results: example.com; spf=pass smtp.mailfrom=example.net
 ```
 
-### SPF failure codes
+#### SPF failure codes
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes for reporting the DKIM and SPF mechanisms.
 
@@ -118,10 +143,3 @@ The following error codes can also be sent by the SPF framework.
 | Basic status code | 500                                                                                                                                                          |
 | Description       | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of  | n/a                                                                                                                                                          |
-
-### vSL predefined function
-
-The vSL standard API has a dedicated function to check the SPF policy.
-`check_spf` returns a status, containing custom codes to be sent to the client.
-
-Check the [Security](api/../../../reference/vSL/api/Security.md) file to get the full documentation about `check_spf`.

@@ -1,9 +1,76 @@
-# Introduction
+<div align="center">
+  <a href="https://www.viridit.com">
+    <img src="https://github.com/viridIT/vSMTP/blob/main/assets/vsmtp-white-nobckgrd.png?raw=true"
+      alt="vSMTP" />
+  </a>
+</div>
 
-> This is a WIP document for vSMTP v1.3.x. Remember that these versions are not intended for production use.
+<div align="center">
+  <a href="https://www.viridit.com">
+    <img src="https://img.shields.io/badge/visit-viridit.com-green?logo=internet"
+      alt="website" />
+  </a>
+  <a href="https://vsmtp.rs">
+    <img src="https://img.shields.io/badge/read-vsmtp.rs-yellowgreen"
+      alt="documentation" />
+  </a>
+  <a href="https://discord.gg/N8JGBRBshf">
+    <img src="https://img.shields.io/badge/join-discord-blue?logo=discord&color=blueviolet"
+      alt="discord" />
+  </a>
+</div>
+
+<div align="center">
+  <a href="https://www.whatrustisit.com">
+    <img src="https://img.shields.io/badge/rustc-1.62.1%2B-informational.svg?logo=rust"
+      alt="Rustc Version 1.62.1" />
+  </a>
+  <a href="https://docs.rs/vsmtp">
+    <img src="https://docs.rs/vsmtp/badge.svg"
+      alt="docs" />
+  </a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0">
+    <img src="https://img.shields.io/github/license/viridIT/vSMTP?color=blue"
+      alt="License GPLv3" />
+  </a>
+</div>
+
+<div align="center">
+  <a href="https://github.com/viridIT/vSMTP/actions/workflows/ci.yaml">
+    <img src="https://github.com/viridIT/vSMTP/actions/workflows/ci.yaml/badge.svg"
+      alt="CI" />
+  </a>
+  <a href="https://app.codecov.io/gh/viridIT/vSMTP">
+    <img src="https://img.shields.io:/codecov/c/gh/viridIT/vSMTP?logo=codecov"
+      alt="coverage" />
+  </a>
+  <a href="https://deps.rs/repo/github/viridIT/vSMTP">
+    <img src="https://deps.rs/repo/github/viridIT/vSMTP/status.svg"
+      alt="dependency status" />
+  </a>
+</div>
+
+<div align="center">
+  <a href="https://github.com/viridIT/vSMTP/releases">
+    <img src="https://img.shields.io/github/v/release/viridIT/vSMTP?logo=github"
+      alt="Latest Release">
+  </a>
+  <a href="https://crates.io/crates/vsmtp">
+    <img src="https://img.shields.io/crates/v/vsmtp.svg"
+      alt="Crates.io" />
+  </a>
+  <a href="https://hub.docker.com/repository/docker/viridit/vsmtp">
+    <img src="https://img.shields.io/docker/pulls/viridit/vsmtp?logo=docker"
+      alt="Docker Pulls" >
+  </a>
+</div>
+
+# Introduction
 
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
+
+**⚠️ This manual document vSMTP >=v1.3. These versions are not intended for production use.**
 
 ## vSMTP
 
@@ -25,14 +92,8 @@ This book is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 
 [LICENSE]: https://github.com/viridIT/vBook/blob/main/LICENSE
 
-## Source Code
-
-The source files for this book can be found on [GitHub][book].
-
-[book]: https://github.com/viridIT/vBook
-
 ## Contributing
 
-The vSMTP and vBook projects need you. Parts requiring your help are labeled as `help wanted`. Please see the [CONTRIBUTING.md][contrib] file for more information.
+The [vSMTP](https://github.com/viridIT/vSMTP/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) and [vBook](https://github.com/viridIT/vBook/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) projects need you! Please see the [CONTRIBUTING.md][contrib] file for more information.
 
 [contrib]: https://github.com/viridIT/vBook/blob/main/CONTRIBUTING.md

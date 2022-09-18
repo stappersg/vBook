@@ -1,4 +1,42 @@
-# DomainKeys Identified Message
+# Using DomainKeys Identified Mail
+
+The DKIM protocol is natively implemented in vSMTP.
+
+This protocol ensure that the content of the message has not been modified during the transport. A new DNS record is added into the `doe-family.com` DNS zone. It declares the public key usable to verify the messages.
+
+We will configure these rules:
+
+- The sender is an account from Doe's family : a DKIM signature is added to the message.
+- The recipient is an account from Doe's family : the DKIM signatures are verified.
+
+Add the following to the `/etc/vsmtp/vsmtp.toml` file:
+
+```toml
+[server.dkim]
+private_key = "/path/to/private-key"
+```
+
+Edit the `/etc/vsmtp/rules/main.vsl` file and add the rules:
+
+```js
+#{
+  // ... previous code ...
+
+  postq: [
+    action "sign dkim" || {
+      if in_domain(mail_from()) {
+        dkim_sign("2022-09" /* selector of the DNS record */);
+      } else {
+        dkim_verify();
+      }
+    }
+  ],
+}
+```
+
+See [dkim_sign](/reference/vSL/api/Security.html#fn-sign_dkimselector-headers_field-canonicalization) & [dkim_verify](/reference/vSL/api/Security.html#fn-verify_dkim)
+
+## Further details
 
 The vSMTP implementation of the DomainKeys Identified Mail Signatures (DKIM) protocol is described in [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html).
 
@@ -8,7 +46,7 @@ DKIM is an open standard for email authentication used to check the integrity of
 
 Assertion of responsibility is validated through a cryptographic signature and by querying the Signer's domain to retrieve the appropriate public key.
 
-## DNS records
+### DNS records
 
 DKIM relies on a DNS TXT record inserted into the sender domain's DNS zone. The record contains the public key for the DKIM settings. The private key held by the sending mail server can be verified against the public key by the receiving mail server.
 
@@ -26,11 +64,11 @@ mail._domainkey.example.com. 86400 IN TXT "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG...
 
 For detailed information about fields in a DKIM record please check the [RFC 6376](https://www.rfc-editor.org/rfc/rfc6376.html#section-3.5).
 
-## vSMTP implementation
+### vSMTP implementation
 
 vSMTP can act as DKIM `signer` or `verifier`.
 
-### Results of Evaluation
+#### Results of Evaluation
 
 The vSMTP DKIM verifier implements results semantically equivalent to the RFC.
 
@@ -44,7 +82,7 @@ The vSMTP DKIM verifier implements results semantically equivalent to the RFC.
 | temperror | The message could not be verified due to some error that is likely transient in nature, such as a temporary inability to retrieve a public key.  A later attempt may produce a final result. |
 | permerror | The message could not be verified due to some error that is unrecoverable, such as a required header field being absent. A later attempt is unlikely to produce a final result. |
 
-### Results headers
+#### Results headers
 
 Results should be recorded in the message header before any existing DKIM-Signature or preexisting
 authentication status header fields in the header field block.
@@ -66,7 +104,7 @@ DKIM-Signature:  v=1; a=rsa-sha256; s=gatsby; d=example.com;
             b=EToRSuvUfQVP3Bkz ... rTB0t0gYnBVCM=
 ```
 
-### DKIM failure codes
+#### DKIM failure codes
 
 The [RFC 7372](https://www.rfc-editor.org/rfc/rfc7372.html#section-3) "Email Auth Status Codes" introduces new status codes to report the DKIM and SPF mechanisms results.
 
@@ -103,9 +141,3 @@ The following error codes can also be sent by the DKIM framework.
 | Basic status code | 500                                                                                                                                                          |
 | Description       | A message failed more than one message authentication check, contrary to local policy requirements. The particular mechanisms that failed are not specified. |
 | Used in place of  | n/a                                                                                                                                                          |
-
-### vSL predefined function
-
-The standard vSL API has dedicated functions to handle the DKIM protocol.
-
-Check the [Security](api/../../../reference/vSL/api/Security.md) chapter to get the full documentation about `verify_dkim`.

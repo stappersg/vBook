@@ -19,7 +19,9 @@ The vSMTP reference guide
   - [Basic configuration](tuto/0/basic.md)
   - [SSL/TLS](tuto/0/ssl-tls.md)
   - [Authentication](tuto/0/auth-sasl.md)
-  - [Hardening vSMTP](tuto/0/hardening.md)
+  - [Open Relay](tuto/0/open-relay.md)
+  - [SPF](tuto/0/spf.md)
+  - [DKIM](tuto/0/dkim.md)
   - [Antivirus](tuto/0/antivirus.md)
 - [Greylist](tuto/1/greylist.md)
 
@@ -28,14 +30,11 @@ The vSMTP reference guide
 - [Logging system](advanced/logging.md)
 - [DNS configuration](advanced/dns.md)
 - [Virtual domains](advanced/virtual-domain.md)
-- [Email authentication mechanisms](advanced/eam.md)
-  - [Null MX](advanced/eam/nullmx.md)
-  - [SPF](advanced/eam/spf.md)
-  - [DKIM](advanced/eam/dkim.md)
-  - [DMARC](advanced/eam/dmarc.md)
-  - [ARC 🚧]()
-  - [BIMI 🚧]()
-- [SMTP security using DANE](advanced/dane.md)
+- [Null MX](advanced/nullmx.md)
+- [DMARC](advanced/dmarc.md)
+- [ARC 🚧]()
+- [BIMI 🚧]()
+- [DANE 🚧]()
 
 # Reference
 
@@ -76,6 +75,7 @@ The vSMTP reference guide
 # Terminology
 
 - [Mail Agent](term/agent.md)
+- [Authentication Mechanisms](term/authentication.md)
 
 # Appendix
 
