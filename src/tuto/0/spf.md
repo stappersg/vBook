@@ -16,7 +16,13 @@ Edit the `/etc/vsmtp/rules/main.vsl` file and add the rule:
   // ... previous code ...
 
   mail: [
-    rule "check spf" || check_spf("both", "soft"),
+    rule "check spf" || {
+      if in_domain(mail_from()) {
+        next()
+      } else {
+        check_spf("both", "soft")
+      }
+    }
   ]
 }
 ```
