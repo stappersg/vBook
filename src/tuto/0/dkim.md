@@ -52,7 +52,7 @@ DKIM relies on a DNS TXT record inserted into the sender domain's DNS zone. The 
 
 Unlike SPF record, several DKIM records can be linked to a domain. A domain can have several public keys if it has several mail servers (each mail server has its own private key that matches only one public key). The recipient's mail server uses an attribute called selector of the DKIM signature to find the correct public key in the sender's DNS zone.
 
-A DKIM record must follow the syuntax : `[selector]._domainkey.[domain].` and the query on may only result in one TXT type record maximum.
+A DKIM record must follow the syntax : `[selector]._domainkey.[domain].` and the query on may only result in one TXT type record maximum.
 
 Here is an example of a DKIM record:
 
