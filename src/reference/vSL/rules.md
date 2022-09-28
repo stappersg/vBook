@@ -88,7 +88,7 @@ import "objects" as obj;
 
     preq: [
         action "rewrite recipients" || {
-            rewrite_rcpt("johndoe@compagny.com", "john.doe@company.net");
+            rewrite_rcpt_envelop("johndoe@compagny.com", "john.doe@company.net");
             remove_rcpt("customer@company.net");
             add_rcpt("no-reply@company.net");
         },
