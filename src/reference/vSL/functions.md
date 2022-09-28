@@ -32,18 +32,19 @@ SMTP envelop can be modified by several predefined actions.
 
 | Syntax                                        | Comment                                                                    |
 | :-------------------------------------------- | :------------------------------------------------------------------------- |
-| append_header(name:string, body:string)       | Append a new header to the email's header section.                         |
-| prepend_header(name:string, body:string)      | Prepend a new header to the email's header section.                        |
-| remove_header(name:string)                    | Remove all occurrences of headers matching the string in the email's body. |
-| rewrite_mail_from(address:string)             | Change `MAIL FROM:` current value with addr.                               |
-| add_rcpt(address:string)                      | Add rcpt to the envelop.                                                   |
-| remove_rcpt(address:string)                   | Remove rcpt from the envelop.                                              |
-| rewrite_rcpt_envelop(old:string, new::string) | Rewrite rcpt "old" with "new" in the envelop.                              |
-| add_to(address:string)                        | Add rcpt to the `To` header in the email's body.                           |
-| remove_to(address:string)                     | Remove rcpt from the `To` header in the email's body.                      |
-| rewrite_to(old:string, new:string)            | Rewrite rcpt "old" with "new" from the `To` header in the email's body     |
+| append_header(name:string, body:string)       | Append a new header to the email's root header section.                         |
+| prepend_header(name:string, body:string)      | Prepend a new header to the email's root header section.                        |
+| remove_header(name:string)                    | Remove all occurrences of headers matching the string in the email's root header section. |
+| rewrite_mail_from_envelop(address:string)     | Change the `MAIL FROM:` (sender) value in the envelop with 'addr'. |
+| add_rcpt_envelop(address:string)              | Add a recipient to the envelop. |
+| remove_rcpt_envelop(address:string)           | Remove a recipient from the envelop. |
+| rewrite_rcpt_envelop(old:string, new:string)  | Rewrite a recipient named "old" with "new" in the envelop. |
+| add_rcpt_message(address:string)              | Add a recipient to the `To` header in the email's root header section. |
+| remove_rcpt_message(address:string)           | Remove a recipient from the `To` header in the email's root header section. |
+| rewrite_rcpt_message(old:string, new:string)  | Rewrite a recipient named "old" with "new" from the `To` header in the email's root header section. |
+| rewrite_mail_from(address:string)             | Change the `MAIL FROM:` (sender) value with 'addr' in the envelop and email's root header section. |
 
-&#9998; | `add_to`, `remove_to` & `rewrite_to` only update the root headers (nested emails headers are not changed).
+&#9998; | `add_rcpt_message`, `remove_rcpt_message` & `rewrite_rcpt_message` only update the root headers of the email. (nested headers in MIME sections are not changed)
 
 ```js
 remove_header(my_regex);
