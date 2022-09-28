@@ -38,7 +38,7 @@ SMTP envelop can be modified by several predefined actions.
 | rewrite_mail_from(address:string)             | Change `MAIL FROM:` current value with addr.                               |
 | add_rcpt(address:string)                      | Add rcpt to the envelop.                                                   |
 | remove_rcpt(address:string)                   | Remove rcpt from the envelop.                                              |
-| rewrite_rcpt(old:string, new::string)         | Rewrite rcpt "old" with "new" in the envelop.                              |
+| rewrite_rcpt_envelop(old:string, new::string) | Rewrite rcpt "old" with "new" in the envelop.                              |
 | add_to(address:string)                        | Add rcpt to the `To` header in the email's body.                           |
 | remove_to(address:string)                     | Remove rcpt from the `To` header in the email's body.                      |
 | rewrite_to(old:string, new:string)            | Rewrite rcpt "old" with "new" from the `To` header in the email's body     |
