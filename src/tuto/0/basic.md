@@ -47,27 +47,27 @@ Create the `/etc/vsmtp/rules/objects.vsl` file with the content:
 ```js
 // -- /etc/vsmtp/rules/objects.vsl
 // IP addresses of the MTA and the internal IP range.
-object local_mta ip4 = "192.168.1.254";
-object internal_net rg4 = "192.168.0.0/24";
+export const local_mta = ip4("192.168.1.254");
+export const internal_net = rg4("192.168.0.0/24");
 
 // Doe's family domain name.
-object family_domain fqdn = "doe-family.com";
+export const family_domain = fqdn("doe-family.com");
 
 // Mailboxes.
-object john address = "john.doe@doe-family.com";
-object jane address = "jane.doe@doe-family.com";
-object jimmy address = "jimmy.doe@doe-family.com";
-object jenny address = "jenny.doe@doe-family.com";
+export const john = address("john.doe@doe-family.com");
+export const jane = address("jane.doe@doe-family.com");
+export const jimmy = address("jimmy.doe@doe-family.com");
+export const jenny = address("jenny.doe@doe-family.com");
 
 // A group to manipulate mailboxes.
-object family_addr group = [john, jane, jimmy, jenny];
+export const  family_addr = group([john, jane, jimmy, jenny]);
 
 // Quarantine folders.
-object unknown_quarantine string = "doe/bad_user";
-object virus_queue string = "doe/virus";
+export const unknown_quarantine = "doe/bad_user";
+export const virus_queue = "doe/virus";
 
 // A user blacklist file.
-object blacklist file:fqdn = "blacklist.txt";
+export const blacklist = file("blacklist.txt", "fqdn");
 ```
 
 The content of the `blacklist.txt` file is:

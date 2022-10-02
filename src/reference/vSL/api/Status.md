@@ -79,7 +79,7 @@ The state of an SMTP transaction can be changed through specific functions from 
      rcpt: [
          rule "check for satan" || {
             // a custom error code can be used with `deny`.
-            object error_code code = #{ code: 550, enhanced: "", text: "satan.org is not welcome here." };
+            const error_code = code(550, "satan.org is not welcome here.");
 
             // The client is denied if a recipient's domain matches satan.org,
             // this is a blacklist, sort-of.
@@ -149,7 +149,7 @@ The state of an SMTP transaction can be changed through specific functions from 
  #{
      connect: [
          rule "please retry" || {
-            object info_code code = #{ code: 451, enhanced: "", text: "failed to understand you request, please retry." };
+            const info_code = code(451, "failed to understand you request, please retry.");
             info(info_code)
         },
      ],
