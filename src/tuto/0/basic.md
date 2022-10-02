@@ -103,8 +103,8 @@ import "objects" as doe;
     action "bcc jenny" || if rcpt() is doe::jenny { bcc(doe::jane) },
   ],
 
-  // The deliver stage is executed just before vsmtp delivers the message.
-  deliver: [
+  // The delivery stage is executed just before vsmtp delivers the message.
+  delivery: [
     action "setup delivery" || {
       // if a recipient is part of the family, we deliver the email locally.
       // Otherwise, we just deliver the email to another server.
