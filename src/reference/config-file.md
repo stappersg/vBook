@@ -1,4 +1,4 @@
-# Complete vSMTP TOML key/value list
+# Complete vSMTP vsl config key/value list
 
 The behavior of your server can be configured using a configuration file,
 and using the `-c, --config` flag of the `vsmtp`.
@@ -15,7 +15,7 @@ on the [github repo](https://github.com/viridIT/vSMTP), or ask for help in our d
 
 ## Format
 
-The configuration file format is [TOML](https://toml.io).
+The configuration file format is [Rhai](https://rhai.rs).
 
 ## Examples
 
