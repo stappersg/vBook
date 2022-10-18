@@ -9,12 +9,14 @@ We will configure these rules:
 - The sender is an account from Doe's family : a DKIM signature is added to the message.
 - The recipient is an account from Doe's family : the DKIM signatures are verified.
 
-Add the following to the `/etc/vsmtp/vsmtp.toml` file:
+Add the following to the `/etc/vsmtp/vsmtp.vsl` file:
 
-```toml
-[server.dkim]
-private_key = "/path/to/private-key"
+```js
+let config = new_config();
+
+config.server.dkim.private_key = "/path/to/private-key";
 ```
+
 
 Edit the `/etc/vsmtp/rules/main.vsl` file and add the rules:
 

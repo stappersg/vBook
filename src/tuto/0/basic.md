@@ -2,22 +2,23 @@
 
 ## Listen and serve
 
-First of all, create the file [`/etc/vsmtp/vsmtp.toml`](/get-started/concepts.html#configuration-file) with this content:
+First of all, create the file [`/etc/vsmtp/vsmtp.vsl`](/get-started/concepts.html#configuration-file) with this content:
 
-```toml
-version_requirement = ">=1.3.0"
+```js
+let config = new_config();
 
-# root domain of the server.
-[server]
-domain = "doe-family.com"
+// root domain of the server.
+config.server.domain = "doe-family.com";
 
-# addresses that the server will listen to.
-# (change `192.168.1.254` for the address you want to listen to)
-[server.interfaces]
-addr = ["192.168.1.254:25"]
-addr_submission = ["192.168.1.254:587"]
-addr_submissions = ["192.168.1.254:465"]
+// addresses that the server will listen to.
+// (change `192.168.1.254` for the address you want to listen to)
+config.server.interfaces = #{
+  addr: ["192.168.1.254:25"],
+  addr_submission: ["192.168.1.254:587"],
+  addr_submissions: ["192.168.1.254:465"],
+};
 ```
+
 
 The server can now listen and serve SMTP connections.
 
@@ -116,14 +117,13 @@ import "objects" as doe;
 }
 ```
 
-Add these lines to your `/etc/vsmtp/vsmtp.toml`:
+Add these lines to your `/etc/vsmtp/vsmtp.vsl`:
 
-```toml
-# ...
+```js
+// ...
 
-# entry point for our rules.
-[app.vsl]
-filepath = "/etc/vsmtp/rules/main.vsl"
+// entry point for our rules.
+config.app.vsl.filepath = "/etc/vsmtp/rules/main.vsl";
 ```
 
 Restart the server to apply the rules.

@@ -20,7 +20,7 @@ The quarantine pushes the mail in a user defined quarantine directory.
 
 The ENTIRE content of the email is written in JSON format regardless of the stage declared in the rule (including the envelop and body). All rules are skipped, and the server delivers a 250 smtp code to the client.
 
-The root directory for `quarantine()` is specified in the TOML configuration file under `[app.dirpath]`.
+The root directory for `quarantine()` is specified in the `vsmtp.vsl` configuration file under `config.app.dirpath`.
 
 ```js
 quarantine(virus_dir);
@@ -69,8 +69,8 @@ These actions have no impact on the SMTP engine.
 | log(log-level, msg)              | logs a message[^log].                                                               |
 | user_exist(string)               | Check if an user exists locally.                                                    |
 
-[^dir]: Root directories for write and dump are specified in the TOML configuration file.
-[^log]: Log files and log levels are described in the TOML configuration file.
+[^dir]: Root directories for write and dump are specified in `vsmtp.vsl`.
+[^log]: Log files and log levels are described in the `vsmtp.vsl`.
 
 ```javascript,ignore
 log("warn", "Hello world!");

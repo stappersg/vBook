@@ -194,7 +194,7 @@ The state of an SMTP transaction can be changed through specific functions from 
 
  ### Args
 
- * `queue` - the relative path to the queue where the email will be quarantined. This path will be concatenated to the [app.dirpath] field in your `vsmtp.toml`.
+ * `queue` - the relative path to the queue where the email will be quarantined. This path will be concatenated to the `config.app.dirpath` field in your `vsmtp.vsl`.
 
  ### Effective smtp stage
 
