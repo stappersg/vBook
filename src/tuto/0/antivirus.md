@@ -63,14 +63,15 @@ The receiver's socket must be enabled in the `/etc/vsmtp/vsmtp.vsl`.
 
 ```js
 // -- /etc/vsmtp/vsmtp.vsl
-let config = new_config();
+fn on_config(config) {
+  config.server.interfaces = #{
+    //     clients             delegation results
+    addr: ["192.168.1.254:25", "127.0.0.1:10025"],
+  };
 
-config.server.interfaces = #{
-  //     clients             delegation results
-  addr: ["192.168.1.254:25", "127.0.0.1:10025"],
-};
+  config
+}
 ```
-
 
 ## The delegate keyword
 

@@ -3,42 +3,43 @@
 As shown in the example below, virtual domains can be configured under the root domain.
 
 ```js
-let config = new_config();
+fn on_config(config) {
+    // Root domain.
+    config.server.domain = "root-example.net";
+    config.server.dns.type = "google";
+    config.server.tls.security_level = "None";
 
-// Root domain.
-config.server.domain = "root-example.net";
+    // ...
+    // ... End of main domain configuration
 
-config.server.dns.type = "google";
+    //
+    // Virtual domain : "example1.com"
+    //
 
-config.server.tls.security_level = "None";
+    // DNS type is not specified - thus it's inherited from the main domain.
+    config.server.virtual["example1.com"] = #{
+        tls: #{
+            protocol_version: "TLSv1.3",
+            certificate: "./certs/certificate-example1.crt",
+            private_key: "./certs/private-example2.key",
+        }
+    };
 
-// ...
-// ... End of main domain configuration
+    //
+    // Virtual domain : "example2.com"
+    //
+    config.server.virtual["example2.com"] = #{
+        dns: #{ type: "system" },
+        tls: #{
+            protocol_version: "TLSv1.3",
+            certificate: "./certs/certificate-example2.crt",
+            private_key: "./certs/private-example2.key",
+        }
+    };
 
-//
-// Virtual domain : "example1.com"
-//
+    config
+}
 
-// DNS type is not specified - thus it's inherited from the main domain.
-config.server.virtual["example1.com"] = #{
-    tls: #{
-        protocol_version: "TLSv1.3",
-        certificate: "./certs/certificate-example1.crt",
-        private_key: "./certs/private-example2.key",
-    }
-};
-
-//
-// Virtual domain : "example2.com"
-//
-config.server.virtual["example2.com"] = #{
-    dns: #{ type: "system" },
-    tls: #{
-        protocol_version: "TLSv1.3",
-        certificate: "./certs/certificate-example2.crt",
-        private_key: "./certs/private-example2.key",
-    }
-};
 ```
 
 Parameters can be:

@@ -20,20 +20,23 @@ The `vsmtp_rule_engine` module enables logs for the rule engine, the `vsmtp_mail
 The `vsmtp.vsl` file is used to configure server logs:
 
 ```rust
-let config = new_config();
+fn on_config(config) {
+    // You can change the location of the server logs.
+    config.server.logs.filepath = "./tmp/system/vsmtp.log";
 
-// You can change the location of the server logs.
-config.server.logs.filepath = "./tmp/system/vsmtp.log";
+    config.server.logs.level = [
+        // set global logging level to "info" for all the modules.
+        "info",
+    
+        // set the logging level per module.
+        "vsmtp_server::receiver=info",
+        "vsmtp_rule_engine=warn",
+        "vsmtp_delivery=error",
+    ];
 
-config.server.logs.level = [
-    // set global logging level to "info" for all the modules.
-    "info",
+    config
+}
 
-    // set the logging level per module.
-    "vsmtp_server::receiver=info",
-    "vsmtp_rule_engine=warn",
-    "vsmtp_delivery=error",
-]
 ```
 
 ## Application logs
@@ -43,10 +46,12 @@ Application logs are defined using the `log(level, message)` function in the vSL
 The default output location (`/var/log/vsmtp/app.log`) can be modified in the `vsmtp.vsl` file :
 
 ```js
-let config = new_config();
+fn on_config(config) {
+    // You can change the location of the application logs.
+    config.app.logs.filepath = "./tmp/system/app.log";
 
-// You can change the location of the application logs.
-config.app.logs.filepath = "./tmp/system/app.log";
+    config
+}
 ```
 
 
@@ -55,14 +60,17 @@ config.app.logs.filepath = "./tmp/system/app.log";
 vSMTP send logs to the journald daemon :
 
 ```js
-let config = new_config();
+fn on_config(config) {
+    // You can change the location of the application logs.
+    config.server.logs.system = #{
+        // write only the message of a specific level and more
+        level: "info",
+        backend: "journald",
+    };
 
-// You can change the location of the application logs.
-config.server.logs.system = #{
-    // write only the message of a specific level and more
-    level: "info",
-    backend: "journald",
-};
+    config
+}
+
 ```
 
 
@@ -71,21 +79,23 @@ config.server.logs.system = #{
 vSMTP send logs to the syslog daemon using the `mail` facility :
 
 ```js
-let config = new_config();
+fn on_config(config) {
+    // You can change the location of the application logs.
+    config.server.logs.system = #{
+        // write only the message of a specific level and more
+        level: "info",
+        backend: "syslogd",
+        // format used by the logger see https://www.rfc-editor.org/rfc/rfc3164 and https://www.rfc-editor.org/rfc/rfc5424
+        format: "3164",
+    
+        socket: #{ type: "unix", path: "/dev/log" },
+        // or
+        socket: #{ type: "tcp", server: "127.0.0.1:601" },
+        // or
+        socket: #{ type: "udp", server: "127.0.0.1:514", local: "127.0.0.1:0" },
+        // note: address can be ipv4 / ipv6
+    };
 
-// You can change the location of the application logs.
-config.server.logs.system = #{
-    // write only the message of a specific level and more
-    level: "info",
-    backend: "syslogd",
-    // format used by the logger see https://www.rfc-editor.org/rfc/rfc3164 and https://www.rfc-editor.org/rfc/rfc5424
-    format: "3164",
-
-    socket: #{ type: "unix", path: "/dev/log" },
-    // or
-    socket: #{ type: "tcp", server: "127.0.0.1:601" },
-    // or
-    socket: #{ type: "udp", server: "127.0.0.1:514", local: "127.0.0.1:0" },
-    // note: address can be ipv4 / ipv6
-};
+    config
+}
 ```

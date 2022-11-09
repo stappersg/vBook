@@ -5,12 +5,14 @@ Doe's family users must be authenticated if they send messages from an external 
 Add the following to your `/etc/vsmtp/vsmtp.vsl` file:
 
 ```js
-let config = new_config();
+fn on_config(config) {
+  config.server.smtp.auth = #{
+    must_be_authenticated: false,
+    enable_dangerous_mechanism_in_clair: false,
+  };
 
-config.server.smtp.auth = #{
-  must_be_authenticated: false,
-  enable_dangerous_mechanism_in_clair: false,
-};
+  config
+}
 ```
 
 

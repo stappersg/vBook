@@ -5,18 +5,20 @@
 First of all, create the file [`/etc/vsmtp/vsmtp.vsl`](/get-started/concepts.html#configuration-file) with this content:
 
 ```js
-let config = new_config();
+fn on_config(config) {
+  // root domain of the server.
+  config.server.domain = "doe-family.com";
 
-// root domain of the server.
-config.server.domain = "doe-family.com";
+  // addresses that the server will listen to.
+  // (change `192.168.1.254` for the address you want to listen to)
+  config.server.interfaces = #{
+    addr: ["192.168.1.254:25"],
+    addr_submission: ["192.168.1.254:587"],
+    addr_submissions: ["192.168.1.254:465"],
+  };
 
-// addresses that the server will listen to.
-// (change `192.168.1.254` for the address you want to listen to)
-config.server.interfaces = #{
-  addr: ["192.168.1.254:25"],
-  addr_submission: ["192.168.1.254:587"],
-  addr_submissions: ["192.168.1.254:465"],
-};
+  config
+}
 ```
 
 

@@ -12,9 +12,10 @@ We will configure these rules:
 Add the following to the `/etc/vsmtp/vsmtp.vsl` file:
 
 ```js
-let config = new_config();
-
-config.server.dkim.private_key = "/path/to/private-key";
+fn on_config(config) {
+  config.server.dkim.private_key = "/path/to/private-key";
+  config
+}
 ```
 
 

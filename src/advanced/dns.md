@@ -13,8 +13,11 @@ DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` table
 The default behavior of the upstream resolver is defined by the operating system `/etc/resolv.conf` file. Alternative configurations such as Google or CloudFlare Public DNS may be applied using the `type` field in the `server.dns` table.
 
 ```rust
-let config = new_config();
-config.server.dns.type = "system" | "google" | "cloudflare";
+fn on_config(config) {
+  config.server.dns.type = "system" | "google" | "cloudflare";
+
+  config
+}
 ```
 
 Please see Google and CloudFlare privacy statement for important information about what they track.
@@ -54,15 +57,17 @@ DNS Options can be set using the `config.server.dns.options` object.
 A Resolver configuration example :
 
 ```rust
-let config = new_config();
-config.server.dns.type = "cloudflare";
+fn on_config(config) {
+  config.server.dns.type = "cloudflare";
+  config.server.dns.options = #{
+    timeout: "5s",
+    cache_size: 500,
+    ip_strategy: "Ipv6thenIpv4",
+    validate: true,
+  };
 
-config.server.dns.options = #{
-  timeout: "5s",
-  cache_size: 500,
-  ip_strategy: "Ipv6thenIpv4",
-  validate: true,
-};
+  config
+}
 ```
 
 Advanced parameters are available. Please check vSMTP reference guide and [Trust-DNS] repository.
