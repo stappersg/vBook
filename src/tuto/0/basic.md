@@ -63,7 +63,7 @@ export const jimmy = address("jimmy.doe@doe-family.com");
 export const jenny = address("jenny.doe@doe-family.com");
 
 // A group to manipulate mailboxes.
-export const  family_addr = group([john, jane, jimmy, jenny]);
+export const  family_addr = [john, jane, jimmy, jenny];
 
 // Quarantine folders.
 export const unknown_quarantine = "doe/bad_user";

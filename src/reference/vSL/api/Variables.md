@@ -16,4 +16,4 @@
 |`net_10`|Rg4(IpRange [10.0.0.0/8])|
 |`net_172`|Rg4(IpRange [172.16.0.0/12])|
 |`net_192`|Rg4(IpRange [192.168.0.0/16])|
-|`non_routable_net`|Group([Rg4(IpRange [192.168.0.0/16]), Rg4(IpRange [172.16.0.0/12]), Rg4(IpRange [10.0.0.0/8])])|
+|`non_routable_net`|Array([Rg4(IpRange [192.168.0.0/16]), Rg4(IpRange [172.16.0.0/12]), Rg4(IpRange [10.0.0.0/8])])|

@@ -1,6 +1,6 @@
 # Objects
 
-Objects are used to create configuration variables declared through rhai functions. 
+Objects are used to create configuration variables declared through Rhai functions. 
 
 ## Type of implemented objects
 
@@ -16,7 +16,6 @@ The following type of objects are supported natively:
 | identifier   | Local part of an address    | user                  | String.                  |
 | fqdn    | Fully qualified domain name | my&#46;domain&#46;com | String.                  |
 | regex   | Regular expression          |                       | PERL regular expression. |
-| group   | A group of objects          |                       | See group section.       |
 | file    | A file of objects           | Unix file             | See file section.        |
 | code    | a custom smtp code          |                       | See code section.        |
 
@@ -75,38 +74,33 @@ cat /etc/vsmtp/config/local_mta.txt
 export const local_MTA = file("/etc/vsmtp/config/local_mta.txt", "ip4");
 ```
 
-### About groups
+### Grouping objects
 
-Groups are collections of objects.
+You can group objects using [Rhai Arrays](https://rhai.rs/book/language/arrays.html#arrays).
 
 ```js
 const whitelist = file("/etc/vsmtp/config/whitelist.txt", "address");
 
-const authorized_users = group([
+const authorized_users = [
   whitelist,
   address("admin@mydomain.com"),
-]);
+];
 ```
 
-Groups can be nested into other groups.
-
-```js
-const deep_group = group([
-  regex("^[a-z0-9.]+@foo.com$"),
-  authorizedUsers,
-]);
-```
-
-&#9998; | When used with check operators (`==`, `!=`, `in` etc ...), the whole group will be tested. The test stops when one element of the group matches.
+&#9998; | When used with check operators (`==`, `!=`, `in` etc ...), the whole array will be tested. The test stops when one element of the group matches, or nothing matches.
 
 ### About codes
 
 custom codes can be declared with the following syntax.
 
 ```js
-const code554_7_1 = code(554, "Relay access denied", "5.7.1");
+const code554 = code(554, "Relay access denied");
 
-// use the code in your rules. deny or send a informational message.
+// You can also use an enhanced code.
+const code554_7_1 = code(554, "5.7.1", "Relay access denied");
+
+// Use the code with rule statuses. `deny`, `info`, `accept` & `faccept` functions can take any code as parameter.
+deny(code554);
 deny(code554_7_1);
 info(code554_7_1);
 ```
