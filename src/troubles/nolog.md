@@ -12,6 +12,6 @@ $ sudo systemctl start vsmtp
 $ sudo systemctl status vsmtp
 # this prints a failed start status.
 
-$ vsmtp -c /path/to/config.toml --no-daemon
+$ vsmtp -c /path/to/config.vsl --no-daemon
 # this will print errors on stderr.
 ```

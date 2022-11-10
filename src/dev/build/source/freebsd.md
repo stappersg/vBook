@@ -35,7 +35,7 @@ USAGE:
     vsmtp [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -c, --config <CONFIG>      Path of the vSMTP configuration file (toml format)
+    -c, --config <CONFIG>      Path of the vSMTP configuration file ("vsl" format)
     -h, --help                 Print help information
     -n, --no-daemon            Do not run the program as a daemon
     -t, --timeout <TIMEOUT>    Make the server stop after a delay (human readable format)
@@ -55,14 +55,18 @@ Create the directories and change the owner and group.
 mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
 cp ./target/release/vsmtp /usr/sbin/
 cp ./target/release/vqueue /usr/sbin/
-cp ./examples/config/minimal.toml /etc/vsmtp/vsmtp.toml
+cp ./examples/config/minimal.vsl /etc/vsmtp/vsmtp.vsl
 chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
-Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
+Create a minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 1.0.0)
 
 ```shell
-echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml
+cat > /etc/vsmtp/vsmtp.vsl <<EOF
+import "conf.d/config.vsl" as cfg;
+let config = cfg::config;
+config.version_requirement = ">=1.0.0";
+EOF
 ```
 
 Grant rights to files and folders.
@@ -128,7 +132,7 @@ rcvar="${name}_enable"
 load_rc_config $name
 
 : ${vsmtp_enable:=NO}
-: ${vsmtp_config:=/etc/vsmtp/vsmtp.toml}
+: ${vsmtp_config:=/etc/vsmtp/vsmtp.vsl}
 : ${vsmtp_flags:=--config}
 
 command="/usr/sbin/vsmtp"

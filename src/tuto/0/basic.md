@@ -2,22 +2,25 @@
 
 ## Listen and serve
 
-First of all, create the file [`/etc/vsmtp/vsmtp.toml`](/get-started/concepts.html#configuration-file) with this content:
+First of all, create the file [`/etc/vsmtp/vsmtp.vsl`](/get-started/concepts.html#configuration-file) with this content:
 
-```toml
-version_requirement = ">=1.3.0"
+```js
+fn on_config(config) {
+  // root domain of the server.
+  config.server.domain = "doe-family.com";
 
-# root domain of the server.
-[server]
-domain = "doe-family.com"
+  // addresses that the server will listen to.
+  // (change `192.168.1.254` for the address you want to listen to)
+  config.server.interfaces = #{
+    addr: ["192.168.1.254:25"],
+    addr_submission: ["192.168.1.254:587"],
+    addr_submissions: ["192.168.1.254:465"],
+  };
 
-# addresses that the server will listen to.
-# (change `192.168.1.254` for the address you want to listen to)
-[server.interfaces]
-addr = ["192.168.1.254:25"]
-addr_submission = ["192.168.1.254:587"]
-addr_submissions = ["192.168.1.254:465"]
+  config
+}
 ```
+
 
 The server can now listen and serve SMTP connections.
 
@@ -47,27 +50,27 @@ Create the `/etc/vsmtp/rules/objects.vsl` file with the content:
 ```js
 // -- /etc/vsmtp/rules/objects.vsl
 // IP addresses of the MTA and the internal IP range.
-object local_mta ip4 = "192.168.1.254";
-object internal_net rg4 = "192.168.0.0/24";
+export const local_mta = ip4("192.168.1.254");
+export const internal_net = rg4("192.168.0.0/24");
 
 // Doe's family domain name.
-object family_domain fqdn = "doe-family.com";
+export const family_domain = fqdn("doe-family.com");
 
 // Mailboxes.
-object john address = "john.doe@doe-family.com";
-object jane address = "jane.doe@doe-family.com";
-object jimmy address = "jimmy.doe@doe-family.com";
-object jenny address = "jenny.doe@doe-family.com";
+export const john = address("john.doe@doe-family.com");
+export const jane = address("jane.doe@doe-family.com");
+export const jimmy = address("jimmy.doe@doe-family.com");
+export const jenny = address("jenny.doe@doe-family.com");
 
 // A group to manipulate mailboxes.
-object family_addr group = [john, jane, jimmy, jenny];
+export const  family_addr = [john, jane, jimmy, jenny];
 
 // Quarantine folders.
-object unknown_quarantine string = "doe/bad_user";
-object virus_queue string = "doe/virus";
+export const unknown_quarantine = "doe/bad_user";
+export const virus_queue = "doe/virus";
 
 // A user blacklist file.
-object blacklist file:fqdn = "blacklist.txt";
+export const blacklist = file("blacklist.txt", "fqdn");
 ```
 
 The content of the `blacklist.txt` file is:
@@ -116,14 +119,13 @@ import "objects" as doe;
 }
 ```
 
-Add these lines to your `/etc/vsmtp/vsmtp.toml`:
+Add these lines to your `/etc/vsmtp/vsmtp.vsl`:
 
-```toml
-# ...
+```js
+// ...
 
-# entry point for our rules.
-[app.vsl]
-filepath = "/etc/vsmtp/rules/main.vsl"
+// entry point for our rules.
+config.app.vsl.filepath = "/etc/vsmtp/rules/main.vsl";
 ```
 
 Restart the server to apply the rules.

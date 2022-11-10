@@ -37,7 +37,7 @@ USAGE:
     vsmtp [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -c, --config <CONFIG>      Path of the vSMTP configuration file (toml format)
+    -c, --config <CONFIG>      Path of the vSMTP configuration file ("vsl" format)
     -h, --help                 Print help information
     -n, --no-daemon            Do not run the program as a daemon
     -t, --timeout <TIMEOUT>    Make the server stop after a delay (human readable format)
@@ -71,7 +71,7 @@ vSMTP binaries and config files should be located in:
 
 - /usr/sbin/ : binaries
 - /etc/vsmtp/
-  - /etc/vsmtp/vsmtp.toml : default configuration file
+  - /etc/vsmtp/vsmtp.vsl : default configuration file
   - /etc/vsmtp/rules/ : rules
   - /etc/vsmtp/certs/ : certificates
 - /var/spool/vsmtp/ : internal queues
@@ -80,7 +80,7 @@ vSMTP binaries and config files should be located in:
   - /var/log/mail.log and mail.err : syslog
 - /home/~user/Maildir : local IMAP delivery
 
-These default locations may be changed in the `/etc/vsmtp/vsmtp.toml` configuration file which is called by the service startup `/etc/systemd/system/vsmtp.service` file.
+These default locations may be changed in the `/etc/vsmtp/vsmtp.vsl` configuration file which is called by the service startup `/etc/systemd/system/vsmtp.service` file.
 
 ```shell
 sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
@@ -88,10 +88,14 @@ sudo cp ./target/release/vsmtp /usr/sbin/
 sudo cp ./target/release/vqueue /usr/sbin/
 ```
 
-A minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0) must be created.
+A minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 1.0.0) must be created.
 
 ```shell
-sudo bash -c 'echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml'
+cat > /etc/vsmtp/vsmtp.vsl <<EOF
+import "conf.d/config.vsl" as cfg;
+let config = cfg::config;
+config.version_requirement = ">=1.0.0";
+EOF
 ```
 
 Grant rights to files and folders.
@@ -160,7 +164,7 @@ $ sudo systemctl status vsmtp
       Tasks: 25 (limit: 38287)
      Memory: 39.9M
      CGroup: /system.slice/vsmtp.service
-             └─2164 /usr/sbin/vsmtp -c /etc/vsmtp/vsmtp.toml
+             └─2164 /usr/sbin/vsmtp -c /etc/vsmtp/vsmtp.vsl
 
 ```
 

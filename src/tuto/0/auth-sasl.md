@@ -2,15 +2,19 @@
 
 Doe's family users must be authenticated if they send messages from an external network (i.e. from a cellular net). As John decided to create Unix users, the shadow mechanism is required.
 
-Add the following to your `/etc/vsmtp/vsmtp.toml` file:
+Add the following to your `/etc/vsmtp/vsmtp.vsl` file:
 
-```toml
-# ...
+```js
+fn on_config(config) {
+  config.server.smtp.auth = #{
+    must_be_authenticated: false,
+    enable_dangerous_mechanism_in_clair: false,
+  };
 
-[server.smtp.auth]
-must_be_authenticated = false
-enable_dangerous_mechanism_in_clair = false
+  config
+}
 ```
+
 
 And this rule to your `/etc/vsmtp/rules/main.vsl` file:
 

@@ -59,13 +59,18 @@ service clamsmtpd smtp = #{
 };
 ```
 
-The receiver's socket must be enabled in the `/etc/vsmtp/vsmtp.toml`.
+The receiver's socket must be enabled in the `/etc/vsmtp/vsmtp.vsl`.
 
-```toml
-# -- /etc/vsmtp/vsmtp.toml
-[server.interfaces]
-#       clients              delegation results
-addr = ["192.168.1.254:25", "127.0.0.1:10025"]
+```js
+// -- /etc/vsmtp/vsmtp.vsl
+fn on_config(config) {
+  config.server.interfaces = #{
+    //     clients             delegation results
+    addr: ["192.168.1.254:25", "127.0.0.1:10025"],
+  };
+
+  config
+}
 ```
 
 ## The delegate keyword

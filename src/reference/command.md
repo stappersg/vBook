@@ -5,7 +5,7 @@
 vSMTP is designed to run as a Unix service and is not intended to be run interactively using the command lines. However, in case of startup problems, it can be useful to run it with a minimal configuration file to check the settings. In any case, vSMTP must be started with root privileges.
 
 ```shell
-$ sudo vsmtp -c /etc/vsmtp/vsmtp-minimal.toml
+$ sudo vsmtp -c /etc/vsmtp/vsmtp-minimal.vsl
 2022-05-11 17:16:40.609916181 WARN  [139916115511680] server::rule_engine            $ No 'main.vsl' provided in the config, the server will deny any incoming transaction by default.
 2022-05-11 17:16:40.622996178 WARN  [139915467675200] vsmtp_server::server           $ No TLS configuration provided, listening on submissions protocol (port 465) will cause issue
 ```
@@ -22,7 +22,7 @@ USAGE:
     vsmtp [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -c, --config <CONFIG>      Path of the vSMTP configuration file (toml format)
+    -c, --config <CONFIG>      Path of the vSMTP configuration file ("vsl" format)
     -h, --help                 Print help information
     -n, --no-daemon            Do not run the program as a daemon
     -t, --timeout <TIMEOUT>    Make the server stop after a delay (human readable format)
@@ -37,8 +37,8 @@ SUBCOMMANDS:
 Loaded configurations can be checked using `config-diff` and `config-show` subcommands.
 
 ```shell
-$ sudo vsmtp -c /etc/vsmtp/vsmtp.toml config-show
-Loading configuration at path='/etc/vsmtp/vsmtp.toml'
+$ sudo vsmtp -c /etc/vsmtp/vsmtp.vsl config-show
+Loading configuration at path='/etc/vsmtp/vsmtp.vsl'
 Loaded configuration: {
   "server": {
     "domain": "testserver.com",
@@ -67,8 +67,8 @@ Loaded configuration: {
 ```
 
 ```shell
-$ sudo vsmtp -c /etc/vsmtp/vsmtp.toml config-diff
-Loading configuration at path='/etc/vsmtp/vsmtp.toml'
+$ sudo vsmtp -c /etc/vsmtp/vsmtp.vsl config-diff
+Loading configuration at path='/etc/vsmtp/vsmtp.vsl'
  {
    "server": {
      "domain": "testserver.com",
@@ -105,7 +105,7 @@ Loading configuration at path='/etc/vsmtp/vsmtp.toml'
 
 Internal and user defined queues can be managed using the `vqueue` command with root privileges.
 
-The `vqueue show` subcommand displays a summary of vSMTP queues in a Postfix qshape way. The `-c` option allows vqueue to parse queues and quarantines defined in the TOML configuration file.
+The `vqueue show` subcommand displays a summary of vSMTP queues in a Postfix qshape way. The `-c` option allows vqueue to parse queues and quarantines defined in the main configuration file.
 
 ```shell
 WORKING    is at '/var/spool/vsmtp/working' : <EMPTY>

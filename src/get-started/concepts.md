@@ -2,11 +2,11 @@
 
 ## System configuration
 
-The behavior of the vSMTP service (network, default directories, tls, etc.) can be configured by editing the `vsmtp.toml` file. Its default location is `/etc/vsmtp/vsmtp.toml`.
+The behavior of the vSMTP service (network, default directories, tls, etc.) can be configured by editing the `vsmtp.vsl` file. Its default location is `/etc/vsmtp/vsmtp.vsl`.
 
 When starting the vSMTP service, its configuration file is read and fully parsed. An error occurs when a key or a value is incorrect. The server never crashes if the configuration is successfully loaded.
 
-Please refer to the [vSMTP TOML key/value list](../reference/config-file.html) chapter for further details.
+Please refer to the [vSMTP vsl config key/value list](../reference/config-file.html) chapter for further details.
 
 ## Application configuration
 

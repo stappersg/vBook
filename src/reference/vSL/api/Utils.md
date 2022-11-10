@@ -96,7 +96,7 @@ Those miscellaneous functions lets you query data from your system, log stuff, p
 
  ### Args
 
- * `rcpt` - the recipient to check, of type string | `object address` | rcpt.
+ * `rcpt` - the recipient to check, of type string | `address` | rcpt.
 
  ### Return
 

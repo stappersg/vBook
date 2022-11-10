@@ -68,7 +68,7 @@ Rules are bound to a vSMTP stage. Stages that are not used can be omitted, but m
 ```js
 // -- objects.vsl
 
-object my_company fqdn = "mycompany.net";
+export const my_company = fqdn("mycompany.net");
 
 //-- main.vsl
 
@@ -105,7 +105,7 @@ For security purpose, end-users should always add a trailing rule at the end of 
 ```js
 //-- objects.vsl
 
-object my_company fqdn = "mycompany.net";
+export const my_company = fqdn("mycompany.net");
 
 //-- main.vsl
 import "objects" as obj;

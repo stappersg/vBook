@@ -12,9 +12,12 @@ DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` table
 
 The default behavior of the upstream resolver is defined by the operating system `/etc/resolv.conf` file. Alternative configurations such as Google or CloudFlare Public DNS may be applied using the `type` field in the `server.dns` table.
 
-```toml
-[server.dns]
-type = "system" | "google" | "cloudflare"
+```rust
+fn on_config(config) {
+  config.server.dns.type = "system" | "google" | "cloudflare";
+
+  config
+}
 ```
 
 Please see Google and CloudFlare privacy statement for important information about what they track.
@@ -36,7 +39,7 @@ The "Null MX" protocol solves these issues.
 
 ### Resolver options
 
-DNS Options can be set in the TOML `[server.dns.options]` table.
+DNS Options can be set using the `config.server.dns.options` object.
 
 | Parameter              | value      | Description                                                                      | Default value          |
 | :--------------------- | :--------- | :------------------------------------------------------------------------------- | :--------------------- |
@@ -53,15 +56,18 @@ DNS Options can be set in the TOML `[server.dns.options]` table.
 
 A Resolver configuration example :
 
-```toml
-[server.dns]
-type = "cloudflare"
+```rust
+fn on_config(config) {
+  config.server.dns.type = "cloudflare";
+  config.server.dns.options = #{
+    timeout: "5s",
+    cache_size: 500,
+    ip_strategy: "Ipv6thenIpv4",
+    validate: true,
+  };
 
-[server.dns.options]
-timeout = "5s"
-cache_size = 500
-ip_strategy = "Ipv6thenIpv4"
-validate = true
+  config
+}
 ```
 
 Advanced parameters are available. Please check vSMTP reference guide and [Trust-DNS] repository.
@@ -86,7 +92,7 @@ In case of a DNS failure, the [RFC 3463], Enhanced Mail System Status Codes, reg
 
 ## Reverse DNS queries
 
-Most email authentication mechanisms rely on reverse DNS queries. The configuration of these protocol-related queries is registered in their corresponding TOML tables.
+Most email authentication mechanisms rely on reverse DNS queries. The configuration of these protocol-related queries is registered in their corresponding configuration objects.
 
 However, for specific  DNS reverse queries can also be directly using the vSL reverse lookup function.
 

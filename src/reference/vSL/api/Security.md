@@ -43,9 +43,9 @@ This module contains multiple security functions that you can use to protect you
  ```js
  mail: [
     rule "check mail relay" || {
-        object allowed_hosts group = [
-            object mta_ip ip4 = "192.168.1.254",
-            object mta_fqdn fqdn = "mta-internal.foobar.com"
+        const allowed_hosts = [
+            ip4("192.168.1.254"),
+            fqdn("mta-internal.foobar.com")
         ];
         check_mail_relay(allowed_hosts)
     }
@@ -77,9 +77,9 @@ This module contains multiple security functions that you can use to protect you
  ```js
  rcpt: [
     rule "check rcpt relay" || {
-        object allowed_hosts group = [
-            object mta_ip ip4 = "192.168.1.254",
-            object mta_fqdn fqdn = "mta-internal.foobar.com"
+        const allowed_hosts = [
+            ip4("192.168.1.254"),
+            fqdn("mta-internal.foobar.com")
         ];
         check_rcpt_relay(allowed_hosts)
     }
