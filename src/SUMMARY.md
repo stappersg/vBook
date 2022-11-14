@@ -11,6 +11,7 @@ The vSMTP reference guide
 
 - [Installation](get-started/installation.md)
 - [Concepts](get-started/concepts.md)
+- [Configuration File Structure](get-started/config-file-struct.md)
 
 # Tutorials
 
