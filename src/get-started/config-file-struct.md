@@ -177,6 +177,14 @@ An `action` is used to execute arbitrary code (logging, saving an email on disk 
 
 `rule`s and `action`s are executed by transaction `stages`:
 
+* `connect`: After TCP/IP socket has been accepted.
+* `helo`: After receiving HELO/EHLO command.
+* `authenticate`: After receiving AUTH command.
+* `mail`: After receiving MAIL FROM command.
+* `rcpt`: After receiving RCPT TO command.
+* `preq`: Before writing email on disk.
+* `postq`: After writing email on disk & connection closed.
+* `delivery`: Right before sending to recipient.
 
 #### Main
 
