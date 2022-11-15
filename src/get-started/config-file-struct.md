@@ -291,35 +291,6 @@ fn on_domain_config(config) {
 
 If this script is not present in a subdomain, configuration from the root `config.vsl` script is used instead.
 
-TODO: move into rules section.
-{
-`.vsl` files in your rules directory accepts a special syntax, called `rule` and `action`.
-
-```rust
-rule "deny all transactions" || deny(),
-
-action "log incoming transaction" || {
-    // Logging to /var/log/vsmtp.
-    log("info", `new transaction: ${helo()} from ${client_ip()}`);
-}
-```
-
-A `rule` is used to change the transaction state. You can `accept`, `faccept`, `deny` a transaction or simply use `next` to go to the next rule.
-
-An `action` is used to execute arbitrary code (logging, saving an email on disk etc ...) without changing the transaction state.
-
-`rule`s and `action`s are executed by transaction `stages`:
-
-* `connect`: After TCP/IP socket has been accepted.
-* `helo`: After receiving HELO/EHLO command.
-* `authenticate`: After receiving AUTH command.
-* `mail`: After receiving MAIL FROM command.
-* `rcpt`: After receiving RCPT TO command.
-* `preq`: Before writing email on disk.
-* `postq`: After writing email on disk & connection closed.
-* `delivery`: Right before sending to recipient.
-}
-
 ## Listen and serve
 
 First of all, create the file [`/etc/vsmtp/conf.d/config.vsl`](/get-started/concepts.html#configuration-file) with this content:
