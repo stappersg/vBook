@@ -11,6 +11,7 @@ The vSMTP reference guide
 
 - [Installation](get-started/installation.md)
 - [Concepts](get-started/concepts.md)
+- [Configuration File Structure](get-started/config-file-struct.md)
 
 # Tutorials
 
@@ -41,8 +42,9 @@ The vSMTP reference guide
 - [Command line parameters](reference/command.md)
 - [vSMTP TOML key/value list](reference/config-file.md)
 - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
-  - [SMTP states and vSMTP stages](reference/vSL/stages.md)
   - [Rules](reference/vSL/rules.md)
+  - [SMTP states and vSMTP stages](reference/vSL/stages.md)
+  - [Transaction context](reference/vSL/transaction.md)
   - [Objects](reference/vSL/objects.md)
   - [Delivery](reference/vSL/delivery.md)
   - [Services](reference/vSL/services.md)

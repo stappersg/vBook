@@ -1,49 +1,65 @@
 # Rules, actions & delegate
 
-Rules are the entry point to interact with the SMTP traffic at a user level.
+Rules are the entry point to filter emails.
 
-## Overall Syntax
+## Syntax
 
-Rules and actions are quite similar but rules must return a vSL rule engine status. They are defined in the same way:
+`.vsl` files in your rules directory accepts a special syntax: the `rule` and `action` keywords.
 
-```js
-action "action name" || {
-    // ... action body.
-}
+### Rule
+
+A `rule` is used to change the transaction state. You can `accept`, `faccept`, `deny` a transaction or simply use `next` to go to the next rule. This is the main primitive for filtering.
+
+A BNF representation of a rule.
+```bnf
+<rule>      ::= "rule" <rule-name> "||" <rhai-expr>
+<rule-name> ::= <string>
+<expr>      ::= <rhai-expr> ; any valid Rhai expression. Must return a "status".
 ```
 
-```js
-rule "rule name" || {
-    // ... rule body.
-    accept() // a rule returns a rule engine status
+An example of a rule declaration in practice.
+```rust
+// `deny()` is a function that return the `Deny` status.
+// Thus, this rule denies any incoming transaction.
+rule "deny all transactions" || deny(),
 
-}
+// Rhai expressions can be declared using the above inline syntax,
+// or using code blocks, like bellow.
+rule "check client ip" || {
+    if client_ip() == "192.168.1.254" {
+        faccept()
+    } else {
+        next()
+    }
+},
 ```
 
 > Rule engine status and effects are listed in the API, in the [status module](api/Status.md).
 
-An inline syntax is also available, like below:
+### Action
 
-```js
-action "name" || instruction,
-rule "name" || instruction,
+An `action` is used to execute arbitrary code (logging, saving an email on disk etc ...) without changing the transaction state.
+
+A BNF representation of an action.
+```bnf
+<action>      ::= "action" <rule-name> "||" <rhai-expr>
+<action-name> ::= <string>
+<expr>        ::= <rhai-expr> ; any valid Rhai expression.
 ```
 
-An example of a rule:
+An example of an action declaration in practice.
+```rust
+action "dump to disk" || dump("backup"),
 
-```js
-// Inline rule that only accepts a client at 192.168.1.254
-rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() }
-```
-
-The same rule, including a [string interpolation](https://rhai.rs/book/language/strings-chars.html#string-interpolation) in a log:
-
-```js
-rule "check connect" || {
-    log("warn", `Connection from : ${client_ip()}`);
-    if client_ip() == "192.168.1.254" { next() } else { deny() }
+action "log incoming transaction" || {
+    // Logging to /var/log/vsmtp.
+    log("info", `new transaction: ${helo()} from ${client_ip()}`);
 }
 ```
+
+### Delegate
+
+TODO: update delegation docs.
 
 The `delegate` directive is different: it uses a smtp service to delegate the email to a third party software:
 
@@ -61,83 +77,6 @@ delegate third_party "delegate email processing" || { ... }
 
 Check out the [Policy delegation](../../start/configuration/delegation.md) chapter for an in-depth description of the delegation mechanism.
 
-## Rules and vSMTP Stages
+## Using them
 
-Rules are bound to a vSMTP stage. Stages that are not used can be omitted, but must appear only once if used. They are declared in the `main.vsl` file.
-
-```js
-// -- objects.vsl
-
-export const my_company = fqdn("mycompany.net");
-
-//-- main.vsl
-
-import "objects" as obj;
-
-#{
-    connect: [
-        action "log connect" || log("warn", `Connection from : ${client_ip()}`),
-        rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() },
-    ],
-
-    rcpt: [
-        rule "local_domain" || {
-            if obj::my_company == rcpt().domain { next() } else { deny() }
-        },
-    ],
-
-    preq: [
-        action "rewrite recipients" || {
-            rewrite_rcpt_envelop("johndoe@compagny.com", "john.doe@company.net");
-            remove_rcpt("customer@company.net");
-            add_rcpt("no-reply@company.net");
-        },
-    ],
-
-    // ... other rules & actions
-}
-```
-
-## Implicit rules
-
-For security purpose, end-users should always add a trailing rule at the end of a stage. However, to avoid undefined behavior, an implicit trailing rule is set to `next()`, moving the rule engine to the next stage.
-
-```js
-//-- objects.vsl
-
-export const my_company = fqdn("mycompany.net");
-
-//-- main.vsl
-import "objects" as obj;
-
-#{
-    rcpt: [
-        rule "local domain" || {
-            if obj::my_company == rcpt().domain { accept() } else { next() }
-        },
-
-        // ... other rules / actions
-
-        // Trailing rule (denying is the default behavior for rcpt stage)
-        rule "default" || deny(),
-    ]
-}
-```
-
-> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).
-
-## Action
-
-`Actions` are similar to `rules` but do not return any status code and thus cannot modify the state of a transaction.
-
-```js
-// action "<name>" || {
-//     // <action body>
-// }
-
-action "log incoming transaction" || {
-  // We use actions to execute code that does not
-  // need to change the state of the transaction.
-  log("debug", `new transaction by ${client_ip()}`);
-}
-```
+Rules and actions are grouped by `stages`. Those are covered in the next chapter: [Stages](stages.md).
