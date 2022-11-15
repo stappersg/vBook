@@ -60,7 +60,7 @@ RCPT TO:   <foo@example.com>    # The domain is the same as the sender, `interna
 RCPT TO:   <bar@example.com>    # Same as above.
 ```
 
-#### Sub domain specific configuration
+## Sub-domain specific configuration
 
 It is possible to add a specific configuration for each sub domain. 
 
@@ -89,7 +89,7 @@ fn on_domain_config(config) {
 }
 ```
 
-As the root `config.vsl` file, this script contains a callback used to configure the sub domain. You can configure TLS, DKIM and DNS per sub-domain.
+As the root `config.vsl` file, it contains a callback used to configure the sub domain. You can configure TLS, DKIM and DNS per sub-domain using this script.
 
 For example:
 ```rust
@@ -110,4 +110,4 @@ fn on_domain_config(config) {
 }
 ```
 
-If this script is not present in a subdomain, configuration from the root `config.vsl` script is used instead.
+If this script is not present in a subdomain, configuration from the root `config.vsl` file is used instead.
