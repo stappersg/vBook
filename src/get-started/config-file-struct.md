@@ -1,5 +1,3 @@
-TODO: move rules description to rule tutorial.
-
 # Configuring vSMTP
 
 vSMTP, by default, stores it's configuration in `/etc/vsmtp`. Lets look at how files are organized.
@@ -16,7 +14,7 @@ A typical vSMTP configuration looks like the following.
 ┃     ┗ *.vsl
 ┣ domain-available/
 ┃     ┣ main.vsl
-┃     ┣ fallback.vsl
+┃     ┣ incoming.vsl
 ┃     ┣ example.com/
 ┃     ┃    ┣ config.vsl
 ┃     ┃    ┣ incoming.vsl
@@ -149,7 +147,7 @@ It is possible to filter emails using `.vsl` files for specific domains.
   ┃     ┗ app.vsl
 + ┗ domain-available/
 +         ┣ main.vsl
-+         ┗ fallback.vsl
++         ┗ incoming.vsl
 ```
 
 For vSMTP to take a rule path into account, you have to change the configuration in `conf.d/config.vsl` like so:
@@ -166,9 +164,9 @@ The `main.vsl` script is used to filter incoming transaction at the `connect`, `
 
 > TODO: add link to rules / actions.
 
-#### Fallback
+#### incoming
 
-The `fallback.vsl` script is run when an incoming client tries to relay an email with the server. If this file is not present in the rule directory, it will deny any incoming relaying tentative by clients.
+The root `incoming.vsl` script is run when an incoming sender domain is not handled by the configuration. If this file is not present in the rule directory, it will deny any incoming relaying tentative by clients.
 
 > TODO: add link to rules / actions.
 
@@ -186,7 +184,7 @@ For example:
   ┃     ┗ app.vsl
   ┗ domain-available/
           ┣ main.vsl
-          ┣ fallback.vsl
+          ┣ incoming.vsl
 +         ┗ example.com
 +             ┣ incoming.vsl
 +             ┣ outgoing.vsl
@@ -206,16 +204,16 @@ RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `incoming.v
 RCPT TO:   <bar@example.com>      # Same as above.
 ```
 
-If any recipient domain in this context is not handled by the configuration, then `fallback.vsl` is called.
+If any recipient domain in this context is not handled by the configuration, then the root `incoming.vsl` is called instead.
 
 Thus:
 ```sh
 MAIL FROM: <john.doe@unknown.com> # We don't have a `unknown.com` folder, this is an incoming message.
-RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `incoming.vsl`.
-RCPT TO:   <bar@anonymous.com>    # We don't have a `unknown.com` folder, `fallback.vsl` is used.
+RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `incoming.vsl` in the `example.com` folder.
+RCPT TO:   <bar@anonymous.com>    # We don't have a `unknown.com` folder, root `incoming.vsl` is used.
 ```
 
-A client should not mix up multiple recipient domains when sending a message to the server. This is why the fallback script is called when this happens. Once again, if `fallback.vsl` is not defined, the transaction will be denied by default.
+A client should not mix up multiple recipient domains when sending a message to the server. This is why the root script is called when this happens. Once again, if the root `incoming.vsl` is not defined, the transaction will be denied by default.
 
 ##### Outgoing
 
@@ -252,7 +250,7 @@ It is possible to add a specific configuration for each sub domain.
   ┃     ┗ app.vsl
   ┗ domain-available/
           ┣ main.vsl
-          ┣ fallback.vsl
+          ┣ incoming.vsl
           ┗ example.com
 +             ┣ config.vsl
               ┣ incoming.vsl
@@ -371,7 +369,7 @@ We will configure the following rules:
 - As Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
 - Messages sent to the family must be delivered in MailBox format.
 
-Now, create the rule filtering configuration, starting off with the `main.vsl` and `fallback.vsl` scripts in the `domain-available` directory.
+Now, create the rule filtering configuration, starting off with the `main.vsl` and `incoming.vsl` scripts in the `domain-available` directory.
 
 ```diff
 /etc/vsmtp/
@@ -381,7 +379,7 @@ Now, create the rule filtering configuration, starting off with the `main.vsl` a
  ┃      ┗ *.vsl
 +┣ domain-available/
 +┃      ┣ main.vsl
-+┃      ┗ fallback.vsl
++┃      ┗ incoming.vsl
  ┗ objects/
         ┗ family.vsl
 ```
@@ -400,7 +398,7 @@ import "objects/family" as doe;
 }
 ```
 
-The `fallback.vsl` script is used when your rules do not handle a specific domain to prevent relaying. Since we do not want to handled any sender / recipient domain that is not `doe-family.com` we can simply deny the transaction.
+The root `incoming.vsl` script is used when your rules do not handle a specific domain to prevent relaying. Since we do not want to handle any sender / recipient domain that is not `doe-family.com` we can simply deny the transaction.
 
 ```rust
 #{
@@ -410,7 +408,7 @@ The `fallback.vsl` script is used when your rules do not handle a specific domai
 }
 ```
 
-> Note that, if the `fallback.vsl` script is not present in the rule folder, vSMTP loads the previous 'deny transaction' rule by default.
+> Note that, if the root `incoming.vsl` script is not present in the rule folder, vSMTP loads the previous 'deny transaction' rule by default.
 
 Lets create rules for the `doe-family.com` domain.
 
@@ -422,7 +420,7 @@ Lets create rules for the `doe-family.com` domain.
  ┃      ┗ *.vsl
  ┣ domain-available/
  ┃      ┣ main.vsl
- ┃      ┣ fallback.vsl
+ ┃      ┣ incoming.vsl
 +┃      ┗ doe-family.com/
 +┃         ┣ incoming.vsl
 +┃         ┣ outgoing.vsl

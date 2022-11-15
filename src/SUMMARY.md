@@ -44,6 +44,7 @@ The vSMTP reference guide
 - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
   - [Rules](reference/vSL/rules.md)
   - [SMTP states and vSMTP stages](reference/vSL/stages.md)
+  - [Transaction context](reference/vSL/transaction.md)
   - [Objects](reference/vSL/objects.md)
   - [Delivery](reference/vSL/delivery.md)
   - [Services](reference/vSL/services.md)
