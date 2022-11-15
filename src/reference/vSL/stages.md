@@ -1,7 +1,7 @@
 # Stages
 
 vSMTP interacts with the messaging transaction at all states defined in the SMTP protocol.
-At each step, vSL updates a global context containing transaction and mail data accessible in rules.
+At each step, vSL updates a context containing transaction and mail data accessible in rules.
 
 ## vSMTP stages
 
@@ -46,11 +46,9 @@ Stages are declared in `.vsl` files using the following syntax:
 
 > Stages do not need to be declared in the previous given order, but it is a good practice.
 
-
 ## Rules
 
 Rules are combined with stages in `.vsl` files.
-
 
 ```js
 #{
@@ -75,11 +73,48 @@ Rules are combined with stages in `.vsl` files.
 }
 ```
 
-Using stages, rules can be run at specific stages of the configuration, enabling precise email filtering.
+Using stages, rules can be run at specific SMTP state, enabling precise email filtering.
+
+> Stages that are not used are omitted, but must appear only once if used.
+> ```js
+> #{
+>   connect: [],
+>   // configuration error!
+>   connect: [],
+> }
+> ```
+
+## Recommandations
+
+For security purpose, end-users should always add a trailing rule at the end of a stage.
+
+```js
+#{
+    connect: [
+        // This rule is executed once a new client connects to the server.
+        rule "check client ip" || {
+            if client_ip() == "192.168.1.254" {
+                faccept()
+            } else {
+                next()
+            }
+        }
+
+        // If the client ip is not known, the connection is denied.
+        rule "trailing" || deny(),
+    ],
+}
+```
+
+> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).
 
 ## Before queueing vs. after queueing
 
-vSMTP can process mails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection.
+> TL;DR
+> `connect`, `authenticate`, `helo`, `mail`, `rcpt` and `preq` stages rules are run before an email is enqueued.
+> `postq` and `delivery` stages rules are run after an email is enqueued and the server as received the complete email.
+
+vSMTP can process mails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection. This is possible by creating rules under the `connect`, `authenticate`, `helo`, `mail`, `rcpt` and `preq` stages.
 
 The advantages of an early detection of unwanted mails are:
 
@@ -89,7 +124,10 @@ The advantages of an early detection of unwanted mails are:
 
 However, as the SMTP transfer must to be completed within a deadline, heavy workload may cause a system to fail to respond in time.
 
-To protect against bursts and crashes, vSMTP implements several internal mechanisms like 'delay-variation' or 'temporary service unavailable messages', in conformance with the SMTP RFCs.
+Therefore, it is possible to handle an email "offline" when specifying rules under the `postq` and `delivery` stages.
+The rules under those stages are run after the client received a 250 Ok code, after the server received the complete email. 
+
+At this point, the rule engine is not able to send codes to the client even if the client sends multiple emails (each email is treated as a single entity by the rule engine), thus the rest of the rule engine behavior is considered "offline".
 
 ## Context variables
 
@@ -110,71 +148,3 @@ QUIT                                    # End of transaction
 ```
 
 &#9762; | The "mail context" (data obtained from the `Connection` and `Transaction` modules) is unique for each incoming connection.
-
-
-TODO: add the following section to this chapter.
-
-## Rules and vSMTP Stages
-
-Rules are bound to a vSMTP stage. Stages that are not used can be omitted, but must appear only once if used. They are declared in the `main.vsl` file.
-
-```js
-// -- objects.vsl
-
-export const my_company = fqdn("mycompany.net");
-
-//-- main.vsl
-
-import "objects" as obj;
-
-#{
-    connect: [
-        action "log connect" || log("warn", `Connection from : ${client_ip()}`),
-        rule "check connect" || if client_ip() == "192.168.1.254" { next() } else { deny() },
-    ],
-
-    rcpt: [
-        rule "local_domain" || {
-            if obj::my_company == rcpt().domain { next() } else { deny() }
-        },
-    ],
-
-    preq: [
-        action "rewrite recipients" || {
-            rewrite_rcpt_envelop("johndoe@compagny.com", "john.doe@company.net");
-            remove_rcpt("customer@company.net");
-            add_rcpt("no-reply@company.net");
-        },
-    ],
-
-    // ... other rules & actions
-}
-```
-
-## Implicit rules
-
-For security purpose, end-users should always add a trailing rule at the end of a stage. However, to avoid undefined behavior, an implicit trailing rule is set to `next()`, moving the rule engine to the next stage.
-
-```js
-//-- objects.vsl
-
-export const my_company = fqdn("mycompany.net");
-
-//-- main.vsl
-import "objects" as obj;
-
-#{
-    rcpt: [
-        rule "local domain" || {
-            if obj::my_company == rcpt().domain { accept() } else { next() }
-        },
-
-        // ... other rules / actions
-
-        // Trailing rule (denying is the default behavior for rcpt stage)
-        rule "default" || deny(),
-    ]
-}
-```
-
-> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).

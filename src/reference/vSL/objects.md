@@ -21,7 +21,7 @@ The following type of objects are supported natively:
 
 ### Create objects
 
-Objects can be created via there associated constructor functions:
+Objects can be created via associated constructors:
 
 ```js
 const my_ipv4 = ip4("127.0.0.1");
@@ -60,7 +60,7 @@ import "network" as net;
 
 ### About files
 
-File objects are standard Unix text files containing values delimited by CRLF.
+File objects are standard text files containing values delimited by CRLF.
 Only one type of object is authorized in one file.
 
 ```shell
@@ -79,11 +79,10 @@ export const local_MTA = file("/etc/vsmtp/config/local_mta.txt", "ip4");
 You can group objects using [Rhai Arrays](https://rhai.rs/book/language/arrays.html#arrays).
 
 ```js
-const whitelist = file("/etc/vsmtp/config/whitelist.txt", "address");
-
 const authorized_users = [
-  whitelist,
-  address("admin@mydomain.com"),
+  address("admin@example.com"),
+  address("foo@example.com"),
+  address("bar@example.com"),
 ];
 ```
 
@@ -96,7 +95,7 @@ custom codes can be declared with the following syntax.
 ```js
 const code554 = code(554, "Relay access denied");
 
-// You can also use an enhanced code.
+// You can also create enhanced codes.
 const code554_7_1 = code(554, "5.7.1", "Relay access denied");
 
 // Use the code with rule statuses. `deny`, `info`, `accept` & `faccept` functions can take any code as parameter.
