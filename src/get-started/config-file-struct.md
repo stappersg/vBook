@@ -160,6 +160,139 @@ fn on_config(config) {
 }
 ```
 
+#### Main
+
+The `main.vsl` script is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages.
+
+> TODO: add link to rules / actions.
+
+#### Fallback
+
+The `fallback.vsl` script is run when an incoming client tries to relay an email with the server. If this file is not present in the rule directory, it will deny any incoming relaying tentative by clients.
+
+> TODO: add link to rules / actions.
+
+#### Sub domains
+
+In the rule directory, any subfolder is considered as a subdomain that vSMTP handles.
+
+For example:
+```diff
+/etc/vsmtp
+  ┣ vsmtp.vsl
+  ┣ conf.d/
+  ┃     ┣ config.vsl
+  ┃     ┣ interfaces.vsl
+  ┃     ┗ app.vsl
+  ┗ domain-available/
+          ┣ main.vsl
+          ┣ fallback.vsl
++         ┗ example.com
++             ┣ incoming.vsl
++             ┣ outgoing.vsl
++             ┗ internal.vsl
+```
+
+Here, an `example.com` folder has been added. vSMTP will pickup the scripts defined in this folder and run them following the following conditions.
+
+##### Incoming
+
+The `incoming.vsl` script is run if the sender domain is not handled by the configuration, but domains from recipients are.
+
+Thus:
+```sh
+MAIL FROM: <john.doe@unknown.com> # We don't have a `unknown.com` folder, this is an incoming message.
+RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `incoming.vsl`.
+RCPT TO:   <bar@example.com>      # Same as above.
+```
+
+If any recipient domain in this context is not handled by the configuration, then `fallback.vsl` is called.
+
+Thus:
+```sh
+MAIL FROM: <john.doe@unknown.com> # We don't have a `unknown.com` folder, this is an incoming message.
+RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `incoming.vsl`.
+RCPT TO:   <bar@anonymous.com>    # We don't have a `unknown.com` folder, `fallback.vsl` is used.
+```
+
+A client should not mix up multiple recipient domains when sending a message to the server. This is why the fallback script is called when this happens. Once again, if `fallback.vsl` is not defined, the transaction will be denied by default.
+
+##### Outgoing
+
+The `outgoing.vsl` script is run if the sender domain is handled by the configuration, but recipients are not.
+
+Thus:
+```sh
+MAIL FROM: <john.doe@example.com> # `example.com` exists, this is an outgoing message.
+RCPT TO:   <foo@anonymous.com>    # We don't have a `anonymous.com` folder, `outgoing.vsl` is used.
+RCPT TO:   <bar@anonymous.com>    # Same as above.
+```
+
+##### Internal
+
+The `internal.vsl` script is run if the sender and recipients domains are handled by the configuration and the exact same.
+
+Thus:
+```sh
+MAIL FROM: <john.doe@example.com> # `example.com` exists, we don't know yet about the recipient, so this is an outgoing message.
+RCPT TO:   <foo@example.com>    # The domain is the same as the sender, `internal.vsl` is used.
+RCPT TO:   <bar@example.com>    # Same as above.
+```
+
+#### Sub domain specific configuration
+
+It is possible to add a specific configuration for each sub domain. 
+
+```diff
+/etc/vsmtp
+  ┣ vsmtp.vsl
+  ┣ conf.d/
+  ┃     ┣ config.vsl
+  ┃     ┣ interfaces.vsl
+  ┃     ┗ app.vsl
+  ┗ domain-available/
+          ┣ main.vsl
+          ┣ fallback.vsl
+          ┗ example.com
++             ┣ config.vsl
+              ┣ incoming.vsl
+              ┣ outgoing.vsl
+              ┗ internal.vsl
+```
+
+The `config.vsl` under a sub domain must contain the following statement:
+
+```rust
+fn on_domain_config(config) {
+  config
+}
+```
+
+As the root `config.vsl` file, this script contains a callback used to configure the sub domain. You can configure TLS, DKIM and DNS per sub-domain.
+
+For example:
+```rust
+fn on_domain_config(config) {
+  config.tls = #{
+    protocol_version: ["TLSv1.2", "TLSv1.3"],
+    certificate: "/etc/vsmtp/certs/cert.pem",
+    private_key: "/etc/vsmtp/certs/privkey.pem",
+  };
+
+  config.dkim = #{
+    private_key: "/etc/vsmtp/certs/example.dkim.key",
+  };
+
+  config.server.dns.type = "system";
+
+  config
+}
+```
+
+If this script is not present in a subdomain, configuration from the root `config.vsl` script is used instead.
+
+TODO: move into rules section.
+{
 `.vsl` files in your rules directory accepts a special syntax, called `rule` and `action`.
 
 ```rust
@@ -185,12 +318,7 @@ An `action` is used to execute arbitrary code (logging, saving an email on disk 
 * `preq`: Before writing email on disk.
 * `postq`: After writing email on disk & connection closed.
 * `delivery`: Right before sending to recipient.
-
-#### Main
-
-The `main.vsl` script at the root of the rule directory ise used
-
-> TODO: add link to rules / actions.
+}
 
 ## Listen and serve
 
