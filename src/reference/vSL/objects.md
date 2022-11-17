@@ -33,7 +33,7 @@ See the [TODO] module to get an extensive list of objects constructors.
 
 ### Recommandations
 
-If objects do not need to be created during filtering, it is recommended to declare them inside `.vsl` files and importing them via the `import` Rhai directive in rule files. (See the [Rhai modules](https://rhai.rs/book/language/modules/index.html) documentation for more information)
+It is recommended to declare objects inside `.vsl` files and importing them via the `import` Rhai directive in rule files. (See the [Rhai modules](https://rhai.rs/book/language/modules/index.html) documentation for more information)
 
 ```js
 // -- objects/network.vsl
