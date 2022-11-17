@@ -47,9 +47,9 @@ In `/etc/vsmtp`, by default, the following is created by vSMTP once installed.
       ┗ config.vsl
 ```
 
-`vsmtp.vsl` is the mandatory entrypoint for vSMTP, you SHOULD NOT change any of it's content, as maintainers of the program will edit it following new updates.
+`vsmtp.vsl` is the mandatory entrypoint for vSMTP, you SHOULD NOT change any of it's content, since maintainers of the program will edit it following new updates.
 
-`conf.d/config.vsl`, on the other hand, is a mandatory configuration file that contains the root configuration for vSMTP that you can edit to change the configuration.
+`conf.d/config.vsl`, on the other hand, is a mandatory configuration file that contains the root configuration for vSMTP. To change the configuration, you will need to edit it.
 
 This file must at least contain the following statement:
 
@@ -59,9 +59,9 @@ fn on_config(config) {
 }
 ```
 
-The `on_config` function is called at the startup of vSMTP, and will load the configuration object `config`.
+vSMTP calls the `on_config` function once starting up, and will load the configuration object `config`.
 
-You are free to modify the `config` object to change the configuration.
+You are free to modify the `config` object to change the configuration. The `config` object MUST be returned at the end of the function.
 
 > TODO: link to config parameters.
 

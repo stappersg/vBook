@@ -22,7 +22,7 @@ For reference, [humantime](https://github.com/tailhook/humantime) crate is used 
 Here is an example:
 
 ```js
-service clamscan cmd = #{
+const my_command = cmd(#{
     // for the `cmd` service, you can specify a timeout for the command.
     // You can use the different time scales above to specify the time.
     timeout: "10s",
@@ -30,5 +30,5 @@ service clamscan cmd = #{
     // timeout: "1minute",
     // timeout: "10000nsec",
     // ...
-};
+});
 ```

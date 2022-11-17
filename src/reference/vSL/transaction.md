@@ -8,7 +8,6 @@ As described in the [`Configuring vSMTP`](/src/get-started/config-file-struct.md
   ┣ conf.d/
   ┃     ┗ config.vsl
   ┗ domain-available/
-+          ┣ main.vsl
 +          ┣ incoming.vsl
 +          ┗ example.com
 +              ┣ incoming.vsl
@@ -25,9 +24,20 @@ Here is a diagram of which entry-points are executed following the transaction p
 
 The root `incoming.vsl` script is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages. The rules contained in those stages are applied to ALL incoming transactions.
 
-This script also run the `mail` stage when an incoming sender domain is not handled by the configuration.
+This script also run rules under the `mail` stage when an incoming sender domain is not handled by the configuration.
 
-If this file is not present in the rule directory, it will deny any incoming relaying tentative by clients.
+Finally, if the sender's domain is not handled by the configuration, and that the domain of recipients is not as well, rules defined in the `rcpt` stage contained in the root `incoming.vsl` are also called. You should, by default, deny the transaction since it probably is a relay tentative.
+
+```js
+#{
+  rcpt: [
+    rule "deny relay" || deny(),
+  ]
+}
+```
+<p style="text-align: center;"> <i>anti-relaying using rules in `incoming.vsl`</i> </p>
+
+If this file is not present in the rule directory, it will deny all transactions by default.
 
 ## Incoming 🟨
 
