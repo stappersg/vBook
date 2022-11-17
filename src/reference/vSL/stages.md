@@ -1,7 +1,7 @@
 # Stages
 
-vSMTP interacts with the messaging transaction at all states defined in the SMTP protocol.
-At each step, vSL updates a context containing transaction and mail data accessible in rules.
+vSMTP interacts with the SMTP transaction at all states defined in the SMTP protocol.
+At each step, vSL updates a context containing transaction and mail data that you can query in rules.
 
 ## vSMTP stages
 
@@ -44,7 +44,7 @@ Stages are declared in `.vsl` files using the following syntax:
 }
 ```
 
-> Stages do not need to be declared in the previous given order, but it is a good practice.
+> Stages do not need to be declared in the previous given order, but it is a good practice as it makes rules easier to read.
 
 ## Rules
 
@@ -94,7 +94,7 @@ For security purpose, end-users should always add a trailing rule at the end of 
         // This rule is executed once a new client connects to the server.
         rule "check client ip" || {
             if client_ip() == "192.168.1.254" {
-                faccept()
+                accept()
             } else {
                 next()
             }
@@ -106,13 +106,15 @@ For security purpose, end-users should always add a trailing rule at the end of 
 }
 ```
 
+In a stage, rules are executed **from top to bottom**. In the above example, if the client ip does not equal the 192.168.1.254 ip4, the rule engine jumps to the "trailing" rule, denying the transaction instantly.
+
 > As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).
 
 ## Before queueing vs. after queueing
 
 > TL;DR
 > `connect`, `authenticate`, `helo`, `mail`, `rcpt` and `preq` stages rules are run before an email is enqueued.
-> `postq` and `delivery` stages rules are run after an email is enqueued and the server as received the complete email.
+> `postq` and `delivery` stages rules are run after an email is enqueued and the connection with the client is closed.
 
 vSMTP can process mails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection. This is possible by creating rules under the `connect`, `authenticate`, `helo`, `mail`, `rcpt` and `preq` stages.
 
@@ -125,26 +127,11 @@ The advantages of an early detection of unwanted mails are:
 However, as the SMTP transfer must to be completed within a deadline, heavy workload may cause a system to fail to respond in time.
 
 Therefore, it is possible to handle an email "offline" when specifying rules under the `postq` and `delivery` stages.
-The rules under those stages are run after the client received a 250 Ok code, after the server received the complete email. 
+Rules under those stages are run after the client received a `250 Ok` code, after vSMTP received the complete email. 
 
 At this point, the rule engine is not able to send codes to the client even if the client sends multiple emails (each email is treated as a single entity by the rule engine), thus the rest of the rule engine behavior is considered "offline".
 
 ## Context variables
 
-As described above, depending on the stage, vSL exposes data that can be accessed with functions.
-Check out both [Connection](api/Connection.md) and [Transaction](api/Transaction.md) modules.
-
-## Connection vs mail transaction
-
-As defined in the SMTP RFCs, a single connection can handle several mail transactions.
-
-```shell
-[... connection from an IP]
-HELO                                    # Start of SMTP transaction
-    > MAIL FROM > RCPT TO > DATA        # First mail
-    > MAIL FROM > RCPT TO > DATA        # Second mail
-    > [...]
-QUIT                                    # End of transaction
-```
-
-&#9762; | The "mail context" (data obtained from the `Connection` and `Transaction` modules) is unique for each incoming connection.
+As described above, depending on the stage, vSL exposes data that can be queried in rules.
+Check out both [Connection](api/Connection.md) and [Transaction](api/Transaction.md) modules to get more details.

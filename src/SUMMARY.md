@@ -30,7 +30,6 @@ The vSMTP reference guide
 
 - [Logging system](advanced/logging.md)
 - [DNS configuration](advanced/dns.md)
-- [Virtual domains](advanced/virtual-domain.md)
 - [Null MX](advanced/nullmx.md)
 - [DMARC](advanced/dmarc.md)
 - [ARC 🚧]()
@@ -40,7 +39,7 @@ The vSMTP reference guide
 # Reference
 
 - [Command line parameters](reference/command.md)
-- [vSMTP TOML key/value list](reference/config-file.md)
+- [vSMTP Configuration reference](reference/config-file.md)
 - [vSL - the vSMTP Scripting Language](reference/vSL/vsl.md)
   - [Rules](reference/vSL/rules.md)
   - [SMTP states and vSMTP stages](reference/vSL/stages.md)

@@ -26,7 +26,7 @@ The root `incoming.vsl` script is used to filter incoming transaction at the `co
 
 This script also run rules under the `mail` stage when an incoming sender domain is not handled by the configuration.
 
-Finally, if the sender's domain is not handled by the configuration, and that the domain of recipients is not as well, rules defined in the `rcpt` stage contained in the root `incoming.vsl` are also called. You should, by default, deny the transaction since it probably is a relay tentative.
+Finally, if the sender's domain is not handled by the configuration, and that the domain of recipients is not as well, rules defined in the `rcpt` stage contained in the root `incoming.vsl` are also called. You should, by default, deny the transaction at this stage since it probably is a relay tentative.
 
 ```js
 #{
@@ -37,13 +37,12 @@ Finally, if the sender's domain is not handled by the configuration, and that th
 ```
 <p style="text-align: center;"> <i>anti-relaying using rules in `incoming.vsl`</i> </p>
 
-If this file is not present in the rule directory, it will deny all transactions by default.
+> If this file is not present in the rule directory, it will deny all transactions by default.
 
 ## Incoming 🟨
 
 The `incoming.vsl` script is run if the sender domain is not handled by the configuration, but domains from recipients are.
 
-Thus:
 ```sh
 MAIL FROM: <john.doe@unknown.com> # We don't have a `unknown.com` folder, this is an incoming message.
 RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `incoming.vsl`.
@@ -52,7 +51,6 @@ RCPT TO:   <bar@example.com>      # Same as above.
 
 If any recipient domain in this context is not handled by the configuration, then `fallback.vsl` is called.
 
-Thus:
 ```sh
 MAIL FROM: <john.doe@unknown.com> # We don't have a `unknown.com` folder, this is an incoming message.
 RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `example.com/incoming.vsl`.
@@ -65,7 +63,6 @@ A client should not mix up multiple recipient domains when sending a message to 
 
 The `outgoing.vsl` script is run if the sender domain is handled by the configuration, but recipients are not.
 
-Thus:
 ```sh
 MAIL FROM: <john.doe@example.com> # `example.com` exists, this is an outgoing message.
 RCPT TO:   <foo@anonymous.com>    # We don't have a `anonymous.com` folder, `outgoing.vsl` is used.
@@ -76,7 +73,6 @@ RCPT TO:   <bar@anonymous.com>    # Same as above.
 
 The `internal.vsl` script is run if the sender and recipients domains are handled by the configuration and the exact same.
 
-Thus:
 ```sh
 MAIL FROM: <john.doe@example.com> # `example.com` exists, we don't know yet about the recipient, so this is an outgoing message for now.
 RCPT TO:   <foo@example.com>    # The domain is the same as the sender, `internal.vsl` is used, it becomes an internal message now.

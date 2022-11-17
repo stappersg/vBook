@@ -13,7 +13,7 @@ The following services  are supported natively:
 
 ## Creating services
 
-Services can be created via associated constructors:
+Services can be created via their associated constructors:
 
 ```js
 const echo_command = cmd(#{
@@ -26,8 +26,8 @@ See the [TODO] module to get an extensive list of services and how to use them.
 
 ### Recommandations
 
-Services, compared to objects use system resources. (sockets, file descriptors etc ...)
-Thus, constructing a service can cost a lot of resources. It is HIGHLY recommended to declare them inside external `.vsl` files and import them via the `import` Rhai directive in rule files. (See the [Rhai modules](https://rhai.rs/book/language/modules/index.html) documentation for more information)
+Services, compared to objects, use system resources like sockets or file descriptors.
+Thus, constructing a service can be costly. It is HIGHLY recommended to declare them inside external `.vsl` files and import them via the `import` Rhai directive in rule files. (See the [Rhai modules](https://rhai.rs/book/language/modules/index.html) documentation for more information)
 
 This way, services are initialized only once when vSMTP starts.
 

@@ -1,4 +1,4 @@
-# Rules, actions & delegate
+# Rules and actions
 
 Rules are the entry point to filter emails.
 
@@ -8,11 +8,11 @@ Rules are the entry point to filter emails.
 
 ### Rule
 
-A `rule` is used to change the transaction state. You can `accept`, `faccept`, `deny` a transaction or simply use `next` to go to the next rule. This is the main primitive for filtering.
+A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [status functions](api/Status.md). A `rule` is the main primitive for filtering.
 
 A BNF representation of a rule.
 ```bnf
-<rule>      ::= "rule" <rule-name> "||" <rhai-expr>
+<rule>      ::= "rule" <rule-name> "||" <expr>
 <rule-name> ::= <string>
 <expr>      ::= <rhai-expr> ; any valid Rhai expression. Must return a "status".
 ```
@@ -42,13 +42,14 @@ An `action` is used to execute arbitrary code (logging, saving an email on disk 
 
 A BNF representation of an action.
 ```bnf
-<action>      ::= "action" <rule-name> "||" <rhai-expr>
+<action>      ::= "action" <rule-name> "||" <expr>
 <action-name> ::= <string>
 <expr>        ::= <rhai-expr> ; any valid Rhai expression.
 ```
 
 An example of an action declaration in practice.
 ```rust
+// Write the email as json to a "backup" directory.
 action "dump to disk" || dump("backup"),
 
 action "log incoming transaction" || {

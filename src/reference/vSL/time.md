@@ -17,7 +17,7 @@ Here is a list of available time scales format that you can use.
 | months | "months" / "month" / "M" |
 | years | "years" / "year" / "y" |
 
-For reference, [humantime](https://github.com/tailhook/humantime) crate is used to parse time.
+For reference, the [humantime](https://github.com/tailhook/humantime) crate is used to parse time.
 
 Here is an example:
 
