@@ -19,7 +19,7 @@ When installing vSMTP, the package manager should create the following basic con
 
 First of all, modify the [`/etc/vsmtp/conf.d/config.vsl`](/src/get-started/config-file-struct.md###root-configuration) file with this configuration:
 
-```rust
+```js
 fn on_config(config) {
   // Name of the server.
   config.server.name = "doe-family.com";
@@ -39,32 +39,31 @@ fn on_config(config) {
 }
 ```
 
+> It is recommended to split the configuration into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
+
 > To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](TODO:) chapter.
 
 The server can now listen and serve SMTP connections.
 
-Now, let's define all the required objects for John Doe's MTA. Those objects are used to configure vSMTP and simplify your rules.
+Now, let's define all the required objects for John Doe's MTA. Those objects are used to configure vSMTP and simplify filtering rules.
 
-Create the `/etc/vsmtp/rules/objects.vsl` file with following objects:
+Create the `/etc/vsmtp/objects/family.vsl` file with following objects:
 
-```rust
-// -- /etc/vsmtp/objects/family.vsl
-
+```js
 // IP addresses of the MTA and the internal IP range.
 export const local_mta = ip4("192.168.1.254");
 export const internal_net = rg4("192.168.0.0/24");
 
 // Doe's family domain name.
-export const family_domain = fqdn("doe-family.com");
+export const domain = fqdn("doe-family.com");
 
 // Mailboxes.
 export const john = address("john.doe@doe-family.com");
 export const jane = address("jane.doe@doe-family.com");
 export const jimmy = address("jimmy.doe@doe-family.com");
 export const jenny = address("jenny.doe@doe-family.com");
-export const fridge = address("IOT-fridge@doe-family.com");
 
-export const family_addr = [john, jane, jimmy, jenny];
+export const addresses = [john, jane, jimmy, jenny];
 
 // Paths for quarantines.
 export const unknown_quarantine = "doe/bad_user";
@@ -76,7 +75,7 @@ export const blacklist = file("conf.d/blacklist.txt", "fqdn");
 
 > See the [Object Reference](/src/reference/vSL/objects.md#Objects) chapter for more information.
 
-The contents of the `/etc/vsmtp/conf.d/blacklist.txt` file is:
+Define a blacklist file at `/etc/vsmtp/conf.d/blacklist.txt` with the following contents:
 
 ```text
 domain-spam.com
@@ -96,8 +95,6 @@ The file structure of `/etc/vsmtp` should now look like this.
 +┗ objects/
 +       ┗ family.vsl
 ```
-
-> It is recommended to split the configuration into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
 
 > If no interface is specified, the server listens on localhost on port 25, 465 and 587. Remote connections are therefore refused.
 
