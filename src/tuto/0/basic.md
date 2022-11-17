@@ -138,29 +138,30 @@ The `incoming.vsl` file is responsible for handling clients that just connected 
 
 ```rust
 // -- /etc/vsmtp/domain-available/incoming.vsl
-// Import the object file. The 'doe' prefix is an alias.
-import "objects/family" as doe;
-
 #{
+  // Ask the client to authenticate.
   authenticate: [
     rule "auth" || authenticate(),
   ]
 }
 ```
 
-The `fallback.vsl` script is used when your rules do not handle a specific domain to prevent relaying. Since we do not want to handled any sender / recipient domain that is not `doe-family.com` we can simply deny the transaction.
+> To create your own filtering rules, check out the following chapters:
+> * [The Rule reference](/src/reference/vSL/rules.md)
+> * [The Stage reference](/src/reference/vSL/stages.md)
+> * [Transaction context](/src/reference/vSL/transaction.md)
+
+Anti-relaying can be achieved by adding the following rule to your root `incoming.vsl` script. (See the [Root Incoming](/src/reference/vSL/transaction.md##root-incoming) section in the [Transaction Context](/src/reference/vSL/transaction.md) chapter)
 
 ```rust
 #{
   rcpt: [
-    rule "deny transaction" || deny(),
+    rule "anti relaying" || deny(),
   ]
 }
 ```
 
-> Note that, if the `fallback.vsl` script is not present in the rule folder, vSMTP loads the previous 'deny transaction' rule by default.
-
-Let's create rules for the `doe-family.com` domain.
+Let's create filtering rules for the `doe-family.com` domain.
 
 ```diff
 /etc/vsmtp
@@ -169,8 +170,7 @@ Let's create rules for the `doe-family.com` domain.
  ┃      ┣ config.vsl
  ┃      ┗ *.vsl
  ┣ domain-available/
- ┃      ┣ main.vsl
- ┃      ┣ fallback.vsl
+ ┃      ┣ incoming.vsl
 +┃      ┗ doe-family.com/
 +┃         ┣ incoming.vsl
 +┃         ┣ outgoing.vsl
@@ -179,11 +179,11 @@ Let's create rules for the `doe-family.com` domain.
        ┗ family.vsl
 ```
 
-vSMTP will pickup any `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fqdn name. Those rules will be run following this logic:
+vSMTP will pickup any `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [this logic](/src/reference/vSL/transaction.md):
 
-- `incoming.vsl` is run when the sender of the domain is not `doe-family.com` and that recipients domains are `doe-family.com`.
-- `outgoing.vsl` is run when the sender of the domain is `doe-family.com` and that recipients domains are not `doe-family.com`.
-- `internal.vsl` is run when the sender and recipients domains are both  `doe-family.com`.
+- `doe-family.com/incoming.vsl` is run when the sender of the domain is not `doe-family.com` and that recipients domains are `doe-family.com`.
+- `doe-family.com/outgoing.vsl` is run when the sender of the domain is `doe-family.com` and that recipients domains are not `doe-family.com`.
+- `doe-family.com/internal.vsl` is run when the sender and recipients domains are both  `doe-family.com`.
 
 # TODO: remove
 
