@@ -2,39 +2,9 @@
 
 ## vSMTP Configuration
 
-A typical vSMTP configuration looks like the following.
+Let's build a vSMTP configuration step by step. For a full description of the configuration file hierarchy, read the [Configuring vSMTP](./../../get-started/config-file-struct.md) chapter.
 
-```
-/etc/vsmtp
-┣ vsmtp.vsl
-┣ conf.d/
-┃     ┣ config.vsl
-┃     ┗ *.vsl
-┣ domain-available/
-┃     ┣ main.vsl
-┃     ┣ fallback.vsl
-┃     ┣ example.com/
-┃     ┃    ┣ config.vsl
-┃     ┃    ┣ incoming.vsl
-┃     ┃    ┣ outgoing.vsl
-┃     ┃    ┗ internal.vsl
-┃     ┗ test.com/
-┃         ┗ ...
-┣ services/
-┃     ┣ users-ldap.vsl
-┃     ┣ backup-mysql.vsl
-┃     ┗ *.vsl
-┣ objects/
-┃     ┣ net.vsl
-┃     ┗ *.vsl
-┗ plugins/
-      ┣ mysql -> /usr/lib/vsmtp-mysql-plugin.so
-      ┗ ldap  -> /usr/lib/vsmtp-ldap-plugin.so
-```
-
-Lets build a vSMTP configuration step by step, starting with the root configuration.
-
-In `/etc/vsmtp`, create the following files.
+When installing vSMTP, the package manager should create the following basic configuration.
 
 ```diff
 /etc/vsmtp
@@ -43,30 +13,16 @@ In `/etc/vsmtp`, create the following files.
 +      ┗ config.vsl
 ```
 
-`vsmtp.vsl` is the root configuration file for vSMTP, you should not change any of it's content.
-`conf.d/config.vsl` is a mandatory configuration file that contains the root configuration for vSMTP.
-
-This file must at least contain the following statement:
-
-```rust
-// vSMTP calls this function once it starts, and lets you configure the server
-// with the `config` parameter.
-fn on_config(config) {
-  // We return the config object.
-  config
-}
-```
-
-the `on_config` function is called at the startup of vSMTP, and will load the configuration object `config`.
+> For more details on root configuration files, check out the [`Configuring vSMTP`](/src/get-started/config-file-struct.md###root-configuration) chapter.
 
 ## Listen and serve
 
-First of all, create the file [`/etc/vsmtp/conf.d/config.vsl`](/get-started/concepts.html#configuration-file) with this content:
+First of all, modify the [`/etc/vsmtp/conf.d/config.vsl`](/src/get-started/config-file-struct.md###root-configuration) file with this configuration:
 
 ```rust
 fn on_config(config) {
-  // root domain of the server.
-  config.server.domain = "doe-family.com";
+  // Name of the server.
+  config.server.name = "doe-family.com";
 
   // addresses that the server will listen to.
   // (change `192.168.1.254` for the address you want to listen to)
@@ -83,11 +39,13 @@ fn on_config(config) {
 }
 ```
 
+> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](TODO:) chapter.
+
 The server can now listen and serve SMTP connections.
 
 Now, let's define all the required objects for John Doe's MTA. Those objects are used to configure vSMTP and simplify your rules.
 
-Create the `/etc/vsmtp/rules/objects.vsl` file with the content:
+Create the `/etc/vsmtp/rules/objects.vsl` file with following objects:
 
 ```rust
 // -- /etc/vsmtp/objects/family.vsl
@@ -116,7 +74,9 @@ export const virus_queue = "doe/virus";
 export const blacklist = file("conf.d/blacklist.txt", "fqdn");
 ```
 
-The content of the `blacklist.txt` file is:
+> See the [Object Reference](/src/reference/vSL/objects.md#Objects) chapter for more information.
+
+The contents of the `/etc/vsmtp/conf.d/blacklist.txt` file is:
 
 ```text
 domain-spam.com
@@ -125,7 +85,7 @@ domain-spammers.com
 foobar-spam-pro.org
 ```
 
-The content of `/etc/vsmtp` should now look like this.
+The file structure of `/etc/vsmtp` should now look like this.
 
 ```diff
 /etc/vsmtp/
@@ -141,6 +101,8 @@ The content of `/etc/vsmtp` should now look like this.
 
 > If no interface is specified, the server listens on localhost on port 25, 465 and 587. Remote connections are therefore refused.
 
+Now, restart vSMTP and open a connexion on port 25.
+
 ```sh
 $> sudo systemd restart vsmtp
 $> telnet 192.168.1.254:25
@@ -148,7 +110,7 @@ $> telnet 192.168.1.254:25
 554 permanent problems with the remote server
 ```
 
-By default, the server will deny any SMTP transaction. We have to define rules to accept connections and filter messages.
+By default, the server will deny any SMTP transaction. We have to define [filtering rules](/src/reference/vSL/rules.md) to accept connections and filter messages.
 
 ## Define filtering logics
 
@@ -158,7 +120,7 @@ We will configure the following rules:
 - As Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
 - Messages sent to the family must be delivered in MailBox format.
 
-Now, create the rule filtering configuration, starting off with the `main.vsl` and `fallback.vsl` scripts in the `domain-available` directory.
+Create the rule filtering configuration, starting off with the root `incoming.vsl` script in the `domain-available` directory. In the [`Listen and serve`](##listen-and-serve) section, we defined `/etc/vsmtp/domain-available` as the rule folder.
 
 ```diff
 /etc/vsmtp/
@@ -167,16 +129,15 @@ Now, create the rule filtering configuration, starting off with the `main.vsl` a
  ┃      ┣ config.vsl
  ┃      ┗ *.vsl
 +┣ domain-available/
-+┃      ┣ main.vsl
-+┃      ┗ fallback.vsl
++┃      ┗ incoming.vsl
  ┗ objects/
         ┗ family.vsl
 ```
 
-The `main.vsl` file is responsible for handling clients that just connected to vSMTP.
+The `incoming.vsl` file is responsible for handling clients that just connected to vSMTP.
 
 ```rust
-// -- /etc/vsmtp/rules/main.vsl
+// -- /etc/vsmtp/domain-available/incoming.vsl
 // Import the object file. The 'doe' prefix is an alias.
 import "objects/family" as doe;
 
@@ -199,7 +160,7 @@ The `fallback.vsl` script is used when your rules do not handle a specific domai
 
 > Note that, if the `fallback.vsl` script is not present in the rule folder, vSMTP loads the previous 'deny transaction' rule by default.
 
-Lets create rules for the `doe-family.com` domain.
+Let's create rules for the `doe-family.com` domain.
 
 ```diff
 /etc/vsmtp
