@@ -1,17 +1,14 @@
 # vSL - the vSMTP Scripting Language
 
-vSL is a lightweight scripting language dedicated to email filtering. It is based on the [Rhai](https://rhai.rs) scripting language.
+vSL is a lightweight scripting language dedicated to email filtering. It is based on the fully featured [Rhai](https://rhai.rs) scripting language. To make the most out of vSL, it is recommended that you read Rhai's documentation.
 
-The entry point for vSMTP is a file defined in the [configuration file](/reference/config-file.html#appvsl) (`/etc/vsmtp/rules/main.vsl` usually). This file must be evaluated as a [Rhai map](https://rhai.rs/book/language/object-maps.html#object-maps), composed of keys and values.
+vSL, on top of Rhai, adds:
+* Functions used to query vSMTP on the current transaction's data.
+* Constructors used to create objects like regex, fqdn and addresses for filtering.
+* Services, objects that helps vSMTP to interact with third party software.
+* A special `rule` syntax to filter emails.
 
-* Keys are [transaction stages](/reference/vSL/stages.html)
-* Values are arrays of [rule](/reference/vSL/rules.html), [action](/reference/vSL/rules.html#action) or [delegate](/tuto/0/antivirus.html#the-delegate-keyword) which will be executed at the corresponding stage.
-
-To avoid repetitive code in your logics, you can define [objects](objects.md), use the [vsl api](api.md) and use dedicated [services](services.md) to interact with third-party software.
-
-A `/etc/vsmtp/rules/main.vsl` file can grow large is you define a lot of logics, but you can split all your `.vsl` in severals files using [Rhai modules](https://rhai.rs/book/ref/modules/index.html).
-
-> Store all you `.vsl` files in the `/etc/vsmtp/rules` folder and use a version control system such as [git](https://git-scm.com/).
+> Syntax highlighting is available for Microsoft [VSCode](https://code.visualstudio.com/) IDE, using the [Rhai extension](https://marketplace.visualstudio.com/items?itemName=rhaiscript.vscode-rhai).
 
 <!--
 ### TODO
@@ -78,5 +75,3 @@ service greylist db:csv = #{
 };
 ```
 -->
-
-> Syntax highlighting is available for Microsoft [VSCode](https://code.visualstudio.com/) IDE, using the [Rhai extension](https://marketplace.visualstudio.com/items?itemName=rhaiscript.vscode-rhai).
