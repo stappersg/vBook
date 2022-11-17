@@ -10,12 +10,12 @@ In this chapter, you will get a glimpse of vSMTP's filtering system. To create y
 For this example, will configure the following rules:
 
 - Messages from blacklisted domain will be rejected.
-- As Jenny is 11 years old, Jane wants a blind copy of her daughter messages.
-- Messages sent to the family must be delivered in MailBox format.
+- As Jenny is 11 years old, Jane wants her address to be added as a blind carbon copy of messages destined to her daughter.
+- Messages sent to the family must be delivered in Mailbox format.
 
 ## Root incoming
 
-In the [`Listen and serve`](##listen-and-serve) section, we defined `/etc/vsmtp/domain-available` as the rule folder. Let's start with the root `incoming.vsl` script in the `/etc/vsmtp/domain-available` directory.
+In the [`Listen and serve`](##listen-and-serve) section of the previous chapter, we defined `/etc/vsmtp/domain-available` as the rule folder. Let's start with the root `incoming.vsl` script in this directory.
 
 ```diff
 /etc/vsmtp/
@@ -43,9 +43,10 @@ Let's setup anti-relaying by adding the following rule. (See the [Root Incoming]
 ```
 <p style="text-align: center;"> <i>/etc/vsmtp/domain-available/incoming.vsl</i> </p>
 
-We can add a blacklist of domains that we do not trust too.
+We can add a blacklist of sender domains that we do not trust too.
 
 ```diff js
+// Importing objects that we defined in the last chapter.
 +import "objects/family" as family;
 
 #{
@@ -89,7 +90,7 @@ Let's create filtering rules for the `doe-family.com` domain.
 ```
 <p style="text-align: center;"> <i>adding filtering scripts for the doe-family.com domain</i> </p>
 
-vSMTP will pickup any `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](/src/reference/vSL/transaction.md). Let's define rules for each case.
+vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](/src/reference/vSL/transaction.md). Let's define rules for each cases.
 
 ### doe-family.com incoming messages
 
@@ -174,7 +175,7 @@ With Rhai modules and functions, it becomes easy to reuse code across different 
 
 `doe-family.com/outgoing.vsl` is run when the sender of the domain is `doe-family.com` and that recipients domains are not `doe-family.com`.
 
-Here, a member of Doe's family is sending an email to someone else. We just have to verify that the sender is legitimate by asking the client to authenticate itself to vSMTP. If the authentication fails, this probably means that a spammer tried to use our server as a relay. The `authenticate()` function automatically denies the transaction is the authentication failed.
+Here, a member of Doe's family is sending an email to someone else. We just have to verify that the sender is legitimate by asking the client to authenticate itself to vSMTP. If the authentication fails, this probably means that a spammer tried to use our server as a relay. The `authenticate()` function automatically denies the transaction if the authentication failed.
 
 ```js
 #{
@@ -191,7 +192,7 @@ Here, a member of Doe's family is sending an email to someone else. We just have
 
 `doe-family.com/internal.vsl` is run when the sender and recipients domains are both  `doe-family.com`.
 
-Since we already authenticated a client in `outgoing.vsl`, we simply have to setup delivery.
+Since we already authenticated clients in `outgoing.vsl`, we simply have to setup delivery.
 
 ```js
 // let's reuse our bcc code to add Jane as a blind carbon copy.
@@ -203,8 +204,7 @@ import "domain-available/doe-family.com/bcc" as bcc;
   ],
 
   delivery: [
-      // since all recipient are 'doe-family.com', we can just deliver them
-      // locally.
+      // Deliver all recipients locally.
       action "setup delivery" || mailbox_all(),
   ],
 }
@@ -213,11 +213,11 @@ import "domain-available/doe-family.com/bcc" as bcc;
 
 ## Conclusion
 
-After setting up filtering scripts, our vSMTP instance is able to:
+After setting up all filtering scripts above, our vSMTP instance is able to:
 
 - Block messages from blacklisted domain.
-- Jane is added as a blind carbon copy when Jenny receives a message.
-- Messages sent to the family are delivered locally using Mailbox.
+- Add Jane's address as a blind carbon copy when Jenny receives a message.
+- Deliver messages locally to all members of the family.
 
 Simply restart the server to apply the rules.
 
