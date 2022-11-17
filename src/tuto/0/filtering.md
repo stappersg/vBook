@@ -174,7 +174,7 @@ With Rhai modules and functions, it becomes easy to reuse code across different 
 
 `doe-family.com/outgoing.vsl` is run when the sender of the domain is `doe-family.com` and that recipients domains are not `doe-family.com`.
 
-Here, a member of Doe's family is sending an email to someone else. We just have to verify that the sender is [] by asking the client to authenticate itself to vSMTP. If the authentication fails, this means that a spam tried to use our server as a relay. The `authenticate()` function automatically denies the transaction is the authentication failed.
+Here, a member of Doe's family is sending an email to someone else. We just have to verify that the sender is legitimate by asking the client to authenticate itself to vSMTP. If the authentication fails, this probably means that a spammer tried to use our server as a relay. The `authenticate()` function automatically denies the transaction is the authentication failed.
 
 ```js
 #{
