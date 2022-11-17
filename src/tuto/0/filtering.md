@@ -15,7 +15,7 @@ For this example, will configure the following rules:
 
 ## Root incoming
 
-In the [`Listen and serve`](##listen-and-serve) section, we defined `/etc/vsmtp/domain-available` as the rule folder. Thus, let's start with the root `incoming.vsl` script in the `/etc/vsmtp/domain-available` directory.
+In the [`Listen and serve`](##listen-and-serve) section, we defined `/etc/vsmtp/domain-available` as the rule folder. Let's start with the root `incoming.vsl` script in the `/etc/vsmtp/domain-available` directory.
 
 ```diff
 /etc/vsmtp/
@@ -32,31 +32,41 @@ In the [`Listen and serve`](##listen-and-serve) section, we defined `/etc/vsmtp/
 
 The `incoming.vsl` file is responsible for handling clients that just connected to vSMTP.
 
-Add the following rule to force client to authenticate.
+Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](/src/reference/vSL/transaction.md##root-incoming) section in the [Transaction Context](/src/reference/vSL/transaction.md) chapter for more details)
 
 ```js
+ #{
+  rcpt: [
+    rule "anti relaying" || deny(),
+  ]
+ }
+```
+<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/incoming.vsl</i> </p>
+
+We can add a blacklist of domains that we do not trust too.
+
+```diff js
++import "objects/family" as family;
+
 #{
-  authenticate: [
-    rule "auth" || authenticate(),
++ mail: [
++   rule "do not deliver untrusted domains" || {
++       if mail_from() in family::untrusted {
++           quarantine("untrusted")
++       } else {
++           next()
++       }
++   },
++ ],
+
+  rcpt: [
+    rule "anti relaying" || deny(),
   ]
 }
 ```
 <p style="text-align: center;"> <i>/etc/vsmtp/domain-available/incoming.vsl</i> </p>
 
-Now, setup anti-relaying by adding the following rule. (See the [Root Incoming](/src/reference/vSL/transaction.md##root-incoming) section in the [Transaction Context](/src/reference/vSL/transaction.md) chapter for more details)
-
-```diff js
- #{
-   authenticate: [
-     rule "auth" || authenticate(),
-   ],
-+ 
-+  rcpt: [
-+    rule "anti relaying" || deny(),
-+  ]
- }
-```
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/incoming.vsl</i> </p>
+the "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
 
 ## Filtering for doe-family.com
 
@@ -103,17 +113,39 @@ import "objects/family" as family;
 ```
 <p style="text-align: center;"> <i>doe-family.com/incoming.vsl</i> </p>
 
-Jane wants a blind copy of her Jenny's messages. Lets create
+Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function that does exactly that.
+
+```diff
+/etc/vsmtp
+ ┣ vsmtp.vsl
+ ┣ conf.d/
+ ┃      ┣ config.vsl
+ ┃      ┗ *.vsl
+ ┣ domain-available/
+ ┃      ┣ incoming.vsl
+ ┃      ┗ doe-family.com/
++┃         ┣ bcc.vsl
+ ┃         ┣ incoming.vsl
+ ┃         ┣ outgoing.vsl
+ ┃         ┗ internal.vsl
+ ┗ objects/
+       ┗ family.vsl
+```
+<p style="text-align: center;"> <i>adding a new script to the subdomain</i> </p>
 
 ```js
-import "objects/family" as obj;
+import "objects/family" as family;
 
 fn bcc_jenny() {
-    if rcpt() == obj::jenny { bcc(obj::jane) }
+    // add Jane as a blind carbon copy if the current recipient is Jenny.
+    if rcpt() == family::jenny {
+      bcc(family::jane)
+    }
 }
 ```
+<p style="text-align: center;"> <i>doe-family.com/bcc.vsl</i> </p>
 
-Now, let's add that plug this function to our filtering rules.
+Now, let's plug this function to our filtering rules by importing the `bcc.vsl` script.
 
 ```diff js
 + import "domain-available/doe-family.com/bcc" as bcc;
@@ -121,7 +153,6 @@ Now, let's add that plug this function to our filtering rules.
 
   #{
 +   rcpt: [
-+       // Jane will always be added as a bcc when jenny is part of the recipients.
 +       action "bcc jenny" || bcc::bcc_jenny(),
 +   ],
 
@@ -135,53 +166,64 @@ Now, let's add that plug this function to our filtering rules.
     ],
   }
 ```
+<p style="text-align: center;"> <i>doe-family.com/incoming.vsl</i> </p>
 
+With Rhai modules and functions, it becomes easy to reuse code across different rules.
 
 ### doe-family.com outgoing messages
 
-- `doe-family.com/outgoing.vsl` is run when the sender of the domain is `doe-family.com` and that recipients domains are not `doe-family.com`.
+`doe-family.com/outgoing.vsl` is run when the sender of the domain is `doe-family.com` and that recipients domains are not `doe-family.com`.
 
-### doe-family.com internal messages
-
-- `doe-family.com/internal.vsl` is run when the sender and recipients domains are both  `doe-family.com`.
-
-# TODO: remove
+Here, a member of Doe's family is sending an email to someone else. We just have to verify that the sender is [] by asking the client to authenticate itself to vSMTP. If the authentication fails, this means that a spam tried to use our server as a relay. The `authenticate()` function automatically denies the transaction is the authentication failed.
 
 ```js
-// -- /etc/vsmtp/rules/main.vsl
-// Import the object file. The 'doe' prefix is an alias.
-import "objects" as doe;
-
 #{
-  // List of rules execute after receiving "MAIL FROM" from a client.
-  // At this stage the sender is known and can be accessed using `mail_from()`.
   mail: [
-    // Deny any sender with a domain listed in the `blacklist` group.
-    rule "blacklist" || {
-      if mail_from().domain in doe::blacklist { deny() } else { next() }
-    }
-  ],
-
-  // List of rules execute after receiving "RCPT TO" from a client.
-  // The current recipient can be inspected using `rcpt()`.
-  rcpt: [
-    // automatically set Jane as a BCC if Jenny is part of the recipients.
-    action "bcc jenny" || if rcpt() is doe::jenny { bcc(doe::jane) },
-  ],
-
-  // The delivery stage is executed just before vsmtp delivers the message.
-  delivery: [
-    action "setup delivery" || {
-      // if a recipient is part of the family, we deliver the email locally.
-      // Otherwise, we just deliver the email to another server.
-      for rcpt in rcpt_list() {
-        if rcpt in doe::family_addr { maildir(rcpt) } else { deliver(rcpt) }
-      }
-    }
+    rule "authenticate" || authenticate(),
   ]
 }
 ```
+<p style="text-align: center;"> <i>doe-family.com/outgoing.vsl</i> </p>
 
-Add these lines to your `/etc/vsmtp/vsmtp.vsl`:
+> The `authenticate()` function uses [testsaslauthd](https://linux.die.net/man/8/testsaslauthd) internally to authenticate clients. Make sure to have it installed.
 
-Restart the server to apply the rules.
+### doe-family.com internal messages
+
+`doe-family.com/internal.vsl` is run when the sender and recipients domains are both  `doe-family.com`.
+
+Since we already authenticated a client in `outgoing.vsl`, we simply have to setup delivery.
+
+```js
+// let's reuse our bcc code to add Jane as a blind carbon copy.
+import "domain-available/doe-family.com/bcc" as bcc;
+
+#{
+  rcpt: [
+      action "bcc jenny" || bcc::bcc_jenny(),
+  ],
+
+  delivery: [
+      // since all recipient are 'doe-family.com', we can just deliver them
+      // locally.
+      action "setup delivery" || mailbox_all(),
+  ],
+}
+```
+<p style="text-align: center;"> <i>doe-family.com/internal.vsl</i> </p>
+
+## Conclusion
+
+After setting up filtering scripts, our vSMTP instance is able to:
+
+- Block messages from blacklisted domain.
+- Jane is added as a blind carbon copy when Jenny receives a message.
+- Messages sent to the family are delivered locally using Mailbox.
+
+Simply restart the server to apply the rules.
+
+```sh
+$> sudo systemd restart vsmtp
+$> telnet 192.168.1.254:25
+220 doe-family.com Service ready
+554 permanent problems with the remote server
+```
