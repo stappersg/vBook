@@ -1,7 +1,7 @@
 # Stages
 
-vSMTP interacts with the messaging transaction at all states defined in the SMTP protocol.
-At each step, vSL updates a context containing transaction and mail data accessible in rules.
+vSMTP interacts with the SMTP transaction at all states defined in the SMTP protocol.
+At each step, vSL updates a context containing transaction and mail data that you can query in rules.
 
 ## vSMTP stages
 
