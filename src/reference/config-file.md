@@ -1,17 +1,17 @@
-# Complete vSMTP vsl config key/value list
+# Configuration reference
 
 The behavior of your server can be configured using a configuration file,
-and using the `-c, --config` flag of the `vsmtp`.
+and using the `-c, --config` pointing to the `vsmtp.vsl` entry-point script.
 
 All the [parameters](#parameters) are optional and have default values.
 If `-c, --config` is not provided, the default values of the configuration will be used.
 
 The configuration file will be read and parsed right after starting the program,
-producing an error if there is an invalid syntax, a filepath failed to be opened,
-or any kind of errors.
+producing an error if there is an invalid syntax, a filepath failed to be resolved,
+or any other kind of errors.
 
 If you have a non-explicit error when you start your server, you can create an issue
-on the [github repo](https://github.com/viridIT/vSMTP), or ask for help in our discord server.
+on the [github repository](https://github.com/viridIT/vSMTP), or ask for help in our discord server.
 
 ## Format
 
@@ -19,8 +19,7 @@ The configuration file format is [Rhai](https://rhai.rs).
 
 ## Examples
 
-You will find [examples here](https://github.com/viridIT/vSMTP/tree/develop/examples/config) and
-the [technical documentation here](https://docs.rs/crate/vsmtp-config/latest).
+You can find [configuration examples here](https://github.com/viridIT/vSMTP/tree/develop/examples/config).
 
 ## Parameters
 
