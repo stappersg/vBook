@@ -30,7 +30,6 @@ The vSMTP reference guide
 
 - [Logging system](advanced/logging.md)
 - [DNS configuration](advanced/dns.md)
-- [Virtual domains](advanced/virtual-domain.md)
 - [Null MX](advanced/nullmx.md)
 - [DMARC](advanced/dmarc.md)
 - [ARC 🚧]()
