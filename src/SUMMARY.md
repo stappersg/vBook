@@ -18,6 +18,7 @@ The vSMTP reference guide
 - [Doe's family](tuto/0/doe.md)
   - [Context](tuto/0/context.md)
   - [Basic configuration](tuto/0/basic.md)
+  - [Filtering](tuto/0/filtering.md)
   - [SSL/TLS](tuto/0/ssl-tls.md)
   - [Authentication](tuto/0/auth-sasl.md)
   - [Open Relay](tuto/0/open-relay.md)
