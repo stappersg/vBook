@@ -1,33 +1,26 @@
-# Using the Sender Policy Framework protocol
+# Using the Sender Policy Framework
 
-The SPF protocol allows other MTAs to check that outgoing messages from Doe's family domain are valid. A new DNS record is added into the `doe-family.com` DNS zone. It declares that only the server declared in the MX record is allowed to send messages on behalf of Doe's family.
+`SPF` allows other MTAs to check that outgoing messages from Doe's family domain are valid.
+
+A new DNS record is added into the `doe-family.com` DNS zone. It declares that only the server specified in the MX record is allowed to send messages on behalf of Doe's family.
 
 ```shell
 doe-family.com.          TXT "v=spf1 +mx -all"
 ```
 
-For incoming messages, the SPF protocol is configured to check the sender credentials at the `mail` stage.
+For incoming messages, SPF is configured to check that the sending host is authorized to use the `doe-family.com` according to published SPF policy. Rules are executed at the `mail` stage.
 
-Edit the `/etc/vsmtp/rules/main.vsl` file and add the rule:
-
+Edit the `/etc/vsmtp/domain-available/incoming.vsl` file and add the following rule.
 ```js
-// -- main.vsl
 #{
-  // ... previous code ...
-
   mail: [
-    rule "check spf" || {
-      if in_domain(mail_from()) {
-        next()
-      } else {
-        check_spf("both", "soft")
-      }
-    }
+    rule "check spf" || check_spf("both", "soft"),
   ]
 }
 ```
+<p style="text-align: center;"> <i>Preventing spams using SPF</i> </p>
 
-See [check_spf](/reference/vSL/api/Security.html#fn-check_spfheader) & [check_spf](/reference/vSL/api/Security.html#fn-check_spfheader-policy)
+Check out the [Security module](/src/reference/vSL/api/Security.md) for more details on the `check_spf` function.
 
 ## Further details
 
