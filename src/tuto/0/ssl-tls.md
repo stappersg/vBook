@@ -4,11 +4,11 @@ Connections should be encrypted using the SSL/TLS protocol, even on a private ne
 
 The vSMTP implementation is based on the state-of-the-art [rustls](https://docs.rs/rustls/latest/rustls) library.
 
-Add the following to the `/etc/vsmtp/vsmtp.vsl` file:
+Add the following to the `/etc/vsmtp/conf.d/config.vsl` file:
 
 ```js
 fn on_config(config) {
-    // TLS settings.
+    // Add root TLS settings.
     config.server.tls = #{
         security_level: "May",
         preempt_cipherlist: false,
