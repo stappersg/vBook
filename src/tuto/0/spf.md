@@ -20,7 +20,7 @@ Edit the `/etc/vsmtp/domain-available/incoming.vsl` file and add the following r
 ```
 <p style="text-align: center;"> <i>Preventing spams using SPF</i> </p>
 
-Check out the [Security module](/src/reference/vSL/api/Security.md) for more details on the `check_spf` function.
+> Check out the [Security module](/src/reference/vSL/api/Security.md) for more details on the `check_spf` function.
 
 ## Further details
 
