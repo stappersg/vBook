@@ -10,14 +10,13 @@ Rules are the entry point to filter emails.
 
 A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [status functions](api/Status.md). A `rule` is the main primitive for filtering.
 
-A BNF representation of a rule.
 ```bnf
 <rule>      ::= "rule" <rule-name> "||" <expr>
 <rule-name> ::= <string>
 <expr>      ::= <rhai-expr> ; any valid Rhai expression. Must return a "status".
 ```
+<p style="text-align: center;"> <i>A BNF representation of a rule</i> </p>
 
-An example of a rule declaration in practice.
 ```rust
 // `deny()` is a function that return the `Deny` status.
 // Thus, this rule denies any incoming transaction.
@@ -27,12 +26,15 @@ rule "deny all transactions" || deny(),
 // or using code blocks, like bellow.
 rule "check client ip" || {
     if client_ip() == "192.168.1.254" {
-        faccept()
+        return faccept();
     } else {
-        next()
+        return next();
     }
 },
 ```
+<p style="text-align: center;"> <i>Example of a rule declaration in practice</i> </p>
+
+As you can see in the above example, a rule MUST return a "status". Once the rule is executed and a status returned, vSMTP uses it to change the transaction state.
 
 > Rule engine status and effects are listed in the API, in the [status module](api/Status.md).
 
@@ -40,14 +42,14 @@ rule "check client ip" || {
 
 An `action` is used to execute arbitrary code (logging, saving an email on disk etc ...) without changing the transaction state.
 
-A BNF representation of an action.
 ```bnf
 <action>      ::= "action" <rule-name> "||" <expr>
 <action-name> ::= <string>
 <expr>        ::= <rhai-expr> ; any valid Rhai expression.
 ```
+<p style="text-align: center;"> <i>A BNF representation of an action</i> </p>
 
-An example of an action declaration in practice.
+
 ```rust
 // Write the email as json to a "backup" directory.
 action "dump to disk" || dump("backup"),
@@ -57,27 +59,4 @@ action "log incoming transaction" || {
     log("info", `new transaction: ${helo()} from ${client_ip()}`);
 }
 ```
-
-### Delegate
-
-TODO: update delegation docs.
-
-The `delegate` directive is different: it uses a smtp service to delegate the email to a third party software:
-
-```js
-service third_party smtp = #{
-    delegator: #{
-        address: "127.0.0.1:10026",
-        timeout: "60s",
-    },
-    receiver: "127.0.0.1:10024",
-};
-
-delegate third_party "delegate email processing" || { ... }
-```
-
-Check out the [Policy delegation](../../start/configuration/delegation.md) chapter for an in-depth description of the delegation mechanism.
-
-## Using them
-
-Rules and actions are grouped by `stages`. Those are covered in the next chapter: [Stages](stages.md).
+<p style="text-align: center;"> <i>Example of an action declaration in practice</i> </p>
