@@ -21,3 +21,5 @@ fn on_config(config) {
     config
 }
 ```
+
+> vSMTP only support certificate with the X.509 format.
