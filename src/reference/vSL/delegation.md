@@ -25,8 +25,6 @@ export const third_party = smtp(#{
     // Get back the results on "127.0.0.1:10024".
     receiver: "127.0.0.1:10024",
 });
-
-delegate third_party "delegate email processing" || { ... }
 ```
 <p style="text-align: center;"> <i>Declaring a `smtp` service</i> </p>
 
@@ -40,6 +38,9 @@ delegate svc::third_party "delegate to third party" || {
 }
 ```
 <p style="text-align: center;"> <i>Declaring a delegation rule with the previously declared smtp service</i> </p>
+
+The `delegate` directives first send the email to the given address, and wait for the results on the `receiver` address.
+The body of a `delegate` directive is executed once the email as been received back from the third party software.
 
 A delegation directive MUST return a status, like a `rule`.
 The `delegate` keyword can only be used from the `postq` stage and onwards.

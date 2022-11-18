@@ -46,23 +46,21 @@ sudo systemctl start clamav-daemon
 
 ## The service
 
-Create a `smtp service` in the file `/etc/vsmtp/rules/service.vsl`:
+Let's create a `smtp` service in the `/etc/vsmtp/services/smtp.vsl` file:
 
 ```js
-// -- /etc/vsmtp/rules/service.vsl
-service clamsmtpd smtp = #{
+export const clamsmtpd = smtp(#{
   delegator: #{
     address: "127.0.0.1:10026",
     timeout: "60s",
   },
   receiver: "127.0.0.1:10025",
-};
+});
 ```
 
-The receiver's socket must be enabled in the `/etc/vsmtp/vsmtp.vsl`.
+The receiver's socket must be enabled in the root config.
 
 ```js
-// -- /etc/vsmtp/vsmtp.vsl
 fn on_config(config) {
   config.server.interfaces = #{
     //     clients             delegation results
@@ -72,29 +70,26 @@ fn on_config(config) {
   config
 }
 ```
+<p style="text-align: center;"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>
 
 ## The delegate keyword
 
-Create the antivirus passthrough using the `delegate` keyword.
+Create the antivirus passthrough using the `delegate` keyword. As `rule` and `action`, it is a directive that is used to filter emails. The quirk of `delegate` is that it uses a smtp service to delegate the email to a third party software, and get it back on the `receiver` address.
+
+> Check out the [Delegation](/src/reference/vSL/delegation.md) chapter for more details.
 
 ```js
-// -- /etc/vsmtp/rules/main.vsl
-// You cannot use `import "service" as service;` here because `service` is
-// a reserved keyword.
 import "service" as svc;
 
 #{
   postq: [
-    // a `delegate` directive is like a `rule`, it needs to return a status code.
-    // The difference is that it first sends the content of the mail to the service
-    // via SMTP and then execute the body of the function.
     delegate svc::clamsmtpd "check email for virus" || {
       // this is executed once the delegation result are received.
-      log("debug", "email analyzed.");
+      log("debug", "email analyzed by clamsmtpd.");
 
-      // ClamAV inserts the "X-Virus-Infected" header if it founds a virus
+      // ClamAV inserts the "X-Virus-Infected" header if it founds a virus.
       if has_header("X-Virus-Infected") {
-        quarantine("virus_q")
+        quarantine("virus_queue")
       } else {
         next()
       }
@@ -102,9 +97,8 @@ import "service" as svc;
   ],
 }
 ```
+<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
 
-> Since there is no heavy network traffic, John decided to do a "post-queue" filtering.
+Once the `check email for virus` directive is run, vSMTP will send the email to the `clamsmtpd` service and the rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation resumes, and the body of this rule is evaluated.
 
-Compromised emails are quarantined in the `virus_q` folder.
-
-Once the `check email for virus` rule is run, vSMTP will send the email to the `clamsmtpd` service and the rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation resumes, and the body of this rule is evaluated.
+Compromised emails are quarantined in the `virus_queue` folder.
