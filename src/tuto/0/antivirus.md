@@ -79,7 +79,7 @@ Create the antivirus passthrough using the `delegate` keyword. As `rule` and `ac
 > Check out the [Delegation](/src/reference/vSL/delegation.md) chapter for more details.
 
 ```js
-import "service" as svc;
+import "services/smtp" as svc;
 
 #{
   postq: [
