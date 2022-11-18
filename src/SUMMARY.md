@@ -20,7 +20,6 @@ The vSMTP reference guide
   - [Basic configuration](tuto/0/basic.md)
   - [Filtering](tuto/0/filtering.md)
   - [SSL/TLS](tuto/0/ssl-tls.md)
-  - [Authentication](tuto/0/auth-sasl.md)
   - [SPF](tuto/0/spf.md)
   - [DKIM](tuto/0/dkim.md)
   - [Antivirus](tuto/0/antivirus.md)
