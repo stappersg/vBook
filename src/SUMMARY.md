@@ -24,7 +24,11 @@ The vSMTP reference guide
     - [Internal messages](tuto/0/filtering/internal.md)
   - [SSL/TLS](tuto/0/ssl-tls.md)
   - [SPF](tuto/0/spf.md)
+    - [Filtering](tuto/0/spf/filtering.md)
+    - [What is SPF ?](tuto/0/spf/details.md)
   - [DKIM](tuto/0/dkim.md)
+    - [Filtering](tuto/0/dkim/filtering.md)
+    - [What is SPF ?](tuto/0/dkim/details.md)
   - [Antivirus](tuto/0/antivirus.md)
 - [Greylist](tuto/1/greylist.md)
 
