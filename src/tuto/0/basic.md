@@ -41,7 +41,7 @@ fn on_config(config) {
 
 > It is recommended to split the configuration into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
 
-> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](TODO:) chapter.
+> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](/src/reference/config-file.md) chapter.
 
 The server can now listen and serve SMTP connections.
 

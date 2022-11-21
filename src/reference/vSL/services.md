@@ -22,7 +22,7 @@ const echo_command = cmd(#{
 });
 ```
 
-See the [TODO] module to get an extensive list of services and how to use them.
+> See the [TODO] module to get an extensive list of services and how to use them.
 
 ### Recommandations
 
@@ -67,8 +67,9 @@ Services should be stored inside the `services` directory of `/etc/vsmtp`.
 + ┗ services/
 +       ┗ command.vsl
 ```
+<!-- 
 
-TODO: move the following sections to their respective auto generated documentation.
+// TODO: move the following sections to their respective auto generated documentation.
 
 ## The command type
 
@@ -264,4 +265,4 @@ import "service" as svc;
 }
 ```
 
-Check out the [Services](./api/Services.md) chapter for the full list of functions for services.
+Check out the [Services](./api/Services.md) chapter for the full list of functions for services. -->

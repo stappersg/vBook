@@ -113,7 +113,8 @@ const authorized_users = [
 
 vSL already exposes some objects for you to use. You can check out the [Variable](api/Variables.md) file to get documentation on those objects and their use.
 
-TODO: Move the following descriptions to their corresponding doc comments.
+<!--
+// TODO: Move the following descriptions to their corresponding doc comments.
 
 ### About files
 
@@ -145,4 +146,4 @@ const code554_7_1 = code(554, "5.7.1", "Relay access denied");
 deny(code554);
 deny(code554_7_1);
 info(code554_7_1);
-```
+``` -->
