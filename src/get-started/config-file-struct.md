@@ -61,7 +61,7 @@ fn on_config(config) {
 
 vSMTP calls the `on_config` function once starting up. You are free to modify the `config` object to change the configuration. The `config` object MUST be returned at the end of the function.
 
-> TODO: link to config parameters.
+> The [Configuration reference](/src/reference/config-file.md) lists all fields that you can change in the `config` object.
 
 For example:
 ```rust
