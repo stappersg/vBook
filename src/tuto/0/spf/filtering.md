@@ -8,7 +8,7 @@ doe-family.com.          TXT "v=spf1 +mx -all"
 
 For incoming messages, SPF is configured to check that the sending host is authorized to use the `doe-family.com` according to published SPF policy. Rules are executed at the `mail` stage.
 
-Edit the `/etc/vsmtp/domain-available/incoming.vsl` file and add the following rule.
+Edit the `/etc/vsmtp/domain-enabled/incoming.vsl` file and add the following rule.
 ```js
 #{
   mail: [

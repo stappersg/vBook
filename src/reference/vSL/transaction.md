@@ -7,12 +7,14 @@ As described in the [`Configuring vSMTP`](/src/get-started/config-file-struct.md
   ┣ vsmtp.vsl
   ┣ conf.d/
   ┃     ┗ config.vsl
-  ┗ domain-available/
-+          ┣ incoming.vsl
-+          ┗ example.com
-+              ┣ incoming.vsl
-+              ┣ outgoing.vsl
-+              ┗ internal.vsl
+  ┣ domain-available/
++ ┃     ┗ example.com
++ ┃         ┣ incoming.vsl
++ ┃         ┣ outgoing.vsl
++ ┃         ┗ internal.vsl
++ ┣ domain-enabled/
++ ┃     ┣ incoming.vsl
++ ┃     ┗ example.com -> ...
 ```
 
 Here is a diagram of which entry-points are executed following the transaction pipeline.

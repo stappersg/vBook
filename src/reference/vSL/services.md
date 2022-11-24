@@ -43,7 +43,7 @@ const echo = cmd(#{
 ```
 
 ```js
-// -- domain-available/incoming.vsl
+// -- domain-enabled/incoming.vsl
 import "services/command" as command;
 
 #{
@@ -64,6 +64,9 @@ Services should be stored inside the `services` directory of `/etc/vsmtp`.
   ┣ domain-available/
   ┃     ┗ example.com/
   ┃       ┗ ...
+  ┣ domain-enabled/
+  ┃     ┣ incoming.vsl
+  ┃     ┗ example.com -> ...
 + ┗ services/
 +       ┗ command.vsl
 ```

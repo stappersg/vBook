@@ -44,7 +44,7 @@ export const localhost = ip4("127.0.0.1");
 ```
 
 ```js
-// -- domain-available/incoming.vsl
+// -- domain-enabled/incoming.vsl
 import "objects/network" as net;
 
 #{
@@ -71,6 +71,9 @@ Objects should be stored inside the `objects` directory of `/etc/vsmtp` if they 
   ┣ domain-available/
   ┃     ┗ example.com/
   ┃       ┗ ...
+  ┣ domain-enabled/
+  ┃     ┣ incoming.vsl
+  ┃     ┗ example.com -> ...
 + ┗ objects/
 +       ┗ network.vsl
 +       ┗ global.vsl
@@ -89,6 +92,9 @@ However, if objects are used in only a specific rule set, they should be stored 
   ┃        ┣ incoming.vsl
   ┃        ┣ outgoing.vsl
   ┃        ┗ internal.vsl
+  ┣ domain-enabled/
+  ┃     ┣ incoming.vsl
+  ┃     ┗ example.com -> ...
 - ┗ objects/
 -       ┗ network.vsl
 -       ┗ global.vsl

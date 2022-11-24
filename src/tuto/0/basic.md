@@ -33,7 +33,7 @@ fn on_config(config) {
   };
 
   // The folder containing filtering rules.
-  config.app.vsl.dirpath = "/etc/vsmtp/domain-available";
+  config.app.vsl.dirpath = "/etc/vsmtp/domain-enabled";
 
   config
 }

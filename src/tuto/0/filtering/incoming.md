@@ -29,12 +29,14 @@ Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function th
  ┃      ┣ config.vsl
  ┃      ┗ *.vsl
  ┣ domain-available/
- ┃      ┣ incoming.vsl
  ┃      ┗ doe-family.com/
 +┃         ┣ bcc.vsl
  ┃         ┣ incoming.vsl
  ┃         ┣ outgoing.vsl
  ┃         ┗ internal.vsl
+ ┣ domain-enabled/
+ ┃     ┣ incoming.vsl
+ ┃     ┗ example.com -> ...
  ┗ objects/
        ┗ family.vsl
 ```

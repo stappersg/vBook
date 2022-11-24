@@ -15,7 +15,7 @@ For this example, will configure the following rules:
 
 ## Root incoming
 
-In the [`Listen and serve`](##listen-and-serve) section of the previous chapter, we defined `/etc/vsmtp/domain-available` as the rule folder. Let's start with the root `incoming.vsl` script in this directory.
+In the [`Listen and serve`](##listen-and-serve) section of the previous chapter, we defined `/etc/vsmtp/domain-enabled` as the rule folder. Let's start with the root `incoming.vsl` script in this directory.
 
 ```diff
 /etc/vsmtp/
@@ -23,7 +23,7 @@ In the [`Listen and serve`](##listen-and-serve) section of the previous chapter,
  ┣ conf.d/
  ┃      ┣ config.vsl
  ┃      ┗ *.vsl
-+┣ domain-available/
++┣ domain-enabled/
 +┃      ┗ incoming.vsl
  ┗ objects/
         ┗ family.vsl
@@ -41,7 +41,7 @@ Let's setup anti-relaying by adding the following rule. (See the [Root Incoming]
   ]
  }
 ```
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/incoming.vsl</i> </p>
+<p style="text-align: center;"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
 
 We can add a blacklist of sender domains that we do not trust too.
 
@@ -65,7 +65,7 @@ We can add a blacklist of sender domains that we do not trust too.
   ]
 }
 ```
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/incoming.vsl</i> </p>
+<p style="text-align: center;"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
 
 the "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
 
@@ -75,17 +75,19 @@ Let's create filtering rules for the `doe-family.com` domain.
 
 ```diff
 /etc/vsmtp
- ┣ vsmtp.vsl
- ┣ conf.d/
- ┃      ┣ config.vsl
- ┃      ┗ *.vsl
- ┣ domain-available/
- ┃      ┣ incoming.vsl
-+┃      ┗ doe-family.com/
-+┃         ┣ incoming.vsl
-+┃         ┣ outgoing.vsl
-+┃         ┗ internal.vsl
-┗ objects/
+  ┣ vsmtp.vsl
+  ┣ conf.d/
+  ┃      ┣ config.vsl
+  ┃      ┗ *.vsl
+  ┣ domain-available/
++ ┃      ┗ doe-family.com/
++ ┃         ┣ incoming.vsl
++ ┃         ┣ outgoing.vsl
++ ┃         ┗ internal.vsl
+  ┣ domain-enabled/
+  ┃     ┣ incoming.vsl
++ ┃     ┗ example.com -> /etc/vsmtp/domain-available/doe-family.com
+  ┗ objects/
        ┗ family.vsl
 ```
 <p style="text-align: center;"> <i>adding filtering scripts for the doe-family.com domain</i> </p>

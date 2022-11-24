@@ -13,8 +13,6 @@ A typical vSMTP configuration looks like the following.
 ┃     ┣ config.vsl
 ┃     ┗ *.vsl
 ┣ domain-available/
-┃     ┣ main.vsl
-┃     ┣ incoming.vsl
 ┃     ┣ example.com/
 ┃     ┃    ┣ config.vsl
 ┃     ┃    ┣ incoming.vsl
@@ -22,6 +20,9 @@ A typical vSMTP configuration looks like the following.
 ┃     ┃    ┗ internal.vsl
 ┃     ┗ test.com/
 ┃         ┗ ...
+┣ domain-enabled/
+┃     ┣ incoming.vsl
+┃     ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ┣ services/
 ┃     ┣ users-ldap.vsl
 ┃     ┣ backup-mysql.vsl
@@ -77,7 +78,7 @@ fn on_config(config) {
   };
 
   // Change the folder containing filtering rules.
-  config.app.vsl.dirpath = "/etc/vsmtp/domain-available";
+  config.app.vsl.dirpath = "/etc/vsmtp/domain-enabled";
 
   return config;
 }
@@ -112,7 +113,7 @@ export const interfaces = #{
 and:
 ```rust
 // The folder containing filtering rules.
-export const rules_dirpath = "/etc/vsmtp/domain-available";
+export const rules_dirpath = "/etc/vsmtp/domain-enabled";
 ```
 <p style="text-align: center;"> <i>/etc/vsmtp/conf.d/app.vsl</i> </p>
 
@@ -144,13 +145,14 @@ It is possible to filter emails using `.vsl` files for specific domains.
   ┃     ┣ interfaces.vsl
   ┃     ┗ app.vsl
 + ┗ domain-available/
-+         ┗ incoming.vsl
++ ┣ domain-enabled/
++ ┃       ┗ incoming.vsl
 ```
 
 For vSMTP to take a rule path into account, you have to change the configuration in `conf.d/config.vsl` like so:
 ```rust
 fn on_config(config) {
-  config.app.vsl.dirpath = "/etc/vsmtp/domain-available";
+  config.app.vsl.dirpath = "/etc/vsmtp/domain-enabled";
   return config;
 }
 ```
@@ -171,16 +173,41 @@ In the rule directory, all sub-directories are considered as subdomains with rul
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
   ┃     ┗ app.vsl
-  ┗ domain-available/
-          ┣ incoming.vsl
-+         ┗ example.com
-+             ┣ incoming.vsl
-+             ┣ outgoing.vsl
-+             ┗ internal.vsl
+  ┣ domain-available/
++ ┃     ┗ example.com
++ ┃          ┣ incoming.vsl
++ ┃          ┣ outgoing.vsl
++ ┃          ┗ internal.vsl
+  ┗ domain-enabled/
+        ┗ incoming.vsl
 ```
 <p style="text-align: center;"> <i>Adding filtering for a sub-domain</i> </p>
 
-Here, an `example.com` folder has been added. vSMTP will pickup the scripts defined in this folder and run them following the conditions defined in the [Transaction Context](/src/reference/vSL/transaction.md) chapter.
+Here, an `example.com` folder has been added.
+
+vSMTP has been configured to pickup filtering rules in the `domain-enabled` directory. You will have to use symbolic links for vSMTP to use the scripts inside the `domain-available/example.com` directory.
+
+```diff
+/etc/vsmtp
+  ┣ vsmtp.vsl
+  ┣ conf.d/
+  ┃     ┣ config.vsl
+  ┃     ┣ interfaces.vsl
+  ┃     ┗ app.vsl
+  ┣ domain-available/
+  ┃     ┗ example.com
+  ┃          ┣ incoming.vsl
+  ┃          ┣ outgoing.vsl
+  ┃          ┗ internal.vsl
+  ┗ domain-enabled/
+        ┣ incoming.vsl
++       ┗ example.com -> /etc/vsmtp/domain-available/example.com
+```
+<p style="text-align: center;"> <i>Using symlinks to enable filtering for the `example.com` domain</i> </p>
+
+> Using this architecture is NOT MANDATORY. You could simply set the `config.app.vsl.dirpath` configuration variable to `/etc/vsmtp/domain-available`. The goal here is to disable / enable domain specific filtering by simply removing / adding symbolic links while keeping your configuration intact.
+
+The server will pickup the scripts defined in the `example.com` folder and run them following the conditions defined in the [Transaction Context](/src/reference/vSL/transaction.md) chapter.
 
 #### Sub domain specific configuration
 
@@ -193,14 +220,15 @@ It is possible to add a specific configuration for each sub domain.
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
   ┃     ┗ app.vsl
-  ┗ domain-available/
-          ┣ main.vsl
-          ┣ incoming.vsl
-          ┗ example.com
-+             ┣ config.vsl
-              ┣ incoming.vsl
-              ┣ outgoing.vsl
-              ┗ internal.vsl
+  ┣ domain-available/
+  ┃     ┗ example.com
++ ┃         ┣ config.vsl
+  ┃         ┣ incoming.vsl
+  ┃         ┣ outgoing.vsl
+  ┃         ┗ internal.vsl
+  ┗ domain-enabled/
+        ┗ incoming.vsl
+        ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ```
 <p style="text-align: center;"> <i>Adding specific configuration for a sub-domain</i> </p>
 
