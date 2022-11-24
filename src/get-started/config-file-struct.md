@@ -144,9 +144,9 @@ It is possible to filter emails using `.vsl` files for specific domains.
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
   ┃     ┗ app.vsl
-+ ┗ domain-available/
-+ ┣ domain-enabled/
-+ ┃       ┗ incoming.vsl
++ ┣ domain-available/
++ ┗ domain-enabled/
++        ┗ incoming.vsl
 ```
 
 For vSMTP to take a rule path into account, you have to change the configuration in `conf.d/config.vsl` like so:
