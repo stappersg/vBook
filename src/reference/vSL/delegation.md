@@ -11,11 +11,9 @@ Alongside the `rule` and `actions` keyword, vSL exposes another keyword for filt
 <p style="text-align: center;"> <i>A BNF representation of a delegate directive</i> </p>
 
 
-The `delegate` directive uses a [`smtp` service](/src/reference/vSL/services.md) to delegate an email to a third party software:
+The `delegate` directive uses a [`smtp` plugin](/src/reference/plugins/SMTP.md) to delegate an email to a third party software:
 
 ```js
-// -- services/smtp.vsl
-
 export const third_party = smtp(#{
     // Send the email to "127.0.0.1:10026" using the SMTP protocol.
     delegator: #{
@@ -26,13 +24,15 @@ export const third_party = smtp(#{
     receiver: "127.0.0.1:10024",
 });
 ```
-<p style="text-align: center;"> <i>Declaring a `smtp` service</i> </p>
+<p style="text-align: center;"> <i>Declaring a `smtp` service in /etc/vsmtp/services/smtp.vsl</i> </p>
 
 ```js
-import "services/smtp" as svc;
+import "services/smtp" as smtp;
 
-delegate svc::third_party "delegate to third party" || {
+delegate smtp::third_party "delegate to third party" || {
     log("info", "delegation results are in!");
+
+    // ...
 
     return next();
 }

@@ -66,6 +66,11 @@ The vSMTP reference guide
     - [Services](reference/vSL/api/Services.md)
     - [Utils](reference/vSL/api/Utils.md)
     - [Variables](reference/vSL/api/Variables.md)
+- [Plugins](reference/plugins.md)
+  - [Command](reference/plugins/command.md)
+  - [SMTP](reference/plugins/smtp.md)
+  - [CSV](reference/plugins/csv.md)
+  - [MySQL](reference/plugins/mysql.md)
 
 # Development
 
