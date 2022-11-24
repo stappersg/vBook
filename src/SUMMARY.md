@@ -51,7 +51,6 @@ The vSMTP reference guide
   - [SMTP states and vSMTP stages](reference/vSL/stages.md)
   - [Transaction context](reference/vSL/transaction.md)
   - [Objects](reference/vSL/objects.md)
-  - [Services](reference/vSL/services.md)
   - [Delegation](reference/vSL/delegation.md)
   - [Time](reference/vSL/time.md)
   - [vSL's API](reference/vSL/api.md)

@@ -79,22 +79,22 @@ The greylist database is now operational.
 To setup vSMTP, you first need to create a mysql service, that will enable you to query your database. You can, for example, write it in a `services.vsl` file where your `main.vsl` is located.
 
 ```js
-// -- services.vsl
-service greylist db:mysql = #{
+// -- services/db.vsl
+export const greylist = mysql(#{
     // Change this url to the url of your database, or keep it like this if the 'greylist-manager' user is setup on localhost.
     url: "mysql://localhost/?user=greylist-manager&password=your-password",
-};
+});
 ```
 
-The `query` function from the `db:mysql` service is used to query a mysql database. Variables are passed to the query using string interpolation.
+The `query` function from the `mysql` service is used to query a mysql database. Variables are passed to the query using string interpolation.
 
 > ⚠️ String interpolation can lead to SQL injection if not used properly. Make sure to sanitize your inputs, set only required privileges to the mysql user, and check what kind of data you are injecting.
 
-Create a greylist rule in your `main.vsl` file.
+Create a greylist rule in your root `incoming.vsl` file.
 
 ```js
 // -- main.vsl
-import "services" as svc;
+import "services/db" as db;
 
 #{
     // The greylist is effective in the "mail" stage, because the sender
@@ -106,9 +106,9 @@ import "services" as svc;
             // if the sender is not recognized in our database,
             // we deny the transaction and write the sender into
             // the database.
-            if svc::greylist.query(`SELECT * FROM greylist.sender WHERE address = '${sender}';`) == [] {
+            if db::greylist.query(`SELECT * FROM greylist.sender WHERE address = '${sender}';`) == [] {
                 // Writing the sender into the database.
-                svc::greylist.query(`
+                db::greylist.query(`
                     INSERT INTO greylist.sender (user, domain, address)
                     values ("${sender.local_part}", "${sender.domain}", "${sender}");
                 `);

@@ -79,11 +79,11 @@ Create the antivirus passthrough using the `delegate` keyword. As `rule` and `ac
 > Check out the [Delegation](/src/reference/vSL/delegation.md) chapter for more details.
 
 ```js
-import "services/smtp" as svc;
+import "services/smtp" as smtp;
 
 #{
   postq: [
-    delegate svc::clamsmtpd "check email for virus" || {
+    delegate smtp::clamsmtpd "check email for virus" || {
       // this is executed once the delegation result are received.
       log("debug", "email analyzed by clamsmtpd.");
 

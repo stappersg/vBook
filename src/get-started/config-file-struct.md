@@ -31,8 +31,8 @@ A typical vSMTP configuration looks like the following.
 ┃     ┣ net.vsl
 ┃     ┗ *.vsl
 ┗ plugins/
-      ┣ mysql -> /usr/lib/vsmtp/vsmtp-mysql-plugin.so
-      ┗ ldap  -> /usr/lib/vsmtp/vsmtp-ldap-plugin.so
+      ┣ mysql -> /usr/lib/vsmtp/libvsmtp-mysql-plugin.so
+      ┗ ldap  -> /usr/lib/vsmtp/libvsmtp-ldap-plugin.so
 ```
 
 Lets break it down step by step, by building a configuration from scratch.
