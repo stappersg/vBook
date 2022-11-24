@@ -6,7 +6,9 @@ Plugins are dynamic libraries (`.so` files on Linux) that exposes `vSL` interfac
 
 ## Recommandation
 
-A plugin should be placed in a `plugins` directory in your configuration.
+### Plugin directory
+
+A plugin should be accessible in a `plugins` directory in your configuration.
 
 ```diff
 /etc/vsmtp
@@ -33,3 +35,50 @@ To make things cleaner with Linux's file system, it is recommended that you stor
 ```sh
 ln -s /usr/lib/vsmtp/lib-plugin.so /etc/vsmtp/plugins/lib-plugin.so
 ```
+
+### Services directory
+
+Some plugins create Rhai objects that use system resources like sockets or file descriptors.
+Constructing an instance of those objects can be costly.
+
+Thus, it is HIGHLY recommended that objects created by plugins are declared inside `.vsl` files stored in the `/etc/vsmtp/services` directory. This way objects are initialized only once when vSMTP starts.
+
+Here is an example:
+
+```diff
+/etc/vsmtp
+  ┣ vsmtp.vsl
+  ┣ conf.d/
+  ┃     ┗ config.vsl
+  ┣ domain-available/
+  ┃     ┗ example.com/
+  ┃       ┗ ...
+  ┣ domain-enabled/
+  ┃     ┣ incoming.vsl
+  ┃     ┗ example.com -> ...
++ ┗ services/
++       ┗ command.vsl
+```
+
+```js
+// Do not forget to use the `export` keyword when declaring
+// the object to make it accessible trough `import`.
+const echo = cmd(#{
+    command: "echo",
+    args: [ "-n", "executing a command from vSMTP!" ],
+});
+```
+<p style="text-align: center;"> <i>Creating a new command object in `services/command.vsl`</i> </p>
+
+> Check out the [Command](/src/reference/plugins/command.md) reference to get examples for the command plugin.
+
+```js
+import "services/command" as command;
+
+#{
+  connect: [
+    action "use echo" || command::echo.run(),
+  ]
+}
+```
+<p style="text-align: center;"> <i>Using the object in rules using Rhai's import statement</i> </p>
