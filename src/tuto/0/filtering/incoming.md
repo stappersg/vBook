@@ -8,16 +8,17 @@ Thus, when this script is run, all recipients are guaranteed to have the `doe-fa
 import "objects/family" as family;
 
 #{
-    delivery: [
-        action "setup delivery" || {
-            for rcpt in rcpt_list() {
-                // Deliver locally using Mailbox if the recipient is from Doe's family.
-                if rcpt in family::family_addr { mailbox(rcpt) }
-            }
-        } 
-    ],
+  delivery: [
+    action "setup delivery" || {
+      for rcpt in rcpt_list() {
+        // Deliver locally using Mailbox if the recipient is from Doe's family.
+        if rcpt in family::family_addr { mailbox(rcpt) }
+      }
+    }
+  ],
 }
 ```
+
 <p style="text-align: center;"> <i>doe-family.com/incoming.vsl</i> </p>
 
 Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function that does exactly that.
@@ -40,18 +41,20 @@ Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function th
  ┗ objects/
        ┗ family.vsl
 ```
+
 <p style="text-align: center;"> <i>adding a new script to the subdomain</i> </p>
 
 ```js
 import "objects/family" as family;
 
 fn bcc_jenny() {
-    // add Jane as a blind carbon copy if the current recipient is Jenny.
-    if rcpt() == family::jenny {
-      bcc(family::jane)
-    }
+  // add Jane as a blind carbon copy if the current recipient is Jenny.
+  if rcpt() == family::jenny {
+    bcc(family::jane)
+  }
 }
 ```
+
 <p style="text-align: center;"> <i>doe-family.com/bcc.vsl</i> </p>
 
 Now, let's plug this function to our filtering rules by importing the `bcc.vsl` script.
@@ -62,19 +65,20 @@ Now, let's plug this function to our filtering rules by importing the `bcc.vsl` 
 
   #{
 +   rcpt: [
-+       action "bcc jenny" || bcc::bcc_jenny(),
++     action "bcc jenny" || bcc::bcc_jenny(),
 +   ],
 
     delivery: [
-        action "setup delivery" || {
-            for rcpt in rcpt_list() {
-                // Deliver locally using Mailbox if the recipient is from Doe's family.
-                if rcpt in family::family_addr { mailbox(rcpt) }
-            }
-        } 
+      action "setup delivery" || {
+        for rcpt in rcpt_list() {
+          // Deliver locally using Mailbox if the recipient is from Doe's family.
+          if rcpt in family::family_addr { mailbox(rcpt) }
+        }
+      }
     ],
   }
 ```
+
 <p style="text-align: center;"> <i>doe-family.com/incoming.vsl</i> </p>
 
 With Rhai modules and functions, it becomes easy to reuse code across different rules.

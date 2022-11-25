@@ -1,11 +1,11 @@
 # Filtering
 
-By default, the server will deny any SMTP transaction. We have to define [filtering rules](/src/reference/vSL/rules.md) to accept connections and filter messages.
+By default, the server will deny any SMTP transaction. We have to define [filtering rules](/ref/vSL/rules.md) to accept connections and filter messages.
 
-In this chapter, you will get a glimpse of vSMTP's filtering system. To create your own filtering rules, we recommend checking out the [vSL reference](/src/reference/vSL/vsl.md), focussing on the following chapters:
-* [Rules](/src/reference/vSL/rules.md)
-* [SMTP Stages](/src/reference/vSL/stages.md)
-* [Transaction context](/src/reference/vSL/transaction.md)
+In this chapter, you will get a glimpse of vSMTP's filtering system. To create your own filtering rules, we recommend checking out the [vSL reference](/ref/vSL/vsl.md), focussing on the following chapters:
+* [Rules](/ref/vSL/rules.md)
+* [SMTP Stages](/ref/vSL/stages.md)
+* [Transaction context](/ref/vSL/transaction.md)
 
 For this example, will configure the following rules:
 
@@ -32,7 +32,7 @@ In the [`Listen and serve`](##listen-and-serve) section of the previous chapter,
 
 The `incoming.vsl` file is responsible for handling clients that just connected to vSMTP.
 
-Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](/src/reference/vSL/transaction.md##root-incoming) section in the [Transaction Context](/src/reference/vSL/transaction.md) chapter for more details)
+Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](/ref/vSL/transaction.md##root-incoming) section in the [Transaction Context](/ref/vSL/transaction.md) chapter for more details)
 
 ```js
  #{
@@ -92,4 +92,4 @@ Let's create filtering rules for the `doe-family.com` domain.
 ```
 <p style="text-align: center;"> <i>adding filtering scripts for the doe-family.com domain</i> </p>
 
-vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](/src/reference/vSL/transaction.md). Let's define rules for each cases.
+vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](/ref/vSL/transaction.md). Let's define rules for each cases.

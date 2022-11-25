@@ -6,12 +6,27 @@ Here, a member of Doe's family is sending an email to someone else. We just have
 
 ```js
 #{
+  authenticate: [
+    rule "sasl authentication" || authenticate(),
+  ],
   mail: [
-    rule "authenticate" || authenticate(),
+    rule "deny unauthenticated" || {
+      if is_authenticated() {
+        next()
+      } else {
+        deny(code(530, "5.7.0", "Authentication required\r\n"))
+      }
+    }
   ]
 }
 ```
+
 <p style="text-align: center;"> <i>doe-family.com/outgoing.vsl</i> </p>
 
-> ⚠️ The `authenticate()` function uses the `testsaslauthd` program under the hood, itself calling the `saslauthd` daemon.
+> ⚠️ The `authenticate` function uses the `testsaslauthd` program under the hood, itself calling the `saslauthd` daemon.
 > Make sure to install the [Cyrus sasl binary package](https://www.cyrusimap.org/sasl/)for your distribution and configure the `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
+
+> See the [`is_authenticated`][is_auth_fn_ref] and [`authenticate`][auth_fn_ref] reference for more details.
+
+[auth_fn_ref]: /ref/vSL/api/Auth.html?highlight=authenticate#fn-authenticate
+[is_auth_fn_ref]: /ref/vSL/api/Auth.html?highlight=is_authenticated#fn-is_authenticated

@@ -62,9 +62,10 @@ fn on_config(config) {
 
 vSMTP calls the `on_config` function once starting up. You are free to modify the `config` object to change the configuration. The `config` object MUST be returned at the end of the function.
 
-> The [Configuration reference](/src/reference/config-file.md) lists all fields that you can change in the `config` object.
+> The [Configuration reference](/ref/config-file.md) lists all fields that you can change in the `config` object.
 
 For example:
+
 ```rust
 fn on_config(config) {
   // Change the name of the server.
@@ -83,6 +84,7 @@ fn on_config(config) {
   return config;
 }
 ```
+
 <p style="text-align: center;"> <i>Configuring vSMTP with `conf.d/config.vsl`</i> </p>
 
 #### Recommandations
@@ -90,6 +92,7 @@ fn on_config(config) {
 Rhai exposes a [module API](https://rhai.rs/book/language/modules/index.html), making it possible to split the configuration by theme.
 
 For the above example, it is recommended that configuration files are split this way:
+
 ```diff
 /etc/vsmtp
  ┣ vsmtp.vsl
@@ -100,6 +103,7 @@ For the above example, it is recommended that configuration files are split this
 ```
 
 with:
+
 ```rust
 // addresses that the server will listen to.
 export const interfaces = #{
@@ -108,13 +112,16 @@ export const interfaces = #{
   addr_submissions: ["192.168.1.254:465"],
 };
 ```
+
 <p style="text-align: center;"> <i>/etc/vsmtp/conf.d/interfaces.vsl</i> </p>
 
 and:
+
 ```rust
 // The folder containing filtering rules.
 export const rules_dirpath = "/etc/vsmtp/domain-enabled";
 ```
+
 <p style="text-align: center;"> <i>/etc/vsmtp/conf.d/app.vsl</i> </p>
 
 Those modules can then be imported in `config.vsl`, resulting in a more cleaner configuration file.
@@ -131,6 +138,7 @@ fn on_config(config) {
   return config;
 }
 ```
+
 <p style="text-align: center;"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>
 
 ### Filtering
@@ -150,17 +158,19 @@ It is possible to filter emails using `.vsl` files for specific domains.
 ```
 
 For vSMTP to take a rule path into account, you have to change the configuration in `conf.d/config.vsl` like so:
+
 ```rust
 fn on_config(config) {
   config.app.vsl.dirpath = "/etc/vsmtp/domain-enabled";
   return config;
 }
 ```
+
 <p style="text-align: center;"> <i>Specifying filtering rules directory in the configuration</i> </p>
 
 #### incoming
 
-The root `incoming.vsl` script is is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages of an SMTP transaction. (Check out the [Transaction Context](/src/reference/vSL/transaction.md) chapter for more details)
+The root `incoming.vsl` script is is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages of an SMTP transaction. (Check out the [Transaction Context](/ref/vSL/transaction.md) chapter for more details)
 
 #### Sub domains
 
@@ -181,6 +191,7 @@ In the rule directory, all sub-directories are considered as subdomains with rul
   ┗ domain-enabled/
         ┗ incoming.vsl
 ```
+
 <p style="text-align: center;"> <i>Adding filtering for a sub-domain</i> </p>
 
 Here, an `example.com` folder has been added.
@@ -203,15 +214,16 @@ vSMTP has been configured to pickup filtering rules in the `domain-enabled` dire
         ┣ incoming.vsl
 +       ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ```
+
 <p style="text-align: center;"> <i>Using symlinks to enable filtering for the `example.com` domain</i> </p>
 
 > Using this architecture is NOT MANDATORY. You could simply set the `config.app.vsl.dirpath` configuration variable to `/etc/vsmtp/domain-available`. The goal here is to disable / enable domain specific filtering by simply removing / adding symbolic links while keeping your configuration intact.
 
-The server will pickup the scripts defined in the `example.com` folder and run them following the conditions defined in the [Transaction Context](/src/reference/vSL/transaction.md) chapter.
+The server will pickup the scripts defined in the `example.com` folder and run them following the conditions defined in the [Transaction Context](/ref/vSL/transaction.md) chapter.
 
 #### Sub domain specific configuration
 
-It is possible to add a specific configuration for each sub domain. 
+It is possible to add a specific configuration for each sub domain.
 
 ```diff
 /etc/vsmtp
@@ -230,6 +242,7 @@ It is possible to add a specific configuration for each sub domain.
         ┗ incoming.vsl
         ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ```
+
 <p style="text-align: center;"> <i>Adding specific configuration for a sub-domain</i> </p>
 
 The `config.vsl` script under a sub domain must contain, at least, the following statement:
@@ -259,6 +272,7 @@ fn on_domain_config(config) {
   config
 }
 ```
+
 <p style="text-align: center;"> <i>Changing TLS, DKIM and DNS parameters for a specific sub-domain</i> </p>
 
 > If this script is not present in a subdomain, configuration from the root `config.vsl` script is used instead.

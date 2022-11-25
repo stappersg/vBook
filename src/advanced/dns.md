@@ -4,7 +4,7 @@ vSMTP can handle complex DNS situations. A default configuration is applied on t
 
 DNS parameters are stored in the `[server.dns]` and `[server.virtual.dns]` tables and sub-tables. Please refer to [vSMTP reference guide] and [Trust-DNS] repository for detailed information.
 
-[vSMTP reference guide]: ../reference/config-file.md
+[vSMTP reference guide]: /ref/config-file.md
 
 [Trust-DNS]: https://github.com/bluejekyll/trust-dns
 

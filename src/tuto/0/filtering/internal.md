@@ -20,12 +20,12 @@ import "domain-available/doe-family.com/bcc" as bcc;
   ],
 }
 ```
-<p style="text-align: center;"> <i>doe-family.com/internal.vsl</i> </p>
 
+<p style="text-align: center;"> <i>doe-family.com/internal.vsl</i> </p>
 
 Now that all filtering rules are set for the `doe-family.com` domain, let's restart the server to apply all rules.
 
 ```sh
-$ sudo systemd restart vsmtp
-$ telnet 192.168.1.254:25
+sudo systemd restart vsmtp
+telnet 192.168.1.254:25
 ```

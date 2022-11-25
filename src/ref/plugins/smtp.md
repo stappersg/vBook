@@ -46,11 +46,11 @@ import "service/smtp" as smtp;
         delegate smtp::clamsmtpd "delegate antivirus processing" || {
             // this is executed after the delegation results have been
             // received on port 10024.
-            
+
             // ...
         }
     ]
 }
 ```
 
-> Check the [Delegation](/src/reference/vSL/delegation.md) chapter to get more information on the `delegate` directive.
+> Check the [Delegation](/ref/vSL/delegation.md) chapter to get more information on the `delegate` directive.
