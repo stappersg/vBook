@@ -29,7 +29,7 @@ sudo apt install
 $> cargo build --workspace --release
 [...]
 $> cargo run -- --help
-vsmtp 1.1.3
+vsmtp 1.4
 Team viridIT <https://viridit.com/>
 Next-gen MTA. Secured, Faster and Greener
 

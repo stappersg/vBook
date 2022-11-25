@@ -70,7 +70,7 @@
 Welcome to vBook, the vSMTP reference guide.
 It serves as vSMTP's primary documentation and tutorial resource.
 
-**⚠️ This manual document vSMTP >=v1.3. These versions are not intended for production use.**
+**⚠️ This manual document vSMTP >=v1.4. These versions are not intended for production use.**
 
 ## vSMTP
 
