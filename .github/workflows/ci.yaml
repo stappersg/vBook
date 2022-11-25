@@ -17,4 +17,4 @@ jobs:
           key: ${{ secrets.SITE_SSH_KEY }}
           passphrase: ${{ secrets.SITE_SSH_PASSPHRASE }}
           script: |
-            echo "hello world"
+            echo "hello world 2"
