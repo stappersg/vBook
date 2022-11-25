@@ -41,7 +41,7 @@ fn on_config(config) {
 
 > It is recommended to split the configuration into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
 
-> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](/src/reference/config-file.md) chapter.
+> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](/ref/config-file.md) chapter.
 
 The server can now listen and serve SMTP connections.
 
@@ -73,7 +73,7 @@ export const virus_queue = "doe/virus";
 export const blacklist = file("conf.d/blacklist.txt", "fqdn");
 ```
 
-> See the [Object Reference](/src/reference/vSL/objects.md#Objects) chapter for more information.
+> See the [Object Reference](/ref/vSL/objects.md#Objects) chapter for more information.
 
 Define a blacklist file at `/etc/vsmtp/conf.d/blacklist.txt` with the following contents:
 

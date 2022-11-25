@@ -58,7 +58,7 @@ vSMTP has a complete filtering system. In addition to the standard analysis of t
 - [vSMTP scripting language] allowing administrators to define complex rules.
 - Interaction at each SMTP state (HELO/EHLO, CONNECT, MAIL, RCPT, DATA).
 
-[vSMTP Scripting Language]: reference/vSL/vsl.md
+[vSMTP Scripting Language]: /ref/vSL/vsl.md
 
 ### Delivery
 

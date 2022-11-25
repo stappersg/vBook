@@ -70,13 +70,14 @@ fn on_config(config) {
   config
 }
 ```
+
 <p style="text-align: center;"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>
 
 ## The delegate keyword
 
 Create the antivirus passthrough using the `delegate` keyword. As `rule` and `action`, it is a directive that is used to filter emails. The quirk of `delegate` is that it uses a smtp service to delegate the email to a third party software, and get it back on the `receiver` address.
 
-> Check out the [Delegation](/src/reference/vSL/delegation.md) chapter for more details.
+> Check out the [Delegation](/ref/vSL/delegation.md) chapter for more details.
 
 ```js
 import "services/smtp" as smtp;
@@ -97,6 +98,7 @@ import "services/smtp" as smtp;
   ],
 }
 ```
+
 <p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
 
 Once the `check email for virus` directive is run, vSMTP will send the email to the `clamsmtpd` service and the rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation resumes, and the body of this rule is evaluated.

@@ -12,7 +12,7 @@ The network looks like the following :
 
 They also rented a domain name `doe-family.com`. They decided to prefix their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
 
-### Network configuration
+## Network configuration
 
 vSMTP is installed on an Ubuntu server 20.04 virtual instance hosted by the DMZ server.
 
@@ -54,5 +54,6 @@ ___Certificate___
 John generated a certificate through the [Let's Encrypt Certificate Authority](https://letsencrypt.org/) for vSMTP server.
 
 ```shell
-sudo certbot certonly --manual --preferred-challenges=dns --agree-tos -d mta.doe-family.com
+sudo certbot certonly --manual --preferred-challenges=dns \
+    --agree-tos -d mta.doe-family.com
 ```

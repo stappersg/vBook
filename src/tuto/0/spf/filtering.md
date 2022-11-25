@@ -9,6 +9,7 @@ doe-family.com.          TXT "v=spf1 +mx -all"
 For incoming messages, SPF is configured to check that the sending host is authorized to use the `doe-family.com` according to published SPF policy. Rules are executed at the `mail` stage.
 
 Edit the `/etc/vsmtp/domain-enabled/incoming.vsl` file and add the following rule.
+
 ```js
 #{
   mail: [
@@ -16,6 +17,9 @@ Edit the `/etc/vsmtp/domain-enabled/incoming.vsl` file and add the following rul
   ]
 }
 ```
+
 <p style="text-align: center;"> <i>Preventing spams using SPF</i> </p>
 
-> Check out the [Security module](/src/reference/vSL/api/Security.md) for more details on the `check_spf` function.
+> See the [`check_spf`][check_spf_fn_ref] reference for more details.
+
+[check_spf_fn_ref]: /ref/vSL/api/Security.html?highlight=check_spf#fn-check_spfheader

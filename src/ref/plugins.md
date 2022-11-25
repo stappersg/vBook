@@ -68,9 +68,10 @@ const echo = cmd(#{
     args: [ "-n", "executing a command from vSMTP!" ],
 });
 ```
+
 <p style="text-align: center;"> <i>Creating a new command object in `services/command.vsl`</i> </p>
 
-> Check out the [Command](/src/reference/plugins/command.md) reference to get examples for the command plugin.
+> Check out the [Command](/ref/plugins/command.md) reference to get examples for the command plugin.
 
 ```js
 import "services/command" as command;
@@ -81,4 +82,5 @@ import "services/command" as command;
   ]
 }
 ```
+
 <p style="text-align: center;"> <i>Using the object in rules using Rhai's import statement</i> </p>

@@ -8,10 +8,10 @@ Alongside the `rule` and `actions` keyword, vSL exposes another keyword for filt
 <delegation-name> ::= <string>
 <expr>            ::= <rhai-expr>       ; any valid Rhai expression. Must return a "status".
 ```
+
 <p style="text-align: center;"> <i>A BNF representation of a delegate directive</i> </p>
 
-
-The `delegate` directive uses a [`smtp` plugin](/src/reference/plugins/SMTP.md) to delegate an email to a third party software:
+The `delegate` directive uses a [`smtp` plugin](/ref/plugins/SMTP.md) to delegate an email to a third party software:
 
 ```js
 export const third_party = smtp(#{
@@ -24,6 +24,7 @@ export const third_party = smtp(#{
     receiver: "127.0.0.1:10024",
 });
 ```
+
 <p style="text-align: center;"> <i>Declaring a `smtp` service in /etc/vsmtp/services/smtp.vsl</i> </p>
 
 ```js
@@ -37,6 +38,7 @@ delegate smtp::third_party "delegate to third party" || {
     return next();
 }
 ```
+
 <p style="text-align: center;"> <i>Declaring a delegation rule with the previously declared smtp service</i> </p>
 
 The `delegate` directives first send the email to the given address, and wait for the results on the `receiver` address.

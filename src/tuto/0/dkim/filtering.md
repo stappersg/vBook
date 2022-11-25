@@ -14,32 +14,44 @@ We will configure these rules:
 Add the following to the `on_config` function body in the `/etc/vsmtp/conf.d/config.vsl` file:
 
 ```js
-config.server.dkim.private_key = "/path/to/private-key";
+config.server.dkim.private_key = ["/path/to/private-key"];
 ```
 
 ## Add signatures
 
 The `dkim_sign` function is used to sign your email. Use it in the `postq` stage like so:
+
 ```js
 #{
   // ... previous rules ...
 
   postq: [
-    action "sign dkim" || sign_dkim(
-      "2022-09", // Selector of the DNS record.
-      ["From", "To", "Date", "Subject", "From"], // Headers to sign with.
-      "simple/relaxed" // Canonicalization algorithm to use.
-    ),
+    action "sign dkim" || {
+      // Iterate over all the private keys defined for the server 'doe-family.com'
+
+      for i in get_private_keys(srv(), "doe-family.com") {
+        sign_dkim(
+          // Selector of the DNS record.
+          "2022-09",
+          // The private key associated with the public key in `{selector}._domainkey.{sdid}`
+          // Or `2022-09._domainkey.doe-family.com.` in that case
+          i,
+          // Headers to sign with.
+          ["From", "To", "Date", "Subject", "From"],
+          // Canonicalization algorithm to use.
+          "simple/relaxed"
+        );
+      }
+    }
   ],
 }
 ```
+
 <p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/outgoing.vsl</i> </p>
 
-> Check out the [Security module](/src/reference/vSL/api/Security.md) for more details on the `dkim_sign` function.
+> See the [`dkim_sign`][sign_dkim_fn_ref] reference for more details.
 
 ## Verify signatures
-
-The `verify_dkim` function is used check if the given signature are valid. Use it in the `postq` stage like so:
 
 ```js
 #{
@@ -56,6 +68,10 @@ The `verify_dkim` function is used check if the given signature are valid. Use i
   ],
 }
 ```
+
 <p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
 
-> Check out the [Security module](/src/reference/vSL/api/Security.md) for more details on the `verify_dkim` function.
+> See the [`verify_dkim`][verify_dkim_fn_ref] reference for more details.
+
+[verify_dkim_fn_ref]: /ref/vSL/api/Security.html?highlight=verify_dkim#fn-verify_dkim
+[sign_dkim_fn_ref]: /ref/vSL/api/Security.html#fn-sign_dkimselector-headers_field-canonicalization
