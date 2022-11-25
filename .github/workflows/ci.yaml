@@ -17,7 +17,5 @@ jobs:
           key: ${{ secrets.SITE_SSH_KEY }}
           passphrase: ${{ secrets.SITE_SSH_PASSPHRASE }}
           script: |
-            sudo su - mdbook
-            cd vBook && git checkout next && git pull && mdbook build
-            exit
+            sudo su - mdbook && cd vBook && git checkout next && git pull && mdbook build && exit
             sudo cp -Rf /home/mdbook/vBook/book/* /var/www/vbook/next
