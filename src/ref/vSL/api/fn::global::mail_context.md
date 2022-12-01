@@ -357,7 +357,7 @@ Get the type of the `auth` property of the connection.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
+fn remove_rcpt_envelop(context: Context, addr: String) -> ()
 ```
 
 <details>
@@ -373,7 +373,7 @@ remove a recipient from the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_envelop(context: Context, addr: String) -> ()
+fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
 ```
 
 <details>
@@ -421,38 +421,6 @@ Change the sender of the envelop using an object.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient of the envelop.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient of the envelop.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
 ```
 
@@ -485,13 +453,29 @@ Replace a recipient of the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_debug(context: Server) -> String
+fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Server` to a debug string.
+Replace a recipient of the envelop.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace a recipient of the envelop.
 </details>
 
 </div>
@@ -508,6 +492,22 @@ fn to_debug(context: Context) -> String
 <summary markdown="span"> details </summary>
 
 Convert a `Context` to a debug string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_debug(context: Server) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Server` to a debug string.
 </details>
 
 </div>

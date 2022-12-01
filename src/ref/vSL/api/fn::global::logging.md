@@ -5,6 +5,36 @@
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn log(level: String, message: SharedObject)
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn log(level: SharedObject, message: SharedObject)
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn log(level: SharedObject, message: String)
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn log(level: String, message: String)
 ```
 
@@ -36,36 +66,6 @@ fn log(level: String, message: String)
 }
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn log(level: String, message: SharedObject)
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn log(level: SharedObject, message: String)
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn log(level: SharedObject, message: SharedObject)
-```
 
 </div>
 </br>

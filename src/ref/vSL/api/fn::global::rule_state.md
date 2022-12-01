@@ -21,7 +21,7 @@ Return a [`Status::Accept`] with the default code associated
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn accept(code: String) -> Status
+fn accept(code: SharedObject) -> Status
 ```
 
 <details>
@@ -41,7 +41,7 @@ Return a [`Status::Accept`] with `code`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn accept(code: SharedObject) -> Status
+fn accept(code: String) -> Status
 ```
 
 <details>
@@ -173,7 +173,7 @@ Return a [`Status::Faccept`] with `code`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn info(code: SharedObject) -> Status
+fn info(code: String) -> Status
 ```
 
 <details>
@@ -193,7 +193,7 @@ Return a [`Status::Info`] with `code`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn info(code: String) -> Status
+fn info(code: SharedObject) -> Status
 ```
 
 <details>
@@ -229,7 +229,7 @@ Return a [`Status::Next`]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn quarantine(queue: SharedObject) -> Status
+fn quarantine(queue: String) -> Status
 ```
 
 <details>
@@ -249,7 +249,7 @@ Return a [`Status::Quarantine`] with `queue`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn quarantine(queue: String) -> Status
+fn quarantine(queue: SharedObject) -> Status
 ```
 
 <details>

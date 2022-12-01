@@ -21,16 +21,6 @@ get the current date.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_root_domain(domain: SharedObject) -> String
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn get_root_domain(domain: String) -> String
 ```
 
@@ -43,6 +33,16 @@ Get the root domain (the registrable part)
 
 `foo.bar.example.com` => `example.com`
 </details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get_root_domain(domain: SharedObject) -> String
+```
 
 </div>
 </br>
@@ -70,6 +70,16 @@ Get the hostname of the machine.
 }
 ```
 </details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn lookup(server: Server, name: SharedObject) -> Array
+```
 
 </div>
 </br>
@@ -106,16 +116,6 @@ Perform a dns lookup using the root dns.
 }
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn lookup(server: Server, name: SharedObject) -> Array
-```
 
 </div>
 </br>
@@ -198,6 +198,16 @@ get the current time.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn user_exist(name: SharedObject) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn user_exist(name: String) -> bool
 ```
 
@@ -222,16 +232,6 @@ Does the `name` correspond to an existing user in the system.
 }
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn user_exist(name: SharedObject) -> bool
-```
 
 </div>
 </br>

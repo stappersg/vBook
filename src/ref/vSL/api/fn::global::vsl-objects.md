@@ -21,22 +21,6 @@ Operator `!=` for `SharedObject`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(this: SharedObject, s: String) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Operator `!=` for `SharedObject` and `&str`
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn !=(this: String, other: SharedObject) -> bool
 ```
 
@@ -53,13 +37,13 @@ Operator `!=` for `&str` and `SharedObject`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(this: SharedObject, s: String) -> bool
+fn !=(this: SharedObject, s: String) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `SharedObject` and `&str`
+Operator `!=` for `SharedObject` and `&str`
 </details>
 
 </div>
@@ -92,6 +76,22 @@ fn ==(this: SharedObject, other: SharedObject) -> bool
 <summary markdown="span"> details </summary>
 
 Operator `==` for `SharedObject`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ==(this: SharedObject, s: String) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `==` for `SharedObject` and `&str`
 </details>
 
 </div>
