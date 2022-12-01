@@ -77,7 +77,7 @@ Return a [`Status::Deny`] with the default code associated
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn deny(code: SharedObject) -> Status
+fn deny(code: String) -> Status
 ```
 
 <details>
@@ -97,7 +97,7 @@ Return a [`Status::Deny`] with `code`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn deny(code: String) -> Status
+fn deny(code: SharedObject) -> Status
 ```
 
 <details>
@@ -133,7 +133,7 @@ Return a [`Status::Faccept`] with the default code associated
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn faccept(code: SharedObject) -> Status
+fn faccept(code: String) -> Status
 ```
 
 <details>
@@ -153,7 +153,7 @@ Return a [`Status::Faccept`] with `code`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn faccept(code: String) -> Status
+fn faccept(code: SharedObject) -> Status
 ```
 
 <details>

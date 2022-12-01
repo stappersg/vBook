@@ -37,7 +37,7 @@ write the content of the current email with it's metadata in a json file.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn write(srv: Server, mut ctx: Context, message: Message, dir: SharedObject) -> ()
+fn write(srv: Server, mut ctx: Context, message: Message, dir: String) -> ()
 ```
 
 <details>
@@ -53,7 +53,7 @@ write the current email to a specified folder.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn write(srv: Server, mut ctx: Context, message: Message, dir: String) -> ()
+fn write(srv: Server, mut ctx: Context, message: Message, dir: SharedObject) -> ()
 ```
 
 <details>

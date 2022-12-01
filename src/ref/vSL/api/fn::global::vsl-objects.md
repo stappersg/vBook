@@ -5,22 +5,6 @@
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(this: String, other: SharedObject) -> EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Operator `!=` for `&str` and `SharedObject`
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn !=(this: SharedObject, other: SharedObject) -> bool
 ```
 
@@ -37,7 +21,7 @@ Operator `!=` for `SharedObject`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(this: SharedObject, s: String) -> EvalAltResult>>
+fn !=(this: SharedObject, s: String) -> bool
 ```
 
 <details>
@@ -53,13 +37,45 @@ Operator `!=` for `SharedObject` and `&str`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(this: SharedObject, s: String) -> EvalAltResult>>
+fn !=(this: String, other: SharedObject) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `!=` for `&str` and `SharedObject`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ==(this: SharedObject, s: String) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
 Operator `==` for `SharedObject` and `&str`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ==(this: String, other: SharedObject) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `==` for `&str` and `SharedObject`
 </details>
 
 </div>
@@ -85,23 +101,7 @@ Operator `==` for `SharedObject`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(this: String, other: SharedObject) -> EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Operator `==` for `&str` and `SharedObject`
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn address(address: String) -> EvalAltResult>>
+fn address(address: String) -> VSLObject
 ```
 
 <details>
@@ -117,7 +117,7 @@ an email address (jones@foo.com)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn code(code: int, text: String) -> EvalAltResult>>
+fn code(code: int, text: String) -> VSLObject
 ```
 
 <details>
@@ -133,7 +133,7 @@ A SMTP code with the code and message as parameter.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn code(code: int, enhanced: String, text: String) -> EvalAltResult>>
+fn code(code: int, enhanced: String, text: String) -> VSLObject
 ```
 
 <details>
@@ -165,6 +165,16 @@ Operator `contains`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn contains(map: Map, object: SharedObject) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn contains(this: SharedObject, other: SharedObject) -> bool
 ```
 
@@ -181,17 +191,7 @@ Operator `contains`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn contains(map: Map, object: SharedObject) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn file(path: String, content_type: String) -> EvalAltResult>>
+fn file(path: String, content_type: String) -> Array
 ```
 
 <details>
@@ -207,7 +207,7 @@ the content of a file.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn fqdn(domain: String) -> EvalAltResult>>
+fn fqdn(domain: String) -> VSLObject
 ```
 
 <details>
@@ -223,7 +223,7 @@ a valid fully qualified domain name (foo.com)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get domain(addr: VSLObject) -> EvalAltResult>>
+fn get domain(addr: VSLObject) -> VSLObject
 ```
 
 <details>
@@ -239,7 +239,7 @@ Get the `domain` of an email address
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get domains(container: Array) -> EvalAltResult>>
+fn get domains(container: Array) -> Array
 ```
 
 <details>
@@ -255,7 +255,7 @@ Get the `domains` of an array of email address
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get local_part(addr: VSLObject) -> EvalAltResult>>
+fn get local_part(addr: VSLObject) -> String
 ```
 
 <details>
@@ -271,7 +271,7 @@ Get the `local part` of an email address
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get local_parts(container: Array) -> EvalAltResult>>
+fn get local_parts(container: Array) -> Array
 ```
 
 <details>
@@ -303,7 +303,7 @@ a user identifier.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ip4(ip: String) -> EvalAltResult>>
+fn ip4(ip: String) -> VSLObject
 ```
 
 <details>
@@ -319,7 +319,7 @@ Build an ip4 address. (a.b.c.d)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ip6(ip: String) -> EvalAltResult>>
+fn ip6(ip: String) -> VSLObject
 ```
 
 <details>
@@ -335,7 +335,7 @@ Build an ip6 address. (x:x:x:x:x:x:x:x)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn regex(regex: String) -> EvalAltResult>>
+fn regex(regex: String) -> VSLObject
 ```
 
 <details>
@@ -351,7 +351,7 @@ a regex (^[a-z0-9.]+@foo.com$)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rg4(range: String) -> EvalAltResult>>
+fn rg4(range: String) -> VSLObject
 ```
 
 <details>
@@ -367,7 +367,7 @@ an ip v4 range. (a.b.c.d/range)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rg6(range: String) -> EvalAltResult>>
+fn rg6(range: String) -> VSLObject
 ```
 
 <details>

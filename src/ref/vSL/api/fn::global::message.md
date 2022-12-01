@@ -5,16 +5,6 @@
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn append_header(message: Message, header: String, value: SharedObject) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn append_header(message: Message, header: String, value: String) -> ()
 ```
 
@@ -48,7 +38,7 @@ Add a header **at the end** of the Header section of the message.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn count_header(message: Message, header: SharedObject) -> int>
+fn append_header(message: Message, header: String, value: SharedObject) -> ()
 ```
 
 </div>
@@ -58,7 +48,17 @@ fn count_header(message: Message, header: SharedObject) -> int>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn count_header(message: Message, header: String) -> int>
+fn count_header(message: Message, header: SharedObject) -> int
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn count_header(message: Message, header: String) -> int
 ```
 
 <details>
@@ -108,7 +108,7 @@ Get the message body as a string
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_all_headers(message: Message) -> Array>
+fn get_all_headers(message: Message) -> Array
 ```
 
 <details>
@@ -124,14 +124,8 @@ Return the complete list of headers.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_all_headers(message: Message, name: String) -> Array>
+fn get_all_headers(message: Message, name: SharedObject) -> Array
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return a list of headers bearing the `name` given as argument.
-</details>
 
 </div>
 </br>
@@ -140,8 +134,14 @@ Return a list of headers bearing the `name` given as argument.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_all_headers(message: Message, name: SharedObject) -> Array>
+fn get_all_headers(message: Message, name: String) -> Array
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return a list of headers bearing the `name` given as argument.
+</details>
 
 </div>
 </br>
@@ -198,7 +198,7 @@ Hello world!
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_header_untouched(this: Message, name: String) -> Array>
+fn get_header_untouched(this: Message, name: String) -> Array
 ```
 
 <details>
@@ -260,6 +260,16 @@ Return a boolean, `true` if a header named `header` exists in the message.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn prepend_header(message: Message, header: String, value: SharedObject) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn prepend_header(message: Message, header: String, value: String) -> ()
 ```
 
@@ -285,16 +295,6 @@ Add a header **at the beginning** of the Header section of the message.
 }
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn prepend_header(message: Message, header: String, value: SharedObject) -> ()
-```
 
 </div>
 </br>
@@ -352,6 +352,36 @@ fn remove_header(message: Message, header: SharedObject) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn rename_header(message: Message, old: String, new: SharedObject) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn rename_header(message: Message, old: SharedObject, new: String) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn rename_header(message: Message, old: String, new: String) -> ()
 ```
 
@@ -388,36 +418,6 @@ Do not confuse with [`set_header()`].
 }
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rename_header(message: Message, old: SharedObject, new: String) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rename_header(message: Message, old: String, new: SharedObject) -> ()
-```
 
 </div>
 </br>

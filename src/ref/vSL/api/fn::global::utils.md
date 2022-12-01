@@ -78,7 +78,7 @@ Get the hostname of the machine.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn lookup(server: Server, name: String) -> Array>
+fn lookup(server: Server, name: String) -> Array
 ```
 
 <details>
@@ -114,7 +114,7 @@ Perform a dns lookup using the root dns.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn lookup(server: Server, name: SharedObject) -> Array>
+fn lookup(server: Server, name: SharedObject) -> Array
 ```
 
 </div>
@@ -124,7 +124,7 @@ fn lookup(server: Server, name: SharedObject) -> Array>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rlookup(server: Server, name: String) -> Array>
+fn rlookup(server: Server, name: String) -> Array
 ```
 
 <details>
@@ -156,7 +156,7 @@ Perform a dns reverse lookup using the root dns.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rlookup(server: Server, name: SharedObject) -> Array>
+fn rlookup(server: Server, name: SharedObject) -> Array
 ```
 
 </div>

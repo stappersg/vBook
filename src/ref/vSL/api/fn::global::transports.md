@@ -5,6 +5,16 @@
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn deliver(context: Context, rcpt: SharedObject) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn deliver(context: Context, rcpt: String) -> ()
 ```
 
@@ -49,16 +59,6 @@ Set the delivery method to [`Transfer::Deliver`] for a single recipient.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn deliver(context: Context, rcpt: SharedObject) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn deliver_all(context: Context) -> ()
 ```
 
@@ -81,26 +81,6 @@ Set the delivery method to [`Transfer::Deliver`] for all recipients.
 
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
-```
 
 </div>
 </br>
@@ -153,7 +133,7 @@ Set the delivery method to [`Transfer::Forward`] for a single recipient.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
 ```
 
 </div>
@@ -163,7 +143,17 @@ fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn forward_all(context: Context, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 ```
 
 </div>
@@ -200,6 +190,16 @@ Set the delivery method to [`Transfer::Forward`] for all recipients.
 
 ```
 </details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn forward_all(context: Context, forward: SharedObject) -> ()
+```
 
 </div>
 </br>

@@ -15,34 +15,8 @@ fn !(x: bool) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(x: u8, y: u8) -> bool
+fn !=(x: int, y: float) -> bool
 ```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(x: u64, y: u64) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(timestamp1: Instant, timestamp2: Instant) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return `true` if two timestamps are not equal.
-</details>
 
 </div>
 </br>
@@ -61,88 +35,7 @@ fn !=(x: i32, y: i32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(x: int, y: float) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(map1: Map, map2: Map) -> Result<bool, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return `true` if two object maps are not equal (i.e. at least one property value is not equal).
-
-The operator `==` is used to compare property values and must be defined,
-otherwise `false` is assumed.
-
-# Example
-
-```rhai
-let m1 = #{a:1, b:2, c:3};
-let m2 = #{a:1, b:2, c:3};
-let m3 = #{a:1, c:3};
-
-print(m1 != m2);        // prints false
-
-print(m1 != m3);        // prints true
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(x: u16, y: u16) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn !=(x: u128, y: u128) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(x: i128, y: i128) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(x: u32, y: u32) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(x: f32, y: f32) -> bool
 ```
 
 </div>
@@ -168,7 +61,33 @@ Operator `!=` for `Status`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(x: i8, y: i8) -> bool
+fn !=(timestamp1: Instant, timestamp2: Instant) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return `true` if two timestamps are not equal.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn !=(x: u64, y: u64) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn !=(x: u16, y: u16) -> bool
 ```
 
 </div>
@@ -188,7 +107,7 @@ fn !=(x: i16, y: i16) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(array1: Array, array2: Array) -> Result<bool, Box<EvalAltResult>>
+fn !=(array1: Array, array2: Array) -> bool
 ```
 
 <details>
@@ -219,6 +138,67 @@ print(x != z);      // prints true
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn !=(map1: Map, map2: Map) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return `true` if two object maps are not equal (i.e. at least one property value is not equal).
+
+The operator `==` is used to compare property values and must be defined,
+otherwise `false` is assumed.
+
+# Example
+
+```rhai
+let m1 = #{a:1, b:2, c:3};
+let m2 = #{a:1, b:2, c:3};
+let m3 = #{a:1, c:3};
+
+print(m1 != m2);        // prints false
+
+print(m1 != m3);        // prints true
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn !=(x: int, y: f32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn !=(x: f32, y: f32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn !=(x: i8, y: i8) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn !=(x: f32, y: int) -> bool
 ```
 
@@ -239,7 +219,117 @@ fn !=(x: float, y: int) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn !=(x: int, y: f32) -> bool
+fn !=(x: u8, y: u8) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn !=(x: u32, y: u32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn !=(x: i128, y: i128) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: i128, y: i128) -> i128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: u64, y: u64) -> u64
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: i16, y: i16) -> i16
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: u16, y: u16) -> u16
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: u8, y: u8) -> u8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: u32, y: u32) -> u32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: i32, y: i32) -> i32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: u128, y: u128) -> u128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn %(x: i8, y: i8) -> i8
 ```
 
 </div>
@@ -259,87 +349,7 @@ fn %(x: f32, y: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn %(x: u128, y: u128) -> Result<u128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: u16, y: u16) -> Result<u16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: u8, y: u8) -> Result<u8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: i8, y: i8) -> Result<i8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: u64, y: u64) -> Result<u64, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: u32, y: u32) -> Result<u32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: i128, y: i128) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: i32, y: i32) -> Result<i32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn %(x: i16, y: i16) -> Result<i16, Box<EvalAltResult>>
+fn %(x: f32, y: int) -> f32
 ```
 
 </div>
@@ -359,57 +369,7 @@ fn %(x: int, y: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn %(x: f32, y: int) -> f32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn &(x: i128, y: i128) -> i128
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn &(x: u16, y: u16) -> u16
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn &(x: i16, y: i16) -> i16
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn &(x: u64, y: u64) -> u64
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn &(x: i32, y: i32) -> i32
 ```
 
 </div>
@@ -449,117 +409,47 @@ fn &(x: i8, y: i8) -> i8
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn &(x: u64, y: u64) -> u64
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn &(x: i32, y: i32) -> i32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn &(x: i16, y: i16) -> i16
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn &(x: i128, y: i128) -> i128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn &(x: u128, y: u128) -> u128
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: i32, y: i32) -> Result<i32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: i8, y: i8) -> Result<i8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: int, y: f32) -> f32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: f32, y: f32) -> f32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: u8, y: u8) -> Result<u8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: u64, y: u64) -> Result<u64, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: i16, y: i16) -> Result<i16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: i128, y: i128) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: u128, y: u128) -> Result<u128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: u32, y: u32) -> Result<u32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn *(x: u16, y: u16) -> Result<u16, Box<EvalAltResult>>
 ```
 
 </div>
@@ -579,7 +469,7 @@ fn *(x: f32, y: int) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn **(x: u8, y: int) -> Result<u8, Box<EvalAltResult>>
+fn *(x: i128, y: i128) -> i128
 ```
 
 </div>
@@ -589,7 +479,147 @@ fn **(x: u8, y: int) -> Result<u8, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn **(x: i8, y: int) -> Result<i8, Box<EvalAltResult>>
+fn *(x: i32, y: i32) -> i32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: i8, y: i8) -> i8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: u32, y: u32) -> u32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: i16, y: i16) -> i16
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: u8, y: u8) -> u8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: f32, y: f32) -> f32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: u64, y: u64) -> u64
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: int, y: f32) -> f32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: u128, y: u128) -> u128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn *(x: u16, y: u16) -> u16
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn **(x: u32, y: int) -> u32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn **(x: u8, y: int) -> u8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn **(x: f32, y: int) -> f32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn **(x: i128, y: int) -> i128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn **(x: i32, y: int) -> i32
 ```
 
 </div>
@@ -609,7 +639,7 @@ fn **(x: f32, y: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn **(x: u64, y: int) -> Result<u64, Box<EvalAltResult>>
+fn **(x: u128, y: int) -> u128
 ```
 
 </div>
@@ -619,7 +649,7 @@ fn **(x: u64, y: int) -> Result<u64, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn **(x: i16, y: int) -> Result<i16, Box<EvalAltResult>>
+fn **(x: i16, y: int) -> i16
 ```
 
 </div>
@@ -629,7 +659,7 @@ fn **(x: i16, y: int) -> Result<i16, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn **(x: u128, y: int) -> Result<u128, Box<EvalAltResult>>
+fn **(x: u16, y: int) -> u16
 ```
 
 </div>
@@ -639,7 +669,7 @@ fn **(x: u128, y: int) -> Result<u128, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn **(x: u32, y: int) -> Result<u32, Box<EvalAltResult>>
+fn **(x: u64, y: int) -> u64
 ```
 
 </div>
@@ -649,87 +679,7 @@ fn **(x: u32, y: int) -> Result<u32, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn **(x: f32, y: int) -> Result<f32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn **(x: i32, y: int) -> Result<i32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn **(x: i128, y: int) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn **(x: u16, y: int) -> Result<u16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: i16) -> i16
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: int) -> int
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: i32) -> i32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: i8) -> i8
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: i128) -> i128
+fn **(x: i8, y: int) -> i8
 ```
 
 </div>
@@ -759,7 +709,7 @@ fn +(x: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(_item: (), string: String) -> String
+fn +(x: i16) -> i16
 ```
 
 </div>
@@ -769,7 +719,7 @@ fn +(_item: (), string: String) -> String
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(item: ?, string: String) -> String
+fn +(x: i128) -> i128
 ```
 
 </div>
@@ -779,7 +729,7 @@ fn +(item: ?, string: String) -> String
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(string: String, mut item: ?) -> String
+fn +(x: i8) -> i8
 ```
 
 </div>
@@ -789,34 +739,7 @@ fn +(string: String, mut item: ?) -> String
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(array1: Array, array2: Array) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Combine two arrays into a new array and return it.
-
-# Example
-
-```rhai
-let x = [1, 2, 3];
-let y = [true, 'x'];
-
-print(x + y);   // prints "[1, 2, 3, true, 'x']"
-
-print(x);       // prints "[1, 2, 3"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: u64, y: u64) -> Result<u64, Box<EvalAltResult>>
+fn +(x: int) -> int
 ```
 
 </div>
@@ -826,7 +749,7 @@ fn +(x: u64, y: u64) -> Result<u64, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(x: u16, y: u16) -> Result<u16, Box<EvalAltResult>>
+fn +(x: i32) -> i32
 ```
 
 </div>
@@ -836,7 +759,27 @@ fn +(x: u16, y: u16) -> Result<u16, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(x: u32, y: u32) -> Result<u32, Box<EvalAltResult>>
+fn +(x: u64, y: u64) -> u64
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(x: i16, y: i16) -> i16
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(x: u32, y: u32) -> u32
 ```
 
 </div>
@@ -856,7 +799,143 @@ fn +(x: int, y: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(x: i8, y: i8) -> Result<i8, Box<EvalAltResult>>
+fn +(item: ?, string: String) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(utf8: Blob, string: String) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(string1: String, string2: String) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(string: String, utf8: Blob) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(character: char, string: String) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(_item: (), string: String) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(x: i8, y: i8) -> i8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(x: f32, y: f32) -> f32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(x: u8, y: u8) -> u8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(string: String, character: char) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(string: String, item: ()) -> String
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(timestamp: Instant, seconds: float) -> Instant
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Add the specified number of `seconds` to the timestamp and return it as a new timestamp.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(x: i32, y: i32) -> i32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn +(x: i128, y: i128) -> i128
 ```
 
 </div>
@@ -894,7 +973,7 @@ print(m);           // prints "#{a:1, b:2, c:3}"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(character: char, string: String) -> String
+fn +(x: u16, y: u16) -> u16
 ```
 
 </div>
@@ -904,43 +983,24 @@ fn +(character: char, string: String) -> String
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(x: i32, y: i32) -> Result<i32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(utf8: Blob, string: String) -> String
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(string: String, utf8: Blob) -> String
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(timestamp: Instant, seconds: int) -> Result<Instant, Box<EvalAltResult>>
+fn +(array1: Array, array2: Array) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Add the specified number of `seconds` to the timestamp and return it as a new timestamp.
+Combine two arrays into a new array and return it.
+
+# Example
+
+```rhai
+let x = [1, 2, 3];
+let y = [true, 'x'];
+
+print(x + y);   // prints "[1, 2, 3, true, 'x']"
+
+print(x);       // prints "[1, 2, 3"
+```
 </details>
 
 </div>
@@ -950,7 +1010,7 @@ Add the specified number of `seconds` to the timestamp and return it as a new ti
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(x: i16, y: i16) -> Result<i16, Box<EvalAltResult>>
+fn +(x: u128, y: u128) -> u128
 ```
 
 </div>
@@ -960,7 +1020,7 @@ fn +(x: i16, y: i16) -> Result<i16, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(string: String, character: char) -> String
+fn +(string: String, mut item: ?) -> String
 ```
 
 </div>
@@ -970,8 +1030,14 @@ fn +(string: String, character: char) -> String
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(string1: String, string2: String) -> String
+fn +(timestamp: Instant, seconds: int) -> Instant
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Add the specified number of `seconds` to the timestamp and return it as a new timestamp.
+</details>
 
 </div>
 </br>
@@ -990,43 +1056,13 @@ fn +(x: f32, y: int) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(x: u8, y: u8) -> Result<u8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: u128, y: u128) -> Result<u128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(x: i128, y: i128) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +(timestamp: Instant, seconds: float) -> Result<Instant, Box<EvalAltResult>>
+fn +=(timestamp: Instant, seconds: int) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Add the specified number of `seconds` to the timestamp and return it as a new timestamp.
+Add the specified number of `seconds` to the timestamp.
 </details>
 
 </div>
@@ -1036,8 +1072,14 @@ Add the specified number of `seconds` to the timestamp and return it as a new ti
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(string: String, item: ()) -> String
+fn +=(timestamp: Instant, seconds: float) -> ()
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Add the specified number of `seconds` to the timestamp.
+</details>
 
 </div>
 </br>
@@ -1046,7 +1088,7 @@ fn +(string: String, item: ()) -> String
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +(x: f32, y: f32) -> f32
+fn +=(string1: String, string2: String)
 ```
 
 </div>
@@ -1066,14 +1108,8 @@ fn +=(string: String, character: char)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +=(timestamp: Instant, seconds: int) -> Result<(), Box<EvalAltResult>>
+fn +=(string: String, item: ())
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add the specified number of `seconds` to the timestamp.
-</details>
 
 </div>
 </br>
@@ -1092,43 +1128,7 @@ fn +=(string: String, utf8: Blob)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn +=(timestamp: Instant, seconds: float) -> Result<(), Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add the specified number of `seconds` to the timestamp.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn +=(string: String, mut item: ?)
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +=(string: String, item: ())
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn +=(string1: String, string2: String)
 ```
 
 </div>
@@ -1166,7 +1166,7 @@ print(m);       // prints "#{a:42, b:2, c:3, d:0}"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: float) -> float
+fn -(x: i16) -> i16
 ```
 
 </div>
@@ -1176,7 +1176,7 @@ fn -(x: float) -> float
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: int) -> Result<int, Box<EvalAltResult>>
+fn -(x: i128) -> i128
 ```
 
 </div>
@@ -1186,7 +1186,7 @@ fn -(x: int) -> Result<int, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: i32) -> Result<i32, Box<EvalAltResult>>
+fn -(x: int) -> int
 ```
 
 </div>
@@ -1206,7 +1206,7 @@ fn -(x: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: i16) -> Result<i16, Box<EvalAltResult>>
+fn -(x: float) -> float
 ```
 
 </div>
@@ -1216,7 +1216,7 @@ fn -(x: i16) -> Result<i16, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: i128) -> Result<i128, Box<EvalAltResult>>
+fn -(x: i32) -> i32
 ```
 
 </div>
@@ -1226,7 +1226,7 @@ fn -(x: i128) -> Result<i128, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: i8) -> Result<i8, Box<EvalAltResult>>
+fn -(x: i8) -> i8
 ```
 
 </div>
@@ -1236,7 +1236,7 @@ fn -(x: i8) -> Result<i8, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: i16, y: i16) -> Result<i16, Box<EvalAltResult>>
+fn -(x: u32, y: u32) -> u32
 ```
 
 </div>
@@ -1246,7 +1246,7 @@ fn -(x: i16, y: i16) -> Result<i16, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: i8, y: i8) -> Result<i8, Box<EvalAltResult>>
+fn -(x: i32, y: i32) -> i32
 ```
 
 </div>
@@ -1256,7 +1256,7 @@ fn -(x: i8, y: i8) -> Result<i8, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: u64, y: u64) -> Result<u64, Box<EvalAltResult>>
+fn -(x: u8, y: u8) -> u8
 ```
 
 </div>
@@ -1266,14 +1266,8 @@ fn -(x: u64, y: u64) -> Result<u64, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(timestamp: Instant, seconds: float) -> Result<Instant, Box<EvalAltResult>>
+fn -(x: u64, y: u64) -> u64
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Subtract the specified number of `seconds` from the timestamp and return it as a new timestamp.
-</details>
 
 </div>
 </br>
@@ -1282,30 +1276,8 @@ Subtract the specified number of `seconds` from the timestamp and return it as a
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(timestamp1: Instant, timestamp2: Instant) -> Result<?, Box<EvalAltResult>>
+fn -(x: u16, y: u16) -> u16
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the number of seconds between two timestamps.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn -(timestamp: Instant, seconds: int) -> Result<Instant, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Subtract the specified number of `seconds` from the timestamp and return it as a new timestamp.
-</details>
 
 </div>
 </br>
@@ -1324,7 +1296,23 @@ fn -(x: f32, y: int) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: u16, y: u16) -> Result<u16, Box<EvalAltResult>>
+fn -(timestamp1: Instant, timestamp2: Instant) -> ?
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the number of seconds between two timestamps.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn -(x: i128, y: i128) -> i128
 ```
 
 </div>
@@ -1334,8 +1322,34 @@ fn -(x: u16, y: u16) -> Result<u16, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -(x: i32, y: i32) -> Result<i32, Box<EvalAltResult>>
+fn -(x: i16, y: i16) -> i16
 ```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn -(x: u128, y: u128) -> u128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn -(timestamp: Instant, seconds: int) -> Instant
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Subtract the specified number of `seconds` from the timestamp and return it as a new timestamp.
+</details>
 
 </div>
 </br>
@@ -1345,46 +1359,6 @@ fn -(x: i32, y: i32) -> Result<i32, Box<EvalAltResult>>
 
 ```rust
 fn -(x: int, y: f32) -> f32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn -(x: u32, y: u32) -> Result<u32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn -(x: u128, y: u128) -> Result<u128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn -(x: i128, y: i128) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn -(x: u8, y: u8) -> Result<u8, Box<EvalAltResult>>
 ```
 
 </div>
@@ -1404,7 +1378,33 @@ fn -(x: f32, y: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -=(timestamp: Instant, seconds: int) -> Result<(), Box<EvalAltResult>>
+fn -(x: i8, y: i8) -> i8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn -(timestamp: Instant, seconds: float) -> Instant
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Subtract the specified number of `seconds` from the timestamp and return it as a new timestamp.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn -=(timestamp: Instant, seconds: int) -> ()
 ```
 
 <details>
@@ -1420,7 +1420,7 @@ Subtract the specified number of `seconds` from the timestamp.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn -=(timestamp: Instant, seconds: float) -> Result<(), Box<EvalAltResult>>
+fn -=(timestamp: Instant, seconds: float) -> ()
 ```
 
 <details>
@@ -1436,7 +1436,7 @@ Subtract the specified number of `seconds` from the timestamp.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn /(x: f32, y: f32) -> f32
+fn /(x: i8, y: i8) -> i8
 ```
 
 </div>
@@ -1446,97 +1446,7 @@ fn /(x: f32, y: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn /(x: i8, y: i8) -> Result<i8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: u128, y: u128) -> Result<u128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: i16, y: i16) -> Result<i16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: u32, y: u32) -> Result<u32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: i32, y: i32) -> Result<i32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: f32, y: int) -> f32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: u16, y: u16) -> Result<u16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: u8, y: u8) -> Result<u8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: i128, y: i128) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn /(x: u64, y: u64) -> Result<u64, Box<EvalAltResult>>
+fn /(x: i16, y: i16) -> i16
 ```
 
 </div>
@@ -1556,6 +1466,106 @@ fn /(x: int, y: f32) -> f32
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn /(x: i32, y: i32) -> i32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: u64, y: u64) -> u64
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: i128, y: i128) -> i128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: u32, y: u32) -> u32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: u128, y: u128) -> u128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: f32, y: f32) -> f32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: f32, y: int) -> f32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: u8, y: u8) -> u8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn /(x: u16, y: u16) -> u16
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <(x: int, y: float) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn <(x: i16, y: i16) -> bool
 ```
 
@@ -1566,7 +1576,7 @@ fn <(x: i16, y: i16) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: float, y: int) -> bool
+fn <(x: f32, y: f32) -> bool
 ```
 
 </div>
@@ -1586,7 +1596,37 @@ fn <(x: u128, y: u128) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn <(x: i32, y: i32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <(x: u64, y: u64) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn <(x: u32, y: u32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <(x: i128, y: i128) -> bool
 ```
 
 </div>
@@ -1612,7 +1652,7 @@ Return `true` if the first timestamp is earlier than the second.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: f32, y: int) -> bool
+fn <(x: float, y: int) -> bool
 ```
 
 </div>
@@ -1622,7 +1662,27 @@ fn <(x: f32, y: int) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: f32, y: f32) -> bool
+fn <(x: int, y: f32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <(x: u16, y: u16) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <(x: f32, y: int) -> bool
 ```
 
 </div>
@@ -1652,7 +1712,7 @@ fn <(x: u8, y: u8) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: int, y: float) -> bool
+fn <<(x: u64, y: int) -> u64
 ```
 
 </div>
@@ -1662,7 +1722,7 @@ fn <(x: int, y: float) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: u16, y: u16) -> bool
+fn <<(x: u32, y: int) -> u32
 ```
 
 </div>
@@ -1672,7 +1732,7 @@ fn <(x: u16, y: u16) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: int, y: f32) -> bool
+fn <<(x: u8, y: int) -> u8
 ```
 
 </div>
@@ -1682,7 +1742,7 @@ fn <(x: int, y: f32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: u64, y: u64) -> bool
+fn <<(x: i32, y: int) -> i32
 ```
 
 </div>
@@ -1692,7 +1752,7 @@ fn <(x: u64, y: u64) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: i128, y: i128) -> bool
+fn <<(x: i8, y: int) -> i8
 ```
 
 </div>
@@ -1702,7 +1762,7 @@ fn <(x: i128, y: i128) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <(x: i32, y: i32) -> bool
+fn <<(x: i16, y: int) -> i16
 ```
 
 </div>
@@ -1712,7 +1772,7 @@ fn <(x: i32, y: i32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <<(x: u64, y: int) -> Result<u64, Box<EvalAltResult>>
+fn <<(x: i128, y: int) -> i128
 ```
 
 </div>
@@ -1722,7 +1782,7 @@ fn <<(x: u64, y: int) -> Result<u64, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <<(x: u32, y: int) -> Result<u32, Box<EvalAltResult>>
+fn <<(x: u128, y: int) -> u128
 ```
 
 </div>
@@ -1732,7 +1792,7 @@ fn <<(x: u32, y: int) -> Result<u32, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <<(x: i32, y: int) -> Result<i32, Box<EvalAltResult>>
+fn <<(x: u16, y: int) -> u16
 ```
 
 </div>
@@ -1742,57 +1802,7 @@ fn <<(x: i32, y: int) -> Result<i32, Box<EvalAltResult>>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <<(x: u16, y: int) -> Result<u16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <<(x: i8, y: int) -> Result<i8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <<(x: i128, y: int) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <<(x: u8, y: int) -> Result<u8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <<(x: u128, y: int) -> Result<u128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <<(x: i16, y: int) -> Result<i16, Box<EvalAltResult>>
+fn <=(x: u8, y: u8) -> bool
 ```
 
 </div>
@@ -1812,7 +1822,17 @@ fn <=(x: u128, y: u128) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <=(x: u64, y: u64) -> bool
+fn <=(x: i128, y: i128) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <=(x: int, y: f32) -> bool
 ```
 
 </div>
@@ -1832,16 +1852,6 @@ fn <=(x: u32, y: u32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <=(x: f32, y: f32) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn <=(x: f32, y: int) -> bool
 ```
 
@@ -1852,17 +1862,7 @@ fn <=(x: f32, y: int) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <=(x: i128, y: i128) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <=(x: i32, y: i32) -> bool
+fn <=(x: u16, y: u16) -> bool
 ```
 
 </div>
@@ -1882,7 +1882,57 @@ fn <=(x: i8, y: i8) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn <=(x: i32, y: i32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn <=(x: float, y: int) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <=(x: i16, y: i16) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <=(x: f32, y: f32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <=(x: u64, y: u64) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn <=(x: int, y: float) -> bool
 ```
 
 </div>
@@ -1908,87 +1958,7 @@ Return `true` if the first timestamp is earlier than or equals to the second.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn <=(x: i16, y: i16) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <=(x: u16, y: u16) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <=(x: int, y: float) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <=(x: int, y: f32) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn <=(x: u8, y: u8) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(x: int, y: f32) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(x: u16, y: u16) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(x: u128, y: u128) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(x: i16, y: i16) -> bool
+fn ==(x: float, y: int) -> bool
 ```
 
 </div>
@@ -2008,7 +1978,7 @@ fn ==(x: int, y: float) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(x: float, y: int) -> bool
+fn ==(x: u128, y: u128) -> bool
 ```
 
 </div>
@@ -2018,7 +1988,69 @@ fn ==(x: float, y: int) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn ==(timestamp1: Instant, timestamp2: Instant) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return `true` if two timestamps are equal.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ==(in1: Status, in2: Status) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `==` for `Status`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn ==(x: i8, y: i8) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ==(x: f32, y: int) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ==(x: u32, y: u32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ==(x: i32, y: i32) -> bool
 ```
 
 </div>
@@ -2048,7 +2080,7 @@ fn ==(x: u64, y: u64) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(x: u32, y: u32) -> bool
+fn ==(x: i128, y: i128) -> bool
 ```
 
 </div>
@@ -2058,29 +2090,8 @@ fn ==(x: u32, y: u32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(map1: Map, map2: Map) -> Result<bool, Box<EvalAltResult>>
+fn ==(x: f32, y: f32) -> bool
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return `true` if two object maps are equal (i.e. all property values are equal).
-
-The operator `==` is used to compare property values and must be defined,
-otherwise `false` is assumed.
-
-# Example
-
-```rhai
-let m1 = #{a:1, b:2, c:3};
-let m2 = #{a:1, b:2, c:3};
-let m3 = #{a:1, c:3};
-
-print(m1 == m2);        // prints true
-
-print(m1 == m3);        // prints false
-```
-</details>
 
 </div>
 </br>
@@ -2089,14 +2100,8 @@ print(m1 == m3);        // prints false
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(in1: Status, in2: Status) -> bool
+fn ==(x: u16, y: u16) -> bool
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Operator `==` for `Status`
-</details>
 
 </div>
 </br>
@@ -2105,7 +2110,7 @@ Operator `==` for `Status`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(array1: Array, array2: Array) -> Result<bool, Box<EvalAltResult>>
+fn ==(array1: Array, array2: Array) -> bool
 ```
 
 <details>
@@ -2136,7 +2141,7 @@ print(x == z);      // prints false
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(x: i128, y: i128) -> bool
+fn ==(x: int, y: f32) -> bool
 ```
 
 </div>
@@ -2146,7 +2151,7 @@ fn ==(x: i128, y: i128) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(x: f32, y: f32) -> bool
+fn ==(x: i16, y: i16) -> bool
 ```
 
 </div>
@@ -2156,33 +2161,28 @@ fn ==(x: f32, y: f32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ==(x: i32, y: i32) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(x: f32, y: int) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(timestamp1: Instant, timestamp2: Instant) -> bool
+fn ==(map1: Map, map2: Map) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return `true` if two timestamps are equal.
+Return `true` if two object maps are equal (i.e. all property values are equal).
+
+The operator `==` is used to compare property values and must be defined,
+otherwise `false` is assumed.
+
+# Example
+
+```rhai
+let m1 = #{a:1, b:2, c:3};
+let m2 = #{a:1, b:2, c:3};
+let m3 = #{a:1, c:3};
+
+print(m1 == m2);        // prints true
+
+print(m1 == m3);        // prints false
+```
 </details>
 
 </div>
@@ -2192,7 +2192,7 @@ Return `true` if two timestamps are equal.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >(x: u64, y: u64) -> bool
+fn >(x: int, y: float) -> bool
 ```
 
 </div>
@@ -2202,27 +2202,7 @@ fn >(x: u64, y: u64) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >(x: u16, y: u16) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >(x: i32, y: i32) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >(x: f32, y: f32) -> bool
+fn >(x: int, y: f32) -> bool
 ```
 
 </div>
@@ -2233,26 +2213,6 @@ fn >(x: f32, y: f32) -> bool
 
 ```rust
 fn >(x: i128, y: i128) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >(x: u128, y: u128) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >(x: f32, y: int) -> bool
 ```
 
 </div>
@@ -2278,7 +2238,37 @@ Return `true` if the first timestamp is later than the second.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >(x: u32, y: u32) -> bool
+fn >(x: f32, y: f32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >(x: u16, y: u16) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >(x: u128, y: u128) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >(x: u8, y: u8) -> bool
 ```
 
 </div>
@@ -2308,7 +2298,17 @@ fn >(x: i16, y: i16) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >(x: int, y: f32) -> bool
+fn >(x: i32, y: i32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >(x: f32, y: int) -> bool
 ```
 
 </div>
@@ -2328,7 +2328,7 @@ fn >(x: float, y: int) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >(x: int, y: float) -> bool
+fn >(x: u32, y: u32) -> bool
 ```
 
 </div>
@@ -2338,7 +2338,7 @@ fn >(x: int, y: float) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >(x: u8, y: u8) -> bool
+fn >(x: u64, y: u64) -> bool
 ```
 
 </div>
@@ -2358,7 +2358,7 @@ fn >=(x: i16, y: i16) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: i8, y: i8) -> bool
+fn >=(x: i128, y: i128) -> bool
 ```
 
 </div>
@@ -2368,7 +2368,47 @@ fn >=(x: i8, y: i8) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: i128, y: i128) -> bool
+fn >=(x: u128, y: u128) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: u16, y: u16) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: f32, y: int) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: i32, y: i32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: i8, y: i8) -> bool
 ```
 
 </div>
@@ -2388,7 +2428,27 @@ fn >=(x: u64, y: u64) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: float, y: int) -> bool
+fn >=(x: f32, y: f32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: u32, y: u32) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: int, y: f32) -> bool
 ```
 
 </div>
@@ -2399,6 +2459,26 @@ fn >=(x: float, y: int) -> bool
 
 ```rust
 fn >=(x: int, y: float) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: float, y: int) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn >=(x: u8, y: u8) -> bool
 ```
 
 </div>
@@ -2424,7 +2504,7 @@ Return `true` if the first timestamp is later than or equals to the second.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: f32, y: int) -> bool
+fn >>(x: i32, y: int) -> i32
 ```
 
 </div>
@@ -2434,7 +2514,7 @@ fn >=(x: f32, y: int) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: u32, y: u32) -> bool
+fn >>(x: i16, y: int) -> i16
 ```
 
 </div>
@@ -2444,7 +2524,7 @@ fn >=(x: u32, y: u32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: i32, y: i32) -> bool
+fn >>(x: i8, y: int) -> i8
 ```
 
 </div>
@@ -2454,7 +2534,7 @@ fn >=(x: i32, y: i32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: u128, y: u128) -> bool
+fn >>(x: u128, y: int) -> u128
 ```
 
 </div>
@@ -2464,7 +2544,7 @@ fn >=(x: u128, y: u128) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: int, y: f32) -> bool
+fn >>(x: u64, y: int) -> u64
 ```
 
 </div>
@@ -2474,7 +2554,7 @@ fn >=(x: int, y: f32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: f32, y: f32) -> bool
+fn >>(x: u8, y: int) -> u8
 ```
 
 </div>
@@ -2484,7 +2564,7 @@ fn >=(x: f32, y: f32) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: u16, y: u16) -> bool
+fn >>(x: i128, y: int) -> i128
 ```
 
 </div>
@@ -2494,7 +2574,7 @@ fn >=(x: u16, y: u16) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >=(x: u8, y: u8) -> bool
+fn >>(x: u32, y: int) -> u32
 ```
 
 </div>
@@ -2504,87 +2584,7 @@ fn >=(x: u8, y: u8) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn >>(x: i8, y: int) -> Result<i8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: u128, y: int) -> Result<u128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: u32, y: int) -> Result<u32, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: u8, y: int) -> Result<u8, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: u16, y: int) -> Result<u16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: u64, y: int) -> Result<u64, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: i128, y: int) -> Result<i128, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: i16, y: int) -> Result<i16, Box<EvalAltResult>>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn >>(x: i32, y: int) -> Result<i32, Box<EvalAltResult>>
+fn >>(x: u16, y: int) -> u16
 ```
 
 </div>
@@ -2626,6 +2626,16 @@ Return the number π.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn ^(x: i32, y: i32) -> i32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn ^(x: u32, y: u32) -> u32
 ```
 
@@ -2646,27 +2656,7 @@ fn ^(x: u128, y: u128) -> u128
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn ^(x: i32, y: i32) -> i32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ^(x: u8, y: u8) -> u8
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ^(x: u64, y: u64) -> u64
+fn ^(x: i128, y: i128) -> i128
 ```
 
 </div>
@@ -2677,16 +2667,6 @@ fn ^(x: u64, y: u64) -> u64
 
 ```rust
 fn ^(x: i16, y: i16) -> i16
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ^(x: i128, y: i128) -> i128
 ```
 
 </div>
@@ -2716,7 +2696,27 @@ fn ^(x: i8, y: i8) -> i8
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn abs(x: i8) -> Result<i8, Box<EvalAltResult>>
+fn ^(x: u64, y: u64) -> u64
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn ^(x: u8, y: u8) -> u8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn abs(x: int) -> int
 ```
 
 <details>
@@ -2732,7 +2732,7 @@ Return the absolute value of the number.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn abs(x: int) -> Result<int, Box<EvalAltResult>>
+fn abs(x: i128) -> i128
 ```
 
 <details>
@@ -2748,7 +2748,7 @@ Return the absolute value of the number.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn abs(x: i32) -> Result<i32, Box<EvalAltResult>>
+fn abs(x: i16) -> i16
 ```
 
 <details>
@@ -2764,29 +2764,13 @@ Return the absolute value of the number.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn abs(x: i128) -> Result<i128, Box<EvalAltResult>>
+fn abs(x: i32) -> i32
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
 Return the absolute value of the number.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn abs(x: float) -> float
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the absolute value of the floating-point number.
 </details>
 
 </div>
@@ -2812,7 +2796,23 @@ Return the absolute value of the floating-point number.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn abs(x: i16) -> Result<i16, Box<EvalAltResult>>
+fn abs(x: float) -> float
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the absolute value of the floating-point number.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn abs(x: i8) -> i8
 ```
 
 <details>
@@ -2844,7 +2844,7 @@ Return a [`Status::Accept`] with the default code associated
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn accept(code: SharedObject) -> Status
+fn accept(code: String) -> Status
 ```
 
 <details>
@@ -2864,7 +2864,7 @@ Return a [`Status::Accept`] with `code`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn accept(code: String) -> Status
+fn accept(code: SharedObject) -> Status
 ```
 
 <details>
@@ -2916,22 +2916,6 @@ Return the arc-hyperbolic-cosine of the floating-point number, in radians.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-add a recipient to the envelop.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
 ```
 
@@ -2948,13 +2932,13 @@ add a recipient to the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn add_rcpt_message(message: Message, new_addr: String) -> ()
+fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-add a recipient to the 'To' mail header.
+add a recipient to the envelop.
 </details>
 
 </div>
@@ -2980,7 +2964,23 @@ add a recipient to the 'To' mail header.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn all(array: Array, filter: FnPtr) -> Result<bool, Box<EvalAltResult>>
+fn add_rcpt_message(message: Message, new_addr: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+add a recipient to the 'To' mail header.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn all(array: Array, filter: FnPtr) -> bool
 ```
 
 <details>
@@ -3013,7 +3013,7 @@ print(x.all(|v, i| i > v));     // prints false
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn all(array: Array, filter: String) -> Result<bool, Box<EvalAltResult>>
+fn all(array: Array, filter: String) -> bool
 ```
 
 <details>
@@ -3048,33 +3048,6 @@ print(x.all(|v, i| i > v));     // prints false
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn append(array: Array, new_array: Array)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add all the elements of another array to the end of the array.
-
-# Example
-
-```rhai
-let x = [1, 2, 3];
-let y = [true, 'x'];
-
-x.append(y);
-
-print(x);       // prints "[1, 2, 3, true, 'x']"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn append(blob: Blob, string: String)
 ```
 
@@ -3091,42 +3064,6 @@ let b = blob(5, 0x42);
 b.append("hello");
 
 print(b);       // prints "[424242424268656c 6c6f]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn append(string: String, mut item: ?)
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn append(blob: Blob, character: char)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add a character (as UTF-8 encoded byte-stream) to the end of the BLOB
-
-# Example
-
-```rhai
-let b = blob(5, 0x42);
-
-b.append('!');
-
-print(b);       // prints "[424242424221]"
 ```
 </details>
 
@@ -3164,6 +3101,79 @@ print(b1);      // prints "[4242424242111111]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn append(array: Array, new_array: Array)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Add all the elements of another array to the end of the array.
+
+# Example
+
+```rhai
+let x = [1, 2, 3];
+let y = [true, 'x'];
+
+x.append(y);
+
+print(x);       // prints "[1, 2, 3, true, 'x']"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn append(blob: Blob, character: char)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Add a character (as UTF-8 encoded byte-stream) to the end of the BLOB
+
+# Example
+
+```rhai
+let b = blob(5, 0x42);
+
+b.append('!');
+
+print(b);       // prints "[424242424221]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn append(string: String, mut item: ?)
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn append(string: String, utf8: Blob)
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn append(blob: Blob, value: int)
 ```
 
@@ -3184,16 +3194,6 @@ b.push(0x42);
 print(b);       // prints "[42]"
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn append(string: String, utf8: Blob)
-```
 
 </div>
 </br>
@@ -3379,6 +3379,32 @@ for bit in x.bits() {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn bits(value: int, range: Range<int>) -> Iterator<bool>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over an exclusive range of bits in the number.
+
+# Example
+
+```rhai
+let x = 123456;
+
+for bit in x.bits(10..24) {
+    print(bit);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn bits(value: int, from: int) -> Iterator<bool>
 ```
 
@@ -3421,32 +3447,6 @@ Return an iterator over an inclusive range of bits in the number.
 let x = 123456;
 
 for bit in x.bits(10..=23) {
-    print(bit);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn bits(value: int, range: Range<int>) -> Iterator<bool>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over an exclusive range of bits in the number.
-
-# Example
-
-```rhai
-let x = 123456;
-
-for bit in x.bits(10..24) {
     print(bit);
 }
 ```
@@ -3505,7 +3505,7 @@ Return a new, empty BLOB.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn blob(len: int) -> Result<Blob, Box<EvalAltResult>>
+fn blob(len: int) -> Blob
 ```
 
 <details>
@@ -3531,7 +3531,7 @@ print(b);       // prints "[0000000000000000 0000]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn blob(len: int, value: int) -> Result<Blob, Box<EvalAltResult>>
+fn blob(len: int, value: int) -> Blob
 ```
 
 <details>
@@ -3623,22 +3623,18 @@ for ch in "hello, world!".chars() {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn chars(string: String, from: int) -> Iterator<char>
+fn chars(string: String, range: Range<int>) -> Iterator<char>
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return an iterator over the characters in the string starting from the `start` position.
-
-* If `start` < 0, position counts from the end of the string (`-1` is the last character).
-* If `start` < -length of string, position counts from the beginning of the string.
-* If `start` ≥ length of string, an empty iterator is returned.
+Return an iterator over an exclusive range of characters in the string.
 
 # Example
 
 ```rhai
-for ch in "hello, world!".chars(2) {
+for ch in "hello, world!".chars(2..5) {
     print(ch);
 }
 ```
@@ -3675,18 +3671,22 @@ for ch in "hello, world!".chars(2..=6) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn chars(string: String, range: Range<int>) -> Iterator<char>
+fn chars(string: String, from: int) -> Iterator<char>
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return an iterator over an exclusive range of characters in the string.
+Return an iterator over the characters in the string starting from the `start` position.
+
+* If `start` < 0, position counts from the end of the string (`-1` is the last character).
+* If `start` < -length of string, position counts from the beginning of the string.
+* If `start` ≥ length of string, an empty iterator is returned.
 
 # Example
 
 ```rhai
-for ch in "hello, world!".chars(2..5) {
+for ch in "hello, world!".chars(2) {
     print(ch);
 }
 ```
@@ -3729,7 +3729,7 @@ for ch in "hello, world!".chars(2, 4) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn check_spf(ctx: Context, srv: Server) -> Map>
+fn check_spf(ctx: Context, srv: Server) -> Map
 ```
 
 <details>
@@ -3740,6 +3740,41 @@ the identity parameter can be 'helo', 'mail_from' or 'both'.
 
 # Results
 a rhai Map with:
+   * result (String) : the result of an SPF evaluation.
+   * cause  (String) : the "mechanism" that matched or the "problem" error (RFC 7208-9.1).
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn chop(array: Array, len: int)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Cut off the head of the array, leaving a tail of the specified length.
+
+* If `len` ≤ 0, the array is cleared.
+* If `len` ≥ length of array, the array is not modified.
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+x.chop(3);
+
+print(x);       // prints "[3, 4, 5]"
+
+x.chop(10);
+
+print(x);       // prints "[3, 4, 5]"
+```
 </details>
 
 </div>
@@ -3784,46 +3819,13 @@ print(b);           // prints "[030405]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn chop(array: Array, len: int)
+fn clear(map: Map)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Cut off the head of the array, leaving a tail of the specified length.
-
-* If `len` ≤ 0, the array is cleared.
-* If `len` ≥ length of array, the array is not modified.
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-x.chop(3);
-
-print(x);       // prints "[3, 4, 5]"
-
-x.chop(10);
-
-print(x);       // prints "[3, 4, 5]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn clear(array: Array)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Clear the array.
+Clear the object map.
 </details>
 
 </div>
@@ -3849,22 +3851,6 @@ Clear the string, making it empty.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn clear(map: Map)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Clear the object map.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn clear(blob: Blob)
 ```
 
@@ -3881,45 +3867,13 @@ Clear the BLOB.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn contains(range: Range<int>, value: int) -> bool
+fn clear(array: Array)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return `true` if the range contains a specified value.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn contains(array: Array, value: ?) -> Result<bool, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return `true` if the array contains an element that equals `value`.
-
-The operator `==` is used to compare elements with `value` and must be defined,
-otherwise `false` is assumed.
-
-This function also drives the `in` operator.
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-// The 'in' operator calls 'contains' in the background
-if 4 in x {
-    print("found!");
-}
-```
+Clear the array.
 </details>
 
 </div>
@@ -3945,6 +3899,38 @@ let text = "hello, world!";
 print(text.contains("hello"));  // prints true
 
 print(text.contains("hey"));    // prints false
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn contains(array: Array, value: ?) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return `true` if the array contains an element that equals `value`.
+
+The operator `==` is used to compare elements with `value` and must be defined,
+otherwise `false` is assumed.
+
+This function also drives the `in` operator.
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+// The 'in' operator calls 'contains' in the background
+if 4 in x {
+    print("found!");
+}
 ```
 </details>
 
@@ -3981,7 +3967,7 @@ print(text.contains('x'));      // prints false
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn contains(range: RangeInclusive<int>, value: int) -> bool
+fn contains(range: Range<int>, value: int) -> bool
 ```
 
 <details>
@@ -4049,6 +4035,22 @@ print(m.contains("x"));     // prints false
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn contains(range: RangeInclusive<int>, value: int) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return `true` if the range contains a specified value.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn cos(x: float) -> float
 ```
 
@@ -4081,7 +4083,7 @@ Return the hyperbolic cosine of the floating-point number in radians.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn count_header(message: Message, header: SharedObject) -> int>
+fn count_header(message: Message, header: SharedObject) -> int
 ```
 
 </div>
@@ -4091,7 +4093,7 @@ fn count_header(message: Message, header: SharedObject) -> int>
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn count_header(message: Message, header: String) -> int>
+fn count_header(message: Message, header: String) -> int
 ```
 
 <details>
@@ -4279,61 +4281,13 @@ Return the empty string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn debug(value: bool) -> String
+fn debug(string: String) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the boolean value into a string in debug format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn debug(number: f32) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of `number` into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn debug(number: float) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of `number` into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn debug(f: FnPtr) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the function pointer into a string in debug format.
+Convert the string into debug format.
 </details>
 
 </div>
@@ -4359,13 +4313,13 @@ Convert the array into a string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn debug(map: Map) -> String
+fn debug(f: FnPtr) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the object map into a string.
+Convert the function pointer into a string in debug format.
 </details>
 
 </div>
@@ -4375,13 +4329,13 @@ Convert the object map into a string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn debug(item: ?) -> String
+fn debug(unit: ()) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the value of the `item` into a string in debug format.
+Convert the unit into a string in debug format.
 </details>
 
 </div>
@@ -4391,13 +4345,13 @@ Convert the value of the `item` into a string in debug format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn debug(string: String) -> String
+fn debug(value: bool) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the string into debug format.
+Convert the boolean value into a string in debug format.
 </details>
 
 </div>
@@ -4423,13 +4377,61 @@ Convert the string into debug format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn debug(unit: ()) -> String
+fn debug(number: f32) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the unit into a string in debug format.
+Convert the value of `number` into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn debug(map: Map) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the object map into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn debug(number: float) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the value of `number` into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn debug(item: ?) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the value of the `item` into a string in debug format.
 </details>
 
 </div>
@@ -4468,7 +4470,7 @@ print(x);       // prints "[1, 2, 3, 4, 3, 2, 1]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn dedup(array: Array, comparer: String) -> Result<(), Box<EvalAltResult>>
+fn dedup(array: Array, comparer: String) -> ()
 ```
 
 <details>
@@ -4702,46 +4704,6 @@ fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn drain(array: Array, filter: FnPtr) -> Result<Array, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove all elements in the array that returns `true` when applied the `filter` function and
-return them as a new array.
-
-# Function Parameters
-
-* `element`: copy of array element
-* `index` _(optional)_: current index in the array
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-let y = x.drain(|v| v < 3);
-
-print(x);       // prints "[3, 4, 5]"
-
-print(y);       // prints "[1, 2]"
-
-let z = x.drain(|v, i| v + i > 5);
-
-print(x);       // prints "[3, 4]"
-
-print(z);       // prints "[5]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn drain(blob: Blob, range: Range<int>) -> Blob
 ```
 
@@ -4778,18 +4740,16 @@ print(b3);      // prints "[05]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn drain(array: Array, filter: String) -> Result<Array, Box<EvalAltResult>>
+fn drain(array: Array, filter: FnPtr) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Remove all elements in the array that returns `true` when applied a function named by `filter`
-and return them as a new array.
+Remove all elements in the array that returns `true` when applied the `filter` function and
+return them as a new array.
 
 # Function Parameters
-
-A function with the same name as the value of `filter` must exist taking these parameters:
 
 * `element`: copy of array element
 * `index` _(optional)_: current index in the array
@@ -4797,19 +4757,15 @@ A function with the same name as the value of `filter` must exist taking these p
 # Example
 
 ```rhai
-fn small(x) { x < 3 }
-
-fn screen(x, i) { x + i > 5 }
-
 let x = [1, 2, 3, 4, 5];
 
-let y = x.drain("small");
+let y = x.drain(|v| v < 3);
 
 print(x);       // prints "[3, 4, 5]"
 
 print(y);       // prints "[1, 2]"
 
-let z = x.drain("screen");
+let z = x.drain(|v, i| v + i > 5);
 
 print(x);       // prints "[3, 4]"
 
@@ -4860,6 +4816,86 @@ print(b3);      // prints "[05]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn drain(array: Array, range: RangeInclusive<int>) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Remove all elements in the array within an inclusive `range` and return them as a new array.
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+let y = x.drain(1..=2);
+
+print(x);       // prints "[1, 4, 5]"
+
+print(y);       // prints "[2, 3]"
+
+let z = x.drain(2..=2);
+
+print(x);       // prints "[1, 4]"
+
+print(z);       // prints "[5]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn drain(array: Array, filter: String) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Remove all elements in the array that returns `true` when applied a function named by `filter`
+and return them as a new array.
+
+# Function Parameters
+
+A function with the same name as the value of `filter` must exist taking these parameters:
+
+* `element`: copy of array element
+* `index` _(optional)_: current index in the array
+
+# Example
+
+```rhai
+fn small(x) { x < 3 }
+
+fn screen(x, i) { x + i > 5 }
+
+let x = [1, 2, 3, 4, 5];
+
+let y = x.drain("small");
+
+print(x);       // prints "[3, 4, 5]"
+
+print(y);       // prints "[1, 2]"
+
+let z = x.drain("screen");
+
+print(x);       // prints "[3, 4]"
+
+print(z);       // prints "[5]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn drain(array: Array, range: Range<int>) -> Array
 ```
 
@@ -4894,26 +4930,32 @@ print(z);       // prints "[5]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn drain(array: Array, range: RangeInclusive<int>) -> Array
+fn drain(array: Array, start: int, len: int) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Remove all elements in the array within an inclusive `range` and return them as a new array.
+Remove all elements within a portion of the array and return them as a new array.
+
+* If `start` < 0, position counts from the end of the array (`-1` is the last element).
+* If `start` < -length of array, position counts from the beginning of the array.
+* If `start` ≥ length of array, no element is removed and an empty array is returned.
+* If `len` ≤ 0, no element is removed and an empty array is returned.
+* If `start` position + `len` ≥ length of array, entire portion of the array after the `start` position is removed and returned.
 
 # Example
 
 ```rhai
 let x = [1, 2, 3, 4, 5];
 
-let y = x.drain(1..=2);
+let y = x.drain(1, 2);
 
 print(x);       // prints "[1, 4, 5]"
 
 print(y);       // prints "[2, 3]"
 
-let z = x.drain(2..=2);
+let z = x.drain(-1, 1);
 
 print(x);       // prints "[1, 4]"
 
@@ -4970,46 +5012,6 @@ print(z);       // prints "[5]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn drain(array: Array, start: int, len: int) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove all elements within a portion of the array and return them as a new array.
-
-* If `start` < 0, position counts from the end of the array (`-1` is the last element).
-* If `start` < -length of array, position counts from the beginning of the array.
-* If `start` ≥ length of array, no element is removed and an empty array is returned.
-* If `len` ≤ 0, no element is removed and an empty array is returned.
-* If `start` position + `len` ≥ length of array, entire portion of the array after the `start` position is removed and returned.
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-let y = x.drain(1, 2);
-
-print(x);       // prints "[1, 4, 5]"
-
-print(y);       // prints "[2, 3]"
-
-let z = x.drain(-1, 1);
-
-print(x);       // prints "[1, 4]"
-
-print(z);       // prints "[5]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn dump(srv: Server, mut ctx: Context, dir: SharedObject) -> ()
 ```
 
@@ -5042,7 +5044,7 @@ write the content of the current email with it's metadata in a json file.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn elapsed(timestamp: Instant) -> Result<?, Box<EvalAltResult>>
+fn elapsed(timestamp: Instant) -> ?
 ```
 
 <details>
@@ -5142,13 +5144,18 @@ Return the exponential of the floating-point number.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn extract(blob: Blob, range: Range<int>) -> Blob
+fn extract(blob: Blob, start: int) -> Blob
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Copy an exclusive `range` of the BLOB and return it as a new BLOB.
+Copy a portion of the BLOB beginning at the `start` position till the end and return it as
+a new BLOB.
+
+* If `start` < 0, position counts from the end of the BLOB (`-1` is the last byte).
+* If `start` < -length of BLOB, the entire BLOB is copied and returned.
+* If `start` ≥ length of BLOB, an empty BLOB is returned.
 
 # Example
 
@@ -5157,42 +5164,11 @@ let b = blob();
 
 b += 1; b += 2; b += 3; b += 4; b += 5;
 
-print(b.extract(1..3));     // prints "[0203]"
+print(b.extract(2));        // prints "[030405]"
+
+print(b.extract(-3));       // prints "[030405]"
 
 print(b);                   // prints "[0102030405]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn extract(array: Array, start: int) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Copy a portion of the array beginning at the `start` position till the end and return it as
-a new array.
-
-* If `start` < 0, position counts from the end of the array (`-1` is the last element).
-* If `start` < -length of array, the entire array is copied and returned.
-* If `start` ≥ length of array, an empty array is returned.
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-print(x.extract(2));        // prints "[3, 4, 5]"
-
-print(x.extract(-3));       // prints "[3, 4, 5]"
-
-print(x);                   // prints "[1, 2, 3, 4, 5]"
 ```
 </details>
 
@@ -5229,18 +5205,13 @@ print(x);                   // prints "[1, 2, 3, 4, 5]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn extract(blob: Blob, start: int) -> Blob
+fn extract(blob: Blob, range: Range<int>) -> Blob
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Copy a portion of the BLOB beginning at the `start` position till the end and return it as
-a new BLOB.
-
-* If `start` < 0, position counts from the end of the BLOB (`-1` is the last byte).
-* If `start` < -length of BLOB, the entire BLOB is copied and returned.
-* If `start` ≥ length of BLOB, an empty BLOB is returned.
+Copy an exclusive `range` of the BLOB and return it as a new BLOB.
 
 # Example
 
@@ -5249,9 +5220,7 @@ let b = blob();
 
 b += 1; b += 2; b += 3; b += 4; b += 5;
 
-print(b.extract(2));        // prints "[030405]"
-
-print(b.extract(-3));       // prints "[030405]"
+print(b.extract(1..3));     // prints "[0203]"
 
 print(b);                   // prints "[0102030405]"
 ```
@@ -5306,6 +5275,39 @@ Copy an inclusive range of the array and return it as a new array.
 let x = [1, 2, 3, 4, 5];
 
 print(x.extract(1..=3));    // prints "[2, 3, 4]"
+
+print(x);                   // prints "[1, 2, 3, 4, 5]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn extract(array: Array, start: int) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Copy a portion of the array beginning at the `start` position till the end and return it as
+a new array.
+
+* If `start` < 0, position counts from the end of the array (`-1` is the last element).
+* If `start` < -length of array, the entire array is copied and returned.
+* If `start` ≥ length of array, an empty array is returned.
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+print(x.extract(2));        // prints "[3, 4, 5]"
+
+print(x.extract(-3));       // prints "[3, 4, 5]"
 
 print(x);                   // prints "[1, 2, 3, 4, 5]"
 ```
@@ -5472,43 +5474,7 @@ print(m);       // prints "#{a:1, b:2, c:3, d:0}"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn filter(array: Array, filter: FnPtr) -> Result<Array, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Iterate through all the elements in the array, applying a `filter` function to each element
-in turn, and return a copy of all elements (in order) that return `true` as a new array.
-
-# Function Parameters
-
-* `element`: copy of array element
-* `index` _(optional)_: current index in the array
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-let y = x.filter(|v| v >= 3);
-
-print(y);       // prints "[3, 4, 5]"
-
-let y = x.filter(|v, i| v * i >= 10);
-
-print(y);       // prints "[12, 20]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn filter(array: Array, filter_func: String) -> Result<Array, Box<EvalAltResult>>
+fn filter(array: Array, filter_func: String) -> Array
 ```
 
 <details>
@@ -5548,6 +5514,42 @@ print(y);       // prints "[12, 20]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn filter(array: Array, filter: FnPtr) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Iterate through all the elements in the array, applying a `filter` function to each element
+in turn, and return a copy of all elements (in order) that return `true` as a new array.
+
+# Function Parameters
+
+* `element`: copy of array element
+* `index` _(optional)_: current index in the array
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+let y = x.filter(|v| v >= 3);
+
+print(y);       // prints "[3, 4, 5]"
+
+let y = x.filter(|v, i| v * i >= 10);
+
+print(y);       // prints "[12, 20]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn floor(x: float) -> float
 ```
 
@@ -5564,7 +5566,17 @@ Return the largest whole number less than or equals to the floating-point number
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
 ```
 
 </div>
@@ -5618,27 +5630,7 @@ Set the delivery method to [`Transfer::Forward`] for a single recipient.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn forward_all(context: Context, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 ```
 
 </div>
@@ -5675,6 +5667,16 @@ Set the delivery method to [`Transfer::Forward`] for all recipients.
 
 ```
 </details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn forward_all(context: Context, forward: SharedObject) -> ()
+```
 
 </div>
 </br>
@@ -5745,6 +5747,38 @@ This message has not been signed yet, meaning someone could change it...
   ]
 }
 
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get(string: String, index: int) -> ?
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Get the character at the `index` position in the string.
+
+* If `index` < 0, position counts from the end of the string (`-1` is the last character).
+* If `index` < -length of string, zero is returned.
+* If `index` ≥ length of string, zero is returned.
+
+# Example
+
+```rhai
+let text = "hello, world!";
+
+print(text.get(0));     // prints 'h'
+
+print(text.get(-1));    // prints '!'
+
+print(text.get(99));    // prints empty (for '()')'
 ```
 </details>
 
@@ -5839,38 +5873,6 @@ print(b.get(0));        // prints 1
 print(b.get(-1));       // prints 5
 
 print(b.get(99));       // prints 0
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get(string: String, index: int) -> ?
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Get the character at the `index` position in the string.
-
-* If `index` < 0, position counts from the end of the string (`-1` is the last character).
-* If `index` < -length of string, zero is returned.
-* If `index` ≥ length of string, zero is returned.
-
-# Example
-
-```rhai
-let text = "hello, world!";
-
-print(text.get(0));     // prints 'h'
-
-print(text.get(-1));    // prints '!'
-
-print(text.get(99));    // prints empty (for '()')'
 ```
 </details>
 
@@ -6067,7 +6069,7 @@ Get the peer ip address of the client.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get client_port(context: Context) -> int>
+fn get client_port(context: Context) -> int
 ```
 
 <details>
@@ -6083,7 +6085,7 @@ Get the peer port of the client.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get connection_timestamp(context: Context) -> OffsetDateTime>
+fn get connection_timestamp(context: Context) -> OffsetDateTime
 ```
 
 <details>
@@ -6099,7 +6101,7 @@ Get the timestamp when the client connected to the server.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get dkim_result(ctx: Context) -> Map>
+fn get dkim_result(ctx: Context) -> Map
 ```
 
 <details>
@@ -6116,7 +6118,7 @@ an error if no result is found.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get elapsed(timestamp: Instant) -> Result<?, Box<EvalAltResult>>
+fn get elapsed(timestamp: Instant) -> ?
 ```
 
 <details>
@@ -6310,22 +6312,6 @@ Has the connection validated the client credentials?
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_empty(blob: Blob) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the BLOB is empty.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn get is_empty(array: Array) -> bool
 ```
 
@@ -6358,22 +6344,6 @@ Return true if the range contains no items.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_empty(string: String) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the string is empty.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn get is_empty(range: Range<int>) -> bool
 ```
 
@@ -6390,13 +6360,13 @@ Return true if the range contains no items.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_even(x: i32) -> bool
+fn get is_empty(blob: Blob) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return true if the number is even.
+Return true if the BLOB is empty.
 </details>
 
 </div>
@@ -6406,13 +6376,13 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_even(x: u32) -> bool
+fn get is_empty(string: String) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return true if the number is even.
+Return true if the string is empty.
 </details>
 
 </div>
@@ -6422,7 +6392,7 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_even(x: i8) -> bool
+fn get is_even(x: u8) -> bool
 ```
 
 <details>
@@ -6454,23 +6424,7 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_even(x: u128) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is even.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get is_even(x: i16) -> bool
+fn get is_even(x: i8) -> bool
 ```
 
 <details>
@@ -6502,22 +6456,6 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_even(x: u16) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is even.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn get is_even(x: i128) -> bool
 ```
 
@@ -6534,7 +6472,7 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_even(x: u8) -> bool
+fn get is_even(x: u16) -> bool
 ```
 
 <details>
@@ -6550,7 +6488,71 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_exclusive(range: Range<int>) -> bool
+fn get is_even(x: u128) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_even(x: u32) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_even(x: i16) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_even(x: i32) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_exclusive(range: RangeInclusive<int>) -> bool
 ```
 
 <details>
@@ -6566,7 +6568,7 @@ Return `true` if the range is exclusive.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_exclusive(range: RangeInclusive<int>) -> bool
+fn get is_exclusive(range: Range<int>) -> bool
 ```
 
 <details>
@@ -6598,7 +6600,7 @@ Return `true` if the floating-point number is finite.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_inclusive(range: RangeInclusive<int>) -> bool
+fn get is_inclusive(range: Range<int>) -> bool
 ```
 
 <details>
@@ -6614,7 +6616,7 @@ Return `true` if the range is inclusive.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_inclusive(range: Range<int>) -> bool
+fn get is_inclusive(range: RangeInclusive<int>) -> bool
 ```
 
 <details>
@@ -6662,6 +6664,38 @@ Return `true` if the floating-point number is `NaN` (Not A Number).
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn get is_odd(x: int) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is odd.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_odd(x: u64) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is odd.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn get is_odd(x: u128) -> bool
 ```
 
@@ -6694,7 +6728,7 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_odd(x: u64) -> bool
+fn get is_odd(x: i128) -> bool
 ```
 
 <details>
@@ -6742,39 +6776,7 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_odd(x: int) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is odd.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn get is_odd(x: u32) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is odd.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get is_odd(x: i32) -> bool
 ```
 
 <details>
@@ -6806,7 +6808,7 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_odd(x: i128) -> bool
+fn get is_odd(x: i32) -> bool
 ```
 
 <details>
@@ -6838,70 +6840,6 @@ Is the connection under TLS?
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_zero(x: f32) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the floating-point number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get is_zero(x: float) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the floating-point number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get is_zero(x: u32) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get is_zero(x: int) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn get is_zero(x: u128) -> bool
 ```
 
@@ -6918,7 +6856,7 @@ Return true if the number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_zero(x: u64) -> bool
+fn get is_zero(x: u8) -> bool
 ```
 
 <details>
@@ -6950,13 +6888,13 @@ Return true if the number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_zero(x: i8) -> bool
+fn get is_zero(x: f32) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return true if the number is zero.
+Return true if the floating-point number is zero.
 </details>
 
 </div>
@@ -6966,7 +6904,7 @@ Return true if the number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_zero(x: i32) -> bool
+fn get is_zero(x: u32) -> bool
 ```
 
 <details>
@@ -6998,6 +6936,22 @@ Return true if the number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn get is_zero(x: i8) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn get is_zero(x: i16) -> bool
 ```
 
@@ -7014,13 +6968,61 @@ Return true if the number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get is_zero(x: u8) -> bool
+fn get is_zero(x: int) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
 Return true if the number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_zero(x: u64) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_zero(x: i32) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get is_zero(x: float) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the floating-point number is zero.
 </details>
 
 </div>
@@ -7128,7 +7130,7 @@ Get the `MailFrom` envelope.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get mail_timestamp(context: Context) -> OffsetDateTime>
+fn get mail_timestamp(context: Context) -> OffsetDateTime
 ```
 
 <details>
@@ -7202,7 +7204,7 @@ Get the lase element in the `RcptTo` envelope.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get rcpt_list(context: Context) -> Array>
+fn get rcpt_list(context: Context) -> Array
 ```
 
 <details>
@@ -7283,7 +7285,7 @@ Get the server address which served this connection.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get server_ip(context: Context) -> IpAddr>
+fn get server_ip(context: Context) -> IpAddr
 ```
 
 <details>
@@ -7315,29 +7317,13 @@ Get server name under which the client has been served.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get server_port(context: Context) -> int>
+fn get server_port(context: Context) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
 Get the server port which served this connection.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get start(range: RangeInclusive<int>) -> int
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the start of the inclusive range.
 </details>
 
 </div>
@@ -7354,6 +7340,22 @@ fn get start(range: Range<int>) -> int
 <summary markdown="span"> details </summary>
 
 Return the start of the exclusive range.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get start(range: RangeInclusive<int>) -> int
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the start of the inclusive range.
 </details>
 
 </div>
@@ -7405,7 +7407,7 @@ Get the type of the `auth` property of the connection.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_all_headers(message: Message) -> Array>
+fn get_all_headers(message: Message) -> Array
 ```
 
 <details>
@@ -7421,7 +7423,17 @@ Return the complete list of headers.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_all_headers(message: Message, name: String) -> Array>
+fn get_all_headers(message: Message, name: SharedObject) -> Array
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get_all_headers(message: Message, name: String) -> Array
 ```
 
 <details>
@@ -7437,17 +7449,7 @@ Return a list of headers bearing the `name` given as argument.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_all_headers(message: Message, name: SharedObject) -> Array>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get_bit(value: int, bit: int) -> Result<bool, Box<EvalAltResult>>
+fn get_bit(value: int, bit: int) -> bool
 ```
 
 <details>
@@ -7477,7 +7479,7 @@ print(x.get_bit(-48));  // prints true on 64-bit
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_bits(value: int, range: RangeInclusive<int>) -> Result<int, Box<EvalAltResult>>
+fn get_bits(value: int, range: RangeInclusive<int>) -> int
 ```
 
 <details>
@@ -7501,7 +7503,7 @@ print(x.get_bits(5..=9));       // print 18
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_bits(value: int, range: Range<int>) -> Result<int, Box<EvalAltResult>>
+fn get_bits(value: int, range: Range<int>) -> int
 ```
 
 <details>
@@ -7525,7 +7527,7 @@ print(x.get_bits(5..10));       // print 18
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_bits(value: int, start: int, bits: int) -> Result<int, Box<EvalAltResult>>
+fn get_bits(value: int, start: int, bits: int) -> int
 ```
 
 <details>
@@ -7553,7 +7555,7 @@ print(x.get_bits(5, 8));        // print 18
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_dmarc_record(server: Server, domain: String) -> Record>
+fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
 ```
 
 <details>
@@ -7569,7 +7571,7 @@ Get a valid DMARC record for the domain.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_dmarc_record(server: Server, domain: SharedObject) -> Record>
+fn get_dmarc_record(server: Server, domain: String) -> Record
 ```
 
 <details>
@@ -7606,6 +7608,16 @@ fn get_fn_metadata_list(name: String) -> Array
 
 ```rust
 fn get_fn_metadata_list(name: String, params: int) -> Array
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get_header(message: Message, header: SharedObject) -> String
 ```
 
 </div>
@@ -7653,17 +7665,7 @@ Hello world!
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_header(message: Message, header: SharedObject) -> String
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get_header_untouched(this: Message, name: String) -> Array>
+fn get_header_untouched(this: Message, name: String) -> Array
 ```
 
 <details>
@@ -7695,7 +7697,7 @@ Get the list of DKIM private keys associated with this sdid
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?>
+fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?
 ```
 
 <details>
@@ -7717,16 +7719,6 @@ The current implementation will make a TXT query on the dns of the signer
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_root_domain(domain: SharedObject) -> String
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn get_root_domain(domain: String) -> String
 ```
 
@@ -7739,6 +7731,16 @@ Get the root domain (the registrable part)
 
 `foo.bar.example.com` => `example.com`
 </details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn get_root_domain(domain: SharedObject) -> String
+```
 
 </div>
 </br>
@@ -7870,23 +7872,31 @@ Return the hypotenuse of a triangle with sides `x` and `y`.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn index_of(string: String, find_string: String) -> int
+fn index_of(array: Array, filter: FnPtr) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Find the specified `character` in the string and return the first index where it is found.
-If the `character` is not found, `-1` is returned.
+Iterate through all the elements in the array, applying a `filter` function to each element
+in turn, and return the index of the first element that returns `true`.
+If no element returns `true`, `-1` is returned.
+
+# Function Parameters
+
+* `element`: copy of array element
+* `index` _(optional)_: current index in the array
 
 # Example
 
 ```rhai
-let text = "hello, world! hello, foobar!";
+let x = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5];
 
-print(text.index_of("ll"));     // prints 2 (first index)
+print(x.index_of(|v| v > 3));           // prints 3: 4 > 3
 
-print(text.index_of("xx:));     // prints -1
+print(x.index_of(|v| v > 8));           // prints -1: nothing is > 8
+
+print(x.index_of(|v, i| v * i > 20));   // prints 7: 4 * 7 > 20
 ```
 </details>
 
@@ -7897,7 +7907,46 @@ print(text.index_of("xx:));     // prints -1
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn index_of(array: Array, value: ?) -> Result<int, Box<EvalAltResult>>
+fn index_of(array: Array, filter: String) -> int
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Iterate through all the elements in the array, applying a function named by `filter` to each
+element in turn, and return the index of the first element that returns `true`.
+If no element returns `true`, `-1` is returned.
+
+# Function Parameters
+
+A function with the same name as the value of `filter` must exist taking these parameters:
+
+* `element`: copy of array element
+* `index` _(optional)_: current index in the array
+
+# Example
+
+```rhai
+fn is_special(x) { x > 3 }
+
+fn is_dumb(x) { x > 8 }
+
+let x = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5];
+
+print(x.index_of("is_special"));    // prints 3
+
+print(x.index_of("is_dumb"));       // prints -1
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn index_of(array: Array, value: ?) -> int
 ```
 
 <details>
@@ -7956,35 +8005,23 @@ print(text.index_of('x'));      // prints -1
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn index_of(array: Array, filter: String) -> Result<int, Box<EvalAltResult>>
+fn index_of(string: String, find_string: String) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Iterate through all the elements in the array, applying a function named by `filter` to each
-element in turn, and return the index of the first element that returns `true`.
-If no element returns `true`, `-1` is returned.
-
-# Function Parameters
-
-A function with the same name as the value of `filter` must exist taking these parameters:
-
-* `element`: copy of array element
-* `index` _(optional)_: current index in the array
+Find the specified `character` in the string and return the first index where it is found.
+If the `character` is not found, `-1` is returned.
 
 # Example
 
 ```rhai
-fn is_special(x) { x > 3 }
+let text = "hello, world! hello, foobar!";
 
-fn is_dumb(x) { x > 8 }
+print(text.index_of("ll"));     // prints 2 (first index)
 
-let x = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5];
-
-print(x.index_of("is_special"));    // prints 3
-
-print(x.index_of("is_dumb"));       // prints -1
+print(text.index_of("xx:));     // prints -1
 ```
 </details>
 
@@ -7995,84 +8032,7 @@ print(x.index_of("is_dumb"));       // prints -1
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn index_of(array: Array, filter: FnPtr) -> Result<int, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Iterate through all the elements in the array, applying a `filter` function to each element
-in turn, and return the index of the first element that returns `true`.
-If no element returns `true`, `-1` is returned.
-
-# Function Parameters
-
-* `element`: copy of array element
-* `index` _(optional)_: current index in the array
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5];
-
-print(x.index_of(|v| v > 3));           // prints 3: 4 > 3
-
-print(x.index_of(|v| v > 8));           // prints -1: nothing is > 8
-
-print(x.index_of(|v, i| v * i > 20));   // prints 7: 4 * 7 > 20
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn index_of(array: Array, value: ?, start: int) -> Result<int, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Find the first element in the array, starting from a particular `start` position, that
-equals a particular `value` and return its index. If no element equals `value`, `-1` is returned.
-
-* If `start` < 0, position counts from the end of the array (`-1` is the last element).
-* If `start` < -length of array, position counts from the beginning of the array.
-* If `start` ≥ length of array, `-1` is returned.
-
-The operator `==` is used to compare elements with `value` and must be defined,
-otherwise `false` is assumed.
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5];
-
-print(x.index_of(4, 2));        // prints 3
-
-print(x.index_of(4, 5));        // prints 7
-
-print(x.index_of(4, 15));       // prints -1: nothing found past end of array
-
-print(x.index_of(4, -5));       // prints 11: -5 = start from index 8
-
-print(x.index_of(9, 1));        // prints -1: nothing equals 9
-
-print(x.index_of("foo", 1));    // prints -1: strings do not equal numbers
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn index_of(array: Array, filter: String, start: int) -> Result<int, Box<EvalAltResult>>
+fn index_of(array: Array, filter: String, start: int) -> int
 ```
 
 <details>
@@ -8159,6 +8119,48 @@ print(text.index_of("xx", 0));      // prints -1
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn index_of(array: Array, value: ?, start: int) -> int
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Find the first element in the array, starting from a particular `start` position, that
+equals a particular `value` and return its index. If no element equals `value`, `-1` is returned.
+
+* If `start` < 0, position counts from the end of the array (`-1` is the last element).
+* If `start` < -length of array, position counts from the beginning of the array.
+* If `start` ≥ length of array, `-1` is returned.
+
+The operator `==` is used to compare elements with `value` and must be defined,
+otherwise `false` is assumed.
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5];
+
+print(x.index_of(4, 2));        // prints 3
+
+print(x.index_of(4, 5));        // prints 7
+
+print(x.index_of(4, 15));       // prints -1: nothing found past end of array
+
+print(x.index_of(4, -5));       // prints 11: -5 = start from index 8
+
+print(x.index_of(9, 1));        // prints -1: nothing equals 9
+
+print(x.index_of("foo", 1));    // prints -1: strings do not equal numbers
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn index_of(string: String, character: char, start: int) -> int
 ```
 
@@ -8193,7 +8195,7 @@ print(text.index_of('x', 0));       // prints -1
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn index_of(array: Array, filter: FnPtr, start: int) -> Result<int, Box<EvalAltResult>>
+fn index_of(array: Array, filter: FnPtr, start: int) -> int
 ```
 
 <details>
@@ -8238,6 +8240,26 @@ print(x.index_of(|v, i| v * i > 20, 8));    // prints 10: 3 * 10 > 20
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn info(code: String) -> Status
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return a [`Status::Info`] with `code`
+
+# Errors
+
+* `code` is not a valid code
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn info(code: SharedObject) -> Status
 ```
 
@@ -8258,17 +8280,29 @@ Return a [`Status::Info`] with `code`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn info(code: String) -> Status
+fn insert(blob: Blob, index: int, value: int)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return a [`Status::Info`] with `code`
+Add a byte `value` to the BLOB at a particular `index` position.
 
-# Errors
+* If `index` < 0, position counts from the end of the BLOB (`-1` is the last byte).
+* If `index` < -length of BLOB, the byte value is added to the beginning of the BLOB.
+* If `index` ≥ length of BLOB, the byte value is appended to the end of the BLOB.
 
-* `code` is not a valid code
+Only the lower 8 bits of the `value` are used; all other bits are ignored.
+
+# Example
+
+```rhai
+let b = blob(5, 0x42);
+
+b.insert(2, 0x18);
+
+print(b);       // prints "[4242184242]"
+```
 </details>
 
 </div>
@@ -8302,38 +8336,6 @@ x.insert(2, true);
 x.insert(-2, 42);
 
 print(x);       // prints ["hello", 1, true, 2, 42, 3]
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn insert(blob: Blob, index: int, value: int)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add a byte `value` to the BLOB at a particular `index` position.
-
-* If `index` < 0, position counts from the end of the BLOB (`-1` is the last byte).
-* If `index` < -length of BLOB, the byte value is added to the beginning of the BLOB.
-* If `index` ≥ length of BLOB, the byte value is appended to the end of the BLOB.
-
-Only the lower 8 bits of the `value` are used; all other bits are ignored.
-
-# Example
-
-```rhai
-let b = blob(5, 0x42);
-
-b.insert(2, 0x18);
-
-print(b);       // prints "[4242184242]"
 ```
 </details>
 
@@ -8384,29 +8386,13 @@ print(f.is_anonymous);      // prints true
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_empty(range: Range<int>) -> bool
+fn is_empty(map: Map) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return true if the range contains no items.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_empty(array: Array) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the array is empty.
+Return true if the map is empty.
 </details>
 
 </div>
@@ -8432,38 +8418,6 @@ Return true if the range contains no items.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_empty(blob: Blob) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the BLOB is empty.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_empty(map: Map) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the map is empty.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn is_empty(string: String) -> bool
 ```
 
@@ -8480,13 +8434,13 @@ Return true if the string is empty.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_even(x: i8) -> bool
+fn is_empty(blob: Blob) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return true if the number is even.
+Return true if the BLOB is empty.
 </details>
 
 </div>
@@ -8496,7 +8450,39 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_even(x: u16) -> bool
+fn is_empty(array: Array) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the array is empty.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_empty(range: Range<int>) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the range contains no items.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_even(x: i128) -> bool
 ```
 
 <details>
@@ -8544,39 +8530,7 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_even(x: u8) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is even.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_even(x: int) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is even.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_even(x: i128) -> bool
+fn is_even(x: i8) -> bool
 ```
 
 <details>
@@ -8608,22 +8562,6 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_even(x: u64) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is even.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn is_even(x: i16) -> bool
 ```
 
@@ -8640,7 +8578,71 @@ Return true if the number is even.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_exclusive(range: RangeInclusive<int>) -> bool
+fn is_even(x: u16) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_even(x: u64) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_even(x: int) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_even(x: u8) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is even.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_exclusive(range: Range<int>) -> bool
 ```
 
 <details>
@@ -8656,7 +8658,7 @@ Return `true` if the range is exclusive.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_exclusive(range: Range<int>) -> bool
+fn is_exclusive(range: RangeInclusive<int>) -> bool
 ```
 
 <details>
@@ -8688,7 +8690,7 @@ Return `true` if the floating-point number is finite.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_inclusive(range: Range<int>) -> bool
+fn is_inclusive(range: RangeInclusive<int>) -> bool
 ```
 
 <details>
@@ -8704,7 +8706,7 @@ Return `true` if the range is inclusive.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_inclusive(range: RangeInclusive<int>) -> bool
+fn is_inclusive(range: Range<int>) -> bool
 ```
 
 <details>
@@ -8752,7 +8754,7 @@ Return `true` if the floating-point number is `NaN` (Not A Number).
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_odd(x: u32) -> bool
+fn is_odd(x: int) -> bool
 ```
 
 <details>
@@ -8768,7 +8770,39 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_odd(x: u128) -> bool
+fn is_odd(x: u8) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is odd.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_odd(x: i128) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is odd.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_odd(x: u16) -> bool
 ```
 
 <details>
@@ -8816,7 +8850,7 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_odd(x: int) -> bool
+fn is_odd(x: i16) -> bool
 ```
 
 <details>
@@ -8848,7 +8882,7 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_odd(x: i128) -> bool
+fn is_odd(x: u32) -> bool
 ```
 
 <details>
@@ -8864,7 +8898,7 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_odd(x: u8) -> bool
+fn is_odd(x: u128) -> bool
 ```
 
 <details>
@@ -8880,55 +8914,7 @@ Return true if the number is odd.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_odd(x: u16) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is odd.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_odd(x: i16) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is odd.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_zero(x: u128) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_zero(x: i128) -> bool
+fn is_zero(x: i16) -> bool
 ```
 
 <details>
@@ -8960,7 +8946,71 @@ Return true if the number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn is_zero(x: u8) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_zero(x: u32) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_zero(x: float) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the floating-point number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn is_zero(x: u16) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return true if the number is zero.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn is_zero(x: u128) -> bool
 ```
 
 <details>
@@ -9024,22 +9074,6 @@ Return true if the number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_zero(x: i16) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn is_zero(x: f32) -> bool
 ```
 
@@ -9056,39 +9090,7 @@ Return true if the floating-point number is zero.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn is_zero(x: u32) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_zero(x: float) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return true if the floating-point number is zero.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn is_zero(x: u8) -> bool
+fn is_zero(x: i128) -> bool
 ```
 
 <details>
@@ -9128,23 +9130,13 @@ print(m.keys());        // prints ["a", "b", "c"]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn len(blob: Blob) -> int
+fn len(map: Map) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return the length of the BLOB.
-
-# Example
-
-```rhai
-let b = blob(10, 0x42);
-
-print(b);           // prints "[4242424242424242 4242]"
-
-print(b.len());     // prints 10
-```
+Return the number of properties in the object map.
 </details>
 
 </div>
@@ -9178,13 +9170,23 @@ print(text.len);        // prints 17
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn len(map: Map) -> int
+fn len(blob: Blob) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return the number of properties in the object map.
+Return the length of the BLOB.
+
+# Example
+
+```rhai
+let b = blob(10, 0x42);
+
+print(b);           // prints "[4242424242424242 4242]"
+
+print(b.len());     // prints 10
+```
 </details>
 
 </div>
@@ -9242,16 +9244,6 @@ Return the log of the floating-point number with base 10.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn log(level: SharedObject, message: SharedObject)
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn log(x: float, base: float) -> float
 ```
 
@@ -9260,16 +9252,6 @@ fn log(x: float, base: float) -> float
 
 Return the log of the floating-point number with `base`.
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn log(level: SharedObject, message: String)
-```
 
 </div>
 </br>
@@ -9327,7 +9309,37 @@ fn log(level: String, message: SharedObject)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn lookup(server: Server, name: String) -> Array>
+fn log(level: SharedObject, message: SharedObject)
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn log(level: SharedObject, message: String)
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn lookup(server: Server, name: SharedObject) -> Array
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn lookup(server: Server, name: String) -> Array
 ```
 
 <details>
@@ -9355,16 +9367,6 @@ Perform a dns lookup using the root dns.
 }
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn lookup(server: Server, name: SharedObject) -> Array>
-```
 
 </div>
 </br>
@@ -9550,7 +9552,7 @@ print(text);        // prints "HELLO, WORLD!";
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn map(array: Array, mapper: FnPtr) -> Result<Array, Box<EvalAltResult>>
+fn map(array: Array, mapper: FnPtr) -> Array
 ```
 
 <details>
@@ -9586,7 +9588,7 @@ print(y);       // prints "[0, 2, 6, 12, 20]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn map(array: Array, mapper: String) -> Result<Array, Box<EvalAltResult>>
+fn map(array: Array, mapper: String) -> Array
 ```
 
 <details>
@@ -9771,7 +9773,39 @@ Return a [`Status::Next`]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn pad(string: String, len: int, character: char) -> Result<(), Box<EvalAltResult>>
+fn pad(string: String, len: int, padding: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Pad the string to at least the specified number of characters with the specified string.
+
+If `len` ≤ length of string, no padding is done.
+
+# Example
+
+```rhai
+let text = "hello";
+
+text.pad(10, "(!)");
+
+print(text);        // prints "hello(!)(!)"
+
+text.pad(8, '***');
+
+print(text);        // prints "hello(!)(!)"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn pad(string: String, len: int, character: char) -> ()
 ```
 
 <details>
@@ -9803,7 +9837,7 @@ print(text);        // prints "hello!!!"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn pad(array: Array, len: int, item: ?) -> Result<(), Box<EvalAltResult>>
+fn pad(array: Array, len: int, item: ?) -> ()
 ```
 
 <details>
@@ -9835,7 +9869,7 @@ print(x);       // prints "[1, 2, 3, 42, 42]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn pad(blob: Blob, len: int, value: int) -> Result<(), Box<EvalAltResult>>
+fn pad(blob: Blob, len: int, value: int) -> ()
 ```
 
 <details>
@@ -9869,29 +9903,17 @@ print(b);               // prints "[4242421818]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn pad(string: String, len: int, padding: String) -> Result<(), Box<EvalAltResult>>
+fn parse_be_float(blob: Blob, range: Range<int>) -> float
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Pad the string to at least the specified number of characters with the specified string.
+Parse the bytes within an exclusive `range` in the BLOB as a `FLOAT`
+in big-endian byte order.
 
-If `len` ≤ length of string, no padding is done.
-
-# Example
-
-```rhai
-let text = "hello";
-
-text.pad(10, "(!)");
-
-print(text);        // prints "hello(!)(!)"
-
-text.pad(8, '***');
-
-print(text);        // prints "hello(!)(!)"
-```
+* If number of bytes in `range` < number of bytes for `FLOAT`, zeros are padded.
+* If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes are ignored.
 </details>
 
 </div>
@@ -9908,26 +9930,6 @@ fn parse_be_float(blob: Blob, range: RangeInclusive<int>) -> float
 <summary markdown="span"> details </summary>
 
 Parse the bytes within an inclusive `range` in the BLOB as a `FLOAT`
-in big-endian byte order.
-
-* If number of bytes in `range` < number of bytes for `FLOAT`, zeros are padded.
-* If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes are ignored.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn parse_be_float(blob: Blob, range: Range<int>) -> float
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Parse the bytes within an exclusive `range` in the BLOB as a `FLOAT`
 in big-endian byte order.
 
 * If number of bytes in `range` < number of bytes for `FLOAT`, zeros are padded.
@@ -10063,7 +10065,7 @@ print(x.to_hex());      // prints "02030000...00"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn parse_float(string: String) -> Result<float, Box<EvalAltResult>>
+fn parse_float(string: String) -> float
 ```
 
 <details>
@@ -10087,7 +10089,7 @@ print(x);       // prints 123.456
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn parse_int(string: String) -> Result<int, Box<EvalAltResult>>
+fn parse_int(string: String) -> int
 ```
 
 <details>
@@ -10111,7 +10113,7 @@ print(x);       // prints 123
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn parse_int(string: String, radix: int) -> Result<int, Box<EvalAltResult>>
+fn parse_int(string: String, radix: int) -> int
 ```
 
 <details>
@@ -10141,7 +10143,7 @@ print(y);       // prints 1194684 (0x123abc)
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn parse_json(json: String) -> Result<?, Box<EvalAltResult>>
+fn parse_json(json: String) -> ?
 ```
 
 <details>
@@ -10387,34 +10389,6 @@ print(x);           // prints "[1, 2]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn pop(string: String) -> ?
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove the last character from the string and return it.
-
-If the string is empty, `()` is returned.
-
-# Example
-
-```rhai
-let text = "hello, world!";
-
-print(text.pop());      // prints '!'
-
-print(text);            // prints "hello, world"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn pop(blob: Blob) -> int
 ```
 
@@ -10435,6 +10409,34 @@ b += 1; b += 2; b += 3; b += 4; b += 5;
 print(b.pop());         // prints 5
 
 print(b);               // prints "[01020304]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn pop(string: String) -> ?
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Remove the last character from the string and return it.
+
+If the string is empty, `()` is returned.
+
+# Example
+
+```rhai
+let text = "hello, world!";
+
+print(text.pop());      // prints '!'
+
+print(text);            // prints "hello, world"
 ```
 </details>
 
@@ -10467,6 +10469,16 @@ print(text.pop(4));     // prints "rld!"
 print(text);            // prints "hello, wo"
 ```
 </details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn prepend_header(message: Message, header: String, value: SharedObject) -> ()
+```
 
 </div>
 </br>
@@ -10508,16 +10520,6 @@ Add a header **at the beginning** of the Header section of the message.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn prepend_header(message: Message, header: String, value: SharedObject) -> ()
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn print() -> String
 ```
 
@@ -10550,29 +10552,13 @@ Convert the object map into a string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn print(string: String) -> String
+fn print(array: Array) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return the `string`.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn print(number: f32) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of `number` into a string.
+Convert the array into a string.
 </details>
 
 </div>
@@ -10598,13 +10584,13 @@ Return the character into a string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn print(item: ?) -> String
+fn print(unit: ()) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the value of the `item` into a string.
+Return the empty string.
 </details>
 
 </div>
@@ -10614,13 +10600,29 @@ Convert the value of the `item` into a string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn print(array: Array) -> String
+fn print(number: f32) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the array into a string.
+Convert the value of `number` into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn print(item: ?) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the value of the `item` into a string.
 </details>
 
 </div>
@@ -10646,6 +10648,22 @@ Return the boolean value into a string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn print(string: String) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the `string`.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn print(number: float) -> String
 ```
 
@@ -10653,50 +10671,6 @@ fn print(number: float) -> String
 <summary markdown="span"> details </summary>
 
 Convert the value of `number` into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn print(unit: ()) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the empty string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn push(array: Array, item: ?)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add a new element, which is not another array, to the end of the array.
-
-If `item` is `Array`, then `append` is more specific and will be called instead.
-
-# Example
-
-```rhai
-let x = [1, 2, 3];
-
-x.push("hello");
-
-print(x);       // prints [1, 2, 3, "hello"]
-```
 </details>
 
 </div>
@@ -10734,17 +10708,25 @@ print(b);       // prints "[42]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn quarantine(queue: SharedObject) -> Status
+fn push(array: Array, item: ?)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return a [`Status::Quarantine`] with `queue`
+Add a new element, which is not another array, to the end of the array.
 
-# Errors
+If `item` is `Array`, then `append` is more specific and will be called instead.
 
-* a mutex is poisoned
+# Example
+
+```rhai
+let x = [1, 2, 3];
+
+x.push("hello");
+
+print(x);       // prints [1, 2, 3, "hello"]
+```
 </details>
 
 </div>
@@ -10774,7 +10756,27 @@ Return a [`Status::Quarantine`] with `queue`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(range: Range<float>, step: float) -> Iterator<float>
+fn quarantine(queue: SharedObject) -> Status
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return a [`Status::Quarantine`] with `queue`
+
+# Errors
+
+* a mutex is poisoned
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(range: Range<u64>, step: u64) -> Iterator<u64>
 ```
 
 <details>
@@ -10808,7 +10810,33 @@ for n in range(18..8, -3) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(range: Range<u128>, step: u128) -> Iterator<u128>
+fn range(from: i8, to: i8) -> Iterator<i8>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`.
+The value `to` is never included.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17
+for n in range(8, 18) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(range: Range<u8>, step: u8) -> Iterator<u8>
 ```
 
 <details>
@@ -10830,6 +10858,32 @@ for n in range(8..18, 3) {
 
 // prints all values down from 18 to 9 in steps of -3
 for n in range(18..8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: u8, to: u8) -> Iterator<u8>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`.
+The value `to` is never included.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17
+for n in range(8, 18) {
     print(n);
 }
 ```
@@ -10843,40 +10897,6 @@ for n in range(18..8, -3) {
 
 ```rust
 fn range(range: Range<i8>, step: i8) -> Iterator<i8>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over an exclusive range, each iteration increasing by `step`.
-
-If `range` is reversed and `step` < 0, iteration goes backwards.
-
-Otherwise, if `range` is empty, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8..18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18..8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(range: Range<i32>, step: i32) -> Iterator<i32>
 ```
 
 <details>
@@ -10944,6 +10964,160 @@ for n in range(18..8, -3) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn range(range: Range<i128>, step: i128) -> Iterator<i128>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over an exclusive range, each iteration increasing by `step`.
+
+If `range` is reversed and `step` < 0, iteration goes backwards.
+
+Otherwise, if `range` is empty, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8..18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18..8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: u16, to: u16) -> Iterator<u16>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`.
+The value `to` is never included.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17
+for n in range(8, 18) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(range: Range<u128>, step: u128) -> Iterator<u128>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over an exclusive range, each iteration increasing by `step`.
+
+If `range` is reversed and `step` < 0, iteration goes backwards.
+
+Otherwise, if `range` is empty, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8..18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18..8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: u64, to: u64) -> Iterator<u64>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`.
+The value `to` is never included.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17
+for n in range(8, 18) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(range: Range<u32>, step: u32) -> Iterator<u32>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over an exclusive range, each iteration increasing by `step`.
+
+If `range` is reversed and `step` < 0, iteration goes backwards.
+
+Otherwise, if `range` is empty, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8..18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18..8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn range(from: u32, to: u32) -> Iterator<u32>
 ```
 
@@ -10970,127 +11144,7 @@ for n in range(8, 18) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(range: Range<u64>, step: u64) -> Iterator<u64>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over an exclusive range, each iteration increasing by `step`.
-
-If `range` is reversed and `step` < 0, iteration goes backwards.
-
-Otherwise, if `range` is empty, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8..18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18..8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(range: Range<int>, step: int) -> Iterator<int>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over an exclusive range, each iteration increasing by `step`.
-
-If `range` is reversed and `step` < 0, iteration goes backwards.
-
-Otherwise, if `range` is empty, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8..18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18..8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: i8, to: i8) -> Iterator<i8>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`.
-The value `to` is never included.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17
-for n in range(8, 18) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: u128, to: u128) -> Iterator<u128>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`.
-The value `to` is never included.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17
-for n in range(8, 18) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: u16, to: u16) -> Iterator<u16>
+fn range(from: i16, to: i16) -> Iterator<i16>
 ```
 
 <details>
@@ -11142,7 +11196,33 @@ for n in range(8, 18) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(range: Range<i128>, step: i128) -> Iterator<i128>
+fn range(from: int, to: int) -> Iterator<int>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`.
+The value `to` is never included.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17
+for n in range(8, 18) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(range: Range<int>, step: int) -> Iterator<int>
 ```
 
 <details>
@@ -11176,7 +11256,7 @@ for n in range(18..8, -3) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(from: i16, to: i16) -> Iterator<i16>
+fn range(from: u128, to: u128) -> Iterator<u128>
 ```
 
 <details>
@@ -11202,20 +11282,28 @@ for n in range(8, 18) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(from: i128, to: i128) -> Iterator<i128>
+fn range(range: Range<i32>, step: i32) -> Iterator<i32>
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return an iterator over the exclusive range of `from..to`.
-The value `to` is never included.
+Return an iterator over an exclusive range, each iteration increasing by `step`.
+
+If `range` is reversed and `step` < 0, iteration goes backwards.
+
+Otherwise, if `range` is empty, an empty iterator is returned.
 
 # Example
 
 ```rhai
-// prints all values from 8 to 17
-for n in range(8, 18) {
+// prints all values from 8 to 17 in steps of 3
+for n in range(8..18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18..8, -3) {
     print(n);
 }
 ```
@@ -11228,59 +11316,7 @@ for n in range(8, 18) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(from: u64, to: u64) -> Iterator<u64>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`.
-The value `to` is never included.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17
-for n in range(8, 18) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: u8, to: u8) -> Iterator<u8>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`.
-The value `to` is never included.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17
-for n in range(8, 18) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(range: Range<u32>, step: u32) -> Iterator<u32>
+fn range(range: Range<float>, step: float) -> Iterator<float>
 ```
 
 <details>
@@ -11348,7 +11384,7 @@ for n in range(18..8, -3) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(from: int, to: int) -> Iterator<int>
+fn range(from: i128, to: i128) -> Iterator<i128>
 ```
 
 <details>
@@ -11374,321 +11410,7 @@ for n in range(8, 18) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn range(range: Range<u8>, step: u8) -> Iterator<u8>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over an exclusive range, each iteration increasing by `step`.
-
-If `range` is reversed and `step` < 0, iteration goes backwards.
-
-Otherwise, if `range` is empty, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8..18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18..8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: u128, to: u128, step: u128) -> Iterator<u128>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: float, to: float, step: float) -> Iterator<float>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: u32, to: u32, step: u32) -> Iterator<u32>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: u16, to: u16, step: u16) -> Iterator<u16>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn range(from: i16, to: i16, step: i16) -> Iterator<i16>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: int, to: int, step: int) -> Iterator<int>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: i8, to: i8, step: i8) -> Iterator<i8>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: i32, to: i32, step: i32) -> Iterator<i32>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
-The value `to` is never included.
-
-If `from` > `to` and `step` < 0, iteration goes backwards.
-
-If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
-
-# Example
-
-```rhai
-// prints all values from 8 to 17 in steps of 3
-for n in range(8, 18, 3) {
-    print(n);
-}
-
-// prints all values down from 18 to 9 in steps of -3
-for n in range(18, 8, -3) {
-    print(n);
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn range(from: u64, to: u64, step: u64) -> Iterator<u64>
 ```
 
 <details>
@@ -11758,6 +11480,111 @@ for n in range(18, 8, -3) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn range(from: float, to: float, step: float) -> Iterator<float>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: u16, to: u16, step: u16) -> Iterator<u16>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: i8, to: i8, step: i8) -> Iterator<i8>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn range(from: u8, to: u8, step: u8) -> Iterator<u8>
 ```
 
@@ -11793,7 +11620,182 @@ for n in range(18, 8, -3) {
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn reduce(array: Array, reducer: String) -> Result<?, Box<EvalAltResult>>
+fn range(from: u128, to: u128, step: u128) -> Iterator<u128>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: u32, to: u32, step: u32) -> Iterator<u32>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: int, to: int, step: int) -> Iterator<int>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: u64, to: u64, step: u64) -> Iterator<u64>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn range(from: i32, to: i32, step: i32) -> Iterator<i32>
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return an iterator over the exclusive range of `from..to`, each iteration increasing by `step`.
+The value `to` is never included.
+
+If `from` > `to` and `step` < 0, iteration goes backwards.
+
+If `from` > `to` and `step` > 0 or `from` < `to` and `step` < 0, an empty iterator is returned.
+
+# Example
+
+```rhai
+// prints all values from 8 to 17 in steps of 3
+for n in range(8, 18, 3) {
+    print(n);
+}
+
+// prints all values down from 18 to 9 in steps of -3
+for n in range(18, 8, -3) {
+    print(n);
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn reduce(array: Array, reducer: String) -> ?
 ```
 
 <details>
@@ -11838,7 +11840,7 @@ print(y);       // prints 25
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn reduce(array: Array, reducer: FnPtr) -> Result<?, Box<EvalAltResult>>
+fn reduce(array: Array, reducer: FnPtr) -> ?
 ```
 
 <details>
@@ -11874,7 +11876,7 @@ print(y);       // prints 25
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn reduce(array: Array, reducer: FnPtr, initial: ?) -> Result<?, Box<EvalAltResult>>
+fn reduce(array: Array, reducer: FnPtr, initial: ?) -> ?
 ```
 
 <details>
@@ -11910,7 +11912,7 @@ print(y);       // prints 30
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn reduce(array: Array, reducer: String, initial: ?) -> Result<?, Box<EvalAltResult>>
+fn reduce(array: Array, reducer: String, initial: ?) -> ?
 ```
 
 <details>
@@ -11952,44 +11954,7 @@ print(y);       // prints 30
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn reduce_rev(array: Array, reducer: FnPtr) -> Result<?, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Reduce an array by iterating through all elements, in _reverse_ order,
-while applying the `reducer` function.
-
-# Function Parameters
-
-* `result`: accumulated result, initially `()`
-* `element`: copy of array element
-* `index` _(optional)_: current index in the array
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-let y = x.reduce_rev(|r, v| v + (r ?? 0));
-
-print(y);       // prints 15
-
-let y = x.reduce_rev(|r, v, i| v + i + (r ?? 0));
-
-print(y);       // prints 25
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn reduce_rev(array: Array, reducer: String) -> Result<?, Box<EvalAltResult>>
+fn reduce_rev(array: Array, reducer: String) -> ?
 ```
 
 <details>
@@ -12035,7 +12000,81 @@ print(y);       // prints 25
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn reduce_rev(array: Array, reducer: String, initial: ?) -> Result<?, Box<EvalAltResult>>
+fn reduce_rev(array: Array, reducer: FnPtr) -> ?
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Reduce an array by iterating through all elements, in _reverse_ order,
+while applying the `reducer` function.
+
+# Function Parameters
+
+* `result`: accumulated result, initially `()`
+* `element`: copy of array element
+* `index` _(optional)_: current index in the array
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+let y = x.reduce_rev(|r, v| v + (r ?? 0));
+
+print(y);       // prints 15
+
+let y = x.reduce_rev(|r, v, i| v + i + (r ?? 0));
+
+print(y);       // prints 25
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn reduce_rev(array: Array, reducer: FnPtr, initial: ?) -> ?
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Reduce an array by iterating through all elements, in _reverse_ order,
+while applying the `reducer` function.
+
+# Function Parameters
+
+* `result`: accumulated result, starting with the value of `initial`
+* `element`: copy of array element
+* `index` _(optional)_: current index in the array
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+let y = x.reduce_rev(|r, v| v + r, 5);
+
+print(y);       // prints 20
+
+let y = x.reduce_rev(|r, v, i| v + i + r, 5);
+
+print(y);       // prints 30
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn reduce_rev(array: Array, reducer: String, initial: ?) -> ?
 ```
 
 <details>
@@ -12066,43 +12105,6 @@ let y = x.reduce_rev("process", 5);
 print(y);       // prints 20
 
 let y = x.reduce_rev("process_extra", 5);
-
-print(y);       // prints 30
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn reduce_rev(array: Array, reducer: FnPtr, initial: ?) -> Result<?, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Reduce an array by iterating through all elements, in _reverse_ order,
-while applying the `reducer` function.
-
-# Function Parameters
-
-* `result`: accumulated result, starting with the value of `initial`
-* `element`: copy of array element
-* `index` _(optional)_: current index in the array
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-let y = x.reduce_rev(|r, v| v + r, 5);
-
-print(y);       // prints 20
-
-let y = x.reduce_rev(|r, v, i| v + i + r, 5);
 
 print(y);       // prints 30
 ```
@@ -12215,32 +12217,6 @@ print(x);               // prints "[010305]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn remove(string: String, character: char)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove all occurrences of a character from the string.
-
-# Example
-
-```rhai
-let text = "hello, world! hello, foobar!";
-
-text.remove("o");
-
-print(text);        // prints "hell, wrld! hell, fbar!"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn remove(string: String, sub_string: String)
 ```
 
@@ -12257,6 +12233,32 @@ let text = "hello, world! hello, foobar!";
 text.remove("hello");
 
 print(text);        // prints ", world! , foobar!"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn remove(string: String, character: char)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Remove all occurrences of a character from the string.
+
+# Example
+
+```rhai
+let text = "hello, world! hello, foobar!";
+
+text.remove("o");
+
+print(text);        // prints "hell, wrld! hell, fbar!"
 ```
 </details>
 
@@ -12316,22 +12318,6 @@ fn remove_header(message: Message, header: SharedObject) -> bool
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-remove a recipient from the envelop.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn remove_rcpt_envelop(context: Context, addr: String) -> ()
 ```
 
@@ -12348,13 +12334,13 @@ remove a recipient from the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_message(message: Message, addr: SharedObject) -> ()
+fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-remove a recipient from the mail 'To' header.
+remove a recipient from the envelop.
 </details>
 
 </div>
@@ -12380,18 +12366,14 @@ remove a recipient from the mail 'To' header.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rename_header(message: Message, old: SharedObject, new: String) -> ()
+fn remove_rcpt_message(message: Message, addr: SharedObject) -> ()
 ```
 
-</div>
-</br>
+<details>
+<summary markdown="span"> details </summary>
 
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rename_header(message: Message, old: String, new: SharedObject) -> ()
-```
+remove a recipient from the mail 'To' header.
+</details>
 
 </div>
 </br>
@@ -12444,8 +12426,54 @@ Do not confuse with [`set_header()`].
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn rename_header(message: Message, old: String, new: SharedObject) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
 ```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn rename_header(message: Message, old: SharedObject, new: String) -> ()
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn replace(string: String, find_character: char, substitute_string: String)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace all occurrences of the specified character in the string with another string.
+
+# Example
+
+```rhai
+let text = "hello, world! hello, foobar!";
+
+text.replace('l', "(^)");
+
+print(text);        // prints "he(^)(^)o, wor(^)d! he(^)(^)o, foobar!"
+```
+</details>
 
 </div>
 </br>
@@ -12532,22 +12560,30 @@ print(text);        // prints "*, world! *, foobar!"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn replace(string: String, find_character: char, substitute_string: String)
+fn retain(array: Array, range: Range<int>) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Replace all occurrences of the specified character in the string with another string.
+Remove all elements in the array not within an exclusive `range` and return them as a new array.
 
 # Example
 
 ```rhai
-let text = "hello, world! hello, foobar!";
+let x = [1, 2, 3, 4, 5];
 
-text.replace('l', "(^)");
+let y = x.retain(1..4);
 
-print(text);        // prints "he(^)(^)o, wor(^)d! he(^)(^)o, foobar!"
+print(x);       // prints "[2, 3, 4]"
+
+print(y);       // prints "[1, 5]"
+
+let z = x.retain(1..3);
+
+print(x);       // prints "[3, 4]"
+
+print(z);       // prints "[1]"
 ```
 </details>
 
@@ -12558,7 +12594,7 @@ print(text);        // prints "he(^)(^)o, wor(^)d! he(^)(^)o, foobar!"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn retain(array: Array, filter: FnPtr) -> Result<Array, Box<EvalAltResult>>
+fn retain(array: Array, filter: FnPtr) -> Array
 ```
 
 <details>
@@ -12598,7 +12634,43 @@ print(z);       // prints "[5]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn retain(array: Array, filter: String) -> Result<Array, Box<EvalAltResult>>
+fn retain(blob: Blob, range: RangeInclusive<int>) -> Blob
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Remove all bytes in the BLOB not within an inclusive `range` and return them as a new BLOB.
+
+# Example
+
+```rhai
+let b1 = blob();
+
+b1 += 1; b1 += 2; b1 += 3; b1 += 4; b1 += 5;
+
+let b2 = b1.retain(1..=3);
+
+print(b1);      // prints "[020304]"
+
+print(b2);      // prints "[0105]"
+
+let b3 = b1.retain(1..=2);
+
+print(b1);      // prints "[0304]"
+
+print(b2);      // prints "[01]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn retain(array: Array, filter: String) -> Array
 ```
 
 <details>
@@ -12644,76 +12716,6 @@ print(z);       // prints "[5]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn retain(blob: Blob, range: Range<int>) -> Blob
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove all bytes in the BLOB not within an exclusive `range` and return them as a new BLOB.
-
-# Example
-
-```rhai
-let b1 = blob();
-
-b1 += 1; b1 += 2; b1 += 3; b1 += 4; b1 += 5;
-
-let b2 = b1.retain(1..4);
-
-print(b1);      // prints "[020304]"
-
-print(b2);      // prints "[0105]"
-
-let b3 = b1.retain(1..3);
-
-print(b1);      // prints "[0304]"
-
-print(b2);      // prints "[01]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn retain(array: Array, range: Range<int>) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove all elements in the array not within an exclusive `range` and return them as a new array.
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-let y = x.retain(1..4);
-
-print(x);       // prints "[2, 3, 4]"
-
-print(y);       // prints "[1, 5]"
-
-let z = x.retain(1..3);
-
-print(x);       // prints "[3, 4]"
-
-print(z);       // prints "[1]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn retain(array: Array, range: RangeInclusive<int>) -> Array
 ```
 
@@ -12748,13 +12750,13 @@ print(z);       // prints "[1]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn retain(blob: Blob, range: RangeInclusive<int>) -> Blob
+fn retain(blob: Blob, range: Range<int>) -> Blob
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Remove all bytes in the BLOB not within an inclusive `range` and return them as a new BLOB.
+Remove all bytes in the BLOB not within an exclusive `range` and return them as a new BLOB.
 
 # Example
 
@@ -12763,13 +12765,13 @@ let b1 = blob();
 
 b1 += 1; b1 += 2; b1 += 3; b1 += 4; b1 += 5;
 
-let b2 = b1.retain(1..=3);
+let b2 = b1.retain(1..4);
 
 print(b1);      // prints "[020304]"
 
 print(b2);      // prints "[0105]"
 
-let b3 = b1.retain(1..=2);
+let b3 = b1.retain(1..3);
 
 print(b1);      // prints "[0304]"
 
@@ -12866,32 +12868,6 @@ print(z);       // prints "[2]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn reverse(array: Array)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Reverse all the elements in the array.
-
-# Example
-
-```rhai
-let x = [1, 2, 3, 4, 5];
-
-x.reverse();
-
-print(x);       // prints "[5, 4, 3, 2, 1]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn reverse(blob: Blob)
 ```
 
@@ -12912,6 +12888,32 @@ print(b);           // prints "[0102030405]"
 b.reverse();
 
 print(b);           // prints "[0504030201]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn reverse(array: Array)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Reverse all the elements in the array.
+
+# Example
+
+```rhai
+let x = [1, 2, 3, 4, 5];
+
+x.reverse();
+
+print(x);       // prints "[5, 4, 3, 2, 1]"
 ```
 </details>
 
@@ -12954,6 +12956,22 @@ Change the sender of the envelop using an object.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn rewrite_mail_from_message(message: Message, new_addr: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+replace the value of the `From` header by another address.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn rewrite_mail_from_message(message: Message, new_addr: SharedObject) -> ()
 ```
 
@@ -12970,13 +12988,13 @@ replace the value of the `From` header by another address.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_mail_from_message(message: Message, new_addr: String) -> ()
+fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-replace the value of the `From` header by another address.
+Replace a recipient of the envelop.
 </details>
 
 </div>
@@ -13034,13 +13052,13 @@ Replace a recipient of the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Replace a recipient of the envelop.
+replace the value of the `To:` header by another address.
 </details>
 
 </div>
@@ -13050,7 +13068,7 @@ Replace a recipient of the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
 ```
 
 <details>
@@ -13098,33 +13116,7 @@ replace the value of the `To:` header by another address.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-replace the value of the `To:` header by another address.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rlookup(server: Server, name: SharedObject) -> Array>
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rlookup(server: Server, name: String) -> Array>
+fn rlookup(server: Server, name: String) -> Array
 ```
 
 <details>
@@ -13148,6 +13140,16 @@ Perform a dns reverse lookup using the root dns.
 }
 ```
 </details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn rlookup(server: Server, name: SharedObject) -> Array
+```
 
 </div>
 </br>
@@ -13189,34 +13191,28 @@ send a mail from a template.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn set(array: Array, index: int, value: ?)
+fn set(map: Map, property: String, value: ?)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Set the element at the `index` position in the array to a new `value`.
+Set the value of the `property` in the object map to a new `value`.
 
-* If `index` < 0, position counts from the end of the array (`-1` is the last element).
-* If `index` < -length of array, the array is not modified.
-* If `index` ≥ length of array, the array is not modified.
+If `property` does not exist in the object map, it is added.
 
 # Example
 
 ```rhai
-let x = [1, 2, 3];
+let m = #{a: 1, b: 2, c: 3};
 
-x.set(0, 42);
+m.set("b", 42)'
 
-print(x);           // prints "[42, 2, 3]"
+print(m);           // prints "#{a: 1, b: 42, c: 3}"
 
-x.set(-3, 0);
+x.set("x", 0);
 
-print(x);           // prints "[0, 2, 3]"
-
-x.set(99, 123);
-
-print(x);           // prints "[0, 2, 3]"
+print(m);           // prints "#{a: 1, b: 42, c: 3, x: 0}"
 ```
 </details>
 
@@ -13267,6 +13263,44 @@ print(b);           // prints "[4202000405]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn set(array: Array, index: int, value: ?)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Set the element at the `index` position in the array to a new `value`.
+
+* If `index` < 0, position counts from the end of the array (`-1` is the last element).
+* If `index` < -length of array, the array is not modified.
+* If `index` ≥ length of array, the array is not modified.
+
+# Example
+
+```rhai
+let x = [1, 2, 3];
+
+x.set(0, 42);
+
+print(x);           // prints "[42, 2, 3]"
+
+x.set(-3, 0);
+
+print(x);           // prints "[0, 2, 3]"
+
+x.set(99, 123);
+
+print(x);           // prints "[0, 2, 3]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn set(string: String, index: int, character: char)
 ```
 
@@ -13305,39 +13339,7 @@ print(text);    // prints "hello, worxd!"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn set(map: Map, property: String, value: ?)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Set the value of the `property` in the object map to a new `value`.
-
-If `property` does not exist in the object map, it is added.
-
-# Example
-
-```rhai
-let m = #{a: 1, b: 2, c: 3};
-
-m.set("b", 42)'
-
-print(m);           // prints "#{a: 1, b: 42, c: 3}"
-
-x.set("x", 0);
-
-print(m);           // prints "#{a: 1, b: 42, c: 3, x: 0}"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn set tag(value: ?, tag: int) -> Result<(), Box<EvalAltResult>>
+fn set tag(value: ?, tag: int) -> ()
 ```
 
 <details>
@@ -13363,7 +13365,7 @@ print(x.tag);           // prints 42
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn set_bit(value: int, bit: int, new_value: bool) -> Result<(), Box<EvalAltResult>>
+fn set_bit(value: int, bit: int, new_value: bool) -> ()
 ```
 
 <details>
@@ -13400,33 +13402,7 @@ print(x);               // prints 57888 on 64-bit
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn set_bits(value: int, range: RangeInclusive<int>, new_value: int) -> Result<(), Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace an inclusive range of bits in the number with a new value.
-
-# Example
-
-```rhai
-let x = 123456;
-
-x.set_bits(5..=9, 42);
-
-print(x);           // print 123200
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn set_bits(value: int, range: Range<int>, new_value: int) -> Result<(), Box<EvalAltResult>>
+fn set_bits(value: int, range: Range<int>, new_value: int) -> ()
 ```
 
 <details>
@@ -13452,7 +13428,33 @@ print(x);           // print 123200
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn set_bits(value: int, bit: int, bits: int, new_value: int) -> Result<(), Box<EvalAltResult>>
+fn set_bits(value: int, range: RangeInclusive<int>, new_value: int) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace an inclusive range of bits in the number with a new value.
+
+# Example
+
+```rhai
+let x = 123456;
+
+x.set_bits(5..=9, 42);
+
+print(x);           // print 123200
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn set_bits(value: int, bit: int, bits: int, new_value: int) -> ()
 ```
 
 <details>
@@ -13530,7 +13532,7 @@ fn set_header(message: Message, header: String, value: SharedObject) -> ()
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn set_tag(value: ?, tag: int) -> Result<(), Box<EvalAltResult>>
+fn set_tag(value: ?, tag: int) -> ()
 ```
 
 <details>
@@ -13546,6 +13548,34 @@ let x = "hello, world!";
 x.tag = 42;
 
 print(x.tag);           // prints 42
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn shift(array: Array) -> ?
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Remove the first element from the array and return it.
+
+If the array is empty, `()` is returned.
+
+# Example
+
+```rhai
+let x = [1, 2, 3];
+
+print(x.shift());   // prints 1
+
+print(x);           // prints "[2, 3]"
 ```
 </details>
 
@@ -13586,25 +13616,97 @@ print(b);               // prints "[02030405]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn shift(array: Array) -> ?
+fn sign(x: i128) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Remove the first element from the array and return it.
+Return the sign (as an integer) of the number according to the following:
 
-If the array is empty, `()` is returned.
+* `0` if the number is zero
+* `1` if the number is positive
+* `-1` if the number is negative
+</details>
 
-# Example
+</div>
+</br>
 
-```rhai
-let x = [1, 2, 3];
 
-print(x.shift());   // prints 1
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-print(x);           // prints "[2, 3]"
+```rust
+fn sign(x: f32) -> int
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the sign (as an integer) of the floating-point number according to the following:
+
+* `0` if the number is zero
+* `1` if the number is positive
+* `-1` if the number is negative
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn sign(x: float) -> int
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the sign (as an integer) of the floating-point number according to the following:
+
+* `0` if the number is zero
+* `1` if the number is positive
+* `-1` if the number is negative
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn sign(x: i16) -> int
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the sign (as an integer) of the number according to the following:
+
+* `0` if the number is zero
+* `1` if the number is positive
+* `-1` if the number is negative
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn sign(x: i8) -> int
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the sign (as an integer) of the number according to the following:
+
+* `0` if the number is zero
+* `1` if the number is positive
+* `-1` if the number is negative
 </details>
 
 </div>
@@ -13654,106 +13756,6 @@ Return the sign (as an integer) of the number according to the following:
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn sign(x: i128) -> int
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the sign (as an integer) of the number according to the following:
-
-* `0` if the number is zero
-* `1` if the number is positive
-* `-1` if the number is negative
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn sign(x: i8) -> int
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the sign (as an integer) of the number according to the following:
-
-* `0` if the number is zero
-* `1` if the number is positive
-* `-1` if the number is negative
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn sign(x: f32) -> Result<int, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the sign (as an integer) of the floating-point number according to the following:
-
-* `0` if the number is zero
-* `1` if the number is positive
-* `-1` if the number is negative
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn sign(x: i16) -> int
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the sign (as an integer) of the number according to the following:
-
-* `0` if the number is zero
-* `1` if the number is positive
-* `-1` if the number is negative
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn sign(x: float) -> Result<int, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the sign (as an integer) of the floating-point number according to the following:
-
-* `0` if the number is zero
-* `1` if the number is positive
-* `-1` if the number is negative
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn sin(x: float) -> float
 ```
 
@@ -13786,22 +13788,6 @@ Return the hyperbolic sine of the floating-point number in radians.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn sleep(seconds: float)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Block the current thread for a particular number of `seconds`.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn sleep(seconds: int)
 ```
 
@@ -13818,7 +13804,23 @@ Block the current thread for a particular number of `seconds`.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn some(array: Array, filter: String) -> Result<bool, Box<EvalAltResult>>
+fn sleep(seconds: float)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Block the current thread for a particular number of `seconds`.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn some(array: Array, filter: String) -> bool
 ```
 
 <details>
@@ -13860,7 +13862,7 @@ print(x.some("screen"));    // prints true
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn some(array: Array, filter: FnPtr) -> Result<bool, Box<EvalAltResult>>
+fn some(array: Array, filter: FnPtr) -> bool
 ```
 
 <details>
@@ -13893,7 +13895,7 @@ print(x.some(|v, i| i > v));    // prints true
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn sort(array: Array) -> Result<(), Box<EvalAltResult>>
+fn sort(array: Array) -> ()
 ```
 
 <details>
@@ -13931,7 +13933,45 @@ print(x);       // prints "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn sort(array: Array, comparer: String) -> Result<(), Box<EvalAltResult>>
+fn sort(array: Array, comparer: FnPtr) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Sort the array based on applying the `comparer` function.
+
+# Function Parameters
+
+* `element1`: copy of the current array element to compare
+* `element2`: copy of the next array element to compare
+
+## Return Value
+
+* Any integer > 0 if `element1 > element2`
+* Zero if `element1 == element2`
+* Any integer < 0 if `element1 < element2`
+
+# Example
+
+```rhai
+let x = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10];
+
+// Do comparisons in reverse
+x.sort(|a, b| if a > b { -1 } else if a < b { 1 } else { 0 });
+
+print(x);       // prints "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn sort(array: Array, comparer: String) -> ()
 ```
 
 <details>
@@ -13979,51 +14019,13 @@ print(x);       // prints "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn sort(array: Array, comparer: FnPtr) -> Result<(), Box<EvalAltResult>>
+fn splice(blob: Blob, range: RangeInclusive<int>, replace: Blob)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Sort the array based on applying the `comparer` function.
-
-# Function Parameters
-
-* `element1`: copy of the current array element to compare
-* `element2`: copy of the next array element to compare
-
-## Return Value
-
-* Any integer > 0 if `element1 > element2`
-* Zero if `element1 == element2`
-* Any integer < 0 if `element1 < element2`
-
-# Example
-
-```rhai
-let x = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10];
-
-// Do comparisons in reverse
-x.sort(|a, b| if a > b { -1 } else if a < b { 1 } else { 0 });
-
-print(x);       // prints "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn splice(blob: Blob, range: Range<int>, replace: Blob)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace an exclusive `range` of the BLOB with another BLOB.
+Replace an inclusive `range` of the BLOB with another BLOB.
 
 # Example
 
@@ -14031,9 +14033,9 @@ Replace an exclusive `range` of the BLOB with another BLOB.
 let b1 = blob(10, 0x42);
 let b2 = blob(5, 0x18);
 
-b1.splice(1..4, b2);
+b1.splice(1..=4, b2);
 
-print(b1);      // prints "[4218181818184242 42424242]"
+print(b1);      // prints "[4218181818184242 424242]"
 ```
 </details>
 
@@ -14071,33 +14073,6 @@ print(x);       // prints "[1, 7, 8, 9, 10, 5]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn splice(blob: Blob, range: RangeInclusive<int>, replace: Blob)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace an inclusive `range` of the BLOB with another BLOB.
-
-# Example
-
-```rhai
-let b1 = blob(10, 0x42);
-let b2 = blob(5, 0x18);
-
-b1.splice(1..=4, b2);
-
-print(b1);      // prints "[4218181818184242 424242]"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn splice(array: Array, range: Range<int>, replace: Array)
 ```
 
@@ -14115,6 +14090,33 @@ let y = [7, 8, 9, 10];
 x.splice(1..3, y);
 
 print(x);       // prints "[1, 7, 8, 9, 10, 4, 5]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn splice(blob: Blob, range: Range<int>, replace: Blob)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace an exclusive `range` of the BLOB with another BLOB.
+
+# Example
+
+```rhai
+let b1 = blob(10, 0x42);
+let b2 = blob(5, 0x18);
+
+b1.splice(1..4, b2);
+
+print(b1);      // prints "[4218181818184242 42424242]"
 ```
 </details>
 
@@ -14223,20 +14225,20 @@ print(text.split());        // prints ["hello,", "world!", "hello,", "foo!"]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn split(string: String, delimiter: char) -> Array
+fn split(string: String, delimiter: String) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Split the string into segments based on a `delimiter` character, returning an array of the segments.
+Split the string into segments based on a `delimiter` string, returning an array of the segments.
 
 # Example
 
 ```rhai
 let text = "hello, world! hello, foo!";
 
-print(text.split('l'));     // prints ["he", "", "o, wor", "d! he", "", "o, foo!"]
+print(text.split("ll"));    // prints ["he", "o, world! he", "o, foo!"]
 ```
 </details>
 
@@ -14284,31 +14286,20 @@ print(text.split(-99));     // prints ["", "hello, world!"]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn split(blob: Blob, index: int) -> Blob
+fn split(string: String, delimiter: char) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Cut off the BLOB at `index` and return it as a new BLOB.
-
-* If `index` < 0, position counts from the end of the BLOB (`-1` is the last byte).
-* If `index` is zero, the entire BLOB is cut and returned.
-* If `index` < -length of BLOB, the entire BLOB is cut and returned.
-* If `index` ≥ length of BLOB, nothing is cut from the BLOB and an empty BLOB is returned.
+Split the string into segments based on a `delimiter` character, returning an array of the segments.
 
 # Example
 
 ```rhai
-let b1 = blob();
+let text = "hello, world! hello, foo!";
 
-b1 += 1; b1 += 2; b1 += 3; b1 += 4; b1 += 5;
-
-let b2 = b1.split(2);
-
-print(b2);          // prints "[030405]"
-
-print(b1);          // prints "[0102]"
+print(text.split('l'));     // prints ["he", "", "o, wor", "d! he", "", "o, foo!"]
 ```
 </details>
 
@@ -14352,47 +14343,31 @@ print(x);           // prints "[1, 2]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn split(string: String, delimiter: String) -> Array
+fn split(blob: Blob, index: int) -> Blob
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Split the string into segments based on a `delimiter` string, returning an array of the segments.
+Cut off the BLOB at `index` and return it as a new BLOB.
+
+* If `index` < 0, position counts from the end of the BLOB (`-1` is the last byte).
+* If `index` is zero, the entire BLOB is cut and returned.
+* If `index` < -length of BLOB, the entire BLOB is cut and returned.
+* If `index` ≥ length of BLOB, nothing is cut from the BLOB and an empty BLOB is returned.
 
 # Example
 
 ```rhai
-let text = "hello, world! hello, foo!";
+let b1 = blob();
 
-print(text.split("ll"));    // prints ["he", "o, world! he", "o, foo!"]
-```
-</details>
+b1 += 1; b1 += 2; b1 += 3; b1 += 4; b1 += 5;
 
-</div>
-</br>
+let b2 = b1.split(2);
 
+print(b2);          // prints "[030405]"
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn split(string: String, delimiter: String, segments: int) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Split the string into at most the specified number of `segments` based on a `delimiter` string,
-returning an array of the segments.
-
-If `segments` < 1, only one segment is returned.
-
-# Example
-
-```rhai
-let text = "hello, world! hello, foo!";
-
-print(text.split("ll", 2));     // prints ["he", "o, world! hello, foo!"]
+print(b1);          // prints "[0102]"
 ```
 </details>
 
@@ -14420,6 +14395,33 @@ If `segments` < 1, only one segment is returned.
 let text = "hello, world! hello, foo!";
 
 print(text.split('l', 3));      // prints ["he", "", "o, world! hello, foo!"]
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn split(string: String, delimiter: String, segments: int) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Split the string into at most the specified number of `segments` based on a `delimiter` string,
+returning an array of the segments.
+
+If `segments` < 1, only one segment is returned.
+
+# Example
+
+```rhai
+let text = "hello, world! hello, foo!";
+
+print(text.split("ll", 2));     // prints ["he", "o, world! hello, foo!"]
 ```
 </details>
 
@@ -14480,33 +14482,6 @@ print(text.split_rev("ll"));    // prints ["o, foo!", "o, world! he", "he"]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn split_rev(string: String, delimiter: char, segments: int) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Split the string into at most the specified number of `segments` based on a `delimiter` character,
-returning an array of the segments.
-
-If `segments` < 1, only one segment is returned.
-
-# Example
-
-```rhai
-let text = "hello, world! hello, foo!";
-
-print(text.split('l', 3));      // prints ["o, foo!", "", "hello, world! he"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn split_rev(string: String, delimiter: String, segments: int) -> Array
 ```
 
@@ -14534,6 +14509,33 @@ print(text.split_rev("ll", 2));     // prints ["o, foo!", "hello, world! he"]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn split_rev(string: String, delimiter: char, segments: int) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Split the string into at most the specified number of `segments` based on a `delimiter` character,
+returning an array of the segments.
+
+If `segments` < 1, only one segment is returned.
+
+# Example
+
+```rhai
+let text = "hello, world! hello, foo!";
+
+print(text.split('l', 3));      // prints ["o, foo!", "", "hello, world! he"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn sqrt(x: float) -> float
 ```
 
@@ -14550,13 +14552,13 @@ Return the square root of the floating-point number.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn start(range: Range<int>) -> int
+fn start(range: RangeInclusive<int>) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return the start of the exclusive range.
+Return the start of the inclusive range.
 </details>
 
 </div>
@@ -14566,13 +14568,13 @@ Return the start of the exclusive range.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn start(range: RangeInclusive<int>) -> int
+fn start(range: Range<int>) -> int
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Return the start of the inclusive range.
+Return the start of the exclusive range.
 </details>
 
 </div>
@@ -14624,30 +14626,6 @@ Store the result produced by the DKIM signature verification in the `ctx()`.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn sub_string(string: String, range: Range<int>) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Copy an exclusive range of characters from the string and return it as a new string.
-
-# Example
-
-```rhai
-let text = "hello, world!";
-
-print(text.sub_string(3..7));   // prints "lo, "
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn sub_string(string: String, start: int) -> String
 ```
 
@@ -14669,6 +14647,30 @@ let text = "hello, world!";
 print(text.sub_string(5));      // prints ", world!"
 
 print(text.sub_string(-5));      // prints "orld!"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn sub_string(string: String, range: Range<int>) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Copy an exclusive range of characters from the string and return it as a new string.
+
+# Example
+
+```rhai
+let text = "hello, world!";
+
+print(text.sub_string(3..7));   // prints "lo, "
 ```
 </details>
 
@@ -14861,7 +14863,39 @@ print(x);       // prints "[66, 66, 66, 66, 66]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_binary(value: int) -> String
+fn to_binary(value: u64) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in binary format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_binary(value: u16) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in binary format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_binary(value: i128) -> String
 ```
 
 <details>
@@ -14893,7 +14927,7 @@ Convert the `value` into a string in binary format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_binary(value: i32) -> String
+fn to_binary(value: int) -> String
 ```
 
 <details>
@@ -14941,7 +14975,7 @@ Convert the `value` into a string in binary format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_binary(value: u64) -> String
+fn to_binary(value: u128) -> String
 ```
 
 <details>
@@ -14957,7 +14991,7 @@ Convert the `value` into a string in binary format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_binary(value: u16) -> String
+fn to_binary(value: i32) -> String
 ```
 
 <details>
@@ -14974,38 +15008,6 @@ Convert the `value` into a string in binary format.
 
 ```rust
 fn to_binary(value: u32) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in binary format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_binary(value: i128) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in binary format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_binary(value: u128) -> String
 ```
 
 <details>
@@ -15071,6 +15073,86 @@ print(text.to_chars());     // prints "['h', 'e', 'l', 'l', 'o']"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn to_debug(map: Map) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the object map into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_debug(number: float) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the value of `number` into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_debug(number: f32) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the value of `number` into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_debug(f: FnPtr) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the function pointer into a string in debug format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_debug(record: Record) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Produce a debug output for the parsed [`dmarc::Record`]
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn to_debug(array: Array) -> String
 ```
 
@@ -15103,54 +15185,6 @@ Convert a `time::OffsetDateTime` to a `String`
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_debug(f: FnPtr) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the function pointer into a string in debug format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(number: f32) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of `number` into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(record: Record) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Produce a debug output for the parsed [`dmarc::Record`]
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn to_debug(status: Status) -> String
 ```
 
@@ -15158,70 +15192,6 @@ fn to_debug(status: Status) -> String
 <summary markdown="span"> details </summary>
 
 Convert a `Status` to a debug string
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(item: ?) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of the `item` into a string in debug format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(character: char) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the string into debug format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(number: float) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of `number` into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(unit: ()) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the unit into a string in debug format.
 </details>
 
 </div>
@@ -15247,45 +15217,13 @@ Convert a `Server` to a debug string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_debug(string: String) -> String
+fn to_debug(unit: ()) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the string into debug format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(value: bool) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the boolean value into a string in debug format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(map: Map) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the object map into a string.
+Convert the unit into a string in debug format.
 </details>
 
 </div>
@@ -15311,13 +15249,13 @@ Convert a `Context` to a debug string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_degrees(x: float) -> float
+fn to_debug(string: String) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert radians to degrees.
+Convert the string into debug format.
 </details>
 
 </div>
@@ -15327,8 +15265,14 @@ Convert radians to degrees.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_float(x: u32) -> float
+fn to_debug(item: ?) -> String
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the value of the `item` into a string in debug format.
+</details>
 
 </div>
 </br>
@@ -15337,8 +15281,14 @@ fn to_float(x: u32) -> float
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_float(x: i16) -> float
+fn to_debug(value: bool) -> String
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the boolean value into a string in debug format.
+</details>
 
 </div>
 </br>
@@ -15347,8 +15297,14 @@ fn to_float(x: i16) -> float
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_float(x: int) -> float
+fn to_debug(character: char) -> String
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the string into debug format.
+</details>
 
 </div>
 </br>
@@ -15357,28 +15313,14 @@ fn to_float(x: int) -> float
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_float(x: u8) -> float
+fn to_degrees(x: float) -> float
 ```
 
-</div>
-</br>
+<details>
+<summary markdown="span"> details </summary>
 
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_float(x: i8) -> float
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_float(x: u128) -> float
-```
+Convert radians to degrees.
+</details>
 
 </div>
 </br>
@@ -15403,7 +15345,7 @@ Convert the 32-bit floating-point number to 64-bit.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_float(x: u16) -> float
+fn to_float(x: i128) -> float
 ```
 
 </div>
@@ -15413,7 +15355,37 @@ fn to_float(x: u16) -> float
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_float(x: i128) -> float
+fn to_float(x: u8) -> float
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_float(x: int) -> float
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_float(x: i16) -> float
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_float(x: u32) -> float
 ```
 
 </div>
@@ -15433,14 +15405,8 @@ fn to_float(x: i32) -> float
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_hex(value: i16) -> String
+fn to_float(x: i8) -> float
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in hex format.
-</details>
 
 </div>
 </br>
@@ -15449,14 +15415,18 @@ Convert the `value` into a string in hex format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_hex(value: u32) -> String
+fn to_float(x: u16) -> float
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+</div>
+</br>
 
-Convert the `value` into a string in hex format.
-</details>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_float(x: u128) -> float
+```
 
 </div>
 </br>
@@ -15466,86 +15436,6 @@ Convert the `value` into a string in hex format.
 
 ```rust
 fn to_hex(value: i8) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in hex format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_hex(value: int) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in hex format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_hex(value: u16) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in hex format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_hex(value: i128) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in hex format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_hex(value: u128) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in hex format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_hex(value: u64) -> String
 ```
 
 <details>
@@ -15577,6 +15467,118 @@ Convert the `value` into a string in hex format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn to_hex(value: u128) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in hex format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_hex(value: i16) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in hex format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_hex(value: u64) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in hex format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_hex(value: int) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in hex format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_hex(value: i128) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in hex format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_hex(value: u16) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in hex format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_hex(value: u32) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in hex format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn to_hex(value: i32) -> String
 ```
 
@@ -15593,53 +15595,7 @@ Convert the `value` into a string in hex format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_int(x: i16) -> int
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_int(x: i128) -> int
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn to_int(x: i32) -> int
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_int(x: f32) -> Result<int, Box<EvalAltResult>>
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the floating-point number into an integer.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_int(x: u128) -> int
 ```
 
 </div>
@@ -15659,7 +15615,7 @@ fn to_int(x: u8) -> int
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_int(x: u32) -> int
+fn to_int(x: int) -> int
 ```
 
 </div>
@@ -15669,7 +15625,17 @@ fn to_int(x: u32) -> int
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_int(x: float) -> Result<int, Box<EvalAltResult>>
+fn to_int(x: i128) -> int
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_int(x: f32) -> int
 ```
 
 <details>
@@ -15685,7 +15651,7 @@ Convert the floating-point number into an integer.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_int(x: u16) -> int
+fn to_int(x: char) -> int
 ```
 
 </div>
@@ -15695,7 +15661,7 @@ fn to_int(x: u16) -> int
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_int(x: char) -> int
+fn to_int(x: u16) -> int
 ```
 
 </div>
@@ -15715,6 +15681,32 @@ fn to_int(x: i8) -> int
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn to_int(x: float) -> int
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the floating-point number into an integer.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_int(x: i16) -> int
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn to_int(x: u64) -> int
 ```
 
@@ -15725,7 +15717,17 @@ fn to_int(x: u64) -> int
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_int(x: int) -> int
+fn to_int(x: u128) -> int
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_int(x: u32) -> int
 ```
 
 </div>
@@ -15821,86 +15823,6 @@ print(ch);                  // prints 'A'
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_octal(value: u16) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in octal format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_octal(value: u128) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in octal format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_octal(value: u8) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in octal format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_octal(value: u32) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in octal format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_octal(value: i128) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in octal format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn to_octal(value: i16) -> String
 ```
 
@@ -15933,23 +15855,7 @@ Convert the `value` into a string in octal format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_octal(value: int) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the `value` into a string in octal format.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_octal(value: i32) -> String
+fn to_octal(value: u128) -> String
 ```
 
 <details>
@@ -15981,6 +15887,102 @@ Convert the `value` into a string in octal format.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn to_octal(value: int) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in octal format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_octal(value: u8) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in octal format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_octal(value: i128) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in octal format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_octal(value: i32) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in octal format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_octal(value: u16) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in octal format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_octal(value: u32) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the `value` into a string in octal format.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn to_radians(x: float) -> float
 ```
 
@@ -15988,182 +15990,6 @@ fn to_radians(x: float) -> float
 <summary markdown="span"> details </summary>
 
 Convert degrees to radians.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(character: char) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the character into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(string: String) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the `string`.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(number: float) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of `number` into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(item: ?) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the value of the `item` into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(unit: ()) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return the empty string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(_: Context) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `Context` to a `String`.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(map: Map) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the object map into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(_: Server) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `Server` to a `String`.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(array: Array) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert the array into a string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(status: Status) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `Status` to a `String`
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(this: OffsetDateTime) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `time::OffsetDateTime` to a `String`
 </details>
 
 </div>
@@ -16205,23 +16031,173 @@ Convert the value of `number` into a string.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn to_upper(string: String) -> String
+fn to_string(item: ?) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert the string to all upper-case and return it as a new string.
+Convert the value of the `item` into a string.
+</details>
 
-# Example
+</div>
+</br>
 
-```rhai
-let text = "hello, world!"
 
-print(text.to_upper());     // prints "HELLO, WORLD!"
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-print(text);                // prints "hello, world!"
+```rust
+fn to_string(character: char) -> String
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the character into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(status: Status) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Status` to a `String`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(this: OffsetDateTime) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `time::OffsetDateTime` to a `String`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(_: Context) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Context` to a `String`.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(string: String) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the `string`.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(_: Server) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Server` to a `String`.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(number: float) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the value of `number` into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(map: Map) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the object map into a string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(unit: ()) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Return the empty string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_string(array: Array) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the array into a string.
 </details>
 
 </div>
@@ -16247,6 +16223,32 @@ let ch = 'a';
 print(ch.to_upper());       // prints 'A'
 
 print(ch);                  // prints 'a'
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn to_upper(string: String) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert the string to all upper-case and return it as a new string.
+
+# Example
+
+```rhai
+let text = "hello, world!"
+
+print(text.to_upper());     // prints "HELLO, WORLD!"
+
+print(text);                // prints "hello, world!"
 ```
 </details>
 
@@ -16316,39 +16318,6 @@ print(x);       // prints "[1, 2, 3]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn truncate(string: String, len: int)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Cut off the string at the specified number of characters.
-
-* If `len` ≤ 0, the string is cleared.
-* If `len` ≥ length of string, the string is not truncated.
-
-# Example
-
-```rhai
-let text = "hello, world! hello, foobar!";
-
-text.truncate(13);
-
-print(text);    // prints "hello, world!"
-
-x.truncate(10);
-
-print(text);    // prints "hello, world!"
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn truncate(blob: Blob, len: int)
 ```
 
@@ -16384,6 +16353,49 @@ print(b);           // prints "[010203]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn truncate(string: String, len: int)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Cut off the string at the specified number of characters.
+
+* If `len` ≤ 0, the string is cleared.
+* If `len` ≥ length of string, the string is not truncated.
+
+# Example
+
+```rhai
+let text = "hello, world! hello, foobar!";
+
+text.truncate(13);
+
+print(text);    // prints "hello, world!"
+
+x.truncate(10);
+
+print(text);    // prints "hello, world!"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn user_exist(name: SharedObject) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn user_exist(name: String) -> bool
 ```
 
@@ -16408,16 +16420,6 @@ Does the `name` correspond to an existing user in the system.
 }
 ```
 </details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn user_exist(name: SharedObject) -> bool
-```
 
 </div>
 </br>
@@ -16590,22 +16592,6 @@ X-Auto-Response-Suppress: All
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn write(srv: Server, mut ctx: Context, message: Message, dir: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-write the current email to a specified folder.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn write(srv: Server, mut ctx: Context, message: Message, dir: String) -> ()
 ```
 
@@ -16622,27 +16608,13 @@ write the current email to a specified folder.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn write_ascii(blob: Blob, range: RangeInclusive<int>, string: String)
+fn write(srv: Server, mut ctx: Context, message: Message, dir: SharedObject) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Write an ASCII string to the bytes within an inclusive `range` in the BLOB.
-
-Each ASCII character encodes to one single byte in the BLOB.
-Non-ASCII characters are ignored.
-
-* If number of bytes in `range` < length of `string`, extra bytes in `string` are not written.
-* If number of bytes in `range` > length of `string`, extra bytes in `range` are not modified.
-
-```rhai
-let b = blob(8);
-
-b.write_ascii(1..=5, "hello, world!");
-
-print(b);       // prints "[0068656c6c6f0000]"
-```
+write the current email to a specified folder.
 </details>
 
 </div>
@@ -16682,6 +16654,36 @@ print(b);       // prints "[0068656c6c000000]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn write_ascii(blob: Blob, range: RangeInclusive<int>, string: String)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Write an ASCII string to the bytes within an inclusive `range` in the BLOB.
+
+Each ASCII character encodes to one single byte in the BLOB.
+Non-ASCII characters are ignored.
+
+* If number of bytes in `range` < length of `string`, extra bytes in `string` are not written.
+* If number of bytes in `range` > length of `string`, extra bytes in `range` are not modified.
+
+```rhai
+let b = blob(8);
+
+b.write_ascii(1..=5, "hello, world!");
+
+print(b);       // prints "[0068656c6c6f0000]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn write_ascii(blob: Blob, start: int, len: int, string: String)
 ```
 
@@ -16706,6 +16708,26 @@ b.write_ascii(1, 5, "hello, world!");
 
 print(b);       // prints "[0068656c6c6f0000]"
 ```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn write_be(blob: Blob, range: Range<int>, value: float)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Write a `FLOAT` value to the bytes within an exclusive `range` in the BLOB
+in big-endian byte order.
+
+* If number of bytes in `range` < number of bytes for `FLOAT`, extra bytes in `FLOAT` are not written.
+* If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes in `range` are not modified.
 </details>
 
 </div>
@@ -16763,26 +16785,6 @@ in big-endian byte order.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn write_be(blob: Blob, range: Range<int>, value: float)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Write a `FLOAT` value to the bytes within an exclusive `range` in the BLOB
-in big-endian byte order.
-
-* If number of bytes in `range` < number of bytes for `FLOAT`, extra bytes in `FLOAT` are not written.
-* If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes in `range` are not modified.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
 fn write_be(blob: Blob, range: RangeInclusive<int>, value: int)
 ```
 
@@ -16802,32 +16804,6 @@ b.write_be_int(1..=3, 0x99);
 
 print(b);       // prints "[4200000042424242]"
 ```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn write_be(blob: Blob, start: int, len: int, value: float)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Write a `FLOAT` value to the bytes beginning at the `start` position in the BLOB
-in big-endian byte order.
-
-* If `start` < 0, position counts from the end of the BLOB (`-1` is the last byte).
-* If `start` < -length of BLOB, position counts from the beginning of the BLOB.
-* If `start` ≥ length of BLOB, zero is returned.
-* If `len` ≤ 0, zero is returned.
-* If `start` position + `len` ≥ length of BLOB, entire portion of the BLOB after the `start` position is parsed.
-
-* If number of bytes in `range` < number of bytes for `FLOAT`, extra bytes in `FLOAT` are not written.
-* If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes in `range` are not modified.
 </details>
 
 </div>
@@ -16871,45 +16847,23 @@ print(b);       // prints "[4200000042424242]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn write_le(blob: Blob, range: RangeInclusive<int>, value: float)
+fn write_be(blob: Blob, start: int, len: int, value: float)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Write a `FLOAT` value to the bytes within an inclusive `range` in the BLOB
-in little-endian byte order.
+Write a `FLOAT` value to the bytes beginning at the `start` position in the BLOB
+in big-endian byte order.
+
+* If `start` < 0, position counts from the end of the BLOB (`-1` is the last byte).
+* If `start` < -length of BLOB, position counts from the beginning of the BLOB.
+* If `start` ≥ length of BLOB, zero is returned.
+* If `len` ≤ 0, zero is returned.
+* If `start` position + `len` ≥ length of BLOB, entire portion of the BLOB after the `start` position is parsed.
 
 * If number of bytes in `range` < number of bytes for `FLOAT`, extra bytes in `FLOAT` are not written.
 * If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes in `range` are not modified.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn write_le(blob: Blob, range: RangeInclusive<int>, value: int)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Write an `INT` value to the bytes within an inclusive `range` in the BLOB
-in little-endian byte order.
-
-* If number of bytes in `range` < number of bytes for `INT`, extra bytes in `INT` are not written.
-* If number of bytes in `range` > number of bytes for `INT`, extra bytes in `range` are not modified.
-
-```rhai
-let b = blob(8);
-
-b.write_le_int(1..=3, 0x12345678);
-
-print(b);       // prints "[0078563400000000]"
-```
 </details>
 
 </div>
@@ -16947,6 +16901,34 @@ print(b);       // prints "[0078560000000000]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn write_le(blob: Blob, range: RangeInclusive<int>, value: int)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Write an `INT` value to the bytes within an inclusive `range` in the BLOB
+in little-endian byte order.
+
+* If number of bytes in `range` < number of bytes for `INT`, extra bytes in `INT` are not written.
+* If number of bytes in `range` > number of bytes for `INT`, extra bytes in `range` are not modified.
+
+```rhai
+let b = blob(8);
+
+b.write_le_int(1..=3, 0x12345678);
+
+print(b);       // prints "[0078563400000000]"
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn write_le(blob: Blob, range: Range<int>, value: float)
 ```
 
@@ -16967,20 +16949,14 @@ in little-endian byte order.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn write_le(blob: Blob, start: int, len: int, value: float)
+fn write_le(blob: Blob, range: RangeInclusive<int>, value: float)
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Write a `FLOAT` value to the bytes beginning at the `start` position in the BLOB
+Write a `FLOAT` value to the bytes within an inclusive `range` in the BLOB
 in little-endian byte order.
-
-* If `start` < 0, position counts from the end of the BLOB (`-1` is the last byte).
-* If `start` < -length of BLOB, position counts from the beginning of the BLOB.
-* If `start` ≥ length of BLOB, zero is returned.
-* If `len` ≤ 0, zero is returned.
-* If `start` position + `len` ≥ length of BLOB, entire portion of the BLOB after the `start` position is parsed.
 
 * If number of bytes in `range` < number of bytes for `FLOAT`, extra bytes in `FLOAT` are not written.
 * If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes in `range` are not modified.
@@ -17018,6 +16994,32 @@ b.write_le_int(1, 3, 0x12345678);
 
 print(b);       // prints "[0078563400000000]"
 ```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn write_le(blob: Blob, start: int, len: int, value: float)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Write a `FLOAT` value to the bytes beginning at the `start` position in the BLOB
+in little-endian byte order.
+
+* If `start` < 0, position counts from the end of the BLOB (`-1` is the last byte).
+* If `start` < -length of BLOB, position counts from the beginning of the BLOB.
+* If `start` ≥ length of BLOB, zero is returned.
+* If `len` ≤ 0, zero is returned.
+* If `start` position + `len` ≥ length of BLOB, entire portion of the BLOB after the `start` position is parsed.
+
+* If number of bytes in `range` < number of bytes for `FLOAT`, extra bytes in `FLOAT` are not written.
+* If number of bytes in `range` > number of bytes for `FLOAT`, extra bytes in `range` are not modified.
 </details>
 
 </div>
@@ -17114,7 +17116,17 @@ print(b);       // prints "[00e69c9de3810000]"
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn |(x: u128, y: u128) -> u128
+fn |(x: i128, y: i128) -> i128
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn |(x: u64, y: u64) -> u64
 ```
 
 </div>
@@ -17125,6 +17137,36 @@ fn |(x: u128, y: u128) -> u128
 
 ```rust
 fn |(x: i8, y: i8) -> i8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn |(x: u8, y: u8) -> u8
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn |(x: i32, y: i32) -> i32
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
+fn |(x: u16, y: u16) -> u16
 ```
 
 </div>
@@ -17154,47 +17196,7 @@ fn |(x: i16, y: i16) -> i16
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn |(x: u16, y: u16) -> u16
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn |(x: u64, y: u64) -> u64
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn |(x: i32, y: i32) -> i32
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn |(x: u8, y: u8) -> u8
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn |(x: i128, y: i128) -> i128
+fn |(x: u128, y: u128) -> u128
 ```
 
 </div>

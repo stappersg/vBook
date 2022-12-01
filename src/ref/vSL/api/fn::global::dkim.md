@@ -77,7 +77,7 @@ return the `auid` property of the [`Signature`]
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get dkim_result(ctx: Context) -> Map>
+fn get dkim_result(ctx: Context) -> Map
 ```
 
 <details>
@@ -158,7 +158,7 @@ Get the list of DKIM private keys associated with this sdid
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?>
+fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?
 ```
 
 <details>

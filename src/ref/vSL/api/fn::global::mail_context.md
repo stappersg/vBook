@@ -5,7 +5,7 @@
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
+fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -21,7 +21,7 @@ add a recipient to the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
+fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
 ```
 
 <details>
@@ -117,7 +117,7 @@ Get the peer ip address of the client.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get client_port(context: Context) -> int>
+fn get client_port(context: Context) -> int
 ```
 
 <details>
@@ -133,7 +133,7 @@ Get the peer port of the client.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get connection_timestamp(context: Context) -> OffsetDateTime>
+fn get connection_timestamp(context: Context) -> OffsetDateTime
 ```
 
 <details>
@@ -213,7 +213,7 @@ Get the `MailFrom` envelope.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get mail_timestamp(context: Context) -> OffsetDateTime>
+fn get mail_timestamp(context: Context) -> OffsetDateTime
 ```
 
 <details>
@@ -261,7 +261,7 @@ Get the lase element in the `RcptTo` envelope.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get rcpt_list(context: Context) -> Array>
+fn get rcpt_list(context: Context) -> Array
 ```
 
 <details>
@@ -293,7 +293,7 @@ Get the server address which served this connection.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get server_ip(context: Context) -> IpAddr>
+fn get server_ip(context: Context) -> IpAddr
 ```
 
 <details>
@@ -325,7 +325,7 @@ Get server name under which the client has been served.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get server_port(context: Context) -> int>
+fn get server_port(context: Context) -> int
 ```
 
 <details>
@@ -357,7 +357,7 @@ Get the type of the `auth` property of the connection.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_envelop(context: Context, addr: String) -> ()
+fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
 ```
 
 <details>
@@ -373,7 +373,7 @@ remove a recipient from the envelop.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
+fn remove_rcpt_envelop(context: Context, addr: String) -> ()
 ```
 
 <details>
@@ -421,6 +421,22 @@ Change the sender of the envelop using an object.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
+fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace a recipient of the envelop.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+
+```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
@@ -454,22 +470,6 @@ Replace a recipient of the envelop.
 
 ```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient of the envelop.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
 ```
 
 <details>

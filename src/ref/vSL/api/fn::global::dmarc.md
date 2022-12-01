@@ -37,7 +37,7 @@ fn get receiver_policy(record: Record) -> String
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_dmarc_record(server: Server, domain: String) -> Record>
+fn get_dmarc_record(server: Server, domain: String) -> Record
 ```
 
 <details>
@@ -53,7 +53,7 @@ Get a valid DMARC record for the domain.
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
 ```rust
-fn get_dmarc_record(server: Server, domain: SharedObject) -> Record>
+fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
 ```
 
 <details>
