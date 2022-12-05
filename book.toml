@@ -9,6 +9,7 @@ title = "vBook - The vSMTP reference book"
 git-repository-url = "https://github.com/ViridIT/vSMTP"
 edit-url-template = "https://github.com/ViridIT/vBook"
 curly-quotes = true
+additional-css = ["custom.css"]
 
 [output.html.fold]
 enable = true
