@@ -21,7 +21,7 @@
 
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn authenticate()
@@ -44,7 +44,7 @@ A native implementation will be provided in the future.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn bcc(rcpt: ?)
@@ -79,7 +79,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_dmarc()
@@ -111,7 +111,7 @@ Apply the DMARC policy to the mail.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_spf(header: ?)
@@ -175,7 +175,7 @@ see https://datatracker.ietf.org/doc/html/rfc7208
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_spf(header: ?, policy: ?)
@@ -240,7 +240,7 @@ see https://datatracker.ietf.org/doc/html/rfc7208
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_spf_inner()
@@ -298,7 +298,7 @@ see https://datatracker.ietf.org/doc/html/rfc7208
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn ctx()
@@ -338,7 +338,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_domain()
@@ -375,7 +375,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_domains()
@@ -416,7 +416,7 @@ Get all domains of the recipient list.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_local_part()
@@ -453,7 +453,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_local_parts()
@@ -494,7 +494,7 @@ Get all local parts of the recipient list.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn msg()
@@ -534,7 +534,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_mail_from(new_addr: ?)
@@ -569,7 +569,7 @@ the `From` header.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn sign_dkim(selector: ?, private_key: ?)
@@ -595,7 +595,7 @@ sign_dkim(
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn sign_dkim(selector: ?, private_key: ?, headers_field: ?, canonicalization: ?)
@@ -637,7 +637,7 @@ Produce a `DKIM-Signature` header.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn srv()
@@ -677,7 +677,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn verify_dkim()
@@ -714,7 +714,7 @@ see https://datatracker.ietf.org/doc/html/rfc6376
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn verify_dkim_inner(policy: ?)

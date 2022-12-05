@@ -2,7 +2,7 @@
 
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
@@ -38,7 +38,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
@@ -74,7 +74,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get auth(context: Context) -> Credentials
@@ -108,7 +108,7 @@ Get authentication credentials from the client.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get authid(credentials: Credentials) -> String
@@ -124,7 +124,7 @@ Get the `authid` property of the connection.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get authpass(credentials: Credentials) -> String
@@ -140,7 +140,7 @@ Get the `authpass` property of the connection.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get client_address(context: Context) -> String
@@ -174,7 +174,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get client_ip(context: Context) -> String
@@ -208,7 +208,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get client_port(context: Context) -> int
@@ -242,7 +242,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get connection_timestamp(context: Context) -> OffsetDateTime
@@ -276,7 +276,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get helo(context: Context) -> String
@@ -310,7 +310,7 @@ Get the value of the `HELO/EHLO` command sent by the client.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get is_authenticated(context: Context) -> bool
@@ -343,7 +343,7 @@ Check if the client is authenticated.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get is_secured(context: Context) -> bool
@@ -378,7 +378,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get mail_from(context: Context) -> SharedObject
@@ -412,7 +412,7 @@ Get the value of the `MAIL FROM` command sent by the client.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get mail_timestamp(context: Context) -> OffsetDateTime
@@ -446,7 +446,7 @@ Get the time of reception of the email.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get message_id(context: Context) -> String
@@ -480,7 +480,7 @@ Get the unique id of the received message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get rcpt(context: Context) -> SharedObject
@@ -516,7 +516,7 @@ this functions is best used in the `rcpt` stage.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get rcpt_list(context: Context) -> Array
@@ -552,7 +552,7 @@ in the later stages.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_address(context: Context) -> String
@@ -586,7 +586,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_ip(context: Context) -> IpAddr
@@ -620,7 +620,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_name(context: Context) -> String
@@ -653,7 +653,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_port(context: Context) -> int
@@ -686,7 +686,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get type(credentials: Credentials) -> String
@@ -702,43 +702,7 @@ Get the type of the `auth` property of the connection.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn remove_rcpt_envelop(context: Context, addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove a recipient from the envelop. Note that this does not remove
-the recipient from the `To` header. Use `remove_rcpt_message` for that.
-
-# Args
-
-* `rcpt` - the recipient to remove.
-
-# Effective smtp stage
-
-All of them.
-
-# Examples
-
-```
-#{
-    preq: [
-       // never deliver to "john.doe@example.com".
-       action "rewrite envelop" || remove_rcpt_envelop("john.doe@example.com"),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
@@ -774,31 +738,33 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
+fn remove_rcpt_envelop(context: Context, addr: String) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Rewrite the sender received from the `MAIL FROM` command.
+Remove a recipient from the envelop. Note that this does not remove
+the recipient from the `To` header. Use `remove_rcpt_message` for that.
 
 # Args
 
-* `new_addr` - the new sender address to set.
+* `rcpt` - the recipient to remove.
 
 # Effective smtp stage
 
-`mail` and onwards.
+All of them.
 
 # Examples
 
 ```
 #{
     preq: [
-       action "rewrite envelop" || rewrite_mail_from_envelop(address("unknown@example.com")),
+       // never deliver to "john.doe@example.com".
+       action "rewrite envelop" || remove_rcpt_envelop("john.doe@example.com"),
     ]
 }
 ```
@@ -808,7 +774,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_mail_from_envelop(context: Context, new_addr: String) -> ()
@@ -842,32 +808,31 @@ Rewrite the sender received from the `MAIL FROM` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
+fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Replace a recipient received by a `RCPT TO` command.
+Rewrite the sender received from the `MAIL FROM` command.
 
 # Args
 
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
+* `new_addr` - the new sender address to set.
 
 # Effective smtp stage
 
-`rcpt` and onwards.
+`mail` and onwards.
 
 # Examples
 
 ```
 #{
     preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", address("john.main@example.com")),
+       action "rewrite envelop" || rewrite_mail_from_envelop(address("unknown@example.com")),
     ]
 }
 ```
@@ -877,42 +842,7 @@ Replace a recipient received by a `RCPT TO` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient received by a `RCPT TO` command.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`rcpt` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), address("john.main@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
@@ -947,7 +877,42 @@ Replace a recipient received by a `RCPT TO` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace a recipient received by a `RCPT TO` command.
+
+# Args
+
+* `old_addr` - the recipient to replace.
+* `new_addr` - the new address to use when replacing `old_addr`.
+
+# Effective smtp stage
+
+`rcpt` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", address("john.main@example.com")),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
@@ -982,23 +947,42 @@ Replace a recipient received by a `RCPT TO` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn to_debug(context: Context) -> String
+fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Context` to a debug string.
+Replace a recipient received by a `RCPT TO` command.
+
+# Args
+
+* `old_addr` - the recipient to replace.
+* `new_addr` - the new address to use when replacing `old_addr`.
+
+# Effective smtp stage
+
+`rcpt` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), address("john.main@example.com")),
+    ]
+}
+```
 </details>
 
 </div>
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(context: Server) -> String
@@ -1014,23 +998,23 @@ Convert a `Server` to a debug string.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn to_string(_: Context) -> String
+fn to_debug(context: Context) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Context` to a `String`.
+Convert a `Context` to a debug string.
 </details>
 
 </div>
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_string(_: Server) -> String
@@ -1040,6 +1024,22 @@ fn to_string(_: Server) -> String
 <summary markdown="span"> details </summary>
 
 Convert a `Server` to a `String`.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn to_string(_: Context) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Context` to a `String`.
 </details>
 
 </div>

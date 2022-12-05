@@ -2,7 +2,7 @@
 
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn date() -> String
@@ -38,7 +38,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_root_domain(domain: String) -> String
@@ -58,7 +58,7 @@ Get the root domain (the registrable part)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_root_domain(domain: SharedObject) -> String
@@ -68,7 +68,7 @@ fn get_root_domain(domain: SharedObject) -> String
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn hostname() -> String
@@ -117,72 +117,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn lookup(server: Server, name: String) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Performs a dual-stack DNS lookup for the given hostname.
-
-### Args
-
-* `host` - A valid hostname to search.
-
-### Return
-
-* `array` - an array of IPs. The array is empty if no IPs were found for the host.
-
-### Effective smtp stage
-
-All of them.
-
-# Errors
-
-* Root resolver was not found.
-* Lookup failed.
-
-### Examples
-
-```js
-#{
-    rcpt: [
-       action "perform lookup" || {
-            let domain = rcpt().domain;
-            let ips = lookup(domain);
-
-            print(`ips found for ${domain}`);
-            for ip in ips {
-                print(`- ${ip}`);
-            }
-       }
-    ]
-}
-```
-
-```rust
- #{
-  preq: [
-    action "lookup recipients" || {
-      let domain = "gmail.com";
-      let ips = lookup(domain);
-
-      print(`ips found for ${domain}`);
-      for ip in ips { print(`- ${ip}`); }
-    },
-  ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn lookup(server: Server, name: SharedObject) -> Array
@@ -249,24 +184,24 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn rlookup(server: Server, name: String) -> Array
+fn lookup(server: Server, name: String) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Performs a reverse lookup for the given IP.
+Performs a dual-stack DNS lookup for the given hostname.
 
 ### Args
 
-* `ip` - The IP to query.
+* `host` - A valid hostname to search.
 
 ### Return
 
-* `array` - an array of FQDNs. The array is empty if nothing was found.
+* `array` - an array of IPs. The array is empty if no IPs were found for the host.
 
 ### Effective smtp stage
 
@@ -274,41 +209,42 @@ All of them.
 
 # Errors
 
-* Failed to convert the `ip` parameter from a string into an IP.
-* Reverse lookup failed.
+* Root resolver was not found.
+* Lookup failed.
 
 ### Examples
 
-```js
+```
 #{
-    connect: [
-       action "perform reverse lookup" || {
-            let domains = rlookup(client_ip());
+    rcpt: [
+       action "perform lookup" || {
+            let domain = rcpt().domain;
+            let ips = lookup(domain);
 
-            print(`domains found for ip ${client_ip()}`);
-            for domain in domains {
-                print(`- ${domain}`);
+            print(`ips found for ${domain}`);
+            for ip in ips {
+                print(`- ${ip}`);
             }
        }
     ]
 }
 ```
 
-```
-# let states = vsmtp_test::vsl::run(
+```rust
+# vsmtp_test::vsl::run(
 # |builder| Ok(builder.add_root_incoming_rules(r#"
 #{
-  connect: [
-    rule "rlookup" || {
-      accept(`250 client ip: ${"127.0.0.1"} -> ${rlookup("127.0.0.1")}`);
-    }
+  preq: [
+    action "lookup recipients" || {
+      let domain = "gmail.com";
+      let ips = lookup(domain);
+
+      print(`ips found for ${domain}`);
+      for ip in ips { print(`- ${ip}`); }
+    },
   ],
 }
 # "#)?.build()));
-# use vsmtp_common::{status::Status, CodeID, Reply, ReplyCode::Code};
-# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::Connect].2, Status::Accept(either::Right(Reply::new(
-#  Code { code: 250 }, "client ip: 127.0.0.1 -> [\"localhost.\"]".to_string(),
-# ))));
 ```
 </details>
 
@@ -316,7 +252,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rlookup(server: Server, name: SharedObject) -> Array
@@ -383,7 +319,74 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rlookup(server: Server, name: String) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Performs a reverse lookup for the given IP.
+
+### Args
+
+* `ip` - The IP to query.
+
+### Return
+
+* `array` - an array of FQDNs. The array is empty if nothing was found.
+
+### Effective smtp stage
+
+All of them.
+
+# Errors
+
+* Failed to convert the `ip` parameter from a string into an IP.
+* Reverse lookup failed.
+
+### Examples
+
+```js
+#{
+    connect: [
+       action "perform reverse lookup" || {
+            let domains = rlookup(client_ip());
+
+            print(`domains found for ip ${client_ip()}`);
+            for domain in domains {
+                print(`- ${domain}`);
+            }
+       }
+    ]
+}
+```
+
+```
+# let states = vsmtp_test::vsl::run(
+# |builder| Ok(builder.add_root_incoming_rules(r#"
+#{
+  connect: [
+    rule "rlookup" || {
+      accept(`250 client ip: ${"127.0.0.1"} -> ${rlookup("127.0.0.1")}`);
+    }
+  ],
+}
+# "#)?.build()));
+# use vsmtp_common::{status::Status, CodeID, Reply, ReplyCode::Code};
+# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::Connect].2, Status::Accept(either::Right(Reply::new(
+#  Code { code: 250 }, "client ip: 127.0.0.1 -> [\"localhost.\"]".to_string(),
+# ))));
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn time() -> String
@@ -419,16 +422,15 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn user_exist(name: String) -> bool
+fn user_exist(name: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-send a mail from a template.
 Check if a user exists on this server.
 
 ### Args
@@ -487,15 +489,16 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn user_exist(name: SharedObject) -> bool
+fn user_exist(name: String) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
+send a mail from a template.
 Check if a user exists on this server.
 
 ### Args

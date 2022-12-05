@@ -2,7 +2,7 @@
 
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn !=(this: SharedObject, s: String) -> bool
@@ -18,23 +18,7 @@ Operator `!=` for `SharedObject` and `&str`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn !=(this: SharedObject, other: SharedObject) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Operator `!=` for `SharedObject`
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn !=(this: String, other: SharedObject) -> bool
@@ -50,7 +34,23 @@ Operator `!=` for `&str` and `SharedObject`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn !=(this: SharedObject, other: SharedObject) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `!=` for `SharedObject`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn !=(in1: Status, in2: Status) -> bool
@@ -66,39 +66,7 @@ Operator `!=` for `Status`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(this: SharedObject, s: String) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Operator `==` for `SharedObject` and `&str`
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn ==(this: String, other: SharedObject) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Operator `==` for `&str` and `SharedObject`
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn ==(this: SharedObject, other: SharedObject) -> bool
@@ -114,7 +82,39 @@ Operator `==` for `SharedObject`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn ==(this: String, other: SharedObject) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `==` for `&str` and `SharedObject`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn ==(this: SharedObject, s: String) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `==` for `SharedObject` and `&str`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn ==(in1: Status, in2: Status) -> bool
@@ -130,7 +130,7 @@ Operator `==` for `Status`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn accept() -> Status
@@ -169,54 +169,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn accept(code: String) -> Status
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Tell the rule engine to accept the incoming transaction for the current stage.
-This means that all rules following the one `accept` is called in the current stage
-will be ignored.
-
-# Args
-
-* `code` - A custom code as a string to send to the client.
-
-# Error
-
-* Could not parse the parameter as a valid SMTP reply code.
-
-# Effective smtp stage
-
-all of them.
-
-# Example
-
-```
-#{
-    connect: [
-        // "ignored checks" will be ignored because the previous rule returned accept.
-        rule "accept" || accept(code(220, "Ok")),
-        action "ignore checks" || print("this will be ignored because the previous rule used accept()."),
-    ],
-
-    mail: [
-        // rule evaluation is resumed in the next stage.
-        rule "resume rules" || print("evaluation resumed!");
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn accept(code: SharedObject) -> Status
@@ -263,7 +216,54 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn accept(code: String) -> Status
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Tell the rule engine to accept the incoming transaction for the current stage.
+This means that all rules following the one `accept` is called in the current stage
+will be ignored.
+
+# Args
+
+* `code` - A custom code as a string to send to the client.
+
+# Error
+
+* Could not parse the parameter as a valid SMTP reply code.
+
+# Effective smtp stage
+
+all of them.
+
+# Example
+
+```
+#{
+    connect: [
+        // "ignored checks" will be ignored because the previous rule returned accept.
+        rule "accept" || accept(code(220, "Ok")),
+        action "ignore checks" || print("this will be ignored because the previous rule used accept()."),
+    ],
+
+    mail: [
+        // rule evaluation is resumed in the next stage.
+        rule "resume rules" || print("evaluation resumed!");
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
@@ -299,7 +299,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
@@ -335,41 +335,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn add_rcpt_message(message: Message, new_addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add a recipient to the `To` header of the message.
-
-# Args
-
-* `addr` - the recipient address to add to the `To` header.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "update recipients" || add_rcpt_message("john.doe@example.com"),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn add_rcpt_message(message: Message, new_addr: SharedObject) -> ()
@@ -403,7 +369,41 @@ Add a recipient to the `To` header of the message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn add_rcpt_message(message: Message, new_addr: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Add a recipient to the `To` header of the message.
+
+# Args
+
+* `addr` - the recipient address to add to the `To` header.
+
+# Effective smtp stage
+
+`preq` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "update recipients" || add_rcpt_message("john.doe@example.com"),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn address(address: String) -> VSLObject
@@ -419,7 +419,7 @@ an email address (jones@foo.com)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn append_header(message: Message, header: String, value: SharedObject) -> ()
@@ -474,7 +474,7 @@ the `preq` stage is reached.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn append_header(message: Message, header: String, value: String) -> ()
@@ -529,7 +529,7 @@ the `preq` stage is reached.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn authenticate()
@@ -552,7 +552,7 @@ A native implementation will be provided in the future.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn bcc(rcpt: ?)
@@ -587,7 +587,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_dmarc()
@@ -619,7 +619,7 @@ Apply the DMARC policy to the mail.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_spf(header: ?)
@@ -683,7 +683,7 @@ see https://datatracker.ietf.org/doc/html/rfc7208
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_spf(header: ?, policy: ?)
@@ -748,7 +748,7 @@ see https://datatracker.ietf.org/doc/html/rfc7208
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_spf(ctx: Context, srv: Server) -> Map
@@ -770,7 +770,7 @@ a rhai Map with:
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn check_spf_inner()
@@ -828,7 +828,7 @@ see https://datatracker.ietf.org/doc/html/rfc7208
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn cmd(parameters: Map) -> Cmd
@@ -838,7 +838,7 @@ fn cmd(parameters: Map) -> Cmd
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn code(code: int, text: String) -> VSLObject
@@ -854,7 +854,7 @@ A SMTP code with the code and message as parameter.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn code(code: int, enhanced: String, text: String) -> VSLObject
@@ -870,7 +870,17 @@ A SMTP code with the code and message as parameter and an enhanced code.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn contains(map: Map, object: SharedObject) -> bool
+```
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn contains(this: SharedObject, other: SharedObject) -> bool
@@ -886,17 +896,7 @@ Operator `contains`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn contains(map: Map, object: SharedObject) -> bool
-```
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn contains(this: SharedObject, s: String) -> bool
@@ -912,7 +912,7 @@ Operator `contains`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn count_header(message: Message, header: String) -> int
@@ -970,7 +970,7 @@ is when the email body is received.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn count_header(message: Message, header: SharedObject) -> int
@@ -1028,7 +1028,7 @@ is when the email body is received.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn ctx()
@@ -1068,7 +1068,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn date() -> String
@@ -1104,7 +1104,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deliver(context: Context, rcpt: String) -> ()
@@ -1166,7 +1166,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deliver(context: Context, rcpt: SharedObject) -> ()
@@ -1201,7 +1201,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deliver_all(context: Context) -> ()
@@ -1246,7 +1246,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deny() -> Status
@@ -1287,53 +1287,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn deny(code: String) -> Status
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Stop rules evaluation and/or send an error code to the client.
-
-# Args
-
-* `code` - A custom code as a string to send to the client.
-
-# Error
-
-* Could not parse the parameter as a valid SMTP reply code.
-
-# Effective smtp stage
-
-all of them.
-
-# Example
-
-```
-#{
-    rcpt: [
-        rule "check for satan" || {
-           // The client is denied if a recipient's domain matches satan.org,
-           // this is a blacklist, sort-of.
-           if rcpt().domain == "satan.org" {
-               deny("554 permanent problems with the remote server")
-           } else {
-               next()
-           }
-       },
-    ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deny(code: SharedObject) -> Status
@@ -1380,7 +1334,53 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn deny(code: String) -> Status
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Stop rules evaluation and/or send an error code to the client.
+
+# Args
+
+* `code` - A custom code as a string to send to the client.
+
+# Error
+
+* Could not parse the parameter as a valid SMTP reply code.
+
+# Effective smtp stage
+
+all of them.
+
+# Example
+
+```
+#{
+    rcpt: [
+        rule "check for satan" || {
+           // The client is denied if a recipient's domain matches satan.org,
+           // this is a blacklist, sort-of.
+           if rcpt().domain == "satan.org" {
+               deny("554 permanent problems with the remote server")
+           } else {
+               next()
+           }
+       },
+    ],
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_from: String, spf_result: String) -> bool
@@ -1396,7 +1396,7 @@ fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn dump(srv: Server, mut ctx: Context, dir: String) -> ()
@@ -1412,7 +1412,7 @@ write the content of the current email with it's metadata in a json file.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn faccept() -> Status
@@ -1459,7 +1459,59 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn faccept(code: SharedObject) -> Status
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Tell the rule engine to force accept the incoming transaction.
+This means that all rules following the one `faccept` is called
+will be ignored.
+
+Use this return status when you are sure that
+the incoming client can be trusted.
+
+# Args
+
+* `code` - a custom code using a `code` object to send to the client.
+
+# Error
+
+* The given parameter was not a code object.
+
+# Effective smtp stage
+
+all of them.
+
+# Example
+
+```
+#{
+    connect: [
+        // Here we imagine that "192.168.1.10" is a trusted source, so we can force accept
+        // any other rules that don't need to be run.
+        rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept(code(220, "Ok")) } else { next() },
+    ],
+
+    // The following rules will not be evaluated if `client_ip() == "192.168.1.10"` is true.
+    mail: [
+        rule "another rule" || {
+            // ... doing stuff
+        }
+    ],
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn faccept(code: String) -> Status
@@ -1512,59 +1564,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn faccept(code: SharedObject) -> Status
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Tell the rule engine to force accept the incoming transaction.
-This means that all rules following the one `faccept` is called
-will be ignored.
-
-Use this return status when you are sure that
-the incoming client can be trusted.
-
-# Args
-
-* `code` - a custom code using a `code` object to send to the client.
-
-# Error
-
-* The given parameter was not a code object.
-
-# Effective smtp stage
-
-all of them.
-
-# Example
-
-```
-#{
-    connect: [
-        // Here we imagine that "192.168.1.10" is a trusted source, so we can force accept
-        // any other rules that don't need to be run.
-        rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept(code(220, "Ok")) } else { next() },
-    ],
-
-    // The following rules will not be evaluated if `client_ip() == "192.168.1.10"` is true.
-    mail: [
-        rule "another rule" || {
-            // ... doing stuff
-        }
-    ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn file(path: String, content_type: String) -> Array
@@ -1580,7 +1580,7 @@ the content of a file.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
@@ -1616,10 +1616,10 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 ```
 
 <details>
@@ -1652,7 +1652,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn forward(context: Context, rcpt: String, forward: String) -> ()
@@ -1715,10 +1715,10 @@ const rules = #{
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
 ```
 
 <details>
@@ -1751,7 +1751,43 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn forward_all(context: Context, forward: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Set the delivery method to forwarding for all recipients.
+After all rules are evaluated, forwarding will be used to deliver
+the email.
+
+# Args
+
+* `target` - the target to forward the email to.
+
+# Effective smtp stage
+
+All of them.
+
+# Examples
+
+```
+#{
+    delivery: [
+       action "setup forwarding" || forward_all(fqdn("mta-john.example.com")),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn forward_all(context: Context, forward: String) -> ()
@@ -1805,43 +1841,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn forward_all(context: Context, forward: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Set the delivery method to forwarding for all recipients.
-After all rules are evaluated, forwarding will be used to deliver
-the email.
-
-# Args
-
-* `target` - the target to forward the email to.
-
-# Effective smtp stage
-
-All of them.
-
-# Examples
-
-```
-#{
-    delivery: [
-       action "setup forwarding" || forward_all(fqdn("mta-john.example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn fqdn(domain: String) -> VSLObject
@@ -1857,7 +1857,7 @@ a valid fully qualified domain name (foo.com)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn generate_signature_dkim(message: Message, context: Context, selector: String, private_key: Arc<PrivateKey>, headers_field: Array, canonicalization: String) -> String
@@ -1916,7 +1916,7 @@ This message has not been signed yet, meaning someone could change it...
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get auid(signature: Signature) -> String
@@ -1932,7 +1932,7 @@ return the `auid` property of the [`Signature`]
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get auth(context: Context) -> Credentials
@@ -1966,7 +1966,7 @@ Get authentication credentials from the client.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get authid(credentials: Credentials) -> String
@@ -1982,7 +1982,7 @@ Get the `authid` property of the connection.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get authpass(credentials: Credentials) -> String
@@ -1998,7 +1998,7 @@ Get the `authpass` property of the connection.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get client_address(context: Context) -> String
@@ -2032,7 +2032,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get client_ip(context: Context) -> String
@@ -2066,7 +2066,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get client_port(context: Context) -> int
@@ -2100,7 +2100,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get connection_timestamp(context: Context) -> OffsetDateTime
@@ -2134,7 +2134,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get dkim_result(ctx: Context) -> Map
@@ -2151,7 +2151,7 @@ an error if no result is found.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get domain(addr: VSLObject) -> VSLObject
@@ -2167,7 +2167,7 @@ Get the `domain` of an email address
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get domains(container: Array) -> Array
@@ -2183,7 +2183,7 @@ Get the `domains` of an array of email address
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get has_debug_flag(key: PublicKey) -> bool
@@ -2199,7 +2199,7 @@ A public key may contains a `debug flag`, used for testing purpose.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get has_dkim_result(ctx: Context) -> bool
@@ -2215,7 +2215,7 @@ Has the `ctx()` a DKIM signature verification result ?
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get helo(context: Context) -> String
@@ -2249,7 +2249,7 @@ Get the value of the `HELO/EHLO` command sent by the client.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get is_authenticated(context: Context) -> bool
@@ -2282,7 +2282,7 @@ Check if the client is authenticated.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get is_secured(context: Context) -> bool
@@ -2317,7 +2317,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get local_part(addr: VSLObject) -> String
@@ -2333,7 +2333,7 @@ Get the `local part` of an email address
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get local_parts(container: Array) -> Array
@@ -2349,7 +2349,7 @@ Get the user identifier of a list of email address.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get mail(this: Message) -> String
@@ -2378,7 +2378,7 @@ Get a copy of the whole email as a string.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get mail_from(context: Context) -> SharedObject
@@ -2412,7 +2412,7 @@ Get the value of the `MAIL FROM` command sent by the client.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get mail_timestamp(context: Context) -> OffsetDateTime
@@ -2446,7 +2446,7 @@ Get the time of reception of the email.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get message_id(context: Context) -> String
@@ -2480,7 +2480,7 @@ Get the unique id of the received message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get rcpt(context: Context) -> SharedObject
@@ -2516,7 +2516,7 @@ this functions is best used in the `rcpt` stage.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get rcpt_list(context: Context) -> Array
@@ -2552,7 +2552,7 @@ in the later stages.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get receiver_address(smtp: Smtp) -> String
@@ -2568,7 +2568,7 @@ Get the receiver address from a smtp service.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get receiver_policy(record: Record) -> String
@@ -2584,7 +2584,7 @@ fn get receiver_policy(record: Record) -> String
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get sdid(signature: Signature) -> String
@@ -2600,7 +2600,7 @@ return the `sdid` property of the [`Signature`]
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_address(context: Context) -> String
@@ -2634,7 +2634,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_ip(context: Context) -> IpAddr
@@ -2668,7 +2668,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_name(context: Context) -> String
@@ -2701,7 +2701,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get server_port(context: Context) -> int
@@ -2734,7 +2734,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get type(credentials: Credentials) -> String
@@ -2750,7 +2750,7 @@ Get the type of the `auth` property of the connection.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_all_headers(message: Message) -> Array
@@ -2787,48 +2787,7 @@ is when the email body is received.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn get_all_headers(message: Message, name: String) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Get a list of all values of a specific header from the incoming message.
-
-# Args
-
-* `header` - the name of the header to search.
-
-# Return
-
-* `array` - all header values, or an empty array if the header was not found.
-
-# Effective smtp stage
-
-All of them, although it is most useful in the `preq` stage because this
-is when the email body is received.
-
-# Examples
-
-```
-#{
-    postq: [
-        action "display return path" || {
-            print(get_all_headers("Return-Path"));
-        }
-    ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_all_headers(message: Message, name: SharedObject) -> Array
@@ -2869,23 +2828,48 @@ is when the email body is received.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn get_dmarc_record(server: Server, domain: String) -> Record
+fn get_all_headers(message: Message, name: String) -> Array
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Get a valid DMARC record for the domain.
+Get a list of all values of a specific header from the incoming message.
+
+# Args
+
+* `header` - the name of the header to search.
+
+# Return
+
+* `array` - all header values, or an empty array if the header was not found.
+
+# Effective smtp stage
+
+All of them, although it is most useful in the `preq` stage because this
+is when the email body is received.
+
+# Examples
+
+```
+#{
+    postq: [
+        action "display return path" || {
+            print(get_all_headers("Return-Path"));
+        }
+    ],
+}
+```
 </details>
 
 </div>
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
@@ -2901,7 +2885,23 @@ Get a valid DMARC record for the domain.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn get_dmarc_record(server: Server, domain: String) -> Record
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Get a valid DMARC record for the domain.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_domain()
@@ -2938,7 +2938,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_domains()
@@ -2979,7 +2979,7 @@ Get all domains of the recipient list.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_header(message: Message, header: String) -> String
@@ -3041,7 +3041,7 @@ Hello world!
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_header(message: Message, header: SharedObject) -> String
@@ -3103,7 +3103,7 @@ Hello world!
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_header_untouched(this: Message, name: String) -> Array
@@ -3119,7 +3119,7 @@ fn get_header_untouched(this: Message, name: String) -> Array
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_local_part()
@@ -3156,7 +3156,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_local_parts()
@@ -3197,7 +3197,7 @@ Get all local parts of the recipient list.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_private_keys(server: Server, sdid: String) -> Array
@@ -3213,7 +3213,7 @@ Get the list of DKIM private keys associated with this sdid
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?
@@ -3235,7 +3235,7 @@ The current implementation will make a TXT query on the dns of the signer
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_root_domain(domain: String) -> String
@@ -3255,7 +3255,7 @@ Get the root domain (the registrable part)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_root_domain(domain: SharedObject) -> String
@@ -3265,7 +3265,7 @@ fn get_root_domain(domain: SharedObject) -> String
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn handle_dkim_error(err: ?) -> String
@@ -3285,7 +3285,7 @@ get the dkim status from an error produced by this module
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn has_expired(signature: Signature, epsilon: int) -> bool
@@ -3303,7 +3303,7 @@ return `true` if the argument are invalid (`epsilon` is negative)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn has_header(message: Message, header: SharedObject) -> bool
@@ -3362,7 +3362,7 @@ email is received at this point.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn has_header(message: Message, header: String) -> bool
@@ -3421,7 +3421,7 @@ email is received at this point.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn hostname() -> String
@@ -3470,7 +3470,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn identifier(identifier: String) -> VSLObject
@@ -3486,47 +3486,7 @@ a user identifier.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn info(code: String) -> Status
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Ask the client to retry to send the current command by sending an information code.
-
-# Args
-
-* `code` - A custom code as a string to send to the client.
-
-# Error
-
-* Could not parse the parameter as a valid SMTP reply code.
-
-# Effective smtp stage
-
-all of them.
-
-# Example
-
-```
-#{
-    connect: [
-        rule "please retry" || {
-           info("451 failed to understand you request, please retry")
-       },
-    ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn info(code: SharedObject) -> Status
@@ -3568,7 +3528,47 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn info(code: String) -> Status
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Ask the client to retry to send the current command by sending an information code.
+
+# Args
+
+* `code` - A custom code as a string to send to the client.
+
+# Error
+
+* Could not parse the parameter as a valid SMTP reply code.
+
+# Effective smtp stage
+
+all of them.
+
+# Example
+
+```
+#{
+    connect: [
+        rule "please retry" || {
+           info("451 failed to understand you request, please retry")
+       },
+    ],
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn ip4(ip: String) -> VSLObject
@@ -3584,7 +3584,7 @@ Build an ip4 address. (a.b.c.d)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn ip6(ip: String) -> VSLObject
@@ -3600,125 +3600,7 @@ Build an ip6 address. (x:x:x:x:x:x:x:x)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn log(level: SharedObject, message: SharedObject)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Log information to stdout in `nodaemon` mode or to a file.
-
-# Args
-
-* `level` - the level of the message, can be "trace", "debug", "info", "warn" or "error".
-* `message` - the message to log.
-
-# Effective smtp stage
-
-All of them.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "log info" || log("info", "this is an informational log."),
-    ]
-}
-```
-
-```
-#{
-  connect: [
-    action "log on connection (str/str)" || {
-      log("info", `[${date()}/${time()}] client=${client_ip()}`);
-    },
-    action "log on connection (str/obj)" || {
-      log("error", identifier("Ehllo world!"));
-    },
-    action "log on connection (obj/obj)" || {
-      const level = "trace";
-      const message = "connection established";
-
-      log(identifier(level), identifier(message));
-    },
-    action "log on connection (obj/str)" || {
-      const level = "warn";
-
-      log(identifier(level), "I love vsl!");
-    },
-  ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn log(level: SharedObject, message: String)
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Log information to stdout in `nodaemon` mode or to a file.
-
-# Args
-
-* `level` - the level of the message, can be "trace", "debug", "info", "warn" or "error".
-* `message` - the message to log.
-
-# Effective smtp stage
-
-All of them.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "log info" || log("info", "this is an informational log."),
-    ]
-}
-```
-
-```
-#{
-  connect: [
-    action "log on connection (str/str)" || {
-      log("info", `[${date()}/${time()}] client=${client_ip()}`);
-    },
-    action "log on connection (str/obj)" || {
-      log("error", identifier("Ehllo world!"));
-    },
-    action "log on connection (obj/obj)" || {
-      const level = "trace";
-      const message = "connection established";
-
-      log(identifier(level), identifier(message));
-    },
-    action "log on connection (obj/str)" || {
-      const level = "warn";
-
-      log(identifier(level), "I love vsl!");
-    },
-  ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn log(level: String, message: String)
@@ -3777,7 +3659,125 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn log(level: SharedObject, message: SharedObject)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Log information to stdout in `nodaemon` mode or to a file.
+
+# Args
+
+* `level` - the level of the message, can be "trace", "debug", "info", "warn" or "error".
+* `message` - the message to log.
+
+# Effective smtp stage
+
+All of them.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "log info" || log("info", "this is an informational log."),
+    ]
+}
+```
+
+```
+#{
+  connect: [
+    action "log on connection (str/str)" || {
+      log("info", `[${date()}/${time()}] client=${client_ip()}`);
+    },
+    action "log on connection (str/obj)" || {
+      log("error", identifier("Ehllo world!"));
+    },
+    action "log on connection (obj/obj)" || {
+      const level = "trace";
+      const message = "connection established";
+
+      log(identifier(level), identifier(message));
+    },
+    action "log on connection (obj/str)" || {
+      const level = "warn";
+
+      log(identifier(level), "I love vsl!");
+    },
+  ],
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn log(level: SharedObject, message: String)
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Log information to stdout in `nodaemon` mode or to a file.
+
+# Args
+
+* `level` - the level of the message, can be "trace", "debug", "info", "warn" or "error".
+* `message` - the message to log.
+
+# Effective smtp stage
+
+All of them.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "log info" || log("info", "this is an informational log."),
+    ]
+}
+```
+
+```
+#{
+  connect: [
+    action "log on connection (str/str)" || {
+      log("info", `[${date()}/${time()}] client=${client_ip()}`);
+    },
+    action "log on connection (str/obj)" || {
+      log("error", identifier("Ehllo world!"));
+    },
+    action "log on connection (obj/obj)" || {
+      const level = "trace";
+      const message = "connection established";
+
+      log(identifier(level), identifier(message));
+    },
+    action "log on connection (obj/str)" || {
+      const level = "warn";
+
+      log(identifier(level), "I love vsl!");
+    },
+  ],
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn log(level: String, message: SharedObject)
@@ -3836,72 +3836,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn lookup(server: Server, name: String) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Performs a dual-stack DNS lookup for the given hostname.
-
-### Args
-
-* `host` - A valid hostname to search.
-
-### Return
-
-* `array` - an array of IPs. The array is empty if no IPs were found for the host.
-
-### Effective smtp stage
-
-All of them.
-
-# Errors
-
-* Root resolver was not found.
-* Lookup failed.
-
-### Examples
-
-```js
-#{
-    rcpt: [
-       action "perform lookup" || {
-            let domain = rcpt().domain;
-            let ips = lookup(domain);
-
-            print(`ips found for ${domain}`);
-            for ip in ips {
-                print(`- ${ip}`);
-            }
-       }
-    ]
-}
-```
-
-```rust
- #{
-  preq: [
-    action "lookup recipients" || {
-      let domain = "gmail.com";
-      let ips = lookup(domain);
-
-      print(`ips found for ${domain}`);
-      for ip in ips { print(`- ${ip}`); }
-    },
-  ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn lookup(server: Server, name: SharedObject) -> Array
@@ -3968,7 +3903,75 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn lookup(server: Server, name: String) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Performs a dual-stack DNS lookup for the given hostname.
+
+### Args
+
+* `host` - A valid hostname to search.
+
+### Return
+
+* `array` - an array of IPs. The array is empty if no IPs were found for the host.
+
+### Effective smtp stage
+
+All of them.
+
+# Errors
+
+* Root resolver was not found.
+* Lookup failed.
+
+### Examples
+
+```
+#{
+    rcpt: [
+       action "perform lookup" || {
+            let domain = rcpt().domain;
+            let ips = lookup(domain);
+
+            print(`ips found for ${domain}`);
+            for ip in ips {
+                print(`- ${ip}`);
+            }
+       }
+    ]
+}
+```
+
+```rust
+# vsmtp_test::vsl::run(
+# |builder| Ok(builder.add_root_incoming_rules(r#"
+#{
+  preq: [
+    action "lookup recipients" || {
+      let domain = "gmail.com";
+      let ips = lookup(domain);
+
+      print(`ips found for ${domain}`);
+      for ip in ips { print(`- ${ip}`); }
+    },
+  ],
+}
+# "#)?.build()));
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn maildir(context: Context, rcpt: String) -> ()
@@ -4018,7 +4021,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn maildir(context: Context, rcpt: SharedObject) -> ()
@@ -4053,7 +4056,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn maildir_all(context: Context) -> ()
@@ -4100,7 +4103,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn mbox(context: Context, rcpt: String) -> ()
@@ -4151,7 +4154,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn mbox(context: Context, rcpt: SharedObject) -> ()
@@ -4186,7 +4189,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn mbox_all(context: Context) -> ()
@@ -4232,7 +4235,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn msg()
@@ -4272,7 +4275,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn next() -> Status
@@ -4305,7 +4308,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn parse_rfc5322_from(message: Message) -> SharedObject
@@ -4321,7 +4324,7 @@ Get the address of the sender in the message body, also known as RFC5322.From
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn parse_signature(input: String) -> Signature
@@ -4337,7 +4340,7 @@ create a [`Signature`] from a `DKIM-Signature` header
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn prepend_header(message: Message, header: String, value: String) -> ()
@@ -4392,7 +4395,7 @@ the `preq` stage is reached.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn prepend_header(message: Message, header: String, value: SharedObject) -> ()
@@ -4447,7 +4450,7 @@ the `preq` stage is reached.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn quarantine(queue: String) -> Status
@@ -4495,7 +4498,7 @@ import "services" as svc;
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn regex(regex: String) -> VSLObject
@@ -4511,78 +4514,7 @@ a regex (^[a-z0-9.]+@foo.com$)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn remove_header(message: Message, header: SharedObject) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove an existing header from the message.
-
-# Args
-
-* `header` - the name of the header to remove.
-
-# Return
-
-* a boolean value, true if a header has been removed, false otherwise.
-
-# Effective smtp stage
-
-All of them, although it is most useful in the `preq` stage because this
-is when the email body is received.
-
-# Examples
-
-```
-#{
-    postq: [
-        action "remove one X-VSMTP header" || {
-            remove_header("X-VSMTP");
-        },
-
-        // There can be multiple headers with the same name.
-        // Since `remove_header` return `true` when it removes an
-        // header, you can use a `while` loop to remove all headers
-        // that bear the same name.
-        action "remove all X-VSMTP headers" || {
-            while remove_header("X-VSMTP") is true {}
-        },
-    ],
-}
-```
-
-```
-"Subject: The initial header value\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "remove_header" || {
-      remove_header("Subject");
-      if has_header("Subject") { return deny(); }
-
-      prepend_header("Subject-2", "Rust is good");
-      remove_header(identifier("Subject-2"));
-
-      prepend_header("Subject-3", "Rust is good !!!!!");
-
-      accept(`250 ${get_header("Subject-3")}`);
-    }
-  ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn remove_header(message: Message, header: String) -> bool
@@ -4653,34 +4585,69 @@ is when the email body is received.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_envelop(context: Context, addr: String) -> ()
+fn remove_header(message: Message, header: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Remove a recipient from the envelop. Note that this does not remove
-the recipient from the `To` header. Use `remove_rcpt_message` for that.
+Remove an existing header from the message.
 
 # Args
 
-* `rcpt` - the recipient to remove.
+* `header` - the name of the header to remove.
+
+# Return
+
+* a boolean value, true if a header has been removed, false otherwise.
 
 # Effective smtp stage
 
-All of them.
+All of them, although it is most useful in the `preq` stage because this
+is when the email body is received.
 
 # Examples
 
 ```
 #{
-    preq: [
-       // never deliver to "john.doe@example.com".
-       action "rewrite envelop" || remove_rcpt_envelop("john.doe@example.com"),
-    ]
+    postq: [
+        action "remove one X-VSMTP header" || {
+            remove_header("X-VSMTP");
+        },
+
+        // There can be multiple headers with the same name.
+        // Since `remove_header` return `true` when it removes an
+        // header, you can use a `while` loop to remove all headers
+        // that bear the same name.
+        action "remove all X-VSMTP headers" || {
+            while remove_header("X-VSMTP") is true {}
+        },
+    ],
+}
+```
+
+```
+"Subject: The initial header value\r\n",
+"\r\n",
+"Hello world!\r\n",
+
+#{
+  preq: [
+    rule "remove_header" || {
+      remove_header("Subject");
+      if has_header("Subject") { return deny(); }
+
+      prepend_header("Subject-2", "Rust is good");
+      remove_header(identifier("Subject-2"));
+
+      prepend_header("Subject-3", "Rust is good !!!!!");
+
+      accept(`250 ${get_header("Subject-3")}`);
+    }
+  ]
 }
 ```
 </details>
@@ -4689,7 +4656,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
@@ -4725,31 +4692,33 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn remove_rcpt_message(message: Message, addr: String) -> ()
+fn remove_rcpt_envelop(context: Context, addr: String) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Remove a recipient from the `To` header of the message.
+Remove a recipient from the envelop. Note that this does not remove
+the recipient from the `To` header. Use `remove_rcpt_message` for that.
 
 # Args
 
-* `addr` - the recipient to remove to the `To` header.
+* `rcpt` - the recipient to remove.
 
 # Effective smtp stage
 
-`preq` and onwards.
+All of them.
 
 # Examples
 
 ```
 #{
     preq: [
-       action "update recipients" || remove_rcpt_message("john.doe@example.com"),
+       // never deliver to "john.doe@example.com".
+       action "rewrite envelop" || remove_rcpt_envelop("john.doe@example.com"),
     ]
 }
 ```
@@ -4759,7 +4728,7 @@ Remove a recipient from the `To` header of the message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn remove_rcpt_message(message: Message, addr: SharedObject) -> ()
@@ -4793,62 +4762,32 @@ Remove a recipient from the `To` header of the message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn rename_header(message: Message, old: String, new: String) -> ()
+fn remove_rcpt_message(message: Message, addr: String) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Replace an existing header name by a new value.
+Remove a recipient from the `To` header of the message.
 
 # Args
 
-* `old` - the name of the header to rename.
-* `new` - the new new of the header.
+* `addr` - the recipient to remove to the `To` header.
 
 # Effective smtp stage
 
-All of them, although it is most useful in the `preq` stage because this
-is when the email body is received.
+`preq` and onwards.
 
 # Examples
 
 ```
 #{
-    postq: [
-        action "rename header" || {
-            rename_header("X-To-Rename", "X-Renamed");
-        }
-    ],
-}
-```
-
-```
-"Subject: The initial header value\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "rename_header" || {
-      rename_header("Subject", "bob");
-      if has_header("Subject") { return deny(); }
-
-      rename_header("bob", identifier("Subject"));
-      if has_header("bob") { return deny(); }
-
-      rename_header(identifier("Subject"), "foo");
-      if has_header("Subject") { return deny(); }
-
-      rename_header(identifier("foo"), identifier("Subject"));
-      if has_header("foo") { return deny(); }
-
-      accept(`250 ${get_header("Subject")}`);
-    }
-  ]
+    preq: [
+       action "update recipients" || remove_rcpt_message("john.doe@example.com"),
+    ]
 }
 ```
 </details>
@@ -4857,135 +4796,7 @@ is when the email body is received.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rename_header(message: Message, old: String, new: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace an existing header name by a new value.
-
-# Args
-
-* `old` - the name of the header to rename.
-* `new` - the new new of the header.
-
-# Effective smtp stage
-
-All of them, although it is most useful in the `preq` stage because this
-is when the email body is received.
-
-# Examples
-
-```
-#{
-    postq: [
-        action "rename header" || {
-            rename_header("X-To-Rename", "X-Renamed");
-        }
-    ],
-}
-```
-
-```
-"Subject: The initial header value\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "rename_header" || {
-      rename_header("Subject", "bob");
-      if has_header("Subject") { return deny(); }
-
-      rename_header("bob", identifier("Subject"));
-      if has_header("bob") { return deny(); }
-
-      rename_header(identifier("Subject"), "foo");
-      if has_header("Subject") { return deny(); }
-
-      rename_header(identifier("foo"), identifier("Subject"));
-      if has_header("foo") { return deny(); }
-
-      accept(`250 ${get_header("Subject")}`);
-    }
-  ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace an existing header name by a new value.
-
-# Args
-
-* `old` - the name of the header to rename.
-* `new` - the new new of the header.
-
-# Effective smtp stage
-
-All of them, although it is most useful in the `preq` stage because this
-is when the email body is received.
-
-# Examples
-
-```
-#{
-    postq: [
-        action "rename header" || {
-            rename_header("X-To-Rename", "X-Renamed");
-        }
-    ],
-}
-```
-
-```
-"Subject: The initial header value\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "rename_header" || {
-      rename_header("Subject", "bob");
-      if has_header("Subject") { return deny(); }
-
-      rename_header("bob", identifier("Subject"));
-      if has_header("bob") { return deny(); }
-
-      rename_header(identifier("Subject"), "foo");
-      if has_header("Subject") { return deny(); }
-
-      rename_header(identifier("foo"), identifier("Subject"));
-      if has_header("foo") { return deny(); }
-
-      accept(`250 ${get_header("Subject")}`);
-    }
-  ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rename_header(message: Message, old: SharedObject, new: String) -> ()
@@ -5049,7 +4860,199 @@ is when the email body is received.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rename_header(message: Message, old: String, new: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace an existing header name by a new value.
+
+# Args
+
+* `old` - the name of the header to rename.
+* `new` - the new new of the header.
+
+# Effective smtp stage
+
+All of them, although it is most useful in the `preq` stage because this
+is when the email body is received.
+
+# Examples
+
+```
+#{
+    postq: [
+        action "rename header" || {
+            rename_header("X-To-Rename", "X-Renamed");
+        }
+    ],
+}
+```
+
+```
+"Subject: The initial header value\r\n",
+"\r\n",
+"Hello world!\r\n",
+
+#{
+  preq: [
+    rule "rename_header" || {
+      rename_header("Subject", "bob");
+      if has_header("Subject") { return deny(); }
+
+      rename_header("bob", identifier("Subject"));
+      if has_header("bob") { return deny(); }
+
+      rename_header(identifier("Subject"), "foo");
+      if has_header("Subject") { return deny(); }
+
+      rename_header(identifier("foo"), identifier("Subject"));
+      if has_header("foo") { return deny(); }
+
+      accept(`250 ${get_header("Subject")}`);
+    }
+  ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rename_header(message: Message, old: String, new: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace an existing header name by a new value.
+
+# Args
+
+* `old` - the name of the header to rename.
+* `new` - the new new of the header.
+
+# Effective smtp stage
+
+All of them, although it is most useful in the `preq` stage because this
+is when the email body is received.
+
+# Examples
+
+```
+#{
+    postq: [
+        action "rename header" || {
+            rename_header("X-To-Rename", "X-Renamed");
+        }
+    ],
+}
+```
+
+```
+"Subject: The initial header value\r\n",
+"\r\n",
+"Hello world!\r\n",
+
+#{
+  preq: [
+    rule "rename_header" || {
+      rename_header("Subject", "bob");
+      if has_header("Subject") { return deny(); }
+
+      rename_header("bob", identifier("Subject"));
+      if has_header("bob") { return deny(); }
+
+      rename_header(identifier("Subject"), "foo");
+      if has_header("Subject") { return deny(); }
+
+      rename_header(identifier("foo"), identifier("Subject"));
+      if has_header("foo") { return deny(); }
+
+      accept(`250 ${get_header("Subject")}`);
+    }
+  ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace an existing header name by a new value.
+
+# Args
+
+* `old` - the name of the header to rename.
+* `new` - the new new of the header.
+
+# Effective smtp stage
+
+All of them, although it is most useful in the `preq` stage because this
+is when the email body is received.
+
+# Examples
+
+```
+#{
+    postq: [
+        action "rename header" || {
+            rename_header("X-To-Rename", "X-Renamed");
+        }
+    ],
+}
+```
+
+```
+"Subject: The initial header value\r\n",
+"\r\n",
+"Hello world!\r\n",
+
+#{
+  preq: [
+    rule "rename_header" || {
+      rename_header("Subject", "bob");
+      if has_header("Subject") { return deny(); }
+
+      rename_header("bob", identifier("Subject"));
+      if has_header("bob") { return deny(); }
+
+      rename_header(identifier("Subject"), "foo");
+      if has_header("Subject") { return deny(); }
+
+      rename_header(identifier("foo"), identifier("Subject"));
+      if has_header("foo") { return deny(); }
+
+      accept(`250 ${get_header("Subject")}`);
+    }
+  ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_mail_from(new_addr: ?)
@@ -5084,41 +5087,7 @@ the `From` header.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Rewrite the sender received from the `MAIL FROM` command.
-
-# Args
-
-* `new_addr` - the new sender address to set.
-
-# Effective smtp stage
-
-`mail` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_mail_from_envelop(address("unknown@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_mail_from_envelop(context: Context, new_addr: String) -> ()
@@ -5152,7 +5121,41 @@ Rewrite the sender received from the `MAIL FROM` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Rewrite the sender received from the `MAIL FROM` command.
+
+# Args
+
+* `new_addr` - the new sender address to set.
+
+# Effective smtp stage
+
+`mail` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "rewrite envelop" || rewrite_mail_from_envelop(address("unknown@example.com")),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_mail_from_message(message: Message, new_addr: String) -> ()
@@ -5186,7 +5189,7 @@ Change the sender's address in the `From` header of the message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_mail_from_message(message: Message, new_addr: SharedObject) -> ()
@@ -5220,77 +5223,7 @@ Change the sender's address in the `From` header of the message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient received by a `RCPT TO` command.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`rcpt` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", address("john.main@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient received by a `RCPT TO` command.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`rcpt` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), address("john.main@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
@@ -5325,7 +5258,42 @@ Replace a recipient received by a `RCPT TO` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace a recipient received by a `RCPT TO` command.
+
+# Args
+
+* `old_addr` - the recipient to replace.
+* `new_addr` - the new address to use when replacing `old_addr`.
+
+# Effective smtp stage
+
+`rcpt` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", address("john.main@example.com")),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
@@ -5360,16 +5328,16 @@ Replace a recipient received by a `RCPT TO` command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: SharedObject) -> ()
+fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Replace a recipient by an other in the `To` header of the message.
+Replace a recipient received by a `RCPT TO` command.
 
 # Args
 
@@ -5378,14 +5346,14 @@ Replace a recipient by an other in the `To` header of the message.
 
 # Effective smtp stage
 
-`preq` and onwards.
+`rcpt` and onwards.
 
 # Examples
 
 ```
 #{
     preq: [
-       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", address("john-mta@example.com")),
+       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), address("john.main@example.com")),
     ]
 }
 ```
@@ -5395,77 +5363,7 @@ Replace a recipient by an other in the `To` header of the message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient by an other in the `To` header of the message.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite recipient" || rewrite_rcpt_message(address("john.doe@example.com"), address("john-mta@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient by an other in the `To` header of the message.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite recipient" || rewrite_rcpt_message(address("john.doe@example.com"), "john-mta@example.com"),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
@@ -5500,7 +5398,112 @@ Replace a recipient by an other in the `To` header of the message.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace a recipient by an other in the `To` header of the message.
+
+# Args
+
+* `old_addr` - the recipient to replace.
+* `new_addr` - the new address to use when replacing `old_addr`.
+
+# Effective smtp stage
+
+`preq` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", address("john-mta@example.com")),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace a recipient by an other in the `To` header of the message.
+
+# Args
+
+* `old_addr` - the recipient to replace.
+* `new_addr` - the new address to use when replacing `old_addr`.
+
+# Effective smtp stage
+
+`preq` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "rewrite recipient" || rewrite_rcpt_message(address("john.doe@example.com"), address("john-mta@example.com")),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace a recipient by an other in the `To` header of the message.
+
+# Args
+
+* `old_addr` - the recipient to replace.
+* `new_addr` - the new address to use when replacing `old_addr`.
+
+# Effective smtp stage
+
+`preq` and onwards.
+
+# Examples
+
+```
+#{
+    preq: [
+       action "rewrite recipient" || rewrite_rcpt_message(address("john.doe@example.com"), "john-mta@example.com"),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rg4(range: String) -> VSLObject
@@ -5516,7 +5519,7 @@ an ip v4 range. (a.b.c.d/range)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rg6(range: String) -> VSLObject
@@ -5532,74 +5535,7 @@ an ip v6 range. (x:x:x:x:x:x:x:x/range)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn rlookup(server: Server, name: String) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Performs a reverse lookup for the given IP.
-
-### Args
-
-* `ip` - The IP to query.
-
-### Return
-
-* `array` - an array of FQDNs. The array is empty if nothing was found.
-
-### Effective smtp stage
-
-All of them.
-
-# Errors
-
-* Failed to convert the `ip` parameter from a string into an IP.
-* Reverse lookup failed.
-
-### Examples
-
-```js
-#{
-    connect: [
-       action "perform reverse lookup" || {
-            let domains = rlookup(client_ip());
-
-            print(`domains found for ip ${client_ip()}`);
-            for domain in domains {
-                print(`- ${domain}`);
-            }
-       }
-    ]
-}
-```
-
-```
-# let states = vsmtp_test::vsl::run(
-# |builder| Ok(builder.add_root_incoming_rules(r#"
-#{
-  connect: [
-    rule "rlookup" || {
-      accept(`250 client ip: ${"127.0.0.1"} -> ${rlookup("127.0.0.1")}`);
-    }
-  ],
-}
-# "#)?.build()));
-# use vsmtp_common::{status::Status, CodeID, Reply, ReplyCode::Code};
-# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::Connect].2, Status::Accept(either::Right(Reply::new(
-#  Code { code: 250 }, "client ip: 127.0.0.1 -> [\"localhost.\"]".to_string(),
-# ))));
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn rlookup(server: Server, name: SharedObject) -> Array
@@ -5666,7 +5602,74 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn rlookup(server: Server, name: String) -> Array
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Performs a reverse lookup for the given IP.
+
+### Args
+
+* `ip` - The IP to query.
+
+### Return
+
+* `array` - an array of FQDNs. The array is empty if nothing was found.
+
+### Effective smtp stage
+
+All of them.
+
+# Errors
+
+* Failed to convert the `ip` parameter from a string into an IP.
+* Reverse lookup failed.
+
+### Examples
+
+```js
+#{
+    connect: [
+       action "perform reverse lookup" || {
+            let domains = rlookup(client_ip());
+
+            print(`domains found for ip ${client_ip()}`);
+            for domain in domains {
+                print(`- ${domain}`);
+            }
+       }
+    ]
+}
+```
+
+```
+# let states = vsmtp_test::vsl::run(
+# |builder| Ok(builder.add_root_incoming_rules(r#"
+#{
+  connect: [
+    rule "rlookup" || {
+      accept(`250 client ip: ${"127.0.0.1"} -> ${rlookup("127.0.0.1")}`);
+    }
+  ],
+}
+# "#)?.build()));
+# use vsmtp_common::{status::Status, CodeID, Reply, ReplyCode::Code};
+# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::Connect].2, Status::Accept(either::Right(Reply::new(
+#  Code { code: 250 }, "client ip: 127.0.0.1 -> [\"localhost.\"]".to_string(),
+# ))));
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn run(cmd: Cmd) -> Map
@@ -5682,7 +5685,7 @@ Execute the given command.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn run(cmd: Cmd, args: Array) -> Map
@@ -5698,67 +5701,7 @@ Execute the given command with dynamic arguments.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn set_header(message: Message, header: String, value: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace an existing header value by a new value, or append a new header
-to the message.
-
-# Args
-
-* `header` - the name of the header to set or add.
-* `value` - the value of the header to set or add.
-
-# Effective smtp stage
-
-All of them. Even though the email is not received at the current stage,
-vsmtp stores new headers and will add them on top to the ones received once
-the `preq` stage is reached.
-
-Be aware that if you want to set a header value from the original message,
-you must use `set_header` in the `preq` stage and onwards.
-
-# Examples
-
-```
-#{
-    postq: [
-        action "update subject" || {
-            let subject = get_header("Subject");
-            set_header("Subject", `${subject} (analyzed by vsmtp)`);
-        }
-    ],
-}
-```
-
-```
-"Subject: The initial header value\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "set_header" || {
-      set_header("Subject", "The header value has been updated");
-      set_header("Subject", identifier("The header value has been updated again"));
-      accept(`250 ${get_header("Subject")}`);
-    }
-  ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn set_header(message: Message, header: String, value: SharedObject) -> ()
@@ -5818,7 +5761,67 @@ you must use `set_header` in the `preq` stage and onwards.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn set_header(message: Message, header: String, value: String) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Replace an existing header value by a new value, or append a new header
+to the message.
+
+# Args
+
+* `header` - the name of the header to set or add.
+* `value` - the value of the header to set or add.
+
+# Effective smtp stage
+
+All of them. Even though the email is not received at the current stage,
+vsmtp stores new headers and will add them on top to the ones received once
+the `preq` stage is reached.
+
+Be aware that if you want to set a header value from the original message,
+you must use `set_header` in the `preq` stage and onwards.
+
+# Examples
+
+```
+#{
+    postq: [
+        action "update subject" || {
+            let subject = get_header("Subject");
+            set_header("Subject", `${subject} (analyzed by vsmtp)`);
+        }
+    ],
+}
+```
+
+```
+"Subject: The initial header value\r\n",
+"\r\n",
+"Hello world!\r\n",
+
+#{
+  preq: [
+    rule "set_header" || {
+      set_header("Subject", "The header value has been updated");
+      set_header("Subject", identifier("The header value has been updated again"));
+      accept(`250 ${get_header("Subject")}`);
+    }
+  ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn sign_dkim(selector: ?, private_key: ?)
@@ -5844,7 +5847,7 @@ sign_dkim(
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn sign_dkim(selector: ?, private_key: ?, headers_field: ?, canonicalization: ?)
@@ -5886,7 +5889,7 @@ Produce a `DKIM-Signature` header.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn smtp(parameters: Map) -> Smtp
@@ -5902,7 +5905,7 @@ Build a new SMTP service.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn srv()
@@ -5942,7 +5945,7 @@ all of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn store_dkim(ctx: Context, result: Map) -> ()
@@ -5961,7 +5964,7 @@ Store the result produced by the DKIM signature verification in the `ctx()`.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn time() -> String
@@ -5997,7 +6000,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(cmd: Smtp) -> String
@@ -6013,7 +6016,7 @@ fn to_debug(cmd: Smtp) -> String
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(cmd: Cmd) -> String
@@ -6029,7 +6032,7 @@ fn to_debug(cmd: Cmd) -> String
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(this: VSLObject) -> String
@@ -6045,23 +6048,7 @@ Convert a `SharedObject` to a debug string
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_debug(context: Context) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `Context` to a debug string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(context: Server) -> String
@@ -6077,7 +6064,23 @@ Convert a `Server` to a debug string.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn to_debug(context: Context) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Context` to a debug string.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(this: OffsetDateTime) -> String
@@ -6093,7 +6096,7 @@ Convert a `time::OffsetDateTime` to a `String`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(status: Status) -> String
@@ -6109,7 +6112,7 @@ Convert a `Status` to a debug string
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_debug(record: Record) -> String
@@ -6125,7 +6128,7 @@ Produce a debug output for the parsed [`dmarc::Record`]
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_string(cmd: Smtp) -> String
@@ -6141,7 +6144,7 @@ fn to_string(cmd: Smtp) -> String
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_string(cmd: Cmd) -> String
@@ -6157,7 +6160,7 @@ fn to_string(cmd: Cmd) -> String
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_string(this: VSLObject) -> String
@@ -6173,23 +6176,7 @@ Convert a `SharedObject` to a `String`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn to_string(_: Context) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `Context` to a `String`.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_string(_: Server) -> String
@@ -6205,7 +6192,23 @@ Convert a `Server` to a `String`.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn to_string(_: Context) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Context` to a `String`.
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_string(status: Status) -> String
@@ -6221,7 +6224,7 @@ Convert a `Status` to a `String`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn to_string(this: OffsetDateTime) -> String
@@ -6237,7 +6240,74 @@ Convert a `time::OffsetDateTime` to a `String`
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn user_exist(name: SharedObject) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Check if a user exists on this server.
+
+### Args
+
+* `name` - the name of the user.
+
+### Return
+
+* `bool` - true if the user exists, false otherwise.
+
+### Effective smtp stage
+
+All of them.
+
+### Examples
+
+```js
+#{
+    rcpt: [
+       action "check for local user" || {
+           if user_exist(rcpt().local_part) {
+               log("debug", `${rcpt().local_part} exists on disk.`);
+           }
+       }
+    ]
+}
+```
+
+```
+# let states = vsmtp_test::vsl::run(
+# |builder| Ok(builder.add_root_incoming_rules(r#"
+#{
+  connect: [
+    rule "user_exist" || {
+      accept(`250 root exist ? ${if user_exist("root") { "yes" } else { "no" }}`);
+    }
+  ],
+  mail: [
+    rule "user_exist (obj)" || {
+      accept(`250 ${user_exist(mail_from())}`);
+    }
+  ]
+}
+# "#)?.build()));
+# use vsmtp_common::{status::Status, CodeID, Reply, ReplyCode::Code};
+# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::Connect].2, Status::Accept(either::Right(Reply::new(
+#  Code { code: 250 }, "root exist ? yes".to_string(),
+# ))));
+# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::MailFrom].2, Status::Accept(either::Right(Reply::new(
+#  Code { code: 250 }, "false".to_string(),
+# ))));
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn user_exist(name: String) -> bool
@@ -6305,74 +6375,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn user_exist(name: SharedObject) -> bool
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Check if a user exists on this server.
-
-### Args
-
-* `name` - the name of the user.
-
-### Return
-
-* `bool` - true if the user exists, false otherwise.
-
-### Effective smtp stage
-
-All of them.
-
-### Examples
-
-```js
-#{
-    rcpt: [
-       action "check for local user" || {
-           if user_exist(rcpt().local_part) {
-               log("debug", `${rcpt().local_part} exists on disk.`);
-           }
-       }
-    ]
-}
-```
-
-```
-# let states = vsmtp_test::vsl::run(
-# |builder| Ok(builder.add_root_incoming_rules(r#"
-#{
-  connect: [
-    rule "user_exist" || {
-      accept(`250 root exist ? ${if user_exist("root") { "yes" } else { "no" }}`);
-    }
-  ],
-  mail: [
-    rule "user_exist (obj)" || {
-      accept(`250 ${user_exist(mail_from())}`);
-    }
-  ]
-}
-# "#)?.build()));
-# use vsmtp_common::{status::Status, CodeID, Reply, ReplyCode::Code};
-# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::Connect].2, Status::Accept(either::Right(Reply::new(
-#  Code { code: 250 }, "root exist ? yes".to_string(),
-# ))));
-# assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::MailFrom].2, Status::Accept(either::Right(Reply::new(
-#  Code { code: 250 }, "false".to_string(),
-# ))));
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn verify_dkim()
@@ -6409,7 +6412,7 @@ see https://datatracker.ietf.org/doc/html/rfc6376
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn verify_dkim(message: Message, signature: Signature, key: PublicKey) -> ()
@@ -6562,7 +6565,7 @@ let rules = r"#{
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn verify_dkim_inner(policy: ?)
@@ -6572,7 +6575,7 @@ fn verify_dkim_inner(policy: ?)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn write(srv: Server, mut ctx: Context, message: Message, dir: String) -> ()

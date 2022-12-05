@@ -2,7 +2,7 @@
 
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn generate_signature_dkim(message: Message, context: Context, selector: String, private_key: Arc<PrivateKey>, headers_field: Array, canonicalization: String) -> String
@@ -61,7 +61,7 @@ This message has not been signed yet, meaning someone could change it...
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get auid(signature: Signature) -> String
@@ -77,7 +77,7 @@ return the `auid` property of the [`Signature`]
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get dkim_result(ctx: Context) -> Map
@@ -94,7 +94,7 @@ an error if no result is found.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get has_debug_flag(key: PublicKey) -> bool
@@ -110,7 +110,7 @@ A public key may contains a `debug flag`, used for testing purpose.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get has_dkim_result(ctx: Context) -> bool
@@ -126,7 +126,7 @@ Has the `ctx()` a DKIM signature verification result ?
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get sdid(signature: Signature) -> String
@@ -142,7 +142,7 @@ return the `sdid` property of the [`Signature`]
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_private_keys(server: Server, sdid: String) -> Array
@@ -158,7 +158,7 @@ Get the list of DKIM private keys associated with this sdid
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?
@@ -180,7 +180,7 @@ The current implementation will make a TXT query on the dns of the signer
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn handle_dkim_error(err: ?) -> String
@@ -200,7 +200,7 @@ get the dkim status from an error produced by this module
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn has_expired(signature: Signature, epsilon: int) -> bool
@@ -218,7 +218,7 @@ return `true` if the argument are invalid (`epsilon` is negative)
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn parse_signature(input: String) -> Signature
@@ -234,7 +234,7 @@ create a [`Signature`] from a `DKIM-Signature` header
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn store_dkim(ctx: Context, result: Map) -> ()
@@ -253,7 +253,7 @@ Store the result produced by the DKIM signature verification in the `ctx()`.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn verify_dkim(message: Message, signature: Signature, key: PublicKey) -> ()

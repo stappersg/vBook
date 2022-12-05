@@ -2,7 +2,7 @@
 
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deliver(context: Context, rcpt: String) -> ()
@@ -64,7 +64,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deliver(context: Context, rcpt: SharedObject) -> ()
@@ -99,7 +99,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn deliver_all(context: Context) -> ()
@@ -144,7 +144,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
@@ -180,10 +180,10 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 ```
 
 <details>
@@ -216,7 +216,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn forward(context: Context, rcpt: String, forward: String) -> ()
@@ -279,10 +279,10 @@ const rules = #{
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
-fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
 ```
 
 <details>
@@ -315,7 +315,43 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+```rust
+fn forward_all(context: Context, forward: SharedObject) -> ()
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Set the delivery method to forwarding for all recipients.
+After all rules are evaluated, forwarding will be used to deliver
+the email.
+
+# Args
+
+* `target` - the target to forward the email to.
+
+# Effective smtp stage
+
+All of them.
+
+# Examples
+
+```
+#{
+    delivery: [
+       action "setup forwarding" || forward_all(fqdn("mta-john.example.com")),
+    ]
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn forward_all(context: Context, forward: String) -> ()
@@ -369,43 +405,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
-
-```rust
-fn forward_all(context: Context, forward: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Set the delivery method to forwarding for all recipients.
-After all rules are evaluated, forwarding will be used to deliver
-the email.
-
-# Args
-
-* `target` - the target to forward the email to.
-
-# Effective smtp stage
-
-All of them.
-
-# Examples
-
-```
-#{
-    delivery: [
-       action "setup forwarding" || forward_all(fqdn("mta-john.example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn maildir(context: Context, rcpt: String) -> ()
@@ -455,7 +455,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn maildir(context: Context, rcpt: SharedObject) -> ()
@@ -490,7 +490,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn maildir_all(context: Context) -> ()
@@ -537,7 +537,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn mbox(context: Context, rcpt: String) -> ()
@@ -588,7 +588,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn mbox(context: Context, rcpt: SharedObject) -> ()
@@ -623,7 +623,7 @@ All of them.
 </br>
 
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 ```rust
 fn mbox_all(context: Context) -> ()
