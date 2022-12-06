@@ -110,7 +110,7 @@ fn on_domain_config(config) {
 }
 ```
 
-As the root `config.vsl` file, this script contains a callback used to configure the domain. You can configure TLS, DKIM and DNS per domain.
+Like the root `config.vsl` file, this script contains a callback used to configure the domain. You can configure TLS, DKIM and DNS per domain.
 
 ```rust
 fn on_domain_config(config) {
