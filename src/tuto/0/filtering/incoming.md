@@ -42,7 +42,7 @@ Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function th
        ┗ family.vsl
 ```
 
-<p style="text-align: center;"> <i>adding a new script to the subdomain</i> </p>
+<p style="text-align: center;"> <i>adding a new script to the domain</i> </p>
 
 ```js
 import "objects/family" as family;
