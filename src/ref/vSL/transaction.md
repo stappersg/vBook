@@ -80,3 +80,9 @@ MAIL FROM: <john.doe@example.com> # `example.com` exists, we don't know yet abou
 RCPT TO:   <foo@example.com>    # The domain is the same as the sender, `internal.vsl` is used, it becomes an internal message now.
 RCPT TO:   <bar@example.com>    # Same as above.
 ```
+
+## Sub domains
+
+Root domain rules are used when a sub domain does not have any rules configured.
+
+For example, if the configuration has rules setup for the `example.com` domain, but does not for the `dev.example.com`, if any transaction has the `dev.example.com` sub-domain, rules for `example.com` will be used.

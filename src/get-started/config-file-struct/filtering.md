@@ -76,7 +76,7 @@ vSMTP has been configured to pickup filtering rules in the `domain-enabled` dire
 
 > This directory structure is standard. The goal here is to disable / enable domain specific filtering by simply removing / adding symbolic links while keeping your configuration intact.
 
-The server will pickup the scripts defined in the `domain-enabled/example.com` directory and run them following the conditions defined in the [Transaction Context chapter](/ref/vSL/transaction.md).
+The server will pickup the scripts defined in the `domain-enabled/example.com` directory and run them following the conditions defined in the [Transaction Context chapter](../../ref/vSL/transaction.md).
 
 ## Domain specific configuration
 
