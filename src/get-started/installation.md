@@ -8,19 +8,19 @@ vSMTP is a stand-alone application with few kernel interactions, it may run on a
 
 If your system is not supported or if these installation method are not suited for your usage, you can contact us by [opening an issue on github](https://github.com/viridIT/vSMTP/issues/new/choose) or by [joining the official discord server](https://discord.gg/N8JGBRBshf).
 
-Either way, you can download and build from source the project, see the [dedicated chapter](./source.md).
+You can download and build the project from source, see the [dedicated chapter](./source.md).
 
 ## Requirements
 
 ### Physical requirements
 
-The current release has been tested and deployed on x86/64 environments.
+The current release has been tested and deployed on x86/64 and ARMv7 architectures.
 
 ### Operating systems
 
-vSMTP is tested and deployed on Ubuntu Server 20.04 with kernel 5.4, but vSMTP **should be compatible** with any recent Linux distributions.
+vSMTP is tested and deployed on the latests Ubuntu Server LTS version, but vSMTP **should be compatible** with any recent Linux distributions.
 
-FreeBSD 13.x is supported using the latest port branch which includes Rust 1.60. NetBSD and OpenBSD supports are planned for Q1-2023.
+FreeBSD 13.x is supported using the latest port branch which includes Rust 1.60.
 
 Microsoft Windows Server is not supported.
 
