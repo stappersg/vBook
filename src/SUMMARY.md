@@ -12,6 +12,10 @@ The vSMTP reference guide
 - [Installation](get-started/installation.md)
 - [Concepts](get-started/concepts.md)
 - [Configuration File Structure](get-started/config-file-struct.md)
+  - [Root configuration](get-started/config-file-struct/root.md)
+  - [Filtering](get-started/config-file-struct/filtering.md)
+  - [Objects](get-started/config-file-struct/objects.md)
+  - [Plugins](get-started/config-file-struct/plugins.md)
 
 # Advanced Settings
 
