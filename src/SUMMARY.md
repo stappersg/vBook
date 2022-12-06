@@ -13,25 +13,6 @@ The vSMTP reference guide
 - [Concepts](get-started/concepts.md)
 - [Configuration File Structure](get-started/config-file-struct.md)
 
-# Tutorials
-
-- [Doe's family](tuto/0/doe.md)
-  - [Context](tuto/0/context.md)
-  - [Basic configuration](tuto/0/basic.md)
-  - [Filtering](tuto/0/filtering.md)
-    - [Incoming messages](tuto/0/filtering/incoming.md)
-    - [Outgoing messages](tuto/0/filtering/outgoing.md)
-    - [Internal messages](tuto/0/filtering/internal.md)
-  - [SSL/TLS](tuto/0/ssl-tls.md)
-  - [SPF](tuto/0/spf.md)
-    - [Filtering](tuto/0/spf/filtering.md)
-    - [What is SPF ?](tuto/0/spf/details.md)
-  - [DKIM](tuto/0/dkim.md)
-    - [Filtering](tuto/0/dkim/filtering.md)
-    - [What is DKIM ?](tuto/0/dkim/details.md)
-  - [Antivirus](tuto/0/antivirus.md)
-- [Greylist](tuto/1/greylist.md)
-
 # Advanced Settings
 
 - [Logging system](advanced/logging.md)
@@ -81,21 +62,40 @@ The vSMTP reference guide
   - [CSV](ref/plugins/csv.md)
   - [MySQL](ref/plugins/mysql.md)
 
+# Tutorials
+
+- [Doe's family](tuto/0/doe.md)
+  - [Context](tuto/0/context.md)
+  - [Basic configuration](tuto/0/basic.md)
+  - [Filtering](tuto/0/filtering.md)
+    - [Incoming messages](tuto/0/filtering/incoming.md)
+    - [Outgoing messages](tuto/0/filtering/outgoing.md)
+    - [Internal messages](tuto/0/filtering/internal.md)
+  - [SSL/TLS](tuto/0/ssl-tls.md)
+  - [SPF](tuto/0/spf.md)
+    - [Filtering](tuto/0/spf/filtering.md)
+    - [What is SPF ?](tuto/0/spf/details.md)
+  - [DKIM](tuto/0/dkim.md)
+    - [Filtering](tuto/0/dkim/filtering.md)
+    - [What is DKIM ?](tuto/0/dkim/details.md)
+  - [Antivirus](tuto/0/antivirus.md)
+- [Greylist](tuto/1/greylist.md)
+
+# Terminology
+
+- [Mail Agent](term/agent.md)
+- [Authentication Mechanisms](term/authentication.md)
+
+# Trouble shooting
+
+- [Logging](troubles/nolog.md)
+
 # Development
 
 - [Building from source](dev/build/source.md)
   - [Linux](dev/build/source/linux.md)
   - [FreeBSD](dev/build/source/freebsd.md)
 - [The Queue System](dev/queues.md)
-
-# Trouble shooting
-
-- [Logging](troubles/nolog.md)
-
-# Terminology
-
-- [Mail Agent](term/agent.md)
-- [Authentication Mechanisms](term/authentication.md)
 
 # Appendix
 
