@@ -41,9 +41,9 @@ fn on_config(config) {
 
 ## Application logs
 
-Application logs are defined using the `log(level, message)` function in the vSL rules.
+Application logs are written using the `log(level, message)` function in the vSL rules.
 
-The default output location (`/var/log/vsmtp/app.log`) can be modified in the `vsmtp.vsl` file :
+The default output location is the `/var/log/vsmtp/app`. It can be modified in the `config.vsl` file :
 
 ```js
 fn on_config(config) {

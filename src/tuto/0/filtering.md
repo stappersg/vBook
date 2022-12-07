@@ -7,7 +7,7 @@ In this chapter, you will get a glimpse of vSMTP's filtering system. To create y
 * [SMTP Stages](/ref/vSL/stages.md)
 * [Transaction context](/ref/vSL/transaction.md)
 
-For this example, will configure the following rules:
+For this example, we will configure the following rules:
 
 - Messages from blacklisted domain will be rejected.
 - As Jenny is 11 years old, Jane wants her address to be added as a blind carbon copy of messages destined to her daughter.
@@ -67,7 +67,7 @@ We can add a blacklist of sender domains that we do not trust too.
 ```
 <p style="text-align: center;"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
 
-the "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
+The "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
 
 ## Filtering for doe-family.com
 
