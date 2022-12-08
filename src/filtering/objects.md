@@ -117,7 +117,7 @@ const authorized_users = [
 
 ### Pre-defined objects
 
-vSL already exposes some objects for you to use. You can check out the [Variable](/src/ref/vSL/variables.md) file to get documentation on those objects and their use.
+vSL already exposes some objects for you to use. You can check out the [Variable](../ref/vSL/variables.md) file to get documentation on those objects and their use.
 
 <!--
 // TODO: Move the following descriptions to their corresponding doc comments.

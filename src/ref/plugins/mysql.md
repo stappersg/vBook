@@ -38,4 +38,4 @@ for record in records {
 }
 ```
 
-> Check out the [greylist](/src/tuto/1/greylist.md) tutorial for a full example of a greylist database using mysql.
+> Check out the [greylist](../../tuto/1/greylist.md) tutorial for a full example of a greylist database using mysql.

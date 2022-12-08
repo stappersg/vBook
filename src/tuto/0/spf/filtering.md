@@ -22,4 +22,4 @@ Edit the `/etc/vsmtp/domain-enabled/incoming.vsl` file and add the following rul
 
 > See the [`check_spf`][check_spf_fn_ref] reference for more details.
 
-[check_spf_fn_ref]: /src/ref/vSL/api/fn::global::spf.md
+[check_spf_fn_ref]: ../../../ref/vSL/api/fn::global::spf.md

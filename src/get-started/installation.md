@@ -8,7 +8,7 @@ vSMTP is a stand-alone application with few kernel interactions, it may run on a
 
 If your system is not supported or if these installation method are not suited for your usage, you can contact us by [opening an issue on github](https://github.com/viridIT/vSMTP/issues/new/choose) or by [joining the official discord server](https://discord.gg/N8JGBRBshf).
 
-You can download and build the project from source, see the [dedicated chapter](/src/dev/build/source.md).
+You can download and build the project from source, see the [dedicated chapter](../dev/build/source.md).
 
 ## Requirements
 

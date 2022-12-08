@@ -15,7 +15,7 @@ When installing vSMTP, the package manager creates the following basic configura
 
 ## Listen and serve
 
-Modify the [`/etc/vsmtp/conf.d/config.vsl`](/src/get-started/config-file-struct/root.md) file with this configuration:
+Modify the [`/etc/vsmtp/conf.d/config.vsl`](../../get-started/config-file-struct/root.md) file with this configuration:
 
 ```js
 fn on_config(config) {
@@ -39,7 +39,7 @@ fn on_config(config) {
 
 > For complex configurations, it is recommended to split the file into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
 
-> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](/src/ref/vSL/api/var::cfg.md) chapter.
+> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](../../ref/vSL/api/var::cfg.md) chapter.
 
 The server can now listen and serve SMTP connections.
 
@@ -71,7 +71,7 @@ export const virus_queue = "doe/virus";
 export const blacklist = file("conf.d/blacklist.txt", "fqdn");
 ```
 
-> See the [Object chapter](/src/filtering/objects.md) for more information.
+> See the [Object chapter](../../filtering/objects.md) for more information.
 
 Define a blacklist file at `/etc/vsmtp/conf.d/blacklist.txt` with the following contents:
 

@@ -6,10 +6,10 @@ For outgoing mail, vSMTP can directly be addressed by your MUA using the SMTP pr
 
 For incoming mails, vSMTP can store messages on a server file-system using [Mbox] or [Maildir] formats. To retrieve emails from a remote client (MUA) it is necessary to install a MDA that can handle [POP] and/or [IMAP] protocols.
 
-[MUA]: /src/term/agent.md#mua-mail-user-agent
-[MTA]: /src/term/agent.md#mta-mail-transfer-agent
-[MSA]: /src/term/agent.md#msa-mail-submission-agent
-[MDA]: /src/term/agent.md#mda-mail-delivery-agent
+[MUA]: term/agent.md#mua-mail-user-agent
+[MTA]: term/agent.md#mta-mail-transfer-agent
+[MSA]: term/agent.md#msa-mail-submission-agent
+[MDA]: term/agent.md#mda-mail-delivery-agent
 
 [mbox]: https://en.wikipedia.org/wiki/Mbox
 [maildir]: https://en.wikipedia.org/wiki/Maildir
@@ -51,7 +51,7 @@ vSMTP exposes a complete filtering system. In addition to the standard analysis 
 
 Interacting with the body of the email (MIME) is planned for future releases.
 
-[vSMTP Scripting Language]: /src/filtering/vsl.md
+[vSMTP Scripting Language]: filtering/vsl.md
 
 ### Extensions
 

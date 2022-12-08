@@ -11,7 +11,7 @@ Alongside the `rule` and `actions` keyword, vSL exposes another keyword for filt
 
 <p style="text-align: center;"> <i>A BNF representation of a delegate directive</i> </p>
 
-The `delegate` directive uses a [`smtp` plugin](/src/ref/plugins/smtp.md) to delegate an email to a third party software:
+The `delegate` directive uses a [`smtp` plugin](../ref/plugins/smtp.md) to delegate an email to a third party software:
 
 ```js
 export const third_party = smtp(#{
@@ -47,4 +47,4 @@ The body of a `delegate` directive is executed once the email as been received b
 A delegation directive MUST return a status, exactly like a `rule`.
 The `delegate` keyword can only be used from the `postq` stage and onwards.
 
-> Rule engine status and effects are listed in the API, in the [rule state reference](/src/ref/vSL/api/fn::global::rule_state.md).
+> Rule engine status and effects are listed in the API, in the [rule state reference](../ref/vSL/api/fn::global::rule_state.md).
