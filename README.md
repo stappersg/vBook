@@ -6,8 +6,8 @@ It serves as vSMTP's primary documentation and tutorial resource.
 You can also read the book online for vSMTP [stable] and [beta] releases.
 Be aware that issues in those versions may have been fixed in this repository already, as those releases are updated less frequently.
 
-[stable]: https://doc.vsmtp.rs/stable/book/
-[beta]: https://doc.vsmtp.rs/beta/book/
+[stable]: https://vsmtp.rs/
+[beta]: https://vsmtp.rs/next
 
 ## Requirements
 
@@ -62,4 +62,4 @@ kinds of contributions we're looking for.
 
 vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. For further details please refer to the [LICENSE][License] file.
 
-[License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
+[License]: https://github.com/viridIT/vBook/blob/main/LICENSE

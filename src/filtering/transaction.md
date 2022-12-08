@@ -1,6 +1,6 @@
 # Transaction context
 
-As described in the [`Configuring vSMTP`](/src/get-started/config-file-struct.md) chapter, sub-domains handled by the configuration of vSMTP have three filtering entry-points: `incoming`, `outgoing` and `internal`.
+As described in the [`Configuring vSMTP`](../get-started/config-file-struct.md) chapter, sub-domains handled by the configuration of vSMTP have three filtering entry-points: `incoming`, `outgoing` and `internal`.
 
 ```diff
 /etc/vsmtp
@@ -19,7 +19,7 @@ As described in the [`Configuring vSMTP`](/src/get-started/config-file-struct.md
 
 Here is a diagram of which entry-points are executed following the transaction pipeline.
 
-![Sub-domain Hierarchy](../../assets/uml/sub-domain-hierarchy.svg)
+![Sub-domain Hierarchy](../assets/uml/sub-domain-hierarchy.svg)
 <p style="text-align: center;"> <i>Rules execution order following the transaction context</i> </p>
 
 ## Root Incoming ⬜

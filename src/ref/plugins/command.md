@@ -24,7 +24,7 @@ export const command = cmd(#{
 });
 ```
 
-> See the [Time](../../start/configuration/time.md) chapter for more information on available time scale formats for the `timeout` field.
+> See the [Time](../../filtering/time.md) chapter for more information on available time scale formats for the `timeout` field.
 
 ## Example
 

@@ -1,5 +1,6 @@
 # Adding an antivirus
 
+<!-- markdown-link-check-disable-next-line -->
 Malware remains a scourge. As John is aware of security issues, he decides to add a layer of antivirus directly on the MTA. He installed [ClamAV](https://www.clamav.net/) which comes with the [clamsmtpd](https://linux.die.net/man/8/clamsmtpd) antivirus daemon.
 
 ## vSMTP security delegation
@@ -77,7 +78,7 @@ fn on_config(config) {
 
 Create the antivirus passthrough using the `delegate` keyword. As `rule` and `action`, it is a directive that is used to filter emails. The quirk of `delegate` is that it uses a smtp service to delegate the email to a third party software, and get it back on the `receiver` address.
 
-> Check out the [Delegation](/ref/vSL/delegation.md) chapter for more details.
+> Check out the [Delegation](../../filtering/delegation.md) chapter for more details.
 
 ```js
 import "services/smtp" as smtp;

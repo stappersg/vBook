@@ -1,13 +1,13 @@
 # Filtering
 
-By default, the server will deny any SMTP transaction. We have to define [filtering rules](/ref/vSL/rules.md) to accept connections and filter messages.
+By default, the server will deny any SMTP transaction. We have to define [filtering rules](../../filtering/rules.md) to accept connections and filter messages.
 
-In this chapter, you will get a glimpse of vSMTP's filtering system. To create your own filtering rules, we recommend checking out the [vSL reference](/ref/vSL/vsl.md), focussing on the following chapters:
-* [Rules](/ref/vSL/rules.md)
-* [SMTP Stages](/ref/vSL/stages.md)
-* [Transaction context](/ref/vSL/transaction.md)
+In this chapter, you will get a glimpse of vSMTP's filtering system. To create your own filtering rules, we recommend checking out the [vSL reference](../../filtering/vsl.md), focussing on the following chapters:
+* [Rules](../../filtering/rules.md)
+* [SMTP Stages](../../filtering/stages.md)
+* [Transaction context](../../filtering/transaction.md)
 
-For this example, will configure the following rules:
+For this example, we will configure the following rules:
 
 - Messages from blacklisted domain will be rejected.
 - As Jenny is 11 years old, Jane wants her address to be added as a blind carbon copy of messages destined to her daughter.
@@ -32,7 +32,7 @@ In the [`Listen and serve`](##listen-and-serve) section of the previous chapter,
 
 The `incoming.vsl` file is responsible for handling clients that just connected to vSMTP.
 
-Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](/ref/vSL/transaction.md##root-incoming) section in the [Transaction Context](/ref/vSL/transaction.md) chapter for more details)
+Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](../../filtering/transaction.md##root-incoming) section in the [Transaction Context](../../filtering/transaction.md) chapter for more details)
 
 ```js
  #{
@@ -67,7 +67,7 @@ We can add a blacklist of sender domains that we do not trust too.
 ```
 <p style="text-align: center;"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
 
-the "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
+The "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
 
 ## Filtering for doe-family.com
 
@@ -92,4 +92,4 @@ Let's create filtering rules for the `doe-family.com` domain.
 ```
 <p style="text-align: center;"> <i>adding filtering scripts for the doe-family.com domain</i> </p>
 
-vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](/ref/vSL/transaction.md). Let's define rules for each cases.
+vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](../../filtering/transaction.md). Let's define rules for each cases.

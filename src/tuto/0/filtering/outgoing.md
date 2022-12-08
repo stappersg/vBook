@@ -28,5 +28,5 @@ Here, a member of Doe's family is sending an email to someone else. We just have
 
 > See the [`is_authenticated`][is_auth_fn_ref] and [`authenticate`][auth_fn_ref] reference for more details.
 
-[auth_fn_ref]: /ref/vSL/api/Auth.html?highlight=authenticate#fn-authenticate
-[is_auth_fn_ref]: /ref/vSL/api/Auth.html?highlight=is_authenticated#fn-is_authenticated
+[auth_fn_ref]: ./../../../ref/vSL/api/fn::global::vsl-api.md
+[is_auth_fn_ref]: ./../../../ref/vSL/api/fn::global::mail_context.md

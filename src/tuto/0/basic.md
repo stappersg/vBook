@@ -2,9 +2,9 @@
 
 ## vSMTP Configuration
 
-Let's build a vSMTP configuration step by step. For a full description of the configuration file hierarchy, read the [Configuring vSMTP](./../../get-started/config-file-struct.md) chapter.
+Let's build a vSMTP configuration step by step.
 
-When installing vSMTP, the package manager should create the following basic configuration.
+When installing vSMTP, the package manager creates the following basic configuration.
 
 ```diff
 /etc/vsmtp
@@ -13,11 +13,9 @@ When installing vSMTP, the package manager should create the following basic con
 +      ┗ config.vsl
 ```
 
-> For more details on root configuration files, check out the [`Configuring vSMTP`](/src/get-started/config-file-struct.md###root-configuration) chapter.
-
 ## Listen and serve
 
-First of all, modify the [`/etc/vsmtp/conf.d/config.vsl`](/src/get-started/config-file-struct.md###root-configuration) file with this configuration:
+Modify the [`/etc/vsmtp/conf.d/config.vsl`](../../get-started/config-file-struct/root.md) file with this configuration:
 
 ```js
 fn on_config(config) {
@@ -39,13 +37,13 @@ fn on_config(config) {
 }
 ```
 
-> It is recommended to split the configuration into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
+> For complex configurations, it is recommended to split the file into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
 
-> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](/ref/config-file.md) chapter.
+> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](../../ref/vSL/api/var::cfg.md) chapter.
 
 The server can now listen and serve SMTP connections.
 
-Now, let's define all the required objects for John Doe's MTA. Those objects are used to configure vSMTP and simplify filtering rules.
+Let's define all the required objects for John Doe's MTA. Those objects are used to configure vSMTP and simplify filtering rules.
 
 Create the `/etc/vsmtp/objects/family.vsl` file with following objects:
 
@@ -73,7 +71,7 @@ export const virus_queue = "doe/virus";
 export const blacklist = file("conf.d/blacklist.txt", "fqdn");
 ```
 
-> See the [Object Reference](/ref/vSL/objects.md#Objects) chapter for more information.
+> See the [Object chapter](../../filtering/objects.md) for more information.
 
 Define a blacklist file at `/etc/vsmtp/conf.d/blacklist.txt` with the following contents:
 

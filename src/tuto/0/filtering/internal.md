@@ -27,5 +27,4 @@ Now that all filtering rules are set for the `doe-family.com` domain, let's rest
 
 ```sh
 sudo systemd restart vsmtp
-telnet 192.168.1.254:25
 ```

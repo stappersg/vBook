@@ -71,7 +71,7 @@ const echo = cmd(#{
 
 <p style="text-align: center;"> <i>Creating a new command object in `services/command.vsl`</i> </p>
 
-> Check out the [Command](/ref/plugins/command.md) reference to get examples for the command plugin.
+> Check out the [Command](../ref/command.md) reference to get examples for the command plugin.
 
 ```js
 import "services/command" as command;

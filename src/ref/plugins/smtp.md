@@ -53,4 +53,4 @@ import "service/smtp" as smtp;
 }
 ```
 
-> Check the [Delegation](/ref/vSL/delegation.md) chapter to get more information on the `delegate` directive.
+> Check the [Delegation](../../filtering/delegation.md) chapter to get more information on the `delegate` directive.

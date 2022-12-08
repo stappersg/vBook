@@ -1,7 +1,7 @@
 # Installing vSMTP from source
 
-- [Linux](./source/linux.html)
-- [FreeBSD](./source/freebsd.html)
+- [Linux](./source/linux.md)
+- [FreeBSD](./source/freebsd.md)
 - NetBSD `help wanted`
 - OpenBSD `help wanted`
 

@@ -10,7 +10,7 @@ SMTP filtering is performed by a rule engine, which uses `.vsl` scripts to filte
 
 Its syntax is similar to a configuration format, but with programmatic capabilities. It is based on two filtering primitives: `rules` and `actions`.
 
-Please refer to the dedicated chapter guide on [vSL](/ref/vSL/vsl.md) for further details.
+Please refer to the dedicated chapter guide on [vSL](../filtering/vsl.md) for further details.
 
 ## Service configuration
 

@@ -8,7 +8,7 @@ Rules are the entry point to filter emails.
 
 ### Rule
 
-A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [status functions](api/Status.md). A `rule` is the main primitive for filtering.
+A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [status functions](./stages.md). A `rule` is the main primitive for filtering.
 
 ```bnf
 <rule>      ::= "rule" <rule-name> "||" <expr>
@@ -36,7 +36,7 @@ rule "check client ip" || {
 
 As you can see in the above example, a rule MUST return a "status". Once the rule is executed and a status returned, vSMTP uses it to change the transaction state.
 
-> Rule engine status and effects are listed in the API, in the [status module](api/Status.md).
+> Rule engine status and effects are listed in the API, in the [rule state reference](../ref/vSL/api/fn::global::rule_state.md).
 
 ### Action
 

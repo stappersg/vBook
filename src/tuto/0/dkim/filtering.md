@@ -73,5 +73,5 @@ The `dkim_sign` function is used to sign your email. Use it in the `postq` stage
 
 > See the [`verify_dkim`][verify_dkim_fn_ref] reference for more details.
 
-[verify_dkim_fn_ref]: /ref/vSL/api/Security.html?highlight=verify_dkim#fn-verify_dkim
-[sign_dkim_fn_ref]: /ref/vSL/api/Security.html#fn-sign_dkimselector-headers_field-canonicalization
+[verify_dkim_fn_ref]: ../../../ref/vSL/api/fn::global::dkim.md
+[sign_dkim_fn_ref]: ../../../ref/vSL/api/fn::global::dkim.md
