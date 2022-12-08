@@ -8,7 +8,7 @@ Rules are the entry point to filter emails.
 
 ### Rule
 
-A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [status functions](api/Status.md). A `rule` is the main primitive for filtering.
+A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [status functions](./stages.md). A `rule` is the main primitive for filtering.
 
 ```bnf
 <rule>      ::= "rule" <rule-name> "||" <expr>

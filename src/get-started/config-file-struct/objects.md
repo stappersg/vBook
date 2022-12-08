@@ -45,4 +45,4 @@ import "objects/net" as net;
 }
 ```
 
-> For more informations on objects and their usage, check out the [Objects reference](../../ref/vSL/objects.md)
+> For more informations on objects and their usage, check out the [Objects reference](/src/filtering/objects.md)

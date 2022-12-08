@@ -6,10 +6,10 @@ For outgoing mail, vSMTP can directly be addressed by your MUA using the SMTP pr
 
 For incoming mails, vSMTP can store messages on a server file-system using [Mbox] or [Maildir] formats. To retrieve emails from a remote client (MUA) it is necessary to install a MDA that can handle [POP] and/or [IMAP] protocols.
 
-[MUA]: ./term/agent.html#mua-mail-user-agent
-[MTA]: ./term/agent.html#mta-mail-transfer-agent
-[MSA]: ./term/agent.html#msa-mail-submission-agent
-[MDA]: ./term/agent.html#mda-mail-delivery-agent
+[MUA]: /src/term/agent.md#mua-mail-user-agent
+[MTA]: /src/term/agent.md#mta-mail-transfer-agent
+[MSA]: /src/term/agent.md#msa-mail-submission-agent
+[MDA]: /src/term/agent.md#mda-mail-delivery-agent
 
 [mbox]: https://en.wikipedia.org/wiki/Mbox
 [maildir]: https://en.wikipedia.org/wiki/Maildir
@@ -45,13 +45,13 @@ The core of vSMTP uses high performance asynchronous connections to supports hea
 
 vSMTP exposes a complete filtering system. In addition to the standard analysis of the SMTP envelope, vSMTP provides on the fly interactions with headers of the email. Users can generate complex routing and filtering scenarios through a simple and intuitive scripting language.
 
-- [vSMTP scripting language] allowing administrators to define complex rules.
+- [vSMTP scripting language] allowing administrators to define complex filtering rules.
 - Before and after queueing filtering.
 - Interaction at each SMTP state (CONNECT, HELO/EHLO, MAIL, RCPT, DATA).
 
 Interacting with the body of the email (MIME) is planned for future releases.
 
-[vSMTP Scripting Language]: /ref/vSL/vsl.md
+[vSMTP Scripting Language]: /src/filtering/vsl.md
 
 ### Extensions
 
@@ -97,4 +97,4 @@ vSMTP secures the email traffic by implementing the following mechanisms.
 [DKIM]: https://www.rfc-editor.org/rfc/rfc6376.html
 [DMARC]: https://www.rfc-editor.org/rfc/rfc7489.html
 [ARC]: https://www.rfc-editor.org/rfc/rfc8617.html
-[BIMI]: https://tools.ietf.org/id/draft-blank-ietf-bimi-00.html
+[BIMI]: https://datatracker.ietf.org/wg/bimi/about/

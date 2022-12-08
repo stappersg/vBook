@@ -1,7 +1,7 @@
 # SSL/TLS
 
 Connections should be encrypted using the SSL/TLS protocol, even on a private network.
-TLS can be initiated right after connect on the [address submissions](/ref/config-file.html#serverinterfaces), or with the STARTTLS mechanism.
+TLS can be initiated right after connect on the [address submissions](/src/ref/vSL/api/var::cfg.md), or with the STARTTLS mechanism.
 
 Add the following to the `/etc/vsmtp/conf.d/config.vsl` file:
 
@@ -41,4 +41,4 @@ And edit your `.vsl` rules to add your policy:
 
 > See the [`is_secured`][is_secured_fn_ref] reference for more details.
 
-[is_secured_fn_ref]: /ref/vSL/api/Auth.html?highlight=is_secured#fn-is_secured
+[is_secured_fn_ref]: /src/ref/vSL/api/fn::global::vsl-api.md

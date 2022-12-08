@@ -27,7 +27,7 @@ fn on_config(config) {
 
 ## Incoming
 
-The root `incoming.vsl` script is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages of an SMTP transaction. (Check out the [Transaction Context](/ref/vSL/transaction.md) chapter for more details)
+The root `incoming.vsl` script is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages of an SMTP transaction. (Check out the [Transaction Context](/src/filtering/transaction.md) chapter for more details)
 
 > If this script is not present in the directory configured by `config.app.vsl.dirpath`, vSMTP will deny all incoming transactions.
 
@@ -76,7 +76,7 @@ vSMTP has been configured to pickup filtering rules in the `domain-enabled` dire
 
 > This directory structure is standard. The goal here is to disable / enable domain specific filtering by simply removing / adding symbolic links while keeping your configuration intact.
 
-The server will pickup the scripts defined in the `domain-enabled/example.com` directory and run them following the conditions defined in the [Transaction Context chapter](../../ref/vSL/transaction.md).
+The server will pickup the scripts defined in the `domain-enabled/example.com` directory and run them following the conditions defined in the [Transaction Context chapter](/src/filtering/transaction.md).
 
 ## Domain specific configuration
 

@@ -77,7 +77,7 @@ fn on_config(config) {
 
 Create the antivirus passthrough using the `delegate` keyword. As `rule` and `action`, it is a directive that is used to filter emails. The quirk of `delegate` is that it uses a smtp service to delegate the email to a third party software, and get it back on the `receiver` address.
 
-> Check out the [Delegation](/ref/vSL/delegation.md) chapter for more details.
+> Check out the [Delegation](/src/filtering/delegation.md) chapter for more details.
 
 ```js
 import "services/smtp" as smtp;

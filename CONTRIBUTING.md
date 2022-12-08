@@ -39,9 +39,9 @@ you debug session. checkout [linux audit](https://linux-audit.com/protect-ptrace
 
 ## Licensing
 
-vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License by viridIT SAS. For further details please refer to the [License.md][License] file.
+vBook, vBook files and this repository are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License by viridIT SAS. For further details please refer to the [License][License] file.
 
-[License]: https://github.com/viridIT/vBook/blob/main/LICENSE.md
+[License]: https://github.com/viridIT/vBook/blob/main/LICENSE
 
 ## Conduct
 

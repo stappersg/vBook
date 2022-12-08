@@ -1,6 +1,6 @@
 # Logging
 
-The logging system is backed by [tokio tracing](https://crates.io/crates/tracing) and piped to multiple 'subscriber' :
+The logging system is backed by tokio tracing and piped to multiple 'subscriber' :
 
 - [Logging](#logging)
   - [Backend logs](#backend-logs)
