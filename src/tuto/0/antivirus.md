@@ -1,5 +1,6 @@
 # Adding an antivirus
 
+<!-- markdown-link-check-disable-next-line -->
 Malware remains a scourge. As John is aware of security issues, he decides to add a layer of antivirus directly on the MTA. He installed [ClamAV](https://www.clamav.net/) which comes with the [clamsmtpd](https://linux.die.net/man/8/clamsmtpd) antivirus daemon.
 
 ## vSMTP security delegation

@@ -49,6 +49,7 @@ Fedora and RedHat packages are planned for future releases. `help wanted`
     alt="crates.io" />
 </a>
 
+<!-- markdown-link-check-disable-next-line -->
 vSMTP is published on <https://crates.io>. It can be installed using [cargo].
 
 ```sh

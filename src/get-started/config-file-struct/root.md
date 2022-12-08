@@ -23,7 +23,7 @@ fn on_config(config) {
 
 vSMTP calls the `on_config` function once starting up. You are free to modify the `config` object to change the configuration. The `config` object MUST be returned at the end of the function.
 
-> The [Configuration reference](/src/ref/vSL/api/var::cfg.md) lists all fields that you can change in the `config` object.
+> The [Configuration reference](../ref/vSL/api/var::cfg.md) lists all fields that you can change in the `config` object.
 
 For example:
 

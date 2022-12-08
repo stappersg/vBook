@@ -36,7 +36,7 @@ rule "check client ip" || {
 
 As you can see in the above example, a rule MUST return a "status". Once the rule is executed and a status returned, vSMTP uses it to change the transaction state.
 
-> Rule engine status and effects are listed in the API, in the [status module](api/Status.md).
+> Rule engine status and effects are listed in the API, in the [rule state reference](../ref/vSL/api/fn::global::rule_state.md).
 
 ### Action
 
