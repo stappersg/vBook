@@ -1,8 +1,18 @@
 # Null MX record
 
-The "null MX" protocol is used to state that mail services are disabled in a given domain. The protocol is described in [RFC 7505].
+[Section 5 of RFC5321] covers the sequence to identify a server that accepts email for a domain. The SMTP client first looks up a DNS MX RR, and if is not found, falls back to a DNS A or AAAA request. If a CNAME record is found, the resulting name is processed as if it were the initial name.
+
+This mechanism suffers from two major drawbacks.
+
+- A DNS overload because of an email service semantic.
+- If there are no SMTP listeners at the A/AAAA addresses, message delivery will be attempted repeatedly many times before the sending Mail Transfer Agent (MTA) gives up, implying:
+  - a delay notification to the sender in the case of misdirected mail,
+  - a waste of IT resources at the sender.
+
+The "Null MX" protocol solves these issues. It is used to state that mail services are disabled in a given domain. The protocol is described in [RFC 7505].
 
 [RFC 7505]: https://www.rfc-editor.org/rfc/rfc7505.html
+[Section 5 of RFC5321]: https://www.rfc-editor.org/rfc/rfc5321#section-5
 
 When a specific DNS record (a null MX) is effectively defined in the DNS zone of a given domain, all mail delivery attempts fail immediately.
 
