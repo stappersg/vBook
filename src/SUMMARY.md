@@ -33,6 +33,7 @@ The vSMTP reference guide
   - [DNS configuration](settings/dns.md)
   - [Null MX](settings/nullmx.md)
   - [DMARC](settings/dmarc.md)
+  - [DKIM](settings/dkim.md)
   - [ARC 🚧]()
   - [BIMI 🚧]()
   - [DANE 🚧]()
