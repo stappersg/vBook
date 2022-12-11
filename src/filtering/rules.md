@@ -1,6 +1,6 @@
-# Rules and actions
+# Rules and Actions
 
-Rules are the entry point to filter emails.
+Rules and actions are the entry point to filter emails.
 
 ## Syntax
 
@@ -8,17 +8,17 @@ Rules are the entry point to filter emails.
 
 ### Rule
 
-A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [status functions](./stages.md). A `rule` is the main primitive for filtering.
+A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [rule state functions](./../ref/vSL/api/fn::global::rule_state.md). A `rule` is the main primitive for filtering.
 
 ```bnf
 <rule>      ::= "rule" <rule-name> "||" <expr>
 <rule-name> ::= <string>
-<expr>      ::= <rhai-expr> ; any valid Rhai expression. Must return a "status".
+<expr>      ::= <rhai-expr> ; any valid Rhai expression. Must return a "state".
 ```
 <p class="ann"> A BNF representation of a rule </p>
 
 ```rust
-// `deny()` is a function that return the `Deny` status.
+// `deny()` is a function that return the `Deny` state.
 // Thus, this rule denies any incoming transaction.
 rule "deny all transactions" || deny(),
 
@@ -32,22 +32,22 @@ rule "check client ip" || {
     }
 },
 ```
-<p class="ann"> Example of a rule declaration in practice </p>
+<p class="ann"> Declaring rules </p>
 
-As you can see in the above example, a rule MUST return a "status". Once the rule is executed and a status returned, vSMTP uses it to change the transaction state.
+As you can see in the above example, a rule MUST return a "state" (accept, deny, next, etc). Once the rule is executed and a state returned, vSMTP uses it to change the transaction state.
 
-> Rule engine status and effects are listed in the API, in the [rule state reference](../ref/vSL/api/fn::global::rule_state.md).
+> Rule engine state and effects are listed in the [rule state reference](../ref/vSL/api/fn::global::rule_state.md).
 
 ### Action
 
-An `action` is used to execute arbitrary code (logging, saving an email on disk etc ...) without changing the transaction state.
+An `action` is used to execute arbitrary code (logging, saving an email on disk, etc) without changing the transaction state.
 
 ```bnf
 <action>      ::= "action" <rule-name> "||" <expr>
 <action-name> ::= <string>
 <expr>        ::= <rhai-expr> ; any valid Rhai expression.
 ```
-<p class="ann"> A BNF representation of an action </p>
+<p class="ann"> BNF representation of an action </p>
 
 
 ```rust
@@ -59,4 +59,4 @@ action "log incoming transaction" || {
     log("info", `new transaction: ${helo()} from ${client_ip()}`);
 }
 ```
-<p class="ann"> Example of an action declaration in practice </p>
+<p class="ann"> Declaring actions </p>
