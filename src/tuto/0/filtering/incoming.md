@@ -19,7 +19,7 @@ import "objects/family" as family;
 }
 ```
 
-<p class="ann"> <i>doe-family.com/incoming.vsl</i> </p>
+<p class="ann"> doe-family.com/incoming.vsl </p>
 
 Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function that does exactly that.
 
@@ -42,7 +42,7 @@ Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function th
        ┗ family.vsl
 ```
 
-<p class="ann"> <i>adding a new script to the domain</i> </p>
+<p class="ann"> adding a new script to the domain </p>
 
 ```js
 import "objects/family" as family;
@@ -55,7 +55,7 @@ fn bcc_jenny() {
 }
 ```
 
-<p class="ann"> <i>doe-family.com/bcc.vsl</i> </p>
+<p class="ann"> doe-family.com/bcc.vsl </p>
 
 Now, let's plug this function to our filtering rules by importing the `bcc.vsl` script.
 
@@ -79,6 +79,6 @@ Now, let's plug this function to our filtering rules by importing the `bcc.vsl` 
   }
 ```
 
-<p class="ann"> <i>doe-family.com/incoming.vsl</i> </p>
+<p class="ann"> doe-family.com/incoming.vsl </p>
 
 With Rhai modules and functions, it becomes easy to reuse code across different rules.

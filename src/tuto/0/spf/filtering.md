@@ -18,7 +18,7 @@ Edit the `/etc/vsmtp/domain-enabled/incoming.vsl` file and add the following rul
 }
 ```
 
-<p class="ann"> <i>Preventing spams using SPF</i> </p>
+<p class="ann"> Preventing spams using SPF </p>
 
 > See the [`check_spf`][check_spf_fn_ref] reference for more details.
 

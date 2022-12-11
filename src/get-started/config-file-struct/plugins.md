@@ -33,7 +33,7 @@ import "plugins/my_plugin" as my_plugin;
 
 export const my_plugin_service = my_plugin::do_stuff();
 ```
-<p class="ann"> <i>`services/my_plugin.vsl`</i> </p>
+<p class="ann"> `services/my_plugin.vsl` </p>
 
 Services can be used during filtering, after being imported like an object.
 
