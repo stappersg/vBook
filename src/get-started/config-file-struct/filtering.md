@@ -13,6 +13,7 @@ It is possible to filter emails using `.vsl` files for specific domains.
 + ┗ domain-enabled/
 +        ┗ incoming.vsl
 ```
+<p class="ann"> Adding filters </p>
 
 For vSMTP to take a rule path into account, you have to change the configuration in `conf.d/config.vsl` like so:
 
@@ -22,7 +23,6 @@ fn on_config(config) {
   return config;
 }
 ```
-
 <p class="ann"> Specifying filtering rules directory in the configuration </p>
 
 ## Incoming
@@ -109,6 +109,7 @@ fn on_domain_config(config) {
   config
 }
 ```
+<p class="ann"> An empty domain specific configuration </p>
 
 Like the root `config.vsl` file, this script contains a callback used to configure the domain. You can configure TLS, DKIM and DNS per domain.
 
