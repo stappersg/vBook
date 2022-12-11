@@ -4,8 +4,11 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
+<h2 class="func-name"> <code>fn</code> dmarc_check </h2>
+
+```rust,ignore
 fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_from: String, spf_result: String) -> bool
+
 ```
 
 <details>
@@ -20,23 +23,10 @@ fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get receiver_policy(record: Record) -> String
-```
+<h2 class="func-name"> <code>fn</code> get_dmarc_record </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
+fn get_dmarc_record(server: Server, domain: String) -> Record
 fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
 ```
 
@@ -52,40 +42,11 @@ Get a valid DMARC record for the domain.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get_dmarc_record(server: Server, domain: String) -> Record
-```
+<h2 class="func-name"> <code>fn</code> to_debug </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get a valid DMARC record for the domain.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
-fn parse_rfc5322_from(message: Message) -> SharedObject
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Get the address of the sender in the message body, also known as RFC5322.From
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn to_debug(record: Record) -> String
+
 ```
 
 <details>

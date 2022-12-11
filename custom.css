@@ -4,3 +4,8 @@ pre {
     white-space: pre;
     margin: 0px;
 }
+
+.func-name {
+    /* override mdbook default margin for h2/h3 */
+    margin-top: 0em;
+}

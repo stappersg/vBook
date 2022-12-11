@@ -83,7 +83,6 @@ let server = #{
             "Unimplemented": "502 Command not implemented\r\n",
             "UnrecognizedCommand": "500 Syntax error command unrecognized\r\n",
         },
-        "disable_ehlo": false,
         "error": #{
             "delay": "5s",
             "hard_count": 20,
