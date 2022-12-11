@@ -12,6 +12,7 @@ When installing vSMTP, the package manager creates the following basic configura
 +┗ conf.d/
 +      ┗ config.vsl
 ```
+<p class="ann"> vSMTP default configuration </p>
 
 ## Listen and serve
 
@@ -36,6 +37,7 @@ fn on_config(config) {
   config
 }
 ```
+<p class="ann"> Configuring vSMTP </p>
 
 > For complex configurations, it is recommended to split the file into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
 
@@ -70,6 +72,7 @@ export const virus_queue = "doe/virus";
 // A user blacklist file
 export const blacklist = file("conf.d/blacklist.txt", "fqdn");
 ```
+<p class="ann"> Objects that will be used during filtering </p>
 
 > See the [Object chapter](../../filtering/objects.md) for more information.
 
@@ -81,6 +84,7 @@ spam-domain.org
 domain-spammers.com
 foobar-spam-pro.org
 ```
+<p class="ann"> Blacklist content </p>
 
 The file structure of `/etc/vsmtp` should now look like this.
 
@@ -93,14 +97,14 @@ The file structure of `/etc/vsmtp` should now look like this.
 +┗ objects/
 +       ┗ family.vsl
 ```
+<p class="ann"> Adding objects and the blacklist to the configuration directory </p>
 
 > If no interface is specified, the server listens on localhost on port 25, 465 and 587. Remote connections are therefore refused.
-
-Now, restart vSMTP and open a connexion on port 25.
 
 ```sh
 $> sudo systemd restart vsmtp
 $> telnet 192.168.1.254:25
-220 doe-family.com Service ready
-554 permanent problems with the remote server
+# 220 doe-family.com Service ready
+# 554 permanent problems with the remote server
 ```
+<p class="ann"> Test by opening a connexion to the server </p>
