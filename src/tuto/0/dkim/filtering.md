@@ -47,7 +47,7 @@ The `dkim_sign` function is used to sign your email. Use it in the `postq` stage
 }
 ```
 
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/outgoing.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/domain-available/doe-family.com/outgoing.vsl</i> </p>
 
 > See the [`dkim_sign`][sign_dkim_fn_ref] reference for more details.
 
@@ -69,7 +69,7 @@ The `dkim_sign` function is used to sign your email. Use it in the `postq` stage
 }
 ```
 
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
 
 > See the [`verify_dkim`][verify_dkim_fn_ref] reference for more details.
 

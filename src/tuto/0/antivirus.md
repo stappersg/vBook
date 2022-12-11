@@ -72,7 +72,7 @@ fn on_config(config) {
 }
 ```
 
-<p style="text-align: center;"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>
 
 ## The delegate keyword
 
@@ -100,7 +100,7 @@ import "services/smtp" as smtp;
 }
 ```
 
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
 
 Once the `check email for virus` directive is run, vSMTP will send the email to the `clamsmtpd` service and the rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation resumes, and the body of this rule is evaluated.
 

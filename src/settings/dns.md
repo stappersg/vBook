@@ -73,4 +73,4 @@ fn on_domain_config(config) {
   config
 }
 ```
-<p style="text-align: center;"> <i>A config for a specific domain, i.e. `/etc/vsmtp/domain-enabled/example.com/config.vsl`</i> </p>
+<p class="ann"> <i>A config for a specific domain, i.e. `/etc/vsmtp/domain-enabled/example.com/config.vsl`</i> </p>

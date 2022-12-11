@@ -15,7 +15,7 @@ A `rule` is used to change the transaction state. You can accept and deny a tran
 <rule-name> ::= <string>
 <expr>      ::= <rhai-expr> ; any valid Rhai expression. Must return a "status".
 ```
-<p style="text-align: center;"> <i>A BNF representation of a rule</i> </p>
+<p class="ann"> <i>A BNF representation of a rule</i> </p>
 
 ```rust
 // `deny()` is a function that return the `Deny` status.
@@ -32,7 +32,7 @@ rule "check client ip" || {
     }
 },
 ```
-<p style="text-align: center;"> <i>Example of a rule declaration in practice</i> </p>
+<p class="ann"> <i>Example of a rule declaration in practice</i> </p>
 
 As you can see in the above example, a rule MUST return a "status". Once the rule is executed and a status returned, vSMTP uses it to change the transaction state.
 
@@ -47,7 +47,7 @@ An `action` is used to execute arbitrary code (logging, saving an email on disk 
 <action-name> ::= <string>
 <expr>        ::= <rhai-expr> ; any valid Rhai expression.
 ```
-<p style="text-align: center;"> <i>A BNF representation of an action</i> </p>
+<p class="ann"> <i>A BNF representation of an action</i> </p>
 
 
 ```rust
@@ -59,4 +59,4 @@ action "log incoming transaction" || {
     log("info", `new transaction: ${helo()} from ${client_ip()}`);
 }
 ```
-<p style="text-align: center;"> <i>Example of an action declaration in practice</i> </p>
+<p class="ann"> <i>Example of an action declaration in practice</i> </p>

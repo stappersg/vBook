@@ -20,7 +20,7 @@ As described in the [`Configuring vSMTP`](../get-started/config-file-struct.md) 
 Here is a diagram of which entry-points are executed following the transaction pipeline.
 
 ![Sub-domain Hierarchy](../assets/uml/sub-domain-hierarchy.svg)
-<p style="text-align: center;"> <i>Rules execution order following the transaction context</i> </p>
+<p class="ann"> <i>Rules execution order following the transaction context</i> </p>
 
 ## Root Incoming ⬜
 
@@ -37,7 +37,7 @@ Finally, if the sender's domain is not handled by the configuration, and that th
   ]
 }
 ```
-<p style="text-align: center;"> <i>anti-relaying using rules in `incoming.vsl`</i> </p>
+<p class="ann"> <i>anti-relaying using rules in `incoming.vsl`</i> </p>
 
 > If this file is not present in the rule directory, it will deny all transactions by default.
 

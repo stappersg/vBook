@@ -23,7 +23,7 @@ fn on_config(config) {
 }
 ```
 
-<p style="text-align: center;"> <i>Specifying filtering rules directory in the configuration</i> </p>
+<p class="ann"> <i>Specifying filtering rules directory in the configuration</i> </p>
 
 ## Incoming
 
@@ -51,7 +51,7 @@ In the rule directory, all sub-directories are considered as domains with rules 
         ┗ incoming.vsl
 ```
 
-<p style="text-align: center;"> <i>Adding filtering for the `example.com` domain</i> </p>
+<p class="ann"> <i>Adding filtering for the `example.com` domain</i> </p>
 
 vSMTP has been configured to pickup filtering rules in the `domain-enabled` directory. You will have to use symbolic links for vSMTP to use the scripts inside the `domain-available/example.com` directory.
 
@@ -72,7 +72,7 @@ vSMTP has been configured to pickup filtering rules in the `domain-enabled` dire
 +       ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ```
 
-<p style="text-align: center;"> <i>Using symlinks to enable filtering for the `example.com` domain</i> </p>
+<p class="ann"> <i>Using symlinks to enable filtering for the `example.com` domain</i> </p>
 
 > This directory structure is standard. The goal here is to disable / enable domain specific filtering by simply removing / adding symbolic links while keeping your configuration intact.
 
@@ -100,7 +100,7 @@ It is possible to add a specific configuration for each domain.
         ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ```
 
-<p style="text-align: center;"> <i>Adding specific configuration for a domain</i> </p>
+<p class="ann"> <i>Adding specific configuration for a domain</i> </p>
 
 The `config.vsl` script under a domain must contain, at least, the following statement:
 
@@ -130,6 +130,6 @@ fn on_domain_config(config) {
 }
 ```
 
-<p style="text-align: center;"> <i>Changing TLS, DKIM and DNS parameters for a specific domain</i> </p>
+<p class="ann"> <i>Changing TLS, DKIM and DNS parameters for a specific domain</i> </p>
 
 > If this script is not present in a domain directory, configuration from the root `config.vsl` script is used instead.

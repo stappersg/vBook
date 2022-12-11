@@ -46,7 +46,7 @@ fn on_config(config) {
 }
 ```
 
-<p style="text-align: center;"> <i>Configuring vSMTP with `conf.d/config.vsl`</i> </p>
+<p class="ann"> <i>Configuring vSMTP with `conf.d/config.vsl`</i> </p>
 
 ## Recommandations
 
@@ -74,7 +74,7 @@ export const interfaces = #{
 };
 ```
 
-<p style="text-align: center;"> <i>/etc/vsmtp/conf.d/interfaces.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/conf.d/interfaces.vsl</i> </p>
 
 and:
 
@@ -83,7 +83,7 @@ and:
 export const rules_dirpath = "/etc/vsmtp/domain-enabled";
 ```
 
-<p style="text-align: center;"> <i>/etc/vsmtp/conf.d/app.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/conf.d/app.vsl</i> </p>
 
 Those modules can then be imported in `config.vsl`, resulting in a more cleaner configuration file.
 
@@ -100,4 +100,4 @@ fn on_config(config) {
 }
 ```
 
-<p style="text-align: center;"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>

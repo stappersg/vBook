@@ -21,7 +21,7 @@ import "domain-available/doe-family.com/bcc" as bcc;
 }
 ```
 
-<p style="text-align: center;"> <i>doe-family.com/internal.vsl</i> </p>
+<p class="ann"> <i>doe-family.com/internal.vsl</i> </p>
 
 Now that all filtering rules are set for the `doe-family.com` domain, let's restart the server to apply all rules.
 

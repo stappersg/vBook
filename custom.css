@@ -4,3 +4,8 @@ pre {
     white-space: pre;
     margin: 0px;
 }
+
+/* Annotations for a diagram or a snippet. */
+.ann {
+    text-align: center;
+}

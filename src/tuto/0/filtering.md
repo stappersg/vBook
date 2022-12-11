@@ -28,7 +28,7 @@ In the [`Listen and serve`](##listen-and-serve) section of the previous chapter,
  ┗ objects/
         ┗ family.vsl
 ```
-<p style="text-align: center;"> <i>Adding the root filtering script</i> </p>
+<p class="ann"> <i>Adding the root filtering script</i> </p>
 
 The `incoming.vsl` file is responsible for handling clients that just connected to vSMTP.
 
@@ -41,7 +41,7 @@ Let's setup anti-relaying by adding the following rule. (See the [Root Incoming]
   ]
  }
 ```
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
 
 We can add a blacklist of sender domains that we do not trust too.
 
@@ -65,7 +65,7 @@ We can add a blacklist of sender domains that we do not trust too.
   ]
 }
 ```
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
+<p class="ann"> <i>/etc/vsmtp/domain-enabled/incoming.vsl</i> </p>
 
 The "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
 
@@ -90,6 +90,6 @@ Let's create filtering rules for the `doe-family.com` domain.
   ┗ objects/
        ┗ family.vsl
 ```
-<p style="text-align: center;"> <i>adding filtering scripts for the doe-family.com domain</i> </p>
+<p class="ann"> <i>adding filtering scripts for the doe-family.com domain</i> </p>
 
 vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](../../filtering/transaction.md). Let's define rules for each cases.
