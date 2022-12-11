@@ -8,4 +8,6 @@ pre {
 /* Annotations for a diagram or a snippet. */
 .ann {
     text-align: center;
+    font-size: 0.8em;
+    font-style: italic;
 }

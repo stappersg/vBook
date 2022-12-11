@@ -9,7 +9,7 @@ Alongside the `rule` and `actions` keyword, vSL exposes another keyword for filt
 <expr>            ::= <rhai-expr>       ; any valid Rhai expression. Must return a "status".
 ```
 
-<p class="ann"> <i>A BNF representation of a delegate directive</i> </p>
+<p class="ann"> <i>BNF representation of a delegate directive</i> </p>
 
 The `delegate` directive uses a [`smtp` plugin](../ref/plugins/smtp.md) to delegate an email to a third party software:
 
