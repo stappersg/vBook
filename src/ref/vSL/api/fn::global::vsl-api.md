@@ -122,6 +122,7 @@ fn check_spf(header: ?)
 
 Check spf record following the Sender Policy Framework (RFC 7208).
 A wrapper with the policy set to "strict" by default.
+<!-- markdown-link-check-disable-next-line -->
 see https://datatracker.ietf.org/doc/html/rfc7208
 
 # Args
@@ -688,6 +689,7 @@ fn verify_dkim()
 
 Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
 If this function has already been called once, it will return the result of the previous call.
+<!-- markdown-link-check-disable-next-line -->
 see https://datatracker.ietf.org/doc/html/rfc6376
 
 # Return
