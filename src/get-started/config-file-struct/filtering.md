@@ -5,31 +5,31 @@ It is possible to filter emails using `.vsl` files for specific domains.
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
++ ┣ filter.vsl
   ┣ conf.d/
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
   ┃     ┗ app.vsl
 + ┣ domain-available/
 + ┗ domain-enabled/
-+        ┗ incoming.vsl
 ```
 <p class="ann"> Adding filters </p>
 
-For vSMTP to take a rule path into account, you have to change the configuration in `conf.d/config.vsl` like so:
+To filter emails per domain, you have to change the configuration in `conf.d/config.vsl` like so:
 
 ```rust,ignore
 fn on_config(config) {
-  config.app.vsl.dirpath = "/etc/vsmtp/domain-enabled";
+  config.app.vsl.domain_dir = "/etc/vsmtp/domain-enabled";
   return config;
 }
 ```
 <p class="ann"> Specifying filtering rules directory in the configuration </p>
 
-## Incoming
+## Root Filter
 
-The root `incoming.vsl` script is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages of an SMTP transaction. (Check out the [Transaction Context](../../filtering/transaction.md) chapter for more details)
+The root `filter.vsl` script is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages of an SMTP transaction. (Check out the [Transaction Context](../../filtering/transaction.md) chapter for more details)
 
-> If this script is not present in the directory configured by `config.app.vsl.dirpath`, vSMTP will deny all incoming transactions.
+> If this script is not present in the directory configured by `config.app.vsl.filter_path`, vSMTP will deny all incoming transactions.
 
 ## Domains
 
@@ -38,6 +38,7 @@ In the rule directory, all sub-directories are considered as domains with rules 
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
@@ -48,7 +49,6 @@ In the rule directory, all sub-directories are considered as domains with rules 
 + ┃          ┣ outgoing.vsl
 + ┃          ┗ internal.vsl
   ┗ domain-enabled/
-        ┗ incoming.vsl
 ```
 
 <p class="ann"> Adding filtering for the `example.com` domain </p>
@@ -58,6 +58,7 @@ vSMTP has been configured to pickup filtering rules in the `domain-enabled` dire
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
@@ -68,7 +69,6 @@ vSMTP has been configured to pickup filtering rules in the `domain-enabled` dire
   ┃          ┣ outgoing.vsl
   ┃          ┗ internal.vsl
   ┗ domain-enabled/
-        ┣ incoming.vsl
 +       ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ```
 
@@ -85,6 +85,7 @@ It is possible to add a specific configuration for each domain.
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
@@ -96,7 +97,6 @@ It is possible to add a specific configuration for each domain.
   ┃         ┣ outgoing.vsl
   ┃         ┗ internal.vsl
   ┗ domain-enabled/
-        ┗ incoming.vsl
         ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ```
 

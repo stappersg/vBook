@@ -21,7 +21,7 @@ import "domain-available/doe-family.com/bcc" as bcc;
 }
 ```
 
-<p class="ann"> doe-family.com/internal.vsl </p>
+<p class="ann"> /etc/vsmtp/domain-available/doe-family.com/internal.vsl </p>
 
 Now that all filtering rules are set for the `doe-family.com` domain, let's restart the server to apply all rules.
 

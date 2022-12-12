@@ -25,7 +25,7 @@ At each step, vSL updates a context containing transaction and mail data that yo
 
 Stages are declared in `.vsl` files using the following syntax:
 
-```rust,ignore
+```
 #{
     connect: [
         // rules, actions, delegations ...
@@ -50,7 +50,7 @@ Stages are declared in `.vsl` files using the following syntax:
 
 Rules are combined with stages in `.vsl` files.
 
-```rust,ignore
+```
 #{
     connect: [
         // This rule is executed once a new client connects to the server.
@@ -77,7 +77,7 @@ Rules are combined with stages in `.vsl` files.
 Using stages, rules can be run at specific SMTP state, enabling precise email filtering.
 
 > Stages that are not defined are omitted, but must appear only once if used.
-> ```rust,ignore
+> ```
 > #{
 >   connect: [],
 >   // invalid, 'connect' must only appear once!
@@ -89,7 +89,7 @@ Using stages, rules can be run at specific SMTP state, enabling precise email fi
 
 For security purpose, a trailing rule should be added at the end of a stage.
 
-```rust,ignore
+```
 #{
     connect: [
         // This rule is executed once a new client connects to the server.

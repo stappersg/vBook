@@ -5,6 +5,7 @@ Objects are variables that can be re-used accros your filtering scripts. They ar
 ```diff
   /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┣ config.vsl
   ┃     ┗ *.vsl
@@ -12,7 +13,6 @@ Objects are variables that can be re-used accros your filtering scripts. They ar
   ┃     ┗ example.com/
   ┃         ┗ ...
   ┣ domain-enabled/
-  ┃     ┣ incoming.vsl
   ┃     ┗ example.com -> /etc/vsmtp/domain-available/example.com
 + ┗ objects/
 +      ┣ net.vsl

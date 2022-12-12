@@ -6,6 +6,7 @@ Plugins are placed in the `/usr/lib/vsmtp/` directory, and referenced in the con
 ```diff
   /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┣ config.vsl
   ┃     ┗ *.vsl
@@ -13,7 +14,6 @@ Plugins are placed in the `/usr/lib/vsmtp/` directory, and referenced in the con
   ┃     ┗ example.com/
   ┃         ┗ ...
   ┣ domain-enabled/
-  ┃     ┣ incoming.vsl
   ┃     ┗ example.com -> /etc/vsmtp/domain-available/example.com
   ┣ objects/
   ┃     ┣ net.vsl

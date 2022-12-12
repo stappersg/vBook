@@ -41,7 +41,7 @@ export const localhost = ip4("127.0.0.1");
 ```
 <p class="ann"> An object file, `objects/network.vsl` </p>
 
-```rust,ignore
+```
 import "objects/network" as net;
 
 #{
@@ -56,7 +56,7 @@ import "objects/network" as net;
   ]
 }
 ```
-<p class="ann"> A rule file `domain-enabled/incoming.vsl` </p>
+<p class="ann"> A rule in `filter.vsl` </p>
 
 Objects should be stored inside the `objects` directory of `/etc/vsmtp` if they are used into multiple rules sets.
 
@@ -64,13 +64,13 @@ Objects should be stored inside the `objects` directory of `/etc/vsmtp` if they 
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┗ config.vsl
   ┣ domain-available/
   ┃     ┗ example.com/
   ┃       ┗ ...
   ┣ domain-enabled/
-  ┃     ┣ incoming.vsl
   ┃     ┗ example.com -> ...
 + ┗ objects/
 +       ┗ network.vsl
@@ -83,6 +83,7 @@ However, if objects are used in only a specific rule set, they should be stored 
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┗ config.vsl
   ┣ domain-available/
@@ -92,7 +93,6 @@ However, if objects are used in only a specific rule set, they should be stored 
   ┃        ┣ outgoing.vsl
   ┃        ┗ internal.vsl
   ┣ domain-enabled/
-  ┃     ┣ incoming.vsl
   ┃     ┗ example.com -> ...
 - ┗ objects/
 -       ┗ network.vsl

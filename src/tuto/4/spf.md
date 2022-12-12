@@ -24,9 +24,9 @@ example.com.          TXT "v=spf1 +mx -all"
 
 For incoming messages, SPF is configured to check that the sending host is authorized to use the `example.com` domain according to published SPF policy. Rules are executed at the `mail` stage.
 
-Edit the `/etc/vsmtp/domain-enabled/filter.vsl` script and add the following rule.
+Edit the `/etc/vsmtp/filter.vsl` script and add the following rule.
 
-```rust,ignore
+```
 #{
   mail: [
     rule "check spf" || check_spf("both", "soft"),

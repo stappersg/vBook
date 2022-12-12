@@ -26,7 +26,7 @@ export const third_party = smtp(#{
 
 <p class="ann"> Declaring a `smtp` service in `/etc/vsmtp/services/smtp.vsl` </p>
 
-```rust,ignore
+```
 import "services/smtp" as smtp;
 
 #{

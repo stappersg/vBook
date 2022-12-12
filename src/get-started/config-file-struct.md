@@ -9,6 +9,7 @@ A typical vSMTP configuration looks like the following.
 ```
 /etc/vsmtp
 ┣ vsmtp.vsl
+┣ filter.vsl
 ┣ conf.d/
 ┃     ┣ config.vsl
 ┃     ┗ *.vsl
@@ -21,7 +22,6 @@ A typical vSMTP configuration looks like the following.
 ┃     ┗ test.com/
 ┃         ┗ ...
 ┣ domain-enabled/
-┃     ┣ incoming.vsl
 ┃     ┗ example.com -> /etc/vsmtp/domain-available/example.com
 ┣ objects/
 ┃     ┣ net.vsl

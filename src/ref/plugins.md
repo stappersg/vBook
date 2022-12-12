@@ -48,13 +48,13 @@ Here is an example:
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃     ┗ config.vsl
   ┣ domain-available/
   ┃     ┗ example.com/
   ┃       ┗ ...
   ┣ domain-enabled/
-  ┃     ┣ incoming.vsl
   ┃     ┗ example.com -> ...
 + ┗ services/
 +       ┗ command.vsl
@@ -73,7 +73,7 @@ const echo = cmd(#{
 
 > Check out the [Command](../ref/command.md) reference to get examples for the command plugin.
 
-```rust,ignore
+```
 import "services/command" as command;
 
 #{

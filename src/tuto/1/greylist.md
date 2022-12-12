@@ -93,9 +93,9 @@ The `query` function from the `mysql` service is used to query a mysql database.
 
 > ⚠️ String interpolation can lead to SQL injection if not used properly. Make sure to sanitize your inputs, set only required privileges to the mysql user, and check what kind of data you are injecting.
 
-Create a greylist rule in your root `incoming.vsl` file.
+Create a greylist rule in your root `filter.vsl` file.
 
-```rust,ignore
+```
 import "services/db" as db;
 
 #{

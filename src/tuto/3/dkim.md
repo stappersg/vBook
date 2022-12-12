@@ -24,14 +24,18 @@ A new DNS record is added into the `example.com` DNS zone. This record declares 
 The path to a private key for DKIM can be specified in the `/etc/vsmtp/conf.d/config.vsl` script:
 
 ```rust,ignore
-config.server.dkim.private_key = ["/path/to/private-key"];
+fn on_config(config) {
+  config.server.dkim.private_key = ["/path/to/private-key"];
+
+  config
+}
 ```
 
 ## Add signatures
 
 You can sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for outgoing emails.
 
-```rust,ignore
+```
 #{
   postq: [
     action "sign dkim" || {
