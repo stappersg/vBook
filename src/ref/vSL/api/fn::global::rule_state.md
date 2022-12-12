@@ -99,8 +99,8 @@ all of them.
 <h2 class="func-name"> <code>fn</code> faccept </h2>
 
 ```rust,ignore
-fn faccept(code: SharedObject) -> Status
 fn faccept(code: String) -> Status
+fn faccept(code: SharedObject) -> Status
 ```
 
 <details>
@@ -115,24 +115,23 @@ the incoming client can be trusted.
 
 # Args
 
-* `code` - a custom code using a `code` object to send to the client.
+* `code` - a custom code as a string to send to the client.
 
 # Error
 
-* The given parameter was not a code object.
+* Could not parse the parameter as a valid SMTP reply code.
 
 # Effective smtp stage
 
 all of them.
 
 # Example
-
 ```
 #{
     connect: [
         // Here we imagine that "192.168.1.10" is a trusted source, so we can force accept
         // any other rules that don't need to be run.
-        rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept(code(220, "Ok")) } else { next() },
+        rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept("220 Ok") } else { next() },
     ],
 
     // The following rules will not be evaluated if `client_ip() == "192.168.1.10"` is true.
@@ -143,6 +142,8 @@ all of them.
     ],
 }
 ```
+
+# Errors
 </details>
 
 </div>
@@ -154,7 +155,7 @@ all of them.
 <h2 class="func-name"> <code>fn</code> info </h2>
 
 ```rust,ignore
-fn info(code: SharedObject) -> Status
+fn info(code: String) -> Status
 
 ```
 
@@ -165,12 +166,11 @@ Ask the client to retry to send the current command by sending an information co
 
 # Args
 
-* `code` - A custom code using a `code` object to send to the client.
-           See `code()` for more information.
+* `code` - A custom code as a string to send to the client.
 
 # Error
 
-* The given parameter was not a code object.
+* Could not parse the parameter as a valid SMTP reply code.
 
 # Effective smtp stage
 
@@ -182,8 +182,7 @@ all of them.
 #{
     connect: [
         rule "please retry" || {
-           const info_code = code(451, "failed to understand you request, please retry.");
-           info(info_code)
+           info("451 failed to understand you request, please retry")
        },
     ],
 }

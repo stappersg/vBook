@@ -72,8 +72,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> forward </h2>
 
 ```rust,ignore
-fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
+fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
 fn forward(context: Context, rcpt: String, forward: String) -> ()
 ```

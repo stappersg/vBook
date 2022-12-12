@@ -232,8 +232,8 @@ Hello world!
 <h2 class="func-name"> <code>fn</code> has_header </h2>
 
 ```rust,ignore
-fn has_header(message: Message, header: String) -> bool
 fn has_header(message: Message, header: SharedObject) -> bool
+fn has_header(message: Message, header: String) -> bool
 ```
 
 <details>
@@ -256,7 +256,7 @@ email is received at this point.
 #{
     postq: [
         action "check for VSMTP header" || {
-            if has_header("X-VSMTP") {
+            if has_header(identifier("X-VSMTP")) {
                 log("info", "incoming message could be from another vsmtp server");
             }
         }
@@ -426,9 +426,9 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> rename_header </h2>
 
 ```rust,ignore
-fn rename_header(message: Message, old: String, new: SharedObject) -> ()
-fn rename_header(message: Message, old: SharedObject, new: String) -> ()
 fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
+fn rename_header(message: Message, old: SharedObject, new: String) -> ()
+fn rename_header(message: Message, old: String, new: SharedObject) -> ()
 ```
 
 <details>
@@ -494,7 +494,7 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> set_header </h2>
 
 ```rust,ignore
-fn set_header(message: Message, header: String, value: String) -> ()
+fn set_header(message: Message, header: String, value: SharedObject) -> ()
 
 ```
 

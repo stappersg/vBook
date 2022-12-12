@@ -1,6 +1,6 @@
 # `code451_7_24`
 
-```rust,ignore
+```rust
 let code451_7_24 = Code(
     Reply {
         code: Enhanced {
@@ -13,7 +13,7 @@ let code451_7_24 = Code(
 ```
 # `code550_7_20`
 
-```rust,ignore
+```rust
 let code550_7_20 = Code(
     Reply {
         code: Enhanced {
@@ -26,7 +26,7 @@ let code550_7_20 = Code(
 ```
 # `code550_7_21`
 
-```rust,ignore
+```rust
 let code550_7_21 = Code(
     Reply {
         code: Enhanced {
@@ -39,7 +39,7 @@ let code550_7_21 = Code(
 ```
 # `code550_7_22`
 
-```rust,ignore
+```rust
 let code550_7_22 = Code(
     Reply {
         code: Enhanced {
@@ -52,7 +52,7 @@ let code550_7_22 = Code(
 ```
 # `code550_7_23`
 
-```rust,ignore
+```rust
 let code550_7_23 = Code(
     Reply {
         code: Enhanced {
@@ -65,7 +65,7 @@ let code550_7_23 = Code(
 ```
 # `code550_7_24`
 
-```rust,ignore
+```rust
 let code550_7_24 = Code(
     Reply {
         code: Enhanced {
@@ -78,7 +78,7 @@ let code550_7_24 = Code(
 ```
 # `code550_7_25`
 
-```rust,ignore
+```rust
 let code550_7_25 = Code(
     Reply {
         code: Enhanced {
@@ -91,7 +91,7 @@ let code550_7_25 = Code(
 ```
 # `code550_7_26`
 
-```rust,ignore
+```rust
 let code550_7_26 = Code(
     Reply {
         code: Enhanced {
@@ -104,7 +104,7 @@ let code550_7_26 = Code(
 ```
 # `code550_7_27`
 
-```rust,ignore
+```rust
 let code550_7_27 = Code(
     Reply {
         code: Enhanced {
@@ -117,7 +117,7 @@ let code550_7_27 = Code(
 ```
 # `code554_7_1`
 
-```rust,ignore
+```rust
 let code554_7_1 = Code(
     Reply {
         code: Enhanced {
@@ -130,7 +130,7 @@ let code554_7_1 = Code(
 ```
 # `code556_1_10`
 
-```rust,ignore
+```rust
 let code556_1_10 = Code(
     Reply {
         code: Enhanced {
@@ -143,7 +143,7 @@ let code556_1_10 = Code(
 ```
 # `code_greylist`
 
-```rust,ignore
+```rust
 let code_greylist = Code(
     Reply {
         code: Enhanced {
@@ -156,7 +156,7 @@ let code_greylist = Code(
 ```
 # `code_multi_destination`
 
-```rust,ignore
+```rust
 let code_multi_destination = Code(
     Reply {
         code: Enhanced {
@@ -169,7 +169,7 @@ let code_multi_destination = Code(
 ```
 # `code_unknown_account`
 
-```rust,ignore
+```rust
 let code_unknown_account = Code(
     Reply {
         code: Enhanced {
@@ -182,28 +182,28 @@ let code_unknown_account = Code(
 ```
 # `net_10`
 
-```rust,ignore
+```rust
 let net_10 = Rg4(
     IpRange [10.0.0.0/8],
 )
 ```
 # `net_172`
 
-```rust,ignore
+```rust
 let net_172 = Rg4(
     IpRange [172.16.0.0/12],
 )
 ```
 # `net_192`
 
-```rust,ignore
+```rust
 let net_192 = Rg4(
     IpRange [192.168.0.0/16],
 )
 ```
 # `non_routable_net`
 
-```rust,ignore
+```rust
 let non_routable_net = [Rg4(
     IpRange [192.168.0.0/16],
 ), Rg4(

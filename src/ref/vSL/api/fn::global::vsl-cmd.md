@@ -4,7 +4,7 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn cmd(parameters: Map) -> Cmd
 ```
 
@@ -14,7 +14,7 @@ fn cmd(parameters: Map) -> Cmd
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn run(cmd: Cmd) -> Map
 ```
 
@@ -30,7 +30,7 @@ Execute the given command.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn run(cmd: Cmd, args: Array) -> Map
 ```
 
@@ -46,7 +46,7 @@ Execute the given command with dynamic arguments.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(cmd: Cmd) -> String
 ```
 
@@ -62,7 +62,7 @@ fn to_debug(cmd: Cmd) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(cmd: Cmd) -> String
 ```
 

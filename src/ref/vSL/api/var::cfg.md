@@ -1,6 +1,6 @@
 # `app`
 
-```rust,ignore
+```rust
 let app = #{
     "dirpath": "/var/spool/vsmtp/app",
     "logs": #{
@@ -13,7 +13,7 @@ let app = #{
 ```
 # `server`
 
-```rust,ignore
+```rust
 let server = #{
     "client_count_max": 16,
     "dkim": (),

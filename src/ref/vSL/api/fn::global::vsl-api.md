@@ -180,7 +180,7 @@ all of them.
 
 # Examples
 
-```rust,ignore
+```
 #{
     connect: [
        action "client ip" || log("info", `client: {ctx().client_ip}`),
@@ -217,7 +217,7 @@ Get all domains of the recipient list.
 
 # Examples
 
-```rust,ignore
+```
 #{
     mail: [
         action "display recipients domains" || {
@@ -261,7 +261,7 @@ Get all local parts of the recipient list.
 
 # Examples
 
-```rust,ignore
+```
 #{
     mail: [
         action "display recipients usernames" || {
@@ -306,7 +306,7 @@ the `From` header.
 
 # Examples
 
-```rust,ignore
+```
 #{
     preq: [
        action "rewrite sender" || rewrite_mail_from("john.doe@example.com"),
@@ -378,7 +378,6 @@ fn verify_dkim()
 
 Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
 If this function has already been called once, it will return the result of the previous call.
-<!-- markdown-link-check-disable-next-line -->
 see https://datatracker.ietf.org/doc/html/rfc6376
 
 # Return

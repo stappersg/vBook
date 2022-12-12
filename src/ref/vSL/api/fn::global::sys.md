@@ -4,7 +4,7 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !(x: bool) -> bool
 ```
 
@@ -14,7 +14,7 @@ fn !(x: bool) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(timestamp1: Instant, timestamp2: Instant) -> bool
 ```
 
@@ -30,7 +30,7 @@ Return `true` if two timestamps are not equal.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: int, y: f32) -> bool
 ```
 
@@ -40,7 +40,7 @@ fn !=(x: int, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: u32, y: u32) -> bool
 ```
 
@@ -50,7 +50,7 @@ fn !=(x: u32, y: u32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: float, y: int) -> bool
 ```
 
@@ -60,7 +60,7 @@ fn !=(x: float, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(array1: Array, array2: Array) -> bool
 ```
 
@@ -91,7 +91,7 @@ print(x != z);      // prints true
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(map1: Map, map2: Map) -> bool
 ```
 
@@ -122,7 +122,7 @@ print(m1 != m3);        // prints true
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: u64, y: u64) -> bool
 ```
 
@@ -132,7 +132,7 @@ fn !=(x: u64, y: u64) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: i16, y: i16) -> bool
 ```
 
@@ -142,7 +142,7 @@ fn !=(x: i16, y: i16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: i32, y: i32) -> bool
 ```
 
@@ -152,7 +152,7 @@ fn !=(x: i32, y: i32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: u128, y: u128) -> bool
 ```
 
@@ -162,7 +162,7 @@ fn !=(x: u128, y: u128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: u16, y: u16) -> bool
 ```
 
@@ -172,7 +172,7 @@ fn !=(x: u16, y: u16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: i8, y: i8) -> bool
 ```
 
@@ -182,7 +182,7 @@ fn !=(x: i8, y: i8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: u8, y: u8) -> bool
 ```
 
@@ -192,7 +192,7 @@ fn !=(x: u8, y: u8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(in1: Status, in2: Status) -> bool
 ```
 
@@ -208,7 +208,7 @@ Operator `!=` for `Status`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: int, y: float) -> bool
 ```
 
@@ -218,7 +218,7 @@ fn !=(x: int, y: float) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: f32, y: f32) -> bool
 ```
 
@@ -228,7 +228,7 @@ fn !=(x: f32, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: f32, y: int) -> bool
 ```
 
@@ -238,7 +238,7 @@ fn !=(x: f32, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(x: i128, y: i128) -> bool
 ```
 
@@ -248,7 +248,7 @@ fn !=(x: i128, y: i128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: f32, y: f32) -> f32
 ```
 
@@ -258,7 +258,7 @@ fn %(x: f32, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: i128, y: i128) -> i128
 ```
 
@@ -268,7 +268,7 @@ fn %(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: i32, y: i32) -> i32
 ```
 
@@ -278,7 +278,7 @@ fn %(x: i32, y: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: u16, y: u16) -> u16
 ```
 
@@ -288,7 +288,7 @@ fn %(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: i16, y: i16) -> i16
 ```
 
@@ -298,7 +298,7 @@ fn %(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: u32, y: u32) -> u32
 ```
 
@@ -308,7 +308,7 @@ fn %(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: f32, y: int) -> f32
 ```
 
@@ -318,7 +318,7 @@ fn %(x: f32, y: int) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: u8, y: u8) -> u8
 ```
 
@@ -328,7 +328,7 @@ fn %(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: int, y: f32) -> f32
 ```
 
@@ -338,7 +338,7 @@ fn %(x: int, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: u64, y: u64) -> u64
 ```
 
@@ -348,7 +348,7 @@ fn %(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: u128, y: u128) -> u128
 ```
 
@@ -358,7 +358,7 @@ fn %(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn %(x: i8, y: i8) -> i8
 ```
 
@@ -368,7 +368,7 @@ fn %(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: u128, y: u128) -> u128
 ```
 
@@ -378,7 +378,7 @@ fn &(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: i8, y: i8) -> i8
 ```
 
@@ -388,7 +388,7 @@ fn &(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: u64, y: u64) -> u64
 ```
 
@@ -398,7 +398,7 @@ fn &(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: u16, y: u16) -> u16
 ```
 
@@ -408,7 +408,7 @@ fn &(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: u32, y: u32) -> u32
 ```
 
@@ -418,7 +418,7 @@ fn &(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: i16, y: i16) -> i16
 ```
 
@@ -428,7 +428,7 @@ fn &(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: u8, y: u8) -> u8
 ```
 
@@ -438,7 +438,7 @@ fn &(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: i128, y: i128) -> i128
 ```
 
@@ -448,7 +448,7 @@ fn &(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn &(x: i32, y: i32) -> i32
 ```
 
@@ -458,7 +458,7 @@ fn &(x: i32, y: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: int, y: f32) -> f32
 ```
 
@@ -468,7 +468,7 @@ fn *(x: int, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: u64, y: u64) -> u64
 ```
 
@@ -478,7 +478,7 @@ fn *(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: u16, y: u16) -> u16
 ```
 
@@ -488,7 +488,7 @@ fn *(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: i16, y: i16) -> i16
 ```
 
@@ -498,7 +498,7 @@ fn *(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: i128, y: i128) -> i128
 ```
 
@@ -508,7 +508,7 @@ fn *(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: i8, y: i8) -> i8
 ```
 
@@ -518,7 +518,7 @@ fn *(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: u32, y: u32) -> u32
 ```
 
@@ -528,7 +528,7 @@ fn *(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: f32, y: int) -> f32
 ```
 
@@ -538,7 +538,7 @@ fn *(x: f32, y: int) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: u8, y: u8) -> u8
 ```
 
@@ -548,7 +548,7 @@ fn *(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: u128, y: u128) -> u128
 ```
 
@@ -558,7 +558,7 @@ fn *(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: i32, y: i32) -> i32
 ```
 
@@ -568,7 +568,7 @@ fn *(x: i32, y: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn *(x: f32, y: f32) -> f32
 ```
 
@@ -578,7 +578,7 @@ fn *(x: f32, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: i16, y: int) -> i16
 ```
 
@@ -588,7 +588,7 @@ fn **(x: i16, y: int) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: i8, y: int) -> i8
 ```
 
@@ -598,7 +598,7 @@ fn **(x: i8, y: int) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: i32, y: int) -> i32
 ```
 
@@ -608,7 +608,7 @@ fn **(x: i32, y: int) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: i128, y: int) -> i128
 ```
 
@@ -618,7 +618,7 @@ fn **(x: i128, y: int) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: f32, y: f32) -> f32
 ```
 
@@ -628,7 +628,7 @@ fn **(x: f32, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: f32, y: int) -> f32
 ```
 
@@ -638,7 +638,7 @@ fn **(x: f32, y: int) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: u128, y: int) -> u128
 ```
 
@@ -648,7 +648,7 @@ fn **(x: u128, y: int) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: u8, y: int) -> u8
 ```
 
@@ -658,7 +658,7 @@ fn **(x: u8, y: int) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: u16, y: int) -> u16
 ```
 
@@ -668,7 +668,7 @@ fn **(x: u16, y: int) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: u64, y: int) -> u64
 ```
 
@@ -678,7 +678,7 @@ fn **(x: u64, y: int) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn **(x: u32, y: int) -> u32
 ```
 
@@ -688,7 +688,7 @@ fn **(x: u32, y: int) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: f32) -> f32
 ```
 
@@ -698,7 +698,7 @@ fn +(x: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: float) -> float
 ```
 
@@ -708,7 +708,7 @@ fn +(x: float) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i16) -> i16
 ```
 
@@ -718,7 +718,7 @@ fn +(x: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: int) -> int
 ```
 
@@ -728,7 +728,7 @@ fn +(x: int) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i8) -> i8
 ```
 
@@ -738,7 +738,7 @@ fn +(x: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i128) -> i128
 ```
 
@@ -748,7 +748,7 @@ fn +(x: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i32) -> i32
 ```
 
@@ -758,7 +758,7 @@ fn +(x: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: u64, y: u64) -> u64
 ```
 
@@ -768,7 +768,7 @@ fn +(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(item: ?, string: String) -> String
 ```
 
@@ -778,7 +778,7 @@ fn +(item: ?, string: String) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: f32, y: f32) -> f32
 ```
 
@@ -788,7 +788,7 @@ fn +(x: f32, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(string: String, item: ()) -> String
 ```
 
@@ -798,7 +798,7 @@ fn +(string: String, item: ()) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(string1: String, string2: String) -> String
 ```
 
@@ -808,7 +808,7 @@ fn +(string1: String, string2: String) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: int, y: f32) -> f32
 ```
 
@@ -818,7 +818,7 @@ fn +(x: int, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: u128, y: u128) -> u128
 ```
 
@@ -828,7 +828,7 @@ fn +(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: u32, y: u32) -> u32
 ```
 
@@ -838,7 +838,7 @@ fn +(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(array1: Array, array2: Array) -> Array
 ```
 
@@ -865,7 +865,7 @@ print(x);       // prints "[1, 2, 3"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(string: String, utf8: Blob) -> String
 ```
 
@@ -875,7 +875,7 @@ fn +(string: String, utf8: Blob) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(timestamp: Instant, seconds: int) -> Instant
 ```
 
@@ -891,7 +891,7 @@ Add the specified number of `seconds` to the timestamp and return it as a new ti
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: u8, y: u8) -> u8
 ```
 
@@ -901,7 +901,7 @@ fn +(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(string: String, mut item: ?) -> String
 ```
 
@@ -911,7 +911,7 @@ fn +(string: String, mut item: ?) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i128, y: i128) -> i128
 ```
 
@@ -921,7 +921,7 @@ fn +(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i32, y: i32) -> i32
 ```
 
@@ -931,7 +931,7 @@ fn +(x: i32, y: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(_item: (), string: String) -> String
 ```
 
@@ -941,7 +941,7 @@ fn +(_item: (), string: String) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: f32, y: int) -> f32
 ```
 
@@ -951,7 +951,7 @@ fn +(x: f32, y: int) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i16, y: i16) -> i16
 ```
 
@@ -961,7 +961,7 @@ fn +(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(character: char, string: String) -> String
 ```
 
@@ -971,7 +971,7 @@ fn +(character: char, string: String) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(string: String, character: char) -> String
 ```
 
@@ -981,7 +981,7 @@ fn +(string: String, character: char) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(utf8: Blob, string: String) -> String
 ```
 
@@ -991,7 +991,7 @@ fn +(utf8: Blob, string: String) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(map1: Map, map2: Map) -> Map
 ```
 
@@ -1019,7 +1019,7 @@ print(m);           // prints "#{a:1, b:2, c:3}"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: u16, y: u16) -> u16
 ```
 
@@ -1029,7 +1029,7 @@ fn +(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(x: i8, y: i8) -> i8
 ```
 
@@ -1039,7 +1039,7 @@ fn +(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +(timestamp: Instant, seconds: float) -> Instant
 ```
 
@@ -1055,7 +1055,7 @@ Add the specified number of `seconds` to the timestamp and return it as a new ti
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(timestamp: Instant, seconds: int) -> ()
 ```
 
@@ -1071,7 +1071,7 @@ Add the specified number of `seconds` to the timestamp.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(string: String, utf8: Blob)
 ```
 
@@ -1081,7 +1081,7 @@ fn +=(string: String, utf8: Blob)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(string: String, item: ())
 ```
 
@@ -1091,7 +1091,7 @@ fn +=(string: String, item: ())
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(string: String, mut item: ?)
 ```
 
@@ -1101,7 +1101,7 @@ fn +=(string: String, mut item: ?)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(string: String, character: char)
 ```
 
@@ -1111,7 +1111,7 @@ fn +=(string: String, character: char)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(string1: String, string2: String)
 ```
 
@@ -1121,7 +1121,7 @@ fn +=(string1: String, string2: String)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(timestamp: Instant, seconds: float) -> ()
 ```
 
@@ -1137,7 +1137,7 @@ Add the specified number of `seconds` to the timestamp.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn +=(map: Map, map2: Map)
 ```
 
@@ -1165,7 +1165,7 @@ print(m);       // prints "#{a:42, b:2, c:3, d:0}"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i8) -> i8
 ```
 
@@ -1175,7 +1175,7 @@ fn -(x: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i16) -> i16
 ```
 
@@ -1185,7 +1185,7 @@ fn -(x: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i128) -> i128
 ```
 
@@ -1195,7 +1195,7 @@ fn -(x: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: int) -> int
 ```
 
@@ -1205,7 +1205,7 @@ fn -(x: int) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: float) -> float
 ```
 
@@ -1215,7 +1215,7 @@ fn -(x: float) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: f32) -> f32
 ```
 
@@ -1225,7 +1225,7 @@ fn -(x: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i32) -> i32
 ```
 
@@ -1235,7 +1235,7 @@ fn -(x: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: f32, y: int) -> f32
 ```
 
@@ -1245,7 +1245,7 @@ fn -(x: f32, y: int) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: u16, y: u16) -> u16
 ```
 
@@ -1255,7 +1255,7 @@ fn -(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: int, y: f32) -> f32
 ```
 
@@ -1265,7 +1265,7 @@ fn -(x: int, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: f32, y: f32) -> f32
 ```
 
@@ -1275,7 +1275,7 @@ fn -(x: f32, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i128, y: i128) -> i128
 ```
 
@@ -1285,7 +1285,7 @@ fn -(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(timestamp: Instant, seconds: float) -> Instant
 ```
 
@@ -1301,7 +1301,7 @@ Subtract the specified number of `seconds` from the timestamp and return it as a
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: u8, y: u8) -> u8
 ```
 
@@ -1311,7 +1311,7 @@ fn -(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: u64, y: u64) -> u64
 ```
 
@@ -1321,7 +1321,7 @@ fn -(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(timestamp: Instant, seconds: int) -> Instant
 ```
 
@@ -1337,7 +1337,7 @@ Subtract the specified number of `seconds` from the timestamp and return it as a
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i32, y: i32) -> i32
 ```
 
@@ -1347,7 +1347,7 @@ fn -(x: i32, y: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: u32, y: u32) -> u32
 ```
 
@@ -1357,7 +1357,7 @@ fn -(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i8, y: i8) -> i8
 ```
 
@@ -1367,7 +1367,7 @@ fn -(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(timestamp1: Instant, timestamp2: Instant) -> ?
 ```
 
@@ -1383,7 +1383,7 @@ Return the number of seconds between two timestamps.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: u128, y: u128) -> u128
 ```
 
@@ -1393,7 +1393,7 @@ fn -(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -(x: i16, y: i16) -> i16
 ```
 
@@ -1403,7 +1403,7 @@ fn -(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -=(timestamp: Instant, seconds: float) -> ()
 ```
 
@@ -1419,7 +1419,7 @@ Subtract the specified number of `seconds` from the timestamp.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn -=(timestamp: Instant, seconds: int) -> ()
 ```
 
@@ -1435,7 +1435,7 @@ Subtract the specified number of `seconds` from the timestamp.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: i32, y: i32) -> i32
 ```
 
@@ -1445,7 +1445,7 @@ fn /(x: i32, y: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: int, y: f32) -> f32
 ```
 
@@ -1455,7 +1455,7 @@ fn /(x: int, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: u8, y: u8) -> u8
 ```
 
@@ -1465,7 +1465,7 @@ fn /(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: i16, y: i16) -> i16
 ```
 
@@ -1475,7 +1475,7 @@ fn /(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: i8, y: i8) -> i8
 ```
 
@@ -1485,7 +1485,7 @@ fn /(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: u64, y: u64) -> u64
 ```
 
@@ -1495,7 +1495,7 @@ fn /(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: u32, y: u32) -> u32
 ```
 
@@ -1505,7 +1505,7 @@ fn /(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: f32, y: f32) -> f32
 ```
 
@@ -1515,7 +1515,7 @@ fn /(x: f32, y: f32) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: u128, y: u128) -> u128
 ```
 
@@ -1525,7 +1525,7 @@ fn /(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: f32, y: int) -> f32
 ```
 
@@ -1535,7 +1535,7 @@ fn /(x: f32, y: int) -> f32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: u16, y: u16) -> u16
 ```
 
@@ -1545,7 +1545,7 @@ fn /(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn /(x: i128, y: i128) -> i128
 ```
 
@@ -1555,7 +1555,7 @@ fn /(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: i128, y: i128) -> bool
 ```
 
@@ -1565,7 +1565,7 @@ fn <(x: i128, y: i128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: i32, y: i32) -> bool
 ```
 
@@ -1575,7 +1575,7 @@ fn <(x: i32, y: i32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: u16, y: u16) -> bool
 ```
 
@@ -1585,7 +1585,7 @@ fn <(x: u16, y: u16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: float, y: int) -> bool
 ```
 
@@ -1595,7 +1595,7 @@ fn <(x: float, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: int, y: f32) -> bool
 ```
 
@@ -1605,7 +1605,7 @@ fn <(x: int, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: i16, y: i16) -> bool
 ```
 
@@ -1615,7 +1615,7 @@ fn <(x: i16, y: i16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: i8, y: i8) -> bool
 ```
 
@@ -1625,7 +1625,7 @@ fn <(x: i8, y: i8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(timestamp1: Instant, timestamp2: Instant) -> bool
 ```
 
@@ -1641,7 +1641,7 @@ Return `true` if the first timestamp is earlier than the second.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: u128, y: u128) -> bool
 ```
 
@@ -1651,7 +1651,7 @@ fn <(x: u128, y: u128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: int, y: float) -> bool
 ```
 
@@ -1661,7 +1661,7 @@ fn <(x: int, y: float) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: u8, y: u8) -> bool
 ```
 
@@ -1671,7 +1671,7 @@ fn <(x: u8, y: u8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: f32, y: f32) -> bool
 ```
 
@@ -1681,7 +1681,7 @@ fn <(x: f32, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: u32, y: u32) -> bool
 ```
 
@@ -1691,7 +1691,7 @@ fn <(x: u32, y: u32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: u64, y: u64) -> bool
 ```
 
@@ -1701,7 +1701,7 @@ fn <(x: u64, y: u64) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <(x: f32, y: int) -> bool
 ```
 
@@ -1711,7 +1711,7 @@ fn <(x: f32, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: u32, y: int) -> u32
 ```
 
@@ -1721,7 +1721,7 @@ fn <<(x: u32, y: int) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: u8, y: int) -> u8
 ```
 
@@ -1731,7 +1731,7 @@ fn <<(x: u8, y: int) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: i128, y: int) -> i128
 ```
 
@@ -1741,7 +1741,7 @@ fn <<(x: i128, y: int) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: i8, y: int) -> i8
 ```
 
@@ -1751,7 +1751,7 @@ fn <<(x: i8, y: int) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: i16, y: int) -> i16
 ```
 
@@ -1761,7 +1761,7 @@ fn <<(x: i16, y: int) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: i32, y: int) -> i32
 ```
 
@@ -1771,7 +1771,7 @@ fn <<(x: i32, y: int) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: u128, y: int) -> u128
 ```
 
@@ -1781,7 +1781,7 @@ fn <<(x: u128, y: int) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: u64, y: int) -> u64
 ```
 
@@ -1791,7 +1791,7 @@ fn <<(x: u64, y: int) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <<(x: u16, y: int) -> u16
 ```
 
@@ -1801,7 +1801,7 @@ fn <<(x: u16, y: int) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: u128, y: u128) -> bool
 ```
 
@@ -1811,7 +1811,7 @@ fn <=(x: u128, y: u128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: float, y: int) -> bool
 ```
 
@@ -1821,7 +1821,7 @@ fn <=(x: float, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: i16, y: i16) -> bool
 ```
 
@@ -1831,7 +1831,7 @@ fn <=(x: i16, y: i16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: i8, y: i8) -> bool
 ```
 
@@ -1841,7 +1841,7 @@ fn <=(x: i8, y: i8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: u8, y: u8) -> bool
 ```
 
@@ -1851,7 +1851,7 @@ fn <=(x: u8, y: u8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: f32, y: f32) -> bool
 ```
 
@@ -1861,7 +1861,7 @@ fn <=(x: f32, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: u16, y: u16) -> bool
 ```
 
@@ -1871,7 +1871,7 @@ fn <=(x: u16, y: u16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: u32, y: u32) -> bool
 ```
 
@@ -1881,7 +1881,7 @@ fn <=(x: u32, y: u32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: i32, y: i32) -> bool
 ```
 
@@ -1891,7 +1891,7 @@ fn <=(x: i32, y: i32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(timestamp1: Instant, timestamp2: Instant) -> bool
 ```
 
@@ -1907,7 +1907,7 @@ Return `true` if the first timestamp is earlier than or equals to the second.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: i128, y: i128) -> bool
 ```
 
@@ -1917,7 +1917,7 @@ fn <=(x: i128, y: i128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: int, y: float) -> bool
 ```
 
@@ -1927,7 +1927,7 @@ fn <=(x: int, y: float) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: u64, y: u64) -> bool
 ```
 
@@ -1937,7 +1937,7 @@ fn <=(x: u64, y: u64) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: int, y: f32) -> bool
 ```
 
@@ -1947,7 +1947,7 @@ fn <=(x: int, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn <=(x: f32, y: int) -> bool
 ```
 
@@ -1957,7 +1957,7 @@ fn <=(x: f32, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: i8, y: i8) -> bool
 ```
 
@@ -1967,7 +1967,7 @@ fn ==(x: i8, y: i8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(in1: Status, in2: Status) -> bool
 ```
 
@@ -1983,7 +1983,7 @@ Operator `==` for `Status`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(array1: Array, array2: Array) -> bool
 ```
 
@@ -2014,7 +2014,7 @@ print(x == z);      // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: i16, y: i16) -> bool
 ```
 
@@ -2024,7 +2024,7 @@ fn ==(x: i16, y: i16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: u64, y: u64) -> bool
 ```
 
@@ -2034,7 +2034,7 @@ fn ==(x: u64, y: u64) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(map1: Map, map2: Map) -> bool
 ```
 
@@ -2065,7 +2065,7 @@ print(m1 == m3);        // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: u16, y: u16) -> bool
 ```
 
@@ -2075,7 +2075,7 @@ fn ==(x: u16, y: u16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: f32, y: int) -> bool
 ```
 
@@ -2085,7 +2085,7 @@ fn ==(x: f32, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: int, y: f32) -> bool
 ```
 
@@ -2095,7 +2095,7 @@ fn ==(x: int, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: u128, y: u128) -> bool
 ```
 
@@ -2105,7 +2105,7 @@ fn ==(x: u128, y: u128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: u8, y: u8) -> bool
 ```
 
@@ -2115,7 +2115,7 @@ fn ==(x: u8, y: u8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: float, y: int) -> bool
 ```
 
@@ -2125,7 +2125,7 @@ fn ==(x: float, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: f32, y: f32) -> bool
 ```
 
@@ -2135,7 +2135,7 @@ fn ==(x: f32, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: u32, y: u32) -> bool
 ```
 
@@ -2145,7 +2145,7 @@ fn ==(x: u32, y: u32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(timestamp1: Instant, timestamp2: Instant) -> bool
 ```
 
@@ -2161,7 +2161,7 @@ Return `true` if two timestamps are equal.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: i128, y: i128) -> bool
 ```
 
@@ -2171,7 +2171,7 @@ fn ==(x: i128, y: i128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: int, y: float) -> bool
 ```
 
@@ -2181,7 +2181,7 @@ fn ==(x: int, y: float) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(x: i32, y: i32) -> bool
 ```
 
@@ -2191,7 +2191,7 @@ fn ==(x: i32, y: i32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: u32, y: u32) -> bool
 ```
 
@@ -2201,7 +2201,7 @@ fn >(x: u32, y: u32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: f32, y: int) -> bool
 ```
 
@@ -2211,7 +2211,7 @@ fn >(x: f32, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: int, y: f32) -> bool
 ```
 
@@ -2221,7 +2221,7 @@ fn >(x: int, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: int, y: float) -> bool
 ```
 
@@ -2231,7 +2231,7 @@ fn >(x: int, y: float) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(timestamp1: Instant, timestamp2: Instant) -> bool
 ```
 
@@ -2247,7 +2247,7 @@ Return `true` if the first timestamp is later than the second.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: u64, y: u64) -> bool
 ```
 
@@ -2257,7 +2257,7 @@ fn >(x: u64, y: u64) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: u128, y: u128) -> bool
 ```
 
@@ -2267,7 +2267,7 @@ fn >(x: u128, y: u128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: u8, y: u8) -> bool
 ```
 
@@ -2277,7 +2277,7 @@ fn >(x: u8, y: u8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: float, y: int) -> bool
 ```
 
@@ -2287,7 +2287,7 @@ fn >(x: float, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: i128, y: i128) -> bool
 ```
 
@@ -2297,7 +2297,7 @@ fn >(x: i128, y: i128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: u16, y: u16) -> bool
 ```
 
@@ -2307,7 +2307,7 @@ fn >(x: u16, y: u16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: i16, y: i16) -> bool
 ```
 
@@ -2317,7 +2317,7 @@ fn >(x: i16, y: i16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: f32, y: f32) -> bool
 ```
 
@@ -2327,7 +2327,7 @@ fn >(x: f32, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: i8, y: i8) -> bool
 ```
 
@@ -2337,7 +2337,7 @@ fn >(x: i8, y: i8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >(x: i32, y: i32) -> bool
 ```
 
@@ -2347,7 +2347,7 @@ fn >(x: i32, y: i32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: i16, y: i16) -> bool
 ```
 
@@ -2357,7 +2357,7 @@ fn >=(x: i16, y: i16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: u16, y: u16) -> bool
 ```
 
@@ -2367,7 +2367,7 @@ fn >=(x: u16, y: u16) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(timestamp1: Instant, timestamp2: Instant) -> bool
 ```
 
@@ -2383,7 +2383,7 @@ Return `true` if the first timestamp is later than or equals to the second.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: i128, y: i128) -> bool
 ```
 
@@ -2393,7 +2393,7 @@ fn >=(x: i128, y: i128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: i8, y: i8) -> bool
 ```
 
@@ -2403,7 +2403,7 @@ fn >=(x: i8, y: i8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: f32, y: f32) -> bool
 ```
 
@@ -2413,7 +2413,7 @@ fn >=(x: f32, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: int, y: f32) -> bool
 ```
 
@@ -2423,7 +2423,7 @@ fn >=(x: int, y: f32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: u64, y: u64) -> bool
 ```
 
@@ -2433,7 +2433,7 @@ fn >=(x: u64, y: u64) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: u8, y: u8) -> bool
 ```
 
@@ -2443,7 +2443,7 @@ fn >=(x: u8, y: u8) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: f32, y: int) -> bool
 ```
 
@@ -2453,7 +2453,7 @@ fn >=(x: f32, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: int, y: float) -> bool
 ```
 
@@ -2463,7 +2463,7 @@ fn >=(x: int, y: float) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: i32, y: i32) -> bool
 ```
 
@@ -2473,7 +2473,7 @@ fn >=(x: i32, y: i32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: float, y: int) -> bool
 ```
 
@@ -2483,7 +2483,7 @@ fn >=(x: float, y: int) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: u32, y: u32) -> bool
 ```
 
@@ -2493,7 +2493,7 @@ fn >=(x: u32, y: u32) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >=(x: u128, y: u128) -> bool
 ```
 
@@ -2503,7 +2503,7 @@ fn >=(x: u128, y: u128) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: u64, y: int) -> u64
 ```
 
@@ -2513,7 +2513,7 @@ fn >>(x: u64, y: int) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: i8, y: int) -> i8
 ```
 
@@ -2523,7 +2523,7 @@ fn >>(x: i8, y: int) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: i32, y: int) -> i32
 ```
 
@@ -2533,7 +2533,7 @@ fn >>(x: i32, y: int) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: u8, y: int) -> u8
 ```
 
@@ -2543,7 +2543,7 @@ fn >>(x: u8, y: int) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: u128, y: int) -> u128
 ```
 
@@ -2553,7 +2553,7 @@ fn >>(x: u128, y: int) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: u32, y: int) -> u32
 ```
 
@@ -2563,7 +2563,7 @@ fn >>(x: u32, y: int) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: u16, y: int) -> u16
 ```
 
@@ -2573,7 +2573,7 @@ fn >>(x: u16, y: int) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: i128, y: int) -> i128
 ```
 
@@ -2583,7 +2583,7 @@ fn >>(x: i128, y: int) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn >>(x: i16, y: int) -> i16
 ```
 
@@ -2593,7 +2593,7 @@ fn >>(x: i16, y: int) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn E() -> float
 ```
 
@@ -2609,7 +2609,7 @@ Return the natural number _e_.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn PI() -> float
 ```
 
@@ -2625,7 +2625,7 @@ Return the number π.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: u128, y: u128) -> u128
 ```
 
@@ -2635,7 +2635,7 @@ fn ^(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: i8, y: i8) -> i8
 ```
 
@@ -2645,7 +2645,7 @@ fn ^(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: u64, y: u64) -> u64
 ```
 
@@ -2655,7 +2655,7 @@ fn ^(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: i16, y: i16) -> i16
 ```
 
@@ -2665,7 +2665,7 @@ fn ^(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: u8, y: u8) -> u8
 ```
 
@@ -2675,7 +2675,7 @@ fn ^(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: u32, y: u32) -> u32
 ```
 
@@ -2685,7 +2685,7 @@ fn ^(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: u16, y: u16) -> u16
 ```
 
@@ -2695,7 +2695,7 @@ fn ^(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: i32, y: i32) -> i32
 ```
 
@@ -2705,7 +2705,7 @@ fn ^(x: i32, y: i32) -> i32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ^(x: i128, y: i128) -> i128
 ```
 
@@ -2715,7 +2715,7 @@ fn ^(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn abs(x: i32) -> i32
 ```
 
@@ -2731,7 +2731,7 @@ Return the absolute value of the number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn abs(x: i8) -> i8
 ```
 
@@ -2747,7 +2747,7 @@ Return the absolute value of the number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn abs(x: int) -> int
 ```
 
@@ -2763,7 +2763,7 @@ Return the absolute value of the number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn abs(x: i16) -> i16
 ```
 
@@ -2779,7 +2779,7 @@ Return the absolute value of the number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn abs(x: f32) -> f32
 ```
 
@@ -2795,7 +2795,7 @@ Return the absolute value of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn abs(x: float) -> float
 ```
 
@@ -2811,7 +2811,7 @@ Return the absolute value of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn abs(x: i128) -> i128
 ```
 
@@ -2827,7 +2827,7 @@ Return the absolute value of the number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn accept() -> Status
 ```
 
@@ -2843,7 +2843,7 @@ Return a [`Status::Accept`] with the default code associated
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn accept(code: SharedObject) -> Status
 ```
 
@@ -2863,7 +2863,7 @@ Return a [`Status::Accept`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn accept(code: String) -> Status
 ```
 
@@ -2883,7 +2883,7 @@ Return a [`Status::Accept`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn acos(x: float) -> float
 ```
 
@@ -2899,7 +2899,7 @@ Return the arc-cosine of the floating-point number, in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn acosh(x: float) -> float
 ```
 
@@ -2915,7 +2915,7 @@ Return the arc-hyperbolic-cosine of the floating-point number, in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
 ```
 
@@ -2931,7 +2931,7 @@ add a recipient to the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
 ```
 
@@ -2947,7 +2947,7 @@ add a recipient to the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn add_rcpt_message(message: Message, new_addr: String) -> ()
 ```
 
@@ -2963,7 +2963,7 @@ add a recipient to the 'To' mail header.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn add_rcpt_message(message: Message, new_addr: SharedObject) -> ()
 ```
 
@@ -2979,7 +2979,7 @@ add a recipient to the 'To' mail header.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn all(array: Array, filter: String) -> bool
 ```
 
@@ -3014,7 +3014,7 @@ print(x.all(|v, i| i > v));     // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn all(array: Array, filter: FnPtr) -> bool
 ```
 
@@ -3047,7 +3047,7 @@ print(x.all(|v, i| i > v));     // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append(blob: Blob, value: int)
 ```
 
@@ -3075,7 +3075,7 @@ print(b);       // prints "[42]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append(string: String, mut item: ?)
 ```
 
@@ -3085,7 +3085,7 @@ fn append(string: String, mut item: ?)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append(string: String, utf8: Blob)
 ```
 
@@ -3095,7 +3095,7 @@ fn append(string: String, utf8: Blob)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append(array: Array, new_array: Array)
 ```
 
@@ -3122,7 +3122,7 @@ print(x);       // prints "[1, 2, 3, true, 'x']"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append(blob: Blob, character: char)
 ```
 
@@ -3148,7 +3148,7 @@ print(b);       // prints "[424242424221]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append(blob: Blob, string: String)
 ```
 
@@ -3174,7 +3174,7 @@ print(b);       // prints "[424242424268656c 6c6f]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append(blob1: Blob, blob2: Blob)
 ```
 
@@ -3201,7 +3201,7 @@ print(b1);      // prints "[4242424242111111]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append_header(message: Message, header: String, value: String) -> ()
 ```
 
@@ -3234,7 +3234,7 @@ Add a header **at the end** of the Header section of the message.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn append_header(message: Message, header: String, value: SharedObject) -> ()
 ```
 
@@ -3244,7 +3244,7 @@ fn append_header(message: Message, header: String, value: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn as_string(blob: Blob) -> String
 ```
 
@@ -3272,7 +3272,7 @@ print(x);       // prints "FFFFF"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn asin(x: float) -> float
 ```
 
@@ -3288,7 +3288,7 @@ Return the arc-sine of the floating-point number, in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn asinh(x: float) -> float
 ```
 
@@ -3304,7 +3304,7 @@ Return the arc-hyperbolic-sine of the floating-point number, in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn atan(x: float) -> float
 ```
 
@@ -3320,7 +3320,7 @@ Return the arc-tangent of the floating-point number, in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn atan(x: float, y: float) -> float
 ```
 
@@ -3336,7 +3336,7 @@ Return the arc-tangent of the floating-point numbers `x` and `y`, in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn atanh(x: float) -> float
 ```
 
@@ -3352,7 +3352,7 @@ Return the arc-hyperbolic-tangent of the floating-point number, in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn bits(value: int) -> Iterator<bool>
 ```
 
@@ -3378,7 +3378,7 @@ for bit in x.bits() {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn bits(value: int, range: Range<int>) -> Iterator<bool>
 ```
 
@@ -3404,7 +3404,7 @@ for bit in x.bits(10..24) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn bits(value: int, from: int) -> Iterator<bool>
 ```
 
@@ -3432,7 +3432,7 @@ for bit in x.bits(10) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn bits(value: int, range: RangeInclusive<int>) -> Iterator<bool>
 ```
 
@@ -3458,7 +3458,7 @@ for bit in x.bits(10..=23) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn bits(value: int, from: int, len: int) -> Iterator<bool>
 ```
 
@@ -3488,7 +3488,7 @@ for bit in x.bits(10, 8) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn blob() -> Blob
 ```
 
@@ -3504,7 +3504,7 @@ Return a new, empty BLOB.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn blob(len: int) -> Blob
 ```
 
@@ -3530,7 +3530,7 @@ print(b);       // prints "[0000000000000000 0000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn blob(len: int, value: int) -> Blob
 ```
 
@@ -3558,7 +3558,7 @@ print(b);       // prints "[4242424242424242 4242]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn bytes(string: String) -> int
 ```
 
@@ -3582,7 +3582,7 @@ print(text.bytes);      // prints 51
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ceiling(x: float) -> float
 ```
 
@@ -3598,7 +3598,7 @@ Return the smallest whole number larger than or equals to the floating-point num
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn chars(string: String) -> Iterator<char>
 ```
 
@@ -3622,7 +3622,7 @@ for ch in "hello, world!".chars() {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn chars(string: String, range: Range<int>) -> Iterator<char>
 ```
 
@@ -3646,7 +3646,7 @@ for ch in "hello, world!".chars(2..5) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn chars(string: String, from: int) -> Iterator<char>
 ```
 
@@ -3674,7 +3674,7 @@ for ch in "hello, world!".chars(2) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn chars(string: String, range: RangeInclusive<int>) -> Iterator<char>
 ```
 
@@ -3698,7 +3698,7 @@ for ch in "hello, world!".chars(2..=6) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn chars(string: String, start: int, len: int) -> Iterator<char>
 ```
 
@@ -3728,7 +3728,7 @@ for ch in "hello, world!".chars(2, 4) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn check_spf(ctx: Context, srv: Server) -> Map
 ```
 
@@ -3750,7 +3750,7 @@ a rhai Map with:
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn chop(blob: Blob, len: int)
 ```
 
@@ -3785,7 +3785,7 @@ print(b);           // prints "[030405]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn chop(array: Array, len: int)
 ```
 
@@ -3818,7 +3818,7 @@ print(x);       // prints "[3, 4, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn clear(string: String)
 ```
 
@@ -3834,7 +3834,7 @@ Clear the string, making it empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn clear(blob: Blob)
 ```
 
@@ -3850,7 +3850,7 @@ Clear the BLOB.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn clear(map: Map)
 ```
 
@@ -3866,7 +3866,7 @@ Clear the object map.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn clear(array: Array)
 ```
 
@@ -3882,7 +3882,7 @@ Clear the array.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(range: Range<int>, value: int) -> bool
 ```
 
@@ -3898,7 +3898,7 @@ Return `true` if the range contains a specified value.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(map: Map, property: String) -> bool
 ```
 
@@ -3924,7 +3924,7 @@ print(m.contains("x"));     // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(string: String, character: char) -> bool
 ```
 
@@ -3950,7 +3950,7 @@ print(text.contains('x'));      // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(blob: Blob, value: int) -> bool
 ```
 
@@ -3976,7 +3976,7 @@ print(text.contains('x'));      // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(array: Array, value: ?) -> bool
 ```
 
@@ -4008,7 +4008,7 @@ if 4 in x {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(string: String, match_string: String) -> bool
 ```
 
@@ -4034,7 +4034,7 @@ print(text.contains("hey"));    // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(range: RangeInclusive<int>, value: int) -> bool
 ```
 
@@ -4050,7 +4050,7 @@ Return `true` if the range contains a specified value.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn cos(x: float) -> float
 ```
 
@@ -4066,7 +4066,7 @@ Return the cosine of the floating-point number in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn cosh(x: float) -> float
 ```
 
@@ -4082,7 +4082,7 @@ Return the hyperbolic cosine of the floating-point number in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn count_header(message: Message, header: String) -> int
 ```
 
@@ -4116,7 +4116,7 @@ Count the number of headers with the given name.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn count_header(message: Message, header: SharedObject) -> int
 ```
 
@@ -4126,7 +4126,7 @@ fn count_header(message: Message, header: SharedObject) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn crop(string: String, range: RangeInclusive<int>)
 ```
 
@@ -4152,7 +4152,7 @@ print(text);        // prints "llo, wo"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn crop(string: String, start: int)
 ```
 
@@ -4186,7 +4186,7 @@ print(text);            // prints "ld!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn crop(string: String, range: Range<int>)
 ```
 
@@ -4212,7 +4212,7 @@ print(text);        // prints "llo, w"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn crop(string: String, start: int, len: int)
 ```
 
@@ -4248,7 +4248,7 @@ print(text);        // prints ", w"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn date() -> String
 ```
 
@@ -4264,7 +4264,7 @@ get the current date.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug() -> String
 ```
 
@@ -4280,7 +4280,7 @@ Return the empty string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(unit: ()) -> String
 ```
 
@@ -4296,7 +4296,7 @@ Convert the unit into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(number: f32) -> String
 ```
 
@@ -4312,7 +4312,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(map: Map) -> String
 ```
 
@@ -4328,7 +4328,7 @@ Convert the object map into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(f: FnPtr) -> String
 ```
 
@@ -4344,7 +4344,7 @@ Convert the function pointer into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(character: char) -> String
 ```
 
@@ -4360,7 +4360,7 @@ Convert the string into debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(item: ?) -> String
 ```
 
@@ -4376,7 +4376,7 @@ Convert the value of the `item` into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(number: float) -> String
 ```
 
@@ -4392,7 +4392,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(string: String) -> String
 ```
 
@@ -4408,7 +4408,7 @@ Convert the string into debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(array: Array) -> String
 ```
 
@@ -4424,7 +4424,7 @@ Convert the array into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn debug(value: bool) -> String
 ```
 
@@ -4440,7 +4440,7 @@ Convert the boolean value into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn dedup(array: Array)
 ```
 
@@ -4469,7 +4469,7 @@ print(x);       // prints "[1, 2, 3, 4, 3, 2, 1]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn dedup(array: Array, comparer: String) -> ()
 ```
 
@@ -4509,7 +4509,7 @@ print(x);       // prints "[1, 2, 3, 4]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn dedup(array: Array, comparer: FnPtr)
 ```
 
@@ -4547,7 +4547,7 @@ print(x);       // prints "[1, 2, 3, 4]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn deliver(context: Context, rcpt: String) -> ()
 ```
 
@@ -4591,7 +4591,7 @@ Set the delivery method to [`Transfer::Deliver`] for a single recipient.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn deliver(context: Context, rcpt: SharedObject) -> ()
 ```
 
@@ -4601,7 +4601,7 @@ fn deliver(context: Context, rcpt: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn deliver_all(context: Context) -> ()
 ```
 
@@ -4631,7 +4631,7 @@ Set the delivery method to [`Transfer::Deliver`] for all recipients.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn deny() -> Status
 ```
 
@@ -4647,7 +4647,7 @@ Return a [`Status::Deny`] with the default code associated
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn deny(code: String) -> Status
 ```
 
@@ -4667,7 +4667,7 @@ Return a [`Status::Deny`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn deny(code: SharedObject) -> Status
 ```
 
@@ -4687,7 +4687,7 @@ Return a [`Status::Deny`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_from: String, spf_result: String) -> bool
 ```
 
@@ -4703,7 +4703,7 @@ fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(array: Array, filter: String) -> Array
 ```
 
@@ -4749,7 +4749,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(array: Array, range: RangeInclusive<int>) -> Array
 ```
 
@@ -4783,7 +4783,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(array: Array, range: Range<int>) -> Array
 ```
 
@@ -4817,7 +4817,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(blob: Blob, range: RangeInclusive<int>) -> Blob
 ```
 
@@ -4853,7 +4853,7 @@ print(b3);      // prints "[05]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(blob: Blob, range: Range<int>) -> Blob
 ```
 
@@ -4889,7 +4889,7 @@ print(b3);      // prints "[05]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(array: Array, filter: FnPtr) -> Array
 ```
 
@@ -4929,7 +4929,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(array: Array, start: int, len: int) -> Array
 ```
 
@@ -4969,7 +4969,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn drain(blob: Blob, start: int, len: int) -> Blob
 ```
 
@@ -5011,7 +5011,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn dump(srv: Server, mut ctx: Context, dir: SharedObject) -> ()
 ```
 
@@ -5027,7 +5027,7 @@ write the content of the current email with it's metadata in a json file.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn dump(srv: Server, mut ctx: Context, dir: String) -> ()
 ```
 
@@ -5043,7 +5043,7 @@ write the content of the current email with it's metadata in a json file.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn elapsed(timestamp: Instant) -> ?
 ```
 
@@ -5069,7 +5069,7 @@ print(now.elapsed);     // prints 10.???
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn end(range: Range<int>) -> int
 ```
 
@@ -5085,7 +5085,7 @@ Return the end of the exclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn end(range: RangeInclusive<int>) -> int
 ```
 
@@ -5101,7 +5101,7 @@ Return the end of the inclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ends_with(string: String, match_string: String) -> bool
 ```
 
@@ -5127,7 +5127,7 @@ print(text.ends_with("hello"));     // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn exp(x: float) -> float
 ```
 
@@ -5143,7 +5143,7 @@ Return the exponential of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(array: Array, range: RangeInclusive<int>) -> Array
 ```
 
@@ -5169,7 +5169,7 @@ print(x);                   // prints "[1, 2, 3, 4, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(blob: Blob, range: Range<int>) -> Blob
 ```
 
@@ -5197,7 +5197,7 @@ print(b);                   // prints "[0102030405]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(blob: Blob, start: int) -> Blob
 ```
 
@@ -5232,7 +5232,7 @@ print(b);                   // prints "[0102030405]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(blob: Blob, range: RangeInclusive<int>) -> Blob
 ```
 
@@ -5260,7 +5260,7 @@ print(b);                   // prints "[0102030405]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(array: Array, range: Range<int>) -> Array
 ```
 
@@ -5286,7 +5286,7 @@ print(x);                   // prints "[1, 2, 3, 4, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(array: Array, start: int) -> Array
 ```
 
@@ -5319,7 +5319,7 @@ print(x);                   // prints "[1, 2, 3, 4, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(array: Array, start: int, len: int) -> Array
 ```
 
@@ -5353,7 +5353,7 @@ print(x);                   // prints "[1, 2, 3, 4, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn extract(blob: Blob, start: int, len: int) -> Blob
 ```
 
@@ -5389,7 +5389,7 @@ print(b);                   // prints "[0102030405]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn faccept() -> Status
 ```
 
@@ -5405,7 +5405,7 @@ Return a [`Status::Faccept`] with the default code associated
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn faccept(code: String) -> Status
 ```
 
@@ -5425,7 +5425,7 @@ Return a [`Status::Faccept`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn faccept(code: SharedObject) -> Status
 ```
 
@@ -5445,7 +5445,7 @@ Return a [`Status::Faccept`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn fill_with(map: Map, map2: Map)
 ```
 
@@ -5473,7 +5473,7 @@ print(m);       // prints "#{a:1, b:2, c:3, d:0}"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn filter(array: Array, filter_func: String) -> Array
 ```
 
@@ -5513,7 +5513,7 @@ print(y);       // prints "[12, 20]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn filter(array: Array, filter: FnPtr) -> Array
 ```
 
@@ -5549,7 +5549,7 @@ print(y);       // prints "[12, 20]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn floor(x: float) -> float
 ```
 
@@ -5565,7 +5565,7 @@ Return the largest whole number less than or equals to the floating-point number
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
 ```
 
@@ -5575,7 +5575,7 @@ fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 ```
 
@@ -5585,7 +5585,7 @@ fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn forward(context: Context, rcpt: String, forward: String) -> ()
 ```
 
@@ -5629,7 +5629,7 @@ Set the delivery method to [`Transfer::Forward`] for a single recipient.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
 ```
 
@@ -5639,7 +5639,7 @@ fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn forward_all(context: Context, forward: SharedObject) -> ()
 ```
 
@@ -5649,7 +5649,7 @@ fn forward_all(context: Context, forward: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn forward_all(context: Context, forward: String) -> ()
 ```
 
@@ -5684,7 +5684,7 @@ Set the delivery method to [`Transfer::Forward`] for all recipients.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn fraction(x: float) -> float
 ```
 
@@ -5700,7 +5700,7 @@ Return the fractional part of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn generate_signature_dkim(message: Message, context: Context, selector: String, private_key: Arc<PrivateKey>, headers_field: Array, canonicalization: String) -> String
 ```
 
@@ -5756,7 +5756,7 @@ This message has not been signed yet, meaning someone could change it...
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get(string: String, index: int) -> ?
 ```
 
@@ -5788,7 +5788,7 @@ print(text.get(99));    // prints empty (for '()')'
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get(array: Array, index: int) -> ?
 ```
 
@@ -5820,7 +5820,7 @@ print(x.get(99));       // prints empty (for '()')
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get(map: Map, property: String) -> ?
 ```
 
@@ -5848,7 +5848,7 @@ print(m.get("x"));      // prints empty (for '()')
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get(blob: Blob, index: int) -> int
 ```
 
@@ -5882,7 +5882,7 @@ print(b.get(99));       // prints 0
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get auid(signature: Signature) -> String
 ```
 
@@ -5898,7 +5898,7 @@ return the `auid` property of the [`Signature`]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get auth(context: Context) -> Credentials
 ```
 
@@ -5914,7 +5914,7 @@ Get the `auth` property of the connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get authid(credentials: Credentials) -> String
 ```
 
@@ -5930,7 +5930,7 @@ Get the `authid` property of the connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get authpass(credentials: Credentials) -> String
 ```
 
@@ -5946,7 +5946,7 @@ Get the `authpass` property of the connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get bits(value: int) -> Iterator<bool>
 ```
 
@@ -5972,7 +5972,7 @@ for bit in x.bits {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get bytes(string: String) -> int
 ```
 
@@ -5996,7 +5996,7 @@ print(text.bytes);      // prints 51
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get ceiling(x: float) -> float
 ```
 
@@ -6012,7 +6012,7 @@ Return the smallest whole number larger than or equals to the floating-point num
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get chars(string: String) -> Iterator<char>
 ```
 
@@ -6036,7 +6036,7 @@ for ch in "hello, world!".chars {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get client_address(context: Context) -> String
 ```
 
@@ -6052,7 +6052,7 @@ Get the peer address of the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get client_ip(context: Context) -> String
 ```
 
@@ -6068,7 +6068,7 @@ Get the peer ip address of the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get client_port(context: Context) -> int
 ```
 
@@ -6084,7 +6084,7 @@ Get the peer port of the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get connection_timestamp(context: Context) -> OffsetDateTime
 ```
 
@@ -6100,7 +6100,7 @@ Get the timestamp when the client connected to the server.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get dkim_result(ctx: Context) -> Map
 ```
 
@@ -6117,7 +6117,7 @@ an error if no result is found.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get elapsed(timestamp: Instant) -> ?
 ```
 
@@ -6143,7 +6143,7 @@ print(now.elapsed);     // prints 10.???
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get end(range: Range<int>) -> int
 ```
 
@@ -6159,7 +6159,7 @@ Return the end of the exclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get end(range: RangeInclusive<int>) -> int
 ```
 
@@ -6175,7 +6175,7 @@ Return the end of the inclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get floor(x: float) -> float
 ```
 
@@ -6191,7 +6191,7 @@ Return the largest whole number less than or equals to the floating-point number
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get fraction(x: float) -> float
 ```
 
@@ -6207,7 +6207,7 @@ Return the fractional part of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get has_debug_flag(key: PublicKey) -> bool
 ```
 
@@ -6223,7 +6223,7 @@ A public key may contains a `debug flag`, used for testing purpose.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get has_dkim_result(ctx: Context) -> bool
 ```
 
@@ -6239,7 +6239,7 @@ Has the `ctx()` a DKIM signature verification result ?
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get helo(context: Context) -> String
 ```
 
@@ -6255,7 +6255,7 @@ Get the domain named introduced by the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get int(x: float) -> float
 ```
 
@@ -6271,7 +6271,7 @@ Return the integral part of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_anonymous(fn_ptr: FnPtr) -> bool
 ```
 
@@ -6295,7 +6295,7 @@ print(f.is_anonymous);      // prints true
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_authenticated(context: Context) -> bool
 ```
 
@@ -6311,7 +6311,7 @@ Has the connection validated the client credentials?
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_empty(range: RangeInclusive<int>) -> bool
 ```
 
@@ -6327,7 +6327,7 @@ Return true if the range contains no items.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_empty(string: String) -> bool
 ```
 
@@ -6343,7 +6343,7 @@ Return true if the string is empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_empty(blob: Blob) -> bool
 ```
 
@@ -6359,7 +6359,7 @@ Return true if the BLOB is empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_empty(range: Range<int>) -> bool
 ```
 
@@ -6375,7 +6375,7 @@ Return true if the range contains no items.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_empty(array: Array) -> bool
 ```
 
@@ -6391,7 +6391,7 @@ Return true if the array is empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: i8) -> bool
 ```
 
@@ -6407,7 +6407,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: u128) -> bool
 ```
 
@@ -6423,7 +6423,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: u16) -> bool
 ```
 
@@ -6439,7 +6439,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: u8) -> bool
 ```
 
@@ -6455,7 +6455,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: i16) -> bool
 ```
 
@@ -6471,7 +6471,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: u32) -> bool
 ```
 
@@ -6487,7 +6487,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: i128) -> bool
 ```
 
@@ -6503,7 +6503,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: i32) -> bool
 ```
 
@@ -6519,7 +6519,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: u64) -> bool
 ```
 
@@ -6535,7 +6535,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_even(x: int) -> bool
 ```
 
@@ -6551,7 +6551,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_exclusive(range: RangeInclusive<int>) -> bool
 ```
 
@@ -6567,7 +6567,7 @@ Return `true` if the range is exclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_exclusive(range: Range<int>) -> bool
 ```
 
@@ -6583,7 +6583,7 @@ Return `true` if the range is exclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_finite(x: float) -> bool
 ```
 
@@ -6599,7 +6599,7 @@ Return `true` if the floating-point number is finite.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_inclusive(range: Range<int>) -> bool
 ```
 
@@ -6615,7 +6615,7 @@ Return `true` if the range is inclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_inclusive(range: RangeInclusive<int>) -> bool
 ```
 
@@ -6631,7 +6631,7 @@ Return `true` if the range is inclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_infinite(x: float) -> bool
 ```
 
@@ -6647,7 +6647,7 @@ Return `true` if the floating-point number is infinite.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_nan(x: float) -> bool
 ```
 
@@ -6663,7 +6663,7 @@ Return `true` if the floating-point number is `NaN` (Not A Number).
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: int) -> bool
 ```
 
@@ -6679,7 +6679,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: u64) -> bool
 ```
 
@@ -6695,7 +6695,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: i16) -> bool
 ```
 
@@ -6711,7 +6711,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: u16) -> bool
 ```
 
@@ -6727,7 +6727,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: i128) -> bool
 ```
 
@@ -6743,7 +6743,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: i8) -> bool
 ```
 
@@ -6759,7 +6759,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: i32) -> bool
 ```
 
@@ -6775,7 +6775,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: u128) -> bool
 ```
 
@@ -6791,7 +6791,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: u32) -> bool
 ```
 
@@ -6807,7 +6807,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_odd(x: u8) -> bool
 ```
 
@@ -6823,7 +6823,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_secured(context: Context) -> bool
 ```
 
@@ -6839,7 +6839,7 @@ Is the connection under TLS?
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: i16) -> bool
 ```
 
@@ -6855,7 +6855,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: f32) -> bool
 ```
 
@@ -6871,7 +6871,7 @@ Return true if the floating-point number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: i128) -> bool
 ```
 
@@ -6887,7 +6887,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: i32) -> bool
 ```
 
@@ -6903,7 +6903,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: int) -> bool
 ```
 
@@ -6919,7 +6919,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: u64) -> bool
 ```
 
@@ -6935,7 +6935,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: i8) -> bool
 ```
 
@@ -6951,7 +6951,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: float) -> bool
 ```
 
@@ -6967,7 +6967,7 @@ Return true if the floating-point number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: u128) -> bool
 ```
 
@@ -6983,7 +6983,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: u16) -> bool
 ```
 
@@ -6999,7 +6999,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: u8) -> bool
 ```
 
@@ -7015,7 +7015,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get is_zero(x: u32) -> bool
 ```
 
@@ -7031,7 +7031,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get len(string: String) -> int
 ```
 
@@ -7055,7 +7055,7 @@ print(text.len);        // prints 17
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get len(blob: Blob) -> int
 ```
 
@@ -7081,7 +7081,7 @@ print(b.len());     // prints 10
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get len(array: Array) -> int
 ```
 
@@ -7097,7 +7097,7 @@ Number of elements in the array.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get mail(this: Message) -> String
 ```
 
@@ -7113,7 +7113,7 @@ Get the message body as a string
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get mail_from(context: Context) -> SharedObject
 ```
 
@@ -7129,7 +7129,7 @@ Get the `MailFrom` envelope.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get mail_timestamp(context: Context) -> OffsetDateTime
 ```
 
@@ -7145,7 +7145,7 @@ Get the timestamp when the client started to send the message.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get message_id(context: Context) -> String
 ```
 
@@ -7161,7 +7161,7 @@ Get the `message_id`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get name(fn_ptr: FnPtr) -> String
 ```
 
@@ -7187,7 +7187,7 @@ print(f.name);      // prints "double"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get rcpt(context: Context) -> SharedObject
 ```
 
@@ -7203,7 +7203,7 @@ Get the lase element in the `RcptTo` envelope.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get rcpt_list(context: Context) -> Array
 ```
 
@@ -7219,7 +7219,7 @@ Get the `RcptTo` envelope.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get receiver_policy(record: Record) -> String
 ```
 
@@ -7235,7 +7235,7 @@ fn get receiver_policy(record: Record) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get round(x: float) -> float
 ```
 
@@ -7252,7 +7252,7 @@ Rounds away from zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get sdid(signature: Signature) -> String
 ```
 
@@ -7268,7 +7268,7 @@ return the `sdid` property of the [`Signature`]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get server_address(context: Context) -> String
 ```
 
@@ -7284,7 +7284,7 @@ Get the server address which served this connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get server_ip(context: Context) -> IpAddr
 ```
 
@@ -7300,7 +7300,7 @@ Get the server ip address which served this connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get server_name(context: Context) -> String
 ```
 
@@ -7316,7 +7316,7 @@ Get server name under which the client has been served.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get server_port(context: Context) -> int
 ```
 
@@ -7332,7 +7332,7 @@ Get the server port which served this connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get start(range: RangeInclusive<int>) -> int
 ```
 
@@ -7348,7 +7348,7 @@ Return the start of the inclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get start(range: Range<int>) -> int
 ```
 
@@ -7364,7 +7364,7 @@ Return the start of the exclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get tag(value: ?) -> int
 ```
 
@@ -7390,7 +7390,7 @@ print(x.tag);           // prints 42
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get type(credentials: Credentials) -> String
 ```
 
@@ -7406,7 +7406,7 @@ Get the type of the `auth` property of the connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_all_headers(message: Message) -> Array
 ```
 
@@ -7422,7 +7422,7 @@ Return the complete list of headers.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_all_headers(message: Message, name: SharedObject) -> Array
 ```
 
@@ -7432,7 +7432,7 @@ fn get_all_headers(message: Message, name: SharedObject) -> Array
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_all_headers(message: Message, name: String) -> Array
 ```
 
@@ -7448,7 +7448,7 @@ Return a list of headers bearing the `name` given as argument.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_bit(value: int, bit: int) -> bool
 ```
 
@@ -7478,7 +7478,7 @@ print(x.get_bit(-48));  // prints true on 64-bit
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_bits(value: int, range: RangeInclusive<int>) -> int
 ```
 
@@ -7502,7 +7502,7 @@ print(x.get_bits(5..=9));       // print 18
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_bits(value: int, range: Range<int>) -> int
 ```
 
@@ -7526,7 +7526,7 @@ print(x.get_bits(5..10));       // print 18
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_bits(value: int, start: int, bits: int) -> int
 ```
 
@@ -7554,7 +7554,7 @@ print(x.get_bits(5, 8));        // print 18
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_dmarc_record(server: Server, domain: String) -> Record
 ```
 
@@ -7570,7 +7570,7 @@ Get a valid DMARC record for the domain.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
 ```
 
@@ -7586,7 +7586,7 @@ Get a valid DMARC record for the domain.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_fn_metadata_list() -> Array
 ```
 
@@ -7596,7 +7596,7 @@ fn get_fn_metadata_list() -> Array
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_fn_metadata_list(name: String) -> Array
 ```
 
@@ -7606,7 +7606,7 @@ fn get_fn_metadata_list(name: String) -> Array
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_fn_metadata_list(name: String, params: int) -> Array
 ```
 
@@ -7616,7 +7616,7 @@ fn get_fn_metadata_list(name: String, params: int) -> Array
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_header(message: Message, header: SharedObject) -> String
 ```
 
@@ -7626,7 +7626,7 @@ fn get_header(message: Message, header: SharedObject) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_header(message: Message, header: String) -> String
 ```
 
@@ -7664,7 +7664,7 @@ Hello world!
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_header_untouched(this: Message, name: String) -> Array
 ```
 
@@ -7680,7 +7680,7 @@ fn get_header_untouched(this: Message, name: String) -> Array
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_private_keys(server: Server, sdid: String) -> Array
 ```
 
@@ -7696,7 +7696,7 @@ Get the list of DKIM private keys associated with this sdid
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?
 ```
 
@@ -7718,7 +7718,7 @@ The current implementation will make a TXT query on the dns of the signer
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_root_domain(domain: SharedObject) -> String
 ```
 
@@ -7728,7 +7728,7 @@ fn get_root_domain(domain: SharedObject) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get_root_domain(domain: String) -> String
 ```
 
@@ -7748,7 +7748,7 @@ Get the root domain (the registrable part)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn handle_dkim_error(err: ?) -> String
 ```
 
@@ -7764,7 +7764,7 @@ get the dkim status from an error produced by this module
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn has_expired(signature: Signature, epsilon: int) -> bool
 ```
 
@@ -7782,7 +7782,7 @@ return `true` if the argument are invalid (`epsilon` is negative)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn has_header(message: Message, header: String) -> bool
 ```
 
@@ -7818,7 +7818,7 @@ Return a boolean, `true` if a header named `header` exists in the message.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn has_header(message: Message, header: SharedObject) -> bool
 ```
 
@@ -7828,7 +7828,7 @@ fn has_header(message: Message, header: SharedObject) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn hostname() -> String
 ```
 
@@ -7855,7 +7855,7 @@ Get the hostname of the machine.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn hypot(x: float, y: float) -> float
 ```
 
@@ -7871,7 +7871,7 @@ Return the hypotenuse of a triangle with sides `x` and `y`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(array: Array, filter: String) -> int
 ```
 
@@ -7910,7 +7910,7 @@ print(x.index_of("is_dumb"));       // prints -1
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(string: String, find_string: String) -> int
 ```
 
@@ -7937,7 +7937,7 @@ print(text.index_of("xx:));     // prints -1
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(array: Array, value: ?) -> int
 ```
 
@@ -7969,7 +7969,7 @@ print(x.index_of("foo"));   // prints -1: strings do not equal numbers
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(array: Array, filter: FnPtr) -> int
 ```
 
@@ -8004,7 +8004,7 @@ print(x.index_of(|v, i| v * i > 20));   // prints 7: 4 * 7 > 20
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(string: String, character: char) -> int
 ```
 
@@ -8031,7 +8031,7 @@ print(text.index_of('x'));      // prints -1
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(array: Array, value: ?, start: int) -> int
 ```
 
@@ -8073,7 +8073,7 @@ print(x.index_of("foo", 1));    // prints -1: strings do not equal numbers
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(array: Array, filter: FnPtr, start: int) -> int
 ```
 
@@ -8118,7 +8118,7 @@ print(x.index_of(|v, i| v * i > 20, 8));    // prints 10: 3 * 10 > 20
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(string: String, find_string: String, start: int) -> int
 ```
 
@@ -8152,7 +8152,7 @@ print(text.index_of("xx", 0));      // prints -1
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(array: Array, filter: String, start: int) -> int
 ```
 
@@ -8205,7 +8205,7 @@ print(x.index_of("screen", 8));     // prints 10: 3 * 10 > 20
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn index_of(string: String, character: char, start: int) -> int
 ```
 
@@ -8239,7 +8239,7 @@ print(text.index_of('x', 0));       // prints -1
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn info(code: SharedObject) -> Status
 ```
 
@@ -8259,7 +8259,7 @@ Return a [`Status::Info`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn info(code: String) -> Status
 ```
 
@@ -8279,7 +8279,7 @@ Return a [`Status::Info`] with `code`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn insert(array: Array, index: int, item: ?)
 ```
 
@@ -8313,7 +8313,7 @@ print(x);       // prints ["hello", 1, true, 2, 42, 3]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn insert(blob: Blob, index: int, value: int)
 ```
 
@@ -8345,7 +8345,7 @@ print(b);       // prints "[4242184242]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn int(x: float) -> float
 ```
 
@@ -8361,7 +8361,7 @@ Return the integral part of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_anonymous(fn_ptr: FnPtr) -> bool
 ```
 
@@ -8385,7 +8385,7 @@ print(f.is_anonymous);      // prints true
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_empty(range: RangeInclusive<int>) -> bool
 ```
 
@@ -8401,7 +8401,7 @@ Return true if the range contains no items.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_empty(array: Array) -> bool
 ```
 
@@ -8417,7 +8417,7 @@ Return true if the array is empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_empty(range: Range<int>) -> bool
 ```
 
@@ -8433,7 +8433,7 @@ Return true if the range contains no items.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_empty(map: Map) -> bool
 ```
 
@@ -8449,7 +8449,7 @@ Return true if the map is empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_empty(blob: Blob) -> bool
 ```
 
@@ -8465,7 +8465,7 @@ Return true if the BLOB is empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_empty(string: String) -> bool
 ```
 
@@ -8481,7 +8481,7 @@ Return true if the string is empty.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: u8) -> bool
 ```
 
@@ -8497,7 +8497,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: int) -> bool
 ```
 
@@ -8513,7 +8513,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: u128) -> bool
 ```
 
@@ -8529,7 +8529,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: i8) -> bool
 ```
 
@@ -8545,7 +8545,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: u32) -> bool
 ```
 
@@ -8561,7 +8561,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: u64) -> bool
 ```
 
@@ -8577,7 +8577,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: i16) -> bool
 ```
 
@@ -8593,7 +8593,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: i128) -> bool
 ```
 
@@ -8609,7 +8609,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: i32) -> bool
 ```
 
@@ -8625,7 +8625,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_even(x: u16) -> bool
 ```
 
@@ -8641,7 +8641,7 @@ Return true if the number is even.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_exclusive(range: Range<int>) -> bool
 ```
 
@@ -8657,7 +8657,7 @@ Return `true` if the range is exclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_exclusive(range: RangeInclusive<int>) -> bool
 ```
 
@@ -8673,7 +8673,7 @@ Return `true` if the range is exclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_finite(x: float) -> bool
 ```
 
@@ -8689,7 +8689,7 @@ Return `true` if the floating-point number is finite.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_inclusive(range: RangeInclusive<int>) -> bool
 ```
 
@@ -8705,7 +8705,7 @@ Return `true` if the range is inclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_inclusive(range: Range<int>) -> bool
 ```
 
@@ -8721,7 +8721,7 @@ Return `true` if the range is inclusive.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_infinite(x: float) -> bool
 ```
 
@@ -8737,7 +8737,7 @@ Return `true` if the floating-point number is infinite.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_nan(x: float) -> bool
 ```
 
@@ -8753,7 +8753,7 @@ Return `true` if the floating-point number is `NaN` (Not A Number).
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: i16) -> bool
 ```
 
@@ -8769,7 +8769,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: u32) -> bool
 ```
 
@@ -8785,7 +8785,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: i8) -> bool
 ```
 
@@ -8801,7 +8801,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: u64) -> bool
 ```
 
@@ -8817,7 +8817,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: i32) -> bool
 ```
 
@@ -8833,7 +8833,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: u16) -> bool
 ```
 
@@ -8849,7 +8849,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: i128) -> bool
 ```
 
@@ -8865,7 +8865,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: u128) -> bool
 ```
 
@@ -8881,7 +8881,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: int) -> bool
 ```
 
@@ -8897,7 +8897,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_odd(x: u8) -> bool
 ```
 
@@ -8913,7 +8913,7 @@ Return true if the number is odd.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: i128) -> bool
 ```
 
@@ -8929,7 +8929,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: u16) -> bool
 ```
 
@@ -8945,7 +8945,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: i8) -> bool
 ```
 
@@ -8961,7 +8961,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: float) -> bool
 ```
 
@@ -8977,7 +8977,7 @@ Return true if the floating-point number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: f32) -> bool
 ```
 
@@ -8993,7 +8993,7 @@ Return true if the floating-point number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: u64) -> bool
 ```
 
@@ -9009,7 +9009,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: int) -> bool
 ```
 
@@ -9025,7 +9025,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: i32) -> bool
 ```
 
@@ -9041,7 +9041,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: u128) -> bool
 ```
 
@@ -9057,7 +9057,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: u32) -> bool
 ```
 
@@ -9073,7 +9073,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: i16) -> bool
 ```
 
@@ -9089,7 +9089,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn is_zero(x: u8) -> bool
 ```
 
@@ -9105,7 +9105,7 @@ Return true if the number is zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn keys(map: Map) -> Array
 ```
 
@@ -9129,7 +9129,7 @@ print(m.keys());        // prints ["a", "b", "c"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn len(map: Map) -> int
 ```
 
@@ -9145,7 +9145,7 @@ Return the number of properties in the object map.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn len(array: Array) -> int
 ```
 
@@ -9161,7 +9161,7 @@ Number of elements in the array.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn len(blob: Blob) -> int
 ```
 
@@ -9187,7 +9187,7 @@ print(b.len());     // prints 10
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn len(string: String) -> int
 ```
 
@@ -9211,7 +9211,7 @@ print(text.len);        // prints 17
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ln(x: float) -> float
 ```
 
@@ -9227,7 +9227,7 @@ Return the natural log of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn log(x: float) -> float
 ```
 
@@ -9243,7 +9243,7 @@ Return the log of the floating-point number with base 10.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn log(level: String, message: SharedObject)
 ```
 
@@ -9253,7 +9253,7 @@ fn log(level: String, message: SharedObject)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn log(level: SharedObject, message: SharedObject)
 ```
 
@@ -9263,7 +9263,7 @@ fn log(level: SharedObject, message: SharedObject)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn log(x: float, base: float) -> float
 ```
 
@@ -9279,7 +9279,7 @@ Return the log of the floating-point number with `base`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn log(level: SharedObject, message: String)
 ```
 
@@ -9289,7 +9289,7 @@ fn log(level: SharedObject, message: String)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn log(level: String, message: String)
 ```
 
@@ -9328,7 +9328,7 @@ fn log(level: String, message: String)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn lookup(server: Server, name: String) -> Array
 ```
 
@@ -9364,7 +9364,7 @@ Perform a dns lookup using the root dns.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn lookup(server: Server, name: SharedObject) -> Array
 ```
 
@@ -9374,7 +9374,7 @@ fn lookup(server: Server, name: SharedObject) -> Array
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn maildir(context: Context, rcpt: String) -> ()
 ```
 
@@ -9406,7 +9406,7 @@ Set the delivery method to [`Transfer::Maildir`] for a single recipient.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn maildir(context: Context, rcpt: SharedObject) -> ()
 ```
 
@@ -9416,7 +9416,7 @@ fn maildir(context: Context, rcpt: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn maildir_all(context: Context) -> ()
 ```
 
@@ -9447,7 +9447,7 @@ Set the delivery method to [`Transfer::Maildir`] for all recipients.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn make_lower(character: char)
 ```
 
@@ -9473,7 +9473,7 @@ print(ch);          // prints 'a'
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn make_lower(string: String)
 ```
 
@@ -9499,7 +9499,7 @@ print(text);        // prints "hello, world!";
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn make_upper(character: char)
 ```
 
@@ -9525,7 +9525,7 @@ print(ch);          // prints 'A'
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn make_upper(string: String)
 ```
 
@@ -9551,7 +9551,7 @@ print(text);        // prints "HELLO, WORLD!";
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn map(array: Array, mapper: FnPtr) -> Array
 ```
 
@@ -9587,7 +9587,7 @@ print(y);       // prints "[0, 2, 6, 12, 20]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn map(array: Array, mapper: String) -> Array
 ```
 
@@ -9629,7 +9629,7 @@ print(y);       // prints "[0, 2, 6, 12, 20]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn mbox(context: Context, rcpt: SharedObject) -> ()
 ```
 
@@ -9639,7 +9639,7 @@ fn mbox(context: Context, rcpt: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn mbox(context: Context, rcpt: String) -> ()
 ```
 
@@ -9671,7 +9671,7 @@ Set the delivery method to [`Transfer::Mbox`] for a single recipient.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn mbox_all(context: Context) -> ()
 ```
 
@@ -9702,7 +9702,7 @@ Set the delivery method to [`Transfer::Mbox`] for all recipients.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn mixin(map: Map, map2: Map)
 ```
 
@@ -9730,7 +9730,7 @@ print(m);       // prints "#{a:42, b:2, c:3, d:0}"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn name(fn_ptr: FnPtr) -> String
 ```
 
@@ -9756,7 +9756,7 @@ print(f.name);      // prints "double"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn next() -> Status
 ```
 
@@ -9772,7 +9772,7 @@ Return a [`Status::Next`]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pad(array: Array, len: int, item: ?) -> ()
 ```
 
@@ -9804,7 +9804,7 @@ print(x);       // prints "[1, 2, 3, 42, 42]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pad(blob: Blob, len: int, value: int) -> ()
 ```
 
@@ -9838,7 +9838,7 @@ print(b);               // prints "[4242421818]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pad(string: String, len: int, character: char) -> ()
 ```
 
@@ -9870,7 +9870,7 @@ print(text);        // prints "hello!!!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pad(string: String, len: int, padding: String) -> ()
 ```
 
@@ -9902,7 +9902,7 @@ print(text);        // prints "hello(!)(!)"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_be_float(blob: Blob, range: RangeInclusive<int>) -> float
 ```
 
@@ -9922,7 +9922,7 @@ in big-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_be_float(blob: Blob, range: Range<int>) -> float
 ```
 
@@ -9942,7 +9942,7 @@ in big-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_be_float(blob: Blob, start: int, len: int) -> float
 ```
 
@@ -9968,7 +9968,7 @@ in big-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_be_int(blob: Blob, range: Range<int>) -> int
 ```
 
@@ -9998,7 +9998,7 @@ print(x.to_hex());              // prints "02030000...00"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_be_int(blob: Blob, range: RangeInclusive<int>) -> int
 ```
 
@@ -10028,7 +10028,7 @@ print(x.to_hex());              // prints "0203040000...00"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_be_int(blob: Blob, start: int, len: int) -> int
 ```
 
@@ -10064,7 +10064,7 @@ print(x.to_hex());      // prints "02030000...00"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_float(string: String) -> float
 ```
 
@@ -10088,7 +10088,7 @@ print(x);       // prints 123.456
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_int(string: String) -> int
 ```
 
@@ -10112,7 +10112,7 @@ print(x);       // prints 123
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_int(string: String, radix: int) -> int
 ```
 
@@ -10142,7 +10142,7 @@ print(y);       // prints 1194684 (0x123abc)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_json(json: String) -> ?
 ```
 
@@ -10166,7 +10166,7 @@ print(m);       // prints #{"a":1, "b":2, "c":3}
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_le_float(blob: Blob, range: RangeInclusive<int>) -> float
 ```
 
@@ -10186,7 +10186,7 @@ in little-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_le_float(blob: Blob, range: Range<int>) -> float
 ```
 
@@ -10206,7 +10206,7 @@ in little-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_le_float(blob: Blob, start: int, len: int) -> float
 ```
 
@@ -10232,7 +10232,7 @@ in little-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_le_int(blob: Blob, range: Range<int>) -> int
 ```
 
@@ -10262,7 +10262,7 @@ print(x.to_hex());              // prints "0302"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_le_int(blob: Blob, range: RangeInclusive<int>) -> int
 ```
 
@@ -10292,7 +10292,7 @@ print(x.to_hex());              // prints "040302"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_le_int(blob: Blob, start: int, len: int) -> int
 ```
 
@@ -10328,7 +10328,7 @@ print(x.to_hex());      // prints "0302"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_rfc5322_from(message: Message) -> SharedObject
 ```
 
@@ -10344,7 +10344,7 @@ Get the address of the sender in the message body, also known as RFC5322.From
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn parse_signature(input: String) -> Signature
 ```
 
@@ -10360,7 +10360,7 @@ create a [`Signature`] from a `DKIM-Signature` header
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pop(string: String) -> ?
 ```
 
@@ -10388,7 +10388,7 @@ print(text);            // prints "hello, world"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pop(blob: Blob) -> int
 ```
 
@@ -10418,7 +10418,7 @@ print(b);               // prints "[01020304]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pop(array: Array) -> ?
 ```
 
@@ -10446,7 +10446,7 @@ print(x);           // prints "[1, 2]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn pop(string: String, len: int) -> String
 ```
 
@@ -10476,7 +10476,7 @@ print(text);            // prints "hello, wo"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn prepend_header(message: Message, header: String, value: SharedObject) -> ()
 ```
 
@@ -10486,7 +10486,7 @@ fn prepend_header(message: Message, header: String, value: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn prepend_header(message: Message, header: String, value: String) -> ()
 ```
 
@@ -10519,7 +10519,7 @@ Add a header **at the beginning** of the Header section of the message.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print() -> String
 ```
 
@@ -10535,7 +10535,7 @@ Return the empty string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(number: float) -> String
 ```
 
@@ -10551,7 +10551,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(string: String) -> String
 ```
 
@@ -10567,7 +10567,7 @@ Return the `string`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(array: Array) -> String
 ```
 
@@ -10583,7 +10583,7 @@ Convert the array into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(character: char) -> String
 ```
 
@@ -10599,7 +10599,7 @@ Return the character into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(map: Map) -> String
 ```
 
@@ -10615,7 +10615,7 @@ Convert the object map into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(item: ?) -> String
 ```
 
@@ -10631,7 +10631,7 @@ Convert the value of the `item` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(unit: ()) -> String
 ```
 
@@ -10647,7 +10647,7 @@ Return the empty string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(value: bool) -> String
 ```
 
@@ -10663,7 +10663,7 @@ Return the boolean value into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn print(number: f32) -> String
 ```
 
@@ -10679,7 +10679,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn push(blob: Blob, value: int)
 ```
 
@@ -10707,7 +10707,7 @@ print(b);       // prints "[42]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn push(array: Array, item: ?)
 ```
 
@@ -10735,7 +10735,7 @@ print(x);       // prints [1, 2, 3, "hello"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn quarantine(queue: SharedObject) -> Status
 ```
 
@@ -10755,7 +10755,7 @@ Return a [`Status::Quarantine`] with `queue`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn quarantine(queue: String) -> Status
 ```
 
@@ -10775,7 +10775,7 @@ Return a [`Status::Quarantine`] with `queue`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<float>, step: float) -> Iterator<float>
 ```
 
@@ -10809,7 +10809,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<i128>, step: i128) -> Iterator<i128>
 ```
 
@@ -10843,7 +10843,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u64, to: u64) -> Iterator<u64>
 ```
 
@@ -10869,7 +10869,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u8, to: u8) -> Iterator<u8>
 ```
 
@@ -10895,7 +10895,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i16, to: i16) -> Iterator<i16>
 ```
 
@@ -10921,7 +10921,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i32, to: i32) -> Iterator<i32>
 ```
 
@@ -10947,7 +10947,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<i32>, step: i32) -> Iterator<i32>
 ```
 
@@ -10981,7 +10981,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<i8>, step: i8) -> Iterator<i8>
 ```
 
@@ -11015,7 +11015,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<int>, step: int) -> Iterator<int>
 ```
 
@@ -11049,7 +11049,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<u64>, step: u64) -> Iterator<u64>
 ```
 
@@ -11083,7 +11083,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: int, to: int) -> Iterator<int>
 ```
 
@@ -11109,7 +11109,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<u8>, step: u8) -> Iterator<u8>
 ```
 
@@ -11143,7 +11143,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<u128>, step: u128) -> Iterator<u128>
 ```
 
@@ -11177,7 +11177,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i8, to: i8) -> Iterator<i8>
 ```
 
@@ -11203,7 +11203,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<u16>, step: u16) -> Iterator<u16>
 ```
 
@@ -11237,7 +11237,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u32, to: u32) -> Iterator<u32>
 ```
 
@@ -11263,7 +11263,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i128, to: i128) -> Iterator<i128>
 ```
 
@@ -11289,7 +11289,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u16, to: u16) -> Iterator<u16>
 ```
 
@@ -11315,7 +11315,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<i16>, step: i16) -> Iterator<i16>
 ```
 
@@ -11349,7 +11349,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(range: Range<u32>, step: u32) -> Iterator<u32>
 ```
 
@@ -11383,7 +11383,7 @@ for n in range(18..8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u128, to: u128) -> Iterator<u128>
 ```
 
@@ -11409,7 +11409,7 @@ for n in range(8, 18) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i32, to: i32, step: i32) -> Iterator<i32>
 ```
 
@@ -11444,7 +11444,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u32, to: u32, step: u32) -> Iterator<u32>
 ```
 
@@ -11479,7 +11479,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u128, to: u128, step: u128) -> Iterator<u128>
 ```
 
@@ -11514,7 +11514,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i8, to: i8, step: i8) -> Iterator<i8>
 ```
 
@@ -11549,7 +11549,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i128, to: i128, step: i128) -> Iterator<i128>
 ```
 
@@ -11584,7 +11584,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u16, to: u16, step: u16) -> Iterator<u16>
 ```
 
@@ -11619,7 +11619,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: int, to: int, step: int) -> Iterator<int>
 ```
 
@@ -11654,7 +11654,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: i16, to: i16, step: i16) -> Iterator<i16>
 ```
 
@@ -11689,7 +11689,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u8, to: u8, step: u8) -> Iterator<u8>
 ```
 
@@ -11724,7 +11724,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: u64, to: u64, step: u64) -> Iterator<u64>
 ```
 
@@ -11759,7 +11759,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn range(from: float, to: float, step: float) -> Iterator<float>
 ```
 
@@ -11794,7 +11794,7 @@ for n in range(18, 8, -3) {
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce(array: Array, reducer: FnPtr) -> ?
 ```
 
@@ -11830,7 +11830,7 @@ print(y);       // prints 25
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce(array: Array, reducer: String) -> ?
 ```
 
@@ -11875,7 +11875,7 @@ print(y);       // prints 25
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce(array: Array, reducer: FnPtr, initial: ?) -> ?
 ```
 
@@ -11911,7 +11911,7 @@ print(y);       // prints 30
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce(array: Array, reducer: String, initial: ?) -> ?
 ```
 
@@ -11953,7 +11953,7 @@ print(y);       // prints 30
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce_rev(array: Array, reducer: FnPtr) -> ?
 ```
 
@@ -11990,7 +11990,7 @@ print(y);       // prints 25
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce_rev(array: Array, reducer: String) -> ?
 ```
 
@@ -12036,7 +12036,7 @@ print(y);       // prints 25
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce_rev(array: Array, reducer: FnPtr, initial: ?) -> ?
 ```
 
@@ -12073,7 +12073,7 @@ print(y);       // prints 30
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reduce_rev(array: Array, reducer: String, initial: ?) -> ?
 ```
 
@@ -12116,7 +12116,7 @@ print(y);       // prints 30
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove(blob: Blob, index: int) -> int
 ```
 
@@ -12152,7 +12152,7 @@ print(x);               // prints "[010305]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove(array: Array, index: int) -> ?
 ```
 
@@ -12186,7 +12186,7 @@ print(x);               // prints "[3]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove(string: String, sub_string: String)
 ```
 
@@ -12212,7 +12212,7 @@ print(text);        // prints ", world! , foobar!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove(map: Map, property: String) -> ?
 ```
 
@@ -12242,7 +12242,7 @@ print(m);       // prints "#{a:1, c:3}"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove(string: String, character: char)
 ```
 
@@ -12268,7 +12268,7 @@ print(text);        // prints "hell, wrld! hell, fbar!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove_header(message: Message, header: SharedObject) -> bool
 ```
 
@@ -12278,7 +12278,7 @@ fn remove_header(message: Message, header: SharedObject) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove_header(message: Message, header: String) -> bool
 ```
 
@@ -12317,7 +12317,7 @@ Remove a header from the raw or parsed email contained in ctx.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove_rcpt_envelop(context: Context, addr: String) -> ()
 ```
 
@@ -12333,7 +12333,7 @@ remove a recipient from the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
 ```
 
@@ -12349,7 +12349,7 @@ remove a recipient from the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove_rcpt_message(message: Message, addr: String) -> ()
 ```
 
@@ -12365,7 +12365,7 @@ remove a recipient from the mail 'To' header.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn remove_rcpt_message(message: Message, addr: SharedObject) -> ()
 ```
 
@@ -12381,7 +12381,7 @@ remove a recipient from the mail 'To' header.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rename_header(message: Message, old: SharedObject, new: String) -> ()
 ```
 
@@ -12391,7 +12391,7 @@ fn rename_header(message: Message, old: SharedObject, new: String) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rename_header(message: Message, old: String, new: String) -> ()
 ```
 
@@ -12435,7 +12435,7 @@ Do not confuse with [`set_header()`].
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
 ```
 
@@ -12445,7 +12445,7 @@ fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rename_header(message: Message, old: String, new: SharedObject) -> ()
 ```
 
@@ -12455,7 +12455,7 @@ fn rename_header(message: Message, old: String, new: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn replace(string: String, find_character: char, substitute_string: String)
 ```
 
@@ -12481,7 +12481,7 @@ print(text);        // prints "he(^)(^)o, wor(^)d! he(^)(^)o, foobar!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn replace(string: String, find_string: String, substitute_character: char)
 ```
 
@@ -12507,7 +12507,7 @@ print(text);        // prints "*, world! *, foobar!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn replace(string: String, find_string: String, substitute_string: String)
 ```
 
@@ -12533,7 +12533,7 @@ print(text);        // prints "hey, world! hey, foobar!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn replace(string: String, find_character: char, substitute_character: char)
 ```
 
@@ -12559,7 +12559,7 @@ print(text);        // prints "he**o, wor*d! he**o, foobar!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(array: Array, filter: String) -> Array
 ```
 
@@ -12605,7 +12605,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(array: Array, range: RangeInclusive<int>) -> Array
 ```
 
@@ -12639,7 +12639,7 @@ print(z);       // prints "[1]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(blob: Blob, range: RangeInclusive<int>) -> Blob
 ```
 
@@ -12675,7 +12675,7 @@ print(b2);      // prints "[01]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(blob: Blob, range: Range<int>) -> Blob
 ```
 
@@ -12711,7 +12711,7 @@ print(b2);      // prints "[01]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(array: Array, filter: FnPtr) -> Array
 ```
 
@@ -12751,7 +12751,7 @@ print(z);       // prints "[5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(array: Array, range: Range<int>) -> Array
 ```
 
@@ -12785,7 +12785,7 @@ print(z);       // prints "[1]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(blob: Blob, start: int, len: int) -> Blob
 ```
 
@@ -12827,7 +12827,7 @@ print(b3);      // prints "[02]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn retain(array: Array, start: int, len: int) -> Array
 ```
 
@@ -12867,7 +12867,7 @@ print(z);       // prints "[2]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reverse(array: Array)
 ```
 
@@ -12893,7 +12893,7 @@ print(x);       // prints "[5, 4, 3, 2, 1]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn reverse(blob: Blob)
 ```
 
@@ -12923,7 +12923,7 @@ print(b);           // prints "[0504030201]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_mail_from_envelop(context: Context, new_addr: String) -> ()
 ```
 
@@ -12939,7 +12939,7 @@ Change the sender of the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
 ```
 
@@ -12955,7 +12955,7 @@ Change the sender of the envelop using an object.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_mail_from_message(message: Message, new_addr: String) -> ()
 ```
 
@@ -12971,7 +12971,7 @@ replace the value of the `From` header by another address.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_mail_from_message(message: Message, new_addr: SharedObject) -> ()
 ```
 
@@ -12987,7 +12987,7 @@ replace the value of the `From` header by another address.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
 ```
 
@@ -13003,7 +13003,7 @@ Replace a recipient of the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
 ```
 
@@ -13019,7 +13019,7 @@ Replace a recipient of the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
@@ -13035,7 +13035,7 @@ Replace a recipient of the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
 ```
 
@@ -13051,7 +13051,7 @@ Replace a recipient of the envelop.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
 ```
 
@@ -13067,7 +13067,7 @@ replace the value of the `To:` header by another address.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
@@ -13083,7 +13083,7 @@ replace the value of the `To:` header by another address.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: SharedObject) -> ()
 ```
 
@@ -13099,7 +13099,7 @@ replace the value of the `To:` header by another address.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
 ```
 
@@ -13115,7 +13115,7 @@ replace the value of the `To:` header by another address.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rlookup(server: Server, name: String) -> Array
 ```
 
@@ -13147,7 +13147,7 @@ Perform a dns reverse lookup using the root dns.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rlookup(server: Server, name: SharedObject) -> Array
 ```
 
@@ -13157,7 +13157,7 @@ fn rlookup(server: Server, name: SharedObject) -> Array
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn round(x: float) -> float
 ```
 
@@ -13174,7 +13174,7 @@ Rounds away from zero.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn send_mail(from: String, to: Array, path: String, relay: String) -> ()
 ```
 
@@ -13190,7 +13190,7 @@ send a mail from a template.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set(string: String, index: int, character: char)
 ```
 
@@ -13228,7 +13228,7 @@ print(text);    // prints "hello, worxd!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set(map: Map, property: String, value: ?)
 ```
 
@@ -13260,7 +13260,7 @@ print(m);           // prints "#{a: 1, b: 42, c: 3, x: 0}"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set(array: Array, index: int, value: ?)
 ```
 
@@ -13298,7 +13298,7 @@ print(x);           // prints "[0, 2, 3]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set(blob: Blob, index: int, value: int)
 ```
 
@@ -13338,7 +13338,7 @@ print(b);           // prints "[4202000405]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set tag(value: ?, tag: int) -> ()
 ```
 
@@ -13364,7 +13364,7 @@ print(x.tag);           // prints 42
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set_bit(value: int, bit: int, new_value: bool) -> ()
 ```
 
@@ -13401,7 +13401,7 @@ print(x);               // prints 57888 on 64-bit
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set_bits(value: int, range: Range<int>, new_value: int) -> ()
 ```
 
@@ -13427,7 +13427,7 @@ print(x);           // print 123200
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set_bits(value: int, range: RangeInclusive<int>, new_value: int) -> ()
 ```
 
@@ -13453,7 +13453,7 @@ print(x);           // print 123200
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set_bits(value: int, bit: int, bits: int, new_value: int) -> ()
 ```
 
@@ -13487,7 +13487,7 @@ print(x);           // prints 11821949021971776 on 64-bit
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set_header(message: Message, header: String, value: String) -> ()
 ```
 
@@ -13521,7 +13521,7 @@ Do not confuse with [`rename_header()`].
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set_header(message: Message, header: String, value: SharedObject) -> ()
 ```
 
@@ -13531,7 +13531,7 @@ fn set_header(message: Message, header: String, value: SharedObject) -> ()
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn set_tag(value: ?, tag: int) -> ()
 ```
 
@@ -13557,7 +13557,7 @@ print(x.tag);           // prints 42
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn shift(blob: Blob) -> int
 ```
 
@@ -13587,7 +13587,7 @@ print(b);               // prints "[02030405]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn shift(array: Array) -> ?
 ```
 
@@ -13615,7 +13615,7 @@ print(x);           // prints "[2, 3]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sign(x: int) -> int
 ```
 
@@ -13635,7 +13635,7 @@ Return the sign (as an integer) of the number according to the following:
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sign(x: f32) -> int
 ```
 
@@ -13655,7 +13655,7 @@ Return the sign (as an integer) of the floating-point number according to the fo
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sign(x: float) -> int
 ```
 
@@ -13675,7 +13675,7 @@ Return the sign (as an integer) of the floating-point number according to the fo
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sign(x: i16) -> int
 ```
 
@@ -13695,7 +13695,7 @@ Return the sign (as an integer) of the number according to the following:
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sign(x: i128) -> int
 ```
 
@@ -13715,7 +13715,7 @@ Return the sign (as an integer) of the number according to the following:
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sign(x: i32) -> int
 ```
 
@@ -13735,7 +13735,7 @@ Return the sign (as an integer) of the number according to the following:
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sign(x: i8) -> int
 ```
 
@@ -13755,7 +13755,7 @@ Return the sign (as an integer) of the number according to the following:
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sin(x: float) -> float
 ```
 
@@ -13771,7 +13771,7 @@ Return the sine of the floating-point number in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sinh(x: float) -> float
 ```
 
@@ -13787,7 +13787,7 @@ Return the hyperbolic sine of the floating-point number in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sleep(seconds: int)
 ```
 
@@ -13803,7 +13803,7 @@ Block the current thread for a particular number of `seconds`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sleep(seconds: float)
 ```
 
@@ -13819,7 +13819,7 @@ Block the current thread for a particular number of `seconds`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn some(array: Array, filter: FnPtr) -> bool
 ```
 
@@ -13852,7 +13852,7 @@ print(x.some(|v, i| i > v));    // prints true
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn some(array: Array, filter: String) -> bool
 ```
 
@@ -13894,7 +13894,7 @@ print(x.some("screen"));    // prints true
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sort(array: Array) -> ()
 ```
 
@@ -13932,7 +13932,7 @@ print(x);       // prints "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sort(array: Array, comparer: FnPtr) -> ()
 ```
 
@@ -13970,7 +13970,7 @@ print(x);       // prints "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sort(array: Array, comparer: String) -> ()
 ```
 
@@ -14018,7 +14018,7 @@ print(x);       // prints "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn splice(blob: Blob, range: Range<int>, replace: Blob)
 ```
 
@@ -14045,7 +14045,7 @@ print(b1);      // prints "[4218181818184242 42424242]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn splice(array: Array, range: Range<int>, replace: Array)
 ```
 
@@ -14072,7 +14072,7 @@ print(x);       // prints "[1, 7, 8, 9, 10, 4, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn splice(array: Array, range: RangeInclusive<int>, replace: Array)
 ```
 
@@ -14099,7 +14099,7 @@ print(x);       // prints "[1, 7, 8, 9, 10, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn splice(blob: Blob, range: RangeInclusive<int>, replace: Blob)
 ```
 
@@ -14126,7 +14126,7 @@ print(b1);      // prints "[4218181818184242 424242]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn splice(array: Array, start: int, len: int, replace: Array)
 ```
 
@@ -14163,7 +14163,7 @@ print(x);       // prints "[1, 7, 7, 8, 9, 10, 5]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn splice(blob: Blob, start: int, len: int, replace: Blob)
 ```
 
@@ -14200,7 +14200,7 @@ print(b1);      // prints "[4218181818184218 1818181842]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(string: String) -> Array
 ```
 
@@ -14224,7 +14224,7 @@ print(text.split());        // prints ["hello,", "world!", "hello,", "foo!"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(string: String, delimiter: String) -> Array
 ```
 
@@ -14248,7 +14248,7 @@ print(text.split("ll"));    // prints ["he", "o, world! he", "o, foo!"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(string: String, index: int) -> Array
 ```
 
@@ -14285,7 +14285,7 @@ print(text.split(-99));     // prints ["", "hello, world!"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(string: String, delimiter: char) -> Array
 ```
 
@@ -14309,7 +14309,7 @@ print(text.split('l'));     // prints ["he", "", "o, wor", "d! he", "", "o, foo!
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(blob: Blob, index: int) -> Blob
 ```
 
@@ -14344,7 +14344,7 @@ print(b1);          // prints "[0102]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(array: Array, index: int) -> Array
 ```
 
@@ -14377,7 +14377,7 @@ print(x);           // prints "[1, 2]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(string: String, delimiter: char, segments: int) -> Array
 ```
 
@@ -14404,7 +14404,7 @@ print(text.split('l', 3));      // prints ["he", "", "o, world! hello, foo!"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split(string: String, delimiter: String, segments: int) -> Array
 ```
 
@@ -14431,7 +14431,7 @@ print(text.split("ll", 2));     // prints ["he", "o, world! hello, foo!"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split_rev(string: String, delimiter: String) -> Array
 ```
 
@@ -14456,7 +14456,7 @@ print(text.split_rev("ll"));    // prints ["o, foo!", "o, world! he", "he"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split_rev(string: String, delimiter: char) -> Array
 ```
 
@@ -14481,7 +14481,7 @@ print(text.split_rev('l'));     // prints ["o, foo!", "", "d! he", "o, wor", "",
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split_rev(string: String, delimiter: String, segments: int) -> Array
 ```
 
@@ -14508,7 +14508,7 @@ print(text.split_rev("ll", 2));     // prints ["o, foo!", "hello, world! he"]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn split_rev(string: String, delimiter: char, segments: int) -> Array
 ```
 
@@ -14535,7 +14535,7 @@ print(text.split('l', 3));      // prints ["o, foo!", "", "hello, world! he"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sqrt(x: float) -> float
 ```
 
@@ -14551,7 +14551,7 @@ Return the square root of the floating-point number.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn start(range: RangeInclusive<int>) -> int
 ```
 
@@ -14567,7 +14567,7 @@ Return the start of the inclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn start(range: Range<int>) -> int
 ```
 
@@ -14583,7 +14583,7 @@ Return the start of the exclusive range.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn starts_with(string: String, match_string: String) -> bool
 ```
 
@@ -14609,7 +14609,7 @@ print(text.starts_with("world"));   // prints false
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn store_dkim(ctx: Context, result: Map) -> ()
 ```
 
@@ -14625,7 +14625,7 @@ Store the result produced by the DKIM signature verification in the `ctx()`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sub_string(string: String, range: Range<int>) -> String
 ```
 
@@ -14649,7 +14649,7 @@ print(text.sub_string(3..7));   // prints "lo, "
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sub_string(string: String, range: RangeInclusive<int>) -> String
 ```
 
@@ -14673,7 +14673,7 @@ print(text.sub_string(3..=7));  // prints "lo, w"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sub_string(string: String, start: int) -> String
 ```
 
@@ -14704,7 +14704,7 @@ print(text.sub_string(-5));      // prints "orld!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn sub_string(string: String, start: int, len: int) -> String
 ```
 
@@ -14736,7 +14736,7 @@ print(text.sub_string(-8, 3));  // prints ", w"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn tag(value: ?) -> int
 ```
 
@@ -14762,7 +14762,7 @@ print(x.tag);           // prints 42
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn tan(x: float) -> float
 ```
 
@@ -14778,7 +14778,7 @@ Return the tangent of the floating-point number in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn tanh(x: float) -> float
 ```
 
@@ -14794,7 +14794,7 @@ Return the hyperbolic tangent of the floating-point number in radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn time() -> String
 ```
 
@@ -14810,7 +14810,7 @@ get the current time.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn timestamp() -> Instant
 ```
 
@@ -14836,7 +14836,7 @@ print(now.elapsed);     // prints 10.???
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_array(blob: Blob) -> Array
 ```
 
@@ -14862,7 +14862,7 @@ print(x);       // prints "[66, 66, 66, 66, 66]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: i16) -> String
 ```
 
@@ -14878,7 +14878,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: i8) -> String
 ```
 
@@ -14894,7 +14894,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: u8) -> String
 ```
 
@@ -14910,7 +14910,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: i32) -> String
 ```
 
@@ -14926,7 +14926,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: u128) -> String
 ```
 
@@ -14942,7 +14942,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: u16) -> String
 ```
 
@@ -14958,7 +14958,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: u64) -> String
 ```
 
@@ -14974,7 +14974,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: int) -> String
 ```
 
@@ -14990,7 +14990,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: u32) -> String
 ```
 
@@ -15006,7 +15006,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_binary(value: i128) -> String
 ```
 
@@ -15022,7 +15022,7 @@ Convert the `value` into a string in binary format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_blob(string: String) -> Blob
 ```
 
@@ -15048,7 +15048,7 @@ print(bytes.len());     // prints 51
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_chars(string: String) -> Array
 ```
 
@@ -15072,7 +15072,7 @@ print(text.to_chars());     // prints "['h', 'e', 'l', 'l', 'o']"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(number: f32) -> String
 ```
 
@@ -15088,7 +15088,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(unit: ()) -> String
 ```
 
@@ -15104,7 +15104,7 @@ Convert the unit into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(record: Record) -> String
 ```
 
@@ -15120,7 +15120,7 @@ Produce a debug output for the parsed [`dmarc::Record`]
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(map: Map) -> String
 ```
 
@@ -15136,7 +15136,7 @@ Convert the object map into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(value: bool) -> String
 ```
 
@@ -15152,7 +15152,7 @@ Convert the boolean value into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(status: Status) -> String
 ```
 
@@ -15168,7 +15168,7 @@ Convert a `Status` to a debug string
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(number: float) -> String
 ```
 
@@ -15184,7 +15184,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(character: char) -> String
 ```
 
@@ -15200,7 +15200,7 @@ Convert the string into debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(string: String) -> String
 ```
 
@@ -15216,7 +15216,7 @@ Convert the string into debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(context: Server) -> String
 ```
 
@@ -15232,7 +15232,7 @@ Convert a `Server` to a debug string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(item: ?) -> String
 ```
 
@@ -15248,7 +15248,7 @@ Convert the value of the `item` into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(this: OffsetDateTime) -> String
 ```
 
@@ -15264,7 +15264,7 @@ Convert a `time::OffsetDateTime` to a `String`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(context: Context) -> String
 ```
 
@@ -15280,7 +15280,7 @@ Convert a `Context` to a debug string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(f: FnPtr) -> String
 ```
 
@@ -15296,7 +15296,7 @@ Convert the function pointer into a string in debug format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(array: Array) -> String
 ```
 
@@ -15312,7 +15312,7 @@ Convert the array into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_degrees(x: float) -> float
 ```
 
@@ -15328,7 +15328,7 @@ Convert radians to degrees.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: int) -> float
 ```
 
@@ -15338,7 +15338,7 @@ fn to_float(x: int) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: u128) -> float
 ```
 
@@ -15348,7 +15348,7 @@ fn to_float(x: u128) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: u16) -> float
 ```
 
@@ -15358,7 +15358,7 @@ fn to_float(x: u16) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: i8) -> float
 ```
 
@@ -15368,7 +15368,7 @@ fn to_float(x: i8) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: u8) -> float
 ```
 
@@ -15378,7 +15378,7 @@ fn to_float(x: u8) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: u32) -> float
 ```
 
@@ -15388,7 +15388,7 @@ fn to_float(x: u32) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: i16) -> float
 ```
 
@@ -15398,7 +15398,7 @@ fn to_float(x: i16) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: i128) -> float
 ```
 
@@ -15408,7 +15408,7 @@ fn to_float(x: i128) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: f32) -> float
 ```
 
@@ -15424,7 +15424,7 @@ Convert the 32-bit floating-point number to 64-bit.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_float(x: i32) -> float
 ```
 
@@ -15434,7 +15434,7 @@ fn to_float(x: i32) -> float
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: u8) -> String
 ```
 
@@ -15450,7 +15450,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: u128) -> String
 ```
 
@@ -15466,7 +15466,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: i128) -> String
 ```
 
@@ -15482,7 +15482,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: u64) -> String
 ```
 
@@ -15498,7 +15498,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: i8) -> String
 ```
 
@@ -15514,7 +15514,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: i32) -> String
 ```
 
@@ -15530,7 +15530,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: int) -> String
 ```
 
@@ -15546,7 +15546,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: u16) -> String
 ```
 
@@ -15562,7 +15562,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: u32) -> String
 ```
 
@@ -15578,7 +15578,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_hex(value: i16) -> String
 ```
 
@@ -15594,7 +15594,7 @@ Convert the `value` into a string in hex format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: i32) -> int
 ```
 
@@ -15604,7 +15604,7 @@ fn to_int(x: i32) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: char) -> int
 ```
 
@@ -15614,7 +15614,7 @@ fn to_int(x: char) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: i16) -> int
 ```
 
@@ -15624,7 +15624,7 @@ fn to_int(x: i16) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: u32) -> int
 ```
 
@@ -15634,7 +15634,7 @@ fn to_int(x: u32) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: i8) -> int
 ```
 
@@ -15644,7 +15644,7 @@ fn to_int(x: i8) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: u128) -> int
 ```
 
@@ -15654,7 +15654,7 @@ fn to_int(x: u128) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: u64) -> int
 ```
 
@@ -15664,7 +15664,7 @@ fn to_int(x: u64) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: int) -> int
 ```
 
@@ -15674,7 +15674,7 @@ fn to_int(x: int) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: float) -> int
 ```
 
@@ -15690,7 +15690,7 @@ Convert the floating-point number into an integer.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: i128) -> int
 ```
 
@@ -15700,7 +15700,7 @@ fn to_int(x: i128) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: u16) -> int
 ```
 
@@ -15710,7 +15710,7 @@ fn to_int(x: u16) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: f32) -> int
 ```
 
@@ -15726,7 +15726,7 @@ Convert the floating-point number into an integer.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_int(x: u8) -> int
 ```
 
@@ -15736,7 +15736,7 @@ fn to_int(x: u8) -> int
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_json(map: Map) -> String
 ```
 
@@ -15770,7 +15770,7 @@ print(m.to_json());     // prints {"a":1, "b":2, "c":3}
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_lower(string: String) -> String
 ```
 
@@ -15796,7 +15796,7 @@ print(text);                // prints "HELLO, WORLD!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_lower(character: char) -> char
 ```
 
@@ -15822,7 +15822,7 @@ print(ch);                  // prints 'A'
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: u64) -> String
 ```
 
@@ -15838,7 +15838,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: u8) -> String
 ```
 
@@ -15854,7 +15854,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: u128) -> String
 ```
 
@@ -15870,7 +15870,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: i32) -> String
 ```
 
@@ -15886,7 +15886,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: i128) -> String
 ```
 
@@ -15902,7 +15902,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: int) -> String
 ```
 
@@ -15918,7 +15918,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: u32) -> String
 ```
 
@@ -15934,7 +15934,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: i16) -> String
 ```
 
@@ -15950,7 +15950,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: u16) -> String
 ```
 
@@ -15966,7 +15966,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_octal(value: i8) -> String
 ```
 
@@ -15982,7 +15982,7 @@ Convert the `value` into a string in octal format.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_radians(x: float) -> float
 ```
 
@@ -15998,7 +15998,7 @@ Convert degrees to radians.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(_: Server) -> String
 ```
 
@@ -16014,7 +16014,7 @@ Convert a `Server` to a `String`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(item: ?) -> String
 ```
 
@@ -16030,7 +16030,7 @@ Convert the value of the `item` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(string: String) -> String
 ```
 
@@ -16046,7 +16046,7 @@ Return the `string`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(number: f32) -> String
 ```
 
@@ -16062,7 +16062,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(character: char) -> String
 ```
 
@@ -16078,7 +16078,7 @@ Return the character into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(status: Status) -> String
 ```
 
@@ -16094,7 +16094,7 @@ Convert a `Status` to a `String`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(array: Array) -> String
 ```
 
@@ -16110,7 +16110,7 @@ Convert the array into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(this: OffsetDateTime) -> String
 ```
 
@@ -16126,7 +16126,7 @@ Convert a `time::OffsetDateTime` to a `String`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(map: Map) -> String
 ```
 
@@ -16142,7 +16142,7 @@ Convert the object map into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(unit: ()) -> String
 ```
 
@@ -16158,7 +16158,7 @@ Return the empty string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(number: float) -> String
 ```
 
@@ -16174,7 +16174,7 @@ Convert the value of `number` into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(value: bool) -> String
 ```
 
@@ -16190,7 +16190,7 @@ Return the boolean value into a string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(_: Context) -> String
 ```
 
@@ -16206,7 +16206,7 @@ Convert a `Context` to a `String`.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_upper(string: String) -> String
 ```
 
@@ -16232,7 +16232,7 @@ print(text);                // prints "hello, world!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_upper(character: char) -> char
 ```
 
@@ -16258,7 +16258,7 @@ print(ch);                  // prints 'a'
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn trim(string: String)
 ```
 
@@ -16284,7 +16284,7 @@ print(text);    // prints "hello"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn truncate(blob: Blob, len: int)
 ```
 
@@ -16319,7 +16319,7 @@ print(b);           // prints "[010203]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn truncate(array: Array, len: int)
 ```
 
@@ -16352,7 +16352,7 @@ print(x);       // prints "[1, 2, 3]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn truncate(string: String, len: int)
 ```
 
@@ -16385,7 +16385,7 @@ print(text);    // prints "hello, world!"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn user_exist(name: String) -> bool
 ```
 
@@ -16417,7 +16417,7 @@ Does the `name` correspond to an existing user in the system.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn user_exist(name: SharedObject) -> bool
 ```
 
@@ -16427,7 +16427,7 @@ fn user_exist(name: SharedObject) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn values(map: Map) -> Array
 ```
 
@@ -16451,7 +16451,7 @@ print(m.values());      // prints "[1, 2, 3]""
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn verify_dkim(message: Message, signature: Signature, key: PublicKey) -> ()
 ```
 
@@ -16591,7 +16591,7 @@ X-Auto-Response-Suppress: All
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write(srv: Server, mut ctx: Context, message: Message, dir: String) -> ()
 ```
 
@@ -16607,7 +16607,7 @@ write the current email to a specified folder.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write(srv: Server, mut ctx: Context, message: Message, dir: SharedObject) -> ()
 ```
 
@@ -16623,7 +16623,7 @@ write the current email to a specified folder.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_ascii(blob: Blob, range: RangeInclusive<int>, string: String)
 ```
 
@@ -16653,7 +16653,7 @@ print(b);       // prints "[0068656c6c6f0000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_ascii(blob: Blob, range: Range<int>, string: String)
 ```
 
@@ -16683,7 +16683,7 @@ print(b);       // prints "[0068656c6c000000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_ascii(blob: Blob, start: int, len: int, string: String)
 ```
 
@@ -16716,7 +16716,7 @@ print(b);       // prints "[0068656c6c6f0000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_be(blob: Blob, range: RangeInclusive<int>, value: float)
 ```
 
@@ -16736,7 +16736,7 @@ in big-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_be(blob: Blob, range: Range<int>, value: int)
 ```
 
@@ -16764,7 +16764,7 @@ print(b);       // prints "[4200004242424242]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_be(blob: Blob, range: Range<int>, value: float)
 ```
 
@@ -16784,7 +16784,7 @@ in big-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_be(blob: Blob, range: RangeInclusive<int>, value: int)
 ```
 
@@ -16812,7 +16812,7 @@ print(b);       // prints "[4200000042424242]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_be(blob: Blob, start: int, len: int, value: int)
 ```
 
@@ -16846,7 +16846,7 @@ print(b);       // prints "[4200000042424242]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_be(blob: Blob, start: int, len: int, value: float)
 ```
 
@@ -16872,7 +16872,7 @@ in big-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_le(blob: Blob, range: Range<int>, value: int)
 ```
 
@@ -16900,7 +16900,7 @@ print(b);       // prints "[0078560000000000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_le(blob: Blob, range: Range<int>, value: float)
 ```
 
@@ -16920,7 +16920,7 @@ in little-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_le(blob: Blob, range: RangeInclusive<int>, value: int)
 ```
 
@@ -16948,7 +16948,7 @@ print(b);       // prints "[0078563400000000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_le(blob: Blob, range: RangeInclusive<int>, value: float)
 ```
 
@@ -16968,7 +16968,7 @@ in little-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_le(blob: Blob, start: int, len: int, value: int)
 ```
 
@@ -17002,7 +17002,7 @@ print(b);       // prints "[0078563400000000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_le(blob: Blob, start: int, len: int, value: float)
 ```
 
@@ -17028,7 +17028,7 @@ in little-endian byte order.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_utf8(blob: Blob, range: RangeInclusive<int>, string: String)
 ```
 
@@ -17055,7 +17055,7 @@ print(b);       // prints "[00e69c9de3810000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_utf8(blob: Blob, range: Range<int>, string: String)
 ```
 
@@ -17082,7 +17082,7 @@ print(b);       // prints "[00e69c9de3000000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn write_utf8(blob: Blob, start: int, len: int, string: String)
 ```
 
@@ -17115,7 +17115,7 @@ print(b);       // prints "[00e69c9de3810000]"
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: u32, y: u32) -> u32
 ```
 
@@ -17125,7 +17125,7 @@ fn |(x: u32, y: u32) -> u32
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: u64, y: u64) -> u64
 ```
 
@@ -17135,7 +17135,7 @@ fn |(x: u64, y: u64) -> u64
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: u128, y: u128) -> u128
 ```
 
@@ -17145,7 +17145,7 @@ fn |(x: u128, y: u128) -> u128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: i128, y: i128) -> i128
 ```
 
@@ -17155,7 +17155,7 @@ fn |(x: i128, y: i128) -> i128
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: i8, y: i8) -> i8
 ```
 
@@ -17165,7 +17165,7 @@ fn |(x: i8, y: i8) -> i8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: u16, y: u16) -> u16
 ```
 
@@ -17175,7 +17175,7 @@ fn |(x: u16, y: u16) -> u16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: i16, y: i16) -> i16
 ```
 
@@ -17185,7 +17185,7 @@ fn |(x: i16, y: i16) -> i16
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: u8, y: u8) -> u8
 ```
 
@@ -17195,7 +17195,7 @@ fn |(x: u8, y: u8) -> u8
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn |(x: i32, y: i32) -> i32
 ```
 
