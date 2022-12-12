@@ -109,16 +109,36 @@ Let's create filtering rules for the `doe-family.com` domain.
   ┣ conf.d/
   ┃      ┣ config.vsl
   ┃      ┗ *.vsl
-  ┣ domain-available/
++ ┣ domain-available/
 + ┃      ┗ doe-family.com/
 + ┃         ┣ incoming.vsl
 + ┃         ┣ outgoing.vsl
 + ┃         ┗ internal.vsl
++ ┣ domain-enabled/
+  ┗ objects/
+       ┗ family.vsl
+```
+<p class="ann"> adding filtering scripts for the `doe-family.com` domain </p>
+
+Since we specified in the configuration that the `domain-enabled` directory was our domain filtering directory, we need to create a symbolic link to `domain-available/doe-family.com` to enable filtering for `doe-family.com`.
+
+```diff
+/etc/vsmtp
+  ┣ vsmtp.vsl
+  ┣ filter.vsl
+  ┣ conf.d/
+  ┃      ┣ config.vsl
+  ┃      ┗ *.vsl
+  ┣ domain-available/
+  ┃      ┗ doe-family.com/
+  ┃         ┣ incoming.vsl
+  ┃         ┣ outgoing.vsl
+  ┃         ┗ internal.vsl
   ┣ domain-enabled/
 + ┃     ┗ example.com -> /etc/vsmtp/domain-available/doe-family.com
   ┗ objects/
        ┗ family.vsl
 ```
-<p class="ann"> adding filtering scripts for the `doe-family.com` domain </p>
+<p class="ann"> Enabling the `example.com` domain filtering </p>
 
 vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](../../filtering/transaction.md). Let's define rules for each cases.
