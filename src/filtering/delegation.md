@@ -3,16 +3,16 @@
 Alongside the `rule` and `actions` keyword, vSL exposes another keyword for filtering: `delegate`.
 
 ```bnf
-<delegation>      ::= "delegate" <smtp-service> <rule-name> "||" <expr>
-<delegation-name> ::= <smtp-service>    ; a valid smtp service.
-<delegation-name> ::= <string>
-<expr>            ::= <rhai-expr>       ; any valid Rhai expression. Must return a "status".
+<delegation>            ::= "delegate" <delegation-service> <delegation-name> "||" <expr>
+<delegation-service>    ::= <smtp-service>    ; a valid smtp service.
+<delegation-name>       ::= <string>
+<expr>                  ::= <rhai-expr>       ; any valid Rhai expression. Must return a "status".
 ```
 <p class="ann"> BNF representation of a delegate directive </p>
 
 The `delegate` directive uses a [`smtp` plugin](../ref/plugins/smtp.md) to delegate an email to a third party software:
 
-```js
+```rust,ignore
 export const third_party = smtp(#{
     // Send the email to "127.0.0.1:10026" using the SMTP protocol.
     delegator: #{
@@ -26,15 +26,19 @@ export const third_party = smtp(#{
 
 <p class="ann"> Declaring a `smtp` service in `/etc/vsmtp/services/smtp.vsl` </p>
 
-```js
+```rust,ignore
 import "services/smtp" as smtp;
 
-delegate smtp::third_party "delegate to third party" || {
-    log("info", "delegation results are in!");
-
-    // ...
-
-    return next();
+#{
+    postq: [
+        delegate smtp::third_party "delegate to third party" || {
+            log("info", "delegation results are in!");
+        
+            // ...
+        
+            return next();
+        }
+    ]
 }
 ```
 <p class="ann"> Declaring a delegation rule with the previously declared smtp service </p>

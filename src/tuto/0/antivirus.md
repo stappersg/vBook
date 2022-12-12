@@ -3,9 +3,7 @@
 <!-- markdown-link-check-disable-next-line -->
 Malware remains a scourge. As John is aware of security issues, he decides to add a layer of antivirus directly on the MTA. He installed [ClamAV](https://www.clamav.net/) which comes with the [clamsmtpd](https://linux.die.net/man/8/clamsmtpd) antivirus daemon.
 
-## vSMTP security delegation
-
-vSMTP support security delegation via the SMTP protocol (all the logics is defined in `.vsl`):
+vSMTP support security delegation via the SMTP protocol using `.vsl` scripts. In the following tutorial, we are going to setup a delegation workflow that looks like the following.
 
 ```txt
 { Incoming msg }  ---> vSMTP server ---> { Delivered msg }
@@ -18,7 +16,7 @@ vSMTP support security delegation via the SMTP protocol (all the logics is defin
                         v       |
                   { clamsmtpd daemon } <-> { ClamAV }
 ```
-<p class="ann"> Pipeline of a delegation </p>
+<p class="ann"> Delegating emails to clamav and getting back the results </p>
 
 ## ClamAV setup
 
@@ -44,11 +42,11 @@ sudo systemctl start clamav-daemon
 ```
 <p class="ann"> Starting clamav </p>
 
-## The service
+## SMTP Service
 
-Let's create a `smtp` service in the `/etc/vsmtp/services/smtp.vsl` file:
+Let's create a `smtp` service in the `/etc/vsmtp/services/smtp.vsl` script to send incoming emails to clamsmtpd and receive them back on a specific address.
 
-```js
+```rust,ignore
 export const clamsmtpd = smtp(#{
   delegator: #{
     address: "127.0.0.1:10026",
@@ -61,7 +59,7 @@ export const clamsmtpd = smtp(#{
 
 The receiver's socket must be enabled in the root config.
 
-```js
+```rust,ignore
 fn on_config(config) {
   config.server.interfaces = #{
     addr: [
@@ -77,13 +75,11 @@ fn on_config(config) {
 ```
 <p class="ann"> Update the root configuration with a receiver for clamav </p>
 
-## The delegate keyword
+## Filtering
 
-Create the antivirus passthrough using the `delegate` keyword. As `rule` and `action`, it is a directive that is used to filter emails. The quirk of `delegate` is that it uses a smtp service to delegate the email to a third party software, and get it back on the `receiver` address.
+Create the antivirus passthrough using the `delegate` keyword in the `/etc/vsmtp/domain-available/doe-family.com/incoming.vsl` script.
 
-> Check out the [Delegation](../../filtering/delegation.md) chapter for more details.
-
-```js
+```rust,ignore
 import "services/smtp" as smtp;
 
 #{
@@ -92,7 +88,7 @@ import "services/smtp" as smtp;
       // this is executed once the delegation result are received.
       log("debug", "email analyzed by clamsmtpd.");
 
-      // ClamAV inserts the "X-Virus-Infected" header if it founds a virus.
+      // ClamAV inserts the "X-Virus-Infected" header if it found a virus.
       if has_header("X-Virus-Infected") {
         quarantine("virus_queue")
       } else {
@@ -102,8 +98,8 @@ import "services/smtp" as smtp;
   ],
 }
 ```
-<p class="ann"> Moving infected emails in the `virus_queue` quarantine queue. `/etc/vsmtp/domain-available/doe-family.com/incoming.vsl` </p>
-
-Once the `check email for virus` directive is run, vSMTP will send the email to the `clamsmtpd` service and the rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation resumes, and the body of this rule is evaluated.
+<p class="ann"> Moving infected emails in the `virus_queue` quarantine queue. </p>
 
 Compromised emails are quarantined in the `virus_queue` folder.
+
+> Check out the [Delegation](../../filtering/delegation.md) chapter for more details.
