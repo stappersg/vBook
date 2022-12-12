@@ -1,69 +1,43 @@
 # Logging
 
-The logging system is backed by tokio tracing and piped to multiple 'subscriber' :
+Multiple log backends are available for vSMTP.
 
-- [Logging](#logging)
-  - [Backend logs](#backend-logs)
-  - [Application logs](#application-logs)
-  - [Journald](#journald)
-  - [Syslogd](#syslogd)
+## vSMTP default logs
 
-## Backend logs
-
-Backend logs concerns the vSMTP internals output.
-
-The default output directory is `/var/log/vsmtp/vsmtp.log`.
-
-Log levels can be configured by "modules", representing part of the server, using the `env_logger` syntax (see [docs.rs](https://docs.rs/tracing-subscriber/0.3.15/tracing_subscriber/struct.EnvFilter.html)).
-The `vsmtp_rule_engine` module enables logs for the rule engine, the `vsmtp_mail_parser` module for the mime parser, etc.
-
-The `vsmtp.vsl` file is used to configure server logs:
+Those are vSMTP's own log system. they are, by default, written in the `/var/log/vsmtp/vsmtp.log` directory.
 
 ```rust
 fn on_config(config) {
-    // You can change the location of the server logs.
+    // You can change the location of the logs.
     config.server.logs.filepath = "./tmp/system/vsmtp.log";
-
-    config.server.logs.level = [
-        // set global logging level to "info" for all the modules.
-        "info",
-    
-        // set the logging level per module.
-        "vsmtp_server::receiver=info",
-        "vsmtp_rule_engine=warn",
-        "vsmtp_delivery=error",
-    ];
+    // set global logging level to "info".
+    config.server.logs.level = [ "info" ];
 
     config
 }
-
 ```
+<p class="ann"> Configuring logs in the root configuration file </p>
 
 ## Application logs
 
-Application logs are written using the `log(level, message)` function in the vSL rules.
+Application logs are written using the `log(level, message)` function in filtering rules.
+The default output location is of application logs is `/var/log/vsmtp/app`. It can be changed in the root configuration.
 
-The default output location is the `/var/log/vsmtp/app`. It can be modified in the `config.vsl` file :
-
-```js
+```rust,ignore
 fn on_config(config) {
-    // You can change the location of the application logs.
     config.app.logs.filepath = "./tmp/system/app.log";
-
     config
 }
 ```
-
+<p class="ann"> Change the location of the application logs. </p>
 
 ## Journald
 
-vSMTP send logs to the journald daemon :
+vSMTP will send server logs to the journald daemon.
 
 ```js
 fn on_config(config) {
-    // You can change the location of the application logs.
     config.server.logs.system = #{
-        // write only the message of a specific level and more
         level: "info",
         backend: "journald",
     };
@@ -72,30 +46,46 @@ fn on_config(config) {
 }
 
 ```
+<p class="ann"> Configure journald for vSMTP </p>
 
 
 ## Syslogd
 
-vSMTP send logs to the syslog daemon using the `mail` facility :
+vSMTP will send logs to the syslog daemon using the `mail` facility.
 
 ```js
 fn on_config(config) {
-    // You can change the location of the application logs.
     config.server.logs.system = #{
-        // write only the message of a specific level and more
         level: "info",
         backend: "syslogd",
-        // format used by the logger see https://www.rfc-editor.org/rfc/rfc3164 and https://www.rfc-editor.org/rfc/rfc5424
+
+        // Format used by the logger.
+        // See https://www.rfc-editor.org/rfc/rfc3164 and https://www.rfc-editor.org/rfc/rfc5424
+        // for more details.
         format: "3164",
-    
+
+        // Writing syslogs on disk using a unix socket.
         socket: #{ type: "unix", path: "/dev/log" },
+        // You can also use:
+        // `socket: #{ type: "tcp", server: "127.0.0.1:601" }`
+        //
         // or
-        socket: #{ type: "tcp", server: "127.0.0.1:601" },
-        // or
-        socket: #{ type: "udp", server: "127.0.0.1:514", local: "127.0.0.1:0" },
+        // `socket: #{ type: "udp", server: "127.0.0.1:514", local: "127.0.0.1:0" }`
+        //
         // note: address can be ipv4 / ipv6
     };
 
     config
 }
 ```
+<p class="ann"> Configure syslogs for vSMTP </p>
+
+## Levels
+
+|level|note|
+|:-:|:-:|
+|error| vSMTP encountered an issue, you should try to fix it or open an issue on vSMTP's repository. |
+|warn| Something unexpected append, vSMTP will still run but you should look into it. |
+|info| General informations on what the server is doing. |
+
+<p class="ann"> Available log levels </p>
