@@ -59,7 +59,7 @@ The `filter.vsl` script is responsible for handling clients that just connected 
 
 ### Add anti-relaying
 
-Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](../../filtering/transaction.md##root-incoming) section in the [Transaction Context](../../filtering/transaction.md) chapter for more details)
+Let's setup anti-relaying by adding the following rule. (See the [Root Filter](../../filtering/transaction.md#root-filter-⬜) section in the [Transaction Context](../../filtering/transaction.md) chapter for more details)
 
 ```
 #{
@@ -68,7 +68,7 @@ Let's setup anti-relaying by adding the following rule. (See the [Root Incoming]
   ]
 }
 ```
-<p class="ann"> /etc/vsmtp/domain-enabled/incoming.vsl </p>
+<p class="ann"> /etc/vsmtp/filter.vsl </p>
 
 ### Use the blacklist
 
