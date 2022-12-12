@@ -2,10 +2,6 @@
 
 Objects are used to create reusable configuration variables declared using Rhai functions. 
 
-## Type of implemented objects
-
-The following type of objects are supported natively:
-
 | Type    | Description                 | Syntax                | Comments                 |
 | :------ | :-------------------------- | :-------------------- | :----------------------- |
 | ip4     | IPv4 address                | x.y.z.t               | Decimal values.          |
@@ -18,33 +14,34 @@ The following type of objects are supported natively:
 | regex   | Regular expression          |                       | PERL regular expression. |
 | file    | A file of objects           | Unix file             | See file section.        |
 | code    | a custom smtp code          |                       | See code section.        |
+<p class="ann"> All available objects types </p>
 
 ## Creating objects
 
-Objects can be created via associated constructors:
+Objects can be created via associated functions:
 
 ```js
 const my_ipv4 = ip4("127.0.0.1");
 const my_address = address("john.doe@example.com");
 // ...
 ```
+<p class="ann"> Declaring objects in scripts </p>
 
 See the [TODO] module to get an extensive list of objects constructors.
 
-### Recommandations
+## Modules
 
-It is recommended to declare objects inside `.vsl` files and importing them via the `import` Rhai directive in rule files. (See the [Rhai modules](https://rhai.rs/book/language/modules/index.html) documentation for more information)
+It is recommended to declare objects inside `.vsl` files and importing them via the `import` Rhai directive in rule files.
 
-```js
-// -- objects/network.vsl
+> See the [Rhai modules](https://rhai.rs/book/language/modules/index.html) documentation for more details.
 
-// Do not forget to use the `export` keyword when declaring
-// the object to make it accessible trough `import`.
+```rust,ignore
+// Object are accessible trough `import` when declared with the `export` keyword.
 export const localhost = ip4("127.0.0.1");
 ```
+<p class="ann"> An object file, `objects/network.vsl` </p>
 
-```js
-// -- domain-enabled/incoming.vsl
+```rust,ignore
 import "objects/network" as net;
 
 #{
@@ -59,6 +56,7 @@ import "objects/network" as net;
   ]
 }
 ```
+<p class="ann"> A rule file `domain-enabled/incoming.vsl` </p>
 
 Objects should be stored inside the `objects` directory of `/etc/vsmtp` if they are used into multiple rules sets.
 
@@ -78,6 +76,7 @@ Objects should be stored inside the `objects` directory of `/etc/vsmtp` if they 
 +       ┗ network.vsl
 +       ┗ global.vsl
 ```
+<p class="ann"> Placing objects files in `/etc/vsmtp/objects/` </p>
 
 However, if objects are used in only a specific rule set, they should be stored directly in a separate file among the rule set.
 
@@ -99,6 +98,7 @@ However, if objects are used in only a specific rule set, they should be stored 
 -       ┗ network.vsl
 -       ┗ global.vsl
 ```
+<p class="ann"> Placing objects relative to a domain </p>
 
 ### Grouping objects
 
@@ -111,13 +111,14 @@ const authorized_users = [
   address("bar@example.com"),
 ];
 ```
+<p class="ann"> An array of email address </p>
 
 &#9998; | When used with check operators (`==`, `!=`, `in` etc ...), the whole array will be tested. The test stops when one element of the group matches, or nothing matches.
 
 
 ### Pre-defined objects
 
-vSL already exposes some objects for you to use. You can check out the [Variable](../ref/vSL/variables.md) file to get documentation on those objects and their use.
+vSL already exposes some objects for you to use. You can check out the [Variable reference](../ref/vSL/variables.md) to get more details.
 
 <!--
 // TODO: Move the following descriptions to their corresponding doc comments.

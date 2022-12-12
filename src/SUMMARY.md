@@ -21,7 +21,7 @@ The vSMTP reference guide
 
 - [Filtering](filtering/filtering.md)
   - [vSL - the vSMTP Scripting Language](filtering/vsl.md)
-  - [Rules](filtering/rules.md)
+  - [Rules and Actions](filtering/rules.md)
   - [SMTP states and vSMTP stages](filtering/stages.md)
   - [Transaction context](filtering/transaction.md)
   - [Objects](filtering/objects.md)
@@ -31,7 +31,6 @@ The vSMTP reference guide
 - [Settings](settings/settings.md)
   - [Logging system](settings/logging.md)
   - [DNS configuration](settings/dns.md)
-  - [Null MX](settings/nullmx.md)
   - [DMARC](settings/dmarc.md)
   - [DKIM](settings/dkim.md)
   - [ARC 🚧]()
@@ -88,6 +87,7 @@ The vSMTP reference guide
     - [What is DKIM ?](tuto/0/dkim/details.md)
   - [Antivirus](tuto/0/antivirus.md)
 - [Greylist](tuto/1/greylist.md)
+- [Dealing with Null MX records](tuto/2/nullmx.md)
 
 # Terminology
 

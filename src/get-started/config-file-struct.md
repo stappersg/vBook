@@ -34,5 +34,6 @@ A typical vSMTP configuration looks like the following.
       ┣ mysql.so -> /usr/lib/vsmtp/libvsmtp-mysql-plugin.so
       ┗ ldap.so  -> /usr/lib/vsmtp/libvsmtp-ldap-plugin.so
 ```
+<p class="ann"> typical vSMTP configuration placed in the `/etc/vsmtp` directory</p>
 
 Lets break it down step by step, by building a configuration from scratch.

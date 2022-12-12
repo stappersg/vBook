@@ -4,8 +4,11 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
+<h2 class="func-name"> <code>fn</code> add_rcpt_envelop </h2>
+
+```rust,ignore
 fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
+fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -40,44 +43,11 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
-```
+<h2 class="func-name"> <code>fn</code> auth </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Add a new recipient to the envelop. Note that this does not add
-the recipient to the `To` header. Use `add_rcpt_message` for that.
-
-# Args
-
-* `rcpt` - the new recipient to add.
-
-# Effective smtp stage
-
-All of them.
-
-# Examples
-
-```
-#{
-    connect: [
-       // always deliver a copy of the message to "john.doe@example.com".
-       action "rewrite envelop" || add_rcpt_envelop(address("john.doe@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get auth(context: Context) -> Credentials
+
 ```
 
 <details>
@@ -110,24 +80,11 @@ Get authentication credentials from the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get authid(credentials: Credentials) -> String
-```
+<h2 class="func-name"> <code>fn</code> authpass </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the `authid` property of the connection.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get authpass(credentials: Credentials) -> String
+
 ```
 
 <details>
@@ -142,42 +99,11 @@ Get the `authpass` property of the connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get client_address(context: Context) -> String
-```
+<h2 class="func-name"> <code>fn</code> client_ip </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the address of the client.
-
-# Effective smtp stage
-
-All of them.
-
-# Return
-
-* `string` - the client's address with the `ip:port` format.
-
-# Example
-
-```
-#{
-    connect: [
-       action "log info" || log("info", `${client_address()}`),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get client_ip(context: Context) -> String
+
 ```
 
 <details>
@@ -210,42 +136,11 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get client_port(context: Context) -> int
-```
+<h2 class="func-name"> <code>fn</code> connection_timestamp </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the ip port of the client.
-
-# Effective smtp stage
-
-All of them.
-
-# Return
-
-* `int` - the client's port.
-
-# Example
-
-```
-#{
-    connect: [
-       action "log info" || log("info", `client port: ${client_port()}`),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get connection_timestamp(context: Context) -> OffsetDateTime
+
 ```
 
 <details>
@@ -278,42 +173,11 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get helo(context: Context) -> String
-```
+<h2 class="func-name"> <code>fn</code> is_authenticated </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the value of the `HELO/EHLO` command sent by the client.
-
-# Effective smtp stage
-
-`helo` and onwards.
-
-# Return
-
-* `string` - the value of the `HELO/EHLO` command.
-
-# Examples
-
-```
-#{
-    helo: [
-       action "log info" || log("info", `${helo()}`),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get is_authenticated(context: Context) -> bool
+
 ```
 
 <details>
@@ -345,43 +209,11 @@ Check if the client is authenticated.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get is_secured(context: Context) -> bool
-```
+<h2 class="func-name"> <code>fn</code> mail_from </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Has the connection been secured under the encryption protocol SSL/TLS.
-
-# Effective smtp stage
-
-all of them.
-
-# Return
-
-* bool - `true` if the connection is secured, `false` otherwise.
-
-# Example
-```
-#{
-  mail: [
-    action "log ssl/tls" || {
-      log("info", `My client is ${if is_secured() { "secured" } else { "unsecured!!!" }}`)
-    }
-  ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get mail_from(context: Context) -> SharedObject
+
 ```
 
 <details>
@@ -414,42 +246,11 @@ Get the value of the `MAIL FROM` command sent by the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get mail_timestamp(context: Context) -> OffsetDateTime
-```
+<h2 class="func-name"> <code>fn</code> message_id </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the time of reception of the email.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Return
-
-* `string` - the timestamp.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "receiving the email" || log("info", `time of reception: ${mail_timestamp()}`),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get message_id(context: Context) -> String
+
 ```
 
 <details>
@@ -482,44 +283,11 @@ Get the unique id of the received message.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get rcpt(context: Context) -> SharedObject
-```
+<h2 class="func-name"> <code>fn</code> rcpt_list </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the value of the current `RCPT TO` command sent by the client.
-
-# Effective smtp stage
-
-`rcpt` and onwards. Please note that `rcpt()` will always return
-the last recipient received in stages after the `rcpt` stage. Therefore,
-this functions is best used in the `rcpt` stage.
-
-# Return
-
-* `address` - the address of the received recipient.
-
-# Examples
-
-```
-#{
-    rcpt: [
-       action "log recipients" || log("info", `new recipient: ${rcpt()}`),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get rcpt_list(context: Context) -> Array
+
 ```
 
 <details>
@@ -554,42 +322,11 @@ in the later stages.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get server_address(context: Context) -> String
-```
+<h2 class="func-name"> <code>fn</code> server_ip </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the full server address.
-
-# Effective smtp stage
-
-All of them.
-
-# Return
-
-* `string` - the server's address with the `ip:port` format.
-
-# Example
-
-```
-#{
-    connect: [
-       action "log info" || log("info", `server address: ${server_address()}`),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get server_ip(context: Context) -> IpAddr
+
 ```
 
 <details>
@@ -622,41 +359,11 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get server_name(context: Context) -> String
-```
+<h2 class="func-name"> <code>fn</code> server_port </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the name of the server.
-
-# Effective smtp stage
-
-All of them.
-
-# Return
-
-* `string` - the name of the server.
-
-# Example
-```
-#{
-    connect: [
-       action "log info" || log("info", `${server_name()}`),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get server_port(context: Context) -> int
+
 ```
 
 <details>
@@ -688,60 +395,11 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get type(credentials: Credentials) -> String
-```
+<h2 class="func-name"> <code>fn</code> remove_rcpt_envelop </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the type of the `auth` property of the connection.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
-fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove a recipient from the envelop. Note that this does not remove
-the recipient from the `To` header. Use `remove_rcpt_message` for that.
-
-# Args
-
-* `rcpt` - the recipient to remove.
-
-# Effective smtp stage
-
-All of them.
-
-# Examples
-
-```
-#{
-    preq: [
-       // never deliver to "john.doe@example.com".
-       action "rewrite envelop" || remove_rcpt_envelop(address("john.doe@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn remove_rcpt_envelop(context: Context, addr: String) -> ()
+fn remove_rcpt_envelop(context: Context, addr: SharedObject) -> ()
 ```
 
 <details>
@@ -776,42 +434,11 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn rewrite_mail_from_envelop(context: Context, new_addr: String) -> ()
-```
+<h2 class="func-name"> <code>fn</code> rewrite_mail_from_envelop </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Rewrite the sender received from the `MAIL FROM` command.
-
-# Args
-
-* `new_addr` - the new string sender address to set.
-
-# Effective smtp stage
-
-`mail` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_mail_from_envelop("unknown@example.com"),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
+
 ```
 
 <details>
@@ -844,8 +471,12 @@ Rewrite the sender received from the `MAIL FROM` command.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
+<h2 class="func-name"> <code>fn</code> rewrite_rcpt_envelop </h2>
+
+```rust,ignore
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
+fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
+fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
 ```
 
 <details>
@@ -879,113 +510,11 @@ Replace a recipient received by a `RCPT TO` command.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
-```
+<h2 class="func-name"> <code>fn</code> to_debug </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient received by a `RCPT TO` command.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`rcpt` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", address("john.main@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient received by a `RCPT TO` command.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`rcpt` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), "john.main@example.com"),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Replace a recipient received by a `RCPT TO` command.
-
-# Args
-
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
-
-# Effective smtp stage
-
-`rcpt` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), address("john.main@example.com")),
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn to_debug(context: Server) -> String
+
 ```
 
 <details>
@@ -1000,40 +529,11 @@ Convert a `Server` to a debug string.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn to_debug(context: Context) -> String
-```
+<h2 class="func-name"> <code>fn</code> to_string </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `Context` to a debug string.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
-fn to_string(_: Server) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Convert a `Server` to a `String`.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn to_string(_: Context) -> String
+
 ```
 
 <details>

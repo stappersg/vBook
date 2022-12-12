@@ -15,11 +15,12 @@ The authentication is provided by the [Cyrus sasl](https://www.cyrusimap.org/sas
 
 ```shell
 sudo apt update
-sudo apt install
-  pkg-config 
-  build-essential
-  sasl2-bin
+sudo apt install    \
+  pkg-config        \
+  build-essential   \
+  sasl2-bin         \
 ```
+<p class="ann"> Install vSMTP's dependencies </p>
 
 ## vSMTP compilation
 
@@ -48,6 +49,7 @@ SUBCOMMANDS:
     config-show    Show the loaded config (as serialized json format)
     help           Print this message or the help of the given subcommand(s)
 ```
+<p class="ann"> Building and running the source code using `cargo` </p>
 
 By default Rust/Cargo use static linking to compile. All libraries required are compiled into the executable, allowing vSMTP to be a standalone application.
 
@@ -59,6 +61,7 @@ For security purpose, vSMTP should run using a dedicated account with minimum pr
 $ sudo adduser --system --shell /usr/sbin/nologin --no-create-home \
     --uid 9999 --group --disabled-password --disabled-login vsmtp
 ```
+<p class="ann"> Create a user to run vSMTP </p>
 
 ```shell
 Adding system user 'vsmtp' (UID 9999) ...
@@ -87,6 +90,7 @@ sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spoo
 sudo cp ./target/release/vsmtp /usr/sbin/
 sudo cp ./target/release/vqueue /usr/sbin/
 ```
+<p class="ann"> Create vSMTP directories </p>
 
 A minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 1.0.0) must be created.
 
@@ -97,12 +101,12 @@ let config = cfg::config;
 config.version_requirement = ">=1.0.0";
 EOF
 ```
-
-Grant rights to files and folders.
+<p class="ann"> Create a minimal configuration file </p>
 
 ```shell
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
+<p class="ann"> Grant rights to vSMTP files and directories </p>
 
 If required, add private key and certificate to `/etc/vsmtp/certs` and grant reading rights to the vsmtp user.
 
@@ -110,7 +114,7 @@ If required, add private key and certificate to `/etc/vsmtp/certs` and grant rea
 
 ### Check and disable current MTA
 
-Check if you have a mail transfer agent service running and disable it. The example below is related to a Postfix service running on port 25.
+Check if you have a mail transfer agent service running and disable it.
 
 ```shell
 $ sudo ss -ltpn | grep ":25"
@@ -133,6 +137,7 @@ Synchronizing state of postfix.service with SysV service script with /lib/system
 Executing: /lib/systemd/systemd-sysv-install disable postfix
 Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 ```
+<p class="ann"> Disabling a postfix instance that was running on port 25 </p>
 
 &#9758; | Depending on Linux distributions, instead of `ss` command you may have to use `netstat -ltpn`
 

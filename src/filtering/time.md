@@ -3,7 +3,6 @@
 Some objects and functions require argument of time.
 Here is a list of available time scales format that you can use.
 
-
 | Time scale   |      Expression      |
 |----------|:-------------|
 | nanoseconds | "nanos" / "nsec" / "ns" |
@@ -16,12 +15,12 @@ Here is a list of available time scales format that you can use.
 | weeks | "weeks" / "week" / "w" |
 | months | "months" / "month" / "M" |
 | years | "years" / "year" / "y" |
+<p class="ann"> Time scales and their expressions </p>
 
-For reference, the [humantime](https://github.com/tailhook/humantime) crate is used to parse time.
 
-Here is an example:
+> For reference, the [humantime](https://github.com/tailhook/humantime) crate is used to parse time.
 
-```js
+```rust,ignore
 const my_command = cmd(#{
     // for the `cmd` service, you can specify a timeout for the command.
     // You can use the different time scales above to specify the time.
@@ -32,3 +31,4 @@ const my_command = cmd(#{
     // ...
 });
 ```
+<p class="ann"> Declaring a service that requires a time value </p>

@@ -69,7 +69,7 @@ const echo = cmd(#{
 });
 ```
 
-<p style="text-align: center;"> <i>Creating a new command object in `services/command.vsl`</i> </p>
+<p class="ann"> Creating a new command object in `services/command.vsl` </p>
 
 > Check out the [Command](../ref/command.md) reference to get examples for the command plugin.
 
@@ -83,4 +83,4 @@ import "services/command" as command;
 }
 ```
 
-<p style="text-align: center;"> <i>Using the object in rules using Rhai's import statement</i> </p>
+<p class="ann"> Using the object in rules using Rhai's import statement </p>

@@ -4,8 +4,11 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
+<h2 class="func-name"> <code>fn</code> generate_signature_dkim </h2>
+
+```rust,ignore
 fn generate_signature_dkim(message: Message, context: Context, selector: String, private_key: Arc<PrivateKey>, headers_field: Array, canonicalization: String) -> String
+
 ```
 
 <details>
@@ -63,24 +66,11 @@ This message has not been signed yet, meaning someone could change it...
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get auid(signature: Signature) -> String
-```
+<h2 class="func-name"> <code>fn</code> dkim_result </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-return the `auid` property of the [`Signature`]
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get dkim_result(ctx: Context) -> Map
+
 ```
 
 <details>
@@ -96,24 +86,11 @@ an error if no result is found.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get has_debug_flag(key: PublicKey) -> bool
-```
+<h2 class="func-name"> <code>fn</code> has_dkim_result </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-A public key may contains a `debug flag`, used for testing purpose.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get has_dkim_result(ctx: Context) -> bool
+
 ```
 
 <details>
@@ -128,24 +105,11 @@ Has the `ctx()` a DKIM signature verification result ?
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get sdid(signature: Signature) -> String
-```
+<h2 class="func-name"> <code>fn</code> get_private_keys </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-return the `sdid` property of the [`Signature`]
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn get_private_keys(server: Server, sdid: String) -> Array
+
 ```
 
 <details>
@@ -160,30 +124,11 @@ Get the list of DKIM private keys associated with this sdid
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn get_public_key(server: Server, signature: Signature, on_multiple_key_records: String) -> ?
-```
+<h2 class="func-name"> <code>fn</code> handle_dkim_error </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Get the list of public keys associated with this [`Signature`]
-
-The current implementation will make a TXT query on the dns of the signer
-
-`on_multiple_key_records` value can be `first` or `cycle` :
-* `first` return the first key found (one element array)
-* `cycle` return all the keys found
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn handle_dkim_error(err: ?) -> String
+
 ```
 
 <details>
@@ -202,26 +147,11 @@ get the dkim status from an error produced by this module
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn has_expired(signature: Signature, epsilon: int) -> bool
-```
+<h2 class="func-name"> <code>fn</code> parse_signature </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Has the signature expired?
-
-return `true` if the argument are invalid (`epsilon` is negative)
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn parse_signature(input: String) -> Signature
+
 ```
 
 <details>
@@ -236,27 +166,11 @@ create a [`Signature`] from a `DKIM-Signature` header
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-```rust
-fn store_dkim(ctx: Context, result: Map) -> ()
-```
+<h2 class="func-name"> <code>fn</code> verify_dkim </h2>
 
-<details>
-<summary markdown="span"> details </summary>
-
-Store the result produced by the DKIM signature verification in the `ctx()`.
-
-# Error
-* The `status` field is missing in the DKIM verification results.
-</details>
-
-</div>
-</br>
-
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-```rust
+```rust,ignore
 fn verify_dkim(message: Message, signature: Signature, key: PublicKey) -> ()
+
 ```
 
 <details>
