@@ -36,6 +36,7 @@ mysql -u root -p
 # Reset auth to auth_socket, this way you can connect with `sudo mysql`
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
 ```
+<p class="ann"> Setting up MySQL </p>
 
 ### Setup a user
 
@@ -45,6 +46,7 @@ To manage your database, you should create a new user with restricted privileges
 # Here we use localhost as our host but you could also setup your database on another server.
 mysql> CREATE USER 'greylist-manager'@'localhost' IDENTIFIED BY 'your-password';
 ```
+<p class="ann"> Creating a user named 'greylist-manager' </p>
 
 ### Setup the database and a table
 
@@ -59,6 +61,7 @@ CREATE TABLE greylist.sender(
     domain varchar(500) NOT null
 );
 ```
+<p class="ann"> Template for the greylist database </p>
 
 And then run the `mysql` command as root to generate the database.
 
@@ -79,12 +82,12 @@ The greylist database is now operational.
 To setup vSMTP, you first need to create a mysql service, that will enable you to query your database. You can, for example, write it in a `services.vsl` file where your `main.vsl` is located.
 
 ```js
-// -- services/db.vsl
 export const greylist = mysql(#{
     // Change this url to the url of your database, or keep it like this if the 'greylist-manager' user is setup on localhost.
     url: "mysql://localhost/?user=greylist-manager&password=your-password",
 });
 ```
+<p class="ann"> `services/db.vsl` </p>
 
 The `query` function from the `mysql` service is used to query a mysql database. Variables are passed to the query using string interpolation.
 
@@ -93,7 +96,6 @@ The `query` function from the `mysql` service is used to query a mysql database.
 Create a greylist rule in your root `incoming.vsl` file.
 
 ```js
-// -- main.vsl
 import "services/db" as db;
 
 #{
@@ -124,3 +126,4 @@ import "services/db" as db;
     ]
 }
 ```
+<p class="ann"> Declaring a greylist rule </p>

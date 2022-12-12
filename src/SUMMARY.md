@@ -21,7 +21,7 @@ The vSMTP reference guide
 
 - [Filtering](filtering/filtering.md)
   - [vSL - the vSMTP Scripting Language](filtering/vsl.md)
-  - [Rules](filtering/rules.md)
+  - [Rules and Actions](filtering/rules.md)
   - [SMTP states and vSMTP stages](filtering/stages.md)
   - [Transaction context](filtering/transaction.md)
   - [Objects](filtering/objects.md)

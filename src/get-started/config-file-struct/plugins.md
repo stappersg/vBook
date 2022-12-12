@@ -25,6 +25,7 @@ Plugins are placed in the `/usr/lib/vsmtp/` directory, and referenced in the con
 +   ┣ my_plugin.so -> /usr/lib/vsmtp/libmy_plugin.so
 +   ┗ ... 
 ```
+<p class="ann"> Adding plugins and associated services </p>
 
 They are then imported in "services", `.vsl` scripts that configure and use plugins features.
 
@@ -33,7 +34,7 @@ import "plugins/my_plugin" as my_plugin;
 
 export const my_plugin_service = my_plugin::do_stuff();
 ```
-<p style="text-align: center;"> <i>`services/my_plugin.vsl`</i> </p>
+<p class="ann"> `/etc/vsmtp/services/my_plugin.vsl` </p>
 
 Services can be used during filtering, after being imported like an object.
 

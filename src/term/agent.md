@@ -1,8 +1,6 @@
 # Mail Agent
 
-## Email Architecture
-
-The following diagram illustrates the flow of mail among these defined components.
+This chapter describes Mail Agents and their purpose in the email ecosystem.
 
 ```txt
    +-----+   +-----+   +------------+
@@ -27,6 +25,7 @@ The following diagram illustrates the flow of mail among these defined component
        | MDA |-->| MUA |
        +-----+   +-----+
 ```
+<p class="ann"> Flow of emails in the mail ecosystem </p>
 
 ## MUA (Mail User Agent)
 

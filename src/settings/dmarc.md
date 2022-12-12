@@ -19,5 +19,6 @@ This rule will  conducts SPF and DKIM authentication checks by passing the neces
   ]
 }
 ```
+<p class="ann"> Filter emails using dmarc </p>
 
 DMARC reporting and DMARC feedback system is not implemented.
