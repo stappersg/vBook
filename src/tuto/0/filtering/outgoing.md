@@ -4,7 +4,7 @@
 
 Here, a member of Doe's family is sending an email to someone else. We just have to verify that the sender is legitimate by asking the client to authenticate itself to vSMTP. If the authentication fails, this probably means that a spammer tried to use our server as a relay. The `authenticate()` function automatically denies the transaction if the authentication failed.
 
-```js
+```rust,ignore
 #{
   authenticate: [
     rule "sasl authentication" || authenticate(),

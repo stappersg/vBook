@@ -60,7 +60,7 @@ Here is an example:
 +       ┗ command.vsl
 ```
 
-```js
+```rust,ignore
 // Do not forget to use the `export` keyword when declaring
 // the object to make it accessible trough `import`.
 const echo = cmd(#{
@@ -73,7 +73,7 @@ const echo = cmd(#{
 
 > Check out the [Command](../ref/command.md) reference to get examples for the command plugin.
 
-```js
+```rust,ignore
 import "services/command" as command;
 
 #{

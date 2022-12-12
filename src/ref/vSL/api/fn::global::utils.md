@@ -26,7 +26,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     preq: [
        action "append info header" || {
@@ -113,7 +113,7 @@ All of them.
 }
 ```
 
-```rust
+```rust,ignore
 # vsmtp_test::vsl::run(
 # |builder| Ok(builder.add_root_incoming_rules(r#"
 #{
@@ -168,7 +168,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     connect: [
        action "perform reverse lookup" || {
@@ -233,7 +233,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     rcpt: [
        action "check for local user" || {

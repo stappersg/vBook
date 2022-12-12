@@ -3,7 +3,7 @@
 Connections should be encrypted using the SSL/TLS protocol, even on a private network.
 TLS can be initiated right after connect on the [address submissions](../../ref/vSL/api/var::cfg.md), or with the STARTTLS mechanism.
 
-```js
+```rust,ignore
 fn on_config(config) {
   // Add root TLS settings.
   config.server.tls = #{
@@ -23,7 +23,7 @@ fn on_config(config) {
 
 Rules can then be added to filter out unsecure transactions.
 
-```js
+```rust,ignore
 #{
   mail: [
     rule "deny unencrypted" || {

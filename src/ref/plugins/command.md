@@ -8,7 +8,7 @@ The command plugin lets you execute Unix shell commands directly in `vSL`.
 
 This plugin exposes a single constructor function.
 
-```rust
+```rust,ignore
 export const command = cmd(#{
     // Time allowed to execute the command.
     // Aborted if the timeout value is reached.
@@ -28,7 +28,7 @@ export const command = cmd(#{
 
 ## Example
 
-```rust
+```rust,ignore
 export const clamscan = cmd(#{
     timeout: "10s",
     command: "clamscan",

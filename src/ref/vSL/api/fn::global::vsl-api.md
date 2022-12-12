@@ -180,7 +180,7 @@ all of them.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     connect: [
        action "client ip" || log("info", `client: {ctx().client_ip}`),
@@ -217,7 +217,7 @@ Get all domains of the recipient list.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     mail: [
         action "display recipients domains" || {
@@ -261,7 +261,7 @@ Get all local parts of the recipient list.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     mail: [
         action "display recipients usernames" || {
@@ -306,7 +306,7 @@ the `From` header.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     preq: [
        action "rewrite sender" || rewrite_mail_from("john.doe@example.com"),

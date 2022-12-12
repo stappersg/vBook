@@ -4,7 +4,7 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust
+```rust,ignore
 fn get receiver_address(smtp: Smtp) -> String
 ```
 
@@ -20,7 +20,7 @@ Get the receiver address from a smtp service.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust
+```rust,ignore
 fn smtp(parameters: Map) -> Smtp
 ```
 
@@ -36,7 +36,7 @@ Build a new SMTP service.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust
+```rust,ignore
 fn to_debug(cmd: Smtp) -> String
 ```
 
@@ -52,7 +52,7 @@ fn to_debug(cmd: Smtp) -> String
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust
+```rust,ignore
 fn to_string(cmd: Smtp) -> String
 ```
 

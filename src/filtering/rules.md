@@ -17,7 +17,7 @@ A `rule` is used to change the transaction state. You can accept and deny a tran
 ```
 <p class="ann"> A BNF representation of a rule </p>
 
-```rust
+```rust,ignore
 // `deny()` is a function that return the `Deny` state.
 // Thus, this rule denies any incoming transaction.
 rule "deny all transactions" || deny(),
@@ -50,7 +50,7 @@ An `action` is used to execute arbitrary code (logging, saving an email on disk,
 <p class="ann"> BNF representation of an action </p>
 
 
-```rust
+```rust,ignore
 // Write the email as json to a "backup" directory.
 action "dump to disk" || dump("backup"),
 

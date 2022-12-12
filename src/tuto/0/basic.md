@@ -18,7 +18,7 @@ When installing vSMTP, the package manager creates the following basic configura
 
 Modify the [`/etc/vsmtp/conf.d/config.vsl`](../../get-started/config-file-struct/root.md) file with this configuration:
 
-```js
+```rust,ignore
 fn on_config(config) {
   // Name of the server.
   config.server.name = "doe-family.com";
@@ -52,7 +52,7 @@ Let's define all the required objects for John Doe's MTA. Those objects are used
 
 Create the `/etc/vsmtp/objects/family.vsl` file with following objects:
 
-```js
+```rust,ignore
 // Doe's family domain name.
 export const domain = fqdn("doe-family.com");
 

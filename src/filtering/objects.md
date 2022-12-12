@@ -20,7 +20,7 @@ Objects are used to create reusable configuration variables declared using Rhai 
 
 Objects can be created via associated functions:
 
-```js
+```rust,ignore
 const my_ipv4 = ip4("127.0.0.1");
 const my_address = address("john.doe@example.com");
 // ...
@@ -104,7 +104,7 @@ However, if objects are used in only a specific rule set, they should be stored 
 
 You can group objects using [Rhai Arrays](https://rhai.rs/book/language/arrays.html#arrays).
 
-```js
+```rust,ignore
 const authorized_users = [
   address("admin@example.com"),
   address("foo@example.com"),
@@ -135,7 +135,7 @@ cat /etc/vsmtp/config/local_mta.txt
 # 10.3.4.240
 ```
 
-```js
+```rust,ignore
 export const local_MTA = file("/etc/vsmtp/config/local_mta.txt", "ip4");
 ```
 
@@ -143,7 +143,7 @@ export const local_MTA = file("/etc/vsmtp/config/local_mta.txt", "ip4");
 
 custom codes can be declared with the following syntax.
 
-```js
+```rust,ignore
 const code554 = code(554, "Relay access denied");
 
 // You can also create enhanced codes.

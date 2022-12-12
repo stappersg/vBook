@@ -181,7 +181,7 @@ Operate the hashing of the `message`'s headers and body, and compare the result 
 
 # Examples
 
-```js
+```rust,ignore
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])
@@ -258,7 +258,7 @@ X-Auto-Response-Suppress: All
 
 Changing the header `Subject` will result in a dkim verification failure.
 
-```js
+```rust,ignore
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])

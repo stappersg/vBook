@@ -81,7 +81,7 @@ The greylist database is now operational.
 
 To setup vSMTP, you first need to create a mysql service, that will enable you to query your database. You can, for example, write it in a `services.vsl` file where your `main.vsl` is located.
 
-```js
+```rust,ignore
 export const greylist = mysql(#{
     // Change this url to the url of your database, or keep it like this if the 'greylist-manager' user is setup on localhost.
     url: "mysql://localhost/?user=greylist-manager&password=your-password",
@@ -95,7 +95,7 @@ The `query` function from the `mysql` service is used to query a mysql database.
 
 Create a greylist rule in your root `incoming.vsl` file.
 
-```js
+```rust,ignore
 import "services/db" as db;
 
 #{

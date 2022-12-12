@@ -31,7 +31,7 @@ This script also run rules under the `mail` stage when an incoming sender domain
 
 Finally, if the sender's domain is not handled by the configuration, and that the domain of recipients is not as well, rules defined in the `rcpt` stage contained in the root `incoming.vsl` are also called. You should, by default, deny the transaction at this stage since it probably is a relay tentative.
 
-```js
+```rust,ignore
 #{
   rcpt: [
     rule "deny relay" || deny(),
