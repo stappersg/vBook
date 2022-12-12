@@ -126,7 +126,7 @@ All of them.
 <h2 class="func-name"> <code>fn</code> rlookup </h2>
 
 ```rust,ignore
-fn rlookup(server: Server, name: String) -> Array
+fn rlookup(server: Server, name: SharedObject) -> Array
 
 ```
 

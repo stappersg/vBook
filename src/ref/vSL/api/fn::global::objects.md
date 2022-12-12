@@ -4,18 +4,18 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> != </h2>
+<h2 class="func-name"> <code>op</code> != </h2>
 
 ```rust,ignore
-fn !=(this: SharedObject, other: SharedObject) -> bool
-fn !=(this: SharedObject, s: String) -> bool
-fn !=(this: String, other: SharedObject) -> bool
+op !=(this: SharedObject, s: String) -> bool
+op !=(this: String, other: SharedObject) -> bool
+op !=(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `!=` for `SharedObject`
+Operator `!=` for `SharedObject` and `&str`
 </details>
 
 </div>
@@ -24,17 +24,17 @@ Operator `!=` for `SharedObject`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> == </h2>
+<h2 class="func-name"> <code>op</code> == </h2>
 
 ```rust,ignore
-fn ==(this: SharedObject, other: SharedObject) -> bool
-fn ==(this: String, other: SharedObject) -> bool
+op ==(this: SharedObject, s: String) -> bool
+op ==(this: String, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `SharedObject`
+Operator `==` for `SharedObject` and `&str`
 </details>
 
 </div>
@@ -66,7 +66,7 @@ A SMTP code with the code and message as parameter.
 
 ```rust,ignore
 fn contains(this: SharedObject, s: String) -> bool
-fn contains(map: Map, object: SharedObject) -> bool
+fn contains(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>

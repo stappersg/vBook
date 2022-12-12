@@ -7,8 +7,8 @@
 <h2 class="func-name"> <code>fn</code> append_header </h2>
 
 ```rust,ignore
-fn append_header(message: Message, header: String, value: String) -> ()
 fn append_header(message: Message, header: String, value: SharedObject) -> ()
+fn append_header(message: Message, header: String, value: String) -> ()
 ```
 
 <details>
@@ -65,7 +65,7 @@ the `preq` stage is reached.
 <h2 class="func-name"> <code>fn</code> count_header </h2>
 
 ```rust,ignore
-fn count_header(message: Message, header: String) -> int
+fn count_header(message: Message, header: SharedObject) -> int
 
 ```
 
@@ -93,7 +93,7 @@ is when the email body is received.
 #{
     postq: [
         action "display VSMTP header" || {
-            print(get_header("X-VSMTP"));
+            print(get_header(identifier("X-VSMTP")));
         }
     ],
 }
@@ -167,7 +167,7 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> get_header </h2>
 
 ```rust,ignore
-fn get_header(message: Message, header: String) -> String
+fn get_header(message: Message, header: SharedObject) -> String
 
 ```
 
@@ -195,7 +195,7 @@ is when the email body is received.
 #{
     postq: [
         action "display VSMTP header" || {
-            print(get_header("X-VSMTP"));
+            print(get_header(identifier("X-VSMTP")));
         }
     ],
 }
@@ -232,8 +232,8 @@ Hello world!
 <h2 class="func-name"> <code>fn</code> has_header </h2>
 
 ```rust,ignore
-fn has_header(message: Message, header: SharedObject) -> bool
 fn has_header(message: Message, header: String) -> bool
+fn has_header(message: Message, header: SharedObject) -> bool
 ```
 
 <details>
@@ -256,7 +256,7 @@ email is received at this point.
 #{
     postq: [
         action "check for VSMTP header" || {
-            if has_header(identifier("X-VSMTP")) {
+            if has_header("X-VSMTP") {
                 log("info", "incoming message could be from another vsmtp server");
             }
         }
@@ -426,9 +426,9 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> rename_header </h2>
 
 ```rust,ignore
-fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
 fn rename_header(message: Message, old: SharedObject, new: String) -> ()
 fn rename_header(message: Message, old: String, new: SharedObject) -> ()
+fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
 ```
 
 <details>

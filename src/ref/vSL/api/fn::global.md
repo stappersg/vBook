@@ -4,19 +4,19 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> != </h2>
+<h2 class="func-name"> <code>op</code> != </h2>
 
 ```rust,ignore
-fn !=(this: SharedObject, other: SharedObject) -> bool
-fn !=(this: SharedObject, s: String) -> bool
-fn !=(this: String, other: SharedObject) -> bool
-fn !=(in1: Status, in2: Status) -> bool
+op !=(this: SharedObject, s: String) -> bool
+op !=(this: String, other: SharedObject) -> bool
+op !=(this: SharedObject, other: SharedObject) -> bool
+op !=(in1: Status, in2: Status) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `!=` for `SharedObject`
+Operator `!=` for `SharedObject` and `&str`
 </details>
 
 </div>
@@ -25,18 +25,18 @@ Operator `!=` for `SharedObject`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> == </h2>
+<h2 class="func-name"> <code>op</code> == </h2>
 
 ```rust,ignore
-fn ==(this: SharedObject, other: SharedObject) -> bool
-fn ==(this: String, other: SharedObject) -> bool
-fn ==(in1: Status, in2: Status) -> bool
+op ==(this: SharedObject, s: String) -> bool
+op ==(this: String, other: SharedObject) -> bool
+op ==(in1: Status, in2: Status) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `SharedObject`
+Operator `==` for `SharedObject` and `&str`
 </details>
 
 </div>
@@ -98,7 +98,7 @@ all of them.
 <h2 class="func-name"> <code>fn</code> add_rcpt_envelop </h2>
 
 ```rust,ignore
-fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
+fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
 
 ```
 
@@ -122,7 +122,7 @@ All of them.
 #{
     connect: [
        // always deliver a copy of the message to "john.doe@example.com".
-       action "rewrite envelop" || add_rcpt_envelop(address("john.doe@example.com")),
+       action "rewrite envelop" || add_rcpt_envelop("john.doe@example.com"),
     ]
 }
 ```
@@ -174,8 +174,8 @@ Add a recipient to the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> append_header </h2>
 
 ```rust,ignore
-fn append_header(message: Message, header: String, value: String) -> ()
 fn append_header(message: Message, header: String, value: SharedObject) -> ()
+fn append_header(message: Message, header: String, value: String) -> ()
 ```
 
 <details>
@@ -371,7 +371,7 @@ A SMTP code with the code and message as parameter and an enhanced code.
 
 ```rust,ignore
 fn contains(this: SharedObject, s: String) -> bool
-fn contains(map: Map, object: SharedObject) -> bool
+fn contains(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>
@@ -389,7 +389,7 @@ Operator `contains`
 <h2 class="func-name"> <code>fn</code> count_header </h2>
 
 ```rust,ignore
-fn count_header(message: Message, header: String) -> int
+fn count_header(message: Message, header: SharedObject) -> int
 
 ```
 
@@ -417,7 +417,7 @@ is when the email body is received.
 #{
     postq: [
         action "display VSMTP header" || {
-            print(get_header("X-VSMTP"));
+            print(get_header(identifier("X-VSMTP")));
         }
     ],
 }
@@ -489,7 +489,7 @@ All of them.
 <h2 class="func-name"> <code>fn</code> deliver </h2>
 
 ```rust,ignore
-fn deliver(context: Context, rcpt: SharedObject) -> ()
+fn deliver(context: Context, rcpt: String) -> ()
 
 ```
 
@@ -508,13 +508,40 @@ to the recipient using the domain of its address.
 
 All of them.
 
-# Example
+# Examples
 ```
 #{
     delivery: [
-       action "setup delivery" || deliver(address("john.doe@example.com")),
+       action "setup delivery" || deliver("john.doe@example.com"),
     ]
 }
+```
+
+```
+#{
+  rcpt: [
+    action "deliver (str/str)" || {
+      add_rcpt_envelop("my.address@foo.com");
+      deliver("my.address@foo.com");
+    },
+    action "deliver (obj/str)" || {
+      let rcpt = address("my.address@bar.com");
+      add_rcpt_envelop(rcpt);
+      deliver(rcpt);
+    },
+    action "deliver (str/obj)" || {
+      let target = ip6("::1");
+      add_rcpt_envelop("my.address@baz.com");
+      deliver("my.address@baz.com");
+    },
+    action "deliver (obj/obj)" || {
+      let rcpt = address("my.address@boz.com");
+      add_rcpt_envelop(rcpt);
+      deliver(rcpt);
+    },
+  ],
+}
+
 ```
 </details>
 
@@ -528,8 +555,8 @@ All of them.
 
 ```rust,ignore
 fn deny() -> Status
-fn deny(code: String) -> Status
 fn deny(code: SharedObject) -> Status
+fn deny(code: String) -> Status
 ```
 
 <details>
@@ -591,8 +618,8 @@ write the content of the current email with it's metadata in a json file.
 <h2 class="func-name"> <code>fn</code> faccept </h2>
 
 ```rust,ignore
-fn faccept(code: String) -> Status
 fn faccept(code: SharedObject) -> Status
+fn faccept(code: String) -> Status
 ```
 
 <details>
@@ -607,23 +634,24 @@ the incoming client can be trusted.
 
 # Args
 
-* `code` - a custom code as a string to send to the client.
+* `code` - a custom code using a `code` object to send to the client.
 
 # Error
 
-* Could not parse the parameter as a valid SMTP reply code.
+* The given parameter was not a code object.
 
 # Effective smtp stage
 
 all of them.
 
 # Example
+
 ```
 #{
     connect: [
         // Here we imagine that "192.168.1.10" is a trusted source, so we can force accept
         // any other rules that don't need to be run.
-        rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept("220 Ok") } else { next() },
+        rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept(code(220, "Ok")) } else { next() },
     ],
 
     // The following rules will not be evaluated if `client_ip() == "192.168.1.10"` is true.
@@ -634,8 +662,6 @@ all of them.
     ],
 }
 ```
-
-# Errors
 </details>
 
 </div>
@@ -647,10 +673,10 @@ all of them.
 <h2 class="func-name"> <code>fn</code> forward </h2>
 
 ```rust,ignore
-fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
-fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 fn forward(context: Context, rcpt: SharedObject, forward: String) -> ()
+fn forward(context: Context, rcpt: SharedObject, forward: SharedObject) -> ()
 fn forward(context: Context, rcpt: String, forward: String) -> ()
+fn forward(context: Context, rcpt: String, forward: SharedObject) -> ()
 ```
 
 <details>
@@ -718,20 +744,20 @@ All of them.
 ```
 
 ```
- #{
-   rcpt: [
-     action "forward_all" || {
-       add_rcpt_envelop("my.address@foo.com");
-       add_rcpt_envelop("my.address@bar.com");
-       forward_all("127.0.0.1");
-     },
-     action "forward_all (obj)" || {
-       add_rcpt_envelop("my.address@foo2.com");
-       add_rcpt_envelop("my.address@bar2.com");
-       forward_all(ip4("127.0.0.1"));
-     },
-   ],
- }
+#{
+  rcpt: [
+    action "forward_all" || {
+      add_rcpt_envelop("my.address@foo.com");
+      add_rcpt_envelop("my.address@bar.com");
+      forward_all("127.0.0.1");
+    },
+    action "forward_all (obj)" || {
+      add_rcpt_envelop("my.address@foo2.com");
+      add_rcpt_envelop("my.address@bar2.com");
+      forward_all(ip4("127.0.0.1"));
+    },
+  ],
+}
 
 ```
 </details>
@@ -768,23 +794,23 @@ This message has not been signed yet, meaning someone could change it...
 
 
 
- #{
-   postq: [
-     action "add a DKIM signature" || {
-       for i in get_private_keys(srv(), "testserver.com") {
-         sign_dkim("2022-09", i, ["From", "To", "Date", "Subject", "From"], "simple/relaxed");
-       }
-     },
-     rule "check signature" || {
-       let signature = "v=1; a=rsa-sha256; d=testserver.com; s=2022-09;\r\n\
-           \tc=simple/relaxed; q=dns/txt; h=From:To:Date:Subject:From;\r\n\
-           \tbh=ATHiC1KD8OegIorswWts+SlujGUpgqR6pqXYlNWA01Y=;\r\n\tb=Ur\
-           /frdH3beyU3LRQMGBdI6OdxRvfpu+s04hmHcVkpBYzR4cXuDPByWpUCqhO4C\
-           sEwpPRDcWQtsCfuzSK1FTf7XCWgsKKGPmsdQ40pUviA0UrrzpIDIziMxSI/S\
-           8ohNnxvqxrtxZoN6Wo2lnQ+kYAATYxJPOjC57JIBJ89RGrf+6Wbvz6/PofcU\
-           9VwpylegZRU5Cial69lN2qaIkoVFOE9fz8ZIz9VV2A9Lh/xgKFM7eipBWCR6\
-           ZUU1HZTbSiqiL9Q6A823az/E2jqOUZXtsGK/Bo/vDjTV166d5vY34JA3189C\
-           x83Rbif9A/kdCO6C8gGK0WOasp5R0ONmVz41TaGQ==";
+#{
+  postq: [
+    action "add a DKIM signature" || {
+      for i in get_private_keys(srv(), "testserver.com") {
+        sign_dkim("2022-09", i, ["From", "To", "Date", "Subject", "From"], "simple/relaxed");
+      }
+    },
+    rule "check signature" || {
+      let signature = "v=1; a=rsa-sha256; d=testserver.com; s=2022-09;\r\n\
+          \tc=simple/relaxed; q=dns/txt; h=From:To:Date:Subject:From;\r\n\
+          \tbh=ATHiC1KD8OegIorswWts+SlujGUpgqR6pqXYlNWA01Y=;\r\n\tb=Ur\
+          /frdH3beyU3LRQMGBdI6OdxRvfpu+s04hmHcVkpBYzR4cXuDPByWpUCqhO4C\
+          sEwpPRDcWQtsCfuzSK1FTf7XCWgsKKGPmsdQ40pUviA0UrrzpIDIziMxSI/S\
+          8ohNnxvqxrtxZoN6Wo2lnQ+kYAATYxJPOjC57JIBJ89RGrf+6Wbvz6/PofcU\
+          9VwpylegZRU5Cial69lN2qaIkoVFOE9fz8ZIz9VV2A9Lh/xgKFM7eipBWCR6\
+          ZUU1HZTbSiqiL9Q6A823az/E2jqOUZXtsGK/Bo/vDjTV166d5vY34JA3189C\
+          x83Rbif9A/kdCO6C8gGK0WOasp5R0ONmVz41TaGQ==";
 
        if get_header("DKIM-Signature") == signature {
          accept()
@@ -1292,7 +1318,7 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> get_dmarc_record </h2>
 
 ```rust,ignore
-fn get_dmarc_record(server: Server, domain: String) -> Record
+fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
 
 ```
 
@@ -1355,7 +1381,7 @@ Get all domains of the recipient list.
 <h2 class="func-name"> <code>fn</code> get_header </h2>
 
 ```rust,ignore
-fn get_header(message: Message, header: String) -> String
+fn get_header(message: Message, header: SharedObject) -> String
 
 ```
 
@@ -1383,7 +1409,7 @@ is when the email body is received.
 #{
     postq: [
         action "display VSMTP header" || {
-            print(get_header("X-VSMTP"));
+            print(get_header(identifier("X-VSMTP")));
         }
     ],
 }
@@ -1523,7 +1549,7 @@ return `true` if the argument are invalid (`epsilon` is negative)
 <h2 class="func-name"> <code>fn</code> has_header </h2>
 
 ```rust,ignore
-fn has_header(message: Message, header: String) -> bool
+fn has_header(message: Message, header: SharedObject) -> bool
 
 ```
 
@@ -1547,7 +1573,7 @@ email is received at this point.
 #{
     postq: [
         action "check for VSMTP header" || {
-            if has_header("X-VSMTP") {
+            if has_header(identifier("X-VSMTP")) {
                 log("info", "incoming message could be from another vsmtp server");
             }
         }
@@ -1667,8 +1693,8 @@ Build an ip6 address. (x:x:x:x:x:x:x:x)
 
 ```rust,ignore
 fn log(level: String, message: String)
-fn log(level: SharedObject, message: SharedObject)
 fn log(level: SharedObject, message: String)
+fn log(level: String, message: SharedObject)
 ```
 
 <details>
@@ -1835,8 +1861,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> mbox </h2>
 
 ```rust,ignore
-fn mbox(context: Context, rcpt: SharedObject) -> ()
 fn mbox(context: Context, rcpt: String) -> ()
+fn mbox(context: Context, rcpt: SharedObject) -> ()
 ```
 
 <details>
@@ -1854,13 +1880,29 @@ locally in the mail box of the recipient if it exists on the server.
 
 All of them.
 
-# Example
+# Examples
+
 ```
 #{
     delivery: [
-       action "setup mbox" || mbox(address("john.doe@example.com")),
+       action "setup mbox" || mbox("john.doe@example.com"),
     ]
 }
+```
+
+```
+#{
+  rcpt: [
+    action "setup mbox" || {
+        const doe = address("doe@example.com");
+        add_rcpt_envelop(doe);
+        add_rcpt_envelop("a@example.com");
+        mbox(doe);
+        mbox("a@example.com");
+    },
+  ],
+}
+
 ```
 </details>
 
@@ -2162,9 +2204,9 @@ Remove a recipient from the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> rename_header </h2>
 
 ```rust,ignore
-fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
 fn rename_header(message: Message, old: SharedObject, new: String) -> ()
 fn rename_header(message: Message, old: String, new: SharedObject) -> ()
+fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
 ```
 
 <details>
@@ -2230,8 +2272,8 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> rewrite_mail_from_envelop </h2>
 
 ```rust,ignore
-fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
 fn rewrite_mail_from_envelop(context: Context, new_addr: String) -> ()
+fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -2241,7 +2283,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 
 # Args
 
-* `new_addr` - the new sender address to set.
+* `new_addr` - the new string sender address to set.
 
 # Effective smtp stage
 
@@ -2252,7 +2294,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || rewrite_mail_from_envelop(address("unknown@example.com")),
+       action "rewrite envelop" || rewrite_mail_from_envelop("unknown@example.com"),
     ]
 }
 ```
@@ -2343,9 +2385,9 @@ Replace a recipient received by a `RCPT TO` command.
 <h2 class="func-name"> <code>fn</code> rewrite_rcpt_message </h2>
 
 ```rust,ignore
-fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: SharedObject) -> ()
-fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -2367,7 +2409,7 @@ Replace a recipient by an other in the `To` header of the message.
 ```
 #{
     preq: [
-       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", address("john-mta@example.com")),
+       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", "john-mta@example.com"),
     ]
 }
 ```
@@ -2401,7 +2443,7 @@ an ip v6 range. (x:x:x:x:x:x:x:x/range)
 <h2 class="func-name"> <code>fn</code> rlookup </h2>
 
 ```rust,ignore
-fn rlookup(server: Server, name: String) -> Array
+fn rlookup(server: Server, name: SharedObject) -> Array
 
 ```
 
@@ -2675,8 +2717,8 @@ All of them.
 ```rust,ignore
 fn to_debug(cmd: Cmd) -> String
 fn to_debug(this: VSLObject) -> String
-fn to_debug(context: Server) -> String
 fn to_debug(context: Context) -> String
+fn to_debug(context: Server) -> String
 fn to_debug(status: Status) -> String
 fn to_debug(this: OffsetDateTime) -> String
 fn to_debug(record: Record) -> String
@@ -2699,10 +2741,10 @@ fn to_debug(record: Record) -> String
 ```rust,ignore
 fn to_string(cmd: Cmd) -> String
 fn to_string(this: VSLObject) -> String
-fn to_string(_: Server) -> String
 fn to_string(_: Context) -> String
-fn to_string(status: Status) -> String
+fn to_string(_: Server) -> String
 fn to_string(this: OffsetDateTime) -> String
+fn to_string(status: Status) -> String
 ```
 
 <details>
@@ -2838,17 +2880,16 @@ X-Auto-Response-Suppress: All
 
 "#;
 
- // Rules
- #{
-   preq: [
-     rule "verify_dkim" || {
-       verify_dkim();
-       if !get_header("Authentication-Results").contains("dkim=pass") {
-         return deny();
-       }
-       // the result of dkim verification is cached, so this call will
-       // not recompute the signature and recreate a header
-       verify_dkim();
+#{
+  preq: [
+    rule "verify_dkim" || {
+      verify_dkim();
+      if !get_header("Authentication-Results").contains("dkim=pass") {
+        return deny();
+      }
+      // the result of dkim verification is cached, so this call will
+      // not recompute the signature and recreate a header
+      verify_dkim();
 
        // FIXME: should be one
        if count_header("Authentication-Results") != 2 {

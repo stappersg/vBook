@@ -62,11 +62,16 @@ The vSMTP reference guide
     - [Configuration](ref/vSL/api/var::cfg.md)
     - [vSL API](ref/vSL/api/var::vsl-api.md)
 
+
+# Plugins
+
 - [Plugins](ref/plugins.md)
-  - [Command](ref/plugins/command.md)
-  - [SMTP](ref/plugins/smtp.md)
-  - [CSV](ref/plugins/csv.md)
-  - [MySQL](ref/plugins/mysql.md)
+- [Command](ref/plugins/command.md)
+  - [Reference](ref/vSL/api/fn::global::cmd.md)
+- [SMTP](ref/plugins/smtp.md)
+  - [Reference](ref/vSL/api/fn::global::vsl-smtp.md)
+- [CSV](ref/plugins/csv.md)
+- [MySQL](ref/plugins/mysql.md)
 
 # Tutorials
 

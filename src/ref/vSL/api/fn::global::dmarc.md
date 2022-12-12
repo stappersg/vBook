@@ -26,8 +26,8 @@ fn dmarc_check(record: Record, rfc5322_from: String, dkim_result: Map, spf_mail_
 <h2 class="func-name"> <code>fn</code> get_dmarc_record </h2>
 
 ```rust,ignore
-fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
 fn get_dmarc_record(server: Server, domain: String) -> Record
+fn get_dmarc_record(server: Server, domain: SharedObject) -> Record
 ```
 
 <details>
