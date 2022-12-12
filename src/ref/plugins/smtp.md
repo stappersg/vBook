@@ -9,7 +9,7 @@ Paired with the `delegate` directive, an incoming email can be delegated to anot
 
 This plugin exposes a single constructor function.
 
-```rust
+```rust,ignore
 export const clamsmtpd = smtp(#{
     delegator: #{
         // The service address to delegate to.
@@ -27,7 +27,7 @@ export const clamsmtpd = smtp(#{
 
 The SMTP plugin must be paired with a `delegation` directive.
 
-```rust
+```rust,ignore
 export const clamsmtpd = smtp(#{
     delegator: #{
         address: "127.0.0.1:10026",
@@ -37,7 +37,7 @@ export const clamsmtpd = smtp(#{
 });
 ```
 
-```rust
+```rust,ignore
 import "service/smtp" as smtp;
 
 #{

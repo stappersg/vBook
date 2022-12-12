@@ -251,7 +251,7 @@ All of them.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     connect: [
        // set "john.doe@example.com" as a blind carbon copy.
@@ -469,7 +469,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     preq: [
        action "append info header" || {
@@ -1329,7 +1329,7 @@ Get all domains of the recipient list.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     mail: [
         action "display recipients domains" || {
@@ -1438,7 +1438,7 @@ All of them.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     mail: [
         // You can also use the `get_local_part(mail_from())` syntax.
@@ -1748,7 +1748,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     rcpt: [
        action "perform lookup" || {
@@ -1891,7 +1891,7 @@ all of them.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     connect: [
        action "raw message" || msg().rewrite_mail_from_message("john.doe@example.com"),
@@ -2422,7 +2422,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     connect: [
        action "perform reverse lookup" || {
@@ -2616,7 +2616,7 @@ all of them.
 
 # Examples
 
-```rust
+```rust,ignore
 #{
     connect: [
        action "raw lookup" || srv().lookup("example.com"),
@@ -2653,7 +2653,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     preq: [
        action "append info header" || {
@@ -2744,7 +2744,7 @@ All of them.
 
 ### Examples
 
-```js
+```rust,ignore
 #{
     rcpt: [
        action "check for local user" || {
@@ -2803,7 +2803,7 @@ Operate the hashing of the `message`'s headers and body, and compare the result 
 
 # Examples
 
-```js
+```rust,ignore
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])
@@ -2880,7 +2880,7 @@ X-Auto-Response-Suppress: All
 
 Changing the header `Subject` will result in a dkim verification failure.
 
-```js
+```rust,ignore
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])

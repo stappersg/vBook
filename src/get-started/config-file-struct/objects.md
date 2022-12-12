@@ -22,7 +22,7 @@ Objects are variables that can be re-used accros your filtering scripts. They ar
 
 Objects are declared using simple functions in a `.vsl` file.
 
-```rust
+```rust,ignore
 export const localhost = ip4("127.0.0.1");
 export const my_address = address("john.doe@example.com");
 // ...
@@ -31,7 +31,7 @@ export const my_address = address("john.doe@example.com");
 
 Then, they can be imported and used in rules.
 
-```rust
+```rust,ignore
 import "objects/net" as net;
 
 #{

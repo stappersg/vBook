@@ -17,7 +17,7 @@ It is possible to filter emails using `.vsl` files for specific domains.
 
 For vSMTP to take a rule path into account, you have to change the configuration in `conf.d/config.vsl` like so:
 
-```rust
+```rust,ignore
 fn on_config(config) {
   config.app.vsl.dirpath = "/etc/vsmtp/domain-enabled";
   return config;
@@ -104,7 +104,7 @@ It is possible to add a specific configuration for each domain.
 
 The `config.vsl` script under a domain must contain, at least, the following statement:
 
-```rust
+```rust,ignore
 fn on_domain_config(config) {
   config
 }
@@ -113,7 +113,7 @@ fn on_domain_config(config) {
 
 Like the root `config.vsl` file, this script contains a callback used to configure the domain. You can configure TLS, DKIM and DNS per domain.
 
-```rust
+```rust,ignore
 fn on_domain_config(config) {
   config.tls = #{
     protocol_version: ["TLSv1.2", "TLSv1.3"],

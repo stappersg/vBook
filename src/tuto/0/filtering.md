@@ -36,7 +36,7 @@ The `incoming.vsl` file is responsible for handling clients that just connected 
 
 Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](../../filtering/transaction.md##root-incoming) section in the [Transaction Context](../../filtering/transaction.md) chapter for more details)
 
-```js
+```rust,ignore
  #{
   rcpt: [
     rule "anti relaying" || deny(),

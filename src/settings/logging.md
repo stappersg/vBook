@@ -6,7 +6,7 @@ Multiple log backends are available for vSMTP.
 
 Those are vSMTP's own log system. they are, by default, written in the `/var/log/vsmtp/vsmtp.log` directory.
 
-```rust
+```rust,ignore
 fn on_config(config) {
     // You can change the location of the logs.
     config.server.logs.filepath = "./tmp/system/vsmtp.log";
@@ -35,7 +35,7 @@ fn on_config(config) {
 
 vSMTP will send server logs to the journald daemon.
 
-```js
+```rust,ignore
 fn on_config(config) {
     config.server.logs.system = #{
         level: "info",
@@ -53,7 +53,7 @@ fn on_config(config) {
 
 vSMTP will send logs to the syslog daemon using the `mail` facility.
 
-```js
+```rust,ignore
 fn on_config(config) {
     config.server.logs.system = #{
         level: "info",

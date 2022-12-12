@@ -12,7 +12,7 @@ ln -s /usr/lib/vsmtp/libvsmtp_plugin_csv.so /etc/vsmtp/plugins/libvsmtp_plugin_c
 
 ## Using the plugin
 
-```js
+```rust,ignore
 import "plugins/libvsmtp_plugin_csv" as db;
 
 export const database = db::csv(#{

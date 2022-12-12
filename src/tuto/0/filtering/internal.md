@@ -5,7 +5,7 @@
 
 Since we already authenticated clients in `outgoing.vsl`, we simply have to setup delivery.
 
-```js
+```rust,ignore
 // let's reuse our bcc code to add Jane as a blind carbon copy.
 import "domain-available/doe-family.com/bcc" as bcc;
 

@@ -61,7 +61,7 @@ You can sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for out
 
 You can verify DKIM signatures of incoming emails by calling the [`verify_dkim`][verify_dkim_fn_ref] function.
 
-```js
+```rust,ignore
 #{
   // ... previous rules ...
 

@@ -29,7 +29,7 @@ Plugins are placed in the `/usr/lib/vsmtp/` directory, and referenced in the con
 
 They are then imported in "services", `.vsl` scripts that configure and use plugins features.
 
-```rust
+```rust,ignore
 import "plugins/my_plugin" as my_plugin;
 
 export const my_plugin_service = my_plugin::do_stuff();

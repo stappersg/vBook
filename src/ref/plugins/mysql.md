@@ -12,7 +12,7 @@ ln -s /usr/lib/vsmtp/libvsmtp_plugin_mysql.so /etc/vsmtp/plugins/libvsmtp_plugin
 
 ## Using the plugin
 
-```rust
+```rust,ignore
 import "plugins/libvsmtp_plugin_mysql" as db;
 
 export const database = db::mysql(#{
@@ -28,7 +28,7 @@ export const database = db::mysql(#{
 
 Using [Rhai arrays](https://rhai.rs/book/language/arrays.html) and [maps](https://rhai.rs/book/language/object-maps.html#object-maps), vSL can easily fetch and update data from a mysql database.
 
-```rust
+```rust,ignore
 // Query the database.
 let records = database.query("...");
 

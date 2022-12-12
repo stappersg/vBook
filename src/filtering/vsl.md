@@ -19,7 +19,7 @@ These sections describe the gist of how the rule system works. Advanced user can
 
 `Rules` may be defined at each step of a SMTP transaction. They return a status code requesting the vSMTP server to deny, accept or quarantine a message.
 
-```js
+```rust,ignore
 // rule "<name>" || {
 //     // <rule body>
 //     return <status-code>;
@@ -38,7 +38,7 @@ rule "my blacklist" || {
 
 `Objects` are typed containers like mailboxes, ip addresses, domain names, file content, etc.
 
-```js
+```rust,ignore
 // object <name> <type> = "<value>";
 
 object example fqdn = "example.com";
@@ -52,7 +52,7 @@ print(`content of whitelist: ${whitelist}`);
 
 `Services` define interfaces with third party software.
 
-```js
+```rust,ignore
 // service <name> <type>[:<content-type>] = "<value>";
 
 // vsmtp will send messages using the smtp protocol

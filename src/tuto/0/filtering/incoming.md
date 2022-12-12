@@ -4,7 +4,7 @@ The `doe-family.com/incoming.vsl` script is run when the sender of the domain is
 
 Thus, when this script is run, all recipients are guaranteed to have the `doe-family.com` domain. We can then deliver emails locally using the Mailbox protocol.
 
-```js
+```rust,ignore
 import "objects/family" as family;
 
 #{
@@ -44,7 +44,7 @@ Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function th
 
 <p class="ann"> adding a new script to the domain </p>
 
-```js
+```rust,ignore
 import "objects/family" as family;
 
 fn bcc_jenny() {

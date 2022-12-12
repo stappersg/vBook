@@ -13,7 +13,7 @@ Root DNS parameters are stored in the `config.server.dns` map.
 
 The default behavior of the root resolver is defined by the operating system `/etc/resolv.conf` file. Alternative configurations such as `Google` or `CloudFlare` Public DNS may be applied using the `type` field in the `server.dns` table.
 
-```rust
+```rust,ignore
 fn on_config(config) {
   config.server.dns.type = "system" | "google" | "cloudflare";
 

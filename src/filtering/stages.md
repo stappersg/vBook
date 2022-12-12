@@ -25,7 +25,7 @@ At each step, vSL updates a context containing transaction and mail data that yo
 
 Stages are declared in `.vsl` files using the following syntax:
 
-```js
+```rust,ignore
 #{
     connect: [
         // rules, actions, delegations ...
