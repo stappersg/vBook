@@ -3,8 +3,6 @@
 Connections should be encrypted using the SSL/TLS protocol, even on a private network.
 TLS can be initiated right after connect on the [address submissions](../../ref/vSL/api/var::cfg.md), or with the STARTTLS mechanism.
 
-Add the following to the `/etc/vsmtp/conf.d/config.vsl` file:
-
 ```js
 fn on_config(config) {
   // Add root TLS settings.
@@ -19,10 +17,11 @@ fn on_config(config) {
   config
 }
 ```
+<p class="ann"> Adding tls configuration to `/etc/vsmtp/conf.d/config.vsl` </p>
 
 > vSMTP only support certificate with the X.509 format.
 
-And edit your `.vsl` rules to add your policy:
+Rules can then be added to filter out unsecure transactions.
 
 ```js
 #{
@@ -38,6 +37,7 @@ And edit your `.vsl` rules to add your policy:
   ]
 }
 ```
+<p class="ann"> Adding rules to check if the transaction is secured </p>
 
 > See the [`is_secured`][is_secured_fn_ref] reference for more details.
 

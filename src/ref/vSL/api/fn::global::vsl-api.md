@@ -378,6 +378,7 @@ fn verify_dkim()
 
 Verify the `DKIM-Signature` header(s) in the mail and produce a `Authentication-Results`.
 If this function has already been called once, it will return the result of the previous call.
+<!-- markdown-link-check-disable-next-line -->
 see https://datatracker.ietf.org/doc/html/rfc6376
 
 # Return

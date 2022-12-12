@@ -18,6 +18,7 @@ Objects are variables that can be re-used accros your filtering scripts. They ar
 +      ┣ net.vsl
 +      ┗ *.vsl
 ```
+<p class="ann"> Adding objects </p>
 
 Objects are declared using simple functions in a `.vsl` file.
 
@@ -26,6 +27,7 @@ export const localhost = ip4("127.0.0.1");
 export const my_address = address("john.doe@example.com");
 // ...
 ```
+<p class="ann"> Declaring an ip and email address using objects </p>
 
 Then, they can be imported and used in rules.
 
@@ -44,5 +46,6 @@ import "objects/net" as net;
   ]
 }
 ```
+<p class="ann"> import and use objects in rules to filter client ips </p>
 
 > For more informations on objects and their usage, check out the [Objects reference](../../filtering/objects.md)

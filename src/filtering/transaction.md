@@ -1,6 +1,6 @@
 # Transaction context
 
-As described in the [`Configuring vSMTP`](../get-started/config-file-struct.md) chapter, sub-domains handled by the configuration of vSMTP have three filtering entry-points: `incoming`, `outgoing` and `internal`.
+As described in the [`Configuring vSMTP`](../get-started/config-file-struct.md) chapter, domains handled by the configuration of vSMTP have three filtering entry-points: `incoming`, `outgoing` and `internal`.
 
 ```diff
 /etc/vsmtp
@@ -16,11 +16,12 @@ As described in the [`Configuring vSMTP`](../get-started/config-file-struct.md) 
 + ┃     ┣ incoming.vsl
 + ┃     ┗ example.com -> ...
 ```
+<p class="ann"> Adding filtering scripts for the `example.com` domain </p>
 
 Here is a diagram of which entry-points are executed following the transaction pipeline.
 
 ![Sub-domain Hierarchy](../assets/uml/sub-domain-hierarchy.svg)
-<p style="text-align: center;"> <i>Rules execution order following the transaction context</i> </p>
+<p class="ann"> Rules execution order following the transaction context </p>
 
 ## Root Incoming ⬜
 
@@ -37,7 +38,7 @@ Finally, if the sender's domain is not handled by the configuration, and that th
   ]
 }
 ```
-<p style="text-align: center;"> <i>anti-relaying using rules in `incoming.vsl`</i> </p>
+<p class="ann"> anti-relaying using rules in `incoming.vsl` </p>
 
 > If this file is not present in the rule directory, it will deny all transactions by default.
 
@@ -50,6 +51,7 @@ MAIL FROM: <john.doe@unknown.com> # We don't have a `unknown.com` folder, this i
 RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `incoming.vsl`.
 RCPT TO:   <bar@example.com>      # Same as above.
 ```
+<p class="ann"> Transaction example </p>
 
 If any recipient domain in this context is not handled by the configuration, then `fallback.vsl` is called.
 
@@ -58,6 +60,7 @@ MAIL FROM: <john.doe@unknown.com> # We don't have a `unknown.com` folder, this i
 RCPT TO:   <foo@example.com>      # `example.com` is handled, we run `example.com/incoming.vsl`.
 RCPT TO:   <bar@anonymous.com>    # We don't have a `unknown.com` folder, the root `incoming.vsl` is used.
 ```
+<p class="ann"> Transaction example </p>
 
 A client should not mix up multiple recipient domains when sending a message to the server. This is why the root incoming script is called when this happens. Once again, if `incoming.vsl` is not defined, the transaction will be denied by default.
 
@@ -70,6 +73,7 @@ MAIL FROM: <john.doe@example.com> # `example.com` exists, this is an outgoing me
 RCPT TO:   <foo@anonymous.com>    # We don't have a `anonymous.com` folder, `outgoing.vsl` is used.
 RCPT TO:   <bar@anonymous.com>    # Same as above.
 ```
+<p class="ann"> Transaction example </p>
 
 ## Internal 🟩
 
@@ -80,6 +84,7 @@ MAIL FROM: <john.doe@example.com> # `example.com` exists, we don't know yet abou
 RCPT TO:   <foo@example.com>    # The domain is the same as the sender, `internal.vsl` is used, it becomes an internal message now.
 RCPT TO:   <bar@example.com>    # Same as above.
 ```
+<p class="ann"> Transaction example </p>
 
 ## Sub domains
 

@@ -9,3 +9,10 @@ pre {
     /* override mdbook default margin for h2/h3 */
     margin-top: 0em;
 }
+
+/* Annotations for a diagram or a snippet */
+.ann {
+    text-align: center;
+    font-size: 0.8em;
+    font-style: italic;
+}

@@ -21,7 +21,7 @@ Here, a member of Doe's family is sending an email to someone else. We just have
 }
 ```
 
-<p style="text-align: center;"> <i>doe-family.com/outgoing.vsl</i> </p>
+<p class="ann"> doe-family.com/outgoing.vsl </p>
 
 > ⚠️ The `authenticate` function uses the `testsaslauthd` program under the hood, itself calling the `saslauthd` daemon.
 > Make sure to install the [Cyrus sasl binary package](https://www.cyrusimap.org/sasl/)for your distribution and configure the `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.

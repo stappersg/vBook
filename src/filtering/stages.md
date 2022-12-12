@@ -1,11 +1,9 @@
 # Stages
 
-vSMTP interacts with the SMTP transaction at all states defined in the SMTP protocol.
-At each step, vSL updates a context containing transaction and mail data that you can query in rules.
+vSMTP interacts with the SMTP transaction at all stages defined in the SMTP protocol.
+At each step, vSL updates a context containing transaction and mail data that you can query in rules and actions.
 
 ## vSMTP stages
-
-Available stages in order of evaluation:
 
 | Stage        | SMTP state                 | Context available               |
 | :----------- | :------------------------- | :------------------------------ |
@@ -17,6 +15,7 @@ Available stages in order of evaluation:
 | preq         | Before queuing[^preq]      | The entire mail.                |
 | postq        | After queuing[^postq]      | The entire mail.                |
 | delivery     | Before delivering          | The entire mail.                |
+<p class="ann"> Available stages in order of evaluation </p>
 
 [^preq]: Preq stage triggers after the end of receiving data from the client, just before the server answers back with a 250 code.
 
@@ -43,6 +42,7 @@ Stages are declared in `.vsl` files using the following syntax:
     // other stages ...
 }
 ```
+<p class="ann"> Declaring stages </p>
 
 > Stages do not need to be declared in the previous given order, but it is a good practice as it makes rules easier to read.
 
@@ -50,7 +50,7 @@ Stages are declared in `.vsl` files using the following syntax:
 
 Rules are combined with stages in `.vsl` files.
 
-```js
+```rust,ignore
 #{
     connect: [
         // This rule is executed once a new client connects to the server.
@@ -72,23 +72,24 @@ Rules are combined with stages in `.vsl` files.
     ],
 }
 ```
+<p class="ann"> Combining stages and rules </p>
 
 Using stages, rules can be run at specific SMTP state, enabling precise email filtering.
 
-> Stages that are not used are omitted, but must appear only once if used.
-> ```js
+> Stages that are not defined are omitted, but must appear only once if used.
+> ```rust,ignore
 > #{
 >   connect: [],
->   // configuration error!
+>   // invalid, 'connect' must only appear once!
 >   connect: [],
 > }
 > ```
 
-## Recommandations
+## Trailing rules
 
-For security purpose, end-users should always add a trailing rule at the end of a stage.
+For security purpose, a trailing rule should be added at the end of a stage.
 
-```js
+```rust,ignore
 #{
     connect: [
         // This rule is executed once a new client connects to the server.
@@ -105,8 +106,9 @@ For security purpose, end-users should always add a trailing rule at the end of 
     ],
 }
 ```
+<p class="ann"> Adding a trailing rule </p>
 
-In a stage, rules are executed **from top to bottom**. In the above example, if the client ip does not equal the 192.168.1.254 ip4, the rule engine jumps to the "trailing" rule, denying the transaction instantly.
+In a stage, rules are executed **from top to bottom**. In the above example, if the client ip does not equal the **192.168.1.254** ip, the rule engine jumps to the "trailing" rule, denying the transaction instantly.
 
 > As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).
 
@@ -116,7 +118,7 @@ In a stage, rules are executed **from top to bottom**. In the above example, if 
 > `connect`, `authenticate`, `helo`, `mail`, `rcpt` and `preq` stages rules are run before an email is enqueued.
 > `postq` and `delivery` stages rules are run after an email is enqueued and the connection with the client is closed.
 
-vSMTP can process mails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection. This is possible by creating rules under the `connect`, `authenticate`, `helo`, `mail`, `rcpt` and `preq` stages.
+vSMTP can process emails before the incoming SMTP mail transfer completes and thus rejects inappropriate mails by sending an SMTP error code and closing the connection. This is possible by creating rules under the `connect`, `authenticate`, `helo`, `mail`, `rcpt` and `preq` stages.
 
 The advantages of an early detection of unwanted mails are:
 

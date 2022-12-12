@@ -15,3 +15,4 @@ $ sudo systemctl status vsmtp
 $ vsmtp -c /path/to/config.vsl --no-daemon
 # this will print errors on stderr.
 ```
+<p class="ann"> Running vsmtp with the `--no-daemon` flag to redirect logs to stderr </p>

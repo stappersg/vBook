@@ -18,14 +18,13 @@ vSMTP support security delegation via the SMTP protocol (all the logics is defin
                         v       |
                   { clamsmtpd daemon } <-> { ClamAV }
 ```
+<p class="ann"> Pipeline of a delegation </p>
 
 ## ClamAV setup
 
 The following example assumes that the `clamsmtpd` service is loaded and started with the following configuration:
 
 ```toml
-## -- /etc/clamsmtpd.conf
-
 # The address to send scanned mail to.
 # This option is required unless TransparentProxy is enabled
 OutAddress: 10025
@@ -37,13 +36,13 @@ Listen: 127.0.0.1:10026
 # event thought it found a virus. (it drops the email by default)
 Action: pass
 ```
-
-Use the following commands to start clamav:
+<p class="ann"> clamav configuration at `/etc/clamsmtpd.conf` </p>
 
 ```shell
 sudo systemctl start clamsmtp
 sudo systemctl start clamav-daemon
 ```
+<p class="ann"> Starting clamav </p>
 
 ## The service
 
@@ -58,21 +57,25 @@ export const clamsmtpd = smtp(#{
   receiver: "127.0.0.1:10025",
 });
 ```
+<p class="ann"> Declaring a SMTP service </p>
 
 The receiver's socket must be enabled in the root config.
 
 ```js
 fn on_config(config) {
   config.server.interfaces = #{
-    //     clients             delegation results
-    addr: ["192.168.1.254:25", "127.0.0.1:10025"],
+    addr: [
+      // Receiver for clients.
+      "192.168.1.254:25",
+      // Receiver for delegation results from clamav.
+      "127.0.0.1:10025"
+    ],
   };
 
   config
 }
 ```
-
-<p style="text-align: center;"> <i>/etc/vsmtp/conf.d/config.vsl</i> </p>
+<p class="ann"> Update the root configuration with a receiver for clamav </p>
 
 ## The delegate keyword
 
@@ -99,8 +102,7 @@ import "services/smtp" as smtp;
   ],
 }
 ```
-
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/doe-family.com/incoming.vsl</i> </p>
+<p class="ann"> Moving infected emails in the `virus_queue` quarantine queue. `/etc/vsmtp/domain-available/doe-family.com/incoming.vsl` </p>
 
 Once the `check email for virus` directive is run, vSMTP will send the email to the `clamsmtpd` service and the rule evaluation is on hold. Once all results are received on the delegation port (10025), evaluation resumes, and the body of this rule is evaluated.
 
