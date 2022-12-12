@@ -70,13 +70,13 @@ export const unknown_quarantine = "doe/bad_user";
 export const virus_queue = "doe/virus";
 
 // A user blacklist file
-export const blacklist = file("conf.d/blacklist.txt", "fqdn");
+export const blacklist = file("domain-available/example.com/blacklist.txt", "fqdn");
 ```
 <p class="ann"> Objects that will be used during filtering </p>
 
 > See the [Object chapter](../../filtering/objects.md) for more information.
 
-Define a blacklist file at `/etc/vsmtp/conf.d/blacklist.txt` with the following contents:
+Define a blacklist file at `/etc/vsmtp/domain-available/example.com/blacklist.txt` with the following contents:
 
 ```text
 domain-spam.com
@@ -92,8 +92,10 @@ The file structure of `/etc/vsmtp` should now look like this.
 /etc/vsmtp/
  ┣ vsmtp.vsl
  ┣ conf.d/
- ┃      ┣ config.vsl
-+┃      ┗ blacklist.txt
+ ┃      ┗ config.vsl
+ ┣ domain-available/
++┃      ┗ example.com/
++┃          ┗ blacklist.txt
 +┗ objects/
 +       ┗ family.vsl
 ```
