@@ -83,6 +83,7 @@ The vSMTP reference guide
   - [DKIM](tuto/0/dkim.md)
   - [Antivirus](tuto/0/antivirus.md)
 - [Greylist](tuto/1/greylist.md)
+- [Using SPF](tuto/4/spf.md)
 - [Using DKIM](tuto/3/dkim.md)
 - [Dealing with Null MX records](tuto/2/nullmx.md)
 
