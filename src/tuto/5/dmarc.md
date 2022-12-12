@@ -17,6 +17,8 @@ We will setup DMARC in this tutorial by:
 - Setting up DKIM.
 - Adding filtering using DMARC.
 
+We will use the `example.com` domain for this example, but feel free to replace it by your own domain.
+
 ## Setup SPF
 
 See the [`Using SPF`](../4/spf.md) tutorial.
@@ -26,6 +28,8 @@ See the [`Using SPF`](../4/spf.md) tutorial.
 See the [`Using SPF`](../3/dkim.md) tutorial.
 
 ## Filtering with DMARC
+
+Add this rule to the `domain-available/example.com/incoming.vsl` script.
 
 ```rust,ignore
 #{

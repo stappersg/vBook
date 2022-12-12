@@ -7,9 +7,11 @@ In this tutorial, we will set up DKIM by:
 - Generate keys to encrypt and verify emails.
 - Add filtering for incoming and outgoing emails using DKIM.
 
+We will use the `example.com` domain for this example, but feel free to replace it by your own domain.
+
 ## Configure the DNS
 
-A new DNS record is added into the desired DNS zone. This record declares the public key usable to verify the messages. (See the [DKIM chapter](../tuto/0/dkim/details.md) for more details)
+A new DNS record is added into the `example.com` DNS zone. This record declares the public key usable to verify the messages. (See the [DKIM chapter](../tuto/0/dkim/details.md) for more details)
 
 > TODO: add command line example.
 
