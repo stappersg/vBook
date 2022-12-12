@@ -31,7 +31,6 @@ The vSMTP reference guide
 - [Settings](settings/settings.md)
   - [Logging system](settings/logging.md)
   - [DNS configuration](settings/dns.md)
-  - [Null MX](settings/nullmx.md)
   - [DMARC](settings/dmarc.md)
   - [ARC 🚧]()
   - [BIMI 🚧]()
@@ -87,6 +86,7 @@ The vSMTP reference guide
     - [What is DKIM ?](tuto/0/dkim/details.md)
   - [Antivirus](tuto/0/antivirus.md)
 - [Greylist](tuto/1/greylist.md)
+- [Dealing with Null MX records](tuto/2/nullmx.md)
 
 # Terminology
 
