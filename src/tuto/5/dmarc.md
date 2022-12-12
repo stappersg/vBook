@@ -31,7 +31,7 @@ See the [`Using SPF`](../3/dkim.md) tutorial.
 
 Add this rule to the `domain-available/example.com/incoming.vsl` script.
 
-```rust,ignore
+```
 #{
   preq: [
     rule "check dmarc" || check_dmarc(),

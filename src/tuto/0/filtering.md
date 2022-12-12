@@ -13,35 +13,60 @@ For this example, we will configure the following rules:
 - As Jenny is 11 years old, Jane wants her address to be added as a blind carbon copy of messages destined to her daughter.
 - Messages sent to the family must be delivered in Mailbox format.
 
-## Root incoming
+## Configuration
 
-In the [`Listen and serve`](##listen-and-serve) section of the previous chapter, we defined `/etc/vsmtp/domain-enabled` as the rule folder. Let's start with the root `incoming.vsl` script in this directory.
+Let's first add our filters in the `/etc/vsmtp/conf.d/config.vsl` script.
+
+```diff,rust,ignore
+  fn on_config(config) {
+    // Name of the server.
+    config.server.name = "doe-family.com";
+
+    // addresses that the server will listen to.
+    // (change `192.168.1.254` for the address you want to listen to)
+    config.server.interfaces = #{
+      addr: ["192.168.1.254:25"],
+      addr_submission: ["192.168.1.254:587"],
+      addr_submissions: ["192.168.1.254:465"],
+    };
+
++  // Root filter.
++  config.app.vsl.filter_path = "/etc/vsmtp/filter.vsl";
++  // Domain specific filters.
++  config.app.vsl.domain_dir = "/etc/vsmtp/domain-enabled";
+
+    config
+  }
+```
+
+## Root Filter
+
+Let's define the root filter for incoming emails.
 
 ```diff
 /etc/vsmtp/
  ┣ vsmtp.vsl
++┣ filter.vsl
  ┣ conf.d/
  ┃      ┣ config.vsl
  ┃      ┗ *.vsl
-+┣ domain-enabled/
-+┃      ┗ incoming.vsl
  ┗ objects/
         ┗ family.vsl
 ```
 <p class="ann"> Adding the root filtering script </p>
 
-The `incoming.vsl` file is responsible for handling clients that just connected to vSMTP.
+The `filter.vsl` script is responsible for handling clients that just connected to vSMTP.
 
 ### Add anti-relaying
 
 Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](../../filtering/transaction.md##root-incoming) section in the [Transaction Context](../../filtering/transaction.md) chapter for more details)
 
-```rust,ignore
- #{
+```
+#{
   rcpt: [
     rule "anti relaying" || deny(),
   ]
- }
+}
 ```
 <p class="ann"> /etc/vsmtp/domain-enabled/incoming.vsl </p>
 
@@ -69,7 +94,7 @@ We can add the blacklist we defined in the [Blacklist section](basic.md#blacklis
   ]
 }
 ```
-<p class="ann"> /etc/vsmtp/domain-enabled/incoming.vsl </p>
+<p class="ann"> /etc/vsmtp/filter.vsl </p>
 
 The `do not deliver untrusted domains` rule will save any email from senders found in the blacklist in a quarantine folder named "untrusted" and will not deliver the email.
 
@@ -80,6 +105,7 @@ Let's create filtering rules for the `doe-family.com` domain.
 ```diff
 /etc/vsmtp
   ┣ vsmtp.vsl
+  ┣ filter.vsl
   ┣ conf.d/
   ┃      ┣ config.vsl
   ┃      ┗ *.vsl
@@ -89,11 +115,10 @@ Let's create filtering rules for the `doe-family.com` domain.
 + ┃         ┣ outgoing.vsl
 + ┃         ┗ internal.vsl
   ┣ domain-enabled/
-  ┃     ┣ incoming.vsl
 + ┃     ┗ example.com -> /etc/vsmtp/domain-available/doe-family.com
   ┗ objects/
        ┗ family.vsl
 ```
-<p class="ann"> adding filtering scripts for the doe-family.com domain </p>
+<p class="ann"> adding filtering scripts for the `doe-family.com` domain </p>
 
 vSMTP will pickup `incoming.vsl`, `outgoing.vsl` and `internal.vsl` scripts under a folder with a fully qualified domain name. Those rules will be run following [vSMTP's transaction logic](../../filtering/transaction.md). Let's define rules for each cases.

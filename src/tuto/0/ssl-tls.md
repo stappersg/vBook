@@ -23,9 +23,9 @@ fn on_config(config) {
 
 Rules can then be added to filter out unsecure transactions.
 
-```rust,ignore
+```
 #{
-  mail: [
+  helo: [
     rule "deny unencrypted" || {
       // You can customize your policy to whitelist some ip or anything
       if is_secured() {
@@ -37,7 +37,7 @@ Rules can then be added to filter out unsecure transactions.
   ]
 }
 ```
-<p class="ann"> Adding rules to check if the transaction is secured </p>
+<p class="ann"> Adding rules to check if the transaction is secured in `/etc/vsmtp/filter.vsl` </p>
 
 > See the [`is_secured`][is_secured_fn_ref] reference for more details.
 

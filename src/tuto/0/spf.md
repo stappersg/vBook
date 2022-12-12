@@ -16,7 +16,7 @@ For incoming messages, SPF is configured to check that the sending host is autho
 
 Edit the `/etc/vsmtp/domain-enabled/filter.vsl` file and add the following rule.
 
-```rust,ignore
+```
 #{
   mail: [
     rule "check spf" || check_spf("both", "soft"),

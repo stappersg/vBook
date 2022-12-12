@@ -4,7 +4,7 @@ The `doe-family.com/incoming.vsl` script is run when the sender of the domain is
 
 Thus, when this script is run, all recipients are guaranteed to have the `doe-family.com` domain. We can then deliver emails locally using the Mailbox protocol.
 
-```rust,ignore
+```
 import "objects/family" as family;
 
 #{
@@ -26,6 +26,7 @@ Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function th
 ```diff
 /etc/vsmtp
  ┣ vsmtp.vsl
+ ┣ filter.vsl
  ┣ conf.d/
  ┃      ┣ config.vsl
  ┃      ┗ *.vsl
@@ -36,7 +37,6 @@ Jane wants a blind copy of her Jenny's messages. Let's create a Rhai function th
  ┃         ┣ outgoing.vsl
  ┃         ┗ internal.vsl
  ┣ domain-enabled/
- ┃     ┣ incoming.vsl
  ┃     ┗ example.com -> ...
  ┗ objects/
        ┗ family.vsl

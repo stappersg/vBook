@@ -15,17 +15,22 @@ A new DNS record is added into the `doe-family.com` DNS zone. It declares the pu
 
 ## Configure vSMTP for DKIM
 
-Add the following to the `on_config` function body in the `/etc/vsmtp/conf.d/config.vsl` file:
+Add the following line to the `on_config` function body in the root configuration.
 
 ```rust,ignore
-config.server.dkim.private_key = ["/path/to/private-key"];
+fn on_config(config) {
+  config.server.dkim.private_key = ["/path/to/private-key"];
+
+  config
+}
 ```
+<p class="ann">  `/etc/vsmtp/conf.d/config.vsl` </p>
 
 ## Add signatures
 
 The `dkim_sign` function is used to sign your email. Use it in the `postq` stage like so:
 
-```rust,ignore
+```
 #{
   // ... previous rules ...
 
@@ -57,7 +62,7 @@ The `dkim_sign` function is used to sign your email. Use it in the `postq` stage
 
 ## Verify signatures
 
-```rust,ignore
+```
 #{
   // ... previous rules ...
 

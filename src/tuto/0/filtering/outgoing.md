@@ -4,7 +4,7 @@
 
 Here, a member of Doe's family is sending an email to someone else. We just have to verify that the sender is legitimate by asking the client to authenticate itself to vSMTP. If the authentication fails, this probably means that a spammer tried to use our server as a relay. The `authenticate()` function automatically denies the transaction if the authentication failed.
 
-```rust,ignore
+```
 #{
   authenticate: [
     rule "sasl authentication" || authenticate(),
@@ -21,7 +21,7 @@ Here, a member of Doe's family is sending an email to someone else. We just have
 }
 ```
 
-<p class="ann"> doe-family.com/outgoing.vsl </p>
+<p class="ann"> /etc/vsmtp/domain-available/doe-family.com/outgoing.vsl </p>
 
 > ⚠️ The `authenticate` function uses the `testsaslauthd` program under the hood, itself calling the `saslauthd` daemon.
 > Make sure to install the [Cyrus sasl binary package](https://www.cyrusimap.org/sasl/)for your distribution and configure the `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.

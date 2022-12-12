@@ -31,10 +31,6 @@ fn on_config(config) {
     addr_submissions: ["192.168.1.254:465"],
   };
 
-  // The folder containing filtering rules.
-  config.app.vsl.filter_path = "/etc/vsmtp/filter.vsl";
-  config.app.vsl.domain_dir = "/etc/vsmtp/domain-enabled";
-
   config
 }
 ```
