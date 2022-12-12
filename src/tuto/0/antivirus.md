@@ -80,6 +80,7 @@ fn on_config(config) {
 Create the antivirus passthrough using the `delegate` keyword in the `/etc/vsmtp/domain-available/doe-family.com/incoming.vsl` script.
 
 ```rust,ignore
+import "objects/family" as family;
 import "services/smtp" as smtp;
 
 #{
@@ -90,7 +91,7 @@ import "services/smtp" as smtp;
 
       // ClamAV inserts the "X-Virus-Infected" header if it found a virus.
       if has_header("X-Virus-Infected") {
-        quarantine("virus_queue")
+        quarantine(family::virus_queue)
       } else {
         next()
       }

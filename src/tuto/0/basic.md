@@ -14,7 +14,7 @@ When installing vSMTP, the package manager creates the following basic configura
 ```
 <p class="ann"> vSMTP default configuration </p>
 
-## Listen and serve
+## Configure vSMTP
 
 Modify the [`/etc/vsmtp/conf.d/config.vsl`](../../get-started/config-file-struct/root.md) file with this configuration:
 
@@ -32,7 +32,8 @@ fn on_config(config) {
   };
 
   // The folder containing filtering rules.
-  config.app.vsl.dirpath = "/etc/vsmtp/domain-enabled";
+  config.app.vsl.filter_path = "/etc/vsmtp/filter.vsl";
+  config.app.vsl.domain_dir = "/etc/vsmtp/domain-enabled";
 
   config
 }
@@ -45,15 +46,13 @@ fn on_config(config) {
 
 The server can now listen and serve SMTP connections.
 
+## Filtering objects
+
 Let's define all the required objects for John Doe's MTA. Those objects are used to configure vSMTP and simplify filtering rules.
 
 Create the `/etc/vsmtp/objects/family.vsl` file with following objects:
 
 ```js
-// IP addresses of the MTA and the internal IP range.
-export const local_mta = ip4("192.168.1.254");
-export const internal_net = rg4("192.168.0.0/24");
-
 // Doe's family domain name.
 export const domain = fqdn("doe-family.com");
 
@@ -66,8 +65,8 @@ export const jenny = address("jenny.doe@doe-family.com");
 export const addresses = [john, jane, jimmy, jenny];
 
 // Paths for quarantines.
-export const unknown_quarantine = "doe/bad_user";
-export const virus_queue = "doe/virus";
+export const virus_queue = "virus";
+export const untrusted_queue = "untrusted";
 
 // A user blacklist file
 export const blacklist = file("domain-available/example.com/blacklist.txt", "fqdn");
@@ -75,6 +74,8 @@ export const blacklist = file("domain-available/example.com/blacklist.txt", "fqd
 <p class="ann"> Objects that will be used during filtering </p>
 
 > See the [Object chapter](../../filtering/objects.md) for more information.
+
+## Blacklist
 
 Define a blacklist file at `/etc/vsmtp/domain-available/example.com/blacklist.txt` with the following contents:
 
@@ -85,6 +86,8 @@ domain-spammers.com
 foobar-spam-pro.org
 ```
 <p class="ann"> Blacklist content </p>
+
+## Listen and serve
 
 The file structure of `/etc/vsmtp` should now look like this.
 
