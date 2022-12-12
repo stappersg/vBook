@@ -4,7 +4,7 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(this: SharedObject, other: SharedObject) -> bool
 ```
 
@@ -20,7 +20,7 @@ Operator `!=` for `SharedObject`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(this: String, other: SharedObject) -> bool
 ```
 
@@ -36,7 +36,7 @@ Operator `!=` for `&str` and `SharedObject`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn !=(this: SharedObject, s: String) -> bool
 ```
 
@@ -52,7 +52,7 @@ Operator `!=` for `SharedObject` and `&str`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(this: String, other: SharedObject) -> bool
 ```
 
@@ -68,7 +68,7 @@ Operator `==` for `&str` and `SharedObject`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(this: SharedObject, other: SharedObject) -> bool
 ```
 
@@ -84,7 +84,7 @@ Operator `==` for `SharedObject`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ==(this: SharedObject, s: String) -> bool
 ```
 
@@ -100,7 +100,7 @@ Operator `==` for `SharedObject` and `&str`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn address(address: String) -> VSLObject
 ```
 
@@ -116,7 +116,7 @@ an email address (jones@foo.com)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn code(code: int, text: String) -> VSLObject
 ```
 
@@ -132,7 +132,7 @@ A SMTP code with the code and message as parameter.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn code(code: int, enhanced: String, text: String) -> VSLObject
 ```
 
@@ -148,7 +148,7 @@ A SMTP code with the code and message as parameter and an enhanced code.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(this: SharedObject, s: String) -> bool
 ```
 
@@ -164,7 +164,7 @@ Operator `contains`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(map: Map, object: SharedObject) -> bool
 ```
 
@@ -174,7 +174,7 @@ fn contains(map: Map, object: SharedObject) -> bool
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn contains(this: SharedObject, other: SharedObject) -> bool
 ```
 
@@ -190,7 +190,7 @@ Operator `contains`
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn file(path: String, content_type: String) -> Array
 ```
 
@@ -206,7 +206,7 @@ the content of a file.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn fqdn(domain: String) -> VSLObject
 ```
 
@@ -222,7 +222,7 @@ a valid fully qualified domain name (foo.com)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get domain(addr: VSLObject) -> VSLObject
 ```
 
@@ -238,7 +238,7 @@ Get the `domain` of an email address
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get domains(container: Array) -> Array
 ```
 
@@ -254,7 +254,7 @@ Get the `domains` of an array of email address
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get local_part(addr: VSLObject) -> String
 ```
 
@@ -270,7 +270,7 @@ Get the `local part` of an email address
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn get local_parts(container: Array) -> Array
 ```
 
@@ -286,7 +286,7 @@ Get the user identifier of a list of email address.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn identifier(identifier: String) -> VSLObject
 ```
 
@@ -302,7 +302,7 @@ a user identifier.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ip4(ip: String) -> VSLObject
 ```
 
@@ -318,7 +318,7 @@ Build an ip4 address. (a.b.c.d)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn ip6(ip: String) -> VSLObject
 ```
 
@@ -334,7 +334,7 @@ Build an ip6 address. (x:x:x:x:x:x:x:x)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn regex(regex: String) -> VSLObject
 ```
 
@@ -350,7 +350,7 @@ a regex (^[a-z0-9.]+@foo.com$)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rg4(range: String) -> VSLObject
 ```
 
@@ -366,7 +366,7 @@ an ip v4 range. (a.b.c.d/range)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn rg6(range: String) -> VSLObject
 ```
 
@@ -382,7 +382,7 @@ an ip v6 range. (x:x:x:x:x:x:x:x/range)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_debug(this: VSLObject) -> String
 ```
 
@@ -398,7 +398,7 @@ Convert a `SharedObject` to a debug string
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 5px; border-radius: 5px;'>
 
-```rust,ignore
+```rust
 fn to_string(this: VSLObject) -> String
 ```
 

@@ -437,7 +437,7 @@ All of them.
 <h2 class="func-name"> <code>fn</code> rewrite_mail_from_envelop </h2>
 
 ```rust,ignore
-fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
+fn rewrite_mail_from_envelop(context: Context, new_addr: String) -> ()
 
 ```
 
@@ -448,7 +448,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 
 # Args
 
-* `new_addr` - the new sender address to set.
+* `new_addr` - the new string sender address to set.
 
 # Effective smtp stage
 
@@ -459,7 +459,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || rewrite_mail_from_envelop(address("unknown@example.com")),
+       action "rewrite envelop" || rewrite_mail_from_envelop("unknown@example.com"),
     ]
 }
 ```
@@ -474,8 +474,8 @@ Rewrite the sender received from the `MAIL FROM` command.
 <h2 class="func-name"> <code>fn</code> rewrite_rcpt_envelop </h2>
 
 ```rust,ignore
+fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
-fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
 fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
 ```
 
@@ -498,7 +498,7 @@ Replace a recipient received by a `RCPT TO` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", "john.main@example.com"),
+       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), address("john.main@example.com")),
     ]
 }
 ```
@@ -513,14 +513,14 @@ Replace a recipient received by a `RCPT TO` command.
 <h2 class="func-name"> <code>fn</code> to_debug </h2>
 
 ```rust,ignore
-fn to_debug(context: Server) -> String
+fn to_debug(context: Context) -> String
 
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Server` to a debug string.
+Convert a `Context` to a debug string.
 </details>
 
 </div>

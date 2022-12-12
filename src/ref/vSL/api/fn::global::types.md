@@ -26,14 +26,14 @@ Operator `!=` for `Status`
 <h2 class="func-name"> <code>fn</code> to_debug </h2>
 
 ```rust,ignore
-fn to_debug(this: OffsetDateTime) -> String
 fn to_debug(status: Status) -> String
+fn to_debug(this: OffsetDateTime) -> String
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `time::OffsetDateTime` to a `String`
+Convert a `Status` to a debug string
 </details>
 
 </div>
@@ -45,14 +45,14 @@ Convert a `time::OffsetDateTime` to a `String`
 <h2 class="func-name"> <code>fn</code> to_string </h2>
 
 ```rust,ignore
-fn to_string(status: Status) -> String
+fn to_string(this: OffsetDateTime) -> String
 
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Status` to a `String`
+Convert a `time::OffsetDateTime` to a `String`
 </details>
 
 </div>

@@ -7,8 +7,8 @@
 <h2 class="func-name"> <code>fn</code> add_rcpt_message </h2>
 
 ```rust,ignore
-fn add_rcpt_message(message: Message, new_addr: SharedObject) -> ()
 fn add_rcpt_message(message: Message, new_addr: String) -> ()
+fn add_rcpt_message(message: Message, new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -29,7 +29,7 @@ Add a recipient to the `To` header of the message.
 ```
 #{
     preq: [
-       action "update recipients" || add_rcpt_message(address("john.doe@example.com")),
+       action "update recipients" || add_rcpt_message("john.doe@example.com"),
     ]
 }
 ```
@@ -44,7 +44,7 @@ Add a recipient to the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> remove_rcpt_message </h2>
 
 ```rust,ignore
-fn remove_rcpt_message(message: Message, addr: SharedObject) -> ()
+fn remove_rcpt_message(message: Message, addr: String) -> ()
 
 ```
 
@@ -66,7 +66,7 @@ Remove a recipient from the `To` header of the message.
 ```
 #{
     preq: [
-       action "update recipients" || remove_rcpt_message(address("john.doe@example.com")),
+       action "update recipients" || remove_rcpt_message("john.doe@example.com"),
     ]
 }
 ```
@@ -81,7 +81,7 @@ Remove a recipient from the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> rewrite_mail_from_message </h2>
 
 ```rust,ignore
-fn rewrite_mail_from_message(message: Message, new_addr: SharedObject) -> ()
+fn rewrite_mail_from_message(message: Message, new_addr: String) -> ()
 
 ```
 
@@ -103,7 +103,7 @@ Change the sender's address in the `From` header of the message.
 ```
 #{
     preq: [
-       action "replace sender" || rewrite_mail_from_message(address("john.server@example.com")),
+       action "replace sender" || rewrite_mail_from_message("john.server@example.com"),
     ]
 }
 ```
@@ -118,9 +118,9 @@ Change the sender's address in the `From` header of the message.
 <h2 class="func-name"> <code>fn</code> rewrite_rcpt_message </h2>
 
 ```rust,ignore
-fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
-fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: SharedObject) -> ()
 fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
 ```
 
 <details>
@@ -142,7 +142,7 @@ Replace a recipient by an other in the `To` header of the message.
 ```
 #{
     preq: [
-       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", "john-mta@example.com"),
+       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", address("john-mta@example.com")),
     ]
 }
 ```

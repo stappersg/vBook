@@ -7,15 +7,15 @@
 <h2 class="func-name"> <code>fn</code> != </h2>
 
 ```rust,ignore
-fn !=(this: String, other: SharedObject) -> bool
-fn !=(this: SharedObject, s: String) -> bool
 fn !=(this: SharedObject, other: SharedObject) -> bool
+fn !=(this: SharedObject, s: String) -> bool
+fn !=(this: String, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `!=` for `&str` and `SharedObject`
+Operator `!=` for `SharedObject`
 </details>
 
 </div>
@@ -27,14 +27,14 @@ Operator `!=` for `&str` and `SharedObject`
 <h2 class="func-name"> <code>fn</code> == </h2>
 
 ```rust,ignore
+fn ==(this: SharedObject, other: SharedObject) -> bool
 fn ==(this: String, other: SharedObject) -> bool
-fn ==(this: SharedObject, s: String) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `&str` and `SharedObject`
+Operator `==` for `SharedObject`
 </details>
 
 </div>
@@ -65,8 +65,8 @@ A SMTP code with the code and message as parameter.
 <h2 class="func-name"> <code>fn</code> contains </h2>
 
 ```rust,ignore
-fn contains(this: SharedObject, other: SharedObject) -> bool
 fn contains(this: SharedObject, s: String) -> bool
+fn contains(map: Map, object: SharedObject) -> bool
 ```
 
 <details>

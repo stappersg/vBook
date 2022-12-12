@@ -181,7 +181,7 @@ Operate the hashing of the `message`'s headers and body, and compare the result 
 
 # Examples
 
-```rust,ignore
+```
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])
@@ -225,10 +225,7 @@ X-Auto-Response-Suppress: All
 
 
 "#;
-# let msg = vsmtp_mail_parser::MessageBody::try_from(msg[1..].replace("\n", "\r\n").as_str()).unwrap();
 
-# let states = vsmtp_test::vsl::run_with_msg(
-#    |builder| Ok(builder.add_root_incoming_rules(r#"
  // Rules
  #{
    preq: [
@@ -250,15 +247,11 @@ X-Auto-Response-Suppress: All
      }
    ]
  }
-# "#)?.build()), Some(msg));
-# use vsmtp_common::{status::Status, CodeID};
-# use vsmtp_rule_engine::ExecutionStage;
-# assert_eq!(states[&ExecutionStage::PreQ].2, Status::Accept(either::Left(CodeID::Ok)));
 ```
 
 Changing the header `Subject` will result in a dkim verification failure.
 
-```rust,ignore
+```
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])

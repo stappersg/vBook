@@ -8,9 +8,9 @@
 
 ```rust,ignore
 fn log(level: String, message: SharedObject)
+fn log(level: String, message: String)
 fn log(level: SharedObject, message: SharedObject)
 fn log(level: SharedObject, message: String)
-fn log(level: String, message: String)
 ```
 
 <details>
