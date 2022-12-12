@@ -12,7 +12,7 @@ import "objects/family" as family;
     action "setup delivery" || {
       for rcpt in rcpt_list() {
         // Deliver locally using Mailbox if the recipient is from Doe's family.
-        if rcpt in family::family_addr { mailbox(rcpt) }
+        if rcpt in family::addresses { mailbox(rcpt) }
       }
     }
   ],

@@ -32,6 +32,8 @@ In the [`Listen and serve`](##listen-and-serve) section of the previous chapter,
 
 The `incoming.vsl` file is responsible for handling clients that just connected to vSMTP.
 
+### Add anti-relaying
+
 Let's setup anti-relaying by adding the following rule. (See the [Root Incoming](../../filtering/transaction.md##root-incoming) section in the [Transaction Context](../../filtering/transaction.md) chapter for more details)
 
 ```js
@@ -43,17 +45,19 @@ Let's setup anti-relaying by adding the following rule. (See the [Root Incoming]
 ```
 <p class="ann"> /etc/vsmtp/domain-enabled/incoming.vsl </p>
 
-We can add a blacklist of sender domains that we do not trust too.
+### Use the blacklist
 
-```diff js
+We can add the blacklist we defined in the [Blacklist section](basic.md#blacklist) to filter out sender domains that we do not trust.
+
+```diff,rust,ignore
 // Importing objects that we defined in the last chapter.
 +import "objects/family" as family;
 
 #{
 + mail: [
 +   rule "do not deliver untrusted domains" || {
-+       if mail_from() in family::untrusted {
-+           quarantine("untrusted")
++       if mail_from().domain in family::blacklist {
++           quarantine(family::untrusted_queue)
 +       } else {
 +           next()
 +       }
@@ -67,7 +71,7 @@ We can add a blacklist of sender domains that we do not trust too.
 ```
 <p class="ann"> /etc/vsmtp/domain-enabled/incoming.vsl </p>
 
-The "do not deliver untrusted domains" rule will save any email from senders  addresses that match the `family::untrusted` regex in a quarantine folder named "untrusted", and will not deliver the email.
+The `do not deliver untrusted domains` rule will save any email from senders found in the blacklist in a quarantine folder named "untrusted" and will not deliver the email.
 
 ## Filtering for doe-family.com
 
