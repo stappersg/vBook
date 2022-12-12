@@ -1,4 +1,3 @@
-
 # What is SPF ?
 
 This document describes the vSMTP implementation of the Sender Policy Framework (SPF) protocol. SPF specifications are available in the [RFC 7208](https://www.rfc-editor.org/rfc/rfc7208.html) document.

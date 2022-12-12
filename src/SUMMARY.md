@@ -31,7 +31,7 @@ The vSMTP reference guide
 - [Settings](settings/settings.md)
   - [Logging system](settings/logging.md)
   - [DNS configuration](settings/dns.md)
-  - [DMARC](settings/dmarc.md)
+  - [DKIM](settings/dkim.md)
   - [ARC 🚧]()
   - [BIMI 🚧]()
   - [DANE 🚧]()
@@ -79,19 +79,20 @@ The vSMTP reference guide
     - [Internal messages](tuto/0/filtering/internal.md)
   - [SSL/TLS](tuto/0/ssl-tls.md)
   - [SPF](tuto/0/spf.md)
-    - [Filtering](tuto/0/spf/filtering.md)
-    - [What is SPF ?](tuto/0/spf/details.md)
   - [DKIM](tuto/0/dkim.md)
-    - [Filtering](tuto/0/dkim/filtering.md)
-    - [What is DKIM ?](tuto/0/dkim/details.md)
   - [Antivirus](tuto/0/antivirus.md)
 - [Greylist](tuto/1/greylist.md)
+- [Using SPF](tuto/4/spf.md)
+- [Using DKIM](tuto/3/dkim.md)
+- [Using DMARC](tuto/5/dmarc.md)
 - [Dealing with Null MX records](tuto/2/nullmx.md)
 
 # Terminology
 
 - [Mail Agent](term/agent.md)
 - [Authentication Mechanisms](term/authentication.md)
+- [What is SPF ?](term/spf.md)
+- [What is DKIM ?](term/dkim.md)
 
 # Trouble shooting
 

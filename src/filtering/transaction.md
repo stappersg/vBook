@@ -12,9 +12,9 @@ As described in the [`Configuring vSMTP`](../get-started/config-file-struct.md) 
 + ┃         ┣ incoming.vsl
 + ┃         ┣ outgoing.vsl
 + ┃         ┗ internal.vsl
-+ ┣ domain-enabled/
-+ ┃     ┣ incoming.vsl
-+ ┃     ┗ example.com -> ...
++ ┗ domain-enabled/
++       ┣ incoming.vsl
++       ┗ example.com -> ...
 ```
 <p class="ann"> Adding filtering scripts for the `example.com` domain </p>
 
