@@ -1,72 +1,30 @@
-# DomainKeys Identified Mail
+# DomainKeys Identified Mail (DKIM)
 
-A new DNS record is added into the desired DNS zone. This record declares the public key usable to verify the messages. (See the [DKIM chapter](../tuto/0/dkim/details.md) for more details)
+DKIM is an open standard for email authentication used to check the integrity of the content of an email.
+vSMTP exposes filtering rules and configuration to setup DKIM and secure your server.
 
-> TODO: add command line example.
+## Key configuration
 
-## Configure vSMTP for DKIM
+The path to a private key for DKIM can be specified in the `/etc/vsmtp/conf.d/config.vsl` script:
 
-Add the following to the `on_config` function body in the `/etc/vsmtp/conf.d/config.vsl` file:
-
-```js
-config.server.dkim.private_key = ["/path/to/private-key"];
-```
-
-## Add signatures
-
-The `dkim_sign` function is used to sign your email. Use it in the `postq` stage like so:
-
-```js
-#{
-  // ... previous rules ...
-
-  postq: [
-    action "sign dkim" || {
-      // Iterate over all the private keys defined for the server 'example.com'
-
-      for i in get_private_keys(srv(), "example.com") {
-        sign_dkim(
-          // Selector of the DNS record.
-          "2022-09",
-          // The private key associated with the public key in `{selector}._domainkey.{sdid}`
-          // Or `2022-09._domainkey.example.com.` in that case
-          i,
-          // Headers to sign with.
-          ["From", "To", "Date", "Subject", "From"],
-          // Canonicalization algorithm to use.
-          "simple/relaxed"
-        );
-      }
-    }
-  ],
+```rust,ignore
+fn on_config(config) {
+  config.server.dkim.private_key = ["/path/to/private-key-1", "/path/to/private-key-2", ...];
+  config
 }
 ```
+<p class="ann"> Configuring DKIM keys </p>
 
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/example.com/outgoing.vsl</i> </p>
+You can also configure keys per domain.
 
-> See the [`dkim_sign`][sign_dkim_fn_ref] reference for more details.
-
-## Verify signatures
-
-```js
-#{
-  // ... previous rules ...
-
-  postq: [
-    rule "verify DKIM signatures" || {
-      if verify_dkim().status == "pass" {
-        accept()
-      } else {
-        deny()
-      }
-    }
-  ],
+```rust,ignore
+fn on_domain_config(config) {
+  config.dkim.private_key = ["/path/to/private-key-1", "/path/to/private-key-2", ...];
+  config
 }
 ```
+<p class="ann"> Configuring DKIM keys for a specific domain (f.e. example.com)</p>
 
-<p style="text-align: center;"> <i>/etc/vsmtp/domain-available/example.com/incoming.vsl</i> </p>
+> If a key cannot be found for a specific domain, the root dkim keys are used instead.
 
-> See the [`verify_dkim`][verify_dkim_fn_ref] reference for more details.
-
-[verify_dkim_fn_ref]: ../ref/vSL/api/fn::global::dkim.md
-[sign_dkim_fn_ref]: ../ref/vSL/api/fn::global::dkim.md
+> Check out the [`Using DKIM`](../tuto/3/dkim.md) tutorial to setup filtering using DKIM.
