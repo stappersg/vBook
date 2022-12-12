@@ -1,4 +1,4 @@
-# Setup DKIM
+# Using DKIM
 
 DKIM is an open standard for email authentication used to check the integrity of the content of an email.
 In this tutorial, we will set up DKIM by:

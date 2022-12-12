@@ -32,7 +32,6 @@ The vSMTP reference guide
   - [Logging system](settings/logging.md)
   - [DNS configuration](settings/dns.md)
   - [DKIM](settings/dkim.md)
-  - [DMARC](settings/dmarc.md)
   - [ARC 🚧]()
   - [BIMI 🚧]()
   - [DANE 🚧]()
@@ -85,6 +84,7 @@ The vSMTP reference guide
 - [Greylist](tuto/1/greylist.md)
 - [Using SPF](tuto/4/spf.md)
 - [Using DKIM](tuto/3/dkim.md)
+- [Using DMARC](tuto/5/dmarc.md)
 - [Dealing with Null MX records](tuto/2/nullmx.md)
 
 # Terminology
