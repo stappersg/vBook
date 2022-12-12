@@ -11,7 +11,7 @@ We will use the `example.com` domain for this example, but feel free to replace 
 
 ## Configure the DNS
 
-A new DNS record is added into the `example.com` DNS zone. This record declares the public key usable to verify the messages. (See the [DKIM chapter](../tuto/0/dkim/details.md) for more details)
+A new DNS record is added into the `example.com` DNS zone. This record declares the public key usable to verify the messages. (See the [`What is DKIM` chapter](../../term/dkim.md) for more details)
 
 > TODO: add command line example.
 
@@ -79,5 +79,5 @@ You can verify DKIM signatures of incoming emails by calling the [`verify_dkim`]
 
 <p class="ann"> /etc/vsmtp/domain-available/example.com/incoming.vsl </p>
 
-[verify_dkim_fn_ref]: ../ref/vSL/api/fn::global::dkim.md
-[sign_dkim_fn_ref]: ../ref/vSL/api/fn::global::dkim.md
+[verify_dkim_fn_ref]: ../../ref/vSL/api/fn::global::dkim.md
+[sign_dkim_fn_ref]: ../../ref/vSL/api/fn::global::dkim.md
