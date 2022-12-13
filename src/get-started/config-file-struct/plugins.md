@@ -1,6 +1,8 @@
 # Plugins
 
 Plugins are dynamic libraries (`.so`) that can be imported by `.vsl` scripts.
+They are bridges between third-party software (MySQL databases, an antivirus, redis databases, etc) that uses `vSL` to interface with vSMTP and leverage filtering.
+
 Plugins are placed in the `/usr/lib/vsmtp/` directory, and referenced in the configuration using symbolic links.
 
 ```diff
@@ -38,4 +40,4 @@ export const my_plugin_service = my_plugin::do_stuff();
 
 Services can be used during filtering, after being imported like an object.
 
-> Check out the [Plugin reference](../../ref/plugins.md) for more information.
+> Check out the [Plugin chapter](../../plugins/plugins.md) for more information.
