@@ -38,7 +38,6 @@ The vSMTP reference guide
 
 # Reference
 
-- [Command line parameters](ref/command.md)
 - [vSMTP Configuration reference](ref/config-file.md)
 - [vSL's API](ref/vSL/api.md)
   - [Functions](ref/vSL/functions.md)
@@ -73,6 +72,11 @@ The vSMTP reference guide
 - [CSV](ref/plugins/csv.md)
 - [MySQL](ref/plugins/mysql.md)
 
+# CLI
+
+- [vsmtp](cli/vsmtp.md)
+- [vqueue](cli/vqueue.md)
+
 # Tutorials
 
 - [Doe's family](tuto/0/doe.md)
@@ -91,6 +95,10 @@ The vSMTP reference guide
 - [Using DKIM](tuto/3/dkim.md)
 - [Using DMARC](tuto/5/dmarc.md)
 
+# Trouble shooting
+
+- [No logs available](troubles/nolog.md)
+
 # Terminology
 
 - [Mail Agent](term/agent.md)
@@ -98,10 +106,6 @@ The vSMTP reference guide
 - [What is SPF ?](term/spf.md)
 - [What is DKIM ?](term/dkim.md)
 - [Dealing with Null MX records](term/nullmx.md)
-
-# Trouble shooting
-
-- [Logging](troubles/nolog.md)
 
 # Development
 

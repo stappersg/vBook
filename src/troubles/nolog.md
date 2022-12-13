@@ -1,6 +1,6 @@
 # Trouble shooting
 
-This section is `Under construction`.
+> This section is `Under construction`.
 
 ## No logs available (daemon mode)
 
