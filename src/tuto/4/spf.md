@@ -37,4 +37,4 @@ Edit the `/etc/vsmtp/filter.vsl` script and add the following rule.
 
 > See the [`check_spf`][check_spf_fn_ref] reference for more details.
 
-[check_spf_fn_ref]: ./../../ref/vSL/api/fn::global.md#check_spf
+[check_spf_fn_ref]: ./../../ref/vSL/api/fn::global::spf.md
