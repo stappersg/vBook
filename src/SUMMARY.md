@@ -36,41 +36,37 @@ The vSMTP reference guide
   - [BIMI 🚧]()
   - [DANE 🚧]()
 
+- [Plugins](plugins/plugins.md)
+  - [Command](plugins/command.md)
+  - [SMTP](plugins/smtp.md)
+  - [CSV](plugins/csv.md)
+  - [MySQL](plugins/mysql.md)
+
 # Reference
 
 - [vSMTP Configuration reference](ref/config-file.md)
 - [vSL's API](ref/vSL/api.md)
-  - [Functions](ref/vSL/functions.md)
-    - [SPF](ref/vSL/api/fn::global::spf.md)
-    - [DKIM](ref/vSL/api/fn::global::dkim.md)
-    - [DMARC](ref/vSL/api/fn::global::dmarc.md)
-    - [Logging](ref/vSL/api/fn::global::logging.md)
+  - [Standard Functions](ref/vSL/functions.md)
+    - [Rule State](ref/vSL/api/fn::global::rule_state.md)
     - [Mail Context](ref/vSL/api/fn::global::mail_context.md)
     - [Message](ref/vSL/api/fn::global::message.md)
     - [Message Parsed](ref/vSL/api/fn::global::message_parsed.md)
-    - [Rule State](ref/vSL/api/fn::global::rule_state.md)
+    - [SPF](ref/vSL/api/fn::global::spf.md)
+    - [DKIM](ref/vSL/api/fn::global::dkim.md)
+    - [DMARC](ref/vSL/api/fn::global::dmarc.md)
     - [Transports](ref/vSL/api/fn::global::transports.md)
-    - [Types](ref/vSL/api/fn::global::types.md)
-    - [Utils](ref/vSL/api/fn::global::utils.md)
-    - [vSL Objects](ref/vSL/api/fn::global::vsl-objects.md)
-    - [vSL Cmd](ref/vSL/api/fn::global::vsl-cmd.md)
-    - [vSL SMTP](ref/vSL/api/fn::global::vsl-smtp.md)
-    - [vSL API](ref/vSL/api/fn::global::vsl-api.md)
+    - [Logging](ref/vSL/api/fn::global::logging.md)
     - [Write](ref/vSL/api/fn::global::write.md)
+    - [Utils](ref/vSL/api/fn::global::utils.md)
+    - [Types](ref/vSL/api/fn::global::types.md)
+    - [Objects](ref/vSL/api/fn::global::vsl-objects.md)
+    - [Rhai API (will be deprecated soon)](ref/vSL/api/fn::global::vsl-api.md)
   - [Variables](ref/vSL/variables.md)
     - [Configuration](ref/vSL/api/var::cfg.md)
     - [vSL API](ref/vSL/api/var::vsl-api.md)
-
-
-# Plugins
-
-- [Plugins](ref/plugins.md)
-- [Command](ref/plugins/command.md)
-  - [Reference](ref/vSL/api/fn::global::cmd.md)
-- [SMTP](ref/plugins/smtp.md)
-  - [Reference](ref/vSL/api/fn::global::vsl-smtp.md)
-- [CSV](ref/plugins/csv.md)
-- [MySQL](ref/plugins/mysql.md)
+  - [Plugins](ref/vSL/plugins.md)
+    - [Cmd](ref/vSL/api/fn::global::cmd.md)
+    - [Smtp](ref/vSL/api/fn::global::vsl-smtp.md)
 
 # CLI
 
