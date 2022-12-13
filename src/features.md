@@ -2,9 +2,7 @@
 
 vSMTP is a Mail Transfer Agent ([MTA]) and a Mail Submission Agent ([MSA]). It is not intended to be a Mail User Agent ([MUA]) nor a Mail Delivery Agent ([MDA]).
 
-For outgoing mail, vSMTP can directly be addressed by your MUA using the SMTP protocol.
-
-For incoming mails, vSMTP can store messages on a server file-system using [Mbox] or [Maildir] formats. To retrieve emails from a remote client (MUA) it is necessary to install a MDA that can handle [POP] and/or [IMAP] protocols.
+vSMTP can store messages on disk using [Mbox] or [Maildir] formats. To retrieve emails from a remote client it is necessary to install a [MDA] server that can handle [POP] and/or [IMAP] protocols.
 
 [MUA]: term/agent.md#mua-mail-user-agent
 [MTA]: term/agent.md#mta-mail-transfer-agent
