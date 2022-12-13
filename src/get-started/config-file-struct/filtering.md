@@ -1,39 +1,37 @@
 # Filtering
 
-It is possible to filter emails using `.vsl` files for specific domains.
+It is possible to filter emails using `.vsl` files for incoming emails and specific domains. `vSL` is the `vSMTP scripting language`, a superset of [Rhai](https://rhai.rs/) which is used to filter emails, modify their contents, send them to a specific target, etc.
 
-```diff
-/etc/vsmtp
-  ┣ vsmtp.vsl
-+ ┣ filter.vsl
-  ┣ conf.d/
-  ┃     ┣ config.vsl
-  ┃     ┣ interfaces.vsl
-  ┃     ┗ app.vsl
-+ ┣ domain-available/
-+ ┗ domain-enabled/
-```
-<p class="ann"> Adding filters </p>
-
-To filter emails per domain, you have to change the configuration in `conf.d/config.vsl` like so:
-
-```rust,ignore
-fn on_config(config) {
-  config.app.vsl.domain_dir = "/etc/vsmtp/domain-enabled";
-  return config;
-}
-```
-<p class="ann"> Specifying filtering rules directory in the configuration </p>
+> The [vSL chapter](../../filtering/vsl.md) explains in detail what is possible to do with `.vsl` scripts.
 
 ## Root Filter
 
 The root `filter.vsl` script is used to filter incoming transaction at the `connect`, `helo` and `authenticate` stages of an SMTP transaction. (Check out the [Transaction Context](../../filtering/transaction.md) chapter for more details)
 
-> If this script is not present in the directory configured by `config.app.vsl.filter_path`, vSMTP will deny all incoming transactions.
+```diff
+/etc/vsmtp
+  ┣ vsmtp.vsl
++ ┣ filter.vsl
+  ┗ conf.d/
+       ┣ config.vsl
+       ┣ interfaces.vsl
+       ┗ app.vsl
+```
+<p class="ann"> Adding the root filter script </p>
+
+```rust,ignore
+fn on_config(config) {
+  config.app.vsl.filter_path = "/etc/vsmtp/filter.vsl";
+  return config;
+}
+```
+<p class="ann"> Specifying the path to the filter in the configuration </p>
+
+> If this script is not present, vSMTP will deny all incoming transactions by default.
 
 ## Domains
 
-In the rule directory, all sub-directories are considered as domains with rules applied to them.
+It is also possible to filter emails per domain.
 
 ```diff
 /etc/vsmtp
@@ -43,17 +41,27 @@ In the rule directory, all sub-directories are considered as domains with rules 
   ┃     ┣ config.vsl
   ┃     ┣ interfaces.vsl
   ┃     ┗ app.vsl
-  ┣ domain-available/
-+ ┃     ┗ example.com
++ ┣ domain-available/
++ ┃     ┗ example.com/
 + ┃          ┣ incoming.vsl
 + ┃          ┣ outgoing.vsl
 + ┃          ┗ internal.vsl
-  ┗ domain-enabled/
++ ┗ domain-enabled/
 ```
+<p class="ann"> Adding filtering scripts for the `example.com` domain under the `domain-available` directory </p>
 
-<p class="ann"> Adding filtering for the `example.com` domain </p>
+The configuration in `conf.d/config.vsl` must be updated like so:
 
-vSMTP has been configured to pickup filtering rules in the `domain-enabled` directory. You will have to use symbolic links for vSMTP to use the scripts inside the `domain-available/example.com` directory.
+```rust,ignore
+fn on_config(config) {
+  config.app.vsl.domain_dir = "/etc/vsmtp/domain-enabled";
+
+  return config;
+}
+```
+<p class="ann"> Specifying filtering rules directory for domains in the configuration </p>
+
+In the above configuration, vSMTP has been setup to pickup filtering rules in the `domain-enabled` directory, not `domain-available`. You will have to use symbolic links for vSMTP to use the scripts inside the `domain-available/example.com` directory.
 
 ```diff
 /etc/vsmtp
@@ -111,7 +119,7 @@ fn on_domain_config(config) {
 ```
 <p class="ann"> An empty domain specific configuration </p>
 
-Like the root `config.vsl` file, this script contains a callback used to configure the domain. You can configure TLS, DKIM and DNS per domain.
+Like the root `config.vsl` file, this script contains a function used to configure the domain, in this case called `on_domain_config`. You can configure TLS, DKIM and DNS for each domain.
 
 ```rust,ignore
 fn on_domain_config(config) {
