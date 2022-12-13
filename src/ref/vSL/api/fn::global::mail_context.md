@@ -7,8 +7,8 @@
 <h2 class="func-name"> <code>fn</code> add_rcpt_envelop </h2>
 
 ```rust,ignore
-fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
 fn add_rcpt_envelop(context: Context, new_addr: SharedObject) -> ()
+fn add_rcpt_envelop(context: Context, new_addr: String) -> ()
 ```
 
 <details>
@@ -31,7 +31,7 @@ All of them.
 #{
     connect: [
        // always deliver a copy of the message to "john.doe@example.com".
-       action "rewrite envelop" || add_rcpt_envelop("john.doe@example.com"),
+       action "rewrite envelop" || add_rcpt_envelop(address("john.doe@example.com")),
     ]
 }
 ```
@@ -437,7 +437,7 @@ All of them.
 <h2 class="func-name"> <code>fn</code> rewrite_mail_from_envelop </h2>
 
 ```rust,ignore
-fn rewrite_mail_from_envelop(context: Context, new_addr: String) -> ()
+fn rewrite_mail_from_envelop(context: Context, new_addr: SharedObject) -> ()
 
 ```
 
@@ -448,7 +448,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 
 # Args
 
-* `new_addr` - the new string sender address to set.
+* `new_addr` - the new sender address to set.
 
 # Effective smtp stage
 
@@ -459,7 +459,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || rewrite_mail_from_envelop("unknown@example.com"),
+       action "rewrite envelop" || rewrite_mail_from_envelop(address("unknown@example.com")),
     ]
 }
 ```
@@ -513,14 +513,14 @@ Replace a recipient received by a `RCPT TO` command.
 <h2 class="func-name"> <code>fn</code> to_debug </h2>
 
 ```rust,ignore
-fn to_debug(context: Context) -> String
+fn to_debug(context: Server) -> String
 
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Context` to a debug string.
+Convert a `Server` to a debug string.
 </details>
 
 </div>
@@ -532,14 +532,14 @@ Convert a `Context` to a debug string.
 <h2 class="func-name"> <code>fn</code> to_string </h2>
 
 ```rust,ignore
-fn to_string(_: Context) -> String
+fn to_string(_: Server) -> String
 
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Context` to a `String`.
+Convert a `Server` to a `String`.
 </details>
 
 </div>

@@ -30,23 +30,23 @@ This message has not been signed yet, meaning someone could change it...
 
 
 
- #{
-   postq: [
-     action "add a DKIM signature" || {
-       for i in get_private_keys(srv(), "testserver.com") {
-         sign_dkim("2022-09", i, ["From", "To", "Date", "Subject", "From"], "simple/relaxed");
-       }
-     },
-     rule "check signature" || {
-       let signature = "v=1; a=rsa-sha256; d=testserver.com; s=2022-09;\r\n\
-           \tc=simple/relaxed; q=dns/txt; h=From:To:Date:Subject:From;\r\n\
-           \tbh=ATHiC1KD8OegIorswWts+SlujGUpgqR6pqXYlNWA01Y=;\r\n\tb=Ur\
-           /frdH3beyU3LRQMGBdI6OdxRvfpu+s04hmHcVkpBYzR4cXuDPByWpUCqhO4C\
-           sEwpPRDcWQtsCfuzSK1FTf7XCWgsKKGPmsdQ40pUviA0UrrzpIDIziMxSI/S\
-           8ohNnxvqxrtxZoN6Wo2lnQ+kYAATYxJPOjC57JIBJ89RGrf+6Wbvz6/PofcU\
-           9VwpylegZRU5Cial69lN2qaIkoVFOE9fz8ZIz9VV2A9Lh/xgKFM7eipBWCR6\
-           ZUU1HZTbSiqiL9Q6A823az/E2jqOUZXtsGK/Bo/vDjTV166d5vY34JA3189C\
-           x83Rbif9A/kdCO6C8gGK0WOasp5R0ONmVz41TaGQ==";
+#{
+  postq: [
+    action "add a DKIM signature" || {
+      for i in get_private_keys(srv(), "testserver.com") {
+        sign_dkim("2022-09", i, ["From", "To", "Date", "Subject", "From"], "simple/relaxed");
+      }
+    },
+    rule "check signature" || {
+      let signature = "v=1; a=rsa-sha256; d=testserver.com; s=2022-09;\r\n\
+          \tc=simple/relaxed; q=dns/txt; h=From:To:Date:Subject:From;\r\n\
+          \tbh=ATHiC1KD8OegIorswWts+SlujGUpgqR6pqXYlNWA01Y=;\r\n\tb=Ur\
+          /frdH3beyU3LRQMGBdI6OdxRvfpu+s04hmHcVkpBYzR4cXuDPByWpUCqhO4C\
+          sEwpPRDcWQtsCfuzSK1FTf7XCWgsKKGPmsdQ40pUviA0UrrzpIDIziMxSI/S\
+          8ohNnxvqxrtxZoN6Wo2lnQ+kYAATYxJPOjC57JIBJ89RGrf+6Wbvz6/PofcU\
+          9VwpylegZRU5Cial69lN2qaIkoVFOE9fz8ZIz9VV2A9Lh/xgKFM7eipBWCR6\
+          ZUU1HZTbSiqiL9Q6A823az/E2jqOUZXtsGK/Bo/vDjTV166d5vY34JA3189C\
+          x83Rbif9A/kdCO6C8gGK0WOasp5R0ONmVz41TaGQ==";
 
        if get_header("DKIM-Signature") == signature {
          accept()
@@ -226,17 +226,16 @@ X-Auto-Response-Suppress: All
 
 "#;
 
- // Rules
- #{
-   preq: [
-     rule "verify_dkim" || {
-       verify_dkim();
-       if !get_header("Authentication-Results").contains("dkim=pass") {
-         return deny();
-       }
-       // the result of dkim verification is cached, so this call will
-       // not recompute the signature and recreate a header
-       verify_dkim();
+#{
+  preq: [
+    rule "verify_dkim" || {
+      verify_dkim();
+      if !get_header("Authentication-Results").contains("dkim=pass") {
+        return deny();
+      }
+      // the result of dkim verification is cached, so this call will
+      // not recompute the signature and recreate a header
+      verify_dkim();
 
        // FIXME: should be one
        if count_header("Authentication-Results") != 2 {

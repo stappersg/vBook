@@ -4,10 +4,10 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> != </h2>
+<h2 class="func-name"> <code>op</code> != </h2>
 
 ```rust,ignore
-fn !=(in1: Status, in2: Status) -> bool
+op !=(in1: Status, in2: Status) -> bool
 
 ```
 
@@ -45,14 +45,14 @@ Convert a `Status` to a debug string
 <h2 class="func-name"> <code>fn</code> to_string </h2>
 
 ```rust,ignore
-fn to_string(this: OffsetDateTime) -> String
+fn to_string(status: Status) -> String
 
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `time::OffsetDateTime` to a `String`
+Convert a `Status` to a `String`
 </details>
 
 </div>

@@ -7,7 +7,8 @@ let app = #{
         "filepath": "/var/log/vsmtp/app.log",
     },
     "vsl": #{
-        "dirpath": (),
+        "domain_dir": (),
+        "filter_path": (),
     },
 }
 ```

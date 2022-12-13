@@ -38,7 +38,6 @@ The vSMTP reference guide
 
 # Reference
 
-- [Command line parameters](ref/command.md)
 - [vSMTP Configuration reference](ref/config-file.md)
 - [vSL's API](ref/vSL/api.md)
   - [Functions](ref/vSL/functions.md)
@@ -62,11 +61,21 @@ The vSMTP reference guide
     - [Configuration](ref/vSL/api/var::cfg.md)
     - [vSL API](ref/vSL/api/var::vsl-api.md)
 
+
+# Plugins
+
 - [Plugins](ref/plugins.md)
-  - [Command](ref/plugins/command.md)
-  - [SMTP](ref/plugins/smtp.md)
-  - [CSV](ref/plugins/csv.md)
-  - [MySQL](ref/plugins/mysql.md)
+- [Command](ref/plugins/command.md)
+  - [Reference](ref/vSL/api/fn::global::cmd.md)
+- [SMTP](ref/plugins/smtp.md)
+  - [Reference](ref/vSL/api/fn::global::vsl-smtp.md)
+- [CSV](ref/plugins/csv.md)
+- [MySQL](ref/plugins/mysql.md)
+
+# CLI
+
+- [vsmtp](cli/vsmtp.md)
+- [vqueue](cli/vqueue.md)
 
 # Tutorials
 
@@ -85,7 +94,10 @@ The vSMTP reference guide
 - [Using SPF](tuto/4/spf.md)
 - [Using DKIM](tuto/3/dkim.md)
 - [Using DMARC](tuto/5/dmarc.md)
-- [Dealing with Null MX records](tuto/2/nullmx.md)
+
+# Trouble shooting
+
+- [No logs available](troubles/nolog.md)
 
 # Terminology
 
@@ -93,10 +105,7 @@ The vSMTP reference guide
 - [Authentication Mechanisms](term/authentication.md)
 - [What is SPF ?](term/spf.md)
 - [What is DKIM ?](term/dkim.md)
-
-# Trouble shooting
-
-- [Logging](troubles/nolog.md)
+- [Dealing with Null MX records](term/nullmx.md)
 
 # Development
 
