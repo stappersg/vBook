@@ -36,11 +36,17 @@ The vSMTP reference guide
   - [BIMI 🚧]()
   - [DANE 🚧]()
 
+- [Plugins](plugins/plugins.md)
+  - [Command](plugins/command.md)
+  - [SMTP](plugins/smtp.md)
+  - [CSV](plugins/csv.md)
+  - [MySQL](plugins/mysql.md)
+
 # Reference
 
 - [vSMTP Configuration reference](ref/config-file.md)
 - [vSL's API](ref/vSL/api.md)
-  - [Functions](ref/vSL/functions.md)
+  - [Standard Functions](ref/vSL/functions.md)
     - [SPF](ref/vSL/api/fn::global::spf.md)
     - [DKIM](ref/vSL/api/fn::global::dkim.md)
     - [DMARC](ref/vSL/api/fn::global::dmarc.md)
@@ -60,17 +66,9 @@ The vSMTP reference guide
   - [Variables](ref/vSL/variables.md)
     - [Configuration](ref/vSL/api/var::cfg.md)
     - [vSL API](ref/vSL/api/var::vsl-api.md)
-
-
-# Plugins
-
-- [Plugins](ref/plugins.md)
-- [Command](ref/plugins/command.md)
-  - [Reference](ref/vSL/api/fn::global::cmd.md)
-- [SMTP](ref/plugins/smtp.md)
-  - [Reference](ref/vSL/api/fn::global::vsl-smtp.md)
-- [CSV](ref/plugins/csv.md)
-- [MySQL](ref/plugins/mysql.md)
+  - [Plugins](ref/vSL/plugins.md)
+    - [Cmd](ref/vSL/api/fn::global::cmd.md)
+    - [Smtp](ref/vSL/api/fn::global::vsl-smtp.md)
 
 # CLI
 
