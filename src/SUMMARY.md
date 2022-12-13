@@ -44,7 +44,6 @@ The vSMTP reference guide
 
 # Reference
 
-- [vSMTP Configuration reference](ref/config-file.md)
 - [vSL's API](ref/vSL/api.md)
   - [Standard Functions](ref/vSL/functions.md)
     - [Rule State](ref/vSL/api/fn::global::rule_state.md)
