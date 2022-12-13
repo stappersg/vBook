@@ -90,7 +90,6 @@ The vSMTP reference guide
 - [Using SPF](tuto/4/spf.md)
 - [Using DKIM](tuto/3/dkim.md)
 - [Using DMARC](tuto/5/dmarc.md)
-- [Dealing with Null MX records](tuto/2/nullmx.md)
 
 # Terminology
 
@@ -98,6 +97,7 @@ The vSMTP reference guide
 - [Authentication Mechanisms](term/authentication.md)
 - [What is SPF ?](term/spf.md)
 - [What is DKIM ?](term/dkim.md)
+- [Dealing with Null MX records](term/nullmx.md)
 
 # Trouble shooting
 
