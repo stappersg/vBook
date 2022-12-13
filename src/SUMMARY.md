@@ -58,14 +58,14 @@ The vSMTP reference guide
     - [Write](ref/vSL/api/fn::global::write.md)
     - [Utils](ref/vSL/api/fn::global::utils.md)
     - [Types](ref/vSL/api/fn::global::types.md)
-    - [Objects](ref/vSL/api/fn::global::vsl-objects.md)
+    - [Objects](ref/vSL/api/fn::global::objects.md)
     - [Rhai API (will be deprecated soon)](ref/vSL/api/fn::global::vsl-api.md)
   - [Variables](ref/vSL/variables.md)
     - [Configuration](ref/vSL/api/var::cfg.md)
     - [vSL API](ref/vSL/api/var::vsl-api.md)
   - [Plugins](ref/vSL/plugins.md)
     - [Cmd](ref/vSL/api/fn::global::cmd.md)
-    - [Smtp](ref/vSL/api/fn::global::vsl-smtp.md)
+    - [Smtp](ref/vSL/api/fn::global::smtp.md)
 
 # CLI
 
