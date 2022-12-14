@@ -118,9 +118,9 @@ Change the sender's address in the `From` header of the message.
 <h2 class="func-name"> <code>fn</code> rewrite_rcpt_message </h2>
 
 ```rust,ignore
-fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: String) -> ()
-fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
 fn rewrite_rcpt_message(message: Message, old_addr: String, new_addr: SharedObject) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rewrite_rcpt_message(message: Message, old_addr: SharedObject, new_addr: String) -> ()
 ```
 
 <details>
@@ -142,7 +142,7 @@ Replace a recipient by an other in the `To` header of the message.
 ```
 #{
     preq: [
-       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", "john-mta@example.com"),
+       action "rewrite recipient" || rewrite_rcpt_message("john.doe@example.com", address("john-mta@example.com")),
     ]
 }
 ```

@@ -66,7 +66,7 @@ This message has not been signed yet, meaning someone could change it...
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> dkim_result </h2>
+<h2 class="func-name"> <code>get</code> dkim_result </h2>
 
 ```rust,ignore
 fn get dkim_result(ctx: Context) -> Map
@@ -86,7 +86,7 @@ an error if no result is found.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> has_dkim_result </h2>
+<h2 class="func-name"> <code>get</code> has_dkim_result </h2>
 
 ```rust,ignore
 fn get has_dkim_result(ctx: Context) -> bool

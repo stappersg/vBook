@@ -46,9 +46,19 @@ All of them.
 <h2 class="func-name"> <code>fn</code> get_root_domain </h2>
 
 ```rust,ignore
-fn get_root_domain(domain: SharedObject) -> String
+fn get_root_domain(domain: String) -> String
 
 ```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Get the root domain (the registrable part)
+
+# Examples
+
+`foo.bar.example.com` => `example.com`
+</details>
 
 </div>
 </br>
@@ -59,8 +69,8 @@ fn get_root_domain(domain: SharedObject) -> String
 <h2 class="func-name"> <code>fn</code> lookup </h2>
 
 ```rust,ignore
-fn lookup(server: Server, name: SharedObject) -> Array
 fn lookup(server: Server, name: String) -> Array
+fn lookup(server: Server, name: SharedObject) -> Array
 ```
 
 <details>
@@ -91,7 +101,8 @@ All of them.
 #{
     rcpt: [
        action "perform lookup" || {
-            let ips = lookup(fqdn("example.com"));
+            let domain = rcpt().domain;
+            let ips = lookup(domain);
 
             print(`ips found for ${domain}`);
             for ip in ips {
@@ -106,7 +117,7 @@ All of them.
 #{
   preq: [
     action "lookup recipients" || {
-      let domain = fqdn("gmail.com");
+      let domain = "gmail.com";
       let ips = lookup(domain);
 
       print(`ips found for ${domain}`);
@@ -189,13 +200,14 @@ All of them.
 <h2 class="func-name"> <code>fn</code> user_exist </h2>
 
 ```rust,ignore
-fn user_exist(name: SharedObject) -> bool
 fn user_exist(name: String) -> bool
+fn user_exist(name: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
+send a mail from a template.
 Check if a user exists on this server.
 
 ### Args

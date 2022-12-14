@@ -7,8 +7,8 @@
 <h2 class="func-name"> <code>fn</code> append_header </h2>
 
 ```rust,ignore
-fn append_header(message: Message, header: String, value: SharedObject) -> ()
 fn append_header(message: Message, header: String, value: String) -> ()
+fn append_header(message: Message, header: String, value: SharedObject) -> ()
 ```
 
 <details>
@@ -127,8 +127,8 @@ is when the email body is received.
 
 ```rust,ignore
 fn get_all_headers(message: Message) -> Array
-fn get_all_headers(message: Message, name: String) -> Array
 fn get_all_headers(message: Message, name: SharedObject) -> Array
+fn get_all_headers(message: Message, name: String) -> Array
 ```
 
 <details>
@@ -352,7 +352,7 @@ the `preq` stage is reached.
 <h2 class="func-name"> <code>fn</code> remove_header </h2>
 
 ```rust,ignore
-fn remove_header(message: Message, header: String) -> bool
+fn remove_header(message: Message, header: SharedObject) -> bool
 
 ```
 
@@ -427,8 +427,8 @@ is when the email body is received.
 
 ```rust,ignore
 fn rename_header(message: Message, old: SharedObject, new: String) -> ()
-fn rename_header(message: Message, old: String, new: SharedObject) -> ()
 fn rename_header(message: Message, old: SharedObject, new: SharedObject) -> ()
+fn rename_header(message: Message, old: String, new: String) -> ()
 ```
 
 <details>
@@ -494,7 +494,7 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> set_header </h2>
 
 ```rust,ignore
-fn set_header(message: Message, header: String, value: SharedObject) -> ()
+fn set_header(message: Message, header: String, value: String) -> ()
 
 ```
 

@@ -4,7 +4,7 @@
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> receiver_address </h2>
+<h2 class="func-name"> <code>get</code> receiver_address </h2>
 
 ```rust,ignore
 fn get receiver_address(smtp: Smtp) -> String

@@ -7,15 +7,15 @@
 <h2 class="func-name"> <code>op</code> != </h2>
 
 ```rust,ignore
-op !=(this: SharedObject, s: String) -> bool
-op !=(this: String, other: SharedObject) -> bool
 op !=(this: SharedObject, other: SharedObject) -> bool
+op !=(this: String, other: SharedObject) -> bool
+op !=(this: SharedObject, s: String) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `!=` for `SharedObject` and `&str`
+Operator `!=` for `SharedObject`
 </details>
 
 </div>
@@ -27,14 +27,14 @@ Operator `!=` for `SharedObject` and `&str`
 <h2 class="func-name"> <code>op</code> == </h2>
 
 ```rust,ignore
-op ==(this: SharedObject, s: String) -> bool
+op ==(this: SharedObject, other: SharedObject) -> bool
 op ==(this: String, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `SharedObject` and `&str`
+Operator `==` for `SharedObject`
 </details>
 
 </div>
@@ -65,8 +65,8 @@ A SMTP code with the code and message as parameter.
 <h2 class="func-name"> <code>fn</code> contains </h2>
 
 ```rust,ignore
-fn contains(this: SharedObject, s: String) -> bool
 fn contains(this: SharedObject, other: SharedObject) -> bool
+fn contains(this: SharedObject, s: String) -> bool
 ```
 
 <details>
@@ -100,7 +100,7 @@ a valid fully qualified domain name (foo.com)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> domains </h2>
+<h2 class="func-name"> <code>get</code> domains </h2>
 
 ```rust,ignore
 fn get domains(container: Array) -> Array
@@ -119,7 +119,7 @@ Get the `domains` of an array of email address
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> local_parts </h2>
+<h2 class="func-name"> <code>get</code> local_parts </h2>
 
 ```rust,ignore
 fn get local_parts(container: Array) -> Array
