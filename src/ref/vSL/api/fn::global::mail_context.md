@@ -43,7 +43,7 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> auth </h2>
+<h2 class="func-name"> <code>get</code> auth </h2>
 
 ```rust,ignore
 fn get auth(context: Context) -> Credentials
@@ -80,7 +80,7 @@ Get authentication credentials from the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> authpass </h2>
+<h2 class="func-name"> <code>get</code> authpass </h2>
 
 ```rust,ignore
 fn get authpass(credentials: Credentials) -> String
@@ -99,7 +99,7 @@ Get the `authpass` property of the connection.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> client_ip </h2>
+<h2 class="func-name"> <code>get</code> client_ip </h2>
 
 ```rust,ignore
 fn get client_ip(context: Context) -> String
@@ -136,7 +136,7 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> connection_timestamp </h2>
+<h2 class="func-name"> <code>get</code> connection_timestamp </h2>
 
 ```rust,ignore
 fn get connection_timestamp(context: Context) -> OffsetDateTime
@@ -173,7 +173,7 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> is_authenticated </h2>
+<h2 class="func-name"> <code>get</code> is_authenticated </h2>
 
 ```rust,ignore
 fn get is_authenticated(context: Context) -> bool
@@ -209,7 +209,7 @@ Check if the client is authenticated.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> mail_from </h2>
+<h2 class="func-name"> <code>get</code> mail_from </h2>
 
 ```rust,ignore
 fn get mail_from(context: Context) -> SharedObject
@@ -246,7 +246,7 @@ Get the value of the `MAIL FROM` command sent by the client.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> message_id </h2>
+<h2 class="func-name"> <code>get</code> message_id </h2>
 
 ```rust,ignore
 fn get message_id(context: Context) -> String
@@ -283,7 +283,7 @@ Get the unique id of the received message.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> rcpt_list </h2>
+<h2 class="func-name"> <code>get</code> rcpt_list </h2>
 
 ```rust,ignore
 fn get rcpt_list(context: Context) -> Array
@@ -322,7 +322,7 @@ in the later stages.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> server_ip </h2>
+<h2 class="func-name"> <code>get</code> server_ip </h2>
 
 ```rust,ignore
 fn get server_ip(context: Context) -> IpAddr
@@ -359,7 +359,7 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> server_port </h2>
+<h2 class="func-name"> <code>get</code> server_port </h2>
 
 ```rust,ignore
 fn get server_port(context: Context) -> int
@@ -474,9 +474,9 @@ Rewrite the sender received from the `MAIL FROM` command.
 <h2 class="func-name"> <code>fn</code> rewrite_rcpt_envelop </h2>
 
 ```rust,ignore
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: SharedObject) -> ()
 fn rewrite_rcpt_envelop(context: Context, old_addr: String, new_addr: String) -> ()
-fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: String) -> ()
+fn rewrite_rcpt_envelop(context: Context, old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -498,7 +498,7 @@ Replace a recipient received by a `RCPT TO` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || rewrite_rcpt_envelop(address("john.doe@example.com"), address("john.main@example.com")),
+       action "rewrite envelop" || rewrite_rcpt_envelop("john.doe@example.com", address("john.main@example.com")),
     ]
 }
 ```
@@ -513,14 +513,14 @@ Replace a recipient received by a `RCPT TO` command.
 <h2 class="func-name"> <code>fn</code> to_debug </h2>
 
 ```rust,ignore
-fn to_debug(context: Server) -> String
+fn to_debug(context: Context) -> String
 
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Convert a `Server` to a debug string.
+Convert a `Context` to a debug string.
 </details>
 
 </div>
