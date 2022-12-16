@@ -8,7 +8,7 @@ Plugins are dynamic libraries (`.so` files on Linux) that exposes `vSL` interfac
 
 ### Plugin directory
 
-A plugin should be accessible in a `plugins` directory in your configuration.
+Plugins are stored in the `/etc/vsmtp/plugins` directory.
 
 ```diff
 /etc/vsmtp
@@ -16,7 +16,7 @@ A plugin should be accessible in a `plugins` directory in your configuration.
   ┃ conf.d/
   ┃  ┗ ...
 + ┗ plugins
-+    ┣ lib-plugin.so
++    ┣ vsmtp-plugin-mysql-1.0.0.so
 +    ┗ ...
 ```
 
@@ -62,6 +62,8 @@ Here is an example:
 +       ┗ command.vsl
 ```
 
+Let's define a command service that runs the `echo` command.
+
 ```rust,ignore
 // Do not forget to use the `export` keyword when declaring
 // the object to make it accessible trough `import`.
@@ -71,7 +73,7 @@ const echo = cmd(#{
 });
 ```
 
-<p class="ann"> Creating a new command object in `services/command.vsl` </p>
+<p class="ann"> Creating a new command object in services/command.vsl </p>
 
 > Check out the [Command](../ref/plugins/command.md) reference to get examples for the command plugin.
 

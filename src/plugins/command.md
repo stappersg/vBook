@@ -29,17 +29,17 @@ export const command = cmd(#{
 ## Example
 
 ```rust,ignore
-export const clamscan = cmd(#{
+export const echo = cmd(#{
     timeout: "10s",
-    command: "clamscan",
-    args: ["--infected", "--remove", "--recursive", "/home/jdoe"],
+    command: "echo",
+    args: ["-e", "'Hello World. \c This is vSMTP.'"],
 });
 
-// run the service.
+// run the command.
 // the command executed will be:
-// clamscan --infected --remove --recursive /home/jdoe
-clamscan.run();
-// run the service with custom arguments (based one are replaced).
-// clamscan --infected /home/another
-clamscan.run([ "--infected", "/home/another" ]);
+// echo -e 'Hello World. \c This is vSMTP.'
+echo.run();
+// run the command with custom arguments (based one are replaced).
+// echo -n 'Hello World.'
+echo.run([ "-n", "'Hello World.'" ]);
 ```
