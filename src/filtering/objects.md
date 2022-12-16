@@ -27,7 +27,7 @@ const my_address = address("john.doe@example.com");
 ```
 <p class="ann"> Declaring objects in scripts </p>
 
-See the [TODO] module to get an extensive list of objects constructors.
+See the [Object reference](../ref/vSL/api/fn::global::objects.md) to get an extensive list of objects constructors.
 
 ## Modules
 
@@ -72,9 +72,8 @@ Objects should be stored inside the `objects` directory of `/etc/vsmtp` if they 
   ┃       ┗ ...
   ┣ domain-enabled/
   ┃     ┗ example.com -> ...
-+ ┗ objects/
+  ┗ objects/
 +       ┗ network.vsl
-+       ┗ global.vsl
 ```
 <p class="ann"> Placing objects files in `/etc/vsmtp/objects/` </p>
 
@@ -88,17 +87,16 @@ However, if objects are used in only a specific rule set, they should be stored 
   ┃     ┗ config.vsl
   ┣ domain-available/
   ┃     ┗ example.com/
-+ ┃        ┣ network.vsl
++ ┃        ┣ network-objects.vsl
   ┃        ┣ incoming.vsl
   ┃        ┣ outgoing.vsl
   ┃        ┗ internal.vsl
   ┣ domain-enabled/
   ┃     ┗ example.com -> ...
-- ┗ objects/
+  ┗ objects/
 -       ┗ network.vsl
--       ┗ global.vsl
 ```
-<p class="ann"> Placing objects relative to a domain </p>
+<p class="ann"> Placing objects relative to a domain, renaming it to network-objects.vsl to make it clear that it is an object file </p>
 
 ### Grouping objects
 
@@ -113,8 +111,9 @@ const authorized_users = [
 ```
 <p class="ann"> An array of email address </p>
 
-&#9998; | When used with check operators (`==`, `!=`, `in` etc ...), the whole array will be tested. The test stops when one element of the group matches, or nothing matches.
+> When used with check operators (`==`, `!=`, `in` etc ...), the whole array will be tested. The test stops when one element of the group matches, or nothing matches.
 
+> You can group different types of objects together.
 
 ### Pre-defined objects
 
