@@ -2,8 +2,8 @@
 
 > <!> This chapter is still incomplete.
 
-vSMTP plugins are Rust crate compiled as dynamic libraries.
-They can be imported directly in filtering script.
+vSMTP plugins are Rust crates compiled as dynamic libraries.
+They can be imported directly in filtering scripts.
 
 ## Requirements
 
@@ -36,7 +36,7 @@ cargo generate --git https://github.com/ltabis/rhai-dylib-template.git
 ✨   Done! New project created /path/vsmtp-plugin-awesome
 ```
 
-`cargo generate` will prompt you for a project name (It is recommended to use the `vsmtp-plugin-*` nomenclature to name vSMTP plugins) and a ahash seed. (If you don't know what that is, use the default prompt. To get more detail on what are ahash seeds and what they are used for, check out the [`rhai-dylib` crate](https://github.com/rhaiscript/rhai-dylib#pitfalls))
+`cargo generate` will prompt you for a project name (It is recommended to use the `vsmtp-plugin-*` nomenclature to name vSMTP plugins) and a ahash seed. (If you don't know what that is, use the default prompt. To get more detail on what are ahash seeds and what they are used for, check out the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate)
 
 ```rust
 {{#include vsmtp-plugin-awesome/src/lib.rs}}
@@ -50,7 +50,7 @@ cargo generate --git https://github.com/ltabis/rhai-dylib-template.git
 ```
 <p class="ann"> Generated Cargo.toml file </p>
 
-Has you can see in the manifest file generated for the project, the configured crate for your project is of type `cdylib`.
+Has you can see in the manifest file generated for the project, the configured crate type is `cdylib`.
 
 ```toml
 {{#include vsmtp-plugin-awesome/Cargo.toml:9}}
