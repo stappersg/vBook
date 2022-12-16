@@ -28,13 +28,19 @@ export const database = db::mysql(#{
 
 Using [Rhai arrays](https://rhai.rs/book/language/arrays.html) and [maps](https://rhai.rs/book/language/object-maps.html#object-maps), vSL can easily fetch and update data from a mysql database.
 
-```rust,ignore
-// Query the database.
-let records = database.query("...");
-
-log("info", "mysql records");
-for record in records {
-    log("info", ` -> ${record}`);
+```
+#{
+    connect: [
+        rule "query mysql database" || {
+            // Query the database.
+            let records = database.query("SELECT * FROM my_table");
+            
+            log("info", "mysql records");
+            for record in records {
+                log("info", ` -> ${record}`);
+            }
+        }
+    ]
 }
 ```
 
