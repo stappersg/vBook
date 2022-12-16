@@ -5,8 +5,13 @@ By default, the following files are created in the `/etc/vsmtp` directory once v
 ```
 /etc/vsmtp
 ┣ vsmtp.vsl
-┗ conf.d/
-      ┗ config.vsl
+┣ conf.d/
+┃      ┗ config.vsl
+┣ domain-available/
+┣ domain-enabled/
+┣ objects/
+┣ services/
+┗ plugins/
 ```
 <p class="ann"> Default file structure in `/etc/vsmtp`</p>
 
@@ -60,12 +65,17 @@ For example, it is possible to split the above configuration this way:
 ```diff
 /etc/vsmtp
  ┣ vsmtp.vsl
- ┗ conf.d/
-       ┣ config.vsl
-+      ┣ interfaces.vsl
-+      ┗ app.vsl
+ ┣ conf.d/
+ ┃    ┣ config.vsl
++┃    ┣ interfaces.vsl
++┃    ┗ app.vsl
+ ┣ domain-available/
+ ┣ domain-enabled/
+ ┣ objects/
+ ┣ services/
+ ┗ plugins/
 ```
-<p class="ann"> `/etc/vsmtp/` </p>
+<p class="ann"> Adding modules to split the configuration </p>
 
 Let's define the addresses that the server will listen to.
 
