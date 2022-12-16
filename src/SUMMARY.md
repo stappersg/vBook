@@ -16,6 +16,7 @@ The vSMTP reference guide
   - [Filtering](get-started/config-file-struct/filtering.md)
   - [Objects](get-started/config-file-struct/objects.md)
   - [Plugins](get-started/config-file-struct/plugins.md)
+  - [Services](get-started/config-file-struct/services.md)
 
 # Configuring vSMTP
 

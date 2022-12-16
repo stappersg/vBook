@@ -16,8 +16,6 @@
 ┣ objects/
 ┃     ┗ net.vsl
 ┣ services/
-┃     ┣ users-ldap.vsl
-┃     ┗ backup-mysql.vsl
+┃     ┗ mysql-service.vsl
 ┗ plugins/
-      ┣ mysql.so -> /usr/lib/vsmtp/libvsmtp-mysql-plugin.so
-      ┗ ldap.so  -> /usr/lib/vsmtp/libvsmtp-ldap-plugin.so
+      ┗ vsmtp-plugin-mysql.so -> /usr/lib/vsmtp/libvsmtp-plugin-mysql-1.0.0.so
