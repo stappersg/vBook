@@ -28,13 +28,6 @@ DEAD       is at '/var/spool/vsmtp/dead' : <EMPTY>
 
 Like queues, messages are also managed using the `vqueue` command.
 
-Features available in v0.10:
-
-- vqueue msg \<msg-id\> show [json | eml] : Print the content of a message.
-- vqueue msg \<msg-id\> move \<queue\> : Move a message to a queue.
-- vqueue msg \<msg-id\> remove : Remove a message from disk.
-
-Feature planned:
-
-- vqueue msg \<msg-id\> re-run : Reintroduce a message in the delivery system (and reevaluate its status).
-- User defined quarantine queues inspection.
+- `vqueue msg <msg-id> show [json | eml]` : Print the content of a message.
+- `vqueue msg <msg-id> move <queue>` : Move a message to a queue.
+- `vqueue msg <msg-id> remove` : Remove a message from disk.

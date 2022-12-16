@@ -21,15 +21,27 @@ A new DNS record is added into the `example.com` DNS zone. This record declares 
 
 ## vSMTP root configuration
 
-The path to a private key for DKIM can be specified in the `/etc/vsmtp/conf.d/config.vsl` script:
+The path to private keys for DKIM can be specified in the `/etc/vsmtp/conf.d/config.vsl` script:
 
 ```rust,ignore
 fn on_config(config) {
-  config.server.dkim.private_key = ["/path/to/private-key"];
-
+  config.server.dkim.private_key = ["/path/to/private-key-1", "/path/to/private-key-2", ...];
   config
 }
 ```
+<p class="ann"> Configuring DKIM keys </p>
+
+You can also configure keys per domain.
+
+```rust,ignore
+fn on_domain_config(config) {
+  config.dkim.private_key = ["/path/to/private-key-1", "/path/to/private-key-2", ...];
+  config
+}
+```
+<p class="ann"> Configuring DKIM keys for a specific domain (f.e. example.com)</p>
+
+> If a key cannot be found for a specific domain, the root dkim keys are used instead.
 
 ## Add signatures
 

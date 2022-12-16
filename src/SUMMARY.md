@@ -16,6 +16,7 @@ The vSMTP reference guide
   - [Filtering](get-started/config-file-struct/filtering.md)
   - [Objects](get-started/config-file-struct/objects.md)
   - [Plugins](get-started/config-file-struct/plugins.md)
+  - [Services](get-started/config-file-struct/services.md)
 
 # Configuring vSMTP
 
@@ -31,7 +32,6 @@ The vSMTP reference guide
 - [Settings](settings/settings.md)
   - [Logging system](settings/logging.md)
   - [DNS configuration](settings/dns.md)
-  - [DKIM](settings/dkim.md)
   - [ARC 🚧]()
   - [BIMI 🚧]()
   - [DANE 🚧]()
@@ -100,6 +100,7 @@ The vSMTP reference guide
 - [Authentication Mechanisms](term/authentication.md)
 - [What is SPF ?](term/spf.md)
 - [What is DKIM ?](term/dkim.md)
+- [What is DMARC ? 🚧]()
 - [Dealing with Null MX records](term/nullmx.md)
 
 # Development

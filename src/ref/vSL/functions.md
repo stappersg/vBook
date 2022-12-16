@@ -1,7 +1,7 @@
 # Standard functions & operators
 
 The following modules lists:
-- all standard functions available for email filtering. (referred by the `fn` keyword)
-- operators. (referred by the `op` keyword).
-- objects getters. (referred by the `get` keyword).
-- objects setters. (referred by the `set` keyword).
+- All standard functions available for email filtering. (referred by the `fn` keyword)
+- Operators. (referred by the `op` keyword)
+- Objects getters. (referred by the `get` keyword)
+- Objects setters. (referred by the `set` keyword)

@@ -2,13 +2,13 @@
 
 vSMTP feature set can be extended using plugins.
 
-Plugins are dynamic libraries (`.so` files on Linux) that exposes `vSL` interfaces and are used during filtering.
+Plugins are dynamic libraries (`.so` files on Linux) that exposes `vSL` interfaces.
 
 ## Recommandation
 
 ### Plugin directory
 
-A plugin should be accessible in a `plugins` directory in your configuration.
+Plugins are stored in the `/etc/vsmtp/plugins` directory.
 
 ```diff
 /etc/vsmtp
@@ -16,7 +16,7 @@ A plugin should be accessible in a `plugins` directory in your configuration.
   ┃ conf.d/
   ┃  ┗ ...
 + ┗ plugins
-+    ┣ lib-plugin.so
++    ┣ vsmtp-plugin-mysql-1.0.0.so
 +    ┗ ...
 ```
 
@@ -28,12 +28,14 @@ To make things cleaner with Linux's file system, it is recommended that you stor
   ┃ conf.d/
   ┃  ┗ ...
 + ┗ plugins
-+    ┣ lib-plugin.so -> /usr/lib/vsmtp/lib-plugin.so
++    ┣ vsmtp-plugin-mysql.so -> /usr/lib/vsmtp/libvsmtp-plugin-mysql-1.0.0.so
 +    ┗ ...
 ```
 
+Plugins are named using the `libvsmtp-plugin-<name>-<vsmtp-version>.so` nomenclature, with `<name>` begin the name of the plugin, and `<vsmtp-version>` the associated vSMTP version. Plugins must have the same version as your current vSMTP version to work correctly.
+
 ```sh
-ln -s /usr/lib/vsmtp/lib-plugin.so /etc/vsmtp/plugins/lib-plugin.so
+ln -s /usr/lib/vsmtp/libvsmtp-plugin-mysql-1.0.0.so /etc/vsmtp/plugins/vsmtp-plugin-mysql.so
 ```
 
 ### Services directory
@@ -60,6 +62,8 @@ Here is an example:
 +       ┗ command.vsl
 ```
 
+Let's define a command service that runs the `echo` command.
+
 ```rust,ignore
 // Do not forget to use the `export` keyword when declaring
 // the object to make it accessible trough `import`.
@@ -69,7 +73,7 @@ const echo = cmd(#{
 });
 ```
 
-<p class="ann"> Creating a new command object in `services/command.vsl` </p>
+<p class="ann"> Creating a new command object in services/command.vsl </p>
 
 > Check out the [Command](../ref/plugins/command.md) reference to get examples for the command plugin.
 

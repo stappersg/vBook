@@ -110,7 +110,7 @@ For security purpose, a trailing rule should be added at the end of a stage.
 
 In a stage, rules are executed **from top to bottom**. In the above example, if the client ip does not equal the **192.168.1.254** ip, the rule engine jumps to the "trailing" rule, denying the transaction instantly.
 
-> As with firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).
+> Like firewall rules, the best practice is to deny "everything" and only accept authorized and known clients (like the example above).
 
 ## Before queueing vs. after queueing
 
