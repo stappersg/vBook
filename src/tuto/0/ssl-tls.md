@@ -10,7 +10,7 @@ fn on_config(config) {
     preempt_cipherlist: false,
     handshake_timeout: "1000ms",
     protocol_version: ["TLSv1.2", "TLSv1.3"],
-    certificate: "/etc/letsencrypt/live/mta.doe-family.com/cert.pem",
+    certificate: "/etc/letsencrypt/live/mta.doe-family.com/fullchain.pem",
     private_key: "/etc/letsencrypt/live/mta.doe-family.com/privkey.pem",
   };
 

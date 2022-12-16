@@ -138,7 +138,7 @@ Like the root `config.vsl` file, this script contains a function used to configu
 fn on_domain_config(config) {
   config.tls = #{
     protocol_version: ["TLSv1.2", "TLSv1.3"],
-    certificate: "/etc/vsmtp/certs/cert.pem",
+    certificate: "/etc/vsmtp/certs/fullchain.pem",
     private_key: "/etc/vsmtp/certs/privkey.pem",
   };
 
