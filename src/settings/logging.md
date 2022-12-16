@@ -4,13 +4,16 @@ Multiple log backends are available for vSMTP.
 
 ## vSMTP default logs
 
-Those are vSMTP's own log system. they are, by default, written in the `/var/log/vsmtp/vsmtp.log` directory.
+Default vSMTP log system. By default, it writes logs in the `/var/log/vsmtp/vsmtp.log` file.
 
 ```rust,ignore
 fn on_config(config) {
     // You can change the location of the logs.
-    config.server.logs.filepath = "./tmp/system/vsmtp.log";
-    // set global logging level to "info".
+    config.server.logs.filename = "./tmp/system/vsmtp.log";
+    // Set global logging level to "info".
+    //
+    // The configuration for the level here is an array because vSMTP
+    // will support log levels for specific modules of the server in future releases.
     config.server.logs.level = [ "info" ];
 
     config
@@ -20,18 +23,22 @@ fn on_config(config) {
 
 ## Application logs
 
-Application logs are written using the `log(level, message)` function in filtering rules.
-The default output location is of application logs is `/var/log/vsmtp/app`. It can be changed in the root configuration.
+Application logs are written using the `log(level, message)` function in filtering scripts.
+The default output location is of application logs is the `/var/log/vsmtp/app.log` file. It can be changed in the root configuration.
 
 ```rust,ignore
 fn on_config(config) {
-    config.app.logs.filepath = "./tmp/system/app.log";
+    config.app.logs.filename = "./tmp/system/app.log";
     config
 }
 ```
 <p class="ann"> Change the location of the application logs. </p>
 
-## Journald
+## System logs
+
+vSMTP also supports system logs through the following services.
+
+### Journald
 
 vSMTP will send server logs to the journald daemon.
 
@@ -49,7 +56,7 @@ fn on_config(config) {
 <p class="ann"> Configure journald for vSMTP </p>
 
 
-## Syslogd
+### Syslogd
 
 vSMTP will send logs to the syslog daemon using the `mail` facility.
 
@@ -89,3 +96,5 @@ fn on_config(config) {
 |info| General informations on what the server is doing. |
 
 <p class="ann"> Available log levels </p>
+
+Debug and Trace levels are, for the time being, not available in the production version of vSMTP.

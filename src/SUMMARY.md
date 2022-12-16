@@ -32,7 +32,6 @@ The vSMTP reference guide
 - [Settings](settings/settings.md)
   - [Logging system](settings/logging.md)
   - [DNS configuration](settings/dns.md)
-  - [DKIM](settings/dkim.md)
   - [ARC 🚧]()
   - [BIMI 🚧]()
   - [DANE 🚧]()
