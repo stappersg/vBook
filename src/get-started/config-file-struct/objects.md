@@ -4,19 +4,24 @@ Objects are variables that can be re-used accros your filtering scripts. They ar
 
 ```diff
   /etc/vsmtp
-  ┣ vsmtp.vsl
-  ┣ filter.vsl
-  ┣ conf.d/
-  ┃     ┣ config.vsl
-  ┃     ┗ *.vsl
-  ┣ domain-available/
-  ┃     ┗ example.com/
-  ┃         ┗ ...
-  ┣ domain-enabled/
-  ┃     ┗ example.com -> /etc/vsmtp/domain-available/example.com
-+ ┗ objects/
-+      ┣ net.vsl
-+      ┗ *.vsl
+ ┣ vsmtp.vsl
+ ┣ filter.vsl
+ ┣ conf.d/
+ ┃    ┣ config.vsl
+ ┃    ┣ interfaces.vsl
+ ┃    ┗ app.vsl
+ ┣ domain-available/
+ ┃    ┗ example.com
+ ┃        ┣ config.vsl
+ ┃        ┣ incoming.vsl
+ ┃        ┣ outgoing.vsl
+ ┃        ┗ internal.vsl
+ ┣ domain-enabled/
+ ┃    ┗ example.com -> /etc/vsmtp/domain-available/example.com
++┣ objects/
++┃    ┗ net.vsl
+ ┣ services/
+ ┗ plugins/
 ```
 <p class="ann"> Adding objects </p>
 
@@ -27,11 +32,11 @@ export const localhost = ip4("127.0.0.1");
 export const my_address = address("john.doe@example.com");
 // ...
 ```
-<p class="ann"> Declaring an ip and email address using objects </p>
+<p class="ann"> Declaring an ip and email address using objects. /etc/vsmtp/objects/net.vsl </p>
 
 Then, they can be imported and used in rules.
 
-```rust,ignore
+```
 import "objects/net" as net;
 
 #{

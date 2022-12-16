@@ -7,25 +7,26 @@ Plugins are placed in the `/usr/lib/vsmtp/` directory, and referenced in the con
 
 ```diff
   /etc/vsmtp
-  ┣ vsmtp.vsl
-  ┣ filter.vsl
-  ┣ conf.d/
-  ┃     ┣ config.vsl
-  ┃     ┗ *.vsl
-  ┣ domain-available/
-  ┃     ┗ example.com/
-  ┃         ┗ ...
-  ┣ domain-enabled/
-  ┃     ┗ example.com -> /etc/vsmtp/domain-available/example.com
-  ┣ objects/
-  ┃     ┣ net.vsl
-  ┃     ┗ *.vsl
-+ ┣ services/
-+ ┃     ┣ my_plugin.vsl
-+ ┃     ┗ *.vsl
-+ ┗ plugins/
-+   ┣ my_plugin.so -> /usr/lib/vsmtp/libmy_plugin.so
-+   ┗ ... 
+ ┣ vsmtp.vsl
+ ┣ filter.vsl
+ ┣ conf.d/
+ ┃    ┣ config.vsl
+ ┃    ┣ interfaces.vsl
+ ┃    ┗ app.vsl
+ ┣ domain-available/
+ ┃    ┗ example.com
+ ┃        ┣ config.vsl
+ ┃        ┣ incoming.vsl
+ ┃        ┣ outgoing.vsl
+ ┃        ┗ internal.vsl
+ ┣ domain-enabled/
+ ┃    ┗ example.com -> /etc/vsmtp/domain-available/example.com
+ ┣ objects/
+ ┃    ┗ net.vsl
+ ┣ services/
++┃    ┗ my_plugin.vsl
+ ┗ plugins/
++     ┗ my_plugin.so -> /usr/lib/vsmtp/libmy_plugin.so
 ```
 <p class="ann"> Adding plugins and associated services </p>
 

@@ -10,12 +10,17 @@ The root `filter.vsl` script is used to filter incoming transaction at the `conn
 
 ```diff
 /etc/vsmtp
-  ┣ vsmtp.vsl
-+ ┣ filter.vsl
-  ┗ conf.d/
-       ┣ config.vsl
-       ┣ interfaces.vsl
-       ┗ app.vsl
+ ┣ vsmtp.vsl
++┣ filter.vsl
+ ┣ conf.d/
+ ┃    ┣ config.vsl
+ ┃    ┣ interfaces.vsl
+ ┃    ┗ app.vsl
+ ┣ domain-available/
+ ┣ domain-enabled/
+ ┣ objects/
+ ┣ services/
+ ┗ plugins/
 ```
 <p class="ann"> Adding the root filter script </p>
 
@@ -34,19 +39,21 @@ fn on_config(config) {
 It is also possible to filter emails per domain.
 
 ```diff
-/etc/vsmtp
-  ┣ vsmtp.vsl
-  ┣ filter.vsl
-  ┣ conf.d/
-  ┃     ┣ config.vsl
-  ┃     ┣ interfaces.vsl
-  ┃     ┗ app.vsl
-+ ┣ domain-available/
-+ ┃     ┗ example.com/
-+ ┃          ┣ incoming.vsl
-+ ┃          ┣ outgoing.vsl
-+ ┃          ┗ internal.vsl
-+ ┗ domain-enabled/
+ ┣ vsmtp.vsl
+ ┣ filter.vsl
+ ┣ conf.d/
+ ┃    ┣ config.vsl
+ ┃    ┣ interfaces.vsl
+ ┃    ┗ app.vsl
+ ┣ domain-available/
++┃     ┗ example.com/
++┃          ┣ incoming.vsl
++┃          ┣ outgoing.vsl
++┃          ┗ internal.vsl
+ ┣ domain-enabled/
+ ┣ objects/
+ ┣ services/
+ ┗ plugins/
 ```
 <p class="ann"> Adding filtering scripts for the `example.com` domain under the `domain-available` directory </p>
 
@@ -65,19 +72,22 @@ In the above configuration, vSMTP has been setup to pickup filtering rules in th
 
 ```diff
 /etc/vsmtp
-  ┣ vsmtp.vsl
-  ┣ filter.vsl
-  ┣ conf.d/
-  ┃     ┣ config.vsl
-  ┃     ┣ interfaces.vsl
-  ┃     ┗ app.vsl
-  ┣ domain-available/
-  ┃     ┗ example.com
-  ┃          ┣ incoming.vsl
-  ┃          ┣ outgoing.vsl
-  ┃          ┗ internal.vsl
-  ┗ domain-enabled/
-+       ┗ example.com -> /etc/vsmtp/domain-available/example.com
+ ┣ vsmtp.vsl
+ ┣ filter.vsl
+ ┣ conf.d/
+ ┃    ┣ config.vsl
+ ┃    ┣ interfaces.vsl
+ ┃    ┗ app.vsl
+ ┣ domain-available/
+ ┃    ┗ example.com/
+ ┃         ┣ incoming.vsl
+ ┃         ┣ outgoing.vsl
+ ┃         ┗ internal.vsl
+ ┣ domain-enabled/
++┃    ┗ example.com -> /etc/vsmtp/domain-available/example.com
+ ┣ objects/
+ ┣ services/
+ ┗ plugins/
 ```
 
 <p class="ann"> Using symlinks to enable filtering for the `example.com` domain </p>
@@ -92,20 +102,23 @@ It is possible to add a specific configuration for each domain.
 
 ```diff
 /etc/vsmtp
-  ┣ vsmtp.vsl
-  ┣ filter.vsl
-  ┣ conf.d/
-  ┃     ┣ config.vsl
-  ┃     ┣ interfaces.vsl
-  ┃     ┗ app.vsl
-  ┣ domain-available/
-  ┃     ┗ example.com
-+ ┃         ┣ config.vsl
-  ┃         ┣ incoming.vsl
-  ┃         ┣ outgoing.vsl
-  ┃         ┗ internal.vsl
-  ┗ domain-enabled/
-        ┗ example.com -> /etc/vsmtp/domain-available/example.com
+ ┣ vsmtp.vsl
+ ┣ filter.vsl
+ ┣ conf.d/
+ ┃    ┣ config.vsl
+ ┃    ┣ interfaces.vsl
+ ┃    ┗ app.vsl
+ ┣ domain-available/
+ ┃    ┗ example.com
++┃        ┣ config.vsl
+ ┃        ┣ incoming.vsl
+ ┃        ┣ outgoing.vsl
+ ┃        ┗ internal.vsl
+ ┣ domain-enabled/
+ ┃    ┗ example.com -> /etc/vsmtp/domain-available/example.com
+ ┣ objects/
+ ┣ services/
+ ┗ plugins/
 ```
 
 <p class="ann"> Adding specific configuration for a domain </p>
