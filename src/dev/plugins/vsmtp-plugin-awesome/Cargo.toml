@@ -2,7 +2,7 @@
 name = "vsmtp_plugin_awesome"
 version = "0.1.0"
 edition = "2021"
-authors = ["ltabis <ltabis.pro@gmail.com>"]
+authors = ["user <user@example.com>"]
 
 [lib]
 # You could also use Rust's unstable ABI with "dylib".
