@@ -108,6 +108,7 @@ The vSMTP reference guide
   - [Linux](dev/build/source/linux.md)
   - [FreeBSD](dev/build/source/freebsd.md)
 - [The Queue System](dev/queues.md)
+- [Create plugins](dev/plugins/plugins.md)
 
 # Appendix
 
