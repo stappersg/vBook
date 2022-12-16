@@ -1,5 +1,7 @@
 # Create plugins
 
+> <!> This chapter is still incomplete.
+
 vSMTP plugins are Rust crate compiled as dynamic libraries.
 They can be imported directly in filtering script.
 
