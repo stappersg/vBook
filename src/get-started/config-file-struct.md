@@ -7,7 +7,7 @@ vSMTP, by default, stores it's configuration in the `/etc/vsmtp` directory. Lets
 A typical vSMTP configuration looks like the following.
 
 ```
-{{#include hierarchy.txt}}
+{{#include config-file-struct/hierarchy.txt}}
 ```
 <p class="ann"> typical vSMTP configuration placed in the `/etc/vsmtp` directory</p>
 
