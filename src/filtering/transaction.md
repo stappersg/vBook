@@ -29,7 +29,7 @@ The root `filter.vsl` script is used to filter incoming transaction at the `conn
 
 This script also run rules under the `mail` stage when an incoming sender domain is not handled by the configuration.
 
-Finally, if the sender's domain is not handled by the configuration, and that the domain of recipients is not as well, rules defined in the `rcpt` stage contained in the root `filter.vsl` are also called. You should, by default, deny the transaction at this stage since it probably is a relay tentative.
+Finally, if the sender's domain is not handled by the configuration, and that the domain of recipients is not as well, rules defined in the `rcpt` stage contained in the root `filter.vsl` are also called. By default, the transaction should be denied at this stage since it probably is a relay tentative.
 
 ```
 #{

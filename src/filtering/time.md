@@ -1,7 +1,7 @@
 # Time
 
 Some objects and functions require argument of time.
-Here is a list of available time scales format that you can use.
+Here is a list of available time scales formats.
 
 | Time scale   |      Expression      |
 |----------|:-------------|
@@ -22,8 +22,8 @@ Here is a list of available time scales format that you can use.
 
 ```rust,ignore
 const my_command = cmd(#{
-    // for the `cmd` service, you can specify a timeout for the command.
-    // You can use the different time scales above to specify the time.
+    // for the `cmd` service, a timeout for the command can be specified.
+    // Use the different time scales above to specify the time.
     timeout: "10s",
     // timeout: "200usec",
     // timeout: "1minute",

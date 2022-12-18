@@ -13,13 +13,13 @@ Rust port, packages and information can be found on the [freshports] website. Fi
 pkg install lang/rust
 ```
 
-> Rust 1.60+ package is required. You may have to switch to the latest ports branch. Please refer to the [freeBSD wiki].
+> Rust 1.60+ package is required. It may be necessary to switch to the latest ports branch. Please refer to the [freeBSD wiki].
 
 [freeBSD wiki]: https://wiki.freebsd.org/Ports/QuarterlyBranch
 
 ## Dependencies
 
-FreeBSD 13.x includes all required dependencies. Check that sasl is included in your release (see Linux dependencies).
+FreeBSD 13.x includes all required dependencies. Check that sasl is included in the used release. (See Linux dependencies)
 
 ## vSMTP compilation
 

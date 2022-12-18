@@ -100,7 +100,7 @@ However, if objects are used in only a specific rule set, they should be stored 
 
 ### Grouping objects
 
-You can group objects using [Rhai Arrays](https://rhai.rs/book/language/arrays.html#arrays).
+Objects can be grouped using [Rhai Arrays](https://rhai.rs/book/language/arrays.html#arrays).
 
 ```rust,ignore
 const authorized_users = [
@@ -113,11 +113,11 @@ const authorized_users = [
 
 > When used with check operators (`==`, `!=`, `in` etc ...), the whole array will be tested. The test stops when one element of the group matches, or nothing matches.
 
-> You can group different types of objects together.
+> Different types of objects can be grouped together.
 
 ### Pre-defined objects
 
-vSL already exposes some objects for you to use. You can check out the [Variable reference](../ref/vSL/variables.md) to get more details.
+vSL already exposes some objects. Check out the [Variable reference](../ref/vSL/variables.md) to get more details.
 
 <!--
 // TODO: Move the following descriptions to their corresponding doc comments.

@@ -4,11 +4,11 @@ Rules and actions are the entry point to filter emails.
 
 ## Syntax
 
-`.vsl` files in your rules directory accepts a special syntax: the `rule` and `action` keywords.
+`.vsl` files in the rules directory accepts a special syntax: the `rule` and `action` keywords.
 
 ### Rule
 
-A `rule` is used to change the transaction state. You can accept and deny a transaction or simply proceed to the next rule using [rule state functions](./../ref/vSL/api/fn::global::rule_state.md). A `rule` is the main primitive for filtering.
+A `rule` is used to change the transaction state. It can accept and deny a transaction or simply proceed to the next rule using [rule state functions](./../ref/vSL/api/fn::global::rule_state.md). A `rule` is the main primitive for filtering.
 
 ```bnf
 <rule>      ::= "rule" <rule-name> "||" <expr>
@@ -34,7 +34,7 @@ rule "check client ip" || {
 ```
 <p class="ann"> Declaring rules </p>
 
-As you can see in the above example, a rule MUST return a "state" (accept, deny, next, etc). Once the rule is executed and a state returned, vSMTP uses it to change the transaction state.
+As shown in the above example, a rule MUST return a "state" (accept, deny, next, etc). Once the rule is executed and a state returned, vSMTP uses it to change the transaction state.
 
 > Rule engine state and effects are listed in the [rule state reference](../ref/vSL/api/fn::global::rule_state.md).
 

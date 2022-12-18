@@ -1,6 +1,8 @@
 # vSL - the vSMTP Scripting Language
 
-vSL is a lightweight scripting language dedicated to email filtering. It is based on the fully featured [Rhai](https://rhai.rs) scripting language. To make the most out of vSL, it is recommended that you read Rhai's documentation.
+vSL is a lightweight scripting language dedicated to email filtering. It is based on the fully featured [Rhai] scripting language. To make the most out of vSL, it is recommended that you read the documentation of [Rhai].
+
+[Rhai]: https://rhai.rs
 
 vSL, on top of Rhai, adds:
 * Functions used to query vSMTP on the current transaction's data.

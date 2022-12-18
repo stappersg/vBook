@@ -1,6 +1,6 @@
 # Objects
 
-Objects are variables that can be re-used accros your filtering scripts. They are placed in the `objects/` directory.
+Objects are variables that can be re-used accros filtering scripts. They are placed in the `objects/` directory.
 
 ```diff
   /etc/vsmtp

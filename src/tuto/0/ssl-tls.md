@@ -27,7 +27,7 @@ Rules can then be added to filter out unsecure transactions.
 #{
   helo: [
     rule "deny unencrypted" || {
-      // You can customize your policy to whitelist some ip or anything
+      // It is possible to customize the policy to whitelist some ip or anything.
       if is_secured() {
         next()
       } else {

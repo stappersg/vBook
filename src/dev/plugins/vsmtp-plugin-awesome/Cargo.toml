@@ -5,7 +5,6 @@ edition = "2021"
 authors = ["user <user@example.com>"]
 
 [lib]
-# You could also use Rust's unstable ABI with "dylib".
 crate-type = ["cdylib"]
 
 [dependencies]

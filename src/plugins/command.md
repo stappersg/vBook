@@ -1,6 +1,6 @@
 # Command
 
-The command plugin lets you execute Unix shell commands directly in `vSL`.
+The command plugin executes Unix shell commands directly in `vSL`.
 
 > This is a native plugin, thus using the `cmd` function does not require an `import` statement.
 
