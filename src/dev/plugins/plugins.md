@@ -64,4 +64,5 @@ Has you can see in the manifest file generated for the project, the configured c
 
 With this option your crate can be compiled into a dynamic library, and vSMTP can access your plugin via the `module_entrypoint` function at runtime.
 
+<!-- markdown-link-check-disable-next-line -->
 [ahash]: https://crates.io/crates/ahash
