@@ -114,7 +114,7 @@ If required, add private key and certificate to `/etc/vsmtp/certs` and grant rea
 
 ### Check and disable current MTA
 
-Check if you have a mail transfer agent service running and disable it.
+Check if a mail transfer agent service is running and disable it.
 
 ```shell
 $ sudo ss -ltpn | grep ":25"
@@ -139,7 +139,7 @@ Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 ```
 <p class="ann"> Disabling a postfix instance that was running on port 25 </p>
 
-&#9758; | Depending on Linux distributions, instead of `ss` command you may have to use `netstat -ltpn`
+&#9758; | Depending on Linux distributions, use the `ss` or `netstat -ltpn` commands.
 
 ### Add vSMTP as a systemd service
 

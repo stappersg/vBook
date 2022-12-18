@@ -24,7 +24,7 @@ Here, a member of Doe's family is sending an email to someone else. We just have
 <p class="ann"> /etc/vsmtp/domain-available/doe-family.com/outgoing.vsl </p>
 
 > ⚠️ The `authenticate` function uses the `testsaslauthd` program under the hood, itself calling the `saslauthd` daemon.
-> Make sure to install the [Cyrus sasl binary package](https://www.cyrusimap.org/sasl/)for your distribution and configure the `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
+> Make sure to install the [Cyrus sasl binary package](https://www.cyrusimap.org/sasl/) for the targeted distribution and configure the `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
 
 > See the [`is_authenticated`][is_auth_fn_ref] and [`authenticate`][auth_fn_ref] reference for more details.
 

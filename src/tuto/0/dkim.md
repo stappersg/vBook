@@ -28,7 +28,7 @@ fn on_config(config) {
 
 ## Add signatures
 
-The `dkim_sign` function is used to sign your email. Use it in the `postq` stage like so:
+The `dkim_sign` function is used to sign the email. Use it in the `postq` stage like so:
 
 ```
 #{

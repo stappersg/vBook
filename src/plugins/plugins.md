@@ -20,7 +20,7 @@ Plugins are stored in the `/etc/vsmtp/plugins` directory.
 +    ┗ ...
 ```
 
-To make things cleaner with Linux's file system, it is recommended that you store plugins in the `/usr/lib/vsmtp` directory, and use symbolic links to those libraries in the plugins folder.
+To make things cleaner with Linux's file system, it is recommended that plugins are stored in the `/usr/lib/vsmtp` directory, and symbolic links are used to link those libraries to the `plugins` directory.
 
 ```diff
 /etc/vsmtp
@@ -32,7 +32,7 @@ To make things cleaner with Linux's file system, it is recommended that you stor
 +    ┗ ...
 ```
 
-Plugins are named using the `libvsmtp-plugin-<name>-<vsmtp-version>.so` nomenclature, with `<name>` begin the name of the plugin, and `<vsmtp-version>` the associated vSMTP version. Plugins must have the same version as your current vSMTP version to work correctly.
+Plugins are named using the `libvsmtp-plugin-<name>-<vsmtp-version>.so` nomenclature, with `<name>` begin the name of the plugin, and `<vsmtp-version>` the associated vSMTP version. Plugins must have the same version as the current vSMTP version to work correctly.
 
 ```sh
 ln -s /usr/lib/vsmtp/libvsmtp-plugin-mysql-1.0.0.so /etc/vsmtp/plugins/vsmtp-plugin-mysql.so

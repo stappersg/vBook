@@ -55,4 +55,4 @@ The RFC 7505 defines two specific return codes.
 
 Currently, MX records are automatically checked on delivery. If the destination server provides a NULL MX record, the message is immediately moved into the dead queue.
 
-In future release, you will be able to configure checks for null MX records using filtering and decide what to do with the email.
+In future release, it will be possible to configure rules to check for null MX records using filtering and decide what to do with the email.

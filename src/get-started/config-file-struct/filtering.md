@@ -68,7 +68,7 @@ fn on_config(config) {
 ```
 <p class="ann"> Specifying filtering rules directory for domains in the configuration </p>
 
-In the above configuration, vSMTP has been setup to pickup filtering rules in the `domain-enabled` directory, not `domain-available`. You will have to use symbolic links for vSMTP to use the scripts inside the `domain-available/example.com` directory.
+In the above configuration, vSMTP has been setup to pickup filtering rules in the `domain-enabled` directory, not `domain-available`. Let's use symbolic links to make our scripts available for vSMTP inside the `domain-available/example.com` directory.
 
 ```diff
 /etc/vsmtp
@@ -92,7 +92,7 @@ In the above configuration, vSMTP has been setup to pickup filtering rules in th
 
 <p class="ann"> Using symlinks to enable filtering for the `example.com` domain </p>
 
-> This directory structure is standard. The goal here is to disable / enable domain specific filtering by simply removing / adding symbolic links while keeping your configuration intact.
+> This directory structure is standard. The goal here is to disable / enable domain specific filtering by simply removing / adding symbolic links while keeping the configuration intact.
 
 The server will pickup the scripts defined in the `domain-enabled/example.com` directory and run them following the conditions defined in the [Transaction Context chapter](../../filtering/transaction.md).
 
@@ -132,7 +132,7 @@ fn on_domain_config(config) {
 ```
 <p class="ann"> An empty domain specific configuration </p>
 
-Like the root `config.vsl` file, this script contains a function used to configure the domain, in this case called `on_domain_config`. You can configure TLS, DKIM and DNS for each domain.
+Like the root `config.vsl` file, this script contains a function used to configure the domain, in this case called `on_domain_config`. It is possible to configure TLS, DKIM and DNS for each domain.
 
 ```rust,ignore
 fn on_domain_config(config) {

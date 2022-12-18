@@ -7,14 +7,13 @@ They can be imported directly in filtering scripts.
 
 ## Requirements
 
-- First, make sure that [Rust and Cargo](https://www.rust-lang.org/) are installed on your system.
+- First, make sure that [Rust and Cargo](https://www.rust-lang.org/) are installed on the system.
 - The Rust community as created a cargo command called [Cargo generate](https://cargo-generate.github.io/cargo-generate/installation.html) which is used to fetch Rust project templates from Github. Make sure to install it too.
-- Rhai uses a crate called [ahash] used to hash types and function signatures. To hash your plugin types with the exact same hash, you must have the same seed hash the version of vSMTP that you are creating your plugin for. See the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate for more details.
-- You must compile your plugin with the exact same Rust version than vSMTP.
+- Rhai uses a crate called [ahash] used to hash types and function signatures. To hash the plugin types with the exact same hash, the plugin must use the same seed has vSMTP. See the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate for more details.
 
 ## Get the plugin template
 
-A [Rhai dylib template](https://github.com/ltabis/rhai-dylib-template) is available to create plugins with boilerplate code already setup for you.
+A [Rhai dylib template](https://github.com/ltabis/rhai-dylib-template) is available to easily create plugins.
 
 ```sh
 cargo generate --git https://github.com/ltabis/rhai-dylib-template.git
@@ -37,7 +36,7 @@ cargo generate --git https://github.com/ltabis/rhai-dylib-template.git
 ✨   Done! New project created /path/vsmtp-plugin-awesome
 ```
 
-`cargo generate` will prompt you for a project name (It is recommended to use the `vsmtp-plugin-*` nomenclature to name vSMTP plugins) and a [ahash] seed. (If you don't know what that is, use the default prompt. To get more detail on what are [ahash] seeds and what they are used for, check out the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate)
+`cargo generate` will prompt for a project name (It is recommended to use the `vsmtp-plugin-*` nomenclature to name vSMTP plugins) and a [ahash] seed. (To get more detail on what are [ahash] seeds and what they are used for, check out the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate)
 
 ## Overview
 
@@ -49,20 +48,20 @@ cargo generate --git https://github.com/ltabis/rhai-dylib-template.git
 `cargo generate` created a basic Rust project called `vsmtp-plugin-awesome`. It contains a `module_entrypoint` function that returns a [Rhai module](https://rhai.rs/book/language/modules/index.html). Once this plugin is imported in vSMTP via the Rhai `import` statement, the 
 `module_entrypoint` function is called and the returned Rhai module is used to extend `.vsl` scripts.
 
-> The `module_entrypoint` function must be present in your crate, otherwise vSMTP will not run your plugin.
+> The `module_entrypoint` function must be present in the crate, otherwise vSMTP will not run the plugin.
 
 ```toml
 {{#include vsmtp-plugin-awesome/Cargo.toml}}
 ```
 <p class="ann"> Generated Cargo.toml file </p>
 
-Has you can see in the manifest file generated for the project, the configured crate type is `cdylib`.
+Has specified in the manifest file generated for the project, the configured crate type is `cdylib`.
 
 ```toml
 {{#include vsmtp-plugin-awesome/Cargo.toml:9}}
 ```
 
-With this option your crate can be compiled into a dynamic library, and vSMTP can access your plugin via the `module_entrypoint` function at runtime.
+With this option, the crate can be compiled into a dynamic library, and vSMTP can access the plugin via the `module_entrypoint` function at runtime.
 
 <!-- markdown-link-check-disable-next-line -->
 [ahash]: https://crates.io/crates/ahash

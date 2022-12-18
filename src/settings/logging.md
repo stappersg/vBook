@@ -8,7 +8,7 @@ Default vSMTP log system. By default, it writes logs in the `/var/log/vsmtp/vsmt
 
 ```rust,ignore
 fn on_config(config) {
-    // You can change the location of the logs.
+    // Change the location of the logs.
     config.server.logs.filename = "./tmp/system/vsmtp.log";
     // Set global logging level to "info".
     //
@@ -73,7 +73,7 @@ fn on_config(config) {
 
         // Writing syslogs on disk using a unix socket.
         socket: #{ type: "unix", path: "/dev/log" },
-        // You can also use:
+        // It is possible to use:
         // `socket: #{ type: "tcp", server: "127.0.0.1:601" }`
         //
         // or

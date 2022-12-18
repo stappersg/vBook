@@ -7,19 +7,15 @@
 
 ## Download the [source code](https://github.com/viridIT/vSMTP)
 
-You can also download a specific version on the [release folder](https://github.com/viridIT/vSMTP/releases).
+All versions of the software are available on the [release page](https://github.com/viridIT/vSMTP/releases).
 
-Or
-
-Get the latest release (`main` branch)
+It is possible to get the latest release using git. (via the `main` branch)
 
 ```shell
 git clone -b main --single-branch https://github.com/viridIT/vSMTP.git
 ```
 
-Or
-
-Get the latest **unstable** changes (`develop` branch)
+Or get the latest **unstable** version of vSMTP. (via the `develop` branch)
 
 ```shell
 git clone -b develop --single-branch https://github.com/viridIT/vSMTP.git

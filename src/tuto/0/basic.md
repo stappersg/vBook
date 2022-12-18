@@ -24,7 +24,7 @@ fn on_config(config) {
   config.server.name = "doe-family.com";
 
   // addresses that the server will listen to.
-  // (change `192.168.1.254` for the address you want to listen to)
+  // (change `192.168.1.254` for the desired address)
   config.server.interfaces = #{
     addr: ["192.168.1.254:25"],
     addr_submission: ["192.168.1.254:587"],
@@ -38,7 +38,7 @@ fn on_config(config) {
 
 > For complex configurations, it is recommended to split the file into [Rhai modules](https://rhai.rs/book/language/modules/index.html).
 
-> To get an exhaustive list of parameters that you can change in the configuration, see the [Configuration Reference](../../ref/vSL/api/var::cfg.md) chapter.
+> To get an exhaustive list of parameters that can be changed in the configuration, see the [Configuration Reference](../../ref/vSL/api/var::cfg.md) chapter.
 
 The server can now listen and serve SMTP connections.
 

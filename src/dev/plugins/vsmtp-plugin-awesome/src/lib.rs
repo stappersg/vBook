@@ -2,7 +2,7 @@ use rhai::plugin::*;
 
 #[export_module]
 mod vsmtp_plugin_awesome {
-    // Build your module here.
+    // Build the module here.
 }
 
 /// Export the vsmtp_plugin_awesome module.

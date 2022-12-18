@@ -31,7 +31,7 @@ fn on_config(config) {
 ```
 <p class="ann"> Configuring DKIM keys </p>
 
-You can also configure keys per domain.
+It is also possible to configure keys per domain.
 
 ```rust,ignore
 fn on_domain_config(config) {
@@ -45,7 +45,7 @@ fn on_domain_config(config) {
 
 ## Add signatures
 
-You can sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for outgoing emails.
+Sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for outgoing emails.
 
 ```
 #{
@@ -75,7 +75,7 @@ You can sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for out
 
 ## Verify signatures
 
-You can verify DKIM signatures of incoming emails by calling the [`verify_dkim`][verify_dkim_fn_ref] function.
+Verify DKIM signatures of incoming emails by calling the [`verify_dkim`][verify_dkim_fn_ref] function.
 
 ```rust,ignore
 #{

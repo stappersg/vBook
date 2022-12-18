@@ -59,7 +59,7 @@ fn on_config(config) {
 
 ## Domain specific resolver
 
-It is possible to configure a DNS per domain. Under the desired domain folder in your `config.vsl`, add a `on_domain_config` callback and configure the dns here.
+It is possible to configure a DNS per domain. Under the desired domain folder in `config.vsl`, add a `on_domain_config` callback and configure the dns here.
 
 ```rust,ignore
 fn on_domain_config(config) {

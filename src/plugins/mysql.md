@@ -1,10 +1,10 @@
 # MySQL
 
-The mysql plugin lets you query mysql databases.
+The mysql plugin can query mysql databases.
 
 ## Install
 
-Install `libvsmtp_plugin_mysql.so` in `/usr/lib/vsmtp`, then use a symbolic link in your configuration.
+Install `libvsmtp_plugin_mysql.so` in `/usr/lib/vsmtp`, then use a symbolic link in the configuration.
 
 ```sh
 ln -s /usr/lib/vsmtp/libvsmtp_plugin_mysql.so /etc/vsmtp/plugins/libvsmtp_plugin_mysql.so
@@ -16,12 +16,12 @@ ln -s /usr/lib/vsmtp/libvsmtp_plugin_mysql.so /etc/vsmtp/plugins/libvsmtp_plugin
 import "plugins/libvsmtp_plugin_mysql" as db;
 
 export const database = db::mysql(#{
-    // the url to connect to your database.
+    // the url to connect to the database.
     url: "mysql://localhost/",
     // the time allowed to the database to send a
-    // response to your query. (optional, 30s by default)
+    // response to the vSMTP. (optional, 30s by default)
     timeout: "30s",
-    // the number of connections to open on your database. (optional, 4 by default)
+    // the number of connections to open on the database. (optional, 4 by default)
     connections: 4,
 });
 ```

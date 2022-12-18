@@ -17,7 +17,7 @@ By default, the following files are created in the `/etc/vsmtp` directory once v
 
 `vsmtp.vsl` is the mandatory entrypoint for vSMTP. It's content SHOULD NOT be modified, since it can change between versions.
 
-`conf.d/config.vsl`, on the other hand, is a mandatory configuration file that contains the root configuration for vSMTP. To change the configuration, you will need to edit it.
+`conf.d/config.vsl`, on the other hand, is a mandatory configuration file that contains the root configuration for vSMTP.
 
 This file must at least contain the following statement:
 
@@ -28,9 +28,9 @@ fn on_config(config) {
 ```
 <p class="ann"> An empty root configuration file in `/etc/vsmtp/conf.d/config.vsl`</p>
 
-vSMTP calls the `on_config` function once starting up. You are free to modify the `config` object to change the configuration. The `config` object MUST be returned at the end of the function.
+vSMTP calls the `on_config` function once starting up. Modify the `config` object to change the configuration. The `config` object MUST be returned at the end of the function.
 
-> The [Configuration reference](../../ref/vSL/api/var::cfg.md) lists all fields that you can change in the `config` object.
+> The [Configuration reference](../../ref/vSL/api/var::cfg.md) lists all fields that can be changed in the `config` object.
 
 For example:
 

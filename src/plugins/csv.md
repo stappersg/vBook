@@ -1,10 +1,10 @@
 # CSV
 
-The csv plugin lets you open, read and write csv databases.
+The csv plugin can open, read and write to csv databases.
 
 ## Install
 
-Install `libvsmtp_plugin_csv.so` in `/usr/lib/vsmtp`, then use a symbolic link in your configuration.
+Install `libvsmtp_plugin_csv.so` in `/usr/lib/vsmtp`, then use a symbolic link in the configuration.
 
 ```sh
 ln -s /usr/lib/vsmtp/libvsmtp_plugin_csv.so /etc/vsmtp/plugins/libvsmtp_plugin_csv.so
@@ -27,7 +27,7 @@ export const user_accounts = db::csv(#{
     //
     // WARNING: using the "always" option can make vsmtp really slow,
     //          because it has to pull the whole database in memory every
-    //          time it is queried. Use it only if you have a small database.
+    //          time it is queried. Use it only with a small database.
     refresh: "always",
     // The delimiter character used in the csv file.
     delimiter: ",",

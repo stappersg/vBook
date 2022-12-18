@@ -7,7 +7,7 @@
 The goal is to temporarily reject emails from a sender that is not yet in registered in a database, then accepting it back if the sender retries.
 
 <!-- markdown-link-check-disable-next-line -->
-To build a greylist, you need to create a database and a vSMTP service. For this tutorial, we will use the [mysql](https://www.mysql.com/) database.
+To build a greylist, create a database and a vSMTP service. For this tutorial, we will use the [mysql](https://www.mysql.com/) database.
 
 ## The database
 

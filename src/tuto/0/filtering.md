@@ -2,7 +2,7 @@
 
 By default, the server will deny any SMTP transaction. We have to define [filtering rules](../../filtering/rules.md) to accept connections and filter messages.
 
-In this chapter, you will get a glimpse of vSMTP's filtering system. To create your own filtering rules, we recommend checking out the [vSL reference](../../filtering/vsl.md), focussing on the following chapters:
+In this chapter, we will get a glimpse of vSMTP's filtering system. To create filtering rules, we recommend checking out the [vSL reference](../../filtering/vsl.md), focussing on the following chapters:
 * [Rules](../../filtering/rules.md)
 * [SMTP Stages](../../filtering/stages.md)
 * [Transaction context](../../filtering/transaction.md)
@@ -23,7 +23,7 @@ Let's first add our filters in the `/etc/vsmtp/conf.d/config.vsl` script.
     config.server.name = "doe-family.com";
 
     // addresses that the server will listen to.
-    // (change `192.168.1.254` for the address you want to listen to)
+    // (change `192.168.1.254` for the desired address)
     config.server.interfaces = #{
       addr: ["192.168.1.254:25"],
       addr_submission: ["192.168.1.254:587"],
