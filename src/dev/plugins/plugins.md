@@ -37,7 +37,7 @@ cargo generate --git https://github.com/ltabis/rhai-dylib-template.git
 ✨   Done! New project created /path/vsmtp-plugin-awesome
 ```
 
-`cargo generate` will prompt you for a project name (It is recommended to use the `vsmtp-plugin-*` nomenclature to name vSMTP plugins) and a ahash seed. (If you don't know what that is, use the default prompt. To get more detail on what are ahash seeds and what they are used for, check out the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate)
+`cargo generate` will prompt you for a project name (It is recommended to use the `vsmtp-plugin-*` nomenclature to name vSMTP plugins) and a [ahash] seed. (If you don't know what that is, use the default prompt. To get more detail on what are [ahash] seeds and what they are used for, check out the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate)
 
 ## Overview
 
