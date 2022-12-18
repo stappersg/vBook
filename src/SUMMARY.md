@@ -1,6 +1,8 @@
 The vSMTP reference guide
 ==========================
 
+<!-- Use 🆕 when updating chapters, remove them after a given time -->
+
 [The vSMTP Book](index.md)
 
 ----------------------
