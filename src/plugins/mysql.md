@@ -13,9 +13,9 @@ ln -s /usr/lib/vsmtp/libvsmtp_plugin_mysql.so /etc/vsmtp/plugins/libvsmtp_plugin
 ## Using the plugin
 
 ```rust,ignore
-import "plugins/libvsmtp_plugin_mysql" as db;
+import "plugins/libvsmtp_plugin_mysql" as mysql;
 
-export const database = db::mysql(#{
+export const database = mysql::mysql(#{
     // the url to connect to the database.
     url: "mysql://localhost/",
     // the time allowed to the database to send a
@@ -25,15 +25,18 @@ export const database = db::mysql(#{
     connections: 4,
 });
 ```
+<p class="ann"> /etc/vsmtp/services/mysql.vsl </p>
 
 Using [Rhai arrays](https://rhai.rs/book/language/arrays.html) and [maps](https://rhai.rs/book/language/object-maps.html#object-maps), vSL can easily fetch and update data from a mysql database.
 
 ```
+import "service/mysql" as mysql;
+
 #{
     connect: [
         rule "query mysql database" || {
             // Query the database.
-            let records = database.query("SELECT * FROM my_table");
+            let records = mysql::database.query("SELECT * FROM my_table");
             
             log("info", "mysql records");
             for record in records {
