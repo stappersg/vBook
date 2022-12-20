@@ -37,3 +37,5 @@ import "plugins/vsmtp-plugin-mysql" as mysql;
 export const database = mysql::connect(...);
 ```
 <p class="ann"> /etc/vsmtp/services/mysql-service.vsl </p>
+
+> Check out the [MySQL plugin tutorial](../../plugins/mysql.md) for more details.
