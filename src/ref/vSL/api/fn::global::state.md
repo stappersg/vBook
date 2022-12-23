@@ -1,5 +1,44 @@
-# global::rule_state
+# global::state
 
+Functions used to interact with the rule engine.
+Use `states` in `rules` to deny, accept, or quarantine emails.
+
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>op</code> != </h2>
+
+```rust,ignore
+op !=(status_1: Status, status_2: Status) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `!=` for `Status`
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>op</code> == </h2>
+
+```rust,ignore
+op ==(status_1: Status, status_2: Status) -> bool
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Operator `==` for `Status`
+</details>
+
+</div>
+</br>
 
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
@@ -8,8 +47,8 @@
 
 ```rust,ignore
 fn accept() -> Status
-fn accept(code: SharedObject) -> Status
 fn accept(code: String) -> Status
+fn accept(code: SharedObject) -> Status
 ```
 
 <details>
@@ -25,12 +64,12 @@ all of them.
 
 # Example
 
-```
+```ignore
 #{
     connect: [
         // "ignored checks" will be ignored because the previous rule returned accept.
-        rule "accept" || accept(),
-        action "ignore checks" || print("this will be ignored because the previous rule used accept()."),
+        rule "accept" || state::accept(),
+        action "ignore checks" || print("this will be ignored because the previous rule used state::accept()."),
     ],
 
     mail: [
@@ -50,22 +89,18 @@ all of them.
 <h2 class="func-name"> <code>fn</code> deny </h2>
 
 ```rust,ignore
-fn deny(code: String) -> Status
+fn deny() -> Status
 fn deny(code: SharedObject) -> Status
+fn deny(code: String) -> Status
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
 Stop rules evaluation and/or send an error code to the client.
+The code sent is `554 - permanent problems with the remote server`.
 
-# Args
-
-* `code` - A custom code as a string to send to the client.
-
-# Error
-
-* Could not parse the parameter as a valid SMTP reply code.
+To use a custom code, see `deny(code)`.
 
 # Effective smtp stage
 
@@ -73,16 +108,16 @@ all of them.
 
 # Example
 
-```
+```ignore
 #{
     rcpt: [
         rule "check for satan" || {
            // The client is denied if a recipient's domain matches satan.org,
            // this is a blacklist, sort-of.
-           if rcpt().domain == "satan.org" {
-               deny("554 permanent problems with the remote server")
+           if ctx::rcpt().domain == "satan.org" {
+               state::deny()
            } else {
-               next()
+               state::next()
            }
        },
     ],
@@ -99,8 +134,9 @@ all of them.
 <h2 class="func-name"> <code>fn</code> faccept </h2>
 
 ```rust,ignore
-fn faccept(code: String) -> Status
+fn faccept() -> Status
 fn faccept(code: SharedObject) -> Status
+fn faccept(code: String) -> Status
 ```
 
 <details>
@@ -110,31 +146,27 @@ Tell the rule engine to force accept the incoming transaction.
 This means that all rules following the one `faccept` is called
 will be ignored.
 
+Sends an 'Ok' code to the client. To customize the code to send,
+see `faccept(code)`.
+
 Use this return status when you are sure that
 the incoming client can be trusted.
-
-# Args
-
-* `code` - a custom code as a string to send to the client.
-
-# Error
-
-* Could not parse the parameter as a valid SMTP reply code.
 
 # Effective smtp stage
 
 all of them.
 
 # Example
-```
+
+```ignore
 #{
     connect: [
         // Here we imagine that "192.168.1.10" is a trusted source, so we can force accept
         // any other rules that don't need to be run.
-        rule "check for trusted source" || if client_ip() == "192.168.1.10" { faccept("220 Ok") } else { next() },
+        rule "check for trusted source" || if ctx::client_ip() == "192.168.1.10" { faccept() } else { state::next() },
     ],
 
-    // The following rules will not be evaluated if `client_ip() == "192.168.1.10"` is true.
+    // The following rules will not be evaluated if `ctx::client_ip() == "192.168.1.10"` is true.
     mail: [
         rule "another rule" || {
             // ... doing stuff
@@ -142,8 +174,6 @@ all of them.
     ],
 }
 ```
-
-# Errors
 </details>
 
 </div>
@@ -156,7 +186,7 @@ all of them.
 
 ```rust,ignore
 fn info(code: SharedObject) -> Status
-
+fn info(code: String) -> Status
 ```
 
 <details>
@@ -179,13 +209,48 @@ all of them.
 
 # Example
 
-```
+```ignore
 #{
     connect: [
         rule "please retry" || {
            const info_code = code(451, "failed to understand you request, please retry.");
-           info(info_code)
+           state::info(info_code)
        },
+    ],
+}
+```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> next </h2>
+
+```rust,ignore
+fn next() -> Status
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Tell the rule engine that a rule succeeded. Following rules
+in the current stage will be executed.
+
+# Effective smtp stage
+
+all of them.
+
+# Example
+
+```ignore
+#{
+    connect: [
+        // once "go to the next rule" is evaluated, the rule engine execute "another rule".
+        rule "go to the next rule" || state::next(),
+        action "another rule" || print("checking stuff ..."),
     ],
 }
 ```
@@ -201,7 +266,6 @@ all of them.
 
 ```rust,ignore
 fn quarantine(queue: String) -> Status
-
 ```
 
 <details>
@@ -223,7 +287,7 @@ all of them.
 
 # Example
 
-```
+```ignore
 import "services" as svc;
 
 #{
@@ -232,14 +296,50 @@ import "services" as svc;
               // the email is placed in quarantined if a virus is detected by
               // a service.
               if has_header("X-Virus-Infected") {
-                quarantine("virus_queue")
+                state::quarantine("virus_queue")
               } else {
-                next()
+                state::next()
               }
           }
     ],
 }
 ```
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> to_debug </h2>
+
+```rust,ignore
+fn to_debug(status: Status) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Status` to a debug string
+</details>
+
+</div>
+</br>
+
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> to_string </h2>
+
+```rust,ignore
+fn to_string(status: Status) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Convert a `Status` to a `String`
 </details>
 
 </div>
