@@ -9,7 +9,7 @@ The command plugin executes Unix shell commands directly in `vSL`.
 This plugin exposes a single constructor function.
 
 ```rust,ignore
-export const command = cmd(#{
+export const command = cmd::build(#{
     // Time allowed to execute the command.
     // Aborted if the timeout value is reached.
     timeout: "60s",
@@ -29,7 +29,7 @@ export const command = cmd(#{
 ## Example
 
 ```rust,ignore
-export const echo = cmd(#{
+export const echo = cmd::build(#{
     timeout: "10s",
     command: "echo",
     args: ["-e", "'Hello World. \c This is vSMTP.'"],

@@ -42,10 +42,10 @@ import "objects/net" as net;
 #{
   connect: [
     rule "trust localhost" || {
-      if client_ip() == net::localhost {
-        accept()
+      if ctx::client_ip() == net::localhost {
+        state::accept()
       } else {
-        next()
+        state::next()
       }
     }
   ]

@@ -10,7 +10,7 @@ Paired with the `delegate` directive, an incoming email can be delegated to anot
 This plugin exposes a single constructor function.
 
 ```rust,ignore
-export const clamsmtpd = smtp(#{
+export const clamsmtpd = smtp::connect(#{
     delegator: #{
         // The service address to delegate to.
         address: "127.0.0.1:10026",
@@ -28,7 +28,7 @@ export const clamsmtpd = smtp(#{
 The SMTP plugin must be paired with a `delegation` directive.
 
 ```rust,ignore
-export const clamsmtpd = smtp(#{
+export const clamsmtpd = smtp::connect(#{
     delegator: #{
         address: "127.0.0.1:10026",
         timeout: "2s",
@@ -38,12 +38,12 @@ export const clamsmtpd = smtp(#{
 ```
 
 ```rust,ignore
-import "service/smtp" as smtp;
+import "service/smtp" as srv;
 
 #{
     postq: [
         // this will delegate the email using the `clamsmtpd` service.
-        delegate smtp::clamsmtpd "delegate antivirus processing" || {
+        delegate srv::clamsmtpd "delegate antivirus processing" || {
             // this is executed after the delegation results have been
             // received on port 10024.
 

@@ -43,10 +43,10 @@ import "services/databases" as db;
     mail: [
         rule "is sender in database ?" || {
             // query the database.
-            // Let's assume that the `mail_from()` value is `john.doe@example.com`.
+            // Let's assume that the `ctx::mail_from()` value is `john.doe@example.com`.
             // `db::user_accounts.get` return an array representing the selected row with
             // the key passed as parameter.
-            let user = db::user_accounts.get(mail_from().local_part);
+            let user = db::user_accounts.get(ctx::mail_from().local_part);
 
             // The record returned is an array `["john.doe", "john.doe@example.com"]`.
             if user != [] {
@@ -54,7 +54,7 @@ import "services/databases" as db;
                 log("info", `A trusted client just connected: user=${user[0]}, email=${user[1]}`)
             }
 
-            next()
+            state::next()
         }
     ]
 }

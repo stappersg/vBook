@@ -13,7 +13,7 @@ Alongside the `rule` and `actions` keyword, vSL exposes another keyword for filt
 The `delegate` directive uses a [`smtp` plugin](../ref/plugins/smtp.md) to delegate an email to a third party software:
 
 ```rust,ignore
-export const third_party = smtp(#{
+export const third_party = smtp::connect(#{
     // Send the email to "127.0.0.1:10026" using the SMTP protocol.
     delegator: #{
         address: "127.0.0.1:10026",
@@ -27,16 +27,16 @@ export const third_party = smtp(#{
 <p class="ann"> Declaring a `smtp` service in `/etc/vsmtp/services/smtp.vsl` </p>
 
 ```
-import "services/smtp" as smtp;
+import "services/smtp" as srv;
 
 #{
     postq: [
-        delegate smtp::third_party "delegate to third party" || {
+        delegate srv::third_party "delegate to third party" || {
             log("info", "delegation results are in!");
         
             // ...
         
-            return next();
+            return state::next();
         }
     ]
 }

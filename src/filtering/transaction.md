@@ -34,7 +34,7 @@ Finally, if the sender's domain is not handled by the configuration, and that th
 ```
 #{
   rcpt: [
-    rule "deny relay" || deny(),
+    rule "deny relay" || state::deny(),
   ]
 }
 ```

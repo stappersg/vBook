@@ -10,9 +10,9 @@ import "objects/family" as family;
 #{
   delivery: [
     action "setup delivery" || {
-      for rcpt in rcpt_list() {
+      for rcpt in ctx::rcpt_list() {
         // Deliver locally using Mailbox if the recipient is from Doe's family.
-        if rcpt in family::addresses { mailbox(rcpt) }
+        if rcpt in family::addresses { transport::mailbox(rcpt) }
       }
     }
   ],
@@ -49,7 +49,7 @@ import "objects/family" as family;
 
 fn bcc_jenny() {
   // add Jane as a blind carbon copy if the current recipient is Jenny.
-  if rcpt() == family::jenny {
+  if ctx::rcpt() == family::jenny {
     bcc(family::jane)
   }
 }
@@ -70,9 +70,9 @@ Now, let's plug this function to our filtering rules by importing the `bcc.vsl` 
 
     delivery: [
       action "setup delivery" || {
-        for rcpt in rcpt_list() {
+        for rcpt in ctx::rcpt_list() {
           // Deliver locally using Mailbox if the recipient is from Doe's family.
-          if rcpt in family::family_addr { mailbox(rcpt) }
+          if rcpt in family::family_addr { transport::mailbox(rcpt) }
         }
       }
     ],

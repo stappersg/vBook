@@ -29,12 +29,12 @@ Edit the `/etc/vsmtp/filter.vsl` script and add the following rule.
 ```
 #{
   mail: [
-    rule "check spf" || check_spf("both", "soft"),
+    rule "check spf" || spf::check("both", "soft"),
   ]
 }
 ```
 <p class="ann"> Preventing spams using SPF </p>
 
-> See the [`check_spf`][check_spf_fn_ref] reference for more details.
+> See the [`spf::check`][check_spf_fn_ref] reference for more details.
 
 [check_spf_fn_ref]: ./../../ref/vSL/api/fn::global::spf.md
