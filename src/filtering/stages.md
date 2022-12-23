@@ -136,4 +136,4 @@ At this point, the rule engine is not able to send codes to the client even if t
 ## Context variables
 
 As described above, depending on the stage, vSL exposes data that can be queried in rules.
-Check out the [Mail Context reference](../ref/vSL/api/fn::global::mail_context.md) for more details.
+Check out the [Mail Context reference](../ref/vSL/api/fn::global::ctx.md) for more details.

@@ -27,7 +27,6 @@ Here, a member of Doe's family is sending an email to someone else. We just have
 > ⚠️ The `auth::unix_user` function uses the `testsaslauthd` program under the hood, itself calling the `saslauthd` daemon.
 > Make sure to install the [Cyrus sasl binary package](https://www.cyrusimap.org/sasl/) for the targeted distribution and configure the `saslauthd` daemon with `MECHANISM="shadow"` in `/etc/default/saslauthd`.
 
-> See the [`auth::is_authenticated`][is_auth_fn_ref] and [`auth::unix_user`][auth_fn_ref] reference for more details.
+> See the [`auth::is_authenticated`][auth_mod] and [`auth::unix_user`][auth_mod] reference for more details.
 
-[auth_fn_ref]: ./../../../ref/vSL/api/fn::global::vsl-api.md
-[is_auth_fn_ref]: ./../../../ref/vSL/api/fn::global::mail_context.md
+[auth_mod]: ./../../../ref/vSL/api/fn::global::auth.md
