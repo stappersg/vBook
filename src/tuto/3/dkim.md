@@ -45,7 +45,7 @@ fn on_domain_config(config) {
 
 ## Add signatures
 
-Sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for outgoing emails.
+Sign an email using the [`dkim::sign`][sign_dkim_fn_ref] function for outgoing emails.
 
 ```
 #{
@@ -53,8 +53,8 @@ Sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for outgoing em
     action "sign dkim" || {
       // Iterate over all the private keys defined for the server 'example.com'
 
-      for key in get_private_keys(srv(), "example.com") {
-        sign_dkim(
+      for key in dkim::get_private_keys("example.com") {
+        dkim::sign(
           // Selector of the DNS record.
           "2022-09",
           // The private key associated with the public key in `{selector}._domainkey.{sdid}`
@@ -75,18 +75,18 @@ Sign an email using the [`dkim_sign`][sign_dkim_fn_ref] function for outgoing em
 
 ## Verify signatures
 
-Verify DKIM signatures of incoming emails by calling the [`verify_dkim`][verify_dkim_fn_ref] function.
+Verify DKIM signatures of incoming emails by calling the [`dkim::verify`][verify_dkim_fn_ref] function.
 
-```rust,ignore
+```ignore
 #{
   // ... previous rules ...
 
   postq: [
     rule "verify DKIM signatures" || {
-      if verify_dkim().status == "pass" {
-        accept()
+      if dkim::verify().status == "pass" {
+        state::accept()
       } else {
-        deny()
+        state::deny()
       }
     }
   ],

@@ -85,7 +85,7 @@ The greylist database is now operational.
 To setup vSMTP, you first need to create a mysql service, that will enable you to query your database. You can, for example, write it in a `services.vsl` file where your `main.vsl` is located.
 
 ```rust,ignore
-export const greylist = mysql(#{
+export const greylist = mysql::connect(#{
     // Change this url to the url of your database, or keep it like this if the 'greylist-manager' user is setup on localhost.
     url: "mysql://localhost/?user=greylist-manager&password=your-password",
 });
@@ -106,7 +106,7 @@ import "services/db" as db;
     // of the email is received at this stage.
     mail: [
         rule "greylist" || {
-            let sender = mail_from();
+            let sender = ctx::mail_from();
 
             // if the sender is not recognized in our database,
             // we deny the transaction and write the sender into
@@ -118,12 +118,12 @@ import "services/db" as db;
                     values ("${sender.local_part}", "${sender.domain}", "${sender}");
                 `);
 
-                // vsl exposes a `code_greylist` code which is a "451 4.7.1" enhanced code.
-                deny(code_greylist)
+                // vsl exposes a built-in `greylist` error code.
+                state::deny(code::c451_7_1())
             } else {
                 // the user is known by the server, the transaction
                 // can proceed.
-                accept()
+                state::accept()
             }
         }
     ]

@@ -55,10 +55,10 @@ Rules are combined with stages in `.vsl` files.
     connect: [
         // This rule is executed once a new client connects to the server.
         rule "check client ip" || {
-            if client_ip() == "192.168.1.254" {
-                faccept()
+            if ctx::client_ip() == "192.168.1.254" {
+                state::faccept()
             } else {
-                next()
+                state::next()
             }
         }
     ],
@@ -67,7 +67,7 @@ Rules are combined with stages in `.vsl` files.
         // This action is executed once the server receive the "MAIL FROM" command.
         action "log incoming transaction" || {
             // Logging to /var/log/vsmtp.
-            log("info", `new transaction from ${mail_from()} at ${client_ip()}`);
+            log("info", `new transaction from ${ctx::mail_from()} at ${ctx::client_ip()}`);
         }
     ],
 }
@@ -94,15 +94,15 @@ For security purpose, a trailing rule should be added at the end of a stage.
     connect: [
         // This rule is executed once a new client connects to the server.
         rule "check client ip" || {
-            if client_ip() == "192.168.1.254" {
-                accept()
+            if ctx::client_ip() == "192.168.1.254" {
+                state::accept()
             } else {
-                next()
+                state::next()
             }
         }
 
         // If the client ip is not known, the connection is denied.
-        rule "trailing" || deny(),
+        rule "trailing" || state::deny(),
     ],
 }
 ```

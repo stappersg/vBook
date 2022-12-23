@@ -42,15 +42,15 @@ export const localhost = ip4("127.0.0.1");
 <p class="ann"> An object file, `objects/network.vsl` </p>
 
 ```
-import "objects/network" as net;
+import "objects/network" as network;
 
 #{
   connect: [
     rule "force accept localhost" || {
-      if client_ip() == net::localhost {
-        faccept();
+      if ctx::client_ip() == network::localhost {
+        state::faccept();
       } else {
-        next()
+        state::next()
       }
     }
   ]

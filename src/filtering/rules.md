@@ -18,17 +18,17 @@ A `rule` is used to change the transaction state. It can accept and deny a trans
 <p class="ann"> A BNF representation of a rule </p>
 
 ```rust,ignore
-// `deny()` is a function that return the `Deny` state.
+// `state::deny()` is a function that return the `Deny` state.
 // Thus, this rule denies any incoming transaction.
-rule "deny all transactions" || deny(),
+rule "deny all transactions" || state::state::deny(),
 
 // Rhai expressions can be declared using the above inline syntax,
 // or using code blocks, like bellow.
 rule "check client ip" || {
-    if client_ip() == "192.168.1.254" {
-        return faccept();
+    if ctx::client_ip() == "192.168.1.254" {
+        return state::faccept();
     } else {
-        return next();
+        return state::next();
     }
 },
 ```
@@ -52,11 +52,11 @@ An `action` is used to execute arbitrary code (logging, saving an email on disk,
 
 ```rust,ignore
 // Write the email as json to a "backup" directory.
-action "dump to disk" || dump("backup"),
+action "dump to disk" || fs::dump("backup"),
 
 action "log incoming transaction" || {
     // Logging to /var/log/vsmtp.
-    log("info", `new transaction: ${helo()} from ${client_ip()}`);
+    log("info", `new transaction: ${ctx::helo()} from ${ctx::client_ip()}`);
 }
 ```
 <p class="ann"> Declaring actions </p>

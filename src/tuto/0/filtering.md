@@ -64,7 +64,7 @@ Let's setup anti-relaying by adding the following rule. (See the [Root Filter](.
 ```
 #{
   rcpt: [
-    rule "anti relaying" || deny(),
+    rule "anti relaying" || state::deny(),
   ]
 }
 ```
@@ -81,16 +81,16 @@ We can add the blacklist we defined in the [Blacklist section](basic.md#blacklis
 #{
 + mail: [
 +   rule "do not deliver untrusted domains" || {
-+       if mail_from().domain in family::blacklist {
-+           quarantine(family::untrusted_queue)
++       if ctx::mail_from().domain in family::blacklist {
++           state::quarantine(family::untrusted_queue)
 +       } else {
-+           next()
++           state::next()
 +       }
 +   },
 + ],
 
   rcpt: [
-    rule "anti relaying" || deny(),
+    rule "anti relaying" || state::deny(),
   ]
 }
 ```

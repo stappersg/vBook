@@ -67,7 +67,7 @@ Let's define a command service that runs the `echo` command.
 ```rust,ignore
 // Do not forget to use the `export` keyword when declaring
 // the object to make it accessible trough `import`.
-const echo = cmd(#{
+const echo = cmd::build(#{
     command: "echo",
     args: [ "-n", "executing a command from vSMTP!" ],
 });

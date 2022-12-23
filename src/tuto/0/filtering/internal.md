@@ -5,7 +5,7 @@
 
 Since we already authenticated clients in `outgoing.vsl`, we simply have to setup delivery.
 
-```rust,ignore
+```ignore
 // let's reuse our bcc code to add Jane as a blind carbon copy.
 import "domain-available/doe-family.com/bcc" as bcc;
 
@@ -16,7 +16,7 @@ import "domain-available/doe-family.com/bcc" as bcc;
 
   delivery: [
       // Deliver all recipients locally.
-      action "setup delivery" || mailbox_all(),
+      action "setup delivery" || transport::mailbox_all(),
   ],
 }
 ```

@@ -21,7 +21,7 @@ Here is a list of available time scales formats.
 > For reference, the [humantime](https://github.com/tailhook/humantime) crate is used to parse time.
 
 ```rust,ignore
-const my_command = cmd(#{
+const my_command = cmd::build(#{
     // for the `cmd` service, a timeout for the command can be specified.
     // Use the different time scales above to specify the time.
     timeout: "10s",

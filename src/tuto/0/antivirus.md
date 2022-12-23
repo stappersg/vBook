@@ -47,7 +47,7 @@ sudo systemctl start clamav-daemon
 Let's create a `smtp` service in the `/etc/vsmtp/services/smtp.vsl` script to send incoming emails to clamsmtpd and receive them back on a specific address.
 
 ```rust,ignore
-export const clamsmtpd = smtp(#{
+export const clamsmtpd = smtp::connect(#{
   delegator: #{
     address: "127.0.0.1:10026",
     timeout: "60s",
@@ -81,19 +81,19 @@ Create the antivirus passthrough using the `delegate` keyword in the `/etc/vsmtp
 
 ```rust,ignore
 import "objects/family" as family;
-import "services/smtp" as smtp;
+import "services/smtp" as srv;
 
 #{
   postq: [
-    delegate smtp::clamsmtpd "check email for virus" || {
+    delegate srv::clamsmtpd "check email for virus" || {
       // this is executed once the delegation result are received.
       log("debug", "email analyzed by clamsmtpd.");
 
       // ClamAV inserts the "X-Virus-Infected" header if it found a virus.
-      if has_header("X-Virus-Infected") {
-        quarantine(family::virus_queue)
+      if msg::has_header("X-Virus-Infected") {
+        state::quarantine(family::virus_queue)
       } else {
-        next()
+        state::next()
       }
     }
   ],

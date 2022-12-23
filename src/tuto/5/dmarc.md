@@ -34,7 +34,7 @@ Add this rule to the `domain-available/example.com/incoming.vsl` script.
 ```
 #{
   preq: [
-    rule "check dmarc" || check_dmarc(),
+    rule "check dmarc" || dmarc::check(),
   ]
 }
 ```

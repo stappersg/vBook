@@ -28,12 +28,12 @@ These sections describe the gist of how the rule system works. Advanced user can
 // }
 
 rule "my blacklist" || {
-  if client_ip() == "222.11.16.196" {
+  if ctx::client_ip() == "222.11.16.196" {
     // Spam address detected ! We deny the transaction.
-    deny()
+    state::deny()
   } else {
     // the client ip is valid, we can proceed.
-    next()
+    state::next()
   }
 }
 ```

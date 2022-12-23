@@ -28,10 +28,10 @@ Rules can then be added to filter out unsecure transactions.
   helo: [
     rule "deny unencrypted" || {
       // It is possible to customize the policy to whitelist some ip or anything.
-      if is_secured() {
-        next()
+      if ctx::is_secured() {
+        state::next()
       } else {
-        deny(code(451, "5.7.3", "Must issue a STARTTLS command first\r\n"))
+        state::deny(code(451, "5.7.3", "Must issue a STARTTLS command first\r\n"))
       }
     }
   ]
@@ -39,6 +39,6 @@ Rules can then be added to filter out unsecure transactions.
 ```
 <p class="ann"> Adding rules to check if the transaction is secured in `/etc/vsmtp/filter.vsl` </p>
 
-> See the [`is_secured`][is_secured_fn_ref] reference for more details.
+> See the [`ctx::is_secured`][is_secured_fn_ref] reference for more details.
 
 [is_secured_fn_ref]: ../../ref/vSL/api/fn::global::vsl-api.md

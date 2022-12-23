@@ -38,13 +38,13 @@ The `dkim_sign` function is used to sign the email. Use it in the `postq` stage 
     action "sign dkim" || {
       // Iterate over all the private keys defined for the server 'doe-family.com'
 
-      for i in get_private_keys(srv(), "doe-family.com") {
-        sign_dkim(
+      for key in dkim::get_private_keys("doe-family.com") {
+        dkim::sign(
           // Selector of the DNS record.
           "2022-09",
           // The private key associated with the public key in `{selector}._domainkey.{sdid}`
           // Or `2022-09._domainkey.doe-family.com.` in that case
-          i,
+          key,
           // Headers to sign with.
           ["From", "To", "Date", "Subject", "From"],
           // Canonicalization algorithm to use.
@@ -58,7 +58,7 @@ The `dkim_sign` function is used to sign the email. Use it in the `postq` stage 
 
 <p class="ann"> /etc/vsmtp/domain-available/doe-family.com/outgoing.vsl </p>
 
-> See the [`dkim_sign`][sign_dkim_fn_ref] reference for more details.
+> See the [`dkim::sign`][sign_dkim_fn_ref] reference for more details.
 
 ## Verify signatures
 
@@ -68,10 +68,10 @@ The `dkim_sign` function is used to sign the email. Use it in the `postq` stage 
 
   postq: [
     rule "verify DKIM signatures" || {
-      if verify_dkim().status == "pass" {
-        accept()
+      if dkim::verify().status == "pass" {
+        state::accept()
       } else {
-        deny()
+        state::deny()
       }
     }
   ],
@@ -80,7 +80,7 @@ The `dkim_sign` function is used to sign the email. Use it in the `postq` stage 
 
 <p class="ann"> /etc/vsmtp/domain-available/doe-family.com/incoming.vsl </p>
 
-> See the [`verify_dkim`][verify_dkim_fn_ref] reference for more details.
+> See the [`dkim::verify`][verify_dkim_fn_ref] reference for more details.
 
 [verify_dkim_fn_ref]: ../../ref/vSL/api/fn::global::dkim.md
 [sign_dkim_fn_ref]: ../../ref/vSL/api/fn::global::dkim.md
