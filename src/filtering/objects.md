@@ -27,7 +27,7 @@ const my_address = address("john.doe@example.com");
 ```
 <p class="ann"> Declaring objects in scripts </p>
 
-See the [Object reference](../ref/vSL/api/fn::global::objects.md) to get an extensive list of objects constructors.
+See the [Object reference](../ref/vSL/api/fn::global::obj.md) to get an extensive list of objects constructors.
 
 ## Modules
 

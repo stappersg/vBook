@@ -41,4 +41,4 @@ Rules can then be added to filter out unsecure transactions.
 
 > See the [`ctx::is_secured`][is_secured_fn_ref] reference for more details.
 
-[is_secured_fn_ref]: ../../ref/vSL/api/fn::global::vsl-api.md
+[is_secured_fn_ref]: ../../ref/vSL/api/fn::global::ctx.md
