@@ -51,6 +51,7 @@
     "smtps",
     "sockstat",
     "softfail",
+    "STARTTLS",
     "struct",
     "syslogs",
     "sysv",
