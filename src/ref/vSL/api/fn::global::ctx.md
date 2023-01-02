@@ -564,3 +564,21 @@ All of them.
 </div>
 </br>
 
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> to_string </h2>
+
+```rust,ignore
+fn to_string(context: Context) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+Produce a serialized JSON representation of the mail context.
+</details>
+
+</div>
+</br>
+

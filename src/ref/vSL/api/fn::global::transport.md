@@ -165,10 +165,10 @@ All of them.
 <h2 class="func-name"> <code>fn</code> forward </h2>
 
 ```rust,ignore
-fn forward(rcpt: String, forward: SharedObject) -> ()
+fn forward(rcpt: String, forward: String) -> ()
 fn forward(rcpt: SharedObject, forward: String) -> ()
 fn forward(rcpt: SharedObject, forward: SharedObject) -> ()
-fn forward(rcpt: String, forward: String) -> ()
+fn forward(rcpt: String, forward: SharedObject) -> ()
 ```
 
 <details>
@@ -189,11 +189,61 @@ All of them.
 
 # Examples
 ```ignore
-#{
+const rules = #{
     delivery: [
        action "setup forwarding" || transport::forward("john.doe@example.com", "mta-john.example.com"),
     ]
 }
+```
+
+```
+# let states = vsmtp_test::vsl::run(
+# |builder| Ok(builder.add_root_filter_rules(r#"
+#{
+    rcpt: [
+      action "forward (str/str)" || {
+        envelop::add_rcpt("my.address@foo.com");
+        transport::forward("my.address@foo.com", "127.0.0.1");
+      },
+      action "forward (obj/str)" || {
+        let rcpt = address("my.address@bar.com");
+        envelop::add_rcpt(rcpt);
+        transport::forward(rcpt, "127.0.0.2");
+      },
+      action "forward (str/obj)" || {
+        let target = ip6("::1");
+        envelop::add_rcpt("my.address@baz.com");
+        transport::forward("my.address@baz.com", target);
+      },
+      action "forward (obj/obj)" || {
+        let rcpt = address("my.address@boz.com");
+        envelop::add_rcpt(rcpt);
+        transport::forward(rcpt, ip4("127.0.0.4"));
+      },
+    ],
+}
+# "#)?.build()));
+
+# use vsmtp_common::{
+#   transfer::{ForwardTarget, Transfer, EmailTransferStatus},
+#   rcpt::Rcpt,
+#   Address,
+# };
+# for (rcpt, (addr, target)) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([
+#     ("my.address@foo.com", "127.0.0.1"),
+#     ("my.address@bar.com", "127.0.0.2"),
+#     ("my.address@baz.com", "::1"),
+#     ("my.address@boz.com", "127.0.0.4")
+# ]) {
+#   assert_eq!(
+#     rcpt.address,
+#     Address::new_unchecked(addr.to_string())
+#   );
+#   assert_eq!(
+#     rcpt.transfer_method,
+#     Transfer::Forward(ForwardTarget::Ip(target.parse().unwrap()))
+#   );
+# }
 ```
 </details>
 
