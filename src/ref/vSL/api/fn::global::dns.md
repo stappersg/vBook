@@ -9,8 +9,8 @@ Functions used to query the DNS.
 <h2 class="func-name"> <code>fn</code> lookup </h2>
 
 ```rust,ignore
-fn lookup(name: SharedObject) -> Array
 fn lookup(name: String) -> Array
+fn lookup(name: SharedObject) -> Array
 ```
 
 <details>
@@ -41,7 +41,7 @@ All of them.
 #{
   preq: [
     action "lookup recipients" || {
-      let domain = fqdn("gmail.com");
+      let domain = "gmail.com";
       let ips = dns::lookup(domain);
 
       print(`ips found for ${domain}`);
@@ -61,8 +61,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> rlookup </h2>
 
 ```rust,ignore
-fn rlookup(name: String) -> Array
 fn rlookup(name: SharedObject) -> Array
+fn rlookup(name: String) -> Array
 ```
 
 <details>

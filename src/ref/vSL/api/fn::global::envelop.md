@@ -9,8 +9,8 @@ Functions to inspect and mutate the SMTP envelop.
 <h2 class="func-name"> <code>fn</code> add_rcpt </h2>
 
 ```rust,ignore
-fn add_rcpt(new_addr: SharedObject) -> ()
 fn add_rcpt(new_addr: String) -> ()
+fn add_rcpt(new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -33,7 +33,7 @@ All of them.
 #{
     connect: [
        // always deliver a copy of the message to "john.doe@example.com".
-       action "rewrite envelop" || envelop::add_rcpt(address("john.doe@example.com")),
+       action "rewrite envelop" || envelop::add_rcpt("john.doe@example.com"),
     ]
 }
 ```
@@ -48,8 +48,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> bcc </h2>
 
 ```rust,ignore
-fn bcc(new_addr: SharedObject) -> ()
 fn bcc(new_addr: String) -> ()
+fn bcc(new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -67,8 +67,8 @@ Alias for `envelop::add_rcpt`.
 <h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
 
 ```rust,ignore
-fn rm_rcpt(addr: String) -> ()
 fn rm_rcpt(addr: SharedObject) -> ()
+fn rm_rcpt(addr: String) -> ()
 ```
 
 <details>
@@ -91,7 +91,7 @@ All of them.
 #{
     preq: [
        // never deliver to "john.doe@example.com".
-       action "rewrite envelop" || envelop::rm_rcpt("john.doe@example.com"),
+       action "rewrite envelop" || envelop::rm_rcpt(address("john.doe@example.com")),
     ]
 }
 ```
@@ -143,9 +143,9 @@ Rewrite the sender received from the `MAIL FROM` command.
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
+fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: String, new_addr: String) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
-fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
@@ -168,7 +168,7 @@ Replace a recipient received by a `RCPT TO` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || envelop::rw_rcpt("john.doe@example.com", "john.main@example.com"),
+       action "rewrite envelop" || envelop::rw_rcpt("john.doe@example.com", address("john.main@example.com")),
     ]
 }
 ```

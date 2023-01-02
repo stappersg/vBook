@@ -123,7 +123,7 @@ Uses the "From", "To", "Date" and "Subject" headers to sign with the simple/rela
 
 # Example
 
-```ignore
+```text
 #{
   preq: [
     action "sign dkim" || {
@@ -175,7 +175,7 @@ Operate the hashing of the `message`'s headers and body, and compare the result 
 
 # Examples
 
-```ignore
+```
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])
@@ -219,39 +219,35 @@ X-Auto-Response-Suppress: All
 
 
 "#;
-# let msg = vsmtp_mail_parser::MessageBody::try_from(msg[1..].replace("\n", "\r\n").as_str()).unwrap();
 
-# let states = vsmtp_test::vsl::run_with_msg(
-#    |builder| Ok(builder.add_root_filter_rules(r#"
 #{
-  preq: [
-    rule "verify dkim" || {
-      dkim::verify();
-      if !msg::get_header("Authentication-Results").contains("dkim=pass") {
-        return state::deny();
-      }
-      // the result of dkim verification is cached, so this call will
-      // not recompute the signature and recreate a header
-      dkim::verify();
+    preq: [
+        rule "verify dkim" || {
+            dkim::verify();
 
-       // FIXME: should be one
-       if msg::count_header("Authentication-Results") != 2 {
-         return state::deny();
-       }
+            // The dkim header should indicate a pass.
+            if !msg::get_header("Authentication-Results").contains("dkim=pass") {
+              return state::deny();
+            }
 
-       state::accept();
-     }
+            // the result of dkim verification is cached, so this call will
+            // not recompute the signature and recreate a header.
+            dkim::verify();
+
+            // FIXME: should be one.
+            if msg::count_header("Authentication-Results") != 2 {
+              return state::deny();
+            }
+
+            state::accept()
+        }
    ]
  }
-# "#)?.build()), Some(msg));
-# use vsmtp_common::{status::Status, CodeID};
-# use vsmtp_rule_engine::ExecutionStage;
-# assert_eq!(states[&ExecutionStage::PreQ].2, Status::Accept(either::Left(CodeID::Ok)));
 ```
 
 Changing the header `Subject` will result in a dkim verification failure.
 
-```ignore
+```
 // The message received.
 let msg = r#"
 Received: from github.com (hubbernetes-node-54a15d2.ash1-iad.github.net [10.56.202.84])
@@ -292,17 +288,21 @@ X-Auto-Response-Suppress: All
   Log Message:
   -----------
   test: add test on message
+
+
 "#;
 
 let rules = r#"#{
     preq: [
-      rule "verify dkim" || {
-        dkim::verify();
-        if !msg::get_header("Authentication-Results").contains("dkim=fail") {
-          return state::deny();
+        rule "verify dkim" || {
+            dkim::verify();
+
+            if !msg::get_header("Authentication-Results").contains("dkim=fail") {
+              return state::deny();
+            }
+
+            state::accept();
         }
-        state::accept();
-      }
     ]
 }"#;
 

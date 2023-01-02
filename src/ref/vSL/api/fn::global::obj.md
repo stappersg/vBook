@@ -11,15 +11,15 @@ vSL objects Eq method between each other and other types.
 <h2 class="func-name"> <code>op</code> != </h2>
 
 ```rust,ignore
-op !=(this: String, other: SharedObject) -> bool
 op !=(this: SharedObject, s: String) -> bool
+op !=(this: String, other: SharedObject) -> bool
 op !=(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `!=` for `&str` and `SharedObject`
+Operator `!=` for `SharedObject` and `&str`
 </details>
 
 </div>
@@ -31,15 +31,15 @@ Operator `!=` for `&str` and `SharedObject`
 <h2 class="func-name"> <code>op</code> == </h2>
 
 ```rust,ignore
+op ==(this: String, other: SharedObject) -> bool
 op ==(this: SharedObject, other: SharedObject) -> bool
 op ==(this: SharedObject, s: String) -> bool
-op ==(this: String, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `SharedObject`
+Operator `==` for `&str` and `SharedObject`
 </details>
 
 </div>
@@ -88,8 +88,8 @@ A SMTP code with the code and message as parameter.
 <h2 class="func-name"> <code>fn</code> contains </h2>
 
 ```rust,ignore
-fn contains(this: SharedObject, other: SharedObject) -> bool
 fn contains(this: SharedObject, s: String) -> bool
+fn contains(this: SharedObject, other: SharedObject) -> bool
 fn contains(map: Map, object: SharedObject) -> bool
 ```
 
