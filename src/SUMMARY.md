@@ -72,6 +72,7 @@ The vSMTP reference guide
   - [Plugins](ref/vSL/plugins.md)
     - [Cmd](ref/vSL/api/fn::global::cmd.md)
     - [Smtp](ref/vSL/api/fn::global::smtp.md)
+    - [MySQL](ref/vSL/api/fn::global::mysql.md)
 
 # CLI
 
