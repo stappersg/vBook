@@ -56,6 +56,8 @@ fn on_config(config) {
 
 <p class="ann"> Configuring vSMTP by changing the `config` object </p>
 
+> It is recommended that you use absolute paths in your configuration files. Relative paths will be relative to the execution path of vSMTP.
+
 ## Splitting configuration in modules
 
 Rhai exposes a [module API](https://rhai.rs/book/language/modules/index.html), making it possible to split the configuration by theme.
