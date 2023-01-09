@@ -2,17 +2,16 @@
 
 They use a router/firewall to route and secure their home network. They also setup a small server in the DMZ to manage the family website, emails, etc.
 
-The network looks like the following :
-
 ```console
 { Internet ISP } --- Firewall --- { DMZ }
                         |
               { Internal Network }
 ```
+<p class="ann"> Does family network setup </p>
 
 They also rented a domain name `doe-family.com`. They decided to prefix their mailboxes with the common standard "first_name.last_name" like `jenny.doe@doe-family.com`
 
-### Network configuration
+## Network configuration
 
 vSMTP is installed on an Ubuntu server 20.04 virtual instance hosted by the DMZ server.
 
@@ -26,8 +25,7 @@ vSMTP is installed on an Ubuntu server 20.04 virtual instance hosted by the DMZ 
 - MTA IP : 192.168.1.254/32 - fqdn : mta.doe-family.com
 - Internal Network : 192.168.0.0/24
 ```
-
-___Firewall rules___
+<p class="ann"> Network setup </p>
 
 ```shell
 # Pseudo code - depends on your FW
@@ -42,17 +40,17 @@ MTA > {Internet} : TCP/SMTP 25, TCP/SMTP 465
 # DNS traffic from MTA
 MTA > {Internet} : UDP/DNS 53, TCP/DNS 53
 ```
-
-___DNS___
+<p class="ann"> Firewall rules </p>
 
 ```shell
 MX preference = 1, mail exchanger = vsmtp.doe-family.com
 ```
-
-___Certificate___
+<p class="ann"> DNS setup </p>
 
 John generated a certificate through the [Let's Encrypt Certificate Authority](https://letsencrypt.org/) for vSMTP server.
 
 ```shell
-sudo certbot certonly --manual --preferred-challenges=dns --agree-tos -d mta.doe-family.com
+sudo certbot certonly --manual --preferred-challenges=dns \
+    --agree-tos -d mta.doe-family.com
 ```
+<p class="ann"> Creating the certificate </p>

@@ -1,0 +1,11 @@
+[package]
+name = "vsmtp_plugin_awesome"
+version = "0.1.0"
+edition = "2021"
+authors = ["user <user@example.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+rhai = { version = "1.11" }

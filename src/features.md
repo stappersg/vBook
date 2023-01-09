@@ -2,16 +2,12 @@
 
 vSMTP is a Mail Transfer Agent ([MTA]) and a Mail Submission Agent ([MSA]). It is not intended to be a Mail User Agent ([MUA]) nor a Mail Delivery Agent ([MDA]).
 
-For outgoing mail, vSMTP can directly be addressed by your MUA using the SMTP protocol.
+vSMTP can store messages on disk using [Mbox] or [Maildir] formats. To retrieve emails from a remote client it is necessary to install a [MDA] server that can handle [POP] and/or [IMAP] protocols.
 
-For incoming mails, vSMTP can store messages on a server file-system using [Mbox] or [Maildir] formats. To retrieve emails from a remote client (MUA) it is necessary to install a MDA that can handle [POP] and/or [IMAP] protocols.
-
-[courier-imap]: https://packages.debian.org/search?keywords=courier-imap
-
-[MUA]: ./term/agent.html#mua-mail-user-agent
-[MTA]: ./term/agent.html#mta-mail-transfer-agent
-[MSA]: ./term/agent.html#msa-mail-submission-agent
-[MDA]: ./term/agent.html#mda-mail-delivery-agent
+[MUA]: term/agent.md#mua-mail-user-agent
+[MTA]: term/agent.md#mta-mail-transfer-agent
+[MSA]: term/agent.md#msa-mail-submission-agent
+[MDA]: term/agent.md#mda-mail-delivery-agent
 
 [mbox]: https://en.wikipedia.org/wiki/Mbox
 [maildir]: https://en.wikipedia.org/wiki/Maildir
@@ -21,73 +17,77 @@ For incoming mails, vSMTP can store messages on a server file-system using [Mbox
 
 ## Roadmap
 
-Take a look at the [ROADMAP](https://github.com/viridIT/vSMTP/blob/develop/ROADMAP.md) in vSMTP repository.
+Take a look at the [milestones](https://github.com/viridIT/vSMTP/milestones) for vSMTP to get an overview of what will be added in future releases.
 
-Follow the development of vsmtp, plannings and announcements for incoming features on the [official discord server](https://discord.gg/N8JGBRBshf).
+Follow the development, plannings and announcements for incoming features on the [official discord server](https://discord.gg/N8JGBRBshf).
 
 ## Available features
 
 ### Networking
 
-- Listen and serve on multiple addresses.
-- Support for IPv4 and IPv6 format.
-- Built on high performance asynchronous connections.
+The core of vSMTP uses high performance asynchronous connections to supports heavy workloads.
+
+- It can listen and serve on multiple addresses.
+- Supports IPv4 and IPv6 formats.
 - Handle one or multiple emails per connections.
-- Compliancy with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs.
+- Is compliant with [Internet Message Format] and [Simple Mail Transfer Protocol] RFCs.
 - [TLS 1.3] support.
-- Complete DNS configurations (thanks to Benjamin Fry's [Trust-DNS] crate).
-- Support for high workload through built-in mechanisms.
+- Exposes complete DNS configurations (thanks to Benjamin Fry's [Trust-DNS] crate).
 
 [Internet Message Format]: https://datatracker.ietf.org/doc/html/rfc5322
 [Simple Mail Transfer Protocol]: https://datatracker.ietf.org/doc/html/rfc5321
 [TLS 1.3]: https://datatracker.ietf.org/doc/html/rfc8446
 [Trust-DNS]: https://github.com/bluejekyll/trust-dns
 
-### API
-
-vSMTP is a modular and highly customizable product.  Adding or modifying subsystems is made easier by the internal design of the software. An API is available and allows easy integration into existing security elements. Several native plug-ins are already available.
-
-- Mail exports in RAW and JSON format.
-- Third-party software called by user-defined services.
-- Mods and addons support.
-- System and applications logs.
-
 ### Filtering
 
-vSMTP has a complete filtering system. In addition to the standard analysis of the SMTP envelope, vSMTP provides on the fly interactions on the content of messages (MIME). Users can generate complex routing and filtering scenarios through a simple and intuitive advanced scripting language.
+vSMTP exposes a complete filtering system. In addition to the standard analysis of the SMTP envelope, vSMTP provides on the fly interactions with headers of the email. Users can generate complex routing and filtering scenarios through a simple and intuitive scripting language.
 
+- [vSMTP scripting language] allowing administrators to define complex filtering rules.
 - Before and after queueing filtering.
-- [vSMTP scripting language] allowing administrators to define complex rules.
-- Interaction at each SMTP state (HELO/EHLO, CONNECT, MAIL, RCPT, DATA).
+- Interaction at each SMTP state (CONNECT, HELO/EHLO, MAIL, RCPT, DATA).
 
-[vSMTP Scripting Language]: reference/vSL/vsl.md
+Interacting with the body of the email (MIME) is planned for future releases.
+
+[vSMTP Scripting Language]: filtering/vsl.md
+
+### Extensions
+
+vSMTP is a modular and highly customizable product supporting plugins developed in the [Rust programing language].
+
+Some plugins are already available.
+
+- CSV file databases.
+- MySQL databases.
+- System commands execution.
+- Third-party software integration via delegation using the SMTP protocol.
+
+Other plugins like LDAP, NoSQL databases, in-memory caches, Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are being planned for future releases.
+
+[Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
+[Rust programing language]: https://www.rust-lang.org/
 
 ### Delivery
 
-- SMTP remote delivery - using a third-party software, [Lettre].
-- Mbox and Maildir format for local delivery.
-- SMTP relaying and forwarding.
+vSMTP is able to deliver emails remotely or locally.
+
+- SMTP remote delivery - using [Lettre].
+- SMTP forwarding.
+- Mbox and Maildir formats for local delivery.
 
 [Lettre]: https://github.com/lettre/lettre
 
-### External services
-
-vSMTP supports SMTP delegation, command calls, and file databases.
-CSV files and MySQL databases are supported.
-
-Next versions will provide LDAP, NoSQL databases, and in-memory caches supports. Compliancy with [Postfix SMTP access policy delegation] and Unix/IP socket calls are planned for Q4/2022.
-
-[Postfix SMTP access policy delegation]: http://www.postfix.org/SMTPD_POLICY_README.html
-
 ### Email authentication mechanisms
 
+vSMTP secures the email traffic by implementing the following mechanisms.
+
 - Message submission RFCs.
-- [Null MX] RFC.
 - [SPF] support.
-- [DKIM] signer and verifier.  
-- [DMARC] verifier, reporting is not natively supported.
-- [DANE] protocol is planned for a future release.
-- [ARC] and [BIMI] experimental and future Internet standards are currently not supported.
+- [DKIM] signer and verifier.
+- [DMARC] verifier. (reporting is not natively supported)
+- [Null MX] RFC.
+
+[DANE], [ARC] and [BIMI] RFCs are planned for future releases.
 
 [Null MX]: https://www.rfc-editor.org/rfc/rfc7505.html
 [DANE]: https://www.rfc-editor.org/rfc/rfc7671.html
@@ -95,4 +95,4 @@ Next versions will provide LDAP, NoSQL databases, and in-memory caches supports.
 [DKIM]: https://www.rfc-editor.org/rfc/rfc6376.html
 [DMARC]: https://www.rfc-editor.org/rfc/rfc7489.html
 [ARC]: https://www.rfc-editor.org/rfc/rfc8617.html
-[BIMI]: https://tools.ietf.org/id/draft-blank-ietf-bimi-00.html
+[BIMI]: https://datatracker.ietf.org/wg/bimi/about/

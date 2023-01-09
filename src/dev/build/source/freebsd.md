@@ -13,13 +13,13 @@ Rust port, packages and information can be found on the [freshports] website. Fi
 pkg install lang/rust
 ```
 
-> Rust 1.60+ package is required. You may have to switch to the latest ports branch. Please refer to the [freeBSD wiki].
+> Rust 1.60+ package is required. It may be necessary to switch to the latest ports branch. Please refer to the [freeBSD wiki].
 
 [freeBSD wiki]: https://wiki.freebsd.org/Ports/QuarterlyBranch
 
 ## Dependencies
 
-FreeBSD 13.x includes all required dependencies. Check that sasl is included in your release (see Linux dependencies).
+FreeBSD 13.x includes all required dependencies. Check that sasl is included in the used release. (See Linux dependencies)
 
 ## vSMTP compilation
 
@@ -27,7 +27,7 @@ FreeBSD 13.x includes all required dependencies. Check that sasl is included in 
 $> cargo build --workspace --release
 [...]
 $> cargo run -- --help
-vsmtp 1.1.3
+vsmtp 1.4
 Team viridIT <https://viridit.com/>
 Next-gen MTA. Secured, Faster and Greener
 
@@ -35,7 +35,7 @@ USAGE:
     vsmtp [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -c, --config <CONFIG>      Path of the vSMTP configuration file (toml format)
+    -c, --config <CONFIG>      Path of the vSMTP configuration file ("vsl" format)
     -h, --help                 Print help information
     -n, --no-daemon            Do not run the program as a daemon
     -t, --timeout <TIMEOUT>    Make the server stop after a delay (human readable format)
@@ -55,14 +55,18 @@ Create the directories and change the owner and group.
 mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spool/vsmtp
 cp ./target/release/vsmtp /usr/sbin/
 cp ./target/release/vqueue /usr/sbin/
-cp ./examples/config/minimal.toml /etc/vsmtp/vsmtp.toml
+cp ./examples/config/minimal.vsl /etc/vsmtp/vsmtp.vsl
 chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
 
-Create a minimal vsmtp.toml configuration file that matches vsmtp version (i.e. 1.0.0)
+Create a minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 1.0.0)
 
 ```shell
-echo "version_requirement = \">=1.0.0\"" > /etc/vsmtp/vsmtp.toml
+cat > /etc/vsmtp/vsmtp.vsl <<EOF
+import "conf.d/config.vsl" as cfg;
+let config = cfg::config;
+config.version_requirement = ">=1.0.0";
+EOF
 ```
 
 Grant rights to files and folders.
@@ -128,7 +132,7 @@ rcvar="${name}_enable"
 load_rc_config $name
 
 : ${vsmtp_enable:=NO}
-: ${vsmtp_config:=/etc/vsmtp/vsmtp.toml}
+: ${vsmtp_config:=/etc/vsmtp/vsmtp.vsl}
 : ${vsmtp_flags:=--config}
 
 command="/usr/sbin/vsmtp"

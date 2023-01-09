@@ -8,19 +8,19 @@ vSMTP is a stand-alone application with few kernel interactions, it may run on a
 
 If your system is not supported or if these installation method are not suited for your usage, you can contact us by [opening an issue on github](https://github.com/viridIT/vSMTP/issues/new/choose) or by [joining the official discord server](https://discord.gg/N8JGBRBshf).
 
-Either way, you can download and build from source the project, see the [dedicated chapter](./source.md).
+It is possible to download and build the project from source, see the [dedicated chapter](../dev/build/source.md).
 
 ## Requirements
 
 ### Physical requirements
 
-The current release has been tested and deployed on x86/64 environments.
+The current release has been tested and deployed on x86/64 and ARMv7 architectures.
 
 ### Operating systems
 
-vSMTP is tested and deployed on Ubuntu Server 20.04 with kernel 5.4, but vSMTP **should be compatible** with any recent Linux distributions.
+vSMTP is tested and deployed on the latests Ubuntu Server LTS version, but vSMTP **should be compatible** with any recent Linux distributions.
 
-FreeBSD 13.x is supported using the latest port branch which includes Rust 1.60. NetBSD and OpenBSD supports are planned for Q1-2023.
+FreeBSD 13.x is supported using the latest port branch which includes Rust 1.60.
 
 Microsoft Windows Server is not supported.
 
@@ -49,7 +49,8 @@ Fedora and RedHat packages are planned for future releases. `help wanted`
     alt="crates.io" />
 </a>
 
-vSMTP is published on <https://crates.io>. It can be install using [cargo] tool if the Rust language is installed on your server.
+<!-- markdown-link-check-disable-next-line -->
+vSMTP is published on <https://crates.io>. It can be installed using [cargo].
 
 ```sh
 cargo install vsmtp
@@ -59,6 +60,8 @@ cargo install vsmtp
 
 ### Docker
 
-The official repository for vSMTP on Docker Hub is [viridit/vsmtp].
+A [docker image for vSMTP](https://hub.docker.com/repository/docker/viridit/vsmtp) is available to download.
 
-[viridit/vsmtp]: https://hub.docker.com/repository/docker/viridit/vsmtp
+```sh
+docker pull viridit/vsmtp
+```
