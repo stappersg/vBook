@@ -26,7 +26,7 @@ sudo apt install pkg-config build-essential sasl2-bin
 $> cargo build --workspace --release
 [...]
 $> cargo run -- --help
-vsmtp 1.4
+vsmtp 2.0.0
 Team viridIT <https://viridit.com/>
 Next-gen MTA. Secured, Faster and Greener
 
@@ -92,13 +92,13 @@ sudo cp ./target/release/vqueue /usr/sbin/
 
 <p class="ann"> Create vSMTP directories </p>
 
-A minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 1.0.0) must be created.
+A minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 2.0.0) must be created.
 
 ```shell
 cat > /etc/vsmtp/vsmtp.vsl <<EOF
 import "conf.d/config.vsl" as cfg;
 let config = cfg::config;
-config.version_requirement = ">=1.0.0";
+config.version_requirement = ">=2.0.0";
 EOF
 ```
 
