@@ -20,4 +20,5 @@ jobs:
             sudo su - mdbook -c 'cd vBook && git checkout next && git pull && mdbook build'
             sudo cp -Rf /home/mdbook/vBook/book/* /var/www/vbook/next
             sudo su - mdbook -c 'cd vSMTP && git checkout develop && git pull && RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --workspace --no-deps --all-features'
+            sudo mkdir -p /var/www/vbook/next/docrs
             sudo cp -Rf /home/mdbook/vSMTP/target/doc/* /var/www/vbook/next/docrs
