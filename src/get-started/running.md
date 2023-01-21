@@ -4,7 +4,7 @@ Now that vSMTP is configured, here are a few options to launch an instance of th
 
 ## Daemon
 
-If you installed vSMTP via the official debian packages, a `vsmtp.service` file has been registered into your system.
+If you installed vSMTP via the debian packages, a `vsmtp.service` file has been registered into your system.
 Using `systemctl`, you can start your vsmtp instance with:
 
 ```sh
