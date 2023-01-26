@@ -25,6 +25,15 @@ The root `filter.vsl` script is used to filter incoming transaction at the `conn
 <p class="ann"> Adding the root filter script </p>
 
 ```rust,ignore
+#{
+  connect: [
+    rule "deny all" || state::deny(),
+  ]
+}
+```
+<p class="ann"> Content of the `filter.vsl` file. Denies every transaction by default. </p>
+
+```rust,ignore
 fn on_config(config) {
   config.app.vsl.filter_path = "/etc/vsmtp/filter.vsl";
   return config;
@@ -123,7 +132,7 @@ It is possible to add a specific configuration for each domain.
 
 <p class="ann"> Adding specific configuration for a domain </p>
 
-The `config.vsl` script under a domain must contain, at least, the following statement:
+Although it is not mandatory to add a `config.vsl` script under a domain directory, if it is created, it must contain, at least, the following statement:
 
 ```rust,ignore
 fn on_domain_config(config) {
