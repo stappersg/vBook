@@ -20,7 +20,7 @@ A `rule` is used to change the transaction state. It can accept and deny a trans
 ```rust,ignore
 // `state::deny()` is a function that return the `Deny` state.
 // Thus, this rule denies any incoming transaction.
-rule "deny all transactions" || state::state::deny(),
+rule "deny all transactions" || state::deny(),
 
 // Rhai expressions can be declared using the above inline syntax,
 // or using code blocks, like bellow.
