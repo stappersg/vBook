@@ -19,6 +19,7 @@ The vSMTP reference guide
   - [Objects](get-started/config-file-struct/objects.md)
   - [Plugins](get-started/config-file-struct/plugins.md)
   - [Services](get-started/config-file-struct/services.md)
+- [Running vSMTP](get-started/running.md)
 
 # Configuring vSMTP
 
@@ -73,6 +74,7 @@ The vSMTP reference guide
     - [Cmd](ref/vSL/api/fn::global::cmd.md)
     - [Smtp](ref/vSL/api/fn::global::smtp.md)
     - [MySQL](ref/vSL/api/fn::global::mysql.md)
+    - [Memcached](ref/vSL/api/fn::global::memcached.md)
 
 # CLI
 

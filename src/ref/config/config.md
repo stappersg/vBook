@@ -83,6 +83,8 @@ fn on_config(config) {
 
 System configuration for the server.
 
+If `config.server.system.user` and `config.server.system.group` are not set in the configuration, vSMTP will try to use, by default, the `vsmtp` user and `vsmtp` group to run the server.
+
 ```rust,ignore
 fn on_config(config) {
     config.server.system = #{

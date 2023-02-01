@@ -46,6 +46,14 @@ fn on_config(config) {
     addr_submissions: ["192.168.1.254:465"],
   };
 
+  // Specify a user and group that will run vsmtp.
+  // If those fields are not set, vsmtp will try to use,
+  // by default, the `vsmtp` user and `vsmtp` group.
+  config.server.system = #{
+    user: "debian-1",
+    group: "mail",
+  };
+
   // Change filter rules locations.
   config.app.vsl.filter_path = "/etc/vsmtp/filter.vsl";
   config.app.vsl.domain_dir = "/etc/vsmtp/domain-enabled";
@@ -109,6 +117,11 @@ import "conf.d/app" as app;
 fn on_config(config) {
   config.server.name = "example.com";
   config.server.interfaces = i::interfaces;
+
+  config.server.system = #{
+    user: "debian-1",
+    group: "mail",
+  };
 
   config.app.vsl.domain_dir = app::domain_dir;
   config.app.vsl.filter_path = app::filter_path;
