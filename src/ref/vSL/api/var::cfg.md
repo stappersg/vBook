@@ -4,7 +4,7 @@
 let app = #{
     "dirpath": "/var/spool/vsmtp/app",
     "logs": #{
-        "filepath": "/var/log/vsmtp/app.log",
+        "filename": "/var/log/vsmtp/app.log",
     },
     "vsl": #{
         "domain_dir": (),
@@ -17,7 +17,6 @@ let app = #{
 ```rust
 let server = #{
     "client_count_max": 16,
-    "dkim": (),
     "dns": #{
         "type": "system",
     },
@@ -33,7 +32,7 @@ let server = #{
         ],
     },
     "logs": #{
-        "filepath": "/var/log/vsmtp/vsmtp.log",
+        "filename": "/var/log/vsmtp/vsmtp.log",
         "level": [
             "warn",
         ],
@@ -63,6 +62,7 @@ let server = #{
             "AuthMechNotSupported": "504 5.5.4 Mechanism is not supported\r\n",
             "AuthMechanismMustBeEncrypted": "538 5.7.11 Encryption required for requested authentication mechanism\r\n",
             "AuthSucceeded": "235 2.7.0 Authentication succeeded\r\n",
+            "AuthTempError": "454 4.7.0 Temporary authentication failure\r\n",
             "BadSequence": "503 Bad sequence of commands\r\n",
             "Closing": "221 Service closing transmission channel\r\n",
             "ConnectionMaxReached": "554 Cannot process connection, closing\r\n",

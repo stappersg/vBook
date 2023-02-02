@@ -1,5 +1,6 @@
 # global::logging
 
+Logging mechanisms.
 
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
@@ -7,10 +8,10 @@
 <h2 class="func-name"> <code>fn</code> log </h2>
 
 ```rust,ignore
-fn log(level: SharedObject, message: String)
-fn log(level: String, message: SharedObject)
 fn log(level: String, message: String)
+fn log(level: SharedObject, message: String)
 fn log(level: SharedObject, message: SharedObject)
+fn log(level: String, message: SharedObject)
 ```
 
 <details>
@@ -31,17 +32,9 @@ All of them.
 
 ```
 #{
-    preq: [
-       action "log info" || log("info", "this is an informational log."),
-    ]
-}
-```
-
-```
-#{
   connect: [
     action "log on connection (str/str)" || {
-      log("info", `[${date()}/${time()}] client=${client_ip()}`);
+      log("info", `[${date()}/${time()}] client=${ctx::client_ip()}`);
     },
     action "log on connection (str/obj)" || {
       log("error", identifier("Ehllo world!"));
@@ -64,4 +57,3 @@ All of them.
 
 </div>
 </br>
-

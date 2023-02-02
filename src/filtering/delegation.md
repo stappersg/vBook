@@ -49,4 +49,4 @@ The body of a `delegate` directive is executed once the email as been received b
 A delegation directive MUST return a status, exactly like a `rule`.
 The `delegate` keyword can only be used from the `postq` stage and onwards.
 
-> Rule engine status and effects are listed in the API, in the [rule state reference](../ref/vSL/api/fn::global::rule_state.md).
+> Rule engine status and effects are listed in the API, in the [rule state reference](../ref/vSL/api/fn::global::state.md).

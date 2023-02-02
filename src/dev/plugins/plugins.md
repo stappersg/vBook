@@ -1,15 +1,16 @@
 # Create plugins
 
-> <!> This chapter is still incomplete.
+> 🚧 This chapter is still incomplete.
 
-vSMTP plugins are Rust crates compiled as dynamic libraries.
+vSMTP plugins are Rust crates compiled as dynamic libraries that extends vSMTP base features.
+
 They can be imported directly in filtering scripts.
 
 ## Requirements
 
 - First, make sure that [Rust and Cargo](https://www.rust-lang.org/) are installed on the system.
 - The Rust community as created a cargo command called [Cargo generate](https://cargo-generate.github.io/cargo-generate/installation.html) which is used to fetch Rust project templates from Github. Make sure to install it too.
-- Rhai uses a crate called [ahash] used to hash types and function signatures. To hash the plugin types with the exact same hash, the plugin must use the same seed has vSMTP. See the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate for more details.
+- Rhai imports a crate called [ahash] to hash types and function signatures to look them up at runtime. Therefore, plugin functions signatures must be hashed with the exact same seed than the core of vSMTP, so that Rhai can call the right functions. See the [`rhai-dylib`](https://github.com/rhaiscript/rhai-dylib#pitfalls) crate for more details.
 
 ## Get the plugin template
 
@@ -58,7 +59,7 @@ cargo generate --git https://github.com/ltabis/rhai-dylib-template.git
 Has specified in the manifest file generated for the project, the configured crate type is `cdylib`.
 
 ```toml
-{{#include vsmtp-plugin-awesome/Cargo.toml:9}}
+{{#include vsmtp-plugin-awesome/Cargo.toml:8}}
 ```
 
 With this option, the crate can be compiled into a dynamic library, and vSMTP can access the plugin via the `module_entrypoint` function at runtime.

@@ -11,15 +11,11 @@ See the official website <https://www.rust-lang.org/tools/install>
 vSMTP requires the `libc` libraries and the GCC compiler/linker.
 On a Debian system, they are contained in the `build-essential` package.
 
-The authentication is provided by the [Cyrus sasl](https://www.cyrusimap.org/sasl) binary package.
-
 ```shell
 sudo apt update
-sudo apt install    \
-  pkg-config        \
-  build-essential   \
-  sasl2-bin         \
+sudo apt install pkg-config build-essential sasl2-bin
 ```
+
 <p class="ann"> Install vSMTP's dependencies </p>
 
 ## vSMTP compilation
@@ -30,7 +26,7 @@ sudo apt install    \
 $> cargo build --workspace --release
 [...]
 $> cargo run -- --help
-vsmtp 1.4
+vsmtp 2.1.0
 Team viridIT <https://viridit.com/>
 Next-gen MTA. Secured, Faster and Greener
 
@@ -49,6 +45,7 @@ SUBCOMMANDS:
     config-show    Show the loaded config (as serialized json format)
     help           Print this message or the help of the given subcommand(s)
 ```
+
 <p class="ann"> Building and running the source code using `cargo` </p>
 
 By default Rust/Cargo use static linking to compile. All libraries required are compiled into the executable, allowing vSMTP to be a standalone application.
@@ -61,6 +58,7 @@ For security purpose, vSMTP should run using a dedicated account with minimum pr
 $ sudo adduser --system --shell /usr/sbin/nologin --no-create-home \
     --uid 9999 --group --disabled-password --disabled-login vsmtp
 ```
+
 <p class="ann"> Create a user to run vSMTP </p>
 
 ```shell
@@ -72,16 +70,17 @@ Not creating home directory '/home/vsmtp'.
 
 vSMTP binaries and config files should be located in:
 
-- /usr/sbin/ : binaries
-- /etc/vsmtp/
-  - /etc/vsmtp/vsmtp.vsl : default configuration file
-  - /etc/vsmtp/rules/ : rules
-  - /etc/vsmtp/certs/ : certificates
-- /var/spool/vsmtp/ : internal queues
-- /var/log/
-  - /var/log/vsmtp.log/ : internal logs and trace
-  - /var/log/mail.log and mail.err : syslog
-- /home/~user/Maildir : local IMAP delivery
+```
+┣ /usr/sbin/           : binaries
+┣ /etc/vsmtp/
+┃    ┣ vsmtp.vsl       : default configuration file
+┃    ┗ rules/          : rules
+┣ /var/spool/vsmtp/    : internal queues
+┣ /var/log/
+┃    ┣ vsmtp.log/      : internal logs and trace
+┃    ┗ app.log         : application logs
+┗ /home/<user>/Maildir : local IMAP delivery
+```
 
 These default locations may be changed in the `/etc/vsmtp/vsmtp.vsl` configuration file which is called by the service startup `/etc/systemd/system/vsmtp.service` file.
 
@@ -90,22 +89,25 @@ sudo mkdir /etc/vsmtp /etc/vsmtp/rules /etc/vsmtp/certs /var/log/vsmtp /var/spoo
 sudo cp ./target/release/vsmtp /usr/sbin/
 sudo cp ./target/release/vqueue /usr/sbin/
 ```
+
 <p class="ann"> Create vSMTP directories </p>
 
-A minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 1.0.0) must be created.
+A minimal vsmtp.vsl configuration file that matches vsmtp version (i.e. 2.1.0) must be created.
 
 ```shell
 cat > /etc/vsmtp/vsmtp.vsl <<EOF
 import "conf.d/config.vsl" as cfg;
 let config = cfg::config;
-config.version_requirement = ">=1.0.0";
+config.version_requirement = ">=2.1.0";
 EOF
 ```
+
 <p class="ann"> Create a minimal configuration file </p>
 
 ```shell
 sudo chown -R vsmtp:vsmtp /var/log/vsmtp /etc/vsmtp/* /var/spool/vsmtp
 ```
+
 <p class="ann"> Grant rights to vSMTP files and directories </p>
 
 If required, add private key and certificate to `/etc/vsmtp/certs` and grant reading rights to the vsmtp user.
@@ -137,6 +139,7 @@ Synchronizing state of postfix.service with SysV service script with /lib/system
 Executing: /lib/systemd/systemd-sysv-install disable postfix
 Removed /etc/systemd/system/multi-user.target.wants/postfix.service.
 ```
+
 <p class="ann"> Disabling a postfix instance that was running on port 25 </p>
 
 &#9758; | Depending on Linux distributions, use the `ss` or `netstat -ltpn` commands.
@@ -149,7 +152,7 @@ Copy the daemon configuration file in `/etc/systemd/system`.
 sudo cp ./tools/install/deb/vsmtp.service /etc/systemd/system/vsmtp.service
 ```
 
-Please note that vSMTP drops privileges at startup. The service type must be set to `forking`. 
+Please note that vSMTP drops privileges at startup. The service type must be set to `forking`.
 
 > Do not modify this file unless you know what you are doing.
 

@@ -1,25 +1,22 @@
 # global::smtp
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>get</code> receiver_address </h2>
+<h2 class="func-name"> <code>fn</code> connect </h2>
 
 ```rust,ignore
-fn get receiver_address(smtp: Smtp) -> String
-
+fn connect(parameters: Map) -> Smtp
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Get the receiver address from a smtp service.
+Build a new SMTP service.
 </details>
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -27,7 +24,6 @@ Get the receiver address from a smtp service.
 
 ```rust,ignore
 fn to_debug(cmd: Smtp) -> String
-
 ```
 
 <details>
@@ -39,3 +35,19 @@ fn to_debug(cmd: Smtp) -> String
 </div>
 </br>
 
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> to_string </h2>
+
+```rust,ignore
+fn to_string(cmd: Smtp) -> String
+```
+
+<details>
+<summary markdown="span"> details </summary>
+
+
+</details>
+
+</div>
+</br>
