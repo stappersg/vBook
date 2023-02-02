@@ -3,7 +3,6 @@
 Functions to inspect and mutate the SMTP envelop.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> add_rcpt </h2>
@@ -42,14 +41,13 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> bcc </h2>
 
 ```rust,ignore
-fn bcc(new_addr: String) -> ()
 fn bcc(new_addr: SharedObject) -> ()
+fn bcc(new_addr: String) -> ()
 ```
 
 <details>
@@ -60,7 +58,6 @@ Alias for `envelop::add_rcpt`.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -100,14 +97,13 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rw_mail_from </h2>
 
 ```rust,ignore
-fn rw_mail_from(new_addr: SharedObject) -> ()
 fn rw_mail_from(new_addr: String) -> ()
+fn rw_mail_from(new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -117,7 +113,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 
 # Args
 
-* `new_addr` - the new sender address to set.
+* `new_addr` - the new string sender address to set.
 
 # Effective smtp stage
 
@@ -128,7 +124,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || envelop::rw_mail_from(address("unknown@example.com")),
+       action "rewrite envelop" || envelop::rw_mail_from("unknown@example.com"),
     ]
 }
 ```
@@ -137,16 +133,15 @@ Rewrite the sender received from the `MAIL FROM` command.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
-fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
+fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
 ```
 
 <details>
@@ -168,7 +163,7 @@ Replace a recipient received by a `RCPT TO` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || envelop::rw_rcpt("john.doe@example.com", address("john.main@example.com")),
+       action "rewrite envelop" || envelop::rw_rcpt("john.doe@example.com", "john.main@example.com"),
     ]
 }
 ```
@@ -176,4 +171,3 @@ Replace a recipient received by a `RCPT TO` command.
 
 </div>
 </br>
-

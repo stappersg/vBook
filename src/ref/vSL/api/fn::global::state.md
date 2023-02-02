@@ -4,7 +4,6 @@ Functions used to interact with the rule engine.
 Use `states` in `rules` to deny, accept, or quarantine emails.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>op</code> != </h2>
@@ -21,7 +20,6 @@ Operator `!=` for `Status`
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -40,15 +38,14 @@ Operator `==` for `Status`
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> accept </h2>
 
 ```rust,ignore
 fn accept() -> Status
-fn accept(code: String) -> Status
 fn accept(code: SharedObject) -> Status
+fn accept(code: String) -> Status
 ```
 
 <details>
@@ -83,15 +80,14 @@ all of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> deny </h2>
 
 ```rust,ignore
 fn deny() -> Status
-fn deny(code: String) -> Status
 fn deny(code: SharedObject) -> Status
+fn deny(code: String) -> Status
 ```
 
 <details>
@@ -128,15 +124,14 @@ all of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> faccept </h2>
 
 ```rust,ignore
 fn faccept() -> Status
-fn faccept(code: String) -> Status
 fn faccept(code: SharedObject) -> Status
+fn faccept(code: String) -> Status
 ```
 
 <details>
@@ -179,52 +174,6 @@ all of them.
 </div>
 </br>
 
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> info </h2>
-
-```rust,ignore
-fn info(code: SharedObject) -> Status
-fn info(code: String) -> Status
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Ask the client to retry to send the current command by sending an information code.
-
-# Args
-
-* `code` - A custom code using a `code` object to send to the client.
-           See `code()` for more information.
-
-# Error
-
-* The given parameter was not a code object.
-
-# Effective smtp stage
-
-all of them.
-
-# Example
-
-```ignore
-#{
-    connect: [
-        rule "please retry" || {
-           const info_code = code(451, "failed to understand you request, please retry.");
-           state::info(info_code)
-       },
-    ],
-}
-```
-</details>
-
-</div>
-</br>
-
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> next </h2>
@@ -258,7 +207,6 @@ all of them.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -309,7 +257,6 @@ import "services" as svc;
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_debug </h2>
@@ -327,7 +274,6 @@ Convert a `Status` to a debug string
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_string </h2>
@@ -344,4 +290,3 @@ Convert a `Status` to a `String`
 
 </div>
 </br>
-

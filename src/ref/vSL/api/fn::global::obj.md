@@ -5,46 +5,43 @@ vSL objects utility methods.
 vSL objects Eq method between each other and other types.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>op</code> != </h2>
 
 ```rust,ignore
-op !=(this: SharedObject, s: String) -> bool
 op !=(this: String, other: SharedObject) -> bool
+op !=(this: SharedObject, s: String) -> bool
 op !=(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `!=` for `SharedObject` and `&str`
+Operator `!=` for `&str` and `SharedObject`
 </details>
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>op</code> == </h2>
 
 ```rust,ignore
-op ==(this: String, other: SharedObject) -> bool
 op ==(this: SharedObject, other: SharedObject) -> bool
 op ==(this: SharedObject, s: String) -> bool
+op ==(this: String, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `&str` and `SharedObject`
+Operator `==` for `SharedObject`
 </details>
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -62,7 +59,6 @@ an email address (jones@foo.com)
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -82,15 +78,14 @@ A SMTP code with the code and message as parameter.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> contains </h2>
 
 ```rust,ignore
 fn contains(this: SharedObject, s: String) -> bool
-fn contains(this: SharedObject, other: SharedObject) -> bool
 fn contains(map: Map, object: SharedObject) -> bool
+fn contains(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>
@@ -101,7 +96,6 @@ Operator `contains`
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -120,7 +114,6 @@ the content of a file.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> fqdn </h2>
@@ -137,7 +130,6 @@ a valid fully qualified domain name (foo.com)
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -176,7 +168,6 @@ All of them.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -220,7 +211,6 @@ Get all domains of the recipient list.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>get</code> local_part </h2>
@@ -262,7 +252,6 @@ All of them.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -310,7 +299,6 @@ Get all local parts of the recipient list.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> identifier </h2>
@@ -327,7 +315,6 @@ a user identifier.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -346,7 +333,6 @@ Build an ip4 address. (a.b.c.d)
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> ip6 </h2>
@@ -363,7 +349,6 @@ Build an ip6 address. (x:x:x:x:x:x:x:x)
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -382,7 +367,6 @@ a regex (^[a-z0-9.]+@foo.com$)
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rg4 </h2>
@@ -399,7 +383,6 @@ an ip v4 range. (a.b.c.d/range)
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -418,7 +401,6 @@ an ip v6 range. (x:x:x:x:x:x:x:x/range)
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_debug </h2>
@@ -436,7 +418,6 @@ Convert a `SharedObject` to a debug string
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_string </h2>
@@ -453,4 +434,3 @@ Convert a `SharedObject` to a `String`
 
 </div>
 </br>
-

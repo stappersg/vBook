@@ -3,7 +3,6 @@
 This module exposes the `cmd` function, allowing vSMTP to execute system commands.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> build </h2>
@@ -14,7 +13,6 @@ fn build(parameters: Map) -> Cmd
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -34,7 +32,6 @@ Execute the given command.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_debug </h2>
@@ -52,7 +49,6 @@ fn to_debug(cmd: Cmd) -> String
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_string </h2>
@@ -69,4 +65,3 @@ fn to_string(cmd: Cmd) -> String
 
 </div>
 </br>
-

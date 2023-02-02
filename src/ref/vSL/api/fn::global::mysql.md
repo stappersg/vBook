@@ -1,12 +1,15 @@
 # global::mysql
 
+This plugin exposes methods to open a pool of connexions to a mysql database using
+Rhai.
+
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> connect </h2>
 
 ```rust,ignore
-fn connect(parameters: Map) -> EvalAltResult>>
+fn connect(parameters: Map) -> MySQL
 ```
 
 <details>
@@ -52,8 +55,8 @@ export const database = mysql::connect(#{
 <h2 class="func-name"> <code>fn</code> query </h2>
 
 ```rust,ignore
-fn query(database: MySQL, query: SharedObject) -> EvalAltResult>>
-fn query(database: MySQL, query: String) -> EvalAltResult>>
+fn query(database: MySQL, query: String) -> Array
+fn query(database: MySQL, query: SharedObject) -> Array
 ```
 
 <details>
@@ -105,7 +108,7 @@ import "services/database" as srv;
         }
     ],
 }
-```    #[allow(clippy::needless_pass_by_value)]
+```
 </details>
 
 </div>

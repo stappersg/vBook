@@ -9,7 +9,7 @@ Rhai.
 <h2 class="func-name"> <code>fn</code> add </h2>
 
 ```rust,ignore
-fn add(cache: Cache, key: String, value: ?, duration: int) -> EvalAltResult>>
+fn add(cache: Cache, key: String, value: ?, duration: int) -> ()
 ```
 
 <details>
@@ -64,7 +64,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> append </h2>
 
 ```rust,ignore
-fn append(cache: Cache, key: String, value: ?) -> EvalAltResult>>
+fn append(cache: Cache, key: String, value: ?) -> ()
 ```
 
 <details>
@@ -119,7 +119,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> cas </h2>
 
 ```rust,ignore
-fn cas(cache: Cache, key: String, value: ?, expiration: int, cas_id: int) -> EvalAltResult>>
+fn cas(cache: Cache, key: String, value: ?, expiration: int, cas_id: int) -> bool
 ```
 
 <details>
@@ -174,7 +174,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> connect </h2>
 
 ```rust,ignore
-fn connect(parameters: Map) -> EvalAltResult>>
+fn connect(parameters: Map) -> Cache
 ```
 
 <details>
@@ -220,7 +220,7 @@ export const cache = cache::connect(#{
 <h2 class="func-name"> <code>fn</code> decrement </h2>
 
 ```rust,ignore
-fn decrement(cache: Cache, key: String, value: int) -> EvalAltResult>>
+fn decrement(cache: Cache, key: String, value: int) -> ()
 ```
 
 <details>
@@ -274,7 +274,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> delete </h2>
 
 ```rust,ignore
-fn delete(cache: Cache, key: String) -> EvalAltResult>>
+fn delete(cache: Cache, key: String) -> bool
 ```
 
 <details>
@@ -328,7 +328,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> flush </h2>
 
 ```rust,ignore
-fn flush(cache: Cache) -> EvalAltResult>>
+fn flush(cache: Cache) -> ()
 ```
 
 <details>
@@ -374,7 +374,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> get </h2>
 
 ```rust,ignore
-fn get(cache: Cache, key: String) -> EvalAltResult>>
+fn get(cache: Cache, key: String) -> ?
 ```
 
 <details>
@@ -430,7 +430,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> get_with_cas </h2>
 
 ```rust,ignore
-fn get_with_cas(cache: Cache, key: String) -> EvalAltResult>>
+fn get_with_cas(cache: Cache, key: String) -> ?
 ```
 
 <details>
@@ -486,7 +486,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> gets </h2>
 
 ```rust,ignore
-fn gets(cache: Cache, keys: Array) -> EvalAltResult>>
+fn gets(cache: Cache, keys: Array) -> ?
 ```
 
 <details>
@@ -544,7 +544,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> increment </h2>
 
 ```rust,ignore
-fn increment(cache: Cache, key: String, value: int) -> EvalAltResult>>
+fn increment(cache: Cache, key: String, value: int) -> ()
 ```
 
 <details>
@@ -598,7 +598,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> prepend </h2>
 
 ```rust,ignore
-fn prepend(cache: Cache, key: String, value: ?) -> EvalAltResult>>
+fn prepend(cache: Cache, key: String, value: ?) -> ()
 ```
 
 <details>
@@ -653,7 +653,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> replace </h2>
 
 ```rust,ignore
-fn replace(cache: Cache, key: String, value: ?, duration: int) -> EvalAltResult>>
+fn replace(cache: Cache, key: String, value: ?, duration: int) -> ()
 ```
 
 <details>
@@ -709,7 +709,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> set </h2>
 
 ```rust,ignore
-fn set(cache: Cache, key: String, value: ?, duration: int) -> EvalAltResult>>
+fn set(cache: Cache, key: String, value: ?, duration: int) -> ()
 ```
 
 <details>
@@ -805,7 +805,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> stats </h2>
 
 ```rust,ignore
-fn stats(cache: Cache) -> EvalAltResult>>
+fn stats(cache: Cache) -> String
 ```
 
 <details>
@@ -856,7 +856,7 @@ import "services/cache" as srv;
 <h2 class="func-name"> <code>fn</code> touch </h2>
 
 ```rust,ignore
-fn touch(cache: Cache, key: String, duration: int) -> EvalAltResult>>
+fn touch(cache: Cache, key: String, duration: int) -> ()
 ```
 
 <details>

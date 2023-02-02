@@ -3,7 +3,6 @@
 Authentication mechanisms and credential manipulation.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> credentials </h2>
@@ -38,7 +37,6 @@ Get authentication credentials from the client.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -79,7 +77,6 @@ Can only be use on 'AnonymousToken' authentication typed credentials.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>get</code> authid </h2>
@@ -119,7 +116,6 @@ Can only be use on 'Verify' authentication typed credentials.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>get</code> authpass </h2>
@@ -158,7 +154,6 @@ Can only be use on 'Verify' authentication typed credentials.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -201,7 +196,6 @@ Get the type of the `auth` property of the connection.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> is_authenticated </h2>
@@ -237,7 +231,6 @@ Check if the client is authenticated.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> unix_users </h2>
@@ -261,4 +254,3 @@ A native implementation will be provided in the future.
 
 </div>
 </br>
-

@@ -3,7 +3,6 @@
 Functions to configure delivery methods of emails.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> deliver </h2>
@@ -91,7 +90,6 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> deliver_all </h2>
@@ -159,16 +157,15 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> forward </h2>
 
 ```rust,ignore
 fn forward(rcpt: String, forward: String) -> ()
-fn forward(rcpt: SharedObject, forward: String) -> ()
 fn forward(rcpt: SharedObject, forward: SharedObject) -> ()
 fn forward(rcpt: String, forward: SharedObject) -> ()
+fn forward(rcpt: SharedObject, forward: String) -> ()
 ```
 
 <details>
@@ -250,7 +247,6 @@ const rules = #{
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> forward_all </h2>
@@ -289,7 +285,6 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> maildir </h2>
@@ -326,7 +321,6 @@ All of them.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -396,7 +390,6 @@ All of them.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -472,7 +465,6 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> mbox_all </h2>
@@ -540,4 +532,3 @@ All of them.
 
 </div>
 </br>
-

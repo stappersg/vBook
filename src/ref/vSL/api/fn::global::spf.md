@@ -3,7 +3,6 @@
 Implementation of the Sender Policy Framework (SPF), described by RFC 4408. (<https://www.ietf.org/rfc/rfc4408.txt>)
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> check </h2>
@@ -72,7 +71,6 @@ see <https://datatracker.ietf.org/doc/html/rfc7208>
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> check_raw </h2>
@@ -117,4 +115,3 @@ see <https://datatracker.ietf.org/doc/html/rfc7208>
 
 </div>
 </br>
-

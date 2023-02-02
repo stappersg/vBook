@@ -4,7 +4,6 @@ Generate and verify DKIM signatures.
 Implementation of RFC 6376. (<https://www.rfc-editor.org/rfc/rfc6376.html>)
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>get</code> auid </h2>
@@ -21,7 +20,6 @@ return the `auid` property of the [`Signature`]
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -40,7 +38,6 @@ return the `sdid` property of the [`Signature`]
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> get_private_keys </h2>
@@ -57,7 +54,6 @@ Get the list of DKIM private keys associated with this sdid
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -76,7 +72,6 @@ Has the `ctx()` a DKIM signature verification result ?
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> result </h2>
@@ -94,7 +89,6 @@ an error if no result is found.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -137,7 +131,6 @@ Uses the "From", "To", "Date" and "Subject" headers to sign with the simple/rela
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> store </h2>
@@ -157,7 +150,6 @@ Store the result produced by the DKIM signature verification in the `ctx()`.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -311,4 +303,3 @@ let rules = r#"#{
 
 </div>
 </br>
-
