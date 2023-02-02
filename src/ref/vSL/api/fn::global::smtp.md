@@ -1,7 +1,6 @@
 # global::smtp
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> connect </h2>
@@ -18,7 +17,6 @@ Build a new SMTP service.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -37,7 +35,6 @@ fn to_debug(cmd: Smtp) -> String
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_string </h2>
@@ -54,4 +51,3 @@ fn to_string(cmd: Smtp) -> String
 
 </div>
 </br>
-

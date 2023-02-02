@@ -3,7 +3,6 @@
 Inspect incoming messages.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> add_rcpt </h2>
@@ -39,7 +38,6 @@ Add a recipient to the `To` header of the message.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -88,14 +86,13 @@ the `preq` stage is reached.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> count_header </h2>
 
 ```rust,ignore
-fn count_header(header: SharedObject) -> int
 fn count_header(header: String) -> int
+fn count_header(header: SharedObject) -> int
 ```
 
 <details>
@@ -138,7 +135,6 @@ is when the email body is received.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -186,14 +182,13 @@ Hello world!
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> get_header </h2>
 
 ```rust,ignore
-fn get_header(header: SharedObject) -> String
 fn get_header(header: String) -> String
+fn get_header(header: SharedObject) -> String
 ```
 
 <details>
@@ -240,7 +235,6 @@ Hello world!
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -292,7 +286,6 @@ Hello world!
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> has_header </h2>
@@ -342,7 +335,6 @@ email is received at this point.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> mail </h2>
@@ -373,7 +365,6 @@ Get a copy of the whole email as a string.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -422,15 +413,14 @@ the `preq` stage is reached.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rename_header </h2>
 
 ```rust,ignore
-fn rename_header(old: String, new: String) -> ()
 fn rename_header(old: String, new: SharedObject) -> ()
 fn rename_header(old: SharedObject, new: String) -> ()
+fn rename_header(old: String, new: String) -> ()
 fn rename_header(old: SharedObject, new: SharedObject) -> ()
 ```
 
@@ -460,7 +450,7 @@ is when the email body is received.
   preq: [
     rule "rename_header" || {
       msg::rename_header("Subject", "bob");
-      if msg::has_header("Subject") { return state::deny(); }
+      if msg::has_header("Subject") || !msg::has_header("bob") { return state::deny(); }
 
       msg::rename_header("bob", identifier("Subject"));
       if msg::has_header("bob") { return state::deny(); }
@@ -480,7 +470,6 @@ is when the email body is received.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -537,7 +526,6 @@ is when the email body is received.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
@@ -574,14 +562,13 @@ Remove a recipient from the `To` header of the message.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rw_mail_from </h2>
 
 ```rust,ignore
-fn rw_mail_from(new_addr: SharedObject) -> ()
 fn rw_mail_from(new_addr: String) -> ()
+fn rw_mail_from(new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -602,7 +589,7 @@ Change the sender's address in the `From` header of the message.
 ```
 #{
     preq: [
-       action "replace sender" || msg::rw_mail_from(address("john.server@example.com")),
+       action "replace sender" || msg::rw_mail_from("john.server@example.com"),
     ]
 }
 ```
@@ -611,16 +598,15 @@ Change the sender's address in the `From` header of the message.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
 fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
 fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
 ```
 
 <details>
@@ -650,7 +636,6 @@ Replace a recipient by an other in the `To` header of the message.
 
 </div>
 </br>
-
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
@@ -703,7 +688,6 @@ you must use `set_header` in the `preq` stage and onwards.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> to_string </h2>
@@ -720,4 +704,3 @@ Generate the `.eml` representation of the message.
 
 </div>
 </br>
-

@@ -3,14 +3,13 @@
 Functions used to query the DNS.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> lookup </h2>
 
 ```rust,ignore
-fn lookup(name: String) -> Array
 fn lookup(name: SharedObject) -> Array
+fn lookup(name: String) -> Array
 ```
 
 <details>
@@ -41,7 +40,7 @@ All of them.
 #{
   preq: [
     action "lookup recipients" || {
-      let domain = "gmail.com";
+      let domain = fqdn("gmail.com");
       let ips = dns::lookup(domain);
 
       print(`ips found for ${domain}`);
@@ -55,14 +54,13 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> rlookup </h2>
 
 ```rust,ignore
-fn rlookup(name: SharedObject) -> Array
 fn rlookup(name: String) -> Array
+fn rlookup(name: SharedObject) -> Array
 ```
 
 <details>
@@ -102,4 +100,3 @@ All of them.
 
 </div>
 </br>
-
