@@ -46,7 +46,7 @@ Rules can then be added to filter out unsecure transactions.
 
 ## Certificate / SNI
 
-The certificate resolution of the server is **exclusively** based on the [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) extension. Meaning both these command will produce an error.
+The certificate resolution of the server is **exclusively** based on the [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) extension. Meaning both these commands will produce an error.
 
 ```sh
 openssl s_client -starttls smtp -crlf -connect 192.168.1.254:25
@@ -69,7 +69,7 @@ fn on_domain_config(config) {
 
 <p class="ann"> `/etc/vsmtp/domain-available/example.com/config.vsl` </p>
 
-> vSMTP only support certificate with the X.509 format.
+> vSMTP only support certificates with the X.509 format.
 
 You can then test the connection with the following command:
 
