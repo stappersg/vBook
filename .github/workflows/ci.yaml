@@ -16,6 +16,7 @@ jobs:
           username: ${{ secrets.SITE_SSH_USERNAME }}
           key: ${{ secrets.SITE_SSH_KEY }}
           passphrase: ${{ secrets.SITE_SSH_PASSPHRASE }}
+          timeout: 2m
           script: |
             sudo su - mdbook -c 'cd vBook && git checkout next && git pull && mdbook build'
             sudo cp -Rf /home/mdbook/vBook/book/* /var/www/vbook/next
