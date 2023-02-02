@@ -3,7 +3,6 @@
 Utilities to get the current time and date.
 
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> date </h2>
@@ -41,7 +40,6 @@ All of them.
 </div>
 </br>
 
-
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
 <h2 class="func-name"> <code>fn</code> now </h2>
@@ -78,4 +76,3 @@ All of them.
 
 </div>
 </br>
-
