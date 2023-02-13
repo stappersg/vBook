@@ -86,8 +86,8 @@ all of them.
 
 ```rust,ignore
 fn deny() -> Status
-fn deny(code: SharedObject) -> Status
 fn deny(code: String) -> Status
+fn deny(code: SharedObject) -> Status
 ```
 
 <details>
@@ -130,8 +130,8 @@ all of them.
 
 ```rust,ignore
 fn faccept() -> Status
-fn faccept(code: SharedObject) -> Status
 fn faccept(code: String) -> Status
+fn faccept(code: SharedObject) -> Status
 ```
 
 <details>

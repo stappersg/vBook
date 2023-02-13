@@ -69,7 +69,6 @@ The vSMTP reference guide
     - [Objects](ref/vSL/api/fn::global::obj.md)
   - [Variables](ref/vSL/variables.md)
     - [Configuration](ref/vSL/api/var::cfg.md)
-    - [vSL API](ref/vSL/api/var::vsl-api.md)
   - [Plugins](ref/vSL/plugins.md)
     - [Cmd](ref/vSL/api/fn::global::cmd.md)
     - [Smtp](ref/vSL/api/fn::global::smtp.md)

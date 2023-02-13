@@ -8,8 +8,8 @@ Functions to configure delivery methods of emails.
 <h2 class="func-name"> <code>fn</code> deliver </h2>
 
 ```rust,ignore
-fn deliver(rcpt: String) -> ()
 fn deliver(rcpt: SharedObject) -> ()
+fn deliver(rcpt: String) -> ()
 ```
 
 <details>
@@ -27,63 +27,13 @@ to the recipient using the domain of its address.
 
 All of them.
 
-# Examples
+# Example
 ```ignore
 #{
     delivery: [
-       action "setup delivery" || transport::deliver("john.doe@example.com"),
+       action "setup delivery" || transport::deliver(address("john.doe@example.com")),
     ]
 }
-```
-
-```
-# let states = vsmtp_test::vsl::run(
-# |builder| Ok(builder.add_root_filter_rules(r#"
-#{
-  rcpt: [
-    action "deliver (str/str)" || {
-      envelop::add_rcpt("my.address@foo.com");
-      transport::deliver("my.address@foo.com");
-    },
-    action "deliver (obj/str)" || {
-      let rcpt = address("my.address@bar.com");
-      envelop::add_rcpt(rcpt);
-      transport::deliver(rcpt);
-    },
-    action "deliver (str/obj)" || {
-      let target = ip6("::1");
-      envelop::add_rcpt("my.address@baz.com");
-      transport::deliver("my.address@baz.com");
-    },
-    action "deliver (obj/obj)" || {
-      let rcpt = address("my.address@boz.com");
-      envelop::add_rcpt(rcpt);
-      transport::deliver(rcpt);
-    },
-  ],
-}
-# "#)?.build()));
-
-# use vsmtp_common::{
-#   transfer::{ForwardTarget, Transfer, EmailTransferStatus},
-#   rcpt::Rcpt,
-#   Address,
-# };
-# for (rcpt, addr) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([
-#     "my.address@foo.com",
-#     "my.address@bar.com",
-#     "my.address@baz.com",
-#     "my.address@boz.com"
-# ]) {
-#   assert_eq!(
-#     rcpt.address,
-#     Address::new_unchecked(addr.to_string())
-#   );
-#   assert_eq!(
-#     rcpt.transfer_method,
-#     Transfer::Deliver
-#   );
-# }
 ```
 </details>
 
@@ -162,10 +112,10 @@ All of them.
 <h2 class="func-name"> <code>fn</code> forward </h2>
 
 ```rust,ignore
-fn forward(rcpt: String, forward: String) -> ()
-fn forward(rcpt: SharedObject, forward: SharedObject) -> ()
-fn forward(rcpt: String, forward: SharedObject) -> ()
 fn forward(rcpt: SharedObject, forward: String) -> ()
+fn forward(rcpt: String, forward: String) -> ()
+fn forward(rcpt: String, forward: SharedObject) -> ()
+fn forward(rcpt: SharedObject, forward: SharedObject) -> ()
 ```
 
 <details>
@@ -186,61 +136,11 @@ All of them.
 
 # Examples
 ```ignore
-const rules = #{
+#{
     delivery: [
        action "setup forwarding" || transport::forward("john.doe@example.com", "mta-john.example.com"),
     ]
 }
-```
-
-```
-# let states = vsmtp_test::vsl::run(
-# |builder| Ok(builder.add_root_filter_rules(r#"
-#{
-    rcpt: [
-      action "forward (str/str)" || {
-        envelop::add_rcpt("my.address@foo.com");
-        transport::forward("my.address@foo.com", "127.0.0.1");
-      },
-      action "forward (obj/str)" || {
-        let rcpt = address("my.address@bar.com");
-        envelop::add_rcpt(rcpt);
-        transport::forward(rcpt, "127.0.0.2");
-      },
-      action "forward (str/obj)" || {
-        let target = ip6("::1");
-        envelop::add_rcpt("my.address@baz.com");
-        transport::forward("my.address@baz.com", target);
-      },
-      action "forward (obj/obj)" || {
-        let rcpt = address("my.address@boz.com");
-        envelop::add_rcpt(rcpt);
-        transport::forward(rcpt, ip4("127.0.0.4"));
-      },
-    ],
-}
-# "#)?.build()));
-
-# use vsmtp_common::{
-#   transfer::{ForwardTarget, Transfer, EmailTransferStatus},
-#   rcpt::Rcpt,
-#   Address,
-# };
-# for (rcpt, (addr, target)) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([
-#     ("my.address@foo.com", "127.0.0.1"),
-#     ("my.address@bar.com", "127.0.0.2"),
-#     ("my.address@baz.com", "::1"),
-#     ("my.address@boz.com", "127.0.0.4")
-# ]) {
-#   assert_eq!(
-#     rcpt.address,
-#     Address::new_unchecked(addr.to_string())
-#   );
-#   assert_eq!(
-#     rcpt.transfer_method,
-#     Transfer::Forward(ForwardTarget::Ip(target.parse().unwrap()))
-#   );
-# }
 ```
 </details>
 
@@ -252,8 +152,8 @@ const rules = #{
 <h2 class="func-name"> <code>fn</code> forward_all </h2>
 
 ```rust,ignore
-fn forward_all(forward: SharedObject) -> ()
 fn forward_all(forward: String) -> ()
+fn forward_all(forward: SharedObject) -> ()
 ```
 
 <details>
@@ -276,9 +176,48 @@ All of them.
 ```ignore
 #{
     delivery: [
-       action "setup forwarding" || transport::forward_all(fqdn("mta-john.example.com")),
+       action "setup forwarding" || transport::forward_all("mta-john.example.com"),
     ]
 }
+```
+
+```
+# let states = vsmtp_test::vsl::run(
+# |builder| Ok(builder.add_root_filter_rules(r#"
+#{
+  rcpt: [
+    action "forward_all" || {
+      envelop::add_rcpt("my.address@foo.com");
+      envelop::add_rcpt("my.address@bar.com");
+      transport::forward_all("127.0.0.1");
+    },
+    action "forward_all (obj)" || {
+      envelop::add_rcpt("my.address@foo2.com");
+      envelop::add_rcpt("my.address@bar2.com");
+      transport::forward_all(ip4("127.0.0.1"));
+    },
+  ],
+}
+# "#)?.build()));
+
+# use vsmtp_common::{
+#   transfer::{ForwardTarget, Transfer, EmailTransferStatus},
+#   rcpt::Rcpt,
+#   Address,
+# };
+# for (rcpt, addr) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([
+#     "my.address@foo.com",
+#     "my.address@bar.com",
+# ]) {
+#   assert_eq!(
+#     rcpt.address,
+#     Address::new_unchecked(addr.to_string())
+#   );
+#   assert_eq!(
+#     rcpt.transfer_method,
+#     Transfer::Forward(ForwardTarget::Ip("127.0.0.1".parse().unwrap()))
+#   );
+# }
 ```
 </details>
 
@@ -290,8 +229,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> maildir </h2>
 
 ```rust,ignore
-fn maildir(rcpt: SharedObject) -> ()
 fn maildir(rcpt: String) -> ()
+fn maildir(rcpt: SharedObject) -> ()
 ```
 
 <details>
@@ -309,13 +248,49 @@ locally in the `~/Maildir/new/` folder of the recipient's user if it exists on t
 
 All of them.
 
-# Example
+# Examples
 ```ignore
 #{
     delivery: [
-       action "setup maildir" || transport::maildir(address("john.doe@example.com")),
+       action "setup maildir" || transport::maildir("john.doe@example.com"),
     ]
 }
+```
+
+```
+# let states = vsmtp_test::vsl::run(
+# |builder| Ok(builder.add_root_filter_rules(r#"
+#{
+  rcpt: [
+    action "setup maildir" || {
+        const doe = address("doe@example.com");
+        envelop::add_rcpt(doe);
+        envelop::add_rcpt("a@example.com");
+        transport::maildir(doe);
+        transport::maildir("a@example.com");
+    },
+  ],
+}
+# "#)?.build()));
+
+# use vsmtp_common::{
+#   transfer::{Transfer},
+#   rcpt::Rcpt,
+#   Address,
+# };
+# for (rcpt, addr) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([
+#     "doe@example.com",
+#     "a@example.com",
+# ]) {
+#   assert_eq!(
+#     rcpt.address,
+#     Address::new_unchecked(addr.to_string())
+#   );
+#   assert_eq!(
+#     rcpt.transfer_method,
+#     Transfer::Maildir
+#   );
+# }
 ```
 </details>
 

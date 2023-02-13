@@ -8,8 +8,8 @@ Functions to inspect and mutate the SMTP envelop.
 <h2 class="func-name"> <code>fn</code> add_rcpt </h2>
 
 ```rust,ignore
-fn add_rcpt(new_addr: String) -> ()
 fn add_rcpt(new_addr: SharedObject) -> ()
+fn add_rcpt(new_addr: String) -> ()
 ```
 
 <details>
@@ -32,7 +32,7 @@ All of them.
 #{
     connect: [
        // always deliver a copy of the message to "john.doe@example.com".
-       action "rewrite envelop" || envelop::add_rcpt("john.doe@example.com"),
+       action "rewrite envelop" || envelop::add_rcpt(address("john.doe@example.com")),
     ]
 }
 ```
@@ -64,8 +64,8 @@ Alias for `envelop::add_rcpt`.
 <h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
 
 ```rust,ignore
-fn rm_rcpt(addr: SharedObject) -> ()
 fn rm_rcpt(addr: String) -> ()
+fn rm_rcpt(addr: SharedObject) -> ()
 ```
 
 <details>
@@ -88,7 +88,7 @@ All of them.
 #{
     preq: [
        // never deliver to "john.doe@example.com".
-       action "rewrite envelop" || envelop::rm_rcpt(address("john.doe@example.com")),
+       action "rewrite envelop" || envelop::rm_rcpt("john.doe@example.com"),
     ]
 }
 ```
@@ -102,8 +102,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> rw_mail_from </h2>
 
 ```rust,ignore
-fn rw_mail_from(new_addr: String) -> ()
 fn rw_mail_from(new_addr: SharedObject) -> ()
+fn rw_mail_from(new_addr: String) -> ()
 ```
 
 <details>
@@ -113,7 +113,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 
 # Args
 
-* `new_addr` - the new string sender address to set.
+* `new_addr` - the new sender address to set.
 
 # Effective smtp stage
 
@@ -124,7 +124,7 @@ Rewrite the sender received from the `MAIL FROM` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || envelop::rw_mail_from("unknown@example.com"),
+       action "rewrite envelop" || envelop::rw_mail_from(address("unknown@example.com")),
     ]
 }
 ```
@@ -138,10 +138,10 @@ Rewrite the sender received from the `MAIL FROM` command.
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
-fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
-fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
+fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: String, new_addr: String) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
 <details>
@@ -163,7 +163,7 @@ Replace a recipient received by a `RCPT TO` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || envelop::rw_rcpt("john.doe@example.com", "john.main@example.com"),
+       action "rewrite envelop" || envelop::rw_rcpt(address("john.doe@example.com"), "john.main@example.com"),
     ]
 }
 ```

@@ -57,8 +57,8 @@ or that the variable does not contain valid Unicode.
 <h2 class="func-name"> <code>fn</code> get_root_domain </h2>
 
 ```rust,ignore
-fn get_root_domain(domain: String) -> String
 fn get_root_domain(domain: SharedObject) -> String
+fn get_root_domain(domain: String) -> String
 ```
 
 <details>

@@ -142,8 +142,8 @@ is when the email body is received.
 
 ```rust,ignore
 fn get_all_headers() -> Array
-fn get_all_headers(name: SharedObject) -> Array
 fn get_all_headers(name: String) -> Array
+fn get_all_headers(name: SharedObject) -> Array
 ```
 
 <details>
@@ -187,8 +187,8 @@ Hello world!
 <h2 class="func-name"> <code>fn</code> get_header </h2>
 
 ```rust,ignore
-fn get_header(header: String) -> String
 fn get_header(header: SharedObject) -> String
+fn get_header(header: String) -> String
 ```
 
 <details>
@@ -291,8 +291,8 @@ Hello world!
 <h2 class="func-name"> <code>fn</code> has_header </h2>
 
 ```rust,ignore
-fn has_header(header: SharedObject) -> bool
 fn has_header(header: String) -> bool
+fn has_header(header: SharedObject) -> bool
 ```
 
 <details>
@@ -371,8 +371,8 @@ Get a copy of the whole email as a string.
 <h2 class="func-name"> <code>fn</code> prepend_header </h2>
 
 ```rust,ignore
-fn prepend_header(header: String, value: SharedObject) -> ()
 fn prepend_header(header: String, value: String) -> ()
+fn prepend_header(header: String, value: SharedObject) -> ()
 ```
 
 <details>
@@ -418,10 +418,10 @@ the `preq` stage is reached.
 <h2 class="func-name"> <code>fn</code> rename_header </h2>
 
 ```rust,ignore
-fn rename_header(old: String, new: SharedObject) -> ()
 fn rename_header(old: SharedObject, new: String) -> ()
-fn rename_header(old: String, new: String) -> ()
+fn rename_header(old: String, new: SharedObject) -> ()
 fn rename_header(old: SharedObject, new: SharedObject) -> ()
+fn rename_header(old: String, new: String) -> ()
 ```
 
 <details>
@@ -450,7 +450,7 @@ is when the email body is received.
   preq: [
     rule "rename_header" || {
       msg::rename_header("Subject", "bob");
-      if msg::has_header("Subject") || !msg::has_header("bob") { return state::deny(); }
+      if msg::has_header("Subject") { return state::deny(); }
 
       msg::rename_header("bob", identifier("Subject"));
       if msg::has_header("bob") { return state::deny(); }
@@ -531,8 +531,8 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
 
 ```rust,ignore
-fn rm_rcpt(addr: SharedObject) -> ()
 fn rm_rcpt(addr: String) -> ()
+fn rm_rcpt(addr: SharedObject) -> ()
 ```
 
 <details>
@@ -553,7 +553,7 @@ Remove a recipient from the `To` header of the message.
 ```
 #{
     preq: [
-       action "update recipients" || msg::rm_rcpt(address("john.doe@example.com")),
+       action "update recipients" || msg::rm_rcpt("john.doe@example.com"),
     ]
 }
 ```
@@ -567,8 +567,8 @@ Remove a recipient from the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> rw_mail_from </h2>
 
 ```rust,ignore
-fn rw_mail_from(new_addr: String) -> ()
 fn rw_mail_from(new_addr: SharedObject) -> ()
+fn rw_mail_from(new_addr: String) -> ()
 ```
 
 <details>
@@ -589,7 +589,7 @@ Change the sender's address in the `From` header of the message.
 ```
 #{
     preq: [
-       action "replace sender" || msg::rw_mail_from("john.server@example.com"),
+       action "replace sender" || msg::rw_mail_from(address("john.server@example.com")),
     ]
 }
 ```
@@ -603,10 +603,10 @@ Change the sender's address in the `From` header of the message.
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
-fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
-fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: String, new_addr: String) -> ()
 ```
 
 <details>
@@ -628,7 +628,7 @@ Replace a recipient by an other in the `To` header of the message.
 ```
 #{
     preq: [
-       action "rewrite recipient" || msg::rw_rcpt("john.doe@example.com", "john-mta@example.com"),
+       action "rewrite recipient" || msg::rw_rcpt(address("john.doe@example.com"), "john-mta@example.com"),
     ]
 }
 ```
@@ -642,8 +642,8 @@ Replace a recipient by an other in the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> set_header </h2>
 
 ```rust,ignore
-fn set_header(header: String, value: SharedObject) -> ()
 fn set_header(header: String, value: String) -> ()
+fn set_header(header: String, value: SharedObject) -> ()
 ```
 
 <details>

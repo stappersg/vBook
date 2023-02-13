@@ -1,7 +1,10 @@
 # SSL/TLS
 
-Connections should be encrypted using the SSL/TLS protocol, even on a private network.
-TLS can be initiated right after connect on the [address submissions](../../ref/vSL/api/var::cfg.md),
+> ℹ️ To use SMTPS, you will need a valid TLS certificate and a private key for your server.
+>
+> vSMTP support X.509 certificates and RSA/PKCS8/EC keys stored in `.pem` files.
+
+TLS can be initiated right after connect on the [address submissions],
 or with the `STARTTLS` mechanism.
 
 ```rust,ignore
@@ -42,11 +45,12 @@ Rules can then be added to filter out unsecure transactions.
 
 > See the [`ctx::is_secured`][is_secured_fn_ref] reference for more details.
 
-[is_secured_fn_ref]: ../../ref/vSL/api/fn::global::ctx.md
-
 ## Certificate / SNI
 
-The certificate resolution of the server is **exclusively** based on the [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) extension. Meaning both these commands will produce an error.
+You can host multiple domains on the same server. The certificate resolution of the server is based
+on the [SNI] extension.
+
+By default, [SNI] is required. Meaning both these commands will produce an error.
 
 ```sh
 openssl s_client -starttls smtp -crlf -connect 192.168.1.254:25
@@ -69,11 +73,46 @@ fn on_domain_config(config) {
 
 <p class="ann"> `/etc/vsmtp/domain-available/example.com/config.vsl` </p>
 
-> vSMTP only support certificates with the X.509 format.
-
 You can then test the connection with the following command:
 
 ```sh
 openssl s_client -starttls smtp -crlf -connect 192.168.1.254:25 -servername example.com
 openssl s_client -crlf -connect 192.168.1.254:465 -servername example.com
 ```
+
+## Default domain
+
+You can specify which domain will be used by default when no [SNI] is provided.
+
+```rust,ignore
+fn on_domain_config(config) {
+  config.is_default = true;
+
+  config.tls = #{
+    protocol_version: ["TLSv1.2", "TLSv1.3"],
+    certificate: "/etc/vsmtp/certs/fullchain.pem",
+    private_key: "/etc/vsmtp/certs/privkey.pem",
+  };
+
+  config
+}
+```
+
+<p class="ann"> `/etc/vsmtp/domain-available/example2.com/config.vsl` </p>
+
+Or even with a symlink:
+
+```sh
+/etc/vsmtp/domain-available/default -> /etc/vsmtp/domain-available/example2.com
+```
+
+These command will now work.
+
+```sh
+openssl s_client -starttls smtp -crlf -connect 192.168.1.254:25
+openssl s_client -crlf -connect 192.168.1.254:465
+```
+
+[address submissions]: ../../ref/vSL/api/var::cfg.md
+[is_secured_fn_ref]: ../../ref/vSL/api/fn::global::ctx.md
+[SNI]: https://en.wikipedia.org/wiki/Server_Name_Indication

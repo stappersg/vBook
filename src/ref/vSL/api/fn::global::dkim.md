@@ -95,21 +95,21 @@ an error if no result is found.
 <h2 class="func-name"> <code>fn</code> sign </h2>
 
 ```rust,ignore
-fn sign(selector: String, private_key: Arc<PrivateKey>) -> ()
-fn sign(selector: String, private_key: Arc<PrivateKey>, headers_field: Array, canonicalization: String) -> ()
+fn sign(params: Map) -> ()
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
 Produce a `DKIM-Signature` header.
-Uses the "From", "To", "Date" and "Subject" headers to sign with the simple/relaxed policy.
 
 # Args
 
 * `selector` - the DNS selector to expose the public key & for the verifier
 * `private_key` - the private key to sign the mail,
     associated with the public key in the `selector._domainkey.sdid` DNS record
+* `headers_field` - list of headers to sign
+* `canonicalization` - the canonicalization algorithm to use (ex: "simple/relaxed")
 
 # Effective smtp stage
 
@@ -121,8 +121,25 @@ Uses the "From", "To", "Date" and "Subject" headers to sign with the simple/rela
 #{
   preq: [
     action "sign dkim" || {
-      dkim::sign("2022-09", private_key);
-    },
+      for private_key in dkim::get_private_keys("testserver.com") {
+        dkim::sign(#{
+           // default: server_name()
+           sdid:                "testserver.com",
+
+           // mandatory
+           selector:            "2022-09",
+
+           // mandatory
+           private_key:         private_key,
+
+           // default: ["From", "To", "Date", "Subject", "From"]
+           headers:             ["From", "To", "Date", "Subject", "From"],
+
+           // default: "simple/relaxed"
+           canonicalization:    "simple/relaxed"
+        });
+      }
+    }
   ]
 }
 ```

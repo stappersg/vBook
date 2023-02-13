@@ -10,15 +10,15 @@ vSL objects Eq method between each other and other types.
 <h2 class="func-name"> <code>op</code> != </h2>
 
 ```rust,ignore
+op !=(this: SharedObject, other: SharedObject) -> bool
 op !=(this: String, other: SharedObject) -> bool
 op !=(this: SharedObject, s: String) -> bool
-op !=(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `!=` for `&str` and `SharedObject`
+Operator `!=` for `SharedObject`
 </details>
 
 </div>
@@ -29,15 +29,15 @@ Operator `!=` for `&str` and `SharedObject`
 <h2 class="func-name"> <code>op</code> == </h2>
 
 ```rust,ignore
-op ==(this: SharedObject, other: SharedObject) -> bool
 op ==(this: SharedObject, s: String) -> bool
 op ==(this: String, other: SharedObject) -> bool
+op ==(this: SharedObject, other: SharedObject) -> bool
 ```
 
 <details>
 <summary markdown="span"> details </summary>
 
-Operator `==` for `SharedObject`
+Operator `==` for `SharedObject` and `&str`
 </details>
 
 </div>
@@ -84,8 +84,8 @@ A SMTP code with the code and message as parameter.
 
 ```rust,ignore
 fn contains(this: SharedObject, s: String) -> bool
-fn contains(map: Map, object: SharedObject) -> bool
 fn contains(this: SharedObject, other: SharedObject) -> bool
+fn contains(map: Map, object: SharedObject) -> bool
 ```
 
 <details>
