@@ -2,9 +2,9 @@
 
 vSMTP is a stand-alone application with few kernel interactions, it may run on any system with slight modifications. Many installation methods are available:
 
-* by extracting a [binary package](#installation-methods) suitable for your distribution,
-* by using Rust's [Cargo](#rust-cargo) tool,
-* by deploying a [Docker](#docker) container.
+* by downloading a package suitable for your distribution ([Linux](./installation/linux.md)/BSD).
+* by using Rust's [Cargo](./installation/cargo.md) tool.
+* by deploying a [Docker](./installation/docker.md) container.
 
 If your system is not supported or if these installation method are not suited for your usage, you can contact us by [opening an issue on github](https://github.com/viridIT/vSMTP/issues/new/choose) or by [joining the official discord server](https://discord.gg/N8JGBRBshf).
 
