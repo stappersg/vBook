@@ -12,6 +12,10 @@ The vSMTP reference guide
 # Getting Started
 
 - [Installation](get-started/installation.md)
+  - [Linux](get-started/installation/linux.md)
+  - [BSD 🚧]()
+  - [Cargo](get-started/installation/cargo.md)
+  - [Docker](get-started/installation/docker.md)
 - [Concepts](get-started/concepts.md)
 - [Configuration File Structure](get-started/config-file-struct.md)
   - [Root configuration](get-started/config-file-struct/root.md)
