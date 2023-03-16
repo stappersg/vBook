@@ -116,9 +116,101 @@ All of them.
 <h2 class="func-name"> <code>fn</code> rlookup </h2>
 
 ```rust,ignore
-fn rlookup(name: SharedObject) -> Array
 fn rlookup(name: String) -> Array
+fn rlookup(name: SharedObject) -> Array
 ```
+
+<div class="tab">
+    <button
+    group="rlookup"
+    id="link-rlookup-description"
+    class="tablinks active"
+    onclick="openTab(event, 'rlookup', 'description')">
+        Description
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Args"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Args')">
+        Args
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Return"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Return')">
+        Return
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Errors"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Errors')">
+        Errors
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Examples')">
+        Examples
+    </button></div>
+
+<div group="rlookup" id="rlookup-description" style="display: block;" markdown="span" class="tabcontent">
+Performs a reverse lookup for the given IP.
+
+
+</div>
+
+<div group="rlookup" id="rlookup-Args" class="tabcontent">
+
+* `ip` - The IP to query.
+
+
+</div>
+
+<div group="rlookup" id="rlookup-Return" class="tabcontent">
+
+* `array` - an array of FQDNs. The array is empty if nothing was found.
+
+
+</div>
+
+<div group="rlookup" id="rlookup-Effective smtp stage" class="tabcontent">
+
+All of them.
+
+
+</div>
+
+<div group="rlookup" id="rlookup-Errors" class="tabcontent">
+
+* Failed to convert the `ip` parameter from a string into an IP.
+* Reverse lookup failed.
+
+
+</div>
+
+<div group="rlookup" id="rlookup-Examples" class="tabcontent">
+
+```
+#{
+  connect: [
+    rule "rlookup" || {
+      state::accept(`250 client ip: ${"127.0.0.1"} -> ${dns::rlookup("127.0.0.1")}`);
+    }
+  ],
+}
+```
+</div>
 
 </div>
 </br>

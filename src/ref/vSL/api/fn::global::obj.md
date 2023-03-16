@@ -96,25 +96,23 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>op</code> != </h2>
+<h2 class="func-name"> <code>fn</code> ip6 </h2>
 
 ```rust,ignore
-op !=(this: SharedObject, other: SharedObject) -> bool
-op !=(this: SharedObject, s: String) -> bool
-op !=(this: String, other: SharedObject) -> bool
+fn ip6(ip: String) -> VSLObject
 ```
 
 <div class="tab">
     <button
-    group="!="
-    id="link-!=-description"
+    group="ip6"
+    id="link-ip6-description"
     class="tablinks active"
-    onclick="openTab(event, '!=', 'description')">
+    onclick="openTab(event, 'ip6', 'description')">
         Description
     </button></div>
 
-<div group="!=" id="!=-description" style="display: block;" markdown="span" class="tabcontent">
-Operator `!=` for `SharedObject`
+<div group="ip6" id="ip6-description" style="display: block;" markdown="span" class="tabcontent">
+Build an ip6 address. (x:x:x:x:x:x:x:x)
 </div>
 
 </div>
@@ -146,78 +144,23 @@ an ip v4 range. (a.b.c.d/range)
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>get</code> domains </h2>
+<h2 class="func-name"> <code>fn</code> rg6 </h2>
 
 ```rust,ignore
-fn get domains(container: Array) -> Array
+fn rg6(range: String) -> VSLObject
 ```
 
 <div class="tab">
     <button
-    group="get$domains"
-    id="link-get$domains-description"
+    group="rg6"
+    id="link-rg6-description"
     class="tablinks active"
-    onclick="openTab(event, 'get$domains', 'description')">
+    onclick="openTab(event, 'rg6', 'description')">
         Description
-    </button>
-    <button
-    group="get$domains"
-    id="link-get$domains-Args"
-    class="tablinks"
-    onclick="openTab(event, 'get$domains', 'Args')">
-        Args
-    </button>
-    <button
-    group="get$domains"
-    id="link-get$domains-Effective smtp stage"
-    class="tablinks"
-    onclick="openTab(event, 'get$domains', 'Effective smtp stage')">
-        Effective smtp stage
-    </button>
-    <button
-    group="get$domains"
-    id="link-get$domains-Examples"
-    class="tablinks"
-    onclick="openTab(event, 'get$domains', 'Examples')">
-        Examples
     </button></div>
 
-<div group="get$domains" id="get$domains-description" style="display: block;" markdown="span" class="tabcontent">
-Get all domains of the recipient list.
-
-
-</div>
-
-<div group="get$domains" id="get$domains-Args" class="tabcontent">
-
-* `rcpt_list` - the recipient list.
-
-
-</div>
-
-<div group="get$domains" id="get$domains-Effective smtp stage" class="tabcontent">
-
-`mail` and onwards.
-
-
-</div>
-
-<div group="get$domains" id="get$domains-Examples" class="tabcontent">
-
-```text
-#{
-    mail: [
-        action "display recipients domains" || {
-            print("list of recipients domains:");
-
-            // You can also use the `get_domains(ctx::rcpt_list())` syntax.
-            for domain in ctx::rcpt_list().domains {
-                print(`- ${domain}`);
-            }
-        }
-    ],
-}
-```
+<div group="rg6" id="rg6-description" style="display: block;" markdown="span" class="tabcontent">
+an ip v6 range. (x:x:x:x:x:x:x:x/range)
 </div>
 
 </div>
@@ -225,23 +168,23 @@ Get all domains of the recipient list.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> address </h2>
+<h2 class="func-name"> <code>fn</code> to_string </h2>
 
 ```rust,ignore
-fn address(address: String) -> VSLObject
+fn to_string(this: VSLObject) -> String
 ```
 
 <div class="tab">
     <button
-    group="address"
-    id="link-address-description"
+    group="to_string"
+    id="link-to_string-description"
     class="tablinks active"
-    onclick="openTab(event, 'address', 'description')">
+    onclick="openTab(event, 'to_string', 'description')">
         Description
     </button></div>
 
-<div group="address" id="address-description" style="display: block;" markdown="span" class="tabcontent">
-an email address (jones@foo.com)
+<div group="to_string" id="to_string-description" style="display: block;" markdown="span" class="tabcontent">
+Convert a `SharedObject` to a `String`
 </div>
 
 </div>
@@ -375,155 +318,6 @@ let enhanced = code(451, "5.7.3", "STARTTLS is required to send mail");
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>get</code> domain </h2>
-
-```rust,ignore
-fn get domain(addr: VSLObject) -> VSLObject
-```
-
-<div class="tab">
-    <button
-    group="get$domain"
-    id="link-get$domain-description"
-    class="tablinks active"
-    onclick="openTab(event, 'get$domain', 'description')">
-        Description
-    </button>
-    <button
-    group="get$domain"
-    id="link-get$domain-Args"
-    class="tablinks"
-    onclick="openTab(event, 'get$domain', 'Args')">
-        Args
-    </button>
-    <button
-    group="get$domain"
-    id="link-get$domain-Effective smtp stage"
-    class="tablinks"
-    onclick="openTab(event, 'get$domain', 'Effective smtp stage')">
-        Effective smtp stage
-    </button>
-    <button
-    group="get$domain"
-    id="link-get$domain-Examples"
-    class="tablinks"
-    onclick="openTab(event, 'get$domain', 'Examples')">
-        Examples
-    </button></div>
-
-<div group="get$domain" id="get$domain-description" style="display: block;" markdown="span" class="tabcontent">
-Get the domain of an email address.
-
-
-</div>
-
-<div group="get$domain" id="get$domain-Args" class="tabcontent">
-
-* `address` - the address to extract the domain from.
-
-
-</div>
-
-<div group="get$domain" id="get$domain-Effective smtp stage" class="tabcontent">
-
-All of them.
-
-
-</div>
-
-<div group="get$domain" id="get$domain-Examples" class="tabcontent">
-
-```text
-#{
-    mail: [
-        // You can also use the `get_domain(ctx::mail_from())` syntax.
-        action "display sender's domain" || {
-            log("info", `received a message from domain ${ctx::mail_from().domain}.`);
-        }
-    ],
-}
-```
-</div>
-
-</div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> identifier </h2>
-
-```rust,ignore
-fn identifier(identifier: String) -> VSLObject
-```
-
-<div class="tab">
-    <button
-    group="identifier"
-    id="link-identifier-description"
-    class="tablinks active"
-    onclick="openTab(event, 'identifier', 'description')">
-        Description
-    </button></div>
-
-<div group="identifier" id="identifier-description" style="display: block;" markdown="span" class="tabcontent">
-a user identifier.
-</div>
-
-</div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> rg6 </h2>
-
-```rust,ignore
-fn rg6(range: String) -> VSLObject
-```
-
-<div class="tab">
-    <button
-    group="rg6"
-    id="link-rg6-description"
-    class="tablinks active"
-    onclick="openTab(event, 'rg6', 'description')">
-        Description
-    </button></div>
-
-<div group="rg6" id="rg6-description" style="display: block;" markdown="span" class="tabcontent">
-an ip v6 range. (x:x:x:x:x:x:x:x/range)
-</div>
-
-</div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>op</code> != </h2>
-
-```rust,ignore
-op !=(this: SharedObject, other: SharedObject) -> bool
-op !=(this: SharedObject, s: String) -> bool
-op !=(this: String, other: SharedObject) -> bool
-```
-
-<div class="tab">
-    <button
-    group="!="
-    id="link-!=-description"
-    class="tablinks active"
-    onclick="openTab(event, '!=', 'description')">
-        Description
-    </button></div>
-
-<div group="!=" id="!=-description" style="display: block;" markdown="span" class="tabcontent">
-Operator `!=` for `SharedObject`
-</div>
-
-</div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
 <h2 class="func-name"> <code>fn</code> code </h2>
 
 ```rust,ignore
@@ -554,6 +348,30 @@ let enhanced = code(451, "5.7.3", "STARTTLS is required to send mail");
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
+<h2 class="func-name"> <code>fn</code> ip4 </h2>
+
+```rust,ignore
+fn ip4(ip: String) -> VSLObject
+```
+
+<div class="tab">
+    <button
+    group="ip4"
+    id="link-ip4-description"
+    class="tablinks active"
+    onclick="openTab(event, 'ip4', 'description')">
+        Description
+    </button></div>
+
+<div group="ip4" id="ip4-description" style="display: block;" markdown="span" class="tabcontent">
+Build an ip4 address. (a.b.c.d)
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
 <h2 class="func-name"> <code>fn</code> rg4 </h2>
 
 ```rust,ignore
@@ -571,6 +389,54 @@ fn rg4(range: String) -> VSLObject
 
 <div group="rg4" id="rg4-description" style="display: block;" markdown="span" class="tabcontent">
 an ip v4 range. (a.b.c.d/range)
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> to_string </h2>
+
+```rust,ignore
+fn to_string(this: VSLObject) -> String
+```
+
+<div class="tab">
+    <button
+    group="to_string"
+    id="link-to_string-description"
+    class="tablinks active"
+    onclick="openTab(event, 'to_string', 'description')">
+        Description
+    </button></div>
+
+<div group="to_string" id="to_string-description" style="display: block;" markdown="span" class="tabcontent">
+Convert a `SharedObject` to a `String`
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> fqdn </h2>
+
+```rust,ignore
+fn fqdn(domain: String) -> VSLObject
+```
+
+<div class="tab">
+    <button
+    group="fqdn"
+    id="link-fqdn-description"
+    class="tablinks active"
+    onclick="openTab(event, 'fqdn', 'description')">
+        Description
+    </button></div>
+
+<div group="fqdn" id="fqdn-description" style="display: block;" markdown="span" class="tabcontent">
+a valid fully qualified domain name (foo.com)
 </div>
 
 </div>
@@ -667,74 +533,70 @@ All of them.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>get</code> domains </h2>
+<h2 class="func-name"> <code>get</code> domain </h2>
 
 ```rust,ignore
-fn get domains(container: Array) -> Array
+fn get domain(addr: VSLObject) -> VSLObject
 ```
 
 <div class="tab">
     <button
-    group="get$domains"
-    id="link-get$domains-description"
+    group="get$domain"
+    id="link-get$domain-description"
     class="tablinks active"
-    onclick="openTab(event, 'get$domains', 'description')">
+    onclick="openTab(event, 'get$domain', 'description')">
         Description
     </button>
     <button
-    group="get$domains"
-    id="link-get$domains-Args"
+    group="get$domain"
+    id="link-get$domain-Args"
     class="tablinks"
-    onclick="openTab(event, 'get$domains', 'Args')">
+    onclick="openTab(event, 'get$domain', 'Args')">
         Args
     </button>
     <button
-    group="get$domains"
-    id="link-get$domains-Effective smtp stage"
+    group="get$domain"
+    id="link-get$domain-Effective smtp stage"
     class="tablinks"
-    onclick="openTab(event, 'get$domains', 'Effective smtp stage')">
+    onclick="openTab(event, 'get$domain', 'Effective smtp stage')">
         Effective smtp stage
     </button>
     <button
-    group="get$domains"
-    id="link-get$domains-Examples"
+    group="get$domain"
+    id="link-get$domain-Examples"
     class="tablinks"
-    onclick="openTab(event, 'get$domains', 'Examples')">
+    onclick="openTab(event, 'get$domain', 'Examples')">
         Examples
     </button></div>
 
-<div group="get$domains" id="get$domains-description" style="display: block;" markdown="span" class="tabcontent">
-Get all domains of the recipient list.
+<div group="get$domain" id="get$domain-description" style="display: block;" markdown="span" class="tabcontent">
+Get the domain of an email address.
 
 
 </div>
 
-<div group="get$domains" id="get$domains-Args" class="tabcontent">
+<div group="get$domain" id="get$domain-Args" class="tabcontent">
 
-* `rcpt_list` - the recipient list.
-
-
-</div>
-
-<div group="get$domains" id="get$domains-Effective smtp stage" class="tabcontent">
-
-`mail` and onwards.
+* `address` - the address to extract the domain from.
 
 
 </div>
 
-<div group="get$domains" id="get$domains-Examples" class="tabcontent">
+<div group="get$domain" id="get$domain-Effective smtp stage" class="tabcontent">
+
+All of them.
+
+
+</div>
+
+<div group="get$domain" id="get$domain-Examples" class="tabcontent">
 
 ```text
 #{
     mail: [
-        action "display recipients domains" || {
-            print("list of recipients domains:");
-
-            // You can also use the `get_domains(ctx::rcpt_list())` syntax.
-            for domain in ctx::rcpt_list().domains {
-                print(`- ${domain}`);
-            }
+        // You can also use the `get_domain(ctx::mail_from())` syntax.
+        action "display sender's domain" || {
+            log("info", `received a message from domain ${ctx::mail_from().domain}.`);
         }
     ],
 }
@@ -746,23 +608,47 @@ Get all domains of the recipient list.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> fqdn </h2>
+<h2 class="func-name"> <code>fn</code> rg6 </h2>
 
 ```rust,ignore
-fn fqdn(domain: String) -> VSLObject
+fn rg6(range: String) -> VSLObject
 ```
 
 <div class="tab">
     <button
-    group="fqdn"
-    id="link-fqdn-description"
+    group="rg6"
+    id="link-rg6-description"
     class="tablinks active"
-    onclick="openTab(event, 'fqdn', 'description')">
+    onclick="openTab(event, 'rg6', 'description')">
         Description
     </button></div>
 
-<div group="fqdn" id="fqdn-description" style="display: block;" markdown="span" class="tabcontent">
-a valid fully qualified domain name (foo.com)
+<div group="rg6" id="rg6-description" style="display: block;" markdown="span" class="tabcontent">
+an ip v6 range. (x:x:x:x:x:x:x:x/range)
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> ip6 </h2>
+
+```rust,ignore
+fn ip6(ip: String) -> VSLObject
+```
+
+<div class="tab">
+    <button
+    group="ip6"
+    id="link-ip6-description"
+    class="tablinks active"
+    onclick="openTab(event, 'ip6', 'description')">
+        Description
+    </button></div>
+
+<div group="ip6" id="ip6-description" style="display: block;" markdown="span" class="tabcontent">
+Build an ip6 address. (x:x:x:x:x:x:x:x)
 </div>
 
 </div>

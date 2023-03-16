@@ -12,6 +12,69 @@ fn rw_mail_from(new_addr: SharedObject) -> ()
 fn rw_mail_from(new_addr: String) -> ()
 ```
 
+<div class="tab">
+    <button
+    group="rw_mail_from"
+    id="link-rw_mail_from-description"
+    class="tablinks active"
+    onclick="openTab(event, 'rw_mail_from', 'description')">
+        Description
+    </button>
+    <button
+    group="rw_mail_from"
+    id="link-rw_mail_from-Args"
+    class="tablinks"
+    onclick="openTab(event, 'rw_mail_from', 'Args')">
+        Args
+    </button>
+    <button
+    group="rw_mail_from"
+    id="link-rw_mail_from-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'rw_mail_from', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="rw_mail_from"
+    id="link-rw_mail_from-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'rw_mail_from', 'Examples')">
+        Examples
+    </button></div>
+
+<div group="rw_mail_from" id="rw_mail_from-description" style="display: block;" markdown="span" class="tabcontent">
+Rewrite the sender received from the `MAIL FROM` command.
+
+
+</div>
+
+<div group="rw_mail_from" id="rw_mail_from-Args" class="tabcontent">
+
+* `new_addr` - the new string sender address to set.
+
+
+</div>
+
+<div group="rw_mail_from" id="rw_mail_from-Effective smtp stage" class="tabcontent">
+
+`mail` and onwards.
+
+
+</div>
+
+<div group="rw_mail_from" id="rw_mail_from-Examples" class="tabcontent">
+
+```
+#{
+    preq: [
+       action "rewrite envelop" || envelop::rw_mail_from("unknown@example.com"),
+       // You can use vsl addresses too.
+       action "rewrite envelop" || envelop::rw_mail_from(address("john.doe@example.com")),
+    ]
+}
+```
+</div>
+
 </div>
 </br>
 
@@ -20,10 +83,10 @@ fn rw_mail_from(new_addr: String) -> ()
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
-fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
+fn rw_rcpt(old_addr: String, new_addr: String) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 ```
 
 <div class="tab">
@@ -100,8 +163,8 @@ Replace a recipient received by a `RCPT TO` command.
 <h2 class="func-name"> <code>fn</code> add_rcpt </h2>
 
 ```rust,ignore
-fn add_rcpt(new_addr: String) -> ()
 fn add_rcpt(new_addr: SharedObject) -> ()
+fn add_rcpt(new_addr: String) -> ()
 ```
 
 <div class="tab">
@@ -176,9 +239,22 @@ All of them.
 <h2 class="func-name"> <code>fn</code> bcc </h2>
 
 ```rust,ignore
-fn bcc(new_addr: SharedObject) -> ()
 fn bcc(new_addr: String) -> ()
+fn bcc(new_addr: SharedObject) -> ()
 ```
+
+<div class="tab">
+    <button
+    group="bcc"
+    id="link-bcc-description"
+    class="tablinks active"
+    onclick="openTab(event, 'bcc', 'description')">
+        Description
+    </button></div>
+
+<div group="bcc" id="bcc-description" style="display: block;" markdown="span" class="tabcontent">
+Alias for `envelop::add_rcpt`.
+</div>
 
 </div>
 </br>
@@ -188,8 +264,8 @@ fn bcc(new_addr: String) -> ()
 <h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
 
 ```rust,ignore
-fn rm_rcpt(addr: String) -> ()
 fn rm_rcpt(addr: SharedObject) -> ()
+fn rm_rcpt(addr: String) -> ()
 ```
 
 <div class="tab">

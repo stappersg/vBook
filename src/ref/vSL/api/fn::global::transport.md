@@ -10,9 +10,107 @@ Functions to configure delivery methods of emails.
 ```rust,ignore
 fn forward(rcpt: String, forward: SharedObject) -> ()
 fn forward(rcpt: String, forward: String) -> ()
-fn forward(rcpt: SharedObject, forward: SharedObject) -> ()
 fn forward(rcpt: SharedObject, forward: String) -> ()
+fn forward(rcpt: SharedObject, forward: SharedObject) -> ()
 ```
+
+<div class="tab">
+    <button
+    group="forward"
+    id="link-forward-description"
+    class="tablinks active"
+    onclick="openTab(event, 'forward', 'description')">
+        Description
+    </button>
+    <button
+    group="forward"
+    id="link-forward-Args"
+    class="tablinks"
+    onclick="openTab(event, 'forward', 'Args')">
+        Args
+    </button>
+    <button
+    group="forward"
+    id="link-forward-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'forward', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="forward"
+    id="link-forward-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'forward', 'Examples')">
+        Examples
+    </button></div>
+
+<div group="forward" id="forward-description" style="display: block;" markdown="span" class="tabcontent">
+Set the delivery method to forwarding for a single recipient.
+After all rules are evaluated, forwarding will be used to deliver
+the email to the recipient.
+
+
+</div>
+
+<div group="forward" id="forward-Args" class="tabcontent">
+
+* `rcpt` - the recipient to apply the method to.
+* `target` - the target to forward the email to.
+
+
+</div>
+
+<div group="forward" id="forward-Effective smtp stage" class="tabcontent">
+
+All of them.
+
+
+</div>
+
+<div group="forward" id="forward-Examples" class="tabcontent">
+
+```
+#{
+    rcpt: [
+      action "forward (str/str)" || {
+        envelop::add_rcpt("my.address@foo.com");
+        transport::forward("my.address@foo.com", "127.0.0.1");
+      },
+      action "forward (obj/str)" || {
+        let rcpt = address("my.address@bar.com");
+        envelop::add_rcpt(rcpt);
+        transport::forward(rcpt, "127.0.0.2");
+      },
+      action "forward (str/obj)" || {
+        let target = ip6("::1");
+        envelop::add_rcpt("my.address@baz.com");
+        transport::forward("my.address@baz.com", target);
+      },
+      action "forward (obj/obj)" || {
+        let rcpt = address("my.address@boz.com");
+        envelop::add_rcpt(rcpt);
+        transport::forward(rcpt, ip4("127.0.0.4"));
+      },
+    ],
+}
+```
+
+Or with url:
+
+```
+#{
+    rcpt: [
+      action "set forward" || {
+        let user = "root@domain.tld";
+        let pass = "xxxxxx";
+        let host = "smtp.domain.tld";
+        let port = 25;
+        transport::forward_all(`smtp://${user}:${pass}@${host}:${port}?tls=opportunistic`);
+      },
+   ]
+}
+```
+</div>
 
 </div>
 </br>
@@ -661,8 +759,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> mbox </h2>
 
 ```rust,ignore
-fn mbox(rcpt: String) -> ()
 fn mbox(rcpt: SharedObject) -> ()
+fn mbox(rcpt: String) -> ()
 ```
 
 <div class="tab">
@@ -1479,6 +1577,403 @@ All of them.
 fn maildir(rcpt: SharedObject) -> ()
 fn maildir(rcpt: String) -> ()
 ```
+
+<div class="tab">
+    <button
+    group="maildir"
+    id="link-maildir-description"
+    class="tablinks active"
+    onclick="openTab(event, 'maildir', 'description')">
+        Description
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-Args"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'Args')">
+        Args
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'Examples')">
+        Examples
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-let rules = r#""
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'let rules = r#"')">
+        let rules = r#"
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-     action "rm default value" || {"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '     action "rm default value" || {')">
+             action "rm default value" || {
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-       envelop::rm_rcpt("recipient@testserver.com");"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '       envelop::rm_rcpt("recipient@testserver.com");')">
+               envelop::rm_rcpt("recipient@testserver.com");
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-     },"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '     },')">
+             },
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-"#;"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '"#;')">
+        "#;
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-let states = vsmtp_test::vsl::run(|builder| Ok(builder"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'let states = vsmtp_test::vsl::run(|builder| Ok(builder')">
+        let states = vsmtp_test::vsl::run(|builder| Ok(builder
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-  .add_root_filter_rules("#{}")?"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '  .add_root_filter_rules("#{}")?')">
+          .add_root_filter_rules("#{}")?
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-     .add_domain_rules("testserver.com".parse().unwrap())"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '     .add_domain_rules("testserver.com".parse().unwrap())')">
+             .add_domain_rules("testserver.com".parse().unwrap())
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-       .with_incoming(rules)?"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '       .with_incoming(rules)?')">
+               .with_incoming(rules)?
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-       .with_outgoing(rules)?"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '       .with_outgoing(rules)?')">
+               .with_outgoing(rules)?
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-       .with_internal(rules)?"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '       .with_internal(rules)?')">
+               .with_internal(rules)?
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-     .build()"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '     .build()')">
+             .build()
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-  .build()));"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '  .build()));')">
+          .build()));
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::RcptTo].2, vsmtp_common::status::Status::Next);"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::RcptTo].2, vsmtp_common::status::Status::Next);')">
+        assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::RcptTo].2, vsmtp_common::status::Status::Next);
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-use vsmtp_common::Address;"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'use vsmtp_common::Address;')">
+        use vsmtp_common::Address;
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-let transport = std::sync::Arc::new(vsmtp_delivery::Maildir::new(None));"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'let transport = std::sync::Arc::new(vsmtp_delivery::Maildir::new(None));')">
+        let transport = std::sync::Arc::new(vsmtp_delivery::Maildir::new(None));
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-let bound = states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.delivery().unwrap().get("
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'let bound = states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.delivery().unwrap().get(')">
+        let bound = states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.delivery().unwrap().get(
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-  &vsmtp_common::transport::WrapperSerde::Ready(transport)"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '  &vsmtp_common::transport::WrapperSerde::Ready(transport)')">
+          &vsmtp_common::transport::WrapperSerde::Ready(transport)
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-).unwrap();"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', ').unwrap();')">
+        ).unwrap();
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-for (addr, addr_expected) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip(["
+    class="tablinks"
+    onclick="openTab(event, 'maildir', 'for (addr, addr_expected) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([')">
+        for (addr, addr_expected) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-    "doe@example.com","
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '    "doe@example.com",')">
+            "doe@example.com",
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-    "a@example.com","
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '    "a@example.com",')">
+            "a@example.com",
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-]) {"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', ']) {')">
+        ]) {
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-  assert_eq!("
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '  assert_eq!(')">
+          assert_eq!(
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-    *addr,"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '    *addr,')">
+            *addr,
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-    Address::new_unchecked(addr_expected.to_string())"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '    Address::new_unchecked(addr_expected.to_string())')">
+            Address::new_unchecked(addr_expected.to_string())
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-  );"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '  );')">
+          );
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-  assert!(bound.iter().map(|(r, _)| r).any(|r| *r == *addr));"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '  assert!(bound.iter().map(|(r, _)| r).any(|r| *r == *addr));')">
+          assert!(bound.iter().map(|(r, _)| r).any(|r| *r == *addr));
+    </button>
+    <button
+    group="maildir"
+    id="link-maildir-}"
+    class="tablinks"
+    onclick="openTab(event, 'maildir', '}')">
+        }
+    </button></div>
+
+<div group="maildir" id="maildir-description" style="display: block;" markdown="span" class="tabcontent">
+Set the delivery method to maildir for a recipient.
+After all rules are evaluated, the email will be stored
+locally in the `~/Maildir/new/` folder of the recipient's user if it exists on the server.
+
+
+</div>
+
+<div group="maildir" id="maildir-Args" class="tabcontent">
+
+* `rcpt` - the recipient to apply the method to.
+
+
+</div>
+
+<div group="maildir" id="maildir-Effective smtp stage" class="tabcontent">
+
+All of them.
+
+
+</div>
+
+<div group="maildir" id="maildir-Examples" class="tabcontent">
+```ignore
+#{
+    delivery: [
+       action "setup maildir" || transport::maildir("john.doe@example.com"),
+    ]
+}
+```
+
+```
+
+</div>
+
+<div group="maildir" id="maildir-let rules = r#"" class="tabcontent">
+#{
+  rcpt: [
+
+</div>
+
+<div group="maildir" id="maildir-     action "rm default value" || {" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-       envelop::rm_rcpt("recipient@testserver.com");" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-     }," class="tabcontent">
+    action "setup maildir" || {
+        const doe = address("doe@example.com");
+        envelop::add_rcpt(doe);
+        envelop::add_rcpt("a@example.com");
+        transport::maildir(doe);
+        transport::maildir("a@example.com");
+    },
+  ],
+}
+
+</div>
+
+<div group="maildir" id="maildir-"#;" class="tabcontent">
+
+
+</div>
+
+<div group="maildir" id="maildir-let states = vsmtp_test::vsl::run(|builder| Ok(builder" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-  .add_root_filter_rules("#{}")?" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-     .add_domain_rules("testserver.com".parse().unwrap())" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-       .with_incoming(rules)?" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-       .with_outgoing(rules)?" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-       .with_internal(rules)?" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-     .build()" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-  .build()));" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-assert_eq!(states[&vsmtp_rule_engine::ExecutionStage::RcptTo].2, vsmtp_common::status::Status::Next);" class="tabcontent">
+
+
+</div>
+
+<div group="maildir" id="maildir-use vsmtp_common::Address;" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-let transport = std::sync::Arc::new(vsmtp_delivery::Maildir::new(None));" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-let bound = states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.delivery().unwrap().get(" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-  &vsmtp_common::transport::WrapperSerde::Ready(transport)" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-).unwrap();" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-for (addr, addr_expected) in states[&vsmtp_rule_engine::ExecutionStage::RcptTo].0.forward_paths().unwrap().iter().zip([" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-    "doe@example.com"," class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-    "a@example.com"," class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-]) {" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-  assert_eq!(" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-    *addr," class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-    Address::new_unchecked(addr_expected.to_string())" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-  );" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-  assert!(bound.iter().map(|(r, _)| r).any(|r| *r == *addr));" class="tabcontent">
+
+</div>
+
+<div group="maildir" id="maildir-}" class="tabcontent">
+```
+</div>
 
 </div>
 </br>
