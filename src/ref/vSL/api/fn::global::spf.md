@@ -8,43 +8,110 @@ Implementation of the Sender Policy Framework (SPF), described by RFC 4408. (<ht
 <h2 class="func-name"> <code>fn</code> check </h2>
 
 ```rust,ignore
-fn check(header: String) -> Status
 fn check(header: String, policy: String) -> Status
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="check"
+    id="link-check-description"
+    class="tablinks active"
+    onclick="openTab(event, 'check', 'description')">
+        Description
+    </button>
+    <button
+    group="check"
+    id="link-check-Args"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Args')">
+        Args
+    </button>
+    <button
+    group="check"
+    id="link-check-Return"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Return')">
+        Return
+    </button>
+    <button
+    group="check"
+    id="link-check-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="check"
+    id="link-check-Errors"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Errors')">
+        Errors
+    </button>
+    <button
+    group="check"
+    id="link-check-Note"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Note')">
+        Note
+    </button>
+    <button
+    group="check"
+    id="link-check-Example"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Example')">
+        Example
+    </button></div>
 
+<div group="check" id="check-description" style="display: block;" markdown="span" class="tabcontent">
 Check spf record following the Sender Policy Framework (RFC 7208).
-A wrapper with the policy set to "strict" by default.
-see <https://datatracker.ietf.org/doc/html/rfc7208>
+see https://datatracker.ietf.org/doc/html/rfc7208
 
-# Args
+
+</div>
+
+<div group="check" id="check-Args" class="tabcontent">
 
 * `header` - "spf" | "auth" | "both" | "none"
+* `policy` - "strict" | "soft"
 
-# Return
+
+</div>
+
+<div group="check" id="check-Return" class="tabcontent">
+
 * `deny(code550_7_23 | code550_7_24)` - an error occurred during lookup. (returned even when a softfail is received using the "strict" policy)
 * `next()` - the operation succeeded.
 
-# Effective smtp stage
 
-`rcpt` and onwards.
+</div>
 
-# Errors
+<div group="check" id="check-Effective smtp stage" class="tabcontent">
+
+`mail` and onwards.
+
+
+</div>
+
+<div group="check" id="check-Errors" class="tabcontent">
 
 * The `header` argument is not valid.
+* The `policy` argument is not valid.
 
-# Note
+
+</div>
+
+<div group="check" id="check-Note" class="tabcontent">
 
 `spf::check` only checks for the sender's identity, not the `helo` value.
 
-# Examples
 
-```text
+</div>
+
+<div group="check" id="check-Example" class="tabcontent">
+```ignore
 #{
     mail: [
-       rule "check spf relay" || spf::check(allowed_hosts),
+       rule "check spf" || spf::check("spf", "soft")
     ]
 }
 
@@ -66,7 +133,7 @@ see <https://datatracker.ietf.org/doc/html/rfc7208>
     ],
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -79,26 +146,73 @@ see <https://datatracker.ietf.org/doc/html/rfc7208>
 fn check_raw() -> Map
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="check_raw"
+    id="link-check_raw-description"
+    class="tablinks active"
+    onclick="openTab(event, 'check_raw', 'description')">
+        Description
+    </button>
+    <button
+    group="check_raw"
+    id="link-check_raw-Return"
+    class="tablinks"
+    onclick="openTab(event, 'check_raw', 'Return')">
+        Return
+    </button>
+    <button
+    group="check_raw"
+    id="link-check_raw-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'check_raw', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="check_raw"
+    id="link-check_raw-Note"
+    class="tablinks"
+    onclick="openTab(event, 'check_raw', 'Note')">
+        Note
+    </button>
+    <button
+    group="check_raw"
+    id="link-check_raw-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'check_raw', 'Examples')">
+        Examples
+    </button></div>
 
+<div group="check_raw" id="check_raw-description" style="display: block;" markdown="span" class="tabcontent">
 WARNING: Low level API, use `spf::check` instead.
 
 Check spf record following the Sender Policy Framework (RFC 7208).
 see <https://datatracker.ietf.org/doc/html/rfc7208>
 
-# Return
+
+</div>
+
+<div group="check_raw" id="check_raw-Return" class="tabcontent">
 * `map` - the result of the spf check, contains the `result`, `mechanism` and `problem` keys.
 
-# Effective smtp stage
 
-`rcpt` and onwards.
+</div>
 
-# Note
+<div group="check_raw" id="check_raw-Effective smtp stage" class="tabcontent">
+
+`mail` and onwards.
+
+
+</div>
+
+<div group="check_raw" id="check_raw-Note" class="tabcontent">
 
 `spf::check` only checks for the sender's identity, not the `helo` value.
 
-# Examples
+
+</div>
+
+<div group="check_raw" id="check_raw-Examples" class="tabcontent">
 
 ```text
 #{
@@ -111,7 +225,7 @@ see <https://datatracker.ietf.org/doc/html/rfc7208>
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>

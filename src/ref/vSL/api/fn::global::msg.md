@@ -5,83 +5,36 @@ Inspect incoming messages.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> add_rcpt </h2>
+<h2 class="func-name"> <code>fn</code> to_string </h2>
 
 ```rust,ignore
-fn add_rcpt(new_addr: String) -> ()
-fn add_rcpt(new_addr: SharedObject) -> ()
+fn to_string(message: Message) -> String
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="to_string"
+    id="link-to_string-description"
+    class="tablinks active"
+    onclick="openTab(event, 'to_string', 'description')">
+        Description
+    </button></div>
 
-Add a recipient to the `To` header of the message.
-
-# Args
-
-* `addr` - the recipient address to add to the `To` header.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "update recipients" || msg::add_rcpt("john.doe@example.com"),
-    ]
-}
-```
-</details>
+<div group="to_string" id="to_string-description" style="display: block;" markdown="span" class="tabcontent">
+Generate the `.eml` representation of the message.
+</div>
 
 </div>
 </br>
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> append_header </h2>
+<h2 class="func-name"> <code>fn</code> has_header </h2>
 
 ```rust,ignore
-fn append_header(header: String, value: String) -> ()
-fn append_header(header: String, value: SharedObject) -> ()
+fn has_header(header: SharedObject) -> bool
+fn has_header(header: String) -> bool
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Add a new header **at the end** of the header list in the message.
-
-# Args
-
-* `header` - the name of the header to append.
-* `value` - the value of the header to append.
-
-# Effective smtp stage
-
-All of them. Even though the email is not received at the current stage,
-vsmtp stores new headers and will add them on top of the ones received once
-the `preq` stage is reached.
-
-# Examples
-
-```
-"X-My-Header: 250 foo\r\n",
-"Subject: Unit test are cool\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "append_header" || {
-      msg::append_header("X-My-Header-2", "bar");
-      msg::append_header("X-My-Header-3", identifier("baz"));
-    }
-  ]
-}
-```
-</details>
 
 </div>
 </br>
@@ -91,93 +44,9 @@ the `preq` stage is reached.
 <h2 class="func-name"> <code>fn</code> count_header </h2>
 
 ```rust,ignore
-fn count_header(header: String) -> int
 fn count_header(header: SharedObject) -> int
+fn count_header(header: String) -> int
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Count the number of headers with the given name.
-
-# Args
-
-* `header` - the name of the header to count.
-
-# Return
-
-* `number` - the number headers with the same name.
-
-# Effective smtp stage
-
-All of them, although it is most useful in the `preq` stage because this
-is when the email body is received.
-
-# Examples
-
-```
-"X-My-Header: foo\r\n",
-"X-My-Header: bar\r\n",
-"X-My-Header: baz\r\n",
-"Subject: Unit test are cool\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "count_header" || {
-      state::accept(`250 count is ${msg::count_header("X-My-Header")} and ${msg::count_header(identifier("Subject"))}`);
-    }
-  ]
-}
-```
-</details>
-
-</div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> get_all_headers </h2>
-
-```rust,ignore
-fn get_all_headers() -> Array
-fn get_all_headers(name: String) -> Array
-fn get_all_headers(name: SharedObject) -> Array
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Get a list of all headers.
-
-# Return
-
-* `array` - all of the headers found in the message.
-
-# Effective smtp stage
-
-All of them, although it is most useful in the `preq` stage because this
-is when the email body is received.
-
-# Examples
-
-```
-X-My-Header: 250 foo
-Subject: Unit test are cool
-
-Hello world!
-; // .eml ends here
-
-#{
-  preq: [
-    rule "display headers" || {
-        log("info", `header: ${get_all_headers}`);
-    }
-  ]
-}
-```
-</details>
 
 </div>
 </br>
@@ -191,25 +60,85 @@ fn get_header(header: SharedObject) -> String
 fn get_header(header: String) -> String
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+</div>
+</br>
 
-Get a specific header from the incoming message.
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-# Args
+<h2 class="func-name"> <code>fn</code> get_all_headers </h2>
 
-* `header` - the name of the header to get.
+```rust,ignore
+fn get_all_headers() -> Array
+fn get_all_headers(name: SharedObject) -> Array
+fn get_all_headers(name: String) -> Array
+```
 
-# Return
+<div class="tab">
+    <button
+    group="get_all_headers"
+    id="link-get_all_headers-description"
+    class="tablinks active"
+    onclick="openTab(event, 'get_all_headers', 'description')">
+        Description
+    </button>
+    <button
+    group="get_all_headers"
+    id="link-get_all_headers-Args"
+    class="tablinks"
+    onclick="openTab(event, 'get_all_headers', 'Args')">
+        Args
+    </button>
+    <button
+    group="get_all_headers"
+    id="link-get_all_headers-Return"
+    class="tablinks"
+    onclick="openTab(event, 'get_all_headers', 'Return')">
+        Return
+    </button>
+    <button
+    group="get_all_headers"
+    id="link-get_all_headers-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'get_all_headers', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="get_all_headers"
+    id="link-get_all_headers-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'get_all_headers', 'Examples')">
+        Examples
+    </button></div>
 
-* `string` - the header value, or an empty string if the header was not found.
+<div group="get_all_headers" id="get_all_headers-description" style="display: block;" markdown="span" class="tabcontent">
+Get a list of all headers.
 
-# Effective smtp stage
+
+</div>
+
+<div group="get_all_headers" id="get_all_headers-Args" class="tabcontent">
+
+* `header` - the name of the header to search. (optional, if not set, returns every header)
+
+
+</div>
+
+<div group="get_all_headers" id="get_all_headers-Return" class="tabcontent">
+
+* `array` - all of the headers found in the message.
+
+
+</div>
+
+<div group="get_all_headers" id="get_all_headers-Effective smtp stage" class="tabcontent">
 
 All of them, although it is most useful in the `preq` stage because this
 is when the email body is received.
 
-# Examples
+
+</div>
+
+<div group="get_all_headers" id="get_all_headers-Examples" class="tabcontent">
 
 ```
 X-My-Header: 250 foo
@@ -220,18 +149,14 @@ Hello world!
 
 #{
   preq: [
-    rule "get_header" || {
-      if msg::get_header("X-My-Header") != "250 foo"
-        || msg::get_header(identifier("Subject")) != "Unit test are cool" {
-        state::deny();
-      } else {
-        state::accept(`${msg::get_header("X-My-Header")} ${msg::get_header(identifier("Subject"))}`);
-      }
+    rule "display headers" || {
+        log("info", `all headers: ${msg::get_all_headers()}`);
+        log("info", `all "Return-Path" headers: ${msg::get_all_headers("Return-Path")}`);
     }
   ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -244,26 +169,73 @@ Hello world!
 fn get_header_untouched(name: String) -> Array
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="get_header_untouched"
+    id="link-get_header_untouched-description"
+    class="tablinks active"
+    onclick="openTab(event, 'get_header_untouched', 'description')">
+        Description
+    </button>
+    <button
+    group="get_header_untouched"
+    id="link-get_header_untouched-Args"
+    class="tablinks"
+    onclick="openTab(event, 'get_header_untouched', 'Args')">
+        Args
+    </button>
+    <button
+    group="get_header_untouched"
+    id="link-get_header_untouched-Return"
+    class="tablinks"
+    onclick="openTab(event, 'get_header_untouched', 'Return')">
+        Return
+    </button>
+    <button
+    group="get_header_untouched"
+    id="link-get_header_untouched-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'get_header_untouched', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="get_header_untouched"
+    id="link-get_header_untouched-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'get_header_untouched', 'Examples')">
+        Examples
+    </button></div>
 
+<div group="get_header_untouched" id="get_header_untouched-description" style="display: block;" markdown="span" class="tabcontent">
 Get a list of all headers of a specific name with it's name and value
 separated by a column.
 
-# Args
+
+</div>
+
+<div group="get_header_untouched" id="get_header_untouched-Args" class="tabcontent">
 
 * `header` - the name of the header to search.
 
-# Return
+
+</div>
+
+<div group="get_header_untouched" id="get_header_untouched-Return" class="tabcontent">
 
 * `array` - all header values, or an empty array if the header was not found.
 
-# Effective smtp stage
+
+</div>
+
+<div group="get_header_untouched" id="get_header_untouched-Effective smtp stage" class="tabcontent">
 
 All of them, although it is most useful in the `preq` stage because this
 is when the email body is received.
 
-# Examples
+
+</div>
+
+<div group="get_header_untouched" id="get_header_untouched-Examples" class="tabcontent">
 
 ```
 X-My-Header: 250 foo
@@ -280,88 +252,20 @@ Hello world!
         }
     ],
 }
-```    
-</details>
+```
+</div>
 
 </div>
 </br>
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> has_header </h2>
+<h2 class="func-name"> <code>fn</code> append_header </h2>
 
 ```rust,ignore
-fn has_header(header: String) -> bool
-fn has_header(header: SharedObject) -> bool
+fn append_header(header: String, value: SharedObject) -> ()
+fn append_header(header: String, value: String) -> ()
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Checks if the message contains a specific header.
-
-# Args
-
-* `header` - the name of the header to search.
-
-# Effective smtp stage
-
-All of them, although it is most useful in the `preq` stage because the
-email is received at this point.
-
-# Examples
-
-```
-// Message example.
-"X-My-Header: foo\r\n",
-"Subject: Unit test are cool\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "check if header exists" || {
-      if msg::has_header("X-My-Header") && msg::has_header(identifier("Subject")) {
-        state::accept();
-      } else {
-        state::deny();
-      }
-    }
-  ]
-}
-```
-</details>
-
-</div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> mail </h2>
-
-```rust,ignore
-fn mail() -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Get a copy of the whole email as a string.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Example
-
-```
-#{
-    postq: [
-       action "display email content" || log("trace", `email content: ${msg::mail()}`),
-    ]
-}
-```
-</details>
 
 </div>
 </br>
@@ -371,44 +275,21 @@ Get a copy of the whole email as a string.
 <h2 class="func-name"> <code>fn</code> prepend_header </h2>
 
 ```rust,ignore
-fn prepend_header(header: String, value: String) -> ()
 fn prepend_header(header: String, value: SharedObject) -> ()
+fn prepend_header(header: String, value: String) -> ()
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+</div>
+</br>
 
-Add a new header on top all other headers in the message.
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-# Args
+<h2 class="func-name"> <code>fn</code> set_header </h2>
 
-* `header` - the name of the header to prepend.
-* `value` - the value of the header to prepend.
-
-# Effective smtp stage
-
-All of them. Even though the email is not received at the current stage,
-vsmtp stores new headers and will add them on top of the ones received once
-the `preq` stage is reached.
-
-# Examples
-
+```rust,ignore
+fn set_header(header: String, value: SharedObject) -> ()
+fn set_header(header: String, value: String) -> ()
 ```
-"X-My-Header: 250 foo\r\n",
-"Subject: Unit test are cool\r\n",
-"\r\n",
-"Hello world!\r\n",
-
-#{
-  preq: [
-    rule "prepend_header" || {
-      msg::prepend_header("X-My-Header-2", "bar");
-      msg::prepend_header("X-My-Header-3", identifier("baz"));
-    }
-  ]
-}
-```
-</details>
 
 </div>
 </br>
@@ -418,28 +299,65 @@ the `preq` stage is reached.
 <h2 class="func-name"> <code>fn</code> rename_header </h2>
 
 ```rust,ignore
+fn rename_header(old: String, new: String) -> ()
+fn rename_header(old: SharedObject, new: SharedObject) -> ()
 fn rename_header(old: SharedObject, new: String) -> ()
 fn rename_header(old: String, new: SharedObject) -> ()
-fn rename_header(old: SharedObject, new: SharedObject) -> ()
-fn rename_header(old: String, new: String) -> ()
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="rename_header"
+    id="link-rename_header-description"
+    class="tablinks active"
+    onclick="openTab(event, 'rename_header', 'description')">
+        Description
+    </button>
+    <button
+    group="rename_header"
+    id="link-rename_header-Args"
+    class="tablinks"
+    onclick="openTab(event, 'rename_header', 'Args')">
+        Args
+    </button>
+    <button
+    group="rename_header"
+    id="link-rename_header-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'rename_header', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="rename_header"
+    id="link-rename_header-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'rename_header', 'Examples')">
+        Examples
+    </button></div>
 
+<div group="rename_header" id="rename_header-description" style="display: block;" markdown="span" class="tabcontent">
 Replace an existing header name by a new value.
 
-# Args
+
+</div>
+
+<div group="rename_header" id="rename_header-Args" class="tabcontent">
 
 * `old` - the name of the header to rename.
 * `new` - the new new of the header.
 
-# Effective smtp stage
+
+</div>
+
+<div group="rename_header" id="rename_header-Effective smtp stage" class="tabcontent">
 
 All of them, although it is most useful in the `preq` stage because this
 is when the email body is received.
 
-# Examples
+
+</div>
+
+<div group="rename_header" id="rename_header-Examples" class="tabcontent">
 
 ```
 "Subject: The initial header value\r\n",
@@ -466,7 +384,65 @@ is when the email body is received.
   ]
 }
 ```
-</details>
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> mail </h2>
+
+```rust,ignore
+fn mail() -> String
+```
+
+<div class="tab">
+    <button
+    group="mail"
+    id="link-mail-description"
+    class="tablinks active"
+    onclick="openTab(event, 'mail', 'description')">
+        Description
+    </button>
+    <button
+    group="mail"
+    id="link-mail-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'mail', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="mail"
+    id="link-mail-Example"
+    class="tablinks"
+    onclick="openTab(event, 'mail', 'Example')">
+        Example
+    </button></div>
+
+<div group="mail" id="mail-description" style="display: block;" markdown="span" class="tabcontent">
+Get a copy of the whole email as a string.
+
+
+</div>
+
+<div group="mail" id="mail-Effective smtp stage" class="tabcontent">
+
+`preq` and onwards.
+
+
+</div>
+
+<div group="mail" id="mail-Example" class="tabcontent">
+
+```
+#{
+    postq: [
+       action "display email content" || log("trace", `email content: ${msg::mail()}`),
+    ]
+}
+```
+</div>
 
 </div>
 </br>
@@ -480,31 +456,77 @@ fn rm_header(header: String) -> bool
 fn rm_header(header: SharedObject) -> bool
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="rm_header"
+    id="link-rm_header-description"
+    class="tablinks active"
+    onclick="openTab(event, 'rm_header', 'description')">
+        Description
+    </button>
+    <button
+    group="rm_header"
+    id="link-rm_header-Args"
+    class="tablinks"
+    onclick="openTab(event, 'rm_header', 'Args')">
+        Args
+    </button>
+    <button
+    group="rm_header"
+    id="link-rm_header-Return"
+    class="tablinks"
+    onclick="openTab(event, 'rm_header', 'Return')">
+        Return
+    </button>
+    <button
+    group="rm_header"
+    id="link-rm_header-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'rm_header', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="rm_header"
+    id="link-rm_header-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'rm_header', 'Examples')">
+        Examples
+    </button></div>
 
+<div group="rm_header" id="rm_header-description" style="display: block;" markdown="span" class="tabcontent">
 Remove an existing header from the message.
 
-# Args
+
+</div>
+
+<div group="rm_header" id="rm_header-Args" class="tabcontent">
 
 * `header` - the name of the header to remove.
 
-# Return
+
+</div>
+
+<div group="rm_header" id="rm_header-Return" class="tabcontent">
 
 * a boolean value, true if a header has been removed, false otherwise.
 
-# Effective smtp stage
+
+</div>
+
+<div group="rm_header" id="rm_header-Effective smtp stage" class="tabcontent">
 
 All of them, although it is most useful in the `preq` stage because this
 is when the email body is received.
 
-# Examples
+
+</div>
+
+<div group="rm_header" id="rm_header-Examples" class="tabcontent">
 
 ```
 "Subject: The initial header value\r\n",
 "\r\n",
 "Hello world!\r\n",
-
 #{
   preq: [
     rule "remove_header" || {
@@ -521,43 +543,7 @@ is when the email body is received.
   ]
 }
 ```
-</details>
-
 </div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
-
-```rust,ignore
-fn rm_rcpt(addr: String) -> ()
-fn rm_rcpt(addr: SharedObject) -> ()
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Remove a recipient from the `To` header of the message.
-
-# Args
-
-* `addr` - the recipient to remove to the `To` header.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "update recipients" || msg::rm_rcpt("john.doe@example.com"),
-    ]
-}
-```
-</details>
 
 </div>
 </br>
@@ -571,30 +557,6 @@ fn rw_mail_from(new_addr: SharedObject) -> ()
 fn rw_mail_from(new_addr: String) -> ()
 ```
 
-<details>
-<summary markdown="span"> details </summary>
-
-Change the sender's address in the `From` header of the message.
-
-# Args
-
-* `new_addr` - the new sender address to set.
-
-# Effective smtp stage
-
-`preq` and onwards.
-
-# Examples
-
-```
-#{
-    preq: [
-       action "replace sender" || msg::rw_mail_from(address("john.server@example.com")),
-    ]
-}
-```
-</details>
-
 </div>
 </br>
 
@@ -603,104 +565,157 @@ Change the sender's address in the `From` header of the message.
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
-fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
-fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: String, new_addr: String) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+</div>
+</br>
 
-Replace a recipient by an other in the `To` header of the message.
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-# Args
+<h2 class="func-name"> <code>fn</code> add_rcpt </h2>
 
-* `old_addr` - the recipient to replace.
-* `new_addr` - the new address to use when replacing `old_addr`.
+```rust,ignore
+fn add_rcpt(new_addr: String) -> ()
+fn add_rcpt(new_addr: SharedObject) -> ()
+```
 
-# Effective smtp stage
+<div class="tab">
+    <button
+    group="add_rcpt"
+    id="link-add_rcpt-description"
+    class="tablinks active"
+    onclick="openTab(event, 'add_rcpt', 'description')">
+        Description
+    </button>
+    <button
+    group="add_rcpt"
+    id="link-add_rcpt-Args"
+    class="tablinks"
+    onclick="openTab(event, 'add_rcpt', 'Args')">
+        Args
+    </button>
+    <button
+    group="add_rcpt"
+    id="link-add_rcpt-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'add_rcpt', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="add_rcpt"
+    id="link-add_rcpt-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'add_rcpt', 'Examples')">
+        Examples
+    </button></div>
+
+<div group="add_rcpt" id="add_rcpt-description" style="display: block;" markdown="span" class="tabcontent">
+Add a recipient to the `To` header of the message.
+
+
+</div>
+
+<div group="add_rcpt" id="add_rcpt-Args" class="tabcontent">
+
+* `addr` - the recipient address to add to the `To` header.
+
+
+</div>
+
+<div group="add_rcpt" id="add_rcpt-Effective smtp stage" class="tabcontent">
 
 `preq` and onwards.
 
-# Examples
+
+</div>
+
+<div group="add_rcpt" id="add_rcpt-Examples" class="tabcontent">
 
 ```
 #{
     preq: [
-       action "rewrite recipient" || msg::rw_rcpt(address("john.doe@example.com"), "john-mta@example.com"),
+       action "update recipients" || msg::add_rcpt("john.doe@example.com"),
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> set_header </h2>
+<h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
 
 ```rust,ignore
-fn set_header(header: String, value: String) -> ()
-fn set_header(header: String, value: SharedObject) -> ()
+fn rm_rcpt(addr: String) -> ()
+fn rm_rcpt(addr: SharedObject) -> ()
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="rm_rcpt"
+    id="link-rm_rcpt-description"
+    class="tablinks active"
+    onclick="openTab(event, 'rm_rcpt', 'description')">
+        Description
+    </button>
+    <button
+    group="rm_rcpt"
+    id="link-rm_rcpt-Args"
+    class="tablinks"
+    onclick="openTab(event, 'rm_rcpt', 'Args')">
+        Args
+    </button>
+    <button
+    group="rm_rcpt"
+    id="link-rm_rcpt-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'rm_rcpt', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="rm_rcpt"
+    id="link-rm_rcpt-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'rm_rcpt', 'Examples')">
+        Examples
+    </button></div>
 
-Replace an existing header value by a new value, or append a new header
-to the message.
+<div group="rm_rcpt" id="rm_rcpt-description" style="display: block;" markdown="span" class="tabcontent">
+Remove a recipient from the `To` header of the message.
 
-# Args
 
-* `header` - the name of the header to set or add.
-* `value` - the value of the header to set or add.
+</div>
 
-# Effective smtp stage
+<div group="rm_rcpt" id="rm_rcpt-Args" class="tabcontent">
 
-All of them. Even though the email is not received at the current stage,
-vsmtp stores new headers and will add them on top to the ones received once
-the `preq` stage is reached.
+* `addr` - the recipient to remove to the `To` header.
 
-Be aware that if you want to set a header value from the original message,
-you must use `set_header` in the `preq` stage and onwards.
 
-# Examples
+</div>
+
+<div group="rm_rcpt" id="rm_rcpt-Effective smtp stage" class="tabcontent">
+
+`preq` and onwards.
+
+
+</div>
+
+<div group="rm_rcpt" id="rm_rcpt-Examples" class="tabcontent">
 
 ```
-"Subject: The initial header value\r\n",
-"\r\n",
-"Hello world!\r\n",
-
 #{
-  preq: [
-    rule "set_header" || {
-      msg::set_header("Subject", "The header value has been updated");
-      msg::set_header("Subject", identifier("The header value has been updated again"));
-      state::accept(`250 ${msg::get_header("Subject")}`);
-    }
-  ]
+    preq: [
+       action "update recipients" || msg::rm_rcpt("john.doe@example.com"),
+    ]
 }
 ```
-</details>
-
 </div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> to_string </h2>
-
-```rust,ignore
-fn to_string(message: Message) -> String
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Generate the `.eml` representation of the message.
-</details>
 
 </div>
 </br>

@@ -12,29 +12,86 @@ fn lookup(name: String) -> Array
 fn lookup(name: SharedObject) -> Array
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="lookup"
+    id="link-lookup-description"
+    class="tablinks active"
+    onclick="openTab(event, 'lookup', 'description')">
+        Description
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Args"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Args')">
+        Args
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Return"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Return')">
+        Return
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Errors"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Errors')">
+        Errors
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Examples')">
+        Examples
+    </button></div>
 
+<div group="lookup" id="lookup-description" style="display: block;" markdown="span" class="tabcontent">
 Performs a dual-stack DNS lookup for the given hostname.
 
-### Args
+
+</div>
+
+<div group="lookup" id="lookup-Args" class="tabcontent">
 
 * `host` - A valid hostname to search.
 
-### Return
+
+</div>
+
+<div group="lookup" id="lookup-Return" class="tabcontent">
 
 * `array` - an array of IPs. The array is empty if no IPs were found for the host.
 
-### Effective smtp stage
+
+</div>
+
+<div group="lookup" id="lookup-Effective smtp stage" class="tabcontent">
 
 All of them.
 
-# Errors
+
+</div>
+
+<div group="lookup" id="lookup-Errors" class="tabcontent">
 
 * Root resolver was not found.
 * Lookup failed.
 
-### Examples
+
+</div>
+
+<div group="lookup" id="lookup-Examples" class="tabcontent">
 
 ```
 #{
@@ -49,7 +106,7 @@ All of them.
   ],
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -62,41 +119,6 @@ All of them.
 fn rlookup(name: SharedObject) -> Array
 fn rlookup(name: String) -> Array
 ```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Performs a reverse lookup for the given IP.
-
-### Args
-
-* `ip` - The IP to query.
-
-### Return
-
-* `array` - an array of FQDNs. The array is empty if nothing was found.
-
-### Effective smtp stage
-
-All of them.
-
-# Errors
-
-* Failed to convert the `ip` parameter from a string into an IP.
-* Reverse lookup failed.
-
-### Examples
-
-```
-#{
-  connect: [
-    rule "rlookup" || {
-      state::accept(`250 client ip: ${"127.0.0.1"} -> ${dns::rlookup("127.0.0.1")}`);
-    }
-  ],
-}
-```
-</details>
 
 </div>
 </br>
