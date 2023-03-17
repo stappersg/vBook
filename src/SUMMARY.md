@@ -78,6 +78,7 @@ The vSMTP reference guide
     - [Smtp](ref/vSL/api/fn::global::smtp.md)
     - [MySQL](ref/vSL/api/fn::global::mysql.md)
     - [Memcached](ref/vSL/api/fn::global::memcached.md)
+    - [Ldap](ref/vSL/api/fn::global::ldap.md)
 
 # CLI
 

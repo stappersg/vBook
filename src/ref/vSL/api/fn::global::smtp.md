@@ -9,13 +9,51 @@
 fn connect(parameters: Map) -> Smtp
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="connect"
+    id="link-connect-description"
+    class="tablinks active"
+    onclick="openTab(event, 'connect', 'description')">
+        Description
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Args"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Args')">
+        Args
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Return"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Return')">
+        Return
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Error"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Error')">
+        Error
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Example"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Example')">
+        Example
+    </button></div>
 
+<div group="connect" id="connect-description" style="display: block;" markdown="span" class="tabcontent">
 Connect to a third party software that accepts SMTP transactions.
 This module is used with the `delegate` keyword.
 
-# Args
+
+</div>
+
+<div group="connect" id="connect-Args" class="tabcontent">
 
 * `parameters` - a map of the following parameters:
     * `delegator` - a map of the following parameters.
@@ -23,16 +61,25 @@ This module is used with the `delegate` keyword.
         * `timeout` - timeout between each SMTP commands. (optional, default: 30s)
     * `receiver` - the socket to get back the result from.
 
-# Return
+
+</div>
+
+<div group="connect" id="connect-Return" class="tabcontent">
 
 A service used to delegate a message.
 
-# Error
+
+</div>
+
+<div group="connect" id="connect-Error" class="tabcontent">
 
 * The service failed to parse the command parameters.
 * The service failed to connect to the `delegator` address.
 
-# Example
+
+</div>
+
+<div group="connect" id="connect-Example" class="tabcontent">
 
 ```text
 // declared in /etc/vsmtp/services/smtp.vsl
@@ -64,7 +111,7 @@ import "service/smtp" as srv;
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>

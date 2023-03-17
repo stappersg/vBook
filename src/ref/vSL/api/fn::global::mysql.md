@@ -12,27 +12,74 @@ Rhai.
 fn connect(parameters: Map) -> MySQL
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="connect"
+    id="link-connect-description"
+    class="tablinks active"
+    onclick="openTab(event, 'connect', 'description')">
+        Description
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Args"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Args')">
+        Args
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Return"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Return')">
+        Return
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Error"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Error')">
+        Error
+    </button>
+    <button
+    group="connect"
+    id="link-connect-Example"
+    class="tablinks"
+    onclick="openTab(event, 'connect', 'Example')">
+        Example
+    </button></div>
 
+<div group="connect" id="connect-description" style="display: block;" markdown="span" class="tabcontent">
 Open a pool of connections to a MySQL database.
 
-# Args
+
+</div>
+
+<div group="connect" id="connect-Args" class="tabcontent">
 
 * `parameters` - a map of the following parameters:
     * `url` - a string url to connect to the database.
     * `timeout` - time allowed between each query to the database. (default: 30s)
     * `connections` - Number of connections to open to the database. (default: 4)
 
-# Return
+
+</div>
+
+<div group="connect" id="connect-Return" class="tabcontent">
 
 A service used to query the database pointed by the `url` parameter.
 
-# Error
+
+</div>
+
+<div group="connect" id="connect-Error" class="tabcontent">
 
 * The service failed to connect to the database.
 
-# Example
+
+</div>
+
+<div group="connect" id="connect-Example" class="tabcontent">
 
 ```text
 // Import the plugin stored in the `plugins` directory.
@@ -45,7 +92,7 @@ export const database = mysql::connect(#{
     connections: 1,
 });
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -55,24 +102,61 @@ export const database = mysql::connect(#{
 <h2 class="func-name"> <code>fn</code> query </h2>
 
 ```rust,ignore
-fn query(database: MySQL, query: String) -> Array
 fn query(database: MySQL, query: SharedObject) -> Array
+fn query(database: MySQL, query: String) -> Array
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="query"
+    id="link-query-description"
+    class="tablinks active"
+    onclick="openTab(event, 'query', 'description')">
+        Description
+    </button>
+    <button
+    group="query"
+    id="link-query-Args"
+    class="tablinks"
+    onclick="openTab(event, 'query', 'Args')">
+        Args
+    </button>
+    <button
+    group="query"
+    id="link-query-Return"
+    class="tablinks"
+    onclick="openTab(event, 'query', 'Return')">
+        Return
+    </button>
+    <button
+    group="query"
+    id="link-query-Example"
+    class="tablinks"
+    onclick="openTab(event, 'query', 'Example')">
+        Example
+    </button></div>
 
+<div group="query" id="query-description" style="display: block;" markdown="span" class="tabcontent">
 Query the database.
 
-# Args
+
+</div>
+
+<div group="query" id="query-Args" class="tabcontent">
 
 * `query` - The query to execute.
 
-# Return
+
+</div>
+
+<div group="query" id="query-Return" class="tabcontent">
 
 A list of records.
 
-# Example
+
+</div>
+
+<div group="query" id="query-Example" class="tabcontent">
 
 Build a service in `services/database.vsl`;
 
@@ -109,7 +193,7 @@ import "services/database" as srv;
     ],
 }
 ```
-</details>
+</div>
 
 </div>
 </br>

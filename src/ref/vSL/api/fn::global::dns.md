@@ -12,29 +12,86 @@ fn lookup(name: String) -> Array
 fn lookup(name: SharedObject) -> Array
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="lookup"
+    id="link-lookup-description"
+    class="tablinks active"
+    onclick="openTab(event, 'lookup', 'description')">
+        Description
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Args"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Args')">
+        Args
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Return"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Return')">
+        Return
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Errors"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Errors')">
+        Errors
+    </button>
+    <button
+    group="lookup"
+    id="link-lookup-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'lookup', 'Examples')">
+        Examples
+    </button></div>
 
+<div group="lookup" id="lookup-description" style="display: block;" markdown="span" class="tabcontent">
 Performs a dual-stack DNS lookup for the given hostname.
 
-### Args
+
+</div>
+
+<div group="lookup" id="lookup-Args" class="tabcontent">
 
 * `host` - A valid hostname to search.
 
-### Return
+
+</div>
+
+<div group="lookup" id="lookup-Return" class="tabcontent">
 
 * `array` - an array of IPs. The array is empty if no IPs were found for the host.
 
-### Effective smtp stage
+
+</div>
+
+<div group="lookup" id="lookup-Effective smtp stage" class="tabcontent">
 
 All of them.
 
-# Errors
+
+</div>
+
+<div group="lookup" id="lookup-Errors" class="tabcontent">
 
 * Root resolver was not found.
 * Lookup failed.
 
-### Examples
+
+</div>
+
+<div group="lookup" id="lookup-Examples" class="tabcontent">
 
 ```
 #{
@@ -49,7 +106,7 @@ All of them.
   ],
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -59,33 +116,90 @@ All of them.
 <h2 class="func-name"> <code>fn</code> rlookup </h2>
 
 ```rust,ignore
-fn rlookup(name: SharedObject) -> Array
 fn rlookup(name: String) -> Array
+fn rlookup(name: SharedObject) -> Array
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="rlookup"
+    id="link-rlookup-description"
+    class="tablinks active"
+    onclick="openTab(event, 'rlookup', 'description')">
+        Description
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Args"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Args')">
+        Args
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Return"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Return')">
+        Return
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Errors"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Errors')">
+        Errors
+    </button>
+    <button
+    group="rlookup"
+    id="link-rlookup-Examples"
+    class="tablinks"
+    onclick="openTab(event, 'rlookup', 'Examples')">
+        Examples
+    </button></div>
 
+<div group="rlookup" id="rlookup-description" style="display: block;" markdown="span" class="tabcontent">
 Performs a reverse lookup for the given IP.
 
-### Args
+
+</div>
+
+<div group="rlookup" id="rlookup-Args" class="tabcontent">
 
 * `ip` - The IP to query.
 
-### Return
+
+</div>
+
+<div group="rlookup" id="rlookup-Return" class="tabcontent">
 
 * `array` - an array of FQDNs. The array is empty if nothing was found.
 
-### Effective smtp stage
+
+</div>
+
+<div group="rlookup" id="rlookup-Effective smtp stage" class="tabcontent">
 
 All of them.
 
-# Errors
+
+</div>
+
+<div group="rlookup" id="rlookup-Errors" class="tabcontent">
 
 * Failed to convert the `ip` parameter from a string into an IP.
 * Reverse lookup failed.
 
-### Examples
+
+</div>
+
+<div group="rlookup" id="rlookup-Examples" class="tabcontent">
 
 ```
 #{
@@ -96,7 +210,7 @@ All of them.
   ],
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
