@@ -129,8 +129,8 @@ all of them.
 
 ```rust,ignore
 fn accept() -> Status
-fn accept(code: String) -> Status
 fn accept(code: SharedObject) -> Status
+fn accept(code: String) -> Status
 ```
 
 <div class="tab">
@@ -304,8 +304,8 @@ all of them.
 
 ```rust,ignore
 fn deny() -> Status
-fn deny(code: SharedObject) -> Status
 fn deny(code: String) -> Status
+fn deny(code: SharedObject) -> Status
 ```
 
 <div class="tab">
@@ -666,7 +666,7 @@ all of them.
 
 <div group="to_string" id="to_string-Example" class="tabcontent">
 
-```ignore
+```text,ignore
 #{
     connect: [
         rule "status to string" || {
@@ -730,7 +730,7 @@ all of them.
 
 <div group="to_debug" id="to_debug-Example" class="tabcontent">
 
-```ignore
+```text,ignore
 #{
     connect: [
         rule "status to string" || {

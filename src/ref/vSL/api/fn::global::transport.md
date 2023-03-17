@@ -8,10 +8,10 @@ Functions to configure delivery methods of emails.
 <h2 class="func-name"> <code>fn</code> forward </h2>
 
 ```rust,ignore
-fn forward(rcpt: String, forward: SharedObject) -> ()
-fn forward(rcpt: String, forward: String) -> ()
 fn forward(rcpt: SharedObject, forward: String) -> ()
+fn forward(rcpt: String, forward: SharedObject) -> ()
 fn forward(rcpt: SharedObject, forward: SharedObject) -> ()
+fn forward(rcpt: String, forward: String) -> ()
 ```
 
 <div class="tab">
@@ -120,8 +120,8 @@ Or with url:
 <h2 class="func-name"> <code>fn</code> forward_all </h2>
 
 ```rust,ignore
-fn forward_all(forward: String) -> ()
 fn forward_all(forward: SharedObject) -> ()
+fn forward_all(forward: String) -> ()
 ```
 
 <div class="tab">
@@ -759,8 +759,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> mbox </h2>
 
 ```rust,ignore
-fn mbox(rcpt: SharedObject) -> ()
 fn mbox(rcpt: String) -> ()
+fn mbox(rcpt: SharedObject) -> ()
 ```
 
 <div class="tab">
@@ -1574,8 +1574,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> maildir </h2>
 
 ```rust,ignore
-fn maildir(rcpt: SharedObject) -> ()
 fn maildir(rcpt: String) -> ()
+fn maildir(rcpt: SharedObject) -> ()
 ```
 
 <div class="tab">

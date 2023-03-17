@@ -32,8 +32,8 @@ Generate the `.eml` representation of the message.
 <h2 class="func-name"> <code>fn</code> has_header </h2>
 
 ```rust,ignore
-fn has_header(header: SharedObject) -> bool
 fn has_header(header: String) -> bool
+fn has_header(header: SharedObject) -> bool
 ```
 
 <div class="tab">
@@ -765,8 +765,8 @@ you must use `set_header` in the `preq` stage and onwards.
 ```rust,ignore
 fn rename_header(old: SharedObject, new: SharedObject) -> ()
 fn rename_header(old: String, new: SharedObject) -> ()
-fn rename_header(old: String, new: String) -> ()
 fn rename_header(old: SharedObject, new: String) -> ()
+fn rename_header(old: String, new: String) -> ()
 ```
 
 <div class="tab">
@@ -916,8 +916,8 @@ Get a copy of the whole email as a string.
 <h2 class="func-name"> <code>fn</code> rm_header </h2>
 
 ```rust,ignore
-fn rm_header(header: String) -> bool
 fn rm_header(header: SharedObject) -> bool
+fn rm_header(header: String) -> bool
 ```
 
 <div class="tab">
@@ -1017,8 +1017,8 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> rw_mail_from </h2>
 
 ```rust,ignore
-fn rw_mail_from(new_addr: String) -> ()
 fn rw_mail_from(new_addr: SharedObject) -> ()
+fn rw_mail_from(new_addr: String) -> ()
 ```
 
 <div class="tab">
@@ -1090,10 +1090,10 @@ Change the sender's address in the `From` header of the message.
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
+fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: String, new_addr: String) -> ()
 fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
-fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 ```
 
 <div class="tab">
@@ -1166,8 +1166,8 @@ Replace a recipient by an other in the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> add_rcpt </h2>
 
 ```rust,ignore
-fn add_rcpt(new_addr: SharedObject) -> ()
 fn add_rcpt(new_addr: String) -> ()
+fn add_rcpt(new_addr: SharedObject) -> ()
 ```
 
 <div class="tab">
@@ -1239,8 +1239,8 @@ Add a recipient to the `To` header of the message.
 <h2 class="func-name"> <code>fn</code> rm_rcpt </h2>
 
 ```rust,ignore
-fn rm_rcpt(addr: String) -> ()
 fn rm_rcpt(addr: SharedObject) -> ()
+fn rm_rcpt(addr: String) -> ()
 ```
 
 <div class="tab">

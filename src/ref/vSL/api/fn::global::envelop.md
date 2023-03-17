@@ -8,8 +8,8 @@ Functions to inspect and mutate the SMTP envelop.
 <h2 class="func-name"> <code>fn</code> rw_mail_from </h2>
 
 ```rust,ignore
-fn rw_mail_from(new_addr: SharedObject) -> ()
 fn rw_mail_from(new_addr: String) -> ()
+fn rw_mail_from(new_addr: SharedObject) -> ()
 ```
 
 <div class="tab">
@@ -67,9 +67,9 @@ Rewrite the sender received from the `MAIL FROM` command.
 ```
 #{
     preq: [
-       action "rewrite envelop" || envelop::rw_mail_from("unknown@example.com"),
+       action "rewrite envelop 1" || envelop::rw_mail_from("unknown@example.com"),
        // You can use vsl addresses too.
-       action "rewrite envelop" || envelop::rw_mail_from(address("john.doe@example.com")),
+       action "rewrite envelop 2" || envelop::rw_mail_from(address("john.doe@example.com")),
     ]
 }
 ```
@@ -83,10 +83,10 @@ Rewrite the sender received from the `MAIL FROM` command.
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
-fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
 fn rw_rcpt(old_addr: String, new_addr: String) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
 ```
 
 <div class="tab">
@@ -146,10 +146,10 @@ Replace a recipient received by a `RCPT TO` command.
 #{
     preq: [
        // You can use strings or addresses as parameters.
-       action "rewrite envelop" || envelop::rw_rcpt("john.doe@example.com", "john.main@example.com"),
-       action "rewrite envelop" || envelop::rw_rcpt(address("john.doe@example.com"), "john.main@example.com"),
-       action "rewrite envelop" || envelop::rw_rcpt("john.doe@example.com", address("john.main@example.com")),
-       action "rewrite envelop" || envelop::rw_rcpt(address("john.doe@example.com"), address("john.main@example.com")),
+       action "rewrite envelop 1" || envelop::rw_rcpt("john.doe@example.com", "john.main@example.com"),
+       action "rewrite envelop 2" || envelop::rw_rcpt(address("john.doe@example.com"), "john.main@example.com"),
+       action "rewrite envelop 3" || envelop::rw_rcpt("john.doe@example.com", address("john.main@example.com")),
+       action "rewrite envelop 4" || envelop::rw_rcpt(address("john.doe@example.com"), address("john.main@example.com")),
     ]
 }
 ```
@@ -224,8 +224,8 @@ All of them.
 #{
     connect: [
        // always deliver a copy of the message to "john.doe@example.com".
-       action "rewrite envelop" || envelop::add_rcpt("john.doe@example.com"),
-       action "rewrite envelop" || envelop::add_rcpt(address("john.doe@example.com")),
+       action "rewrite envelop 1" || envelop::add_rcpt("john.doe@example.com"),
+       action "rewrite envelop 2" || envelop::add_rcpt(address("john.doe@example.com")),
     ]
 }
 ```
@@ -325,8 +325,8 @@ All of them.
 #{
     preq: [
        // never deliver to "john.doe@example.com".
-       action "rewrite envelop" || envelop::rm_rcpt("john.doe@example.com"),
-       action "rewrite envelop" || envelop::rm_rcpt(address("john.doe@example.com")),
+       action "rewrite envelop 1" || envelop::rm_rcpt("john.doe@example.com"),
+       action "rewrite envelop 2" || envelop::rm_rcpt(address("john.doe@example.com")),
     ]
 }
 ```

@@ -8,7 +8,8 @@ Implementation of the Sender Policy Framework (SPF), described by RFC 4408. (<ht
 <h2 class="func-name"> <code>fn</code> check </h2>
 
 ```rust,ignore
-fn check(header: String, policy: String) -> Status
+fn check() -> Status
+fn check(params: Map) -> Status
 ```
 
 <div class="tab">
@@ -64,15 +65,20 @@ fn check(header: String, policy: String) -> Status
 
 <div group="check" id="check-description" style="display: block;" markdown="span" class="tabcontent">
 Check spf record following the Sender Policy Framework (RFC 7208).
-see https://datatracker.ietf.org/doc/html/rfc7208
+see <https://datatracker.ietf.org/doc/html/rfc7208>
 
 
 </div>
 
 <div group="check" id="check-Args" class="tabcontent">
 
-* `header` - "spf" | "auth" | "both" | "none"
-* `policy` - "strict" | "soft"
+* a map composed of the following parameters:
+    * `header` - The header(s) where the spf results will be written.
+                 Can be "spf", "auth", "both" or "none". (default: "both")
+    * `policy` - Degrees of flexibility when getting spf results.
+                 Can be "strict" or "soft". (default: "strict")
+                 A "soft" policy will let softfail pass while a "strict"
+                 policy will return a deny if the results are not "pass".
 
 
 </div>
@@ -108,14 +114,16 @@ see https://datatracker.ietf.org/doc/html/rfc7208
 </div>
 
 <div group="check" id="check-Example" class="tabcontent">
-```ignore
-#{
+
+```
     mail: [
-       rule "check spf" || spf::check("spf", "soft")
+       rule "check spf" || spf::check(),
     ]
 }
 
-#{
+```
+
+```
     mail: [
         // if this check succeed, it wil return `next`.
         // if it fails, it might return `deny` with a custom code
@@ -125,13 +133,14 @@ see https://datatracker.ietf.org/doc/html/rfc7208
         // function on the last line of your rule.
         rule "check spf 1" || {
             log("debug", `running sender policy framework on ${ctx::mail_from()} identity ...`);
-            spf::check("spf", "soft")
+            spf::check(#{ header: "spf", policy: "soft" })
         },
 
         // policy is set to "strict" by default.
-        rule "check spf 2" || spf::check("both"),
+        rule "check spf 2" || spf::check(#{ header: "both" }),
     ],
 }
+
 ```
 </div>
 
@@ -184,7 +193,8 @@ fn check_raw() -> Map
     </button></div>
 
 <div group="check_raw" id="check_raw-description" style="display: block;" markdown="span" class="tabcontent">
-WARNING: Low level API, use `spf::check` instead.
+WARNING: Low level API, use `spf::check` instead if you do not need
+to peek inside the spf result data.
 
 Check spf record following the Sender Policy Framework (RFC 7208).
 see <https://datatracker.ietf.org/doc/html/rfc7208>
@@ -193,6 +203,7 @@ see <https://datatracker.ietf.org/doc/html/rfc7208>
 </div>
 
 <div group="check_raw" id="check_raw-Return" class="tabcontent">
+
 * `map` - the result of the spf check, contains the `result`, `mechanism` and `problem` keys.
 
 

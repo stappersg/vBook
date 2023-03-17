@@ -8,10 +8,10 @@ Logging mechanisms.
 <h2 class="func-name"> <code>fn</code> log </h2>
 
 ```rust,ignore
-fn log(level: SharedObject, message: SharedObject)
 fn log(level: String, message: String)
-fn log(level: SharedObject, message: String)
 fn log(level: String, message: SharedObject)
+fn log(level: SharedObject, message: SharedObject)
+fn log(level: SharedObject, message: String)
 ```
 
 <div class="tab">

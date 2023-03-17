@@ -376,11 +376,12 @@ Produce a `DKIM-Signature` header.
 
 <div group="sign" id="sign-Args" class="tabcontent">
 
-* `selector` - the DNS selector to expose the public key & for the verifier
-* `private_key` - the private key to sign the mail,
-    associated with the public key in the `selector._domainkey.sdid` DNS record
-* `headers_field` - list of headers to sign
-* `canonicalization` - the canonicalization algorithm to use (ex: "simple/relaxed")
+* `selector`         - the DNS selector to expose the public key & for the verifier
+* `private_key`      - the private key to sign the mail,
+                       associated with the public key in the `selector._domainkey.sdid`
+                       DNS record.
+* `headers_field`    - list of headers to sign.
+* `canonicalization` - the canonicalization algorithm to use. (ex: "simple/relaxed")
 
 
 </div>
@@ -394,8 +395,7 @@ Produce a `DKIM-Signature` header.
 
 <div group="sign" id="sign-Example" class="tabcontent">
 
-```text
-#{
+```
   preq: [
     action "sign dkim" || {
       for private_key in dkim::get_private_keys("testserver.com") {
@@ -416,9 +416,10 @@ Produce a `DKIM-Signature` header.
            canonicalization:    "simple/relaxed"
         });
       }
-    }
+    },
   ]
 }
+
 ```
 </div>
 
