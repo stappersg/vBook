@@ -62,7 +62,6 @@ To support TLS for a virtual server, add those lines to your configuration.
 ```rust,ignore
 fn on_domain_config(config) {
   config.tls = #{
-    protocol_version: ["TLSv1.2", "TLSv1.3"],
     certificate: "/etc/vsmtp/certs/fullchain.pem",
     private_key: "/etc/vsmtp/certs/privkey.pem",
   };
@@ -85,11 +84,11 @@ openssl s_client -crlf -connect 192.168.1.254:465 -servername example.com
 You can specify which domain will be used by default when no [SNI] is provided.
 
 ```rust,ignore
-fn on_domain_config(config) {
-  config.is_default = true;
+fn on_config(config) {
+  // ...
 
-  config.tls = #{
-    protocol_version: ["TLSv1.2", "TLSv1.3"],
+  config.server.tls = #{
+    // ...
     certificate: "/etc/vsmtp/certs/fullchain.pem",
     private_key: "/etc/vsmtp/certs/privkey.pem",
   };
@@ -98,13 +97,7 @@ fn on_domain_config(config) {
 }
 ```
 
-<p class="ann"> `/etc/vsmtp/domain-available/example2.com/config.vsl` </p>
-
-Or even with a symlink:
-
-```sh
-/etc/vsmtp/domain-available/default -> /etc/vsmtp/domain-available/example2.com
-```
+<p class="ann"> Set a default domain `/etc/vsmtp/conf.d/config.vsl` </p>
 
 These command will now work.
 
