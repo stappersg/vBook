@@ -81,7 +81,7 @@ openssl s_client -crlf -connect 192.168.1.254:465 -servername example.com
 
 ## Default domain
 
-You can specify which domain will be used by default when no [SNI] is provided.
+You can specify the certificate and the private key to use by default when no [SNI] is provided.
 
 ```rust,ignore
 fn on_config(config) {
