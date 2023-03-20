@@ -5,112 +5,45 @@ Predefined codes for SMTP responses.
 
 <div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
 
-<h2 class="func-name"> <code>fn</code> c451_3_0 </h2>
+<h2 class="func-name"> <code>fn</code> c554_7_1 </h2>
 
 ```rust,ignore
-fn c451_3_0() -> SharedObject
+fn c554_7_1() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c554_7_1"
+    id="link-c554_7_1-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c554_7_1', 'description')">
+        Description
+    </button>
+    <button
+    group="c554_7_1"
+    id="link-c554_7_1-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c554_7_1', 'Example')">
+        Example
+    </button></div>
 
-Multiple destination domains per transaction is unsupported code.
+<div group="c554_7_1" id="c554_7_1-description" style="display: block;" markdown="span" class="tabcontent">
+Return a relay access denied code.
 
-# Example
-
-```
-#{
-    mail: [
-        // Will send "451 4.3.0 Multiple destination domains per transaction is unsupported. Please try again." to the client.
-        rule "deny with code" || { state::deny(code::c451_3_0()) }
-    ]
-}
-```
-</details>
 
 </div>
-</br>
 
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> c451_7_1 </h2>
-
-```rust,ignore
-fn c451_7_1() -> SharedObject
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return a greylisting code (<https://www.rfc-editor.org/rfc/rfc6647.html#section-2.1>)
-
-# Example
+<div group="c554_7_1" id="c554_7_1-Example" class="tabcontent">
 
 ```
 #{
     mail: [
-        // Will send "451 4.7.1 Sender is not authorized. Please try again." to the client.
-        rule "deny with code" || { state::deny(code::c451_7_1()) }
+        // Will send "554 5.7.1 Relay access denied" to the client.
+        rule "anti relay" || { state::deny(code::c554_7_1()) }
     ]
 }
 ```
-</details>
-
 </div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> c500_7_26 </h2>
-
-```rust,ignore
-fn c500_7_26() -> SharedObject
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return a multiple authentication failures code.
-
-# Example
-
-```
-#{
-    mail: [
-        // Will send "500 5.7.26 Multiple authentication checks failed" to the client.
-        rule "deny with code" || { state::deny(code::c500_7_26()) }
-    ]
-}
-```
-</details>
-
-</div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> c550_1_1 </h2>
-
-```rust,ignore
-fn c550_1_1() -> SharedObject
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Multiple destination domains per transaction is unsupported code.
-
-# Example
-
-```
-#{
-    mail: [
-        // Will send "550 5.1.1 No passing DKIM signature found" to the client.
-        rule "deny with code" || { state::deny(code::c550_1_1()) }
-    ]
-}
-```
-</details>
 
 </div>
 </br>
@@ -123,13 +56,30 @@ Multiple destination domains per transaction is unsupported code.
 fn c550_7_20() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c550_7_20"
+    id="link-c550_7_20-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_7_20', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_7_20"
+    id="link-c550_7_20-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_7_20', 'Example')">
+        Example
+    </button></div>
 
+<div group="c550_7_20" id="c550_7_20-description" style="display: block;" markdown="span" class="tabcontent">
 Return a DKIM Failure code. (RFC 6376)
 DKIM signature not found.
 
-# Example
+
+</div>
+
+<div group="c550_7_20" id="c550_7_20-Example" class="tabcontent">
 
 ```
 #{
@@ -139,7 +89,7 @@ DKIM signature not found.
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -152,13 +102,30 @@ DKIM signature not found.
 fn c550_7_21() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c550_7_21"
+    id="link-c550_7_21-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_7_21', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_7_21"
+    id="link-c550_7_21-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_7_21', 'Example')">
+        Example
+    </button></div>
 
+<div group="c550_7_21" id="c550_7_21-description" style="display: block;" markdown="span" class="tabcontent">
 Return a DKIM Failure code. (RFC 6376)
 No acceptable DKIM signature found.
 
-# Example
+
+</div>
+
+<div group="c550_7_21" id="c550_7_21-Example" class="tabcontent">
 
 ```
 #{
@@ -168,7 +135,7 @@ No acceptable DKIM signature found.
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -181,13 +148,30 @@ No acceptable DKIM signature found.
 fn c550_7_22() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c550_7_22"
+    id="link-c550_7_22-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_7_22', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_7_22"
+    id="link-c550_7_22-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_7_22', 'Example')">
+        Example
+    </button></div>
 
+<div group="c550_7_22" id="c550_7_22-description" style="display: block;" markdown="span" class="tabcontent">
 Return a DKIM Failure code. (RFC 6376)
 No valid author matched DKIM signature found.
 
-# Example
+
+</div>
+
+<div group="c550_7_22" id="c550_7_22-Example" class="tabcontent">
 
 ```
 #{
@@ -197,7 +181,7 @@ No valid author matched DKIM signature found.
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -210,13 +194,30 @@ No valid author matched DKIM signature found.
 fn c550_7_23() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c550_7_23"
+    id="link-c550_7_23-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_7_23', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_7_23"
+    id="link-c550_7_23-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_7_23', 'Example')">
+        Example
+    </button></div>
 
+<div group="c550_7_23" id="c550_7_23-description" style="display: block;" markdown="span" class="tabcontent">
 Return a SPF Failure code. (RFC 7208)
 Validation failed.
 
-# Example
+
+</div>
+
+<div group="c550_7_23" id="c550_7_23-Example" class="tabcontent">
 
 ```
 #{
@@ -226,7 +227,7 @@ Validation failed.
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -239,13 +240,30 @@ Validation failed.
 fn c550_7_24() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c550_7_24"
+    id="link-c550_7_24-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_7_24', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_7_24"
+    id="link-c550_7_24-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_7_24', 'Example')">
+        Example
+    </button></div>
 
+<div group="c550_7_24" id="c550_7_24-description" style="display: block;" markdown="span" class="tabcontent">
 Return a SPF Failure code. (RFC 7208)
 Validation error.
 
-# Example
+
+</div>
+
+<div group="c550_7_24" id="c550_7_24-Example" class="tabcontent">
 
 ```
 #{
@@ -255,7 +273,7 @@ Validation error.
     ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>
@@ -268,12 +286,29 @@ Validation error.
 fn c550_7_25() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c550_7_25"
+    id="link-c550_7_25-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_7_25', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_7_25"
+    id="link-c550_7_25-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_7_25', 'Example')">
+        Example
+    </button></div>
 
+<div group="c550_7_25" id="c550_7_25-description" style="display: block;" markdown="span" class="tabcontent">
 Return a reverse DNS Failure code.
 
-# Example
+
+</div>
+
+<div group="c550_7_25" id="c550_7_25-Example" class="tabcontent">
 
 ```
 #{
@@ -283,7 +318,52 @@ Return a reverse DNS Failure code.
     ]
 }
 ```
-</details>
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> c500_7_26 </h2>
+
+```rust,ignore
+fn c500_7_26() -> SharedObject
+```
+
+<div class="tab">
+    <button
+    group="c500_7_26"
+    id="link-c500_7_26-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c500_7_26', 'description')">
+        Description
+    </button>
+    <button
+    group="c500_7_26"
+    id="link-c500_7_26-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c500_7_26', 'Example')">
+        Example
+    </button></div>
+
+<div group="c500_7_26" id="c500_7_26-description" style="display: block;" markdown="span" class="tabcontent">
+Return a multiple authentication failures code.
+
+
+</div>
+
+<div group="c500_7_26" id="c500_7_26-Example" class="tabcontent">
+
+```
+#{
+    mail: [
+        // Will send "500 5.7.26 Multiple authentication checks failed" to the client.
+        rule "deny with code" || { state::deny(code::c500_7_26()) }
+    ]
+}
+```
+</div>
 
 </div>
 </br>
@@ -296,13 +376,30 @@ Return a reverse DNS Failure code.
 fn c550_7_27() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c550_7_27"
+    id="link-c550_7_27-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_7_27', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_7_27"
+    id="link-c550_7_27-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_7_27', 'Example')">
+        Example
+    </button></div>
 
+<div group="c550_7_27" id="c550_7_27-description" style="display: block;" markdown="span" class="tabcontent">
 Return a Null MX cod. (RFC 7505)
 The sender address has a null MX record.
 
-# Example
+
+</div>
+
+<div group="c550_7_27" id="c550_7_27-Example" class="tabcontent">
 
 ```
 #{
@@ -311,36 +408,8 @@ The sender address has a null MX record.
         rule "deny with code" || { state::deny(code::c550_7_27()) }
     ]
 }
-```    
-</details>
-
+```
 </div>
-</br>
-
-<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
-
-<h2 class="func-name"> <code>fn</code> c554_7_1 </h2>
-
-```rust,ignore
-fn c554_7_1() -> SharedObject
-```
-
-<details>
-<summary markdown="span"> details </summary>
-
-Return a relay access denied code.
-
-# Example
-
-```
-#{
-    mail: [
-        // Will send "554 5.7.1 Relay access denied" to the client.
-        rule "anti relay" || { state::deny(code::c554_7_1()) }
-    ]
-}
-```
-</details>
 
 </div>
 </br>
@@ -353,13 +422,30 @@ Return a relay access denied code.
 fn c556_1_10() -> SharedObject
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="c556_1_10"
+    id="link-c556_1_10-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c556_1_10', 'description')">
+        Description
+    </button>
+    <button
+    group="c556_1_10"
+    id="link-c556_1_10-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c556_1_10', 'Example')">
+        Example
+    </button></div>
 
+<div group="c556_1_10" id="c556_1_10-description" style="display: block;" markdown="span" class="tabcontent">
 Return a Null MX cod. (RFC 7505)
 The recipient address has a null MX record.
 
-# Example
+
+</div>
+
+<div group="c556_1_10" id="c556_1_10-Example" class="tabcontent">
 
 ```
 #{
@@ -369,7 +455,142 @@ The recipient address has a null MX record.
     ]
 }
 ```
-</details>
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> c451_7_1 </h2>
+
+```rust,ignore
+fn c451_7_1() -> SharedObject
+```
+
+<div class="tab">
+    <button
+    group="c451_7_1"
+    id="link-c451_7_1-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c451_7_1', 'description')">
+        Description
+    </button>
+    <button
+    group="c451_7_1"
+    id="link-c451_7_1-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c451_7_1', 'Example')">
+        Example
+    </button></div>
+
+<div group="c451_7_1" id="c451_7_1-description" style="display: block;" markdown="span" class="tabcontent">
+Return a greylisting code (<https://www.rfc-editor.org/rfc/rfc6647.html#section-2.1>)
+
+
+</div>
+
+<div group="c451_7_1" id="c451_7_1-Example" class="tabcontent">
+
+```
+#{
+    mail: [
+        // Will send "451 4.7.1 Sender is not authorized. Please try again." to the client.
+        rule "deny with code" || { state::deny(code::c451_7_1()) }
+    ]
+}
+```
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> c451_3_0 </h2>
+
+```rust,ignore
+fn c451_3_0() -> SharedObject
+```
+
+<div class="tab">
+    <button
+    group="c451_3_0"
+    id="link-c451_3_0-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c451_3_0', 'description')">
+        Description
+    </button>
+    <button
+    group="c451_3_0"
+    id="link-c451_3_0-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c451_3_0', 'Example')">
+        Example
+    </button></div>
+
+<div group="c451_3_0" id="c451_3_0-description" style="display: block;" markdown="span" class="tabcontent">
+Multiple destination domains per transaction is unsupported code.
+
+
+</div>
+
+<div group="c451_3_0" id="c451_3_0-Example" class="tabcontent">
+
+```
+#{
+    mail: [
+        // Will send "451 4.3.0 Multiple destination domains per transaction is unsupported. Please try again." to the client.
+        rule "deny with code" || { state::deny(code::c451_3_0()) }
+    ]
+}
+```
+</div>
+
+</div>
+</br>
+
+<div markdown="span" style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 15px; border-radius: 5px;'>
+
+<h2 class="func-name"> <code>fn</code> c550_1_1 </h2>
+
+```rust,ignore
+fn c550_1_1() -> SharedObject
+```
+
+<div class="tab">
+    <button
+    group="c550_1_1"
+    id="link-c550_1_1-description"
+    class="tablinks active"
+    onclick="openTab(event, 'c550_1_1', 'description')">
+        Description
+    </button>
+    <button
+    group="c550_1_1"
+    id="link-c550_1_1-Example"
+    class="tablinks"
+    onclick="openTab(event, 'c550_1_1', 'Example')">
+        Example
+    </button></div>
+
+<div group="c550_1_1" id="c550_1_1-description" style="display: block;" markdown="span" class="tabcontent">
+Multiple destination domains per transaction is unsupported code.
+
+
+</div>
+
+<div group="c550_1_1" id="c550_1_1-Example" class="tabcontent">
+
+```
+#{
+    mail: [
+        // Will send "550 5.1.1 No passing DKIM signature found" to the client.
+        rule "deny with code" || { state::deny(code::c550_1_1()) }
+    ]
+}
+```
+</div>
 
 </div>
 </br>

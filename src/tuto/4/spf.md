@@ -36,5 +36,7 @@ Edit the `/etc/vsmtp/filter.vsl` script and add the following rule.
 <p class="ann"> Preventing spams using SPF </p>
 
 > See the [`spf::check`][check_spf_fn_ref] reference for more details.
+>
+> To check if DKIM is working correctly, check out [this site](https://appmaildev.com/en/spf).
 
 [check_spf_fn_ref]: ./../../ref/vSL/api/fn::global::spf.md

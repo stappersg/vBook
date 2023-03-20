@@ -12,16 +12,43 @@ specified by RFC 7489. (<https://www.rfc-editor.org/rfc/rfc7489>)
 fn check() -> Status
 ```
 
-<details>
-<summary markdown="span"> details </summary>
+<div class="tab">
+    <button
+    group="check"
+    id="link-check-description"
+    class="tablinks active"
+    onclick="openTab(event, 'check', 'description')">
+        Description
+    </button>
+    <button
+    group="check"
+    id="link-check-Effective smtp stage"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Effective smtp stage')">
+        Effective smtp stage
+    </button>
+    <button
+    group="check"
+    id="link-check-Example"
+    class="tablinks"
+    onclick="openTab(event, 'check', 'Example')">
+        Example
+    </button></div>
 
+<div group="check" id="check-description" style="display: block;" markdown="span" class="tabcontent">
 Apply the DMARC policy to the mail.
 
-# Effective smtp stage
+
+</div>
+
+<div group="check" id="check-Effective smtp stage" class="tabcontent">
 
 `preq` and onwards.
 
-# Example
+
+</div>
+
+<div group="check" id="check-Example" class="tabcontent">
 
 ```ignore
 #{
@@ -30,7 +57,7 @@ Apply the DMARC policy to the mail.
   ]
 }
 ```
-</details>
+</div>
 
 </div>
 </br>

@@ -12,6 +12,10 @@ The vSMTP reference guide
 # Getting Started
 
 - [Installation](get-started/installation.md)
+  - [Linux](get-started/installation/linux.md)
+  - [BSD 🚧]()
+  - [Cargo](get-started/installation/cargo.md)
+  - [Docker](get-started/installation/docker.md)
 - [Concepts](get-started/concepts.md)
 - [Configuration File Structure](get-started/config-file-struct.md)
   - [Root configuration](get-started/config-file-struct/root.md)
@@ -69,12 +73,12 @@ The vSMTP reference guide
     - [Objects](ref/vSL/api/fn::global::obj.md)
   - [Variables](ref/vSL/variables.md)
     - [Configuration](ref/vSL/api/var::cfg.md)
-    - [vSL API](ref/vSL/api/var::vsl-api.md)
   - [Plugins](ref/vSL/plugins.md)
     - [Cmd](ref/vSL/api/fn::global::cmd.md)
     - [Smtp](ref/vSL/api/fn::global::smtp.md)
     - [MySQL](ref/vSL/api/fn::global::mysql.md)
     - [Memcached](ref/vSL/api/fn::global::memcached.md)
+    - [Ldap](ref/vSL/api/fn::global::ldap.md)
 
 # CLI
 

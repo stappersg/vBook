@@ -95,5 +95,7 @@ Verify DKIM signatures of incoming emails by calling the [`dkim::verify`][verify
 
 <p class="ann"> /etc/vsmtp/domain-available/example.com/incoming.vsl </p>
 
+> To check if DKIM is working correctly, check out [this site](https://appmaildev.com/en/dkim).
+
 [verify_dkim_fn_ref]: ../../ref/vSL/api/fn::global::dkim.md
 [sign_dkim_fn_ref]: ../../ref/vSL/api/fn::global::dkim.md
