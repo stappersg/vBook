@@ -8,8 +8,8 @@ Functions used to query the DNS.
 <h2 class="func-name"> <code>fn</code> lookup </h2>
 
 ```rust,ignore
-fn lookup(name: String) -> Array
 fn lookup(name: SharedObject) -> Array
+fn lookup(name: String) -> Array
 ```
 
 <div class="tab">

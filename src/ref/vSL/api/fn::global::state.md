@@ -10,8 +10,8 @@ Use `states` in `rules` to deny, accept, or quarantine emails.
 
 ```rust,ignore
 fn faccept() -> Status
-fn faccept(code: String) -> Status
 fn faccept(code: SharedObject) -> Status
+fn faccept(code: String) -> Status
 ```
 
 <div class="tab">
