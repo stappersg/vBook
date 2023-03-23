@@ -8,8 +8,8 @@ Utility functions to interact with the system.
 <h2 class="func-name"> <code>fn</code> get_root_domain </h2>
 
 ```rust,ignore
-fn get_root_domain(domain: String) -> String
 fn get_root_domain(domain: SharedObject) -> String
+fn get_root_domain(domain: String) -> String
 ```
 
 <div class="tab">
@@ -47,8 +47,8 @@ Get the root domain (the registrable part)
 <h2 class="func-name"> <code>fn</code> env </h2>
 
 ```rust,ignore
-fn env(variable: SharedObject) -> ?
 fn env(variable: String) -> ?
+fn env(variable: SharedObject) -> ?
 ```
 
 <div class="tab">

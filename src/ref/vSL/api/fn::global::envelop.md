@@ -8,8 +8,8 @@ Functions to inspect and mutate the SMTP envelop.
 <h2 class="func-name"> <code>fn</code> rw_mail_from </h2>
 
 ```rust,ignore
-fn rw_mail_from(new_addr: String) -> ()
 fn rw_mail_from(new_addr: SharedObject) -> ()
+fn rw_mail_from(new_addr: String) -> ()
 ```
 
 <div class="tab">
@@ -83,9 +83,9 @@ Rewrite the sender received from the `MAIL FROM` command.
 <h2 class="func-name"> <code>fn</code> rw_rcpt </h2>
 
 ```rust,ignore
-fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
+fn rw_rcpt(old_addr: String, new_addr: String) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
 ```
 
@@ -239,8 +239,8 @@ All of them.
 <h2 class="func-name"> <code>fn</code> bcc </h2>
 
 ```rust,ignore
-fn bcc(new_addr: String) -> ()
 fn bcc(new_addr: SharedObject) -> ()
+fn bcc(new_addr: String) -> ()
 ```
 
 <div class="tab">
