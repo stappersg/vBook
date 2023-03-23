@@ -8,8 +8,8 @@ Utility functions to interact with unix systems.
 <h2 class="func-name"> <code>fn</code> user_exist </h2>
 
 ```rust,ignore
-fn user_exist(name: String) -> bool
 fn user_exist(name: SharedObject) -> bool
+fn user_exist(name: String) -> bool
 ```
 
 <div class="tab">
@@ -185,8 +185,8 @@ print(`hostname of the system: ${hostname()}`);
 <h2 class="func-name"> <code>fn</code> env </h2>
 
 ```rust,ignore
-fn env(variable: SharedObject) -> ?
 fn env(variable: String) -> ?
+fn env(variable: SharedObject) -> ?
 ```
 
 <div class="tab">

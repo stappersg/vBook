@@ -32,8 +32,8 @@ Generate the `.eml` representation of the message.
 <h2 class="func-name"> <code>fn</code> has_header </h2>
 
 ```rust,ignore
-fn has_header(header: String) -> bool
 fn has_header(header: SharedObject) -> bool
+fn has_header(header: String) -> bool
 ```
 
 <div class="tab">
@@ -117,8 +117,8 @@ email is received at this point.
 <h2 class="func-name"> <code>fn</code> count_header </h2>
 
 ```rust,ignore
-fn count_header(header: SharedObject) -> int
 fn count_header(header: String) -> int
+fn count_header(header: SharedObject) -> int
 ```
 
 <div class="tab">
@@ -213,8 +213,8 @@ is when the email body is received.
 <h2 class="func-name"> <code>fn</code> get_header </h2>
 
 ```rust,ignore
-fn get_header(header: String) -> String
 fn get_header(header: SharedObject) -> String
+fn get_header(header: String) -> String
 ```
 
 <div class="tab">
@@ -510,8 +510,8 @@ Hello world!
 <h2 class="func-name"> <code>fn</code> append_header </h2>
 
 ```rust,ignore
-fn append_header(header: String, value: String) -> ()
 fn append_header(header: String, value: SharedObject) -> ()
+fn append_header(header: String, value: String) -> ()
 ```
 
 <div class="tab">
@@ -676,8 +676,8 @@ the `preq` stage is reached.
 <h2 class="func-name"> <code>fn</code> set_header </h2>
 
 ```rust,ignore
-fn set_header(header: String, value: SharedObject) -> ()
 fn set_header(header: String, value: String) -> ()
+fn set_header(header: String, value: SharedObject) -> ()
 ```
 
 <div class="tab">
@@ -763,10 +763,10 @@ you must use `set_header` in the `preq` stage and onwards.
 <h2 class="func-name"> <code>fn</code> rename_header </h2>
 
 ```rust,ignore
-fn rename_header(old: SharedObject, new: SharedObject) -> ()
 fn rename_header(old: String, new: SharedObject) -> ()
-fn rename_header(old: SharedObject, new: String) -> ()
+fn rename_header(old: SharedObject, new: SharedObject) -> ()
 fn rename_header(old: String, new: String) -> ()
+fn rename_header(old: SharedObject, new: String) -> ()
 ```
 
 <div class="tab">
@@ -916,8 +916,8 @@ Get a copy of the whole email as a string.
 <h2 class="func-name"> <code>fn</code> rm_header </h2>
 
 ```rust,ignore
-fn rm_header(header: SharedObject) -> bool
 fn rm_header(header: String) -> bool
+fn rm_header(header: SharedObject) -> bool
 ```
 
 <div class="tab">
@@ -1092,8 +1092,8 @@ Change the sender's address in the `From` header of the message.
 ```rust,ignore
 fn rw_rcpt(old_addr: SharedObject, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: String, new_addr: String) -> ()
-fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 fn rw_rcpt(old_addr: SharedObject, new_addr: String) -> ()
+fn rw_rcpt(old_addr: String, new_addr: SharedObject) -> ()
 ```
 
 <div class="tab">
