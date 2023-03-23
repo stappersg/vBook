@@ -89,8 +89,10 @@ fn on_config(config) {
 
   config.server.tls = #{
     // ...
-    certificate: "/etc/vsmtp/certs/fullchain.pem",
-    private_key: "/etc/vsmtp/certs/privkey.pem",
+    root: #{
+      certificate: "/etc/vsmtp/certs/fullchain.pem",
+      private_key: "/etc/vsmtp/certs/privkey.pem",
+    }
   };
 
   config
