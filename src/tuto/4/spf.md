@@ -29,7 +29,7 @@ Edit the `/etc/vsmtp/filter.vsl` script and add the following rule.
 ```
 #{
   mail: [
-    rule "check spf" || spf::check("both", "soft"),
+    rule "check spf" || spf::check(),
   ]
 }
 ```

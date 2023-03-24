@@ -19,7 +19,7 @@ Edit the `/etc/vsmtp/domain-enabled/filter.vsl` file and add the following rule.
 ```
 #{
   mail: [
-    rule "check spf" || spf::check("both", "soft"),
+    rule "check spf" || spf::check(),
   ]
 }
 ```
