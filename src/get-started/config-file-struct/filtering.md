@@ -24,7 +24,7 @@ The root `filter.vsl` script is used to filter incoming transaction at the `conn
 ```
 <p class="ann"> Adding the root filter script </p>
 
-```rust,ignore
+```js,ignore
 #{
   connect: [
     rule "deny all" || state::deny(),
@@ -33,7 +33,7 @@ The root `filter.vsl` script is used to filter incoming transaction at the `conn
 ```
 <p class="ann"> Content of the `filter.vsl` file. Denies every transaction by default. </p>
 
-```rust,ignore
+```js,ignore
 fn on_config(config) {
   config.app.vsl.filter_path = "/etc/vsmtp/filter.vsl";
   return config;
