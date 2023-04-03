@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.viridit.com">
-    <img src="https://github.com/viridIT/vSMTP/blob/main/assets/vsmtp-white-nobckgrd.png?raw=true"
+    <img src="./assets/logo.png"
       alt="vSMTP" />
   </a>
 </div>
