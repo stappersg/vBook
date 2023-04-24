@@ -1,9 +1,4 @@
-<div align="center">
-  <a href="https://www.viridit.com">
-    <img src="./assets/logo.png"
-      alt="vSMTP" />
-  </a>
-</div>
+<br/>
 
 <div align="center">
   <a href="https://www.viridit.com">
