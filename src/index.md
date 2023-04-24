@@ -1,9 +1,4 @@
-<div align="center">
-  <a href="https://www.viridit.com">
-    <img src="./assets/logo.png"
-      alt="vSMTP" />
-  </a>
-</div>
+<br/>
 
 <div align="center">
   <a href="https://www.viridit.com">
@@ -74,7 +69,7 @@ It serves as vSMTP's primary documentation and tutorial resource.
 
 ## vSMTP
 
-vSMTP is a secured, faster and greener Mail Transfer Agent ([MTA](./term/agent.md#mta-mail-transfer-agent)).
+[vSMTP](https://github.com/viridIT/vSMTP) is a secured, faster and greener Mail Transfer Agent ([MTA](./term/agent.md#mta-mail-transfer-agent)) developed by [viridIT](https://viridit.com/).
 
 It is a more efficient, more secure and more ergonomic product than the competition. It is up to 10 times faster than its competitors and significantly reduces the need for IT resources.
 
